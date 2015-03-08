@@ -22,7 +22,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/sony/git/NBAAnalysis/java程序界面美化包substance.jar"/>
-	<classpathentry kind="lib" path="C:/Users/sony/git/NBAAnalysis/swingset3_beautyeye.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -3,6 +3,7 @@ package server.po;
 import java.util.Calendar;
 
 public class PlayerPO {
+	public PlayerPO() {}
 	public PlayerPO(String name, int number, char position, HeightPO height,
 			int weight, Calendar birth, int age, int exp, String school) {
 		super();

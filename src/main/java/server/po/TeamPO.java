@@ -1,6 +1,7 @@
 package server.po;
 
 public class TeamPO {
+	public TeamPO() {}
 	public TeamPO(String fullName, String abbreviation, String location,
 			char division, String zone, String home, int setupTime) {
 		super();

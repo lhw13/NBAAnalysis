@@ -1,10 +1,11 @@
 package server.po;
 
 public class PlayerInMatchesPO {
+	public PlayerInMatchesPO() {}
 	public PlayerInMatchesPO(String name, char position, int playTime, int hit,
 			int shot, int thirdHit, int thirdshot, int freeHit, int freeshot,
 			int offensiveRebound, int defensiveRebound, int totalRebound,
-			int assist, int block, int miss, int foul, int score) {
+			int assist, int steal, int block, int miss, int foul, int score) {
 		super();
 		this.name = name;
 		this.position = position;
@@ -19,6 +20,7 @@ public class PlayerInMatchesPO {
 		this.defensiveRebound = defensiveRebound;
 		this.totalRebound = totalRebound;
 		this.assist = assist;
+		this.steal = steal;
 		this.block = block;
 		this.miss = miss;
 		this.foul = foul;
@@ -37,6 +39,7 @@ public class PlayerInMatchesPO {
 	int defensiveRebound;
 	int totalRebound;
 	int assist;
+	int steal;
 	int block;
 	int miss;
 	int foul;
@@ -142,5 +145,11 @@ public class PlayerInMatchesPO {
 	}
 	public void setScore(int score) {
 		this.score = score;
+	}
+	public int getSteal() {
+		return steal;
+	}
+	public void setSteal(int steal) {
+		this.steal = steal;
 	}
 }

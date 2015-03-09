@@ -1,6 +1,7 @@
 package server.po;
 
 public class ScorePO {
+	public ScorePO() {}
 	public ScorePO(int team1, int team2) {
 		super();
 		this.team1 = team1;

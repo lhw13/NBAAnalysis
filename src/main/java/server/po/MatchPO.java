@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MatchPO {
+	public MatchPO() {}
 	public MatchPO(String season, Calendar date, ScorePO finalScore,
 			ArrayList<ScorePO> scores, TeamInMatchesPO team1,
 			TeamInMatchesPO team2) {

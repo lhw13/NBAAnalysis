@@ -1,6 +1,7 @@
 package server.po;
 
 public class HeightPO {
+	public HeightPO() {}
 	public HeightPO(int feet, int inch) {
 		super();
 		this.feet = feet;

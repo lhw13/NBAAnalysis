@@ -3,6 +3,7 @@ package server.po;
 import java.util.ArrayList;
 
 public class TeamInMatchesPO {
+	public TeamInMatchesPO() {}
 	public TeamInMatchesPO(String abbreviation,
 			ArrayList<PlayerInMatchesPO> players) {
 		super();

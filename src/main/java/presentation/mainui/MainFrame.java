@@ -4,6 +4,8 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jvnet.substance.SubstanceLookAndFeel;
 import org.jvnet.substance.theme.SubstanceAquaTheme;
 
+import presentation.teamsui.CHIFrame;
+
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -21,12 +23,11 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.CardLayout;
 import java.awt.event.MouseListener;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainFrame {
-	private JFrame frmNba;
+	public JFrame frmNba;
 
 	private Timer timer;
 	private final int INITIAL_DELAY = 100;
@@ -39,6 +40,8 @@ public class MainFrame {
     private static JLabel lblNewLabel_3;
     private static JLabel lblNewLabel_4;
     private static JLabel lblNewLabel_5;
+    
+    public static boolean flag=true;
     
 	/**
 	 * Launch the application.
@@ -128,7 +131,14 @@ public class MainFrame {
 		lblNewLabel_1.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
+				try {
+					frmNba.setVisible(false);
+					CHIFrame window = new CHIFrame();
+					window.chiFrame.setVisible(true);
+					MainFrame.flag=false;
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 				
 			}
 
@@ -279,35 +289,40 @@ public class MainFrame {
 		frmNba.getContentPane().add(panel_4);
 		panel_4.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("pictures\\KobeGIF.jpg"));
-		lblNewLabel.setBounds(0, 0, 180, 133);
-		panel_4.add(lblNewLabel);
+		JLabel GIFLabel2 = new JLabel("");
+		GIFLabel2.setIcon(new ImageIcon("pictures\\KobeGIF.jpg"));
+		GIFLabel2.setBounds(0, 0, 180, 133);
+		panel_4.add(GIFLabel2);
 	}
 	
+	//图片循环切换线程
 	private class ScheduleTask extends TimerTask {
+		
         public void run() {
-        	changeLabel.setIcon(new ImageIcon("pictures\\Kobe.jpg"));
-        	try {
-        		Thread.sleep(3000);
-        		} 
-        	catch (InterruptedException e) {
-        		e.printStackTrace();
-        	}
-        	changeLabel.setIcon(new ImageIcon("pictures\\ROYALTY.jpg"));
-        	try {
-        		Thread.sleep(3000);
-        		} 
-        	catch (InterruptedException e) {
-        		e.printStackTrace();
-        	}
-        	changeLabel.setIcon(new ImageIcon("pictures\\WADE.jpg"));
-        	try {
-        		Thread.sleep(3000);
-        		} 
-        	catch (InterruptedException e) {
-        		e.printStackTrace();
-        	}
+        	while(flag){
+        		changeLabel.setIcon(new ImageIcon("pictures\\Kobe.jpg"));
+            	try {
+            		Thread.sleep(3000);
+            		} 
+            	catch (InterruptedException e) {
+            		e.printStackTrace();
+            	}
+            	changeLabel.setIcon(new ImageIcon("pictures\\ROYALTY.jpg"));
+            	try {
+            		Thread.sleep(3000);
+            		} 
+            	catch (InterruptedException e) {
+            		e.printStackTrace();
+            	}
+            	changeLabel.setIcon(new ImageIcon("pictures\\WADE.jpg"));
+            	try {
+            		Thread.sleep(3000);
+            		} 
+            	catch (InterruptedException e) {
+            		e.printStackTrace();
+            	}
+    		}
+        	
             	
         	
         	

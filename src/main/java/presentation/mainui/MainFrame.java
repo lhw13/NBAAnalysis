@@ -30,12 +30,14 @@ import java.util.TimerTask;
 import javax.swing.JScrollPane;
 
 public class MainFrame {
-	public JFrame frmNba ;
+	public static JFrame frmNba ;
 
 	private Timer timer;
 	private final int INITIAL_DELAY = 100;
     private final int PERIOD_INTERVAL = 10;
     private static JLabel changeLabel;
+    
+    public static JScrollPane scrollPane;
     
     private static JLabel lblNewLabel_1;
     private static JLabel lblNewLabel_2;
@@ -100,7 +102,6 @@ public class MainFrame {
 		frmNba.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmNba.getContentPane().setLayout(null);
 		
-		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(0, 100, 1000, 100);
 		panel_1.setLayout(null);
@@ -122,9 +123,8 @@ public class MainFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
-					frmNba.setVisible(false);
-					TeamsFrame window = new TeamsFrame();
-					window.teamsFrame.setVisible(true);
+					MainFrame.scrollPane.setVisible(false);
+					TeamsFrame.mainscrollPane.setVisible(true);
 					MainFrame.flag=false;
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -282,10 +282,14 @@ public class MainFrame {
 		mainpanel.add(panel_1);
 		mainpanel.add(panel_2);
 		
-		JScrollPane scrollPane = new JScrollPane(mainpanel);
+		scrollPane = new JScrollPane(mainpanel);
 		scrollPane.setBounds(0, 0, 990, 560);
 		
 		frmNba.getContentPane().add(scrollPane);
+		
+		TeamsFrame window = new TeamsFrame();
+		frmNba.getContentPane().add(TeamsFrame.mainscrollPane);
+		TeamsFrame.mainscrollPane.setVisible(false);
 	}
 	
 	//图片循环切换线程

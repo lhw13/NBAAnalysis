@@ -23,7 +23,6 @@ import javax.swing.JLabel;
 
 public class TeamsFrame {
 
-	public JFrame teamsFrame;
 	private JTable table;
 	private JTable table_1;
 	private JTable table_3;
@@ -31,6 +30,7 @@ public class TeamsFrame {
 	private JTable table_4;
 	private JTable table_5;
 	
+	public static JScrollPane mainscrollPane;
 
 	/**
 	 * Create the application.
@@ -43,15 +43,9 @@ public class TeamsFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		teamsFrame = new JFrame();
-		teamsFrame.setBounds(100, 100, 1000, 600);
-		teamsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		teamsFrame.getContentPane().setLayout(null);
-		
-		
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(990, 38, 192, 84);
+		panel.setBounds(50, 750, 200, 84);
 		
 		JButton btnNewButton = new JButton("New button");
 		panel.add(btnNewButton);
@@ -226,18 +220,16 @@ public class TeamsFrame {
 		panel_1.add(tabbedPane);
 		panel_1.add(tabbedPane_1);
 		
-		JScrollPane scrollPane_5 = new JScrollPane(panel_1);
-		scrollPane_5.setBounds(0, 0, 990, 560);
+		mainscrollPane = new JScrollPane(panel_1);
+		mainscrollPane.setBounds(0, 0, 990, 560);
 		
-		teamsFrame.getContentPane().add(scrollPane_5);
 		
 		btnNewButton.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 				try {
-					teamsFrame.setVisible(false);
-					MainFrame window = new MainFrame();
-					window.frmNba.setVisible(true);
+					TeamsFrame.mainscrollPane.setVisible(false);
+					MainFrame.scrollPane.setVisible(true);
 					MainFrame.flag=true;
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -249,4 +241,7 @@ public class TeamsFrame {
 		
 		
 	}
+	
+	
+	
 }

@@ -4,7 +4,7 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jvnet.substance.SubstanceLookAndFeel;
 import org.jvnet.substance.theme.SubstanceAquaTheme;
 
-import presentation.teamsui.CHIFrame;
+import presentation.teamsui.TeamsFrame;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -16,6 +16,7 @@ import javax.swing.JRootPane;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.awt.GridBagLayout;
@@ -26,6 +27,8 @@ import java.awt.event.MouseListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.JScrollPane;
+
 public class MainFrame {
 	public JFrame frmNba ;
 
@@ -33,7 +36,6 @@ public class MainFrame {
 	private final int INITIAL_DELAY = 100;
     private final int PERIOD_INTERVAL = 10;
     private static JLabel changeLabel;
-    private final JLabel GIFLabel1 = new JLabel("");
     
     private static JLabel lblNewLabel_1;
     private static JLabel lblNewLabel_2;
@@ -94,34 +96,22 @@ public class MainFrame {
 		frmNba = new JFrame();
 		frmNba.setIconImage(Toolkit.getDefaultToolkit().getImage("pictures\\NBA.jpg"));
 		frmNba.setTitle("NBA");
-		frmNba.setBounds(100, 100, 1500, 1000);
+		frmNba.setBounds(100, 100, 1000, 600);
 		frmNba.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmNba.getContentPane().setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(440, 100, 600, 200);
-		panel.setOpaque(false);
-		frmNba.getContentPane().add(panel);
-		panel.setLayout(null);
-		
-		changeLabel = new JLabel("");
-		changeLabel.setIcon(new ImageIcon("pictures\\Kobe.jpg"));
-		changeLabel.setBounds(0, 0, 600, 200);
-		panel.add(changeLabel);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(250, 300, 1000, 100);
-		frmNba.getContentPane().add(panel_1);
+		panel_1.setBounds(0, 100, 1000, 100);
 		panel_1.setLayout(null);
 		
 		JLabel midLabel = new JLabel("");
-		midLabel.setIcon(new ImageIcon("pictures\\middle.jpg"));
 		midLabel.setBounds(0, 0, 1000, 100);
 		panel_1.add(midLabel);
+		midLabel.setIcon(new ImageIcon("pictures\\middle.jpg"));
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(250, 400, 1000, 550);
-		frmNba.getContentPane().add(panel_2);
+		panel_2.setBounds(0, 200, 1000, 600);
 		panel_2.setLayout(null);
 		
 		lblNewLabel_1 = new JLabel("");
@@ -133,8 +123,8 @@ public class MainFrame {
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
 					frmNba.setVisible(false);
-					CHIFrame window = new CHIFrame();
-					window.chiFrame.setVisible(true);
+					TeamsFrame window = new TeamsFrame();
+					window.teamsFrame.setVisible(true);
 					MainFrame.flag=false;
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -144,12 +134,10 @@ public class MainFrame {
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
 				// TODO Auto-generated method stub
-				
 			}
 
 			public void mouseReleased(java.awt.event.MouseEvent e) {
 				// TODO Auto-generated method stub
-				
 			}
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
@@ -249,7 +237,7 @@ public class MainFrame {
 		
 		lblNewLabel_5 = new JLabel("");
 		lblNewLabel_5.setIcon(new ImageIcon("pictures\\MIL.jpg"));
-		lblNewLabel_5.setBounds(10, 450, 150, 100);
+		lblNewLabel_5.setBounds(10, 460, 150, 100);
 		panel_2.add(lblNewLabel_5);
 		lblNewLabel_5.addMouseListener(new MouseListener(){
 
@@ -276,23 +264,28 @@ public class MainFrame {
 				lblNewLabel_5.setIcon(new ImageIcon("pictures\\MIL.jpg"));
 			}});
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(250, 180, 160, 120);
-		frmNba.getContentPane().add(panel_3);
-		panel_3.setLayout(null);
-		GIFLabel1.setIcon(new ImageIcon("pictures\\Jordan.jpg"));
-		GIFLabel1.setBounds(0, 0, 160, 120);
-		panel_3.add(GIFLabel1);
+		JPanel panel = new JPanel();
+		panel.setBounds(350, 0, 250, 100);
+		panel.setOpaque(false);
+		panel.setLayout(null);
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(1070, 167, 180, 133);
-		frmNba.getContentPane().add(panel_4);
-		panel_4.setLayout(null);
+		changeLabel = new JLabel("");
+		changeLabel.setBounds(0, 0, 250, 100);
+		panel.add(changeLabel);
+		changeLabel.setIcon(new ImageIcon("pictures\\Kobe.jpg"));
 		
-		JLabel GIFLabel2 = new JLabel("");
-		GIFLabel2.setIcon(new ImageIcon("pictures\\KobeGIF.jpg"));
-		GIFLabel2.setBounds(0, 0, 180, 133);
-		panel_4.add(GIFLabel2);
+		JPanel mainpanel = new JPanel();
+		mainpanel.setBounds(0, 0, 1000, 600);
+		mainpanel.setPreferredSize(new Dimension(1200,1000));
+		mainpanel.setLayout(null);
+		mainpanel.add(panel);
+		mainpanel.add(panel_1);
+		mainpanel.add(panel_2);
+		
+		JScrollPane scrollPane = new JScrollPane(mainpanel);
+		scrollPane.setBounds(0, 0, 990, 560);
+		
+		frmNba.getContentPane().add(scrollPane);
 	}
 	
 	//图片循环切换线程
@@ -328,5 +321,4 @@ public class MainFrame {
         	
         	}
         }
-
 }

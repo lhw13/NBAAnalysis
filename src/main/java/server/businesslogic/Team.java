@@ -1,5 +1,10 @@
 package server.businesslogic;
 
-public class Team {
+import vo.TeamVO;
 
+public class Team {
+	public TeamVO toVO()
+	{
+		return new TeamVO();
+	}
 }

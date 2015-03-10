@@ -6,8 +6,8 @@ import vo.*;
 public class Player {
 	PlayerPO player;
 	PlayerInMatchesPO playerInMatches;
-//	public PlayerVO toVO()
-//	{
-//		
-//	}
+	public PlayerVO toVO()
+	{
+		return new PlayerVO();
+	}
 }

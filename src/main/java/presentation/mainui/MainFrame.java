@@ -27,7 +27,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainFrame {
-	public JFrame frmNba;
+	public JFrame frmNba ;
 
 	private Timer timer;
 	private final int INITIAL_DELAY = 100;

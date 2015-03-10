@@ -42,7 +42,7 @@ public class TeamsFrame {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(){
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(50, 750, 200, 84);

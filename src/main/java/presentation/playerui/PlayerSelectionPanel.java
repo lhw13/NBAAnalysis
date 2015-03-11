@@ -7,9 +7,16 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JLabel;
+import javax.swing.JButton;
+
+import presentation.mainui.MainFrame;
 
 public class PlayerSelectionPanel extends JPanel {
 	
@@ -319,6 +326,10 @@ public class PlayerSelectionPanel extends JPanel {
 	private JLabel label;
 	private JLabel label_1;
 	private JLabel label_2;
+	
+	public static JScrollPane scrollPane;
+	private JButton btnNewButton;
+	
 	public PlayerSelectionPanel() {
 		this.setBounds(0, 0, 1000,600);
 		//设置面板透明
@@ -386,11 +397,24 @@ public class PlayerSelectionPanel extends JPanel {
 		tableOfJueShi = new JTable(modelOfJueShi);
 		tableOfJueShi.setBounds(0, 2920, 900, 80);
 		
-		JScrollPane scrollPane = new JScrollPane(panelOfBottom);
+		scrollPane = new JScrollPane(panelOfBottom);
 		scrollPane.setBounds(0, 0, 990, 600);
 		add(scrollPane);
 		panelOfBottom.setPreferredSize(new Dimension(1000, 3000));
 		panelOfBottom.setLayout(null);
+		
+		btnNewButton = new JButton("返回");
+		btnNewButton.setBounds(400, 0, 120, 30);
+		panelOfBottom.add(btnNewButton);
+		
+		btnNewButton.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				PlayerSelectionPanel.scrollPane.setVisible(false);
+				MainFrame.panel.setVisible(true);
+				MainFrame.frame.setTitle("NBA");
+			}
+		});
 			
 		panelOfBottom.add(tableOfLanWang);
 		panelOfBottom.add(tableOfHuangFeng);

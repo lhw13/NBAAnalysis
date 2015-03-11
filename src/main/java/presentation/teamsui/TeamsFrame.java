@@ -1,29 +1,14 @@
 package presentation.teamsui;
 
-import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
-import org.jvnet.substance.SubstanceLookAndFeel;
-import org.jvnet.substance.theme.SubstanceAquaTheme;
-
 import presentation.mainui.MainFrame;
 import presentation.teamsui.TeamsInfoFrame;
 
-import javax.swing.JFrame;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
-import javax.swing.JRootPane;
-import javax.swing.SwingConstants;
-import javax.swing.UIManager;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Toolkit;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
@@ -45,6 +30,16 @@ public class TeamsFrame {
     private static JLabel lblNewLabel_3;
     private static JLabel lblNewLabel_4;
     private static JLabel lblNewLabel_5;
+    private static JLabel lblNewLabel_6;
+    private static JLabel lblNewLabel_7;
+    private static JLabel lblNewLabel_8;
+    private static JLabel lblNewLabel_9;
+    private static JLabel lblNewLabel_10;
+    private static JLabel lblNewLabel_11;
+    private static JLabel lblNewLabel_12;
+    private static JLabel lblNewLabel_13;
+    private static JLabel lblNewLabel_14;
+    private static JLabel lblNewLabel_15;
     
     public static boolean flag=true;
     private JPanel panel_3;
@@ -89,6 +84,7 @@ public class TeamsFrame {
 					TeamsFrame.scrollPane.setVisible(false);
 					TeamsInfoFrame.scrollPane.setVisible(true);
 					TeamsFrame.flag=false;
+					MainFrame.frame.setTitle("NBA单个球队");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -96,11 +92,8 @@ public class TeamsFrame {
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
 			}
-
 			public void mouseReleased(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
 			}
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
@@ -118,18 +111,24 @@ public class TeamsFrame {
 		lblNewLabel_2.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
+				try {
+					TeamsFrame.scrollPane.setVisible(false);
+					TeamsInfoFrame.scrollPane.setVisible(true);
+					TeamsFrame.flag=false;
+					MainFrame.frame.setTitle("NBA单个球队");
+					Object rows[][] ={
+							{"骑士队", null, null, null, null, null, null},
+						};
+					
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 				
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
-
 			public void mouseReleased(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
@@ -147,18 +146,20 @@ public class TeamsFrame {
 		lblNewLabel_3.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
+				try {
+					TeamsFrame.scrollPane.setVisible(false);
+					TeamsInfoFrame.scrollPane.setVisible(true);
+					TeamsFrame.flag=false;
+					MainFrame.frame.setTitle("NBA单个球队");
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 				
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
-
 			public void mouseReleased(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
@@ -181,13 +182,8 @@ public class TeamsFrame {
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
-
 			public void mouseReleased(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
@@ -200,7 +196,7 @@ public class TeamsFrame {
 		
 		lblNewLabel_5 = new JLabel("");
 		lblNewLabel_5.setIcon(new ImageIcon("pictures\\MIL.jpg"));
-		lblNewLabel_5.setBounds(10, 460, 150, 100);
+		lblNewLabel_5.setBounds(10, 450, 150, 100);
 		panel_2.add(lblNewLabel_5);
 		lblNewLabel_5.addMouseListener(new MouseListener(){
 
@@ -210,13 +206,8 @@ public class TeamsFrame {
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
-
 			public void mouseReleased(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
@@ -225,6 +216,245 @@ public class TeamsFrame {
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				lblNewLabel_5.setIcon(new ImageIcon("pictures\\MIL.jpg"));
+			}});
+		
+		lblNewLabel_6 = new JLabel("");
+		lblNewLabel_6.setBounds(180, 10, 150, 100);
+		lblNewLabel_6.setIcon(new ImageIcon("pictures\\BKN.jpg"));
+		panel_2.add(lblNewLabel_6);
+		lblNewLabel_6.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+			}
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				lblNewLabel_6.setIcon(new ImageIcon("pictures\\BKN2.jpg"));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				lblNewLabel_6.setIcon(new ImageIcon("pictures\\BKN.jpg"));
+			}});
+		
+		lblNewLabel_7 = new JLabel("");
+		lblNewLabel_7.setBounds(180, 120, 150, 100);
+		lblNewLabel_7.setIcon(new ImageIcon("pictures\\BOS.jpg"));
+		panel_2.add(lblNewLabel_7);
+		lblNewLabel_7.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+			}
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				lblNewLabel_7.setIcon(new ImageIcon("pictures\\BOS2.jpg"));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				lblNewLabel_7.setIcon(new ImageIcon("pictures\\BOS.jpg"));
+			}});
+		
+		lblNewLabel_8 = new JLabel("");
+		lblNewLabel_8.setBounds(180, 230, 150, 100);
+		lblNewLabel_8.setIcon(new ImageIcon("pictures\\NYK.jpg"));
+		panel_2.add(lblNewLabel_8);
+		lblNewLabel_8.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+			}
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				lblNewLabel_8.setIcon(new ImageIcon("pictures\\NYK2.jpg"));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				lblNewLabel_8.setIcon(new ImageIcon("pictures\\NYK.jpg"));
+			}});
+		
+		lblNewLabel_9 = new JLabel("");
+		lblNewLabel_9.setBounds(180, 340, 150, 100);
+		lblNewLabel_9.setIcon(new ImageIcon("pictures\\PHI.jpg"));
+		panel_2.add(lblNewLabel_9);
+		lblNewLabel_9.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+			}
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				lblNewLabel_9.setIcon(new ImageIcon("pictures\\PHI2.jpg"));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				lblNewLabel_9.setIcon(new ImageIcon("pictures\\PHI.jpg"));
+			}});
+		
+		lblNewLabel_10 = new JLabel("");
+		lblNewLabel_10.setBounds(180, 450, 150, 100);
+		lblNewLabel_10.setIcon(new ImageIcon("pictures\\TOR.jpg"));
+		panel_2.add(lblNewLabel_10);
+		lblNewLabel_10.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+			}
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				lblNewLabel_10.setIcon(new ImageIcon("pictures\\TOR2.jpg"));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				lblNewLabel_10.setIcon(new ImageIcon("pictures\\TOR.jpg"));
+			}});
+		
+		lblNewLabel_11 = new JLabel("");
+		lblNewLabel_11.setIcon(new ImageIcon("pictures\\ATL.jpg"));
+		lblNewLabel_11.setBounds(350, 10, 150, 100);
+		panel_2.add(lblNewLabel_11);
+		lblNewLabel_11.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+			}
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				lblNewLabel_11.setIcon(new ImageIcon("pictures\\ATL2.jpg"));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				lblNewLabel_11.setIcon(new ImageIcon("pictures\\ATL.jpg"));
+			}});
+		
+		lblNewLabel_12 = new JLabel("");
+		lblNewLabel_12.setIcon(new ImageIcon("pictures\\CHA.jpg"));
+		lblNewLabel_12.setBounds(350, 120, 150, 100);
+		panel_2.add(lblNewLabel_12);
+		lblNewLabel_12.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+			}
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				lblNewLabel_12.setIcon(new ImageIcon("pictures\\CHA2.jpg"));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				lblNewLabel_12.setIcon(new ImageIcon("pictures\\CHA.jpg"));
+			}});
+		
+		lblNewLabel_13 = new JLabel("");
+		lblNewLabel_13.setIcon(new ImageIcon("pictures\\MIA.jpg"));
+		lblNewLabel_13.setBounds(350, 230, 150, 100);
+		panel_2.add(lblNewLabel_13);
+		lblNewLabel_13.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+			}
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				lblNewLabel_13.setIcon(new ImageIcon("pictures\\MIA2.jpg"));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				lblNewLabel_13.setIcon(new ImageIcon("pictures\\MIA.jpg"));
+			}});
+		
+		lblNewLabel_14 = new JLabel("");
+		lblNewLabel_14.setIcon(new ImageIcon("pictures\\ORL.jpg"));
+		lblNewLabel_14.setBounds(350, 340, 150, 100);
+		panel_2.add(lblNewLabel_14);
+		lblNewLabel_14.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+			}
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				lblNewLabel_14.setIcon(new ImageIcon("pictures\\ORL2.jpg"));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				lblNewLabel_14.setIcon(new ImageIcon("pictures\\ORL.jpg"));
+			}});
+		
+		lblNewLabel_15 = new JLabel("");
+		lblNewLabel_15.setIcon(new ImageIcon("pictures\\WAS.jpg"));
+		lblNewLabel_15.setBounds(350, 450, 150, 100);
+		panel_2.add(lblNewLabel_15);
+		lblNewLabel_15.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+			}
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				lblNewLabel_15.setIcon(new ImageIcon("pictures\\WAS2.jpg"));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				lblNewLabel_15.setIcon(new ImageIcon("pictures\\WAS.jpg"));
 			}});
 		
 		JPanel panel = new JPanel();
@@ -239,13 +469,11 @@ public class TeamsFrame {
 		
 		JPanel mainpanel = new JPanel();
 		mainpanel.setBounds(0, 0, 1000, 600);
-		mainpanel.setPreferredSize(new Dimension(1200,1000));
+		mainpanel.setPreferredSize(new Dimension(1000,1000));
 		mainpanel.setLayout(null);
 		mainpanel.add(panel);
 		mainpanel.add(panel_1);
 		mainpanel.add(panel_2);
-		
-		scrollPane = new JScrollPane(mainpanel);
 		
 		panel_3 = new JPanel();
 		panel_3.setBounds(0, 0, 150, 100);
@@ -263,6 +491,7 @@ public class TeamsFrame {
 					TeamsFrame.scrollPane.setVisible(false);
 					TeamsFrame.flag=false;
 					MainFrame.panel.setVisible(true);
+					MainFrame.frame.setTitle("NBA");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -271,8 +500,8 @@ public class TeamsFrame {
 			
 		});
 		
+		scrollPane = new JScrollPane(mainpanel);
 		scrollPane.setBounds(0, 0, 990, 560);
-		
 		
 	}
 	

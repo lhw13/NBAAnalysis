@@ -1,236 +1,268 @@
 package presentation.teamsui;
 
-import java.awt.Dimension;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.UIManager;
-import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableModel;
-
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
+import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
+import org.jvnet.substance.SubstanceLookAndFeel;
+import org.jvnet.substance.theme.SubstanceAquaTheme;
 
 import presentation.mainui.MainFrame;
+import presentation.teamsui.TeamsInfoFrame;
 
-import javax.swing.JTabbedPane;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.JRootPane;
+import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.Toolkit;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.swing.JScrollPane;
 
 public class TeamsFrame {
-
-	private JTable table;
-	private JTable table_1;
-	private JTable table_3;
-	private JTable table_2;
-	private JTable table_4;
-	private JTable table_5;
-	
-	public static JScrollPane mainscrollPane;
+	private Timer timer;
+	private final int INITIAL_DELAY = 100;
+    private final int PERIOD_INTERVAL = 10;
+    private static JLabel changeLabel;
+    
+    public static JScrollPane scrollPane;
+    
+    private static JLabel lblNewLabel_1;
+    private static JLabel lblNewLabel_2;
+    private static JLabel lblNewLabel_3;
+    private static JLabel lblNewLabel_4;
+    private static JLabel lblNewLabel_5;
+    
+    public static boolean flag=true;
+    private JPanel panel_3;
+    private JButton btnNewButton;
 
 	/**
 	 * Create the application.
 	 */
 	public TeamsFrame() {
 		initialize();
+		timer = new Timer();
+        timer.scheduleAtFixedRate(new ScheduleTask(), 
+                INITIAL_DELAY, PERIOD_INTERVAL);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(){
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(50, 750, 200, 84);
-		
-		JButton btnNewButton = new JButton("New button");
-		panel.add(btnNewButton);
-		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(60, 135, 1169, 280);
-		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		tabbedPane.addTab("场均", null, scrollPane_1, null);
-		
-		table_1 = new JTable();
-		table_1.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"球员", "场数", "在场时间", "投篮命中数", "出手数", "三分命中数", "出手数", "罚球命中数", "出手数", 
-				"进攻篮板", "防守篮板", "总篮板数","助攻", "抢断", "盖帽", "失误", "犯规", "得分"
-			}
-		));
-		table_1.getColumnModel().getColumn(0).setPreferredWidth(60);
-		table_1.getColumnModel().getColumn(1).setPreferredWidth(50);
-		table_1.getColumnModel().getColumn(2).setPreferredWidth(70);
-		table_1.getColumnModel().getColumn(3).setPreferredWidth(85);
-		table_1.getColumnModel().getColumn(4).setPreferredWidth(55);
-		table_1.getColumnModel().getColumn(5).setPreferredWidth(85);
-		table_1.getColumnModel().getColumn(6).setPreferredWidth(55);
-		table_1.getColumnModel().getColumn(7).setPreferredWidth(85);
-		table_1.getColumnModel().getColumn(8).setPreferredWidth(55);
-		table_1.getColumnModel().getColumn(9).setPreferredWidth(70);
-		table_1.getColumnModel().getColumn(10).setPreferredWidth(70);
-		table_1.getColumnModel().getColumn(11).setPreferredWidth(70);
-		table_1.getColumnModel().getColumn(12).setPreferredWidth(55);
-		table_1.getColumnModel().getColumn(13).setPreferredWidth(55);
-		table_1.getColumnModel().getColumn(14).setPreferredWidth(50);
-		table_1.getColumnModel().getColumn(15).setPreferredWidth(50);
-		table_1.getColumnModel().getColumn(16).setPreferredWidth(50);
-		table_1.getColumnModel().getColumn(17).setPreferredWidth(50);
-		
-		scrollPane_1.setViewportView(table_1);
-		
-		JScrollPane scrollPane_2 = new JScrollPane();
-		tabbedPane.addTab("总计", null, scrollPane_2, null);
-		
-		table_2 = new JTable();
-		table_2.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-			},
-			new String[] {
-					"球员", "场数", "在场时间", "投篮命中数", "出手数", "三分命中数", "出手数", "罚球命中数", "出手数", 
-					"进攻篮板", "防守篮板", "总篮板数","助攻", "抢断", "盖帽", "失误", "犯规", "得分"
-			}
-		));
-		table_2.getColumnModel().getColumn(0).setPreferredWidth(60);
-		table_2.getColumnModel().getColumn(1).setPreferredWidth(50);
-		table_2.getColumnModel().getColumn(2).setPreferredWidth(70);
-		table_2.getColumnModel().getColumn(3).setPreferredWidth(85);
-		table_2.getColumnModel().getColumn(4).setPreferredWidth(55);
-		table_2.getColumnModel().getColumn(5).setPreferredWidth(85);
-		table_2.getColumnModel().getColumn(6).setPreferredWidth(55);
-		table_2.getColumnModel().getColumn(7).setPreferredWidth(85);
-		table_2.getColumnModel().getColumn(8).setPreferredWidth(55);
-		table_2.getColumnModel().getColumn(9).setPreferredWidth(70);
-		table_2.getColumnModel().getColumn(10).setPreferredWidth(70);
-		table_2.getColumnModel().getColumn(11).setPreferredWidth(70);
-		table_2.getColumnModel().getColumn(12).setPreferredWidth(55);
-		table_2.getColumnModel().getColumn(13).setPreferredWidth(55);
-		table_2.getColumnModel().getColumn(14).setPreferredWidth(50);
-		table_2.getColumnModel().getColumn(15).setPreferredWidth(50);
-		table_2.getColumnModel().getColumn(16).setPreferredWidth(50);
-		table_2.getColumnModel().getColumn(17).setPreferredWidth(50);
-		
-		scrollPane_2.setViewportView(table_2);
-		
-		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_1.setBounds(60, 463, 868, 257);
-		
-		JScrollPane scrollPane_3 = new JScrollPane();
-		tabbedPane_1.addTab("场均", null, scrollPane_3, null);
-		
-		table_4 = new JTable();
-		table_4.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"投篮命中率", "三分命中率", "罚球命中率", "胜率", "进攻回合", "进攻效率", "防守效率", "篮板效率", "抢断效率", "助攻率"
-			}
-		));
-		table_4.getColumnModel().getColumn(0).setPreferredWidth(85);
-		table_4.getColumnModel().getColumn(1).setPreferredWidth(85);
-		table_4.getColumnModel().getColumn(2).setPreferredWidth(85);
-		table_4.getColumnModel().getColumn(3).setPreferredWidth(60);
-		scrollPane_3.setViewportView(table_4);
-		
-		JScrollPane scrollPane_4 = new JScrollPane();
-		tabbedPane_1.addTab("总计", null, scrollPane_4, null);
-		
-		table_5 = new JTable();
-		table_5.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-			},
-			new String[] {
-					"投篮命中率", "三分命中率", "罚球命中率", "胜率", "进攻回合", "进攻效率", "防守效率", "篮板效率", "抢断效率", "助攻率"
-			}
-		));
-		table_5.getColumnModel().getColumn(0).setPreferredWidth(85);
-		table_5.getColumnModel().getColumn(1).setPreferredWidth(85);
-		table_5.getColumnModel().getColumn(2).setPreferredWidth(85);
-		table_5.getColumnModel().getColumn(3).setPreferredWidth(60);
-		scrollPane_4.setViewportView(table_5);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(60, 38, 788, 71);
-		
-		table = new JTable();
-		table.setFont(new Font("黑体", Font.PLAIN, 20));
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"马刺队", null, null, null, null, null, null},
-			},
-			new String[] {
-				"球队", "球队缩写", "所在地", "赛区", "分区", "主场", "建立时间"
-			}
-		));
-		table.getColumnModel().getColumn(3).setPreferredWidth(84);
-		scrollPane.setViewportView(table);
+	private void initialize() {
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setPreferredSize(new Dimension(1500,1000));
+		panel_1.setBounds(0, 100, 1000, 100);
 		panel_1.setLayout(null);
-		panel_1.add(scrollPane);
-		panel_1.add(panel);
-		panel_1.add(tabbedPane);
-		panel_1.add(tabbedPane_1);
 		
-		mainscrollPane = new JScrollPane(panel_1);
-		mainscrollPane.setBounds(0, 0, 990, 560);
+		JLabel midLabel = new JLabel("");
+		midLabel.setBounds(0, 0, 1000, 100);
+		panel_1.add(midLabel);
+		midLabel.setIcon(new ImageIcon("pictures\\middle.jpg"));
 		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(0, 200, 1000, 600);
+		panel_2.setLayout(null);
+		
+		lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("pictures\\CHI.jpg"));
+		lblNewLabel_1.setBounds(10, 10, 150, 100);
+		panel_2.add(lblNewLabel_1);
+		lblNewLabel_1.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				try {
+					TeamsFrame.scrollPane.setVisible(false);
+					TeamsInfoFrame.scrollPane.setVisible(true);
+					TeamsFrame.flag=false;
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				lblNewLabel_1.setIcon(new ImageIcon("pictures\\CHI2.jpg"));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				lblNewLabel_1.setIcon(new ImageIcon("pictures\\CHI.jpg"));
+			}});
+		
+		lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon("pictures\\CLE.jpg"));
+		lblNewLabel_2.setBounds(10, 120, 150, 100);
+		panel_2.add(lblNewLabel_2);
+		lblNewLabel_2.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				lblNewLabel_2.setIcon(new ImageIcon("pictures\\CLE2.jpg"));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				lblNewLabel_2.setIcon(new ImageIcon("pictures\\CLE.jpg"));
+			}});
+		
+		lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setIcon(new ImageIcon("pictures\\DET.jpg"));
+		lblNewLabel_3.setBounds(10, 230, 150, 100);
+		panel_2.add(lblNewLabel_3);
+		lblNewLabel_3.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				lblNewLabel_3.setIcon(new ImageIcon("pictures\\DET2.jpg"));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				lblNewLabel_3.setIcon(new ImageIcon("pictures\\DET.jpg"));
+			}});
+		
+		lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.setIcon(new ImageIcon("pictures\\IND.jpg"));
+		lblNewLabel_4.setBounds(10, 340, 150, 100);
+		panel_2.add(lblNewLabel_4);
+		lblNewLabel_4.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				lblNewLabel_4.setIcon(new ImageIcon("pictures\\IND2.jpg"));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				lblNewLabel_4.setIcon(new ImageIcon("pictures\\IND.jpg"));
+			}});
+		
+		lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setIcon(new ImageIcon("pictures\\MIL.jpg"));
+		lblNewLabel_5.setBounds(10, 460, 150, 100);
+		panel_2.add(lblNewLabel_5);
+		lblNewLabel_5.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				lblNewLabel_5.setIcon(new ImageIcon("pictures\\MIL2.jpg"));
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				lblNewLabel_5.setIcon(new ImageIcon("pictures\\MIL.jpg"));
+			}});
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(350, 0, 250, 100);
+		panel.setOpaque(false);
+		panel.setLayout(null);
+		
+		changeLabel = new JLabel("");
+		changeLabel.setBounds(0, 0, 250, 100);
+		panel.add(changeLabel);
+		changeLabel.setIcon(new ImageIcon("pictures\\Kobe.jpg"));
+		
+		JPanel mainpanel = new JPanel();
+		mainpanel.setBounds(0, 0, 1000, 600);
+		mainpanel.setPreferredSize(new Dimension(1200,1000));
+		mainpanel.setLayout(null);
+		mainpanel.add(panel);
+		mainpanel.add(panel_1);
+		mainpanel.add(panel_2);
+		
+		scrollPane = new JScrollPane(mainpanel);
+		
+		panel_3 = new JPanel();
+		panel_3.setBounds(0, 0, 150, 100);
+		mainpanel.add(panel_3);
+		panel_3.setLayout(null);
+		
+		btnNewButton = new JButton("返回");
+		btnNewButton.setBounds(14, 31, 113, 27);
+		panel_3.add(btnNewButton);
 		
 		btnNewButton.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TeamsFrame.mainscrollPane.setVisible(false);
-					MainFrame.scrollPane.setVisible(true);
-					MainFrame.flag=true;
+					TeamsFrame.scrollPane.setVisible(false);
+					TeamsFrame.flag=false;
+					MainFrame.panel.setVisible(true);
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -239,9 +271,42 @@ public class TeamsFrame {
 			
 		});
 		
+		scrollPane.setBounds(0, 0, 990, 560);
+		
 		
 	}
 	
-	
-	
+	//图片循环切换线程
+	private class ScheduleTask extends TimerTask {
+		
+        public void run() {
+        	while(flag){
+        		changeLabel.setIcon(new ImageIcon("pictures\\Kobe.jpg"));
+            	try {
+            		Thread.sleep(3000);
+            		} 
+            	catch (InterruptedException e) {
+            		e.printStackTrace();
+            	}
+            	changeLabel.setIcon(new ImageIcon("pictures\\ROYALTY.jpg"));
+            	try {
+            		Thread.sleep(3000);
+            		} 
+            	catch (InterruptedException e) {
+            		e.printStackTrace();
+            	}
+            	changeLabel.setIcon(new ImageIcon("pictures\\WADE.jpg"));
+            	try {
+            		Thread.sleep(3000);
+            		} 
+            	catch (InterruptedException e) {
+            		e.printStackTrace();
+            	}
+    		}
+        	
+            	
+        	
+        	
+        	}
+        }
 }

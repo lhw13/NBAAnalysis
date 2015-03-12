@@ -17,7 +17,7 @@ import java.util.TimerTask;
 
 import javax.swing.JScrollPane;
 
-public class TeamsFrame {
+public class TeamsSelectionFrame {
 	private Timer timer;
 	private final int INITIAL_DELAY = 100;
     private final int PERIOD_INTERVAL = 10;
@@ -48,7 +48,7 @@ public class TeamsFrame {
 	/**
 	 * Create the application.
 	 */
-	public TeamsFrame() {
+	public TeamsSelectionFrame() {
 		initialize();
 		timer = new Timer();
         timer.scheduleAtFixedRate(new ScheduleTask(), 
@@ -81,9 +81,9 @@ public class TeamsFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
-					TeamsFrame.scrollPane.setVisible(false);
+					TeamsSelectionFrame.scrollPane.setVisible(false);
 					TeamsInfoFrame.scrollPane.setVisible(true);
-					TeamsFrame.flag=false;
+					TeamsSelectionFrame.flag=false;
 					MainFrame.frame.setTitle("NBA单个球队");
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -112,13 +112,10 @@ public class TeamsFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
-					TeamsFrame.scrollPane.setVisible(false);
+					TeamsSelectionFrame.scrollPane.setVisible(false);
 					TeamsInfoFrame.scrollPane.setVisible(true);
-					TeamsFrame.flag=false;
+					TeamsSelectionFrame.flag=false;
 					MainFrame.frame.setTitle("NBA单个球队");
-					Object rows[][] ={
-							{"骑士队", null, null, null, null, null, null},
-						};
 					
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -147,9 +144,9 @@ public class TeamsFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
-					TeamsFrame.scrollPane.setVisible(false);
+					TeamsSelectionFrame.scrollPane.setVisible(false);
 					TeamsInfoFrame.scrollPane.setVisible(true);
-					TeamsFrame.flag=false;
+					TeamsSelectionFrame.flag=false;
 					MainFrame.frame.setTitle("NBA单个球队");
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -488,8 +485,8 @@ public class TeamsFrame {
 
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TeamsFrame.scrollPane.setVisible(false);
-					TeamsFrame.flag=false;
+					TeamsSelectionFrame.scrollPane.setVisible(false);
+					TeamsSelectionFrame.flag=false;
 					MainFrame.panel.setVisible(true);
 					MainFrame.frame.setTitle("NBA");
 				} catch (Exception e1) {

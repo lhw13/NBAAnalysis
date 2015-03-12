@@ -231,8 +231,8 @@ public class TeamsInfoFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					TeamsInfoFrame.scrollPane.setVisible(false);
-					TeamsFrame.scrollPane.setVisible(true);
-					TeamsFrame.flag=true;
+					TeamsSelectionFrame.scrollPane.setVisible(true);
+					TeamsSelectionFrame.flag=true;
 					MainFrame.frame.setTitle("NBA球队选择");
 				} catch (Exception e1) {
 					e1.printStackTrace();

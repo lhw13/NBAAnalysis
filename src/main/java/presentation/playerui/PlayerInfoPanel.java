@@ -1,5 +1,4 @@
 package presentation.playerui;
-
 import java.awt.Dimension;
 
 import javax.swing.JPanel;

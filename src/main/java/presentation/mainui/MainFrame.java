@@ -14,8 +14,9 @@ import javax.swing.UIManager;
 import org.jvnet.substance.SubstanceLookAndFeel;
 import org.jvnet.substance.theme.SubstanceAquaTheme;
 
+import presentation.playerui.PlayerRankingPanel;
 import presentation.playerui.PlayerSelectionPanel;
-import presentation.teamsui.TeamsFrame;
+import presentation.teamsui.TeamsSelectionFrame;
 import presentation.teamsui.TeamsInfoFrame;
 import presentation.teamsui.TeamsRankingFrame;
 
@@ -70,9 +71,9 @@ public class MainFrame {
 	 */
 	
 	private void initPanels(){
-		TeamsFrame window = new TeamsFrame();
-		frame.getContentPane().add(TeamsFrame.scrollPane);
-		TeamsFrame.scrollPane.setVisible(false);
+		TeamsSelectionFrame window = new TeamsSelectionFrame();
+		frame.getContentPane().add(TeamsSelectionFrame.scrollPane);
+		TeamsSelectionFrame.scrollPane.setVisible(false);
 		
 		TeamsInfoFrame window1 = new TeamsInfoFrame();
 		frame.getContentPane().add(TeamsInfoFrame.scrollPane);
@@ -85,6 +86,10 @@ public class MainFrame {
 		new PlayerSelectionPanel();
 		frame.getContentPane().add(PlayerSelectionPanel.scrollPane);
 		PlayerSelectionPanel.scrollPane.setVisible(false);
+		
+		new PlayerRankingPanel();
+		frame.getContentPane().add(PlayerRankingPanel.scrollPane);
+		PlayerRankingPanel.scrollPane.setVisible(false);
 		
 	}
 	
@@ -112,8 +117,8 @@ public class MainFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					MainFrame.panel.setVisible(false);
-					TeamsFrame.scrollPane.setVisible(true);
-					TeamsFrame.flag=true;
+					TeamsSelectionFrame.scrollPane.setVisible(true);
+					TeamsSelectionFrame.flag=true;
 					MainFrame.frame.setTitle("NBA球队选择");
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -153,6 +158,25 @@ public class MainFrame {
 					MainFrame.panel.setVisible(false);
 					PlayerSelectionPanel.scrollPane.setVisible(true);
 					MainFrame.frame.setTitle("NBA球员选择");
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+			
+		});
+		
+		JButton btnNewButton_3 = new JButton("NBA球员排名界面");
+		btnNewButton_3.setBounds(65, 294, 159, 55);
+		panel.add(btnNewButton_3);
+		
+		btnNewButton_3.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				try {
+					MainFrame.panel.setVisible(false);
+					PlayerRankingPanel.scrollPane.setVisible(true);
+					MainFrame.frame.setTitle("NBA球员排名");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

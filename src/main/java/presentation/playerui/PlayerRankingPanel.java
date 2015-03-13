@@ -91,10 +91,8 @@ public class PlayerRankingPanel extends JPanel {
             }
         };
 		table = new JTable();
-		table.setModel(new DefaultTableModel(table_rows, table_columns));
 		table.setModel(model);
-		final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(  
-                model); 
+		final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model); 
 		table.setRowSorter(sorter);
 		
 		Object table_1_rows[][] ={
@@ -648,6 +646,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
@@ -663,6 +662,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
@@ -678,6 +678,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
@@ -725,6 +726,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
@@ -740,6 +742,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
@@ -755,6 +758,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
@@ -802,6 +806,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
@@ -817,6 +822,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
@@ -832,6 +838,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
@@ -880,6 +887,7 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
+					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
@@ -895,6 +903,7 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
+					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
@@ -910,6 +919,7 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
+					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
@@ -957,6 +967,7 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
+					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
 					chckbxNewCheckBox_8.setEnabled(false);
@@ -972,6 +983,7 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
+					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
 					chckbxNewCheckBox_8.setEnabled(false);
@@ -987,6 +999,7 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
+					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
 					chckbxNewCheckBox_8.setEnabled(false);
@@ -1034,6 +1047,7 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
+					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
 					chckbxNewCheckBox_8.setEnabled(false);
@@ -1049,6 +1063,7 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
+					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
 					chckbxNewCheckBox_8.setEnabled(false);
@@ -1064,6 +1079,7 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
+					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
 					chckbxNewCheckBox_8.setEnabled(false);

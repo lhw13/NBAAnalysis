@@ -27,6 +27,7 @@ public class PlayerInfoPanel extends JPanel {
 	private JTable table_2;
 	JButton button;
 	MouseListen listener = new MouseListen();
+	private JTable table_3;
 	public PlayerInfoPanel() {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
@@ -107,6 +108,13 @@ public class PlayerInfoPanel extends JPanel {
 			
 		});
 		panelOfBottom.add(button);
+		
+		JScrollPane scrollPane_4 = new JScrollPane();
+		scrollPane_4.setBounds(102, 393, 682, 106);
+		panelOfBottom.add(scrollPane_4);
+		
+		table_3 = new JTable();
+		scrollPane_4.setViewportView(table_3);
 		scrollPane.setBounds(0, 0, 990, 600);
 		add(scrollPane);
 		

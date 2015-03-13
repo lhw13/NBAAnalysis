@@ -170,6 +170,10 @@ public class MainFrame {
 		btnNewButton_3.setBounds(65, 294, 159, 55);
 		panel.add(btnNewButton_3);
 		
+		JButton btnNewButton_4 = new JButton("New button");
+		btnNewButton_4.setBounds(65, 381, 113, 27);
+		panel.add(btnNewButton_4);
+		
 		btnNewButton_3.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {

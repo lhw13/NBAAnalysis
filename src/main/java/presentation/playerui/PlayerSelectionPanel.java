@@ -14,15 +14,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
 import presentation.mainui.MainFrame;
+import vo.TeamVO;
 
 public class PlayerSelectionPanel extends JPanel {
 	
-	
+//	String[] nameList= {"LanWang","HuangFeng","GongNiu","MoShu","XiongLu","HuoJian"
+//			,"LaoYing","SenLinLang","QiCai","KaiErTeRen"};
 	DefaultTableModel modelOfLanWang=new DefaultTableModel(new Object[][] {
 					{"科比", "詹姆斯", "梅杰"},
 					{null, null, null},
@@ -646,6 +650,40 @@ public class PlayerSelectionPanel extends JPanel {
 		
 		
 	}
+	
+	public void initialName(DefaultTableModel m, JTable t, ArrayList<TeamVO> vo) {
+		Vector rowData1 = new Vector();
+		Vector rowData2 = new Vector();
+		Vector rowData3 = new Vector();
+		Vector rowData4 = new Vector();
+		Vector rowData5 = new Vector();
+		Vector rowDatas = new Vector();
+		for(int i=0;i<3;i++) {
+			
+		}
+		for(int i=3;i<6;i++) {
+					
+				}
+		for(int i=6;i<9;i++) {
+			
+		}
+		for(int i=9;i<12;i++) {
+			
+		}
+		for(int i=12;i<15;i++) {//动态修改为球员list size数量
+			
+		}
+		rowDatas.add(rowData1); rowDatas.add(rowData2);rowDatas.add(rowData3);
+		rowDatas.add(rowData4);rowDatas.add(rowData5);
+		for(int i=0;i<rowDatas.size();i++){
+			for(int j=0;j<3;j++) {
+				m.setValueAt(((Vector) rowDatas.get(i)).get(j), i, j);
+			}
+		}
+		m.setRowCount(5); m.setColumnCount(3);
+		t.setModel(m);
+		t.updateUI();
+	}
 	public class MouseListen extends MouseAdapter {
 		public void mouseClicked(MouseEvent e) {
 			JTable table = (JTable) e.getSource();
@@ -659,7 +697,10 @@ public class PlayerSelectionPanel extends JPanel {
 			try {
 				if(name!=null) {
 					PlayerSelectionPanel.scrollPane.setVisible(false);
+					PlayerInfoPanel.update(name);
 					PlayerInfoPanel.scrollPane.setVisible(true);
+					MainFrame.frame.setTitle("NBA球员信息");
+
 				}
 			} catch (Exception e1) {
 				e1.printStackTrace();

@@ -14,6 +14,7 @@ import javax.swing.UIManager;
 import org.jvnet.substance.SubstanceLookAndFeel;
 import org.jvnet.substance.theme.SubstanceAquaTheme;
 
+import presentation.playerui.PlayerInfoPanel;
 import presentation.playerui.PlayerRankingPanel;
 import presentation.playerui.PlayerSelectionPanel;
 import presentation.teamsui.TeamsSelectionFrame;
@@ -25,9 +26,7 @@ public class MainFrame {
 	public static JFrame frame;
 
 	public static JPanel panel;
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		try{
 			UIManager.setLookAndFeel(new SubstanceLookAndFeel());      
@@ -91,6 +90,9 @@ public class MainFrame {
 		frame.getContentPane().add(PlayerRankingPanel.scrollPane);
 		PlayerRankingPanel.scrollPane.setVisible(false);
 		
+		new PlayerInfoPanel();
+		frame.getContentPane().add(PlayerInfoPanel.scrollPane);
+		PlayerInfoPanel.scrollPane.setVisible(false);
 	}
 	
 	private void initialize() {

@@ -12,6 +12,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -22,7 +24,7 @@ public class PlayerSelectionPanel extends JPanel {
 	
 	
 	DefaultTableModel modelOfLanWang=new DefaultTableModel(new Object[][] {
-					{null, null, null},
+					{"科比", "詹姆斯", "梅杰"},
 					{null, null, null},
 					{null, null, null},
 					{null, null, null},
@@ -329,7 +331,7 @@ public class PlayerSelectionPanel extends JPanel {
 	
 	public static JScrollPane scrollPane;
 	private JButton btnNewButton;
-	
+	MouseListen listener = new MouseListen();
 	public PlayerSelectionPanel() {
 		this.setBounds(0, 0, 1000,600);
 		//设置面板透明
@@ -338,69 +340,129 @@ public class PlayerSelectionPanel extends JPanel {
 		
 		tableOfLanWang = new JTable(modelOfLanWang);
 		tableOfLanWang.setBounds(0, 20, 900, 80);
+		tableOfLanWang.addMouseListener(listener);
+		
 		tableOfHuangFeng = new JTable(modelOfHuangFeng);
 		tableOfHuangFeng.setBounds(0, 120, 900, 80);
+		tableOfHuangFeng.addMouseListener(listener);
+		
 		tableOfGongNiu = new JTable(modelOfGongNiu);
 		tableOfGongNiu.setBounds(0, 220, 900, 80);
+		tableOfGongNiu.addMouseListener(listener);
+		
 		tableOfMoShu = new JTable(modelOfMoShu );
 		tableOfMoShu.setBounds(0, 320, 900, 80);
+		tableOfMoShu.addMouseListener(listener);
+		
 		tableOfXiongLu = new JTable(modelOfXiongLu);
 		tableOfXiongLu.setBounds(0, 420, 900, 80);
+		tableOfXiongLu.addMouseListener(listener);
+		
 		tableOfHuoJian = new JTable(modelOfHuoJian);
 		tableOfHuoJian.setBounds(0, 520, 900, 80);
+		tableOfHuoJian.addMouseListener(listener);
+		
 		tableOfLaoYing = new JTable(modelOfLaoYing);
 		tableOfLaoYing.setBounds(0, 620, 900, 80);
+		tableOfLaoYing.addMouseListener(listener);
+		
 		tableOfSenLinLang = new JTable(modelOfSenLinLang);
 		tableOfSenLinLang.setBounds(0, 720, 900, 80);
+		tableOfSenLinLang.addMouseListener(listener);
+		
 		tableOfQiCai = new JTable(modelOfQiCai);
 		tableOfQiCai.setBounds(0, 820, 900, 80);
+		tableOfQiCai.addMouseListener(listener);
+		
 		tableOfKaiErTeRen = new JTable(modelOfKaiErTeRen);
 		tableOfKaiErTeRen.setBounds(0, 920, 900, 80);
+		tableOfKaiErTeRen.addMouseListener(listener);
+		
 		tableOfXiaoNiu = new JTable(modelOfXiaoNiu);
 		tableOfXiaoNiu.setBounds(0, 1020, 900, 80);
+		tableOfXiaoNiu.addMouseListener(listener);
+		
 		tableOfMengLong = new JTable(modelOfMengLong);
 		tableOfMengLong.setBounds(0, 1120, 900, 80);
+		tableOfMengLong.addMouseListener(listener);
+		
 		tableOfMaCi = new JTable(modelOfMaCi);
 		tableOfMaCi.setBounds(0, 1220, 900, 80);
+		tableOfMaCi.addMouseListener(listener);
+		
 		tableOfHuiXiong = new JTable(modelOfHuiXiong);
 		tableOfHuiXiong.setBounds(0, 1320, 900, 80);
+		tableOfHuiXiong.addMouseListener(listener);
+		
 		tableOfLeiTing = new JTable(modelOfLeiTing);
 		tableOfLeiTing.setBounds(0, 1420, 900, 80);
+		tableOfLeiTing.addMouseListener(listener);
+		
 		tableOfHuRen = new JTable(modelOfHuRen);
 		tableOfHuRen.setBounds(0, 1520, 900, 80);
+		tableOfHuRen.addMouseListener(listener);
+		
 		tableOfReHuo = new JTable(modelOfReHuo);
 		tableOfReHuo.setBounds(0, 1620, 900, 80);
+		tableOfReHuo.addMouseListener(listener);
+		
 		tableOfHuoSai = new JTable(modelOfHuoSai);
 		tableOfHuoSai.setBounds(0, 1720, 900, 80);
+		tableOfHuoSai.addMouseListener(listener);
+		
 		tableOfBuXingZhe = new JTable(modelOfBuXingZhe);
 		tableOfBuXingZhe.setBounds(0, 1820, 900, 80);
+		tableOfBuXingZhe.addMouseListener(listener);
+		
 		tableOfTiHu = new JTable(modelOfTiHu);
 		tableOfTiHu.setBounds(0, 1920, 900, 80);
+		tableOfTiHu.addMouseListener(listener);
+		
 		tableOfQiShi = new JTable(modelOfQiShi);
 		tableOfQiShi.setBounds(0, 2020, 900, 80);
+		tableOfQiShi.addMouseListener(listener);
+		
 		tableOfGuoWang = new JTable(modelOfGuoWang);
 		tableOfGuoWang.setBounds(0, 2120, 900, 80);
+		tableOfGuoWang.addMouseListener(listener);
+		
 		tableOfKaiTuoZhe = new JTable(modelOfKaiTuoZhe);
 		tableOfKaiTuoZhe.setBounds(0, 2220, 900, 80);
+		tableOfKaiTuoZhe.addMouseListener(listener);
+		
 		tableOfTaiYang = new JTable(modelOfTaiYang);
 		tableOfTaiYang.setBounds(0, 2320, 900, 80);
+		tableOfTaiYang.addMouseListener(listener);
+		
 		tableOf76Ren = new JTable(modelOf76Ren);
 		tableOf76Ren.setBounds(0, 2420, 900, 80);
+		tableOf76Ren.addMouseListener(listener);
+		
 		tableOfJueJin = new JTable(modelOfJueJin);
 		tableOfJueJin.setBounds(0, 2520, 900, 80);
+		tableOfJueJin.addMouseListener(listener);
+		
 		tableOfKuaiChuan = new JTable(modelOfKuaiChuan);
 		tableOfKuaiChuan.setBounds(0, 2620, 900, 80);
+		tableOfKuaiChuan.addMouseListener(listener);
+		
 		tableOfYongShi = new JTable(modelOfYongShi);
 		tableOfYongShi.setBounds(0, 2720, 900, 80);
+		tableOfYongShi.addMouseListener(listener);
+		
 		tableOfNiKeSi = new JTable(modelOfNiKeSi);
 		tableOfNiKeSi.setBounds(0, 2820, 900, 80);
+		tableOfNiKeSi.addMouseListener(listener);
+		
 		tableOfJueShi = new JTable(modelOfJueShi);
 		tableOfJueShi.setBounds(0, 2920, 900, 80);
+		tableOfJueShi.addMouseListener(listener);
+		
 		
 		scrollPane = new JScrollPane(panelOfBottom);
 		scrollPane.setBounds(0, 0, 990, 600);
 		add(scrollPane);
-		panelOfBottom.setPreferredSize(new Dimension(1000, 3000));
+		panelOfBottom.setPreferredSize(new Dimension(1000, 3100));
 		panelOfBottom.setLayout(null);
 		
 		btnNewButton = new JButton("返回");
@@ -584,4 +646,25 @@ public class PlayerSelectionPanel extends JPanel {
 		
 		
 	}
+	public class MouseListen extends MouseAdapter {
+		public void mouseClicked(MouseEvent e) {
+			JTable table = (JTable) e.getSource();
+			int r = table.getSelectedRow();
+			int c = table.getSelectedColumn();
+			Object temp = table.getValueAt(r, c);
+			String name=null;
+			if(temp!=null)
+				name = temp.toString();
+			
+			try {
+				if(name!=null) {
+					PlayerSelectionPanel.scrollPane.setVisible(false);
+					PlayerInfoPanel.scrollPane.setVisible(true);
+				}
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
+	
 }

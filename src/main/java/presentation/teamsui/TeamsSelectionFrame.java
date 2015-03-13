@@ -114,7 +114,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_2.setBounds(10, 120, 150, 100);
 		panel_2.add(lblNewLabel_2);
 		lblNewLabel_2.addMouseListener(new MouseListener(){
-
+ 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
 					Object rows[][] ={

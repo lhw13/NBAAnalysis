@@ -55,7 +55,7 @@ public class PlayerInfoPanel extends JPanel {
 		scrollPane_1.setViewportView(table);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(197, 247, 665, 106);
+		tabbedPane.setBounds(102, 247, 846, 106);
 		panelOfBottom.add(tabbedPane);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -64,10 +64,12 @@ public class PlayerInfoPanel extends JPanel {
 		table_1 = new JTable();
 		table_1.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null, null, null},
+					{null, null, null, null, null, null, null, null,null,null,
+						null, null,null},
 			},
 			new String[] {
-				"New column", "New column", "New column", "New column", "New column", "New column", "New column"
+					"赛季", "参赛场数", "先发场数", "在场时间","篮板数", "助攻数", "进攻数", 
+					"防守数", "抢断数", "盖帽数", "失误数", "犯规数","得分"
 			}
 		));
 		scrollPane_2.setViewportView(table_1);
@@ -78,16 +80,18 @@ public class PlayerInfoPanel extends JPanel {
 		table_2 = new JTable();
 		table_2.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null,null,null,
+				null, null,null},
 			},
 			new String[] {
-				"New column", "New column", "New column", "New column", "New column", "New column", "New column", "New column"
+				"赛季", "参赛场数", "先发场数", "在场时间","篮板数", "助攻数", "进攻数", 
+				"防守数", "抢断数", "盖帽数", "失误数", "犯规数","得分"
 			}
 		));
 		scrollPane_3.setViewportView(table_2);
 		
 		button = new JButton("返回");
-		button.setBounds(77, 396, 93, 23);
+		button.setBounds(40, 525, 93, 23);
 		button.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {

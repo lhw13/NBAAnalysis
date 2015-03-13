@@ -27,6 +27,8 @@ public class MainFrame {
 
 	public static JPanel panel;
 	
+	public static PlayerInfoPanel pip;
+	
 	public static void main(String[] args) {
 		try{
 			UIManager.setLookAndFeel(new SubstanceLookAndFeel());      
@@ -90,7 +92,7 @@ public class MainFrame {
 		frame.getContentPane().add(PlayerRankingPanel.scrollPane);
 		PlayerRankingPanel.scrollPane.setVisible(false);
 		
-		new PlayerInfoPanel();
+		pip = new PlayerInfoPanel();
 		frame.getContentPane().add(PlayerInfoPanel.scrollPane);
 		PlayerInfoPanel.scrollPane.setVisible(false);
 	}

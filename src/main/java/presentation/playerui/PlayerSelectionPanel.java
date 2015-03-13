@@ -28,7 +28,7 @@ public class PlayerSelectionPanel extends JPanel {
 //	String[] nameList= {"LanWang","HuangFeng","GongNiu","MoShu","XiongLu","HuoJian"
 //			,"LaoYing","SenLinLang","QiCai","KaiErTeRen"};
 	DefaultTableModel modelOfLanWang=new DefaultTableModel(new Object[][] {
-					{"科比", "詹姆斯", "梅杰"},
+					{"Alex Len", "詹姆斯", "梅杰"},
 					{null, null, null},
 					{null, null, null},
 					{null, null, null},
@@ -697,7 +697,7 @@ public class PlayerSelectionPanel extends JPanel {
 			try {
 				if(name!=null) {
 					PlayerSelectionPanel.scrollPane.setVisible(false);
-					PlayerInfoPanel.update(name);
+					MainFrame.pip.update(name);
 					PlayerInfoPanel.scrollPane.setVisible(true);
 					MainFrame.frame.setTitle("NBA球员信息");
 

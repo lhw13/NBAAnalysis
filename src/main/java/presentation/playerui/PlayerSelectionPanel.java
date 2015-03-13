@@ -12,6 +12,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -22,7 +24,7 @@ public class PlayerSelectionPanel extends JPanel {
 	
 	
 	DefaultTableModel modelOfLanWang=new DefaultTableModel(new Object[][] {
-					{null, null, null},
+					{"科比", "詹姆斯", "梅杰"},
 					{null, null, null},
 					{null, null, null},
 					{null, null, null},
@@ -329,7 +331,7 @@ public class PlayerSelectionPanel extends JPanel {
 	
 	public static JScrollPane scrollPane;
 	private JButton btnNewButton;
-	
+	MouseListen listener = new MouseListen();
 	public PlayerSelectionPanel() {
 		this.setBounds(0, 0, 1000,600);
 		//设置面板透明
@@ -338,8 +340,11 @@ public class PlayerSelectionPanel extends JPanel {
 		
 		tableOfLanWang = new JTable(modelOfLanWang);
 		tableOfLanWang.setBounds(0, 20, 900, 80);
+		tableOfLanWang.addMouseListener(listener);
+		
 		tableOfHuangFeng = new JTable(modelOfHuangFeng);
 		tableOfHuangFeng.setBounds(0, 120, 900, 80);
+		
 		tableOfGongNiu = new JTable(modelOfGongNiu);
 		tableOfGongNiu.setBounds(0, 220, 900, 80);
 		tableOfMoShu = new JTable(modelOfMoShu );
@@ -400,7 +405,7 @@ public class PlayerSelectionPanel extends JPanel {
 		scrollPane = new JScrollPane(panelOfBottom);
 		scrollPane.setBounds(0, 0, 990, 600);
 		add(scrollPane);
-		panelOfBottom.setPreferredSize(new Dimension(1000, 3000));
+		panelOfBottom.setPreferredSize(new Dimension(1000, 3100));
 		panelOfBottom.setLayout(null);
 		
 		btnNewButton = new JButton("返回");
@@ -584,4 +589,20 @@ public class PlayerSelectionPanel extends JPanel {
 		
 		
 	}
+	public class MouseListen extends MouseAdapter {
+		public void mouseClicked(MouseEvent e) {
+			JTable table = (JTable) e.getSource();
+			int r = table.getSelectedRow();
+			int c = table.getSelectedColumn();
+			String name = table.getValueAt(r, c).toString();
+			try {
+				
+				PlayerSelectionPanel.scrollPane.setVisible(false);
+				PlayerInfoPanel.scrollPane.setVisible(true);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
+	
 }

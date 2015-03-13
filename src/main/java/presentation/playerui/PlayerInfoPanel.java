@@ -12,7 +12,7 @@ import javax.swing.JButton;
 
 public class PlayerInfoPanel extends JPanel {
 	JPanel panelOfBottom = new JPanel();
-	JScrollPane scrollPane;
+	public static JScrollPane scrollPane;
 	JLabel labelOfPhoto;
 	private JScrollPane scrollPane_1;
 	private JTable table;

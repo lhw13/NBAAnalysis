@@ -97,7 +97,6 @@ public class PlayerRankingPanel extends JPanel {
 		
 		Object table_1_rows[][] ={
 				{"姚明", "后卫", "东部大西洋区", 999, 888, 777, 666, 555, 444, 333, 500, 400, 0, 100, 200, 300},
-				
 			};
 		String table_1_columns[] ={
 				"球员", "位置", "赛区", "得分", "篮板", "助攻", "盖帽", "抢断", "犯规", "失误", "分钟", "效率", "投篮", "三分", "罚球", "两双"
@@ -503,6 +502,10 @@ public class PlayerRankingPanel extends JPanel {
 					sorter.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
+					chckbxNewCheckBox_4.setEnabled(false);
+					chckbxNewCheckBox_8.setEnabled(false);
+					chckbxNewCheckBox_9.setEnabled(false);
+					chckbxNewCheckBox_10.setEnabled(false);
 				}
 				else if(chckbxNewCheckBox_1.isSelected()&&chckbxNewCheckBox_3.isSelected()){
 					String text = "中锋";
@@ -514,6 +517,10 @@ public class PlayerRankingPanel extends JPanel {
 					sorter.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
+					chckbxNewCheckBox_4.setEnabled(false);
+					chckbxNewCheckBox_8.setEnabled(false);
+					chckbxNewCheckBox_9.setEnabled(false);
+					chckbxNewCheckBox_10.setEnabled(false);
 				}
 				else if(chckbxNewCheckBox_2.isSelected()&&chckbxNewCheckBox_3.isSelected()){
 					String text = "后卫";
@@ -525,6 +532,10 @@ public class PlayerRankingPanel extends JPanel {
 					sorter.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
+					chckbxNewCheckBox_4.setEnabled(false);
+					chckbxNewCheckBox_8.setEnabled(false);
+					chckbxNewCheckBox_9.setEnabled(false);
+					chckbxNewCheckBox_10.setEnabled(false);
 				}
 				else if(chckbxNewCheckBox_3.isSelected()){
 					String text = "东部";
@@ -589,6 +600,10 @@ public class PlayerRankingPanel extends JPanel {
 					sorter.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
+					chckbxNewCheckBox_3.setEnabled(false);
+					chckbxNewCheckBox_5.setEnabled(false);
+					chckbxNewCheckBox_6.setEnabled(false);
+					chckbxNewCheckBox_7.setEnabled(false);
 				}
 				else if(chckbxNewCheckBox_1.isSelected()&&chckbxNewCheckBox_4.isSelected()){
 					String text = "中锋";
@@ -600,6 +615,10 @@ public class PlayerRankingPanel extends JPanel {
 					sorter.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
+					chckbxNewCheckBox_3.setEnabled(false);
+					chckbxNewCheckBox_5.setEnabled(false);
+					chckbxNewCheckBox_6.setEnabled(false);
+					chckbxNewCheckBox_7.setEnabled(false);
 				}
 				else if(chckbxNewCheckBox_2.isSelected()&&chckbxNewCheckBox_4.isSelected()){
 					String text = "后卫";
@@ -611,6 +630,10 @@ public class PlayerRankingPanel extends JPanel {
 					sorter.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
+					chckbxNewCheckBox_3.setEnabled(false);
+					chckbxNewCheckBox_5.setEnabled(false);
+					chckbxNewCheckBox_6.setEnabled(false);
+					chckbxNewCheckBox_7.setEnabled(false);
 				}
 				else if(chckbxNewCheckBox_4.isSelected()){
 					String text = "西部";
@@ -697,6 +720,15 @@ public class PlayerRankingPanel extends JPanel {
 					chckbxNewCheckBox_9.setEnabled(false);
 					chckbxNewCheckBox_10.setEnabled(false);
 				}
+			    else if(!chckbxNewCheckBox_5.isSelected()&&chckbxNewCheckBox_3.isSelected()){
+			    	chckbxNewCheckBox_3.setEnabled(true);
+					chckbxNewCheckBox_6.setEnabled(true);
+					chckbxNewCheckBox_7.setEnabled(true);
+					chckbxNewCheckBox_4.setEnabled(false);
+					chckbxNewCheckBox_8.setEnabled(false);
+					chckbxNewCheckBox_9.setEnabled(false);
+					chckbxNewCheckBox_10.setEnabled(false);
+				}
 				else if(!chckbxNewCheckBox_5.isSelected()){
 					chckbxNewCheckBox_3.setEnabled(true);
 					chckbxNewCheckBox_4.setEnabled(true);
@@ -706,6 +738,7 @@ public class PlayerRankingPanel extends JPanel {
 					chckbxNewCheckBox_9.setEnabled(true);
 					chckbxNewCheckBox_10.setEnabled(true);
 				}
+				
 				
 			}
 			
@@ -773,6 +806,15 @@ public class PlayerRankingPanel extends JPanel {
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
+					chckbxNewCheckBox_8.setEnabled(false);
+					chckbxNewCheckBox_9.setEnabled(false);
+					chckbxNewCheckBox_10.setEnabled(false);
+				}
+				else if(!chckbxNewCheckBox_6.isSelected()&&chckbxNewCheckBox_3.isSelected()){
+			    	chckbxNewCheckBox_3.setEnabled(true);
+					chckbxNewCheckBox_5.setEnabled(true);
+					chckbxNewCheckBox_7.setEnabled(true);
+					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_8.setEnabled(false);
 					chckbxNewCheckBox_9.setEnabled(false);
 					chckbxNewCheckBox_10.setEnabled(false);
@@ -857,6 +899,15 @@ public class PlayerRankingPanel extends JPanel {
 					chckbxNewCheckBox_9.setEnabled(false);
 					chckbxNewCheckBox_10.setEnabled(false);
 				}
+				else if(!chckbxNewCheckBox_7.isSelected()&&chckbxNewCheckBox_3.isSelected()){
+			    	chckbxNewCheckBox_3.setEnabled(true);
+					chckbxNewCheckBox_5.setEnabled(true);
+					chckbxNewCheckBox_6.setEnabled(true);
+					chckbxNewCheckBox_4.setEnabled(false);
+					chckbxNewCheckBox_8.setEnabled(false);
+					chckbxNewCheckBox_9.setEnabled(false);
+					chckbxNewCheckBox_10.setEnabled(false);
+				}
 				else if(!chckbxNewCheckBox_7.isSelected()){
 					chckbxNewCheckBox_3.setEnabled(true);
 					chckbxNewCheckBox_4.setEnabled(true);
@@ -933,6 +984,15 @@ public class PlayerRankingPanel extends JPanel {
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_9.setEnabled(false);
 					chckbxNewCheckBox_10.setEnabled(false);
+					chckbxNewCheckBox_5.setEnabled(false);
+					chckbxNewCheckBox_6.setEnabled(false);
+					chckbxNewCheckBox_7.setEnabled(false);
+				}
+				else if(!chckbxNewCheckBox_8.isSelected()&&chckbxNewCheckBox_4.isSelected()){
+			    	chckbxNewCheckBox_4.setEnabled(true);
+					chckbxNewCheckBox_9.setEnabled(true);
+					chckbxNewCheckBox_10.setEnabled(true);
+					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
@@ -1017,6 +1077,15 @@ public class PlayerRankingPanel extends JPanel {
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
 				}
+				else if(!chckbxNewCheckBox_9.isSelected()&&chckbxNewCheckBox_4.isSelected()){
+			    	chckbxNewCheckBox_4.setEnabled(true);
+					chckbxNewCheckBox_8.setEnabled(true);
+					chckbxNewCheckBox_10.setEnabled(true);
+					chckbxNewCheckBox_3.setEnabled(false);
+					chckbxNewCheckBox_5.setEnabled(false);
+					chckbxNewCheckBox_6.setEnabled(false);
+					chckbxNewCheckBox_7.setEnabled(false);
+				}
 				else if(!chckbxNewCheckBox_9.isSelected()){
 					chckbxNewCheckBox_3.setEnabled(true);
 					chckbxNewCheckBox_4.setEnabled(true);
@@ -1097,6 +1166,15 @@ public class PlayerRankingPanel extends JPanel {
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
 				} 
+				else if(!chckbxNewCheckBox_10.isSelected()&&chckbxNewCheckBox_4.isSelected()){
+			    	chckbxNewCheckBox_4.setEnabled(true);
+					chckbxNewCheckBox_8.setEnabled(true);
+					chckbxNewCheckBox_9.setEnabled(true);
+					chckbxNewCheckBox_3.setEnabled(false);
+					chckbxNewCheckBox_5.setEnabled(false);
+					chckbxNewCheckBox_6.setEnabled(false);
+					chckbxNewCheckBox_7.setEnabled(false);
+				}
 				else if(!chckbxNewCheckBox_10.isSelected()){
 					chckbxNewCheckBox_3.setEnabled(true);
 					chckbxNewCheckBox_4.setEnabled(true);
@@ -1121,6 +1199,17 @@ public class PlayerRankingPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String text = "";
 				sorter.setRowFilter(RowFilter.regexFilter(text));
+				chckbxNewCheckBox.setSelected(false);
+				chckbxNewCheckBox_1.setSelected(false);
+				chckbxNewCheckBox_2.setSelected(false);
+				chckbxNewCheckBox_3.setSelected(false);
+				chckbxNewCheckBox_4.setSelected(false);
+				chckbxNewCheckBox_5.setSelected(false);
+				chckbxNewCheckBox_6.setSelected(false);
+				chckbxNewCheckBox_7.setSelected(false);
+				chckbxNewCheckBox_8.setSelected(false);
+				chckbxNewCheckBox_9.setSelected(false);
+				chckbxNewCheckBox_10.setSelected(false);
 			}
 			
 		});

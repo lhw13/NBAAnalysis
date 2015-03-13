@@ -1080,7 +1080,7 @@ public class PlayerRankingPanel extends JPanel {
 					chckbxNewCheckBox_5.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
 					chckbxNewCheckBox_7.setEnabled(false);
-				}
+				} 
 				else if(!chckbxNewCheckBox_10.isSelected()){
 					chckbxNewCheckBox_3.setEnabled(true);
 					chckbxNewCheckBox_4.setEnabled(true);

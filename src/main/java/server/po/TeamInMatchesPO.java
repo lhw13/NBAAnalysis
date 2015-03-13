@@ -11,6 +11,8 @@ public class TeamInMatchesPO {
 		this.players = players;
 	}
 	String abbreviation;
+	int finalScore;
+	ArrayList<Integer>scores;//每节得分
 	ArrayList<PlayerInMatchesPO> players = new ArrayList<PlayerInMatchesPO>();
 	public String getAbbreviation() {
 		return abbreviation;

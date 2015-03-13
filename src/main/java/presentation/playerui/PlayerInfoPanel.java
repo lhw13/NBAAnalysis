@@ -107,6 +107,10 @@ public class PlayerInfoPanel extends JPanel {
 			
 		});
 		panelOfBottom.add(button);
+		
+		JScrollPane scrollPane_4 = new JScrollPane();
+		scrollPane_4.setBounds(102, 476, 303, -78);
+		panelOfBottom.add(scrollPane_4);
 		scrollPane.setBounds(0, 0, 990, 600);
 		add(scrollPane);
 		

@@ -653,7 +653,7 @@ public class PlayerRankingPanel extends JPanel {
 			}
 			
 		});
-		 
+		
 		chckbxNewCheckBox_5 = new JCheckBox("中区");
 		chckbxNewCheckBox_5.setBounds(540, 30, 150, 30);
 		panel.add(chckbxNewCheckBox_5);

@@ -20,7 +20,7 @@ import presentation.mainui.MainFrame;
 
 public class TeamsInfoFrame {
 
-	private JTable table;
+	public static JTable table;
 	private JTable table_1;
 	private JTable table_3;
 	private JTable table_2;
@@ -28,6 +28,7 @@ public class TeamsInfoFrame {
 	private JTable table_5;
 	
 	public static JScrollPane scrollPane;
+	
 	/**
 	 * Create the application.
 	 */
@@ -105,8 +106,6 @@ public class TeamsInfoFrame {
 				"球员", "场数", "在场时间", "投篮命中数", "出手数", "三分命中数", "出手数", "罚球命中数", "出手数", 
 				"进攻篮板", "防守篮板", "总篮板数","助攻", "抢断", "盖帽", "失误", "犯规", "得分"
 			};
-		table_2.setModel(new DefaultTableModel(table_2_rows, table_2_columns));
-		
 		DefaultTableModel model1=new DefaultTableModel(table_2_rows, table_2_columns){
 			private static final long serialVersionUID = 1L;
 			public Class<?> getColumnClass(int columnIndex) {
@@ -152,7 +151,6 @@ public class TeamsInfoFrame {
 		String table_4_columns[] ={
 				"投篮命中率", "三分命中率", "罚球命中率", "胜率", "进攻回合", "进攻效率", "防守效率", "篮板效率", "抢断效率", "助攻率"
 			};
-		table_4.setModel(new DefaultTableModel(table_4_rows, table_4_columns));
 		DefaultTableModel model2=new DefaultTableModel(table_4_rows, table_4_columns){
 			private static final long serialVersionUID = 1L;
 			public Class<?> getColumnClass(int columnIndex) {
@@ -180,7 +178,6 @@ public class TeamsInfoFrame {
 		String table_5_columns[] ={
 				"投篮命中率", "三分命中率", "罚球命中率", "胜率", "进攻回合", "进攻效率", "防守效率", "篮板效率", "抢断效率", "助攻率"
 			};
-		table_5.setModel(new DefaultTableModel(table_5_rows, table_5_columns));
 		DefaultTableModel model5=new DefaultTableModel(table_5_rows, table_5_columns){
 			private static final long serialVersionUID = 1L;
 			public Class<?> getColumnClass(int columnIndex) {
@@ -201,17 +198,7 @@ public class TeamsInfoFrame {
 		
 		table = new JTable();
 		table.setFont(new Font("黑体", Font.PLAIN, 20));
-		Object rows[][] ={
-				{"公牛队", null, null, null, null, null, null},
-			};
-		String columns[] ={
-				"球队", "球队缩写", "所在地", "赛区", "分区", "主场", "建立时间"
-			};
 		
-		model=new DefaultTableModel(rows, columns);
-		table.setModel(model);
-		
-		table.getColumnModel().getColumn(3).setPreferredWidth(84);
 		scrollPane_5.setViewportView(table);
 		
 		JPanel panel_1 = new JPanel();

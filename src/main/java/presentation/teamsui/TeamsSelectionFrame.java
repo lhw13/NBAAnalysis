@@ -16,6 +16,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
 
 public class TeamsSelectionFrame {
 	private Timer timer;
@@ -81,10 +82,14 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
-					TeamsSelectionFrame.scrollPane.setVisible(false);
-					TeamsInfoFrame.scrollPane.setVisible(true);
-					TeamsSelectionFrame.flag=false;
-					MainFrame.frame.setTitle("NBA单个球队");
+					Object rows[][] ={
+							{"公牛队", null, null, null, null, null, null},
+						};
+					String columns[] ={
+							"球队", "球队缩写", "所在地", "赛区", "分区", "主场", "建立时间"
+						};
+					setTeamsInfo("芝加哥公牛", rows, columns);
+					
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -112,10 +117,13 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
-					TeamsSelectionFrame.scrollPane.setVisible(false);
-					TeamsInfoFrame.scrollPane.setVisible(true);
-					TeamsSelectionFrame.flag=false;
-					MainFrame.frame.setTitle("NBA单个球队");
+					Object rows[][] ={
+							{"骑士队", null, null, null, null, null, null},
+						};
+					String columns[] ={
+							"球队", "球队缩写", "所在地", "赛区", "分区", "主场", "建立时间"
+						};
+					setTeamsInfo("克里夫兰骑士队", rows, columns);
 					
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -500,6 +508,22 @@ public class TeamsSelectionFrame {
 		scrollPane = new JScrollPane(mainpanel);
 		scrollPane.setBounds(0, 0, 990, 560);
 		
+	}
+	
+	public void setTeamsInfo(String teamName, Object rows[][], String columns[]){
+		TeamsSelectionFrame.scrollPane.setVisible(false);
+		TeamsInfoFrame.scrollPane.setVisible(true);
+		TeamsSelectionFrame.flag=false;
+		MainFrame.frame.setTitle(teamName);
+		
+		DefaultTableModel model=new DefaultTableModel(rows, columns){
+			private static final long serialVersionUID = 1L;
+			public Class<?> getColumnClass(int columnIndex) {
+                return getValueAt(0,columnIndex).getClass();
+            }
+        };
+		model=new DefaultTableModel(rows, columns);
+		TeamsInfoFrame.table.setModel(model);
 	}
 	
 	//图片循环切换线程

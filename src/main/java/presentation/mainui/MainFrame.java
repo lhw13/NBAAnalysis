@@ -39,7 +39,7 @@ public class MainFrame {
                  * setDefaultLookAndFeelDecorated设置为true或者false     
                  * JDialog也可以使用setDefaultLookAndFeelDecorated    
                  */   
-            }      
+            }
                 
             // 设置当前的主题风格，同样我 们还可以设置当前的按钮形状，水印风格等等      
             SubstanceLookAndFeel.setCurrentTheme(new SubstanceAquaTheme());
@@ -174,10 +174,6 @@ public class MainFrame {
 		btnNewButton_3.setBounds(65, 294, 159, 55);
 		panel.add(btnNewButton_3);
 		
-		JButton btnNewButton_4 = new JButton("New button");
-		btnNewButton_4.setBounds(65, 381, 113, 27);
-		panel.add(btnNewButton_4);
-		
 		btnNewButton_3.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
@@ -195,3 +191,4 @@ public class MainFrame {
 		
 	}
 }
+

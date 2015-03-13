@@ -41,7 +41,7 @@ public class PlayerInfoPanel extends JPanel {
 				{null, null, null, null, null, null, null,null,null},
 			},
 			new String[] {
-				"姓名", "号码", "位置", "身高（英尺-英寸）", "体重（镑）", "生日", "年龄","球龄","毕业学校"
+				"姓名", "号码", "位置", "身高", "体重（镑）", "生日", "年龄","球龄","毕业学校"
 			}
 		));
 		scrollPane_1.setViewportView(table);

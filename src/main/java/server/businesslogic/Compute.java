@@ -52,105 +52,118 @@ public class Compute implements BLService{
 			return true;
 		else
 		{
-			ArrayList<MatchPO> matches = data.getAllMatch();
-			HashMap<String,TeamPO> teamPOHash = data.getAllTeams();
-			HashMap<String,PlayerPO> playerPOHash = data.getAllPlayers();
-			for(int i=matches.size()-1;i>=0;i--)
+			linkDatas();
+		}
+		return false;
+	}
+	
+	private boolean linkDatas()
+	{//some prepared procedure before analyse, construct some hashmap, to accelarate the speed of it
+		ArrayList<MatchPO> matches = data.getAllMatch();
+		HashMap<String,TeamPO> teamPOHash = data.getAllTeams();
+		HashMap<String,PlayerPO> playerPOHash = data.getAllPlayers();
+		for(int i=matches.size()-1;i>=0;i--)
+		{
+			MatchPO mttemp = matches.get(i);
+			ScorePO finalTemp = mttemp.getFinalScore();
+			ArrayList<ScorePO> scoresTemp = mttemp.getScores();
+			ArrayList<Integer> scores1 = new ArrayList<Integer>();
+			ArrayList<Integer> scores2 = new ArrayList<Integer>();
+			for(int j=0;j<scoresTemp.size();j++)
 			{
-				MatchPO mttemp = matches.get(i);
-				ScorePO finalTemp = mttemp.getFinalScore();
-				ArrayList<ScorePO> scoresTemp = mttemp.getScores();
-				ArrayList<Integer> scores1 = new ArrayList<Integer>();
-				ArrayList<Integer> scores2 = new ArrayList<Integer>();
-				for(int j=0;j<scoresTemp.size();j++)
+				ScorePO scoreTemp = scoresTemp.get(j);
+				scores1.add(scoreTemp.getTeam1());
+				scores2.add(scoreTemp.getTeam2());
+			}
+			TeamInMatches timtemp1 = new TeamInMatches(mttemp.getTeam1(),finalTemp.getTeam1(),scores1,finalTemp.getTeam1()-finalTemp.getTeam2());
+			TeamInMatches timtemp2 = new TeamInMatches(mttemp.getTeam2(),finalTemp.getTeam2(),scores2,finalTemp.getTeam2()-finalTemp.getTeam1());
+			
+			//put some data in team 1
+			String ab = timtemp1.getAbbreviation();
+			Team foundTeam = teamsHash.get(ab);
+			if(foundTeam==null)
+			{
+				Team tTeam = new Team(teamPOHash.get(ab));
+				tTeam.addThisTeam(timtemp1);
+				tTeam.addOpponentTeam(timtemp2);
+				teamsHash.put(ab, tTeam);
+			}
+			else
+			{
+				foundTeam.addThisTeam(timtemp1);
+				foundTeam.addOpponentTeam(timtemp2);
+			}
+			
+			//put some data in team 2
+			ab = timtemp2.getAbbreviation();
+			foundTeam = teamsHash.get(ab);
+			if(foundTeam==null)
+			{
+				Team tTeam = new Team(teamPOHash.get(ab));
+				tTeam.addThisTeam(timtemp2);
+				tTeam.addOpponentTeam(timtemp1);
+				teamsHash.put(ab, tTeam);
+			}
+			else
+			{
+				foundTeam.addThisTeam(timtemp2);
+				foundTeam.addOpponentTeam(timtemp1);
+			}
+			
+			//put some data in team 1's players
+			ArrayList<PlayerInMatchesPO> playersTemp = timtemp1.getPlayers();
+			for(int j=0;j<playersTemp.size();j++)
+			{
+				PlayerInMatchesPO playerTemp = playersTemp.get(j);
+				String name = playerTemp.getName();
+				Player foundPlayer = playersHash.get(name);
+				if(foundPlayer==null)
 				{
-					ScorePO scoreTemp = scoresTemp.get(j);
-					scores1.add(scoreTemp.getTeam1());
-					scores2.add(scoreTemp.getTeam2());
-				}
-				TeamInMatches timtemp1 = new TeamInMatches(mttemp.getTeam1(),finalTemp.getTeam1(),scores1,finalTemp.getTeam1()-finalTemp.getTeam2());
-				TeamInMatches timtemp2 = new TeamInMatches(mttemp.getTeam2(),finalTemp.getTeam2(),scores2,finalTemp.getTeam2()-finalTemp.getTeam1());
-				
-				//put some data in team 1
-				String ab = timtemp1.getAbbreviation();
-				Team foundTeam = teamsHash.get(ab);
-				if(foundTeam==null)
-				{
-					Team tTeam = new Team(teamPOHash.get(ab));
-					tTeam.addThisTeam(timtemp1);
-					tTeam.addOpponentTeam(timtemp2);
-					teamsHash.put(ab, tTeam);
+					ab = timtemp1.getAbbreviation();
+					String teamFullName = teamsHash.get(ab).getFullName();
+					Player tPlayer = new Player(teamFullName,ab,playerPOHash.get(name));
+					tPlayer.addThisTeam(timtemp1);
+					tPlayer.addOpponentTeam(timtemp2);
+					playersHash.put(name, tPlayer);
 				}
 				else
 				{
-					foundTeam.addThisTeam(timtemp1);
-					foundTeam.addOpponentTeam(timtemp2);
+					foundPlayer.addThisTeam(timtemp1);
+					foundPlayer.addOpponentTeam(timtemp2);
 				}
-				
-				//put some data in team 2
-				ab = timtemp2.getAbbreviation();
-				foundTeam = teamsHash.get(ab);
-				if(foundTeam==null)
+			}
+			
+			//put some data in team 1's players
+			playersTemp = timtemp2.getPlayers();
+			for(int j=0;j<playersTemp.size();j++)
+			{
+				PlayerInMatchesPO playerTemp = playersTemp.get(j);
+				String name = playerTemp.getName();
+				Player foundPlayer = playersHash.get(name);
+				if(foundPlayer==null)
 				{
-					Team tTeam = new Team(teamPOHash.get(ab));
-					tTeam.addThisTeam(timtemp2);
-					tTeam.addOpponentTeam(timtemp1);
-					teamsHash.put(ab, tTeam);
+					ab = timtemp2.getAbbreviation();
+					String teamFullName = teamsHash.get(ab).getFullName();
+					Player tPlayer = new Player(teamFullName,ab,playerPOHash.get(name));
+					tPlayer.addThisTeam(timtemp2);
+					tPlayer.addOpponentTeam(timtemp1);
+					playersHash.put(name, tPlayer);
 				}
 				else
 				{
-					foundTeam.addThisTeam(timtemp2);
-					foundTeam.addOpponentTeam(timtemp1);
-				}
-				
-				//put some data in team 1's players
-				ArrayList<PlayerInMatchesPO> playersTemp = timtemp1.getPlayers();
-				for(int j=0;j<playersTemp.size();j++)
-				{
-					PlayerInMatchesPO playerTemp = playersTemp.get(j);
-					String name = playerTemp.getName();
-					Player foundPlayer = playersHash.get(name);
-					if(foundPlayer==null)
-					{
-						ab = timtemp1.getAbbreviation();
-						String teamFullName = teamsHash.get(ab).getFullName();
-						Player tPlayer = new Player(teamFullName,ab,playerPOHash.get(name));
-						tPlayer.addThisTeam(timtemp1);
-						tPlayer.addOpponentTeam(timtemp2);
-						playersHash.put(name, tPlayer);
-					}
-					else
-					{
-						foundPlayer.addThisTeam(timtemp1);
-						foundPlayer.addOpponentTeam(timtemp2);
-					}
-				}
-				
-				//put some data in team 1's players
-				playersTemp = timtemp2.getPlayers();
-				for(int j=0;j<playersTemp.size();j++)
-				{
-					PlayerInMatchesPO playerTemp = playersTemp.get(j);
-					String name = playerTemp.getName();
-					Player foundPlayer = playersHash.get(name);
-					if(foundPlayer==null)
-					{
-						ab = timtemp2.getAbbreviation();
-						String teamFullName = teamsHash.get(ab).getFullName();
-						Player tPlayer = new Player(teamFullName,ab,playerPOHash.get(name));
-						tPlayer.addThisTeam(timtemp2);
-						tPlayer.addOpponentTeam(timtemp1);
-						playersHash.put(name, tPlayer);
-					}
-					else
-					{
-						foundPlayer.addThisTeam(timtemp2);
-						foundPlayer.addOpponentTeam(timtemp1);
-					}
+					foundPlayer.addThisTeam(timtemp2);
+					foundPlayer.addOpponentTeam(timtemp1);
 				}
 			}
 		}
-		return false;
+		return true;
+	}
+	
+	private boolean compute()
+	{
+		//compute team analysis
+		
+		return true;
 	}
 	private ArrayList<PlayerVO> toPVOs(ArrayList<Player> h)
 	{

@@ -58,4 +58,10 @@ public class TeamInMatches {
 	{
 		return teamInMatchespo.getPlayers();
 	}
+	public TeamInMatchesPO getTeamInMatchespo() {
+		return teamInMatchespo;
+	}
+	public int getWin() {
+		return win;
+	}
 }

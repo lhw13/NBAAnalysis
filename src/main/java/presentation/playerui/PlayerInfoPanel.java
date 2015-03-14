@@ -1,5 +1,8 @@
 package presentation.playerui;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -23,16 +26,19 @@ public class PlayerInfoPanel extends JPanel {
 	JPanel panelOfBottom = new JPanel();
 	public static JScrollPane scrollPane;
 	JLabel labelOfPhoto;
+	JLabel labelOfAct;
 	private JScrollPane scrollPane_1;
 	private JTable table;
 	private JTable table_1;
 	private JTable table_2;
 	JButton button;
 	 ImageIcon picture;
+	 ImageIcon pictureOfAct;
 	MouseListen listener = new MouseListen();
 	private JTable table_3;
 	private JScrollPane scrollPane_5;
 	private JTable table_4;
+	
 	public PlayerInfoPanel() {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
@@ -44,6 +50,10 @@ public class PlayerInfoPanel extends JPanel {
 		labelOfPhoto = new JLabel("photo");
 		labelOfPhoto.setBounds(701, 43, 230, 185);
 		panelOfBottom.add(labelOfPhoto);
+		
+		labelOfAct = new JLabel("act");
+		labelOfAct.setBounds(701, 135, 256, 395);
+		panelOfBottom.add(labelOfAct);
 		
 		scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(5, 43, 622, 81);
@@ -153,8 +163,14 @@ public class PlayerInfoPanel extends JPanel {
 	
 	public  void update(String name) {
 		picture = ImageHandle.loadPlayer(name);
+		pictureOfAct = ImageHandle.loadPlayerAct(name);
 		labelOfPhoto.setIcon(picture);
+		pictureOfAct.setImage(pictureOfAct.getImage().getScaledInstance(labelOfAct.getWidth()
+				,labelOfAct.getHeight(),Image.SCALE_DEFAULT));
+		labelOfAct.setIcon(pictureOfAct);
 	}
+	
+	
 	public class MouseListen extends MouseAdapter {
 		public void mouseClicked(MouseEvent e) {
 			

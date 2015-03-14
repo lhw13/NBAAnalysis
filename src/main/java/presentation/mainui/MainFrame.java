@@ -12,7 +12,11 @@ import javax.swing.JButton;
 import javax.swing.UIManager;
 
 import org.jvnet.substance.SubstanceLookAndFeel;
-import org.jvnet.substance.theme.SubstanceAquaTheme;
+import org.jvnet.substance.border.FlatInnerBorderPainter;
+import org.jvnet.substance.button.StandardButtonShaper;
+import org.jvnet.substance.theme.SubstanceEbonyTheme;
+import org.jvnet.substance.title.Glass3DTitlePainter;
+import org.jvnet.substance.watermark.SubstanceWoodWatermark;
 
 import presentation.playerui.PlayerInfoPanel;
 import presentation.playerui.PlayerRankingPanel;
@@ -42,7 +46,11 @@ public class MainFrame {
             }
                 
             // 设置当前的主题风格，同样我 们还可以设置当前的按钮形状，水印风格等等      
-            SubstanceLookAndFeel.setCurrentTheme(new SubstanceAquaTheme());
+            SubstanceLookAndFeel.setCurrentTheme(new SubstanceEbonyTheme());
+            SubstanceLookAndFeel.setCurrentWatermark(new SubstanceWoodWatermark());
+            SubstanceLookAndFeel.setCurrentButtonShaper(new StandardButtonShaper());
+            SubstanceLookAndFeel.setCurrentTitlePainter(new Glass3DTitlePainter());
+            SubstanceLookAndFeel.setCurrentBorderPainter(new FlatInnerBorderPainter());
 			} catch (Exception e){
 				e.printStackTrace();
 			}

@@ -9,7 +9,7 @@ public class ImageHandle {
 	
 	
 	public static ImageIcon loadPlayer(String name){
-		ImageIcon PLAYER = new ImageIcon("nba/player/portrait"+name+".png");
+		ImageIcon PLAYER = new ImageIcon("nba/players/portrait/"+name+".png");
 		return PLAYER;
 	}
 

@@ -31,20 +31,22 @@ public class PlayerInfoPanel extends JPanel {
 	 ImageIcon picture;
 	MouseListen listener = new MouseListen();
 	private JTable table_3;
+	private JScrollPane scrollPane_5;
+	private JTable table_4;
 	public PlayerInfoPanel() {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
 		
-		panelOfBottom.setPreferredSize(new Dimension(1000, 1000));
+		panelOfBottom.setPreferredSize(new Dimension(1300, 600));
 		panelOfBottom.setLayout(null);
 		scrollPane= new JScrollPane(panelOfBottom);
 		
 		labelOfPhoto = new JLabel("photo");
-		labelOfPhoto.setBounds(186, 43, 230, 185);
+		labelOfPhoto.setBounds(701, 43, 230, 185);
 		panelOfBottom.add(labelOfPhoto);
 		
 		scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(312, 43, 622, 81);
+		scrollPane_1.setBounds(5, 43, 622, 81);
 		panelOfBottom.add(scrollPane_1);
 		
 		table = new JTable();
@@ -59,8 +61,24 @@ public class PlayerInfoPanel extends JPanel {
 		scrollPane_1.setViewportView(table);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(102, 247, 846, 106);
+		tabbedPane.setBounds(5, 280, 671, 106);
 		panelOfBottom.add(tabbedPane);
+		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		tabbedPane.addTab("总计", null, scrollPane_3, null);
+		
+		table_2 = new JTable();
+		table_2.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null, null, null,null,null,
+				null, null,null},
+			},
+			new String[] {
+				"赛季", "参赛", "先发", "时间","篮板数", "助攻数", "进攻数", 
+				"防守数", "抢断数", "盖帽数", "失误数", "犯规数","得分"
+			}
+		));
+		scrollPane_3.setViewportView(table_2);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
 		tabbedPane.addTab("场均", null, scrollPane_2, null);
@@ -78,24 +96,8 @@ public class PlayerInfoPanel extends JPanel {
 		));
 		scrollPane_2.setViewportView(table_1);
 		
-		JScrollPane scrollPane_3 = new JScrollPane();
-		tabbedPane.addTab("总计", null, scrollPane_3, null);
-		
-		table_2 = new JTable();
-		table_2.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null,null,null,
-				null, null,null},
-			},
-			new String[] {
-				"赛季", "参赛场数", "先发场数", "在场时间","篮板数", "助攻数", "进攻数", 
-				"防守数", "抢断数", "盖帽数", "失误数", "犯规数","得分"
-			}
-		));
-		scrollPane_3.setViewportView(table_2);
-		
 		button = new JButton("返回");
-		button.setBounds(40, 525, 93, 23);
+		button.setBounds(326, 507, 93, 23);
 		button.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
@@ -115,21 +117,35 @@ public class PlayerInfoPanel extends JPanel {
 		JScrollPane scrollPane_4 = new JScrollPane();
 
 		
-		scrollPane_4.setBounds(102, 393, 846, 106);
+		scrollPane_4.setBounds(5, 124, 622, 73);
 		panelOfBottom.add(scrollPane_4);
 		
 		table_3 = new JTable();
 		table_3.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null, null, null, null,null,null,
-					null,null},
+				{null, null, null, null, null, null, null},
 			},
 			new String[] {
 				"效率", "GmSc效率", "真实命中率", "投篮效率", "篮板率", "进攻篮板率", 
-				"防守篮板率", "助攻率","抢断率","盖帽率", "失误率", "使用率"
+				"防守篮板率"
 			}
 		));
 		scrollPane_4.setViewportView(table_3);
+		
+		scrollPane_5 = new JScrollPane();
+		scrollPane_5.setBounds(5, 198, 406, 81);
+		panelOfBottom.add(scrollPane_5);
+		
+		table_4 = new JTable();
+		table_4.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null,null,null},
+			},
+			new String[] {
+				"盖帽率", "失误率", "使用率" ,"助攻率","抢断率"
+			}
+		));
+		scrollPane_5.setViewportView(table_4);
 		scrollPane.setBounds(0, 0, 990, 600);
 		add(scrollPane);
 		

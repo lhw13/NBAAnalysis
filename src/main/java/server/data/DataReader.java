@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class DataReader {
 private static BufferedReader br;
 private static FileReader file;
-public static ArrayList<String> MatchesReader(File filePoint)  {
+public static ArrayList<String> dataReader(File filePoint)  {
 	ArrayList<String>  result=new ArrayList<String> ();
 	try{
 		file=new FileReader(filePoint);

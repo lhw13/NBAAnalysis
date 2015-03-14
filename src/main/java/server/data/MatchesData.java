@@ -13,7 +13,7 @@ public class MatchesData {
 		matchesFile = f.listFiles();
 		for (File i : matchesFile) {
 			matchesList.add(MatchesDataAnalyse.MatchPOMade(DataReader
-					.MatchesReader(i)));
+					.dataReader(i)));
 		}
 	}
 	public static int getMatchesList(){

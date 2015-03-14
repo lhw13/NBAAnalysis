@@ -111,7 +111,7 @@ public class MatchesDataAnalyse {
 		 year=year+year2;
 	 }
 	 Calendar result= Calendar.getInstance() ;
-	 result.set(year, month, day, 0, 0, 0);
+	 result.set(year, month-1, day, 0, 0, 0);
 	 return result;
  }
 }

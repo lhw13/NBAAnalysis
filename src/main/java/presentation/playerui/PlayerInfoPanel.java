@@ -48,11 +48,11 @@ public class PlayerInfoPanel extends JPanel {
 		scrollPane= new JScrollPane(panelOfBottom);
 		
 		labelOfPhoto = new JLabel("photo");
-		labelOfPhoto.setBounds(701, 43, 230, 185);
+		labelOfPhoto.setBounds(700, 23, 230, 185);
 		panelOfBottom.add(labelOfPhoto);
 		
 		labelOfAct = new JLabel("act");
-		labelOfAct.setBounds(701, 135, 256, 395);
+		labelOfAct.setBounds(710, 218, 220, 350);
 		panelOfBottom.add(labelOfAct);
 		
 		scrollPane_1 = new JScrollPane();

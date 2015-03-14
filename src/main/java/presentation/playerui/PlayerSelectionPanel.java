@@ -28,7 +28,7 @@ public class PlayerSelectionPanel extends JPanel {
 //	String[] nameList= {"LanWang","HuangFeng","GongNiu","MoShu","XiongLu","HuoJian"
 //			,"LaoYing","SenLinLang","QiCai","KaiErTeRen"};
 	DefaultTableModel modelOfLanWang=new DefaultTableModel(new Object[][] {
-					{"Alex Len", "詹姆斯", "梅杰"},
+					{"Alex Len", "Chris Bosh", "Eric Gordon"},
 					{null, null, null},
 					{null, null, null},
 					{null, null, null},

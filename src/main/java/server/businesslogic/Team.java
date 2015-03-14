@@ -35,6 +35,7 @@ public class Team {
 	int foul=0;
 	int score=0;
 	int win=0;//胜出场数
+	int playTime=0;
 	
 	//opponent's data
 	int hit2=0;//命中
@@ -80,7 +81,7 @@ public class Team {
 	{
 		return teamPO.getFullName();
 	}
-	public boolean compute()
+	public boolean anaylse()
 	{
 		appearance = thisTeam.size();
 		for(int i=0;i<appearance;i++)
@@ -103,26 +104,22 @@ public class Team {
 	}
 	private void add(TeamInMatches tim)
 	{
-		ArrayList<PlayerInMatchesPO> players= tim.getTeamInMatchespo().getPlayers();
-		for(int i=0;i<players.size();i++)
-		{
-			PlayerInMatchesPO player = players.get(i);
-			hit+=player.getHit();
-			shot+=player.getShot();
-			thirdHit+=player.getThirdHit();
-			thirdshot+=player.getThirdshot();
-			freeHit+=player.getFreeHit();
-			freeshot+=player.getFreeshot();
-			offensiveRebound+=player.getOffensiveRebound();
-			defensiveRebound+=player.getDefensiveRebound();
-			totalRebound+=player.getTotalRebound();
-			assist+=player.getAssist();
-			steal+=player.getSteal();
-			block+=player.getBlock();
-			miss+=player.getMiss();
-			foul+=player.getFoul();
-			//score will be dealt in other place
-		}
+		tim.computeTotal();
+		hit+=tim.getHit();
+		shot+=tim.getShot();
+		thirdHit+=tim.getThirdHit();
+		thirdshot+=tim.getThirdshot();
+		freeHit+=tim.getFreeHit();
+		freeshot+=tim.getFreeshot();
+		offensiveRebound+=tim.getOffensiveRebound();
+		defensiveRebound+=tim.getDefensiveRebound();
+		totalRebound+=tim.getTotalRebound();
+		assist+=tim.getAssist();
+		steal+=tim.getSteal();
+		block+=tim.getBlock();
+		miss+=tim.getMiss();
+		foul+=tim.getFoul();
+		//score will be dealt in other place
 	}
 	private void addOpponent(TeamInMatches tim)
 	{

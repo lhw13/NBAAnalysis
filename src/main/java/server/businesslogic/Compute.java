@@ -2,6 +2,8 @@ package server.businesslogic;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
 import dataservice.DataService;
 import server.po.MatchPO;
@@ -17,8 +19,8 @@ public class Compute implements BLService{
 	private Compute()
 	{
 	}
-	HashMap<String, Player> playersHash;
-	HashMap<String, Team> teamsHash;
+	HashMap<String, Player> playersHash = new HashMap<String, Player>(606);
+	HashMap<String, Team> teamsHash = new HashMap<String, Team>(41);
 	ArrayList<Player> players = new ArrayList<Player>();
 	ArrayList<Team> teams = new ArrayList<Team>();
 	DataService data = new MockData();
@@ -36,6 +38,7 @@ public class Compute implements BLService{
 	}
 	public ArrayList<TeamVO> getTeamAnalysis()
 	{
+		analyse();
 		return new ArrayList();
 	}
 	public PlayerVO getPlayerAnalysis(String name)
@@ -53,6 +56,14 @@ public class Compute implements BLService{
 		else
 		{
 			linkDatas();
+			Iterator<Entry<String, Team>> iter = teamsHash.entrySet().iterator();
+			while(iter.hasNext())
+			{
+				Team team = iter.next().getValue();
+				team.anaylse();
+				teams.add(team);
+			}
+			//遍历hashMap,并放入数组
 		}
 		return false;
 	}
@@ -122,18 +133,18 @@ public class Compute implements BLService{
 					ab = timtemp1.getAbbreviation();
 					String teamFullName = teamsHash.get(ab).getFullName();
 					Player tPlayer = new Player(teamFullName,ab,playerPOHash.get(name));
-					tPlayer.addThisTeam(timtemp1);
+					tPlayer.addThisTeam(timtemp1,j);
 					tPlayer.addOpponentTeam(timtemp2);
 					playersHash.put(name, tPlayer);
 				}
 				else
 				{
-					foundPlayer.addThisTeam(timtemp1);
+					foundPlayer.addThisTeam(timtemp1,j);
 					foundPlayer.addOpponentTeam(timtemp2);
 				}
 			}
 			
-			//put some data in team 1's players
+			//put some data in team 2's players
 			playersTemp = timtemp2.getPlayers();
 			for(int j=0;j<playersTemp.size();j++)
 			{
@@ -145,13 +156,13 @@ public class Compute implements BLService{
 					ab = timtemp2.getAbbreviation();
 					String teamFullName = teamsHash.get(ab).getFullName();
 					Player tPlayer = new Player(teamFullName,ab,playerPOHash.get(name));
-					tPlayer.addThisTeam(timtemp2);
+					tPlayer.addThisTeam(timtemp2,j);
 					tPlayer.addOpponentTeam(timtemp1);
 					playersHash.put(name, tPlayer);
 				}
 				else
 				{
-					foundPlayer.addThisTeam(timtemp2);
+					foundPlayer.addThisTeam(timtemp2,j);
 					foundPlayer.addOpponentTeam(timtemp1);
 				}
 			}

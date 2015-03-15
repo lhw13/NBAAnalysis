@@ -15,4 +15,32 @@ public class BLTest {
 		bl.getTeamAnalysis();
 		assertTrue(true);
 	}
+	@Test
+	public void testTeamAnalyseByName()
+	{
+		BLService bl = Compute.getInstance();
+		bl.getTeamAnalysis("AB");
+		assertTrue(true);
+	}
+	@Test
+	public void testPlayerAnalyse()
+	{
+		BLService bl = Compute.getInstance();
+		bl.getPlayerAnalysis();
+		assertTrue(true);
+	}
+	@Test
+	public void testPlayerAnalyseByName()
+	{
+		BLService bl = Compute.getInstance();
+		bl.getPlayerAnalysis("AB");
+		assertTrue(true);
+	}
+	@Test
+	public void testPlayerByTeamAnalyse()
+	{
+		BLService bl = Compute.getInstance();
+		bl.getTeamsWithPlayers();
+		assertTrue(true);
+	}
 }

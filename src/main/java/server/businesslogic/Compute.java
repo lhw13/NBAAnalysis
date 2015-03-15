@@ -46,11 +46,15 @@ public class Compute implements BLService{
 	public PlayerVO getPlayerAnalysis(String name)
 	{//暂时认为名字唯一确定一名球员
 		Player player = playersHash.get(name);
+		if(player==null)
+			return null;
 		return player.toVO();
 	}
 	public TeamWithPlayersVO getTeamAnalysis(String name)
 	{//暂时认为球队全称唯一确定一支球队
 		Team team = teamsHash.get(name);
+		if(team==null)
+			return null;
 		return new TeamWithPlayersVO(team.toVO(),getPlayersInTeam(team.teamPO.getAbbreviation()));
 	}
 	public ArrayList<TeamWithPlayersVO> getTeamsWithPlayers()

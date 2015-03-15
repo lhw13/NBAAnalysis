@@ -17,7 +17,9 @@ public class MatchesData {
 		}
 	}
 	public static int getMatchesList(){
-		System.out.println(matchesList.get(matchesList.size()-1).getTeam1().getAbbreviation());
 		return matchesList.get(matchesList.size()-1).getFinalScore().getTeam1();
+	}
+	public ArrayList<MatchPO> getMatchPOList(){
+		return matchesList;
 	}
 }

@@ -25,4 +25,7 @@ public static int getData(){
 	System.out.println(playersList.get(0).getBirth().getTime());
 	return playersList.get(0).getAge();
 }
+public  ArrayList<PlayerPO> getPlayerPOList(){
+	return playersList;
+}
 }

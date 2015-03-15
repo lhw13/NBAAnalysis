@@ -81,6 +81,10 @@ public class Team {
 	{
 		return teamPO.getFullName();
 	}
+	public TeamPO getTeamPO()
+	{
+		return teamPO;
+	}
 	public boolean anaylse()
 	{
 		appearance = thisTeam.size();

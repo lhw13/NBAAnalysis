@@ -151,4 +151,7 @@ public class TeamInMatches {
 	public int getScore() {
 		return score;
 	}
+	public int getPlayTime() {
+		return playTime;
+	}
 }

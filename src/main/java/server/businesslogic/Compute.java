@@ -131,8 +131,7 @@ public class Compute implements BLService{
 				if(foundPlayer==null)
 				{
 					ab = timtemp1.getAbbreviation();
-					String teamFullName = teamsHash.get(ab).getFullName();
-					Player tPlayer = new Player(teamFullName,ab,playerPOHash.get(name));
+					Player tPlayer = new Player(teamsHash.get(ab).getTeamPO(),playerPOHash.get(name));
 					tPlayer.addThisTeam(timtemp1,j);
 					tPlayer.addOpponentTeam(timtemp2);
 					playersHash.put(name, tPlayer);
@@ -154,8 +153,7 @@ public class Compute implements BLService{
 				if(foundPlayer==null)
 				{
 					ab = timtemp2.getAbbreviation();
-					String teamFullName = teamsHash.get(ab).getFullName();
-					Player tPlayer = new Player(teamFullName,ab,playerPOHash.get(name));
+					Player tPlayer = new Player(teamsHash.get(ab).getTeamPO(),playerPOHash.get(name));
 					tPlayer.addThisTeam(timtemp2,j);
 					tPlayer.addOpponentTeam(timtemp1);
 					playersHash.put(name, tPlayer);

@@ -1,20 +1,21 @@
 package server.businesslogic;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import server.po.*;
 import vo.*;
 
 public class Player {
-	public Player(String teamFullName, String teamAbbreviation, PlayerPO player) {
+	public Player(TeamPO team,PlayerPO player) {
 		super();
-		this.teamFullName = teamFullName;
-		this.teamAbbreviation = teamAbbreviation;
+		//this.teamFullName = teamFullName;
+		//this.teamAbbreviation = teamAbbreviation;
+		this.team=team;
 		this.player = player;
 	}
 	boolean analysed = false;
-	String teamFullName;
-	String teamAbbreviation;
+	TeamPO team;
 	PlayerPO player;
 	PlayerInMatchesPO playerInMatches =  new PlayerInMatchesPO();
 	ArrayList<TeamInMatches> thisTeam = new ArrayList<TeamInMatches>();
@@ -40,24 +41,48 @@ public class Player {
 	int foul=0;
 	int score=0;
 	
+	//this team
+	int teamPlayTime=0;
+	int teamTotalRebound=0;
+	int teamOffensiveRebound=0;
+	int teamDefensiveRebound=0;
+	int teamshot=0;
+	int teamHit=0;
+	int teamFreeshot=0;
+	int teamMiss=0;
+	
+	//opponent team
+	int teamTotalRebound2=0;
+	int teamOffensiveRebound2=0;
+	int teamDefensiveRebound2=0;
+	int teamshot2=0;
+	int teamThirdshot2=0;
+	
 	public boolean anaylse()
-	{
+	{	
 		appearance = thisTeam.size();
 		for(int i=0;i<appearance;i++)
 		{
-			//TeamInMatches tim = thisTeam.get(i);
-			//add(tim);
-			//score+=tim.getFinalScore();
-			add(thisTeam.get(i).getPlayers().get(orders.get(i)));
+			TeamInMatches tim = thisTeam.get(i);
+			add(tim.getPlayers().get(orders.get(i)));
+			teamPlayTime+=tim.getPlayTime();
+			teamTotalRebound+=tim.getTotalRebound();
+			teamOffensiveRebound+=tim.getOffensiveRebound();
+			teamDefensiveRebound+=tim.getDefensiveRebound();
+			teamshot+=tim.getShot();
+			teamHit+=tim.getHit();
+			teamFreeshot+=tim.getFreeshot();
+			teamMiss+=tim.getMiss();
 		}
-	/*	for(int i=0;i<appearance;i++)
+		for(int i=0;i<appearance;i++)
 		{
-			TeamInMatches tim = opponentTeam.get(i);
-			addOpponent(tim);
-			score2+=tim.getFinalScore();
-			if(tim.finalScore>0)
-				win2++;
-		}*/
+			TeamInMatches tim2 = opponentTeam.get(i);
+			teamTotalRebound2+=tim2.getTotalRebound();
+			teamOffensiveRebound2+=tim2.getOffensiveRebound();
+			teamDefensiveRebound2+=tim2.getDefensiveRebound();
+			teamshot2+=tim2.getShot();
+			teamThirdshot2+=tim2.getThirdshot();
+		}
 		return true;
 	}
 	public void add(PlayerInMatchesPO player)
@@ -84,7 +109,20 @@ public class Player {
 	}
 	public PlayerVO toVO()
 	{
-		return new PlayerVO();
+		return new PlayerVO( team.getFullName(), team.getAbbreviation(),
+				 team.getDivision(),  team.getZone(),  player.getName(),  player.getNumber(),  player.getPosition(),
+				 new HeightVO(player.getHeight().getFeet(),player.getHeight().getInch()),  
+				 player.getWeight(),  player.getBirth(),  player.getAge(),  player.getExp(),
+				 player.getSchool(),  appearance,  starting,  playTime,  hit,
+				 shot,  thirdHit,  thirdshot,  freeHit,  freeshot,
+				 offensiveRebound,  defensiveRebound,  totalRebound,
+				 assist,  steal,  block,  miss,  foul,  score,
+				 getHitRate(),  getThirdHitRate(),  getFreeHitRate(),
+				 getEfficiency(),  getGmScEfficiency(),  getRealHitRate(),
+				 getShotEfficiency(),  getReboundRate(),
+				 getOffensiveReboundRate(),  getDefensiveReboundRate(),
+				 getAssistRate(),  getStealRate(),  getBlockRate(),
+				 getMissRate(),  getUseRate());
 	}
 	public void addThisTeam(TeamInMatches tim,int order)
 	{
@@ -125,5 +163,37 @@ public class Player {
 	private double getShotEfficiency()
 	{
 		return (hit+0.5*thirdHit)/shot;
+	}
+	private double getReboundRate()
+	{
+		return totalRebound*(teamPlayTime/5)/playTime/(teamTotalRebound+teamTotalRebound2);
+	}
+	private double getOffensiveReboundRate()
+	{
+		return offensiveRebound*(teamPlayTime/5)/playTime/(teamOffensiveRebound+teamOffensiveRebound2);
+	}
+	private double getDefensiveReboundRate()
+	{
+		return defensiveRebound*(teamPlayTime/5)/playTime/(teamDefensiveRebound+teamDefensiveRebound2);
+	}
+	private double getAssistRate()
+	{
+		return assist/(playTime/(teamPlayTime/5)*teamHit-hit);
+	}
+	private double getStealRate()
+	{
+		return steal*(teamPlayTime/5)/playTime/teamOffensiveRebound2;
+	}
+	private double getBlockRate()
+	{
+		return block*(teamPlayTime/5)/playTime/(teamshot2-teamThirdshot2);
+	}
+	private double getMissRate()
+	{
+		return miss/(shot-thirdshot+0.44*freeshot+miss);
+	}
+	private double getUseRate()
+	{
+		return (shot+0.44*freeshot+miss)*(teamPlayTime/5)/playTime/(teamshot+0.44*teamFreeshot+teamMiss);
 	}
 }

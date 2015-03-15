@@ -1,7 +1,10 @@
 package server.businesslogic;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
 import dataservice.DataService;
 import server.po.MatchPO;
@@ -11,14 +14,15 @@ import server.po.ScorePO;
 import server.po.TeamPO;
 import vo.PlayerVO;
 import vo.TeamVO;
+import vo.TeamWithPlayersVO;
 import blservice.BLService;
 
 public class Compute implements BLService{
 	private Compute()
 	{
 	}
-	HashMap<String, Player> playersHash;
-	HashMap<String, Team> teamsHash;
+	HashMap<String, Player> playersHash = new HashMap<String, Player>(606);
+	HashMap<String, Team> teamsHash = new HashMap<String, Team>(41);
 	ArrayList<Player> players = new ArrayList<Player>();
 	ArrayList<Team> teams = new ArrayList<Team>();
 	DataService data = new MockData();
@@ -36,15 +40,32 @@ public class Compute implements BLService{
 	}
 	public ArrayList<TeamVO> getTeamAnalysis()
 	{
-		return new ArrayList();
+		analyse();
+		return toTVOs(teams);
 	}
 	public PlayerVO getPlayerAnalysis(String name)
 	{//暂时认为名字唯一确定一名球员
-		return new PlayerVO();
+		Player player = playersHash.get(name);
+		if(player==null)
+			return null;
+		return player.toVO();
 	}
-	public TeamVO getTeamAnalysis(String name)
+	public TeamWithPlayersVO getTeamAnalysis(String name)
 	{//暂时认为球队全称唯一确定一支球队
-		return new TeamVO();
+		Team team = teamsHash.get(name);
+		if(team==null)
+			return null;
+		return new TeamWithPlayersVO(team.toVO(),getPlayersInTeam(team.teamPO.getAbbreviation()));
+	}
+	public ArrayList<TeamWithPlayersVO> getTeamsWithPlayers()
+	{
+		ArrayList<TeamWithPlayersVO> result = new ArrayList<TeamWithPlayersVO>();
+		for(int i=0;i<teams.size();i++)
+		{
+			Team team = teams.get(i);
+			result.add(new TeamWithPlayersVO(team.toVO(),getPlayersInTeam(team.teamPO.getAbbreviation())));
+		}
+		return result;
 	}
 	private boolean analyse()
 	{
@@ -53,8 +74,23 @@ public class Compute implements BLService{
 		else
 		{
 			linkDatas();
+			Iterator<Entry<String, Team>> iter = teamsHash.entrySet().iterator();
+			while(iter.hasNext())
+			{
+				Team team = iter.next().getValue();
+				team.anaylse();
+				teams.add(team);
+			}
+			Iterator<Entry<String, Player>> iter2 = playersHash.entrySet().iterator();
+			while(iter2.hasNext())
+			{
+				Player player = iter2.next().getValue();
+				player.anaylse();
+				players.add(player);
+			}
+			Collections.sort(players,new SortPlayersByTeam());
+			return true;
 		}
-		return false;
 	}
 	
 	private boolean linkDatas()
@@ -120,20 +156,19 @@ public class Compute implements BLService{
 				if(foundPlayer==null)
 				{
 					ab = timtemp1.getAbbreviation();
-					String teamFullName = teamsHash.get(ab).getFullName();
-					Player tPlayer = new Player(teamFullName,ab,playerPOHash.get(name));
-					tPlayer.addThisTeam(timtemp1);
+					Player tPlayer = new Player(teamsHash.get(ab).getTeamPO(),playerPOHash.get(name));
+					tPlayer.addThisTeam(timtemp1,j);
 					tPlayer.addOpponentTeam(timtemp2);
 					playersHash.put(name, tPlayer);
 				}
 				else
 				{
-					foundPlayer.addThisTeam(timtemp1);
+					foundPlayer.addThisTeam(timtemp1,j);
 					foundPlayer.addOpponentTeam(timtemp2);
 				}
 			}
 			
-			//put some data in team 1's players
+			//put some data in team 2's players
 			playersTemp = timtemp2.getPlayers();
 			for(int j=0;j<playersTemp.size();j++)
 			{
@@ -143,27 +178,41 @@ public class Compute implements BLService{
 				if(foundPlayer==null)
 				{
 					ab = timtemp2.getAbbreviation();
-					String teamFullName = teamsHash.get(ab).getFullName();
-					Player tPlayer = new Player(teamFullName,ab,playerPOHash.get(name));
-					tPlayer.addThisTeam(timtemp2);
+					Player tPlayer = new Player(teamsHash.get(ab).getTeamPO(),playerPOHash.get(name));
+					tPlayer.addThisTeam(timtemp2,j);
 					tPlayer.addOpponentTeam(timtemp1);
 					playersHash.put(name, tPlayer);
 				}
 				else
 				{
-					foundPlayer.addThisTeam(timtemp2);
+					foundPlayer.addThisTeam(timtemp2,j);
 					foundPlayer.addOpponentTeam(timtemp1);
 				}
 			}
 		}
 		return true;
 	}
-	
-	private boolean compute()
-	{
-		//compute team analysis
-		
-		return true;
+	private ArrayList<PlayerVO> getPlayersInTeam(String abbreviation)
+	{//参数是简称
+		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		int i=5;
+		for(i=5;i<players.size();i+=15)
+			if(players.get(i).team.getAbbreviation().equals(abbreviation))
+			{
+				result.add(players.get(i).toVO());
+				break;
+			}
+		for(int j=i-1;j>=0;j--)
+			if(players.get(j).team.getAbbreviation().equals(abbreviation))
+				result.add(players.get(j).toVO());
+			else
+				break;
+		for(i=i+1;i<players.size();i++)
+			if(players.get(i).team.getAbbreviation().equals(abbreviation))
+				result.add(players.get(i).toVO());
+			else
+				break;	
+		return result;
 	}
 	private ArrayList<PlayerVO> toPVOs(ArrayList<Player> h)
 	{

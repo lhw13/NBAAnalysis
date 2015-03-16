@@ -31,7 +31,7 @@ public class PlayerSelectionPanel extends JPanel {
 	
 	BLService blservice = Compute.getInstance();
 	ArrayList<TeamWithPlayersVO> teamWithPlayer = blservice.getTeamsWithPlayers();
-	DefaultTableModel modelOfLanWang=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf1=new DefaultTableModel(new Object[][] {
 					{"Alex Len", "Chris Bosh", "Eric Gordon"},
 					{null, null, null},
 					{null, null, null},
@@ -40,7 +40,7 @@ public class PlayerSelectionPanel extends JPanel {
 				},
 				new String[] {"篮网","",""}
 			);
-	DefaultTableModel modelOfHuangFeng=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf2=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -49,7 +49,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"黄蜂","",""}
 	);
-	DefaultTableModel modelOfGongNiu=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf3=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -58,7 +58,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"公牛","",""}
 	);
-	DefaultTableModel modelOfMoShu=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf4=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -67,7 +67,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"魔术","",""}
 	);
-	DefaultTableModel modelOfXiongLu=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf5=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -76,7 +76,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"雄鹿","",""}
 	);
-	DefaultTableModel modelOfHuoJian=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf6=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -85,7 +85,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"火箭","",""}
 	);
-	DefaultTableModel modelOfLaoYing=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf7=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -94,7 +94,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"老鹰","",""}
 	);
-	DefaultTableModel modelOfSenLinLang=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf8=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -103,7 +103,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"森林狼","",""}
 	);
-	DefaultTableModel modelOfQiCai=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf9=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -112,7 +112,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"奇才","",""}
 	);
-	DefaultTableModel modelOfKaiErTeRen=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf10=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -121,7 +121,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"凯尔特人","",""}
 	);
-	DefaultTableModel modelOfXiaoNiu=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf11=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -130,7 +130,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"小牛","",""}
 	);
-	DefaultTableModel modelOfMengLong=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf12=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -139,7 +139,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"猛龙","",""}
 	);
-	DefaultTableModel modelOfMaCi=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf13=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -148,7 +148,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"马刺","",""}
 	);
-	DefaultTableModel modelOfHuiXiong=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf14=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -157,7 +157,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"灰熊","",""}
 	);
-	DefaultTableModel modelOfLeiTing=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf15=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -166,7 +166,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"雷霆","",""}
 	);
-	DefaultTableModel modelOfHuRen=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf16=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -175,7 +175,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"湖人","",""}
 	);
-	DefaultTableModel modelOfReHuo=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf17=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -184,7 +184,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"热火","",""}
 	);
-	DefaultTableModel modelOfHuoSai=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf18=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -193,7 +193,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"活塞","",""}
 	);
-	DefaultTableModel modelOfBuXingZhe=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf19=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -202,7 +202,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"步行者","",""}
 	);
-	DefaultTableModel modelOfTiHu=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf20=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -211,7 +211,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"鹈鹕","",""}
 	);
-	DefaultTableModel modelOfQiShi=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf21=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -220,7 +220,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"骑士","",""}
 	);
-	DefaultTableModel modelOfGuoWang=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf22=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -229,7 +229,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"国王","",""}
 	);
-	DefaultTableModel modelOfKaiTuoZhe=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf23=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -238,7 +238,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"开拓者","",""}
 	);
-	DefaultTableModel modelOfTaiYang=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf24=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -247,7 +247,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"太阳","",""}
 	);
-	DefaultTableModel modelOf76Ren=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf25=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -256,7 +256,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"76人","",""}
 	);
-	DefaultTableModel modelOfJueJin=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf26=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -265,7 +265,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"掘金","",""}
 	);
-	DefaultTableModel modelOfKuaiChuan=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf27=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -274,7 +274,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"快船","",""}
 	);
-	DefaultTableModel modelOfYongShi=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf28=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -283,7 +283,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"勇士","",""}
 	);
-	DefaultTableModel modelOfNiKeSi=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf29=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -292,7 +292,7 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"尼克斯","",""}
 	);
-	DefaultTableModel modelOfJueShi=new DefaultTableModel(new Object[][] {
+	DefaultTableModel modelOf30=new DefaultTableModel(new Object[][] {
 			{null, null, null},
 			{null, null, null},
 			{null, null, null},
@@ -301,36 +301,36 @@ public class PlayerSelectionPanel extends JPanel {
 		},
 		new String[] {"爵士","",""}
 	);
-	private JTable tableOfLanWang;
-	private JTable tableOfHuangFeng;
-	private JTable tableOfGongNiu;
-	private JTable tableOfMoShu;
-	private JTable tableOfXiongLu;
-	private JTable tableOfHuoJian;
-	private JTable tableOfLaoYing;
-	private JTable tableOfSenLinLang;
-	private JTable tableOfQiCai;
-	private JTable tableOfKaiErTeRen;
-	private JTable tableOfXiaoNiu;
-	private JTable tableOfMengLong;
-	private JTable tableOfMaCi;
-	private JTable tableOfHuiXiong;
-	private JTable tableOfLeiTing;
-	private JTable tableOfHuRen;
-	private JTable tableOfReHuo;
-	private JTable tableOfHuoSai;
-	private JTable tableOfBuXingZhe;
-	private JTable tableOfTiHu;
-	private JTable tableOfQiShi;
-	private JTable tableOfGuoWang;
-	private JTable tableOfKaiTuoZhe;
-	private JTable tableOfTaiYang;
-	private JTable tableOf76Ren;
-	private JTable tableOfJueJin;
-	private JTable tableOfKuaiChuan;
-	private JTable tableOfYongShi;
-	private JTable tableOfNiKeSi;
-	private JTable tableOfJueShi;
+	private JTable tableOf1;
+	private JTable tableOf2;
+	private JTable tableOf3;
+	private JTable tableOf4;
+	private JTable tableOf5;
+	private JTable tableOf6;
+	private JTable tableOf7;
+	private JTable tableOf8;
+	private JTable tableOf9;
+	private JTable tableOf10;
+	private JTable tableOf11;
+	private JTable tableOf12;
+	private JTable tableOf13;
+	private JTable tableOf14;
+	private JTable tableOf15;
+	private JTable tableOf16;
+	private JTable tableOf17;
+	private JTable tableOf18;
+	private JTable tableOf19;
+	private JTable tableOf20;
+	private JTable tableOf21;
+	private JTable tableOf22;
+	private JTable tableOf23;
+	private JTable tableOf24;
+	private JTable tableOf25;
+	private JTable tableOf26;
+	private JTable tableOf27;
+	private JTable tableOf28;
+	private JTable tableOf29;
+	private JTable tableOf30;
 	
 	JPanel panelOfBottom = new JPanel();
 	private JLabel label;
@@ -346,125 +346,125 @@ public class PlayerSelectionPanel extends JPanel {
 		this.setOpaque(false);
 		setLayout(null);
 		
-		tableOfLanWang = new JTable(modelOfLanWang);
-		tableOfLanWang.setBounds(0, 20, 900, 80);
-		tableOfLanWang.addMouseListener(listener);
+		tableOf1 = new JTable(modelOf1);
+		tableOf1.setBounds(0, 20, 900, 80);
+		tableOf1.addMouseListener(listener);
 		
-		tableOfHuangFeng = new JTable(modelOfHuangFeng);
-		tableOfHuangFeng.setBounds(0, 120, 900, 80);
-		tableOfHuangFeng.addMouseListener(listener);
+		tableOf2 = new JTable(modelOf2);
+		tableOf2.setBounds(0, 120, 900, 80);
+		tableOf2.addMouseListener(listener);
 		
-		tableOfGongNiu = new JTable(modelOfGongNiu);
-		tableOfGongNiu.setBounds(0, 220, 900, 80);
-		tableOfGongNiu.addMouseListener(listener);
+		tableOf3 = new JTable(modelOf3);
+		tableOf3.setBounds(0, 220, 900, 80);
+		tableOf3.addMouseListener(listener);
 		
-		tableOfMoShu = new JTable(modelOfMoShu );
-		tableOfMoShu.setBounds(0, 320, 900, 80);
-		tableOfMoShu.addMouseListener(listener);
+		tableOf4 = new JTable(modelOf4 );
+		tableOf4.setBounds(0, 320, 900, 80);
+		tableOf4.addMouseListener(listener);
 		
-		tableOfXiongLu = new JTable(modelOfXiongLu);
-		tableOfXiongLu.setBounds(0, 420, 900, 80);
-		tableOfXiongLu.addMouseListener(listener);
+		tableOf5 = new JTable(modelOf5);
+		tableOf5.setBounds(0, 420, 900, 80);
+		tableOf5.addMouseListener(listener);
 		
-		tableOfHuoJian = new JTable(modelOfHuoJian);
-		tableOfHuoJian.setBounds(0, 520, 900, 80);
-		tableOfHuoJian.addMouseListener(listener);
+		tableOf6 = new JTable(modelOf6);
+		tableOf6.setBounds(0, 520, 900, 80);
+		tableOf6.addMouseListener(listener);
 		
-		tableOfLaoYing = new JTable(modelOfLaoYing);
-		tableOfLaoYing.setBounds(0, 620, 900, 80);
-		tableOfLaoYing.addMouseListener(listener);
+		tableOf7 = new JTable(modelOf7);
+		tableOf7.setBounds(0, 620, 900, 80);
+		tableOf7.addMouseListener(listener);
 		
-		tableOfSenLinLang = new JTable(modelOfSenLinLang);
-		tableOfSenLinLang.setBounds(0, 720, 900, 80);
-		tableOfSenLinLang.addMouseListener(listener);
+		tableOf8 = new JTable(modelOf8);
+		tableOf8.setBounds(0, 720, 900, 80);
+		tableOf8.addMouseListener(listener);
 		
-		tableOfQiCai = new JTable(modelOfQiCai);
-		tableOfQiCai.setBounds(0, 820, 900, 80);
-		tableOfQiCai.addMouseListener(listener);
+		tableOf9 = new JTable(modelOf9);
+		tableOf9.setBounds(0, 820, 900, 80);
+		tableOf9.addMouseListener(listener);
 		
-		tableOfKaiErTeRen = new JTable(modelOfKaiErTeRen);
-		tableOfKaiErTeRen.setBounds(0, 920, 900, 80);
-		tableOfKaiErTeRen.addMouseListener(listener);
+		tableOf10 = new JTable(modelOf10);
+		tableOf10.setBounds(0, 920, 900, 80);
+		tableOf10.addMouseListener(listener);
 		
-		tableOfXiaoNiu = new JTable(modelOfXiaoNiu);
-		tableOfXiaoNiu.setBounds(0, 1020, 900, 80);
-		tableOfXiaoNiu.addMouseListener(listener);
+		tableOf11 = new JTable(modelOf11);
+		tableOf11.setBounds(0, 1020, 900, 80);
+		tableOf11.addMouseListener(listener);
 		
-		tableOfMengLong = new JTable(modelOfMengLong);
-		tableOfMengLong.setBounds(0, 1120, 900, 80);
-		tableOfMengLong.addMouseListener(listener);
+		tableOf12 = new JTable(modelOf12);
+		tableOf12.setBounds(0, 1120, 900, 80);
+		tableOf12.addMouseListener(listener);
 		
-		tableOfMaCi = new JTable(modelOfMaCi);
-		tableOfMaCi.setBounds(0, 1220, 900, 80);
-		tableOfMaCi.addMouseListener(listener);
+		tableOf13 = new JTable(modelOf13);
+		tableOf13.setBounds(0, 1220, 900, 80);
+		tableOf13.addMouseListener(listener);
 		
-		tableOfHuiXiong = new JTable(modelOfHuiXiong);
-		tableOfHuiXiong.setBounds(0, 1320, 900, 80);
-		tableOfHuiXiong.addMouseListener(listener);
+		tableOf14 = new JTable(modelOf14);
+		tableOf14.setBounds(0, 1320, 900, 80);
+		tableOf14.addMouseListener(listener);
 		
-		tableOfLeiTing = new JTable(modelOfLeiTing);
-		tableOfLeiTing.setBounds(0, 1420, 900, 80);
-		tableOfLeiTing.addMouseListener(listener);
+		tableOf15 = new JTable(modelOf15);
+		tableOf15.setBounds(0, 1420, 900, 80);
+		tableOf15.addMouseListener(listener);
 		
-		tableOfHuRen = new JTable(modelOfHuRen);
-		tableOfHuRen.setBounds(0, 1520, 900, 80);
-		tableOfHuRen.addMouseListener(listener);
+		tableOf16 = new JTable(modelOf16);
+		tableOf16.setBounds(0, 1520, 900, 80);
+		tableOf16.addMouseListener(listener);
 		
-		tableOfReHuo = new JTable(modelOfReHuo);
-		tableOfReHuo.setBounds(0, 1620, 900, 80);
-		tableOfReHuo.addMouseListener(listener);
+		tableOf17 = new JTable(modelOf17);
+		tableOf17.setBounds(0, 1620, 900, 80);
+		tableOf17.addMouseListener(listener);
 		
-		tableOfHuoSai = new JTable(modelOfHuoSai);
-		tableOfHuoSai.setBounds(0, 1720, 900, 80);
-		tableOfHuoSai.addMouseListener(listener);
+		tableOf18 = new JTable(modelOf18);
+		tableOf18.setBounds(0, 1720, 900, 80);
+		tableOf18.addMouseListener(listener);
 		
-		tableOfBuXingZhe = new JTable(modelOfBuXingZhe);
-		tableOfBuXingZhe.setBounds(0, 1820, 900, 80);
-		tableOfBuXingZhe.addMouseListener(listener);
+		tableOf19 = new JTable(modelOf19);
+		tableOf19.setBounds(0, 1820, 900, 80);
+		tableOf19.addMouseListener(listener);
 		
-		tableOfTiHu = new JTable(modelOfTiHu);
-		tableOfTiHu.setBounds(0, 1920, 900, 80);
-		tableOfTiHu.addMouseListener(listener);
+		tableOf20 = new JTable(modelOf20);
+		tableOf20.setBounds(0, 1920, 900, 80);
+		tableOf20.addMouseListener(listener);
 		
-		tableOfQiShi = new JTable(modelOfQiShi);
-		tableOfQiShi.setBounds(0, 2020, 900, 80);
-		tableOfQiShi.addMouseListener(listener);
+		tableOf21 = new JTable(modelOf21);
+		tableOf21.setBounds(0, 2020, 900, 80);
+		tableOf21.addMouseListener(listener);
 		
-		tableOfGuoWang = new JTable(modelOfGuoWang);
-		tableOfGuoWang.setBounds(0, 2120, 900, 80);
-		tableOfGuoWang.addMouseListener(listener);
+		tableOf22 = new JTable(modelOf22);
+		tableOf22.setBounds(0, 2120, 900, 80);
+		tableOf22.addMouseListener(listener);
 		
-		tableOfKaiTuoZhe = new JTable(modelOfKaiTuoZhe);
-		tableOfKaiTuoZhe.setBounds(0, 2220, 900, 80);
-		tableOfKaiTuoZhe.addMouseListener(listener);
+		tableOf23 = new JTable(modelOf23);
+		tableOf23.setBounds(0, 2220, 900, 80);
+		tableOf23.addMouseListener(listener);
 		
-		tableOfTaiYang = new JTable(modelOfTaiYang);
-		tableOfTaiYang.setBounds(0, 2320, 900, 80);
-		tableOfTaiYang.addMouseListener(listener);
+		tableOf24 = new JTable(modelOf24);
+		tableOf24.setBounds(0, 2320, 900, 80);
+		tableOf24.addMouseListener(listener);
 		
-		tableOf76Ren = new JTable(modelOf76Ren);
-		tableOf76Ren.setBounds(0, 2420, 900, 80);
-		tableOf76Ren.addMouseListener(listener);
+		tableOf25 = new JTable(modelOf25);
+		tableOf25.setBounds(0, 2420, 900, 80);
+		tableOf25.addMouseListener(listener);
 		
-		tableOfJueJin = new JTable(modelOfJueJin);
-		tableOfJueJin.setBounds(0, 2520, 900, 80);
-		tableOfJueJin.addMouseListener(listener);
+		tableOf26 = new JTable(modelOf26);
+		tableOf26.setBounds(0, 2520, 900, 80);
+		tableOf26.addMouseListener(listener);
 		
-		tableOfKuaiChuan = new JTable(modelOfKuaiChuan);
-		tableOfKuaiChuan.setBounds(0, 2620, 900, 80);
-		tableOfKuaiChuan.addMouseListener(listener);
+		tableOf27 = new JTable(modelOf27);
+		tableOf27.setBounds(0, 2620, 900, 80);
+		tableOf27.addMouseListener(listener);
 		
-		tableOfYongShi = new JTable(modelOfYongShi);
-		tableOfYongShi.setBounds(0, 2720, 900, 80);
-		tableOfYongShi.addMouseListener(listener);
+		tableOf28 = new JTable(modelOf28);
+		tableOf28.setBounds(0, 2720, 900, 80);
+		tableOf28.addMouseListener(listener);
 		
-		tableOfNiKeSi = new JTable(modelOfNiKeSi);
-		tableOfNiKeSi.setBounds(0, 2820, 900, 80);
-		tableOfNiKeSi.addMouseListener(listener);
+		tableOf29 = new JTable(modelOf29);
+		tableOf29.setBounds(0, 2820, 900, 80);
+		tableOf29.addMouseListener(listener);
 		
-		tableOfJueShi = new JTable(modelOfJueShi);
-		tableOfJueShi.setBounds(0, 2920, 900, 80);
-		tableOfJueShi.addMouseListener(listener);
+		tableOf30 = new JTable(modelOf30);
+		tableOf30.setBounds(0, 2920, 900, 80);
+		tableOf30.addMouseListener(listener);
 		
 		
 		scrollPane = new JScrollPane(panelOfBottom);
@@ -486,36 +486,36 @@ public class PlayerSelectionPanel extends JPanel {
 			}
 		});
 			
-		panelOfBottom.add(tableOfLanWang);
-		panelOfBottom.add(tableOfHuangFeng);
-		panelOfBottom.add(tableOfGongNiu);
-		panelOfBottom.add(tableOfMoShu);
-		panelOfBottom.add(tableOfXiongLu);
-		panelOfBottom.add(tableOfHuoJian);
-		panelOfBottom.add(tableOfLaoYing);
-		panelOfBottom.add(tableOfSenLinLang);
-		panelOfBottom.add(tableOfQiCai);
-		panelOfBottom.add(tableOfKaiErTeRen);
-		panelOfBottom.add(tableOfXiaoNiu);	
-		panelOfBottom.add(tableOfMengLong);
-		panelOfBottom.add(tableOfMaCi);
-		panelOfBottom.add(tableOfHuiXiong);
-		panelOfBottom.add(tableOfLeiTing);		
-		panelOfBottom.add(tableOfHuRen);
-		panelOfBottom.add(tableOfReHuo);
-		panelOfBottom.add(tableOfHuoSai);
-		panelOfBottom.add(tableOfBuXingZhe);
-		panelOfBottom.add(tableOfTiHu);
-		panelOfBottom.add(tableOfQiShi);
-		panelOfBottom.add(tableOfGuoWang);
-		panelOfBottom.add(tableOfKaiTuoZhe);
-		panelOfBottom.add(tableOfTaiYang);
-		panelOfBottom.add(tableOf76Ren);
-		panelOfBottom.add(tableOfJueJin);
-		panelOfBottom.add(tableOfKuaiChuan);
-		panelOfBottom.add(tableOfYongShi);
-		panelOfBottom.add(tableOfNiKeSi);
-		panelOfBottom.add(tableOfJueShi);				
+		panelOfBottom.add(tableOf1);
+		panelOfBottom.add(tableOf2);
+		panelOfBottom.add(tableOf3);
+		panelOfBottom.add(tableOf4);
+		panelOfBottom.add(tableOf5);
+		panelOfBottom.add(tableOf6);
+		panelOfBottom.add(tableOf7);
+		panelOfBottom.add(tableOf8);
+		panelOfBottom.add(tableOf9);
+		panelOfBottom.add(tableOf10);
+		panelOfBottom.add(tableOf11);	
+		panelOfBottom.add(tableOf12);
+		panelOfBottom.add(tableOf13);
+		panelOfBottom.add(tableOf14);
+		panelOfBottom.add(tableOf15);		
+		panelOfBottom.add(tableOf16);
+		panelOfBottom.add(tableOf17);
+		panelOfBottom.add(tableOf18);
+		panelOfBottom.add(tableOf19);
+		panelOfBottom.add(tableOf20);
+		panelOfBottom.add(tableOf21);
+		panelOfBottom.add(tableOf22);
+		panelOfBottom.add(tableOf23);
+		panelOfBottom.add(tableOf24);
+		panelOfBottom.add(tableOf25);
+		panelOfBottom.add(tableOf26);
+		panelOfBottom.add(tableOf27);
+		panelOfBottom.add(tableOf28);
+		panelOfBottom.add(tableOf29);
+		panelOfBottom.add(tableOf30);				
 		
 		if(teamWithPlayer!=null&&teamWithPlayer.size()!=0) {
 			int index=0;
@@ -524,124 +524,211 @@ public class PlayerSelectionPanel extends JPanel {
 			JLabel label1 = new JLabel(vo.getTeam().getFullName());
 			label1.setBounds(5, 0, 54, 20);
 			panelOfBottom.add(label1);
-			initialName(modelOfLanWang, tableOfLanWang, vo);
+			initialName(modelOf1, tableOf1, vo);
 			
-			
-			JLabel lable2 = new JLabel("黄蜂");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable2 = new JLabel(vo.getTeam().getFullName());
 			lable2.setBounds(5, 100, 54, 20);
 			panelOfBottom.add(lable2);
+			initialName(modelOf2, tableOf2, vo);
 			
-			JLabel label3 = new JLabel("公牛");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel label3 = new JLabel(vo.getTeam().getFullName());
 			label3.setBounds(5, 200, 54, 20);
 			panelOfBottom.add(label3);
+			initialName(modelOf3, tableOf3, vo);
 			
-			JLabel label4 = new JLabel("魔术");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel label4 = new JLabel(vo.getTeam().getFullName());
 			label4.setBounds(5, 300, 54, 20);
 			panelOfBottom.add(label4);
+			initialName(modelOf4, tableOf4, vo);
 			
-			JLabel label5 = new JLabel("雄鹿");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel label5 = new JLabel(vo.getTeam().getFullName());
 			label5.setBounds(5, 400, 54, 20);
 			panelOfBottom.add(label5);
+			initialName(modelOf5, tableOf5, vo);
 			
-			JLabel lable6 = new JLabel("火箭");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable6 = new JLabel(vo.getTeam().getFullName());
 			lable6.setBounds(5, 500, 54, 20);
 			panelOfBottom.add(lable6);
+			initialName(modelOf6, tableOf6, vo);
 			
-			JLabel lable7 = new JLabel("老鹰");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable7 = new JLabel(vo.getTeam().getFullName());
 			lable7.setBounds(5, 600, 54, 20);
 			panelOfBottom.add(lable7);
+			initialName(modelOf7, tableOf7, vo);
 			
-			JLabel lable8 = new JLabel("森林狼");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable8 = new JLabel(vo.getTeam().getFullName());
 			lable8.setBounds(5, 700, 54, 20);
 			panelOfBottom.add(lable8);
+			initialName(modelOf8, tableOf8, vo);
 			
-			JLabel lable9 = new JLabel("奇才");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable9 = new JLabel(vo.getTeam().getFullName());
 			lable9.setBounds(5, 800, 54, 20);
 			panelOfBottom.add(lable9);
+			initialName(modelOf9, tableOf9, vo);
 			
-			JLabel lable10 = new JLabel("凯尔特人");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable10 = new JLabel(vo.getTeam().getFullName());
 			lable10.setBounds(5, 900, 54, 20);
 			panelOfBottom.add(lable10);
+			initialName(modelOf10, tableOf10, vo);
 			
-			JLabel lable11 = new JLabel("小牛");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable11 = new JLabel(vo.getTeam().getFullName());
 			lable11.setBounds(5, 1000, 54, 20);
 			panelOfBottom.add(lable11);
+			initialName(modelOf11, tableOf11, vo);
 			
-			JLabel lable12 = new JLabel("猛龙");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable12 = new JLabel(vo.getTeam().getFullName());
 			lable12.setBounds(5, 1100, 54, 20);
 			panelOfBottom.add(lable12);
+			initialName(modelOf12, tableOf12, vo);
 			
-			JLabel lable13 = new JLabel("马刺");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable13 = new JLabel(vo.getTeam().getFullName());
 			lable13.setBounds(5, 1200, 54, 20);
 			panelOfBottom.add(lable13);
+			initialName(modelOf13, tableOf13, vo);
 			
-			JLabel lable14 = new JLabel("灰熊");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable14 = new JLabel(vo.getTeam().getFullName());
 			lable14.setBounds(5, 1300, 54, 20);
 			panelOfBottom.add(lable14);
+			initialName(modelOf14, tableOf14, vo);
 			
-			JLabel lable15 = new JLabel("雷霆");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable15 = new JLabel(vo.getTeam().getFullName());
 			lable15.setBounds(5, 1400, 54, 20);
 			panelOfBottom.add(lable15);
+			initialName(modelOf15, tableOf15, vo);
 			
-			JLabel lable16 = new JLabel("湖人");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable16 = new JLabel(vo.getTeam().getFullName());
 			lable16.setBounds(5, 1500, 54, 20);
 			panelOfBottom.add(lable16);
+			initialName(modelOf16, tableOf16, vo);
 			
-			JLabel lable17 = new JLabel("热火");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable17 = new JLabel(vo.getTeam().getFullName());
 			lable17.setBounds(5, 1600, 54, 20);
 			panelOfBottom.add(lable17);
+			initialName(modelOf17, tableOf17, vo);
 			
-			JLabel lable18 = new JLabel("活塞");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable18 = new JLabel(vo.getTeam().getFullName());
 			lable18.setBounds(5, 1700, 54, 20);
 			panelOfBottom.add(lable18);
+			initialName(modelOf18, tableOf18, vo);
 			
-			JLabel lable19 = new JLabel("步行者");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable19 = new JLabel(vo.getTeam().getFullName());
 			lable19.setBounds(5, 1800, 54, 20);
 			panelOfBottom.add(lable19);
+			initialName(modelOf19, tableOf19, vo);
 			
-			JLabel lable20 = new JLabel("鹈鹕");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable20 = new JLabel(vo.getTeam().getFullName());
 			lable20.setBounds(5, 1900, 54, 20);
 			panelOfBottom.add(lable20);
+			initialName(modelOf20, tableOf20, vo);
 			
-			JLabel lable21 = new JLabel("骑士");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable21 = new JLabel(vo.getTeam().getFullName());
 			lable21.setBounds(5, 2000, 54, 20);
 			panelOfBottom.add(lable21);
+			initialName(modelOf21, tableOf21, vo);
 			
-			JLabel lable22 = new JLabel("国王");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable22 = new JLabel(vo.getTeam().getFullName());
 			lable22.setBounds(5, 2100, 54, 20);
 			panelOfBottom.add(lable22);
+			initialName(modelOf22, tableOf22, vo);
 			
-			JLabel lable23 = new JLabel("开拓者");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable23 = new JLabel(vo.getTeam().getFullName());
 			lable23.setBounds(5, 2200, 54, 20);
 			panelOfBottom.add(lable23);
+			initialName(modelOf23, tableOf23, vo);
 			
-			JLabel lable24 = new JLabel("太阳");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable24 = new JLabel(vo.getTeam().getFullName());
 			lable24.setBounds(5, 2300, 54, 20);
 			panelOfBottom.add(lable24);
+			initialName(modelOf24, tableOf24, vo);
 			
-			JLabel lable25 = new JLabel("76人");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable25 = new JLabel(vo.getTeam().getFullName());
 			lable25.setBounds(5, 2400, 54, 20);
 			panelOfBottom.add(lable25);
+			initialName(modelOf25, tableOf25, vo);
 			
-			JLabel lable26 = new JLabel("掘金");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable26 = new JLabel(vo.getTeam().getFullName());
 			lable26.setBounds(5, 2500, 54, 20);
 			panelOfBottom.add(lable26);
+			initialName(modelOf26, tableOf26, vo);
 			
-			JLabel lable27 = new JLabel("快船");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable27 = new JLabel(vo.getTeam().getFullName());
 			lable27.setBounds(5, 2600, 54, 20);
 			panelOfBottom.add(lable27);
+			initialName(modelOf27, tableOf27, vo);
 			
-			JLabel lable28 = new JLabel("勇士");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable28 = new JLabel(vo.getTeam().getFullName());
 			lable28.setBounds(5, 2700, 54, 20);
 			panelOfBottom.add(lable28);
+			initialName(modelOf28, tableOf28, vo);
 			
-			JLabel lable29 = new JLabel("尼克斯");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable29 = new JLabel(vo.getTeam().getFullName());
 			lable29.setBounds(5, 2800, 54, 20);
 			panelOfBottom.add(lable29);
+			initialName(modelOf29, tableOf29, vo);
 			
-			JLabel lable30 = new JLabel("爵士");
+			vo = teamWithPlayer.get(index);
+			index++;
+			JLabel lable30 = new JLabel(vo.getTeam().getFullName());
 			lable30.setBounds(5, 2900, 54, 20);
 			panelOfBottom.add(lable30);
+			initialName(modelOf30, tableOf30, vo);
+			
 		}
 		
 	}
@@ -672,10 +759,14 @@ public class PlayerSelectionPanel extends JPanel {
 		}
 		rowDatas.add(rowData1); rowDatas.add(rowData2);rowDatas.add(rowData3);
 		rowDatas.add(rowData4);rowDatas.add(rowData5);
+		int k=3,size = players.size();
 		for(int i=0;i<rowDatas.size();i++){
-			for(int j=0;j<3;j++) {
+			
+			if(size<3) k=2;
+			for(int j=0;j<k;j++) {
 				m.setValueAt(((Vector) rowDatas.get(i)).get(j), i, j);
 			}
+			size-=3;
 		}
 		m.setRowCount(5); m.setColumnCount(3);
 		t.setModel(m);

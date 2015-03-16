@@ -4,12 +4,16 @@ import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import org.jvnet.substance.SubstanceLookAndFeel;
 import org.jvnet.substance.border.FlatInnerBorderPainter;
@@ -24,6 +28,10 @@ import presentation.playerui.PlayerSelectionPanel;
 import presentation.teamsui.TeamsSelectionFrame;
 import presentation.teamsui.TeamsInfoFrame;
 import presentation.teamsui.TeamsRankingFrame;
+import server.businesslogic.Compute;
+import vo.PlayerVO;
+import vo.TeamVO;
+import vo.TeamWithPlayersVO;
 
 public class MainFrame {
 
@@ -32,6 +40,16 @@ public class MainFrame {
 	public static JPanel panel;
 	
 	public static PlayerInfoPanel pip;
+	
+	Compute compute;
+	
+	String table_1_columns[] ={
+			"球队", "投篮命中率", "三分命中率", "罚球命中率", "胜率", "进攻回合", "进攻效率", "防守效率", "进攻篮板效率", "防守篮板效率", "抢断效率", "助攻率"
+		};
+	
+	String table_columns[] ={
+			"球员", "位置", "赛区", "分区", "得分", "篮板", "助攻", "盖帽", "抢断", "犯规", "失误", "分钟", "效率", "投篮", "三分", "罚球", "两双"
+		};
 	
 	public static void main(String[] args) {
 		try{
@@ -78,7 +96,6 @@ public class MainFrame {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	
 	private void initPanels(){
 		TeamsSelectionFrame window = new TeamsSelectionFrame();
 		frame.getContentPane().add(TeamsSelectionFrame.scrollPane);
@@ -96,7 +113,19 @@ public class MainFrame {
 		frame.getContentPane().add(PlayerSelectionPanel.scrollPane);
 		PlayerSelectionPanel.scrollPane.setVisible(false);
 		
-		new PlayerRankingPanel();
+		Object table_rows[][] ={
+				{"X0", "中锋", "西部西南区", 999, 888, 777, 666, 555, 444, 333, 500, 400, 0, 100, 200, 300},
+		};
+		String table_columns[] ={
+				"球员", "位置", "赛区", "得分", "篮板", "助攻", "盖帽", "抢断", "犯规", "失误", "分钟", "效率", "投篮", "三分", "罚球", "两双"
+			};
+		DefaultTableModel model=new DefaultTableModel(table_rows, table_columns){
+			private static final long serialVersionUID = 1L;
+			public Class<?> getColumnClass(int columnIndex) {
+                return getValueAt(0,columnIndex).getClass();
+            }
+        };
+		new PlayerRankingPanel(model);
 		frame.getContentPane().add(PlayerRankingPanel.scrollPane);
 		PlayerRankingPanel.scrollPane.setVisible(false);
 		
@@ -148,9 +177,9 @@ public class MainFrame {
 
 			public void actionPerformed(ActionEvent e) {
 				try {
-					MainFrame.panel.setVisible(false);
-					TeamsRankingFrame.scrollPane.setVisible(true);
-					MainFrame.frame.setTitle("NBA球队排名");
+					
+					setTeamsRanking();
+					
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -186,9 +215,9 @@ public class MainFrame {
 
 			public void actionPerformed(ActionEvent e) {
 				try {
-					MainFrame.panel.setVisible(false);
-					PlayerRankingPanel.scrollPane.setVisible(true);
-					MainFrame.frame.setTitle("NBA球员排名");
+					
+					setPlayersRanking();
+					
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -198,5 +227,92 @@ public class MainFrame {
 		});
 		
 	}
+	
+	public void setTeamsRanking(){//设置球队排名面板信息
+		MainFrame.panel.setVisible(false);
+		TeamsRankingFrame.scrollPane.setVisible(true);
+		MainFrame.frame.setTitle("NBA球队排名");
+		
+		compute=new Compute();
+		ArrayList<TeamVO> tvoList=compute.getTeamAnalysis();
+		
+		Object table_rows[][] = new Object[30][17];
+		for(int i=0;i<tvoList.size();i++){
+			TeamVO tvo=tvoList.get(i);
+			table_rows[i][0]=tvo.getFullName();
+			table_rows[i][1]=tvo.getAppearance();table_rows[i][2]=tvo.getHit();table_rows[i][3]=tvo.getShot();
+			table_rows[i][4]=tvo.getThirdHit();table_rows[i][5]=tvo.getThirdshot();table_rows[i][6]=tvo.getFreeHit();
+			table_rows[i][7]=tvo.getFreeshot();table_rows[i][8]=tvo.getOffensiveRebound();table_rows[i][9]=tvo.getDefensiveRebound();
+			table_rows[i][10]=tvo.getTotalRebound();table_rows[i][11]=tvo.getAssist();table_rows[i][12]=tvo.getSteal();
+			table_rows[i][13]=tvo.getBlock();table_rows[i][14]=tvo.getMiss();table_rows[i][15]=tvo.getFoul();
+			table_rows[i][16]=tvo.getScore();
+		}
+		
+		Object table_1_rows[][] = new Object[30][12];
+		for(int i=0;i<tvoList.size();i++){
+			TeamVO tvo=tvoList.get(i);
+			table_1_rows[i][0]=tvo.getFullName();
+			table_1_rows[i][1]=tvo.getHitRate();
+			table_1_rows[i][2]=tvo.getThirdHitRate();
+			table_1_rows[i][3]=tvo.getFreeHitRate();
+			table_1_rows[i][4]=tvo.getWinRate();
+			table_1_rows[i][5]=tvo.getOffensiveRound();
+			table_1_rows[i][6]=tvo.getOffensiveEfficiency();
+			table_1_rows[i][7]=tvo.getDefensiveEfficiency();
+			table_1_rows[i][8]=tvo.getOffensiveReboundEfficiency();
+			table_1_rows[i][9]=tvo.getDefensiveReboundEfficiency();
+			table_1_rows[i][10]=tvo.getStealEfficiency();
+			table_1_rows[i][11]=tvo.getAssistEfficiency();
+		}
+		
+		DefaultTableModel model=new DefaultTableModel(table_rows, table_columns){
+			private static final long serialVersionUID = 1L;
+			public Class<?> getColumnClass(int columnIndex) {
+                return getValueAt(0,columnIndex).getClass();
+            }
+        };
+        TeamsRankingFrame.table.setModel(model);
+        TeamsRankingFrame.table.setRowSorter(new TableRowSorter<TableModel>(model));
+        
+        DefaultTableModel model1=new DefaultTableModel(table_1_rows, table_1_columns){
+			private static final long serialVersionUID = 1L;
+			public Class<?> getColumnClass(int columnIndex) {
+                return getValueAt(0,columnIndex).getClass();
+            }
+        };
+        TeamsRankingFrame.table_1.setModel(model1);
+        TeamsRankingFrame.table_1.setRowSorter(new TableRowSorter<TableModel>(model1));
+	}
+	
+	public void setPlayersRanking(){//设置球员排名面板信息
+		MainFrame.panel.setVisible(false);
+		MainFrame.frame.setTitle("NBA球员排名");
+		
+		compute=new Compute();
+		ArrayList<PlayerVO> pvoList=compute.getPlayerAnalysis();
+		
+		Object table_rows[][] = new Object[100][17];
+		for(int i=0;i<pvoList.size();i++){
+			PlayerVO pvo=pvoList.get(i);
+			table_rows[i][0]=pvo.getName();
+			table_rows[i][1]=pvo.getPosition();table_rows[i][2]=pvo.getDivision();table_rows[i][3]=pvo.getZone();
+			table_rows[i][4]=pvo.getScore();table_rows[i][5]=pvo.getTotalRebound();table_rows[i][6]=pvo.getAssist();
+			table_rows[i][7]=pvo.getBlock();table_rows[i][8]=pvo.getSteal();table_rows[i][9]=pvo.getFoul();
+			table_rows[i][10]=pvo.getMiss();table_rows[i][11]=pvo.getPlayTime();table_rows[i][12]=pvo.getEfficiency();
+			table_rows[i][13]=pvo.getHitRate();table_rows[i][14]=pvo.getThirdHitRate();table_rows[i][15]=pvo.getFreeHitRate();
+			table_rows[i][16]="两双";//两双
+		}
+		
+		DefaultTableModel model=new DefaultTableModel(table_rows, table_columns){
+			private static final long serialVersionUID = 1L;
+			public Class<?> getColumnClass(int columnIndex) {
+                return getValueAt(0,columnIndex).getClass();
+            }
+        };
+        new PlayerRankingPanel(model);
+		frame.getContentPane().add(PlayerRankingPanel.scrollPane);
+		PlayerRankingPanel.scrollPane.setVisible(true);
+	}
+	
 }
 

@@ -27,8 +27,8 @@ public class PlayerRankingPanel extends JPanel {
 	
 	public static JScrollPane scrollPane;
 	private JButton btnNewButton;
-	private JTable table;
-	private JTable table_1;
+	public static JTable table;
+	public static JTable table_1;
 	
 	public static JCheckBox chckbxNewCheckBox;
 	public static JCheckBox chckbxNewCheckBox_1;
@@ -42,7 +42,7 @@ public class PlayerRankingPanel extends JPanel {
 	public static JCheckBox chckbxNewCheckBox_9;
 	public static JCheckBox chckbxNewCheckBox_10;
 	
-	public PlayerRankingPanel() {
+	public PlayerRankingPanel(DefaultTableModel model) {
 		setLayout(null);
 		
 		scrollPane = new JScrollPane();
@@ -63,36 +63,10 @@ public class PlayerRankingPanel extends JPanel {
 			}
 			
 		});
-		
-		Object table_rows[][] ={
-				{"X5", "中锋", "西部西南区", 999, 888, 777, 666, 555, 444, 333, 500, 400, 0, 100, 200, 300},
-				{"X0", "前锋", "西部西南区", 999, 888, 777, 666, 555, 444, 333, 500, 400, 0, 100, 200, 300},
-				{"X6", "后卫", "西部太平洋区", 999, 888, 777, 666, 555, 444, 333, 500, 400, 0, 100, 200, 300},
-				{"X1", "中锋", "西部太平洋区", 999, 888, 777, 666, 555, 444, 333, 500, 400, 0, 100, 200, 300},
-				{"X7", "后卫", "东部东南区", 999, 888, 777, 666, 555, 444, 333, 500, 400, 0, 100, 200, 300},
-				{"X2", "前锋", "东部东南区", 999, 888, 777, 666, 555, 444, 333, 500, 400, 0, 100, 200, 300},
-				{"X8", "后卫", "东部大西洋区", 999, 888, 777, 666, 555, 444, 333, 500, 400, 0, 100, 200, 300},
-				{"X3", "中锋", "东部大西洋区", 999, 888, 777, 666, 555, 444, 333, 500, 400, 0, 100, 200, 300},
-				{"X9", "前锋", "西部西北区", 999, 888, 777, 666, 555, 444, 333, 500, 400, 0, 100, 200, 300},
-				{"X4", "前锋", "西部西北区", 999, 888, 777, 666, 555, 444, 333, 500, 400, 0, 100, 200, 300},
-				{"X10", "前锋", "西部西南区", 999, 888, 777, 666, 555, 444, 333, 500, 400, 0, 100, 200, 300},
-				{"X12", "后卫", "西部西南区", 999, 888, 777, 666, 555, 444, 333, 500, 400, 0, 100, 200, 300},
-				{"X11", "中锋", "东部中区", 999, 888, 777, 666, 555, 444, 333, 500, 400, 0, 100, 200, 300},
-				{"X13", "前锋", "东部中区", 999, 888, 777, 666, 555, 444, 333, 500, 400, 0, 100, 200, 300},
-					
-		};
-		String table_columns[] ={
-				"球员", "位置", "赛区", "得分", "篮板", "助攻", "盖帽", "抢断", "犯规", "失误", "分钟", "效率", "投篮", "三分", "罚球", "两双"
-			};
-		DefaultTableModel model=new DefaultTableModel(table_rows, table_columns){
-			private static final long serialVersionUID = 1L;
-			public Class<?> getColumnClass(int columnIndex) {
-                return getValueAt(0,columnIndex).getClass();
-            }
-        };
+
 		table = new JTable();
 		table.setModel(model);
-		final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model); 
+		final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
 		table.setRowSorter(sorter);
 		
 		Object table_1_rows[][] ={

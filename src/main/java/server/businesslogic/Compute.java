@@ -18,7 +18,7 @@ import vo.TeamWithPlayersVO;
 import blservice.BLService;
 
 public class Compute implements BLService{
-	private Compute()
+	public Compute()
 	{
 	}
 	HashMap<String, Player> playersHash = new HashMap<String, Player>(606);

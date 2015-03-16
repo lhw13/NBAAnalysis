@@ -14,11 +14,13 @@ import presentation.mainui.MainFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/*
+ * 所有球队排名面板
+ */
 public class TeamsRankingFrame {
 
-	private JTable table;
-	private JTable table_1;
+	public static JTable table;
+	public static JTable table_1;
 	
 	public static JScrollPane scrollPane;
 	private JButton btnNewButton;
@@ -26,7 +28,7 @@ public class TeamsRankingFrame {
 	/**
 	 * Create the application.
 	 */
-	public TeamsRankingFrame() {
+	public TeamsRankingFrame() {//构造函数
 		initialize();
 	}
 
@@ -48,71 +50,14 @@ public class TeamsRankingFrame {
 		panel.add(scrollPane_1);
 		
 		table = new JTable();
-		Object table_rows[][] ={
-				{"热火", 100, 200, 300, 150, 200, 210, 300, 200, 300, 500, 400, 600, 500, 200, 300, 1000},
-				
-			};
-		String table_columns[] ={
-				"球队", "场数", "投篮命中数", "出手数", "三分命中数", "出手数", "罚球命中数", "出手数", 
-				"进攻篮板", "防守篮板", "总篮板数","助攻", "抢断", "盖帽", "失误", "犯规", "得分"
-			};
-		table.setModel(new DefaultTableModel(table_rows, table_columns));
-		DefaultTableModel model=new DefaultTableModel(table_rows, table_columns){
-			private static final long serialVersionUID = 1L;
-			public Class<?> getColumnClass(int columnIndex) {
-                return getValueAt(0,columnIndex).getClass();
-            }
-        };
-		table.setModel(model);
-		table.setRowSorter(new TableRowSorter<TableModel>(model));
-		
-		table.getColumnModel().getColumn(0).setPreferredWidth(70);
-		table.getColumnModel().getColumn(1).setPreferredWidth(50);
-		table.getColumnModel().getColumn(2).setPreferredWidth(85);
-		table.getColumnModel().getColumn(3).setPreferredWidth(55);
-		table.getColumnModel().getColumn(4).setPreferredWidth(85);
-		table.getColumnModel().getColumn(5).setPreferredWidth(55);
-		table.getColumnModel().getColumn(6).setPreferredWidth(85);
-		table.getColumnModel().getColumn(7).setPreferredWidth(55);
-		table.getColumnModel().getColumn(8).setPreferredWidth(70);
-		table.getColumnModel().getColumn(9).setPreferredWidth(70);
-		table.getColumnModel().getColumn(10).setPreferredWidth(70);
-		table.getColumnModel().getColumn(11).setPreferredWidth(55);
-		table.getColumnModel().getColumn(12).setPreferredWidth(55);
-		table.getColumnModel().getColumn(13).setPreferredWidth(50);
-		table.getColumnModel().getColumn(14).setPreferredWidth(50);
-		table.getColumnModel().getColumn(15).setPreferredWidth(50);
-		table.getColumnModel().getColumn(16).setPreferredWidth(50);
-		
 		scrollPane_1.setViewportView(table);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
 		scrollPane_2.setBounds(36, 377, 930, 269);
 		panel.add(scrollPane_2);
 		
-		table_1 = new JTable();
-		Object table_1_rows[][] ={
-				{"热火", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%", "80%"},
-				
-			};
-		String table_1_columns[] ={
-				"球队", "投篮命中率", "三分命中率", "罚球命中率", "胜率", "进攻回合", "进攻效率", "防守效率", "篮板效率", "抢断效率", "助攻率"
-			};
-		table_1.setModel(new DefaultTableModel(table_1_rows, table_1_columns));
-		DefaultTableModel model1=new DefaultTableModel(table_1_rows, table_1_columns){
-			private static final long serialVersionUID = 1L;
-			public Class<?> getColumnClass(int columnIndex) {
-                return getValueAt(0,columnIndex).getClass();
-            }
-        };
-		table_1.setModel(model1);
-		table_1.setRowSorter(new TableRowSorter<TableModel>(model1));
 		
-		table_1.getColumnModel().getColumn(0).setPreferredWidth(70);
-		table_1.getColumnModel().getColumn(1).setPreferredWidth(85);
-		table_1.getColumnModel().getColumn(2).setPreferredWidth(85);
-		table_1.getColumnModel().getColumn(3).setPreferredWidth(85);
-		table_1.getColumnModel().getColumn(4).setPreferredWidth(60);
+		table_1 = new JTable();
 		scrollPane_2.setViewportView(table_1);
 		
 		btnNewButton = new JButton("返回");

@@ -6,7 +6,7 @@ import server.po.HeightPO;
 
 public class PlayerVO {
 	public PlayerVO(String teamFullName, String teamAbbreviation,
-			char division, String zone, String name, int number, char position,
+			char division, String zone, String name, int number, String position,
 			HeightVO height, int weight, Calendar birth, int age, int exp,
 			String school, int appearance, int starting, int playTime, int hit,
 			int shot, int thirdHit, int thirdshot, int freeHit, int freeshot,
@@ -76,7 +76,7 @@ public class PlayerVO {
 	String zone;
 	String name;
 	int number;
-	char position;
+	String position;
 	HeightVO height;
 	int weight;
 	Calendar birth;
@@ -138,7 +138,7 @@ public class PlayerVO {
 	public int getNumber() {
 		return number;
 	}
-	public char getPosition() {
+	public String getPosition() {
 		return position;
 	}
 	public HeightVO getHeight() {

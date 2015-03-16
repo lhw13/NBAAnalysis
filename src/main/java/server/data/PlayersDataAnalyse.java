@@ -12,7 +12,7 @@ public class PlayersDataAnalyse {
 		fileName=playerForm.get(0);
 		String name;
 		int number;
-		char position;
+		String position;
 		HeightPO height;
 		int weight;
 		Calendar birth;
@@ -25,7 +25,7 @@ public class PlayersDataAnalyse {
 		}
 		name=playerData.get(0).trim();
 		number=stringToInt(playerData.get(1).replaceAll("\t", ""));
-		position=(playerData.get(2).replaceAll("\t", "")).charAt(0);
+		position=(playerData.get(2).replaceAll("\t", ""));
 		height=stringToHeightPO(playerData.get(3).replaceAll("\t", ""));
 		weight=stringToInt(playerData.get(4).replaceAll("\t", ""));
 		birth=stringToCalendar(playerData.get(5).replaceAll("\t", ""));

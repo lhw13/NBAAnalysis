@@ -7,7 +7,7 @@ public class PlayerPO {
 		birth = Calendar.getInstance();
 		birth.set(0,0,0,0,0,0);
 	}
-	public PlayerPO(String name, int number, char position, HeightPO height,
+	public PlayerPO(String name, int number, String position, HeightPO height,
 			int weight, Calendar birth, int age, int exp, String school) {
 		super();
 		this.name = name;
@@ -22,7 +22,7 @@ public class PlayerPO {
 	}
 	String name;
 	int number;
-	char position;
+	String position;
 	HeightPO height = new HeightPO();
 	int weight;
 	Calendar birth;
@@ -41,10 +41,10 @@ public class PlayerPO {
 	public void setNumber(int number) {
 		this.number = number;
 	}
-	public char getPosition() {
+	public String getPosition() {
 		return position;
 	}
-	public void setPosition(char position) {
+	public void setPosition(String position) {
 		this.position = position;
 	}
 	public HeightPO getHeight() {

@@ -20,13 +20,17 @@ import java.util.Vector;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
+import blservice.BLService;
 import presentation.mainui.MainFrame;
+import server.businesslogic.Compute;
+import vo.PlayerVO;
 import vo.TeamVO;
+import vo.TeamWithPlayersVO;
 
 public class PlayerSelectionPanel extends JPanel {
 	
-//	String[] nameList= {"LanWang","HuangFeng","GongNiu","MoShu","XiongLu","HuoJian"
-//			,"LaoYing","SenLinLang","QiCai","KaiErTeRen"};
+	BLService blservice = Compute.getInstance();
+	ArrayList<TeamWithPlayersVO> teamWithPlayer = blservice.getTeamsWithPlayers();
 	DefaultTableModel modelOfLanWang=new DefaultTableModel(new Object[][] {
 					{"Alex Len", "Chris Bosh", "Eric Gordon"},
 					{null, null, null},
@@ -492,13 +496,11 @@ public class PlayerSelectionPanel extends JPanel {
 		panelOfBottom.add(tableOfSenLinLang);
 		panelOfBottom.add(tableOfQiCai);
 		panelOfBottom.add(tableOfKaiErTeRen);
-		panelOfBottom.add(tableOfXiaoNiu);
-		
+		panelOfBottom.add(tableOfXiaoNiu);	
 		panelOfBottom.add(tableOfMengLong);
 		panelOfBottom.add(tableOfMaCi);
 		panelOfBottom.add(tableOfHuiXiong);
-		panelOfBottom.add(tableOfLeiTing);
-		
+		panelOfBottom.add(tableOfLeiTing);		
 		panelOfBottom.add(tableOfHuRen);
 		panelOfBottom.add(tableOfReHuo);
 		panelOfBottom.add(tableOfHuoSai);
@@ -513,165 +515,160 @@ public class PlayerSelectionPanel extends JPanel {
 		panelOfBottom.add(tableOfKuaiChuan);
 		panelOfBottom.add(tableOfYongShi);
 		panelOfBottom.add(tableOfNiKeSi);
-		panelOfBottom.add(tableOfJueShi);
+		panelOfBottom.add(tableOfJueShi);				
 		
-		label = new JLabel("");
-		label.setBounds(0, 1120, 500, 80);
-		panelOfBottom.add(label);
-		panelOfBottom.add(tableOfJueShi);
-		
-		label_1 = new JLabel("");
-		label_1.setBounds(0, 1200, 500, 80);
-		panelOfBottom.add(label_1);
-		
-		label_2 = new JLabel("");
-		label_2.setBounds(500, 1200, 500, 80);
-		panelOfBottom.add(label_2);
-		
-		JLabel label1 = new JLabel("篮网");
-		label1.setBounds(5, 0, 54, 20);
-		panelOfBottom.add(label1);
-		
-		JLabel lable2 = new JLabel("黄蜂");
-		lable2.setBounds(5, 100, 54, 20);
-		panelOfBottom.add(lable2);
-		
-		JLabel label3 = new JLabel("公牛");
-		label3.setBounds(5, 200, 54, 20);
-		panelOfBottom.add(label3);
-		
-		JLabel label4 = new JLabel("魔术");
-		label4.setBounds(5, 300, 54, 20);
-		panelOfBottom.add(label4);
-		
-		JLabel label5 = new JLabel("雄鹿");
-		label5.setBounds(5, 400, 54, 20);
-		panelOfBottom.add(label5);
-		
-		JLabel lable6 = new JLabel("火箭");
-		lable6.setBounds(5, 500, 54, 20);
-		panelOfBottom.add(lable6);
-		
-		JLabel lable7 = new JLabel("老鹰");
-		lable7.setBounds(5, 600, 54, 20);
-		panelOfBottom.add(lable7);
-		
-		JLabel lable8 = new JLabel("森林狼");
-		lable8.setBounds(5, 700, 54, 20);
-		panelOfBottom.add(lable8);
-		
-		JLabel lable9 = new JLabel("奇才");
-		lable9.setBounds(5, 800, 54, 20);
-		panelOfBottom.add(lable9);
-		
-		JLabel lable10 = new JLabel("凯尔特人");
-		lable10.setBounds(5, 900, 54, 20);
-		panelOfBottom.add(lable10);
-		
-		JLabel lable11 = new JLabel("小牛");
-		lable11.setBounds(5, 1000, 54, 20);
-		panelOfBottom.add(lable11);
-		
-		JLabel lable12 = new JLabel("猛龙");
-		lable12.setBounds(5, 1100, 54, 20);
-		panelOfBottom.add(lable12);
-		
-		JLabel lable13 = new JLabel("马刺");
-		lable13.setBounds(5, 1200, 54, 20);
-		panelOfBottom.add(lable13);
-		
-		JLabel lable14 = new JLabel("灰熊");
-		lable14.setBounds(5, 1300, 54, 20);
-		panelOfBottom.add(lable14);
-		
-		JLabel lable15 = new JLabel("雷霆");
-		lable15.setBounds(5, 1400, 54, 20);
-		panelOfBottom.add(lable15);
-		
-		JLabel lable16 = new JLabel("湖人");
-		lable16.setBounds(5, 1500, 54, 20);
-		panelOfBottom.add(lable16);
-		
-		JLabel lable17 = new JLabel("热火");
-		lable17.setBounds(5, 1600, 54, 20);
-		panelOfBottom.add(lable17);
-		
-		JLabel lable18 = new JLabel("活塞");
-		lable18.setBounds(5, 1700, 54, 20);
-		panelOfBottom.add(lable18);
-		
-		JLabel lable19 = new JLabel("步行者");
-		lable19.setBounds(5, 1800, 54, 20);
-		panelOfBottom.add(lable19);
-		
-		JLabel lable20 = new JLabel("鹈鹕");
-		lable20.setBounds(5, 1900, 54, 20);
-		panelOfBottom.add(lable20);
-		
-		JLabel lable21 = new JLabel("骑士");
-		lable21.setBounds(5, 2000, 54, 20);
-		panelOfBottom.add(lable21);
-		
-		JLabel lable22 = new JLabel("国王");
-		lable22.setBounds(5, 2100, 54, 20);
-		panelOfBottom.add(lable22);
-		
-		JLabel lable23 = new JLabel("开拓者");
-		lable23.setBounds(5, 2200, 54, 20);
-		panelOfBottom.add(lable23);
-		
-		JLabel lable24 = new JLabel("太阳");
-		lable24.setBounds(5, 2300, 54, 20);
-		panelOfBottom.add(lable24);
-		
-		JLabel lable25 = new JLabel("76人");
-		lable25.setBounds(5, 2400, 54, 20);
-		panelOfBottom.add(lable25);
-		
-		JLabel lable26 = new JLabel("掘金");
-		lable26.setBounds(5, 2500, 54, 20);
-		panelOfBottom.add(lable26);
-		
-		JLabel lable27 = new JLabel("快船");
-		lable27.setBounds(5, 2600, 54, 20);
-		panelOfBottom.add(lable27);
-		
-		JLabel lable28 = new JLabel("勇士");
-		lable28.setBounds(5, 2700, 54, 20);
-		panelOfBottom.add(lable28);
-		
-		JLabel lable29 = new JLabel("尼克斯");
-		lable29.setBounds(5, 2800, 54, 20);
-		panelOfBottom.add(lable29);
-		
-		JLabel lable30 = new JLabel("爵士");
-		lable30.setBounds(5, 2900, 54, 20);
-		panelOfBottom.add(lable30);
-		
+		if(teamWithPlayer!=null&&teamWithPlayer.size()!=0) {
+			int index=0;
+			TeamWithPlayersVO vo = teamWithPlayer.get(index);
+			index++;
+			JLabel label1 = new JLabel(vo.getTeam().getFullName());
+			label1.setBounds(5, 0, 54, 20);
+			panelOfBottom.add(label1);
+			initialName(modelOfLanWang, tableOfLanWang, vo);
+			
+			
+			JLabel lable2 = new JLabel("黄蜂");
+			lable2.setBounds(5, 100, 54, 20);
+			panelOfBottom.add(lable2);
+			
+			JLabel label3 = new JLabel("公牛");
+			label3.setBounds(5, 200, 54, 20);
+			panelOfBottom.add(label3);
+			
+			JLabel label4 = new JLabel("魔术");
+			label4.setBounds(5, 300, 54, 20);
+			panelOfBottom.add(label4);
+			
+			JLabel label5 = new JLabel("雄鹿");
+			label5.setBounds(5, 400, 54, 20);
+			panelOfBottom.add(label5);
+			
+			JLabel lable6 = new JLabel("火箭");
+			lable6.setBounds(5, 500, 54, 20);
+			panelOfBottom.add(lable6);
+			
+			JLabel lable7 = new JLabel("老鹰");
+			lable7.setBounds(5, 600, 54, 20);
+			panelOfBottom.add(lable7);
+			
+			JLabel lable8 = new JLabel("森林狼");
+			lable8.setBounds(5, 700, 54, 20);
+			panelOfBottom.add(lable8);
+			
+			JLabel lable9 = new JLabel("奇才");
+			lable9.setBounds(5, 800, 54, 20);
+			panelOfBottom.add(lable9);
+			
+			JLabel lable10 = new JLabel("凯尔特人");
+			lable10.setBounds(5, 900, 54, 20);
+			panelOfBottom.add(lable10);
+			
+			JLabel lable11 = new JLabel("小牛");
+			lable11.setBounds(5, 1000, 54, 20);
+			panelOfBottom.add(lable11);
+			
+			JLabel lable12 = new JLabel("猛龙");
+			lable12.setBounds(5, 1100, 54, 20);
+			panelOfBottom.add(lable12);
+			
+			JLabel lable13 = new JLabel("马刺");
+			lable13.setBounds(5, 1200, 54, 20);
+			panelOfBottom.add(lable13);
+			
+			JLabel lable14 = new JLabel("灰熊");
+			lable14.setBounds(5, 1300, 54, 20);
+			panelOfBottom.add(lable14);
+			
+			JLabel lable15 = new JLabel("雷霆");
+			lable15.setBounds(5, 1400, 54, 20);
+			panelOfBottom.add(lable15);
+			
+			JLabel lable16 = new JLabel("湖人");
+			lable16.setBounds(5, 1500, 54, 20);
+			panelOfBottom.add(lable16);
+			
+			JLabel lable17 = new JLabel("热火");
+			lable17.setBounds(5, 1600, 54, 20);
+			panelOfBottom.add(lable17);
+			
+			JLabel lable18 = new JLabel("活塞");
+			lable18.setBounds(5, 1700, 54, 20);
+			panelOfBottom.add(lable18);
+			
+			JLabel lable19 = new JLabel("步行者");
+			lable19.setBounds(5, 1800, 54, 20);
+			panelOfBottom.add(lable19);
+			
+			JLabel lable20 = new JLabel("鹈鹕");
+			lable20.setBounds(5, 1900, 54, 20);
+			panelOfBottom.add(lable20);
+			
+			JLabel lable21 = new JLabel("骑士");
+			lable21.setBounds(5, 2000, 54, 20);
+			panelOfBottom.add(lable21);
+			
+			JLabel lable22 = new JLabel("国王");
+			lable22.setBounds(5, 2100, 54, 20);
+			panelOfBottom.add(lable22);
+			
+			JLabel lable23 = new JLabel("开拓者");
+			lable23.setBounds(5, 2200, 54, 20);
+			panelOfBottom.add(lable23);
+			
+			JLabel lable24 = new JLabel("太阳");
+			lable24.setBounds(5, 2300, 54, 20);
+			panelOfBottom.add(lable24);
+			
+			JLabel lable25 = new JLabel("76人");
+			lable25.setBounds(5, 2400, 54, 20);
+			panelOfBottom.add(lable25);
+			
+			JLabel lable26 = new JLabel("掘金");
+			lable26.setBounds(5, 2500, 54, 20);
+			panelOfBottom.add(lable26);
+			
+			JLabel lable27 = new JLabel("快船");
+			lable27.setBounds(5, 2600, 54, 20);
+			panelOfBottom.add(lable27);
+			
+			JLabel lable28 = new JLabel("勇士");
+			lable28.setBounds(5, 2700, 54, 20);
+			panelOfBottom.add(lable28);
+			
+			JLabel lable29 = new JLabel("尼克斯");
+			lable29.setBounds(5, 2800, 54, 20);
+			panelOfBottom.add(lable29);
+			
+			JLabel lable30 = new JLabel("爵士");
+			lable30.setBounds(5, 2900, 54, 20);
+			panelOfBottom.add(lable30);
+		}
 		
 	}
 	
-	public void initialName(DefaultTableModel m, JTable t, ArrayList<TeamVO> vo) {
+	
+	public void initialName(DefaultTableModel m, JTable t, TeamWithPlayersVO vo) {
 		Vector rowData1 = new Vector();
 		Vector rowData2 = new Vector();
 		Vector rowData3 = new Vector();
 		Vector rowData4 = new Vector();
 		Vector rowData5 = new Vector();
 		Vector rowDatas = new Vector();
+		ArrayList<PlayerVO> players = vo.getPlayers();
 		for(int i=0;i<3;i++) {
-			
+			rowData1.add(players.get(i).getName());
 		}
 		for(int i=3;i<6;i++) {
-					
-				}
+			rowData2.add(players.get(i).getName());	
+		}
 		for(int i=6;i<9;i++) {
-			
+			rowData3.add(players.get(i).getName());
 		}
 		for(int i=9;i<12;i++) {
-			
+			rowData4.add(players.get(i).getName());
 		}
-		for(int i=12;i<15;i++) {//动态修改为球员list size数量
-			
+		for(int i=12;i<players.size();i++) {//动态修改为球员list size数量
+			rowData5.add(players.get(i).getName());
 		}
 		rowDatas.add(rowData1); rowDatas.add(rowData2);rowDatas.add(rowData3);
 		rowDatas.add(rowData4);rowDatas.add(rowData5);

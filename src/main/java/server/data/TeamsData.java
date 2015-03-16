@@ -14,6 +14,8 @@ public class TeamsData {
 public static String get(){
 	return teamPOList.get(0).getAbbreviation();
 }
-
+public ArrayList<TeamPO> getTeamPOList(){
+	return teamPOList;
+}
 
 }

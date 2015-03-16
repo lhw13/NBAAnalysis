@@ -3,7 +3,10 @@ package server.po;
 import java.util.Calendar;
 
 public class PlayerPO {
-	public PlayerPO() {}
+	public PlayerPO(String name) {
+		birth = Calendar.getInstance();
+		birth.set(0,0,0,0,0,0);
+	}
 	public PlayerPO(String name, int number, char position, HeightPO height,
 			int weight, Calendar birth, int age, int exp, String school) {
 		super();
@@ -20,7 +23,7 @@ public class PlayerPO {
 	String name;
 	int number;
 	char position;
-	HeightPO height;
+	HeightPO height = new HeightPO();
 	int weight;
 	Calendar birth;
 	int age;

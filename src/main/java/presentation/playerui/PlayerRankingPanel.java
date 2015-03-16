@@ -68,6 +68,7 @@ public class PlayerRankingPanel extends JPanel {
 		table.setModel(model);
 		final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
 		table.setRowSorter(sorter);
+
 		
 		Object table_1_rows[][] ={
 				{"姚明", "后卫", "东部大西洋区", 999, 888, 777, 666, 555, 444, 333, 500, 400, 0, 100, 200, 300},

@@ -5,7 +5,6 @@ import server.po.MatchPO;
 import server.po.PlayerInMatchesPO;
 import server.po.ScorePO;
 import server.po.TeamInMatchesPO;
-
 public class MatchesDataAnalyse {
  public static MatchPO MatchPOMade(ArrayList<String> matchData){
 	 String[] fileName=matchData.get(0).split("_");

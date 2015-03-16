@@ -25,7 +25,7 @@ import presentation.mainui.MainFrame;
 import presentation.teamsui.TeamsRankingFrame;
 import server.businesslogic.Compute;
 import vo.PlayerVO;
-
+ 
 public class PlayerInfoPanel extends JPanel {
 	JPanel panelOfBottom = new JPanel();
 	public static JScrollPane scrollPane;

@@ -48,7 +48,8 @@ public class MainFrame {
 		};
 	
 	String table_columns[] ={
-			"球员", "位置", "赛区", "分区", "得分", "篮板", "助攻", "盖帽", "抢断", "犯规", "失误", "分钟", "效率", "投篮", "三分", "罚球", "两双"
+			"球队", "场数", "投篮命中数", "出手数", "三分命中数", "出手数", "罚球命中数", "出手数", 
+			"进攻篮板", "防守篮板", "总篮板数","助攻", "抢断", "盖帽", "失误", "犯规", "得分"
 		};
 	
 	public static void main(String[] args) {
@@ -290,8 +291,8 @@ public class MainFrame {
 		
 		compute=new Compute();
 		ArrayList<PlayerVO> pvoList=compute.getPlayerAnalysis();
-		
-		Object table_rows[][] = new Object[100][17];
+		 
+		Object table_rows[][] = new Object[500][17];
 		for(int i=0;i<pvoList.size();i++){
 			PlayerVO pvo=pvoList.get(i);
 			table_rows[i][0]=pvo.getName();

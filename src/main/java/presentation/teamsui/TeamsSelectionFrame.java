@@ -552,7 +552,7 @@ public class TeamsSelectionFrame {
 		String zone=tvo.getZone();
 		String home=tvo.getHome();
 		int setupTime=tvo.getSetupTime();
-		
+		 
 		Object rows[][] = new Object[1][7];
 		rows[0][0]=fullName;
 		rows[0][1]=abbreviation;

@@ -22,7 +22,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.JTabbedPane;
 import javax.swing.JCheckBox;
-
+ 
 public class PlayerRankingPanel extends JPanel {
 	
 	public static JScrollPane scrollPane;

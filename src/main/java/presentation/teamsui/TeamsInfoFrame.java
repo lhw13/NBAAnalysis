@@ -21,7 +21,7 @@ import presentation.mainui.MainFrame;
  * 单个球队比赛信息面板
  */
 public class TeamsInfoFrame {
-
+ 
 	public static JTable table;
 	public static JTable table_1;
 	public static JTable table_2;

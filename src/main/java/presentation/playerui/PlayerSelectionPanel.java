@@ -26,7 +26,7 @@ import server.businesslogic.Compute;
 import vo.PlayerVO;
 import vo.TeamVO;
 import vo.TeamWithPlayersVO;
-
+ 
 public class PlayerSelectionPanel extends JPanel {
 	
 	BLService blservice = Compute.getInstance();

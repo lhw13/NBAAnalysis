@@ -42,7 +42,25 @@ public class PlayerInfoPanel extends JPanel {
 	private JTable table_3;
 	private JScrollPane scrollPane_5;
 	private JTable table_4;
+	DefaultTableModel model1 = new DefaultTableModel(
+			new Object[][] {
+					{null, null,null, null, null, null, null, null,null,null},
+				},
+				new String[] {
+					"姓名", "球队","号码", "位置", "身高", "体重", "生日", "年龄","球龄","毕业学校"
+				}
+			);
 	
+	DefaultTableModel model2 = new DefaultTableModel(
+			new Object[][] {
+					{null, null, null, null, null, null, null, null,null,null,
+					null, null,null},
+				},
+				new String[] {
+					"赛季", "参赛", "先发", "时间","篮板数", "助攻数", "进攻数", 
+					"防守数", "抢断数", "盖帽数", "失误数", "犯规数","得分"
+				}
+			);
 	BLService blservice = Compute.getInstance();
 	
 	public PlayerInfoPanel() {
@@ -65,15 +83,8 @@ public class PlayerInfoPanel extends JPanel {
 		scrollPane_1.setBounds(5, 43, 622, 81);
 		panelOfBottom.add(scrollPane_1);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null,null, null, null, null, null, null,null,null},
-			},
-			new String[] {
-				"姓名", "球队","号码", "位置", "身高", "体重", "生日", "年龄","球龄","毕业学校"
-			}
-		));
+		table = new JTable(model1);
+	
 		scrollPane_1.setViewportView(table);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -83,17 +94,7 @@ public class PlayerInfoPanel extends JPanel {
 		JScrollPane scrollPane_3 = new JScrollPane();
 		tabbedPane.addTab("总计", null, scrollPane_3, null);
 		
-		table_2 = new JTable();
-		table_2.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null,null,null,
-				null, null,null},
-			},
-			new String[] {
-				"赛季", "参赛", "先发", "时间","篮板数", "助攻数", "进攻数", 
-				"防守数", "抢断数", "盖帽数", "失误数", "犯规数","得分"
-			}
-		));
+		table_2 = new JTable(model2);
 		scrollPane_3.setViewportView(table_2);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -175,9 +176,25 @@ public class PlayerInfoPanel extends JPanel {
 				,labelOfAct.getHeight(),Image.SCALE_DEFAULT));
 		labelOfAct.setIcon(pictureOfAct);
 		PlayerVO vo = blservice.getPlayerAnalysis(name);
+		if(vo==null) return;
 		Vector rowData1 = new Vector();
+		Vector rowDatas1 = new Vector();
 		rowData1.add(vo.getName());  rowData1.add(vo.getTeamFullName());
-		rowData1.add(vo.getNumber());
+		rowData1.add(vo.getNumber());rowData1.add(vo.getPosition());
+		rowData1.add(vo.getHeight());rowData1.add(vo.getWeight());
+		rowData1.add(vo.getBirth()); rowData1.add(vo.getAge());
+		rowData1.add(vo.getExp());   rowData1.add(vo.getSchool());
+		rowDatas1.add(rowData1);
+		 
+		for(int i=0; i<rowDatas1.size(); i++){		
+			for(int j=0; j<table.getColumnCount(); j++){
+				model1.setValueAt(((Vector)rowDatas1.get(i)).get(j), i, j);
+			}
+		}
+		model1.setColumnCount(table.getColumnCount());
+		model1.setRowCount(rowDatas1.size());
+		table.setModel(model1);
+		table.updateUI();
 	}
 	
 	

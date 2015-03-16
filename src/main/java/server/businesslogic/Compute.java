@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 
 import dataservice.DataService;
+import server.data.DataController;
 import server.po.MatchPO;
 import server.po.PlayerInMatchesPO;
 import server.po.PlayerPO;
@@ -25,7 +26,7 @@ public class Compute implements BLService{
 	HashMap<String, Team> teamsHash = new HashMap<String, Team>(41);
 	ArrayList<Player> players = new ArrayList<Player>();
 	ArrayList<Team> teams = new ArrayList<Team>();
-	DataService data = new MockData();
+	DataService data = new DataController();
 	private static Compute instance = null;
 	public static Compute getInstance()
 	{
@@ -45,6 +46,7 @@ public class Compute implements BLService{
 	}
 	public PlayerVO getPlayerAnalysis(String name)
 	{//暂时认为名字唯一确定一名球员
+		analyse();
 		Player player = playersHash.get(name);
 		if(player==null)
 			return null;
@@ -52,6 +54,7 @@ public class Compute implements BLService{
 	}
 	public TeamWithPlayersVO getTeamAnalysis(String name)
 	{//暂时认为球队全称唯一确定一支球队
+		analyse();
 		Team team = teamsHash.get(name);
 		if(team==null)
 			return null;
@@ -59,6 +62,7 @@ public class Compute implements BLService{
 	}
 	public ArrayList<TeamWithPlayersVO> getTeamsWithPlayers()
 	{
+		analyse();
 		ArrayList<TeamWithPlayersVO> result = new ArrayList<TeamWithPlayersVO>();
 		for(int i=0;i<teams.size();i++)
 		{
@@ -156,7 +160,12 @@ public class Compute implements BLService{
 				if(foundPlayer==null)
 				{
 					ab = timtemp1.getAbbreviation();
-					Player tPlayer = new Player(teamsHash.get(ab).getTeamPO(),playerPOHash.get(name));
+					PlayerPO playerPO = playerPOHash.get(name);
+					if(playerPO == null)
+					{
+						playerPO = new PlayerPO(name);
+					}
+					Player tPlayer = new Player(teamsHash.get(ab).getTeamPO(),playerPO);
 					tPlayer.addThisTeam(timtemp1,j);
 					tPlayer.addOpponentTeam(timtemp2);
 					playersHash.put(name, tPlayer);
@@ -178,7 +187,12 @@ public class Compute implements BLService{
 				if(foundPlayer==null)
 				{
 					ab = timtemp2.getAbbreviation();
-					Player tPlayer = new Player(teamsHash.get(ab).getTeamPO(),playerPOHash.get(name));
+					PlayerPO playerPO = playerPOHash.get(name);
+					if(playerPO == null)
+					{
+						playerPO = new PlayerPO(name);
+					}
+					Player tPlayer = new Player(teamsHash.get(ab).getTeamPO(),playerPO);
 					tPlayer.addThisTeam(timtemp2,j);
 					tPlayer.addOpponentTeam(timtemp1);
 					playersHash.put(name, tPlayer);
@@ -202,11 +216,12 @@ public class Compute implements BLService{
 				result.add(players.get(i).toVO());
 				break;
 			}
-		for(int j=i-1;j>=0;j--)
-			if(players.get(j).team.getAbbreviation().equals(abbreviation))
-				result.add(players.get(j).toVO());
-			else
-				break;
+		if(i<players.size())
+			for(int j=i-1;j>=0;j--)
+				if(players.get(j).team.getAbbreviation().equals(abbreviation))
+					result.add(players.get(j).toVO());
+				else
+					break;
 		for(i=i+1;i<players.size();i++)
 			if(players.get(i).team.getAbbreviation().equals(abbreviation))
 				result.add(players.get(i).toVO());

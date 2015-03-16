@@ -22,11 +22,11 @@ public class DataController implements DataService{
 		return m;
 	}
 	public HashMap<String, TeamPO> getAllTeams() {
-		ArrayList<TeamPO> teamPOList=new ArrayList<TeamPO>();
+		ArrayList<TeamPO> teamPOList=teamsData.getTeamPOList();
 		int n=teamPOList.size();
 		HashMap<String, TeamPO> m = new HashMap<String, TeamPO>((int)(n/0.74)+1,0.75f);
 		for(int i=0;i<n;i++){
-			m.put(teamPOList.get(i).getFullName(), teamPOList.get(i));
+			m.put(teamPOList.get(i).getAbbreviation(), teamPOList.get(i));
 		}
 		return m;
 	}

@@ -135,14 +135,20 @@ public class Player {
 	}
 	private double getHitRate()
 	{
+		if(shot==0)
+			return 0;
 		return hit/shot;
 	}
 	private double getThirdHitRate()
 	{
+		if(thirdshot==0)
+			return 0;
 		return thirdHit/thirdshot;
 	}
 	private double getFreeHitRate()
 	{
+		if(freeshot==0)
+			return 0;
 		return freeHit/freeshot;
 	}
 	private double getEfficiency()
@@ -178,6 +184,12 @@ public class Player {
 	}
 	private double getAssistRate()
 	{
+		if(playTime==0)
+			return 0;
+		else if(assist==0)
+			return 0;
+		else if((playTime/(teamPlayTime/5)*teamHit-hit)==0)
+			return 0;
 		return assist/(playTime/(teamPlayTime/5)*teamHit-hit);
 	}
 	private double getStealRate()

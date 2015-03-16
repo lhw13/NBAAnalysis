@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -18,9 +19,12 @@ import javax.swing.JLayeredPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JButton;
 
+import blservice.BLService;
 import presentation.ImageHandle;
 import presentation.mainui.MainFrame;
 import presentation.teamsui.TeamsRankingFrame;
+import server.businesslogic.Compute;
+import vo.PlayerVO;
 
 public class PlayerInfoPanel extends JPanel {
 	JPanel panelOfBottom = new JPanel();
@@ -38,6 +42,8 @@ public class PlayerInfoPanel extends JPanel {
 	private JTable table_3;
 	private JScrollPane scrollPane_5;
 	private JTable table_4;
+	
+	BLService blservice = Compute.getInstance();
 	
 	public PlayerInfoPanel() {
 		this.setBounds(0, 0, 1000, 600);
@@ -168,6 +174,10 @@ public class PlayerInfoPanel extends JPanel {
 		pictureOfAct.setImage(pictureOfAct.getImage().getScaledInstance(labelOfAct.getWidth()
 				,labelOfAct.getHeight(),Image.SCALE_DEFAULT));
 		labelOfAct.setIcon(pictureOfAct);
+		PlayerVO vo = blservice.getPlayerAnalysis(name);
+		Vector rowData1 = new Vector();
+		rowData1.add(vo.getName());  rowData1.add(vo.getTeamFullName());
+		rowData1.add(vo.getNumber());
 	}
 	
 	

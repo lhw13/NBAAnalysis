@@ -1,8 +1,10 @@
 package server.data;
 
-import java.awt.Image;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import javax.swing.ImageIcon;
+
 import server.po.MatchPO;
 import server.po.PlayerPO;
 import server.po.TeamPO;
@@ -34,10 +36,10 @@ public class DataController implements DataService{
 	public ArrayList<MatchPO> getAllMatch() {
 		return matchesData.getMatchPOList();
 	}
-	public  Image getPlayerAction(String name){
+	public  ImageIcon getPlayerAction(String name){
 		return picture.getPlayerAction(name);
 	}
-	public Image getPlayerPortrait(String name){
+	public ImageIcon getPlayerPortrait(String name){
 		return picture.getPlayerPortrait(name);
 	}
 	

@@ -72,36 +72,36 @@ public class PlayerVO {
 	//Detailed Info
 	String teamFullName;
 	String teamAbbreviation;//所属球队简称
-	char division;
-	String zone;
-	String name;
-	int number;
-	String position;
+	char division;//赛区
+	String zone;//分区
+	String name;//球员姓名
+	int number;//球衣号码
+	String position;//位置
 	HeightVO height;
 	int weight;
 	Calendar birth;
 	int age;
-	int exp;
+	int exp;//球龄
 	String school;
 	
 	//data
 	int appearance;//比赛场数
 	int starting;//先发场数
-	int playTime;
+	int playTime;//在场时间
 	int hit;//命中
 	int shot;//出手
-	int thirdHit;
-	int thirdshot;
-	int freeHit;
-	int freeshot;
-	int offensiveRebound;
-	int defensiveRebound;
-	int totalRebound;
-	int assist;
-	int steal;
-	int block;
-	int miss;
-	int foul;
+	int thirdHit;//三分命中
+	int thirdshot;//三分出手
+	int freeHit;//罚球命中
+	int freeshot;//罚球出手
+	int offensiveRebound;//进攻篮板
+	int defensiveRebound;//防守篮板
+	int totalRebound;//总篮板
+	int assist;//助攻
+	int steal;//抢断
+	int block;//盖帽
+	int miss;//失误
+	int foul;//犯规
 	int score;
 	
 	//analysis

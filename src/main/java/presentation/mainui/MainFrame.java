@@ -294,20 +294,25 @@ public class MainFrame {
 		
 		compute=new Compute();
 		ArrayList<PlayerVO> pvoList=compute.getPlayerAnalysis();
-		 
+		PlayerVO pvo=new PlayerVO();
+		String [] s=new String[3];
 		Object table_rows[][] = new Object[481][17];
 		for(int i=0;i<pvoList.size();i++){
-			PlayerVO pvo=pvoList.get(i);
-			table_rows[i][0]=pvo.getName();
-			String [] s=JudeTheFilter(pvo.getPosition(), pvo.getDivision(), pvo.getZone());
-			table_rows[i][1]=s[0];
-			table_rows[i][2]=s[1];
-			table_rows[i][3]=s[2];
-			table_rows[i][4]=pvo.getScore();table_rows[i][5]=pvo.getTotalRebound();table_rows[i][6]=pvo.getAssist();
-			table_rows[i][7]=pvo.getBlock();table_rows[i][8]=pvo.getSteal();table_rows[i][9]=pvo.getFoul();
-			table_rows[i][10]=pvo.getMiss();table_rows[i][11]=pvo.getPlayTime();table_rows[i][12]=pvo.getEfficiency();
-			table_rows[i][13]=pvo.getHitRate();table_rows[i][14]=pvo.getThirdHitRate();table_rows[i][15]=pvo.getFreeHitRate();
-			table_rows[i][16]="两双";//两双
+			if(pvoList.get(i)!=null){
+				pvo=pvoList.get(i);
+				table_rows[i][0]=pvo.getName();
+				if(pvo.getPosition()!=null){
+					s=JudeTheFilter(pvo.getPosition(), pvo.getDivision(), pvo.getZone());
+				}
+				table_rows[i][1]=s[0];
+				table_rows[i][2]=s[1];
+				table_rows[i][3]=s[2];
+				table_rows[i][4]=pvo.getScore();table_rows[i][5]=pvo.getTotalRebound();table_rows[i][6]=pvo.getAssist();
+				table_rows[i][7]=pvo.getBlock();table_rows[i][8]=pvo.getSteal();table_rows[i][9]=pvo.getFoul();
+				table_rows[i][10]=pvo.getMiss();table_rows[i][11]=pvo.getPlayTime();table_rows[i][12]=pvo.getEfficiency();
+				table_rows[i][13]=pvo.getHitRate();table_rows[i][14]=pvo.getThirdHitRate();table_rows[i][15]=pvo.getFreeHitRate();
+				table_rows[i][16]="两双";//两双
+			}
 		}
 		
 		DefaultTableModel model=new DefaultTableModel(table_rows, table_2_columns){
@@ -377,6 +382,8 @@ public class MainFrame {
 		}
 		return s;
 	}
+	
+	
 	
 }
 

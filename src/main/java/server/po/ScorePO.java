@@ -21,4 +21,8 @@ public class ScorePO {
 	public void setTeam2(int team2) {
 		this.team2 = team2;
 	}
+	public String toString()
+	{
+		return Integer.toString(team1)+"-"+Integer.toString(team2);
+	}
 }

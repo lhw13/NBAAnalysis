@@ -175,10 +175,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
-					TeamsSelectionFrame.scrollPane.setVisible(false);
-					TeamsInfoFrame.scrollPane.setVisible(true);
-					TeamsSelectionFrame.flag=false;
-					MainFrame.frame.setTitle("NBA单个球队");
+					setTeamsInfo("Pistons");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -205,7 +202,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_4.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
+				setTeamsInfo("Pacers");
 				
 			}
 
@@ -229,7 +226,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_5.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
+				setTeamsInfo("Bucks");
 				
 			}
 
@@ -253,7 +250,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_6.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
+				setTeamsInfo("Nets");
 				
 			}
 
@@ -277,7 +274,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_7.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
+				setTeamsInfo("Celtics");
 				
 			}
 
@@ -301,7 +298,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_8.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
+				setTeamsInfo("Knicks");
 				
 			}
 
@@ -325,7 +322,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_9.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
+				setTeamsInfo("76ers");
 				
 			}
 
@@ -349,7 +346,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_10.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
+				setTeamsInfo("Raptors");
 				
 			}
 
@@ -373,7 +370,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_11.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
+				setTeamsInfo("Hawks");
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -396,7 +393,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_12.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
+				setTeamsInfo("Hornets");
 				
 			}
 
@@ -420,7 +417,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_13.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
+				setTeamsInfo("Heat");
 				
 			}
 
@@ -444,7 +441,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_14.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
+				setTeamsInfo("Magic");
 				
 			}
 
@@ -468,7 +465,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_15.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				// TODO Auto-generated method stub
+				setTeamsInfo("Wizards");
 				
 			}
 

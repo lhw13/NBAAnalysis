@@ -44,6 +44,14 @@ public class PlayerInMatchesPO {
 	int miss;
 	int foul;
 	int score;
+	public String toString(){
+		return name+";"+position+";"+playTime+";"+hit
+				+";"+shot+";"+thirdHit+";"+thirdshot
+				+";"+freeHit+";"+freeshot+";篮板"+offensiveRebound
+				+";"+defensiveRebound+";"+totalRebound
+				+";"+assist+";"+steal+";"+block+";"
+				+miss+";"+foul+";"+score;
+	}
 	public String getName() {
 		return name;
 	}

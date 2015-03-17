@@ -31,7 +31,6 @@ import presentation.teamsui.TeamsRankingFrame;
 import server.businesslogic.Compute;
 import vo.PlayerVO;
 import vo.TeamVO;
-import vo.TeamWithPlayersVO;
 
 public class MainFrame {
 
@@ -50,6 +49,10 @@ public class MainFrame {
 	String table_columns[] ={
 			"球队", "场数", "投篮命中数", "出手数", "三分命中数", "出手数", "罚球命中数", "出手数", 
 			"进攻篮板", "防守篮板", "总篮板数","助攻", "抢断", "盖帽", "失误", "犯规", "得分"
+		};
+	
+	String table_2_columns[] ={
+			"球员", "位置", "赛区", "分区","得分", "篮板", "助攻", "盖帽", "抢断", "犯规", "失误", "分钟", "效率", "投篮", "三分", "罚球", "两双"
 		};
 	
 	public static void main(String[] args) {
@@ -292,11 +295,14 @@ public class MainFrame {
 		compute=new Compute();
 		ArrayList<PlayerVO> pvoList=compute.getPlayerAnalysis();
 		 
-		Object table_rows[][] = new Object[500][17];
+		Object table_rows[][] = new Object[481][17];
 		for(int i=0;i<pvoList.size();i++){
 			PlayerVO pvo=pvoList.get(i);
 			table_rows[i][0]=pvo.getName();
-			table_rows[i][1]=pvo.getPosition();table_rows[i][2]=pvo.getDivision();table_rows[i][3]=pvo.getZone();
+			String [] s=JudeTheFilter(pvo.getPosition(), pvo.getDivision(), pvo.getZone());
+			table_rows[i][1]=s[0];
+			table_rows[i][2]=s[1];
+			table_rows[i][3]=s[2];
 			table_rows[i][4]=pvo.getScore();table_rows[i][5]=pvo.getTotalRebound();table_rows[i][6]=pvo.getAssist();
 			table_rows[i][7]=pvo.getBlock();table_rows[i][8]=pvo.getSteal();table_rows[i][9]=pvo.getFoul();
 			table_rows[i][10]=pvo.getMiss();table_rows[i][11]=pvo.getPlayTime();table_rows[i][12]=pvo.getEfficiency();
@@ -304,7 +310,7 @@ public class MainFrame {
 			table_rows[i][16]="两双";//两双
 		}
 		
-		DefaultTableModel model=new DefaultTableModel(table_rows, table_columns){
+		DefaultTableModel model=new DefaultTableModel(table_rows, table_2_columns){
 			private static final long serialVersionUID = 1L;
 			public Class<?> getColumnClass(int columnIndex) {
                 return getValueAt(0,columnIndex).getClass();
@@ -313,6 +319,63 @@ public class MainFrame {
         new PlayerRankingPanel(model);
 		frame.getContentPane().add(PlayerRankingPanel.scrollPane);
 		PlayerRankingPanel.scrollPane.setVisible(true);
+	}
+	
+	public String[] JudeTheFilter(String position, char division, String zone){
+		String s[]=new String[3];
+		if(position.equals("F")){
+			s[0]="前锋";
+		}
+		else if(position.equals("C")){
+			s[0]="中锋";
+		}
+		else if(position.equals("G")){
+			s[0]="后卫";
+		}
+		else if(position.equals("F-C")){
+			s[0]="前锋-中锋";
+		}
+		else if(position.equals("F-G")){
+			s[0]="前锋-后卫";
+		}
+		else if(position.equals("C-F")){
+			s[0]="中锋-前锋";
+		}
+		else if(position.equals("C-G")){
+			s[0]="中锋-后卫";
+		}
+		else if(position.equals("G-F")){
+			s[0]="后卫-前锋";
+		}
+		else if(position.equals("G-C")){
+			s[0]="后卫-中锋";
+		}
+		switch(division){
+		case 'E':s[1]="东部";break;
+		case 'W':s[1]="西部";break;
+		}
+		if(zone.equals("Southeast")){
+			s[2]="东南区";
+		}
+		else if(zone.equals("Southwest")){
+			s[2]="西南区";
+		}
+		else if(zone.equals("Northwest")){
+			s[2]="西北区";
+		}
+		else if(zone.equals("Atlantic")){
+			s[2]="大西洋区";
+		}
+		else if(zone.equals("Central")){
+			s[2]="中区";
+		}
+		else if(zone.equals("Pacific")){
+			s[2]="太平洋区";
+		}
+		else if(zone.equals("Pacific")){
+			s[2]="太平洋区";
+		}
+		return s;
 	}
 	
 }

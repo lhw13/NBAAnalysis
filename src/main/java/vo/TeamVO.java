@@ -51,42 +51,42 @@ public class TeamVO {
 		this.assistEfficiency = assistEfficiency;
 	}
 	public TeamVO(){}
-	String fullName;
-	String abbreviation;
-	String location;
-	char division;
-	String zone;
-	String home;
-	int setupTime;
+	String fullName;//球队全称
+	String abbreviation;//简称
+	String location;//所在地
+	char division;//赛区
+	String zone;//分区
+	String home;//主场
+	int setupTime;//建立时间
 	int appearance;//比赛场数
 	int hit;//命中
 	int shot;//出手
-	int thirdHit;
-	int thirdshot;
-	int freeHit;
-	int freeshot;
-	int offensiveRebound;
-	int defensiveRebound;
-	int totalRebound;
-	int assist;
-	int steal;
-	int block;
-	int miss;
-	int foul;
+	int thirdHit;//三分命中
+	int thirdshot;//三分出手
+	int freeHit;//罚球命中
+	int freeshot;//罚球出手
+	int offensiveRebound;//进攻篮板
+	int defensiveRebound;//防守篮板
+	int totalRebound;//总篮板
+	int assist;//助攻
+	int steal;//抢断
+	int block;//盖帽
+	int miss;//失误
+	int foul;//失误
 	int score;
 	
-	double hitRate;
-	double thirdHitRate;
-	double freeHitRate;
-	double winRate;
-	double offensiveRound;
-	double offensiveEfficiency;
-	double defensiveRound;
-	double defensiveEfficiency;
-	double offensiveReboundEfficiency;
-	double defensiveReboundEfficiency;
-	double stealEfficiency;
-	double assistEfficiency;
+	double hitRate;//命中率
+	double thirdHitRate;//三分命中率
+	double freeHitRate;//罚球命中率
+	double winRate;//胜率
+	double offensiveRound;//进攻回合
+	double offensiveEfficiency;//进攻效率
+	double defensiveRound;//防守回合
+	double defensiveEfficiency;//防守效率
+	double offensiveReboundEfficiency;//进攻篮板效率
+	double defensiveReboundEfficiency;//防守篮板效率
+	double stealEfficiency;//抢断效率
+	double assistEfficiency;//助攻效率
 	public String getFullName() {
 		return fullName;
 	}

@@ -4,6 +4,7 @@ import java.awt.Dimension;
 
 import javax.swing.JScrollPane;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -21,6 +22,7 @@ public class TeamsRankingFrame {
  
 	public static JTable table;
 	public static JTable table_1;
+	public static JTable table_2;
 	
 	public static JScrollPane scrollPane;
 	private JButton btnNewButton;
@@ -45,20 +47,29 @@ public class TeamsRankingFrame {
 		scrollPane.setViewportView(panel);
 		panel.setLayout(null);
 		
-		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(36, 13, 1169, 332);
-		panel.add(scrollPane_1);
-		
 		table = new JTable();
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setViewportView(table);
 		
-		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(36, 377, 930, 269);
-		panel.add(scrollPane_2);
-		
-		
 		table_1 = new JTable();
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
 		scrollPane_2.setViewportView(table_1);
+		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(50, 377, 930, 269);
+		panel.add(scrollPane_3);
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(50, 20, 1200, 350);
+		tabbedPane.addTab("场均", null, scrollPane_2, null);
+		tabbedPane.addTab("总计", null, scrollPane_1, null);
+		
+		panel.add(tabbedPane);
+		
+		table_2 = new JTable();
+		scrollPane_3.setViewportView(table_2);
 		
 		btnNewButton = new JButton("返回");
 		btnNewButton.setBounds(36, 687, 113, 27);

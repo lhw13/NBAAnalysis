@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import javax.swing.JDialog;
@@ -51,7 +52,16 @@ public class MainFrame {
 			"进攻篮板", "防守篮板", "总篮板数","助攻", "抢断", "盖帽", "失误", "犯规", "得分"
 		};
 	
+	String table_4_columns[] ={
+			"球队", "场数", "投篮命中数", "出手数", "三分命中数", "出手数", "罚球命中数", "出手数", 
+			"进攻篮板", "防守篮板", "总篮板数","助攻", "抢断", "盖帽", "失误", "犯规", "得分"
+		};
+	
 	String table_2_columns[] ={
+			"球员", "位置", "赛区", "分区","得分", "篮板", "助攻", "盖帽", "抢断", "犯规", "失误", "分钟", "效率", "投篮", "三分", "罚球", "两双"
+		};
+	
+	String table_3_columns[] ={
 			"球员", "位置", "赛区", "分区","得分", "篮板", "助攻", "盖帽", "抢断", "犯规", "失误", "分钟", "效率", "投篮", "三分", "罚球", "两双"
 		};
 	
@@ -129,7 +139,7 @@ public class MainFrame {
                 return getValueAt(0,columnIndex).getClass();
             }
         };
-		new PlayerRankingPanel(model);
+		new PlayerRankingPanel(model, model);
 		frame.getContentPane().add(PlayerRankingPanel.scrollPane);
 		PlayerRankingPanel.scrollPane.setVisible(false);
 		
@@ -243,13 +253,29 @@ public class MainFrame {
 		Object table_rows[][] = new Object[30][17];
 		for(int i=0;i<tvoList.size();i++){
 			TeamVO tvo=tvoList.get(i);
+			int appearance=tvo.getAppearance();
 			table_rows[i][0]=tvo.getFullName();
-			table_rows[i][1]=tvo.getAppearance();table_rows[i][2]=tvo.getHit();table_rows[i][3]=tvo.getShot();
-			table_rows[i][4]=tvo.getThirdHit();table_rows[i][5]=tvo.getThirdshot();table_rows[i][6]=tvo.getFreeHit();
-			table_rows[i][7]=tvo.getFreeshot();table_rows[i][8]=tvo.getOffensiveRebound();table_rows[i][9]=tvo.getDefensiveRebound();
-			table_rows[i][10]=tvo.getTotalRebound();table_rows[i][11]=tvo.getAssist();table_rows[i][12]=tvo.getSteal();
-			table_rows[i][13]=tvo.getBlock();table_rows[i][14]=tvo.getMiss();table_rows[i][15]=tvo.getFoul();
-			table_rows[i][16]=tvo.getScore();
+			table_rows[i][1]=tvo.getAppearance();
+			table_rows[i][2]=handle((double)tvo.getHit(), appearance);table_rows[i][3]=handle((double)tvo.getShot(), appearance);
+			table_rows[i][4]=handle((double)tvo.getThirdHit(), appearance);table_rows[i][5]=handle((double)tvo.getThirdshot(), appearance);
+			table_rows[i][6]=handle((double)tvo.getFreeHit(), appearance);
+			table_rows[i][7]=handle((double)tvo.getFreeshot(), appearance);
+			table_rows[i][8]=handle((double)tvo.getOffensiveRebound(), appearance);table_rows[i][9]=handle((double)tvo.getDefensiveRebound(), appearance);
+			table_rows[i][10]=handle((double)tvo.getTotalRebound(), appearance);table_rows[i][11]=handle((double)tvo.getAssist(), appearance);table_rows[i][12]=handle((double)tvo.getSteal(), appearance);
+			table_rows[i][13]=handle((double)tvo.getBlock(), appearance);table_rows[i][14]=handle((double)tvo.getMiss(), appearance);table_rows[i][15]=handle((double)tvo.getFoul(), appearance);
+			table_rows[i][16]=handle((double)tvo.getScore(), appearance);
+		}
+		
+		Object table_2_rows[][] = new Object[30][17];
+		for(int i=0;i<tvoList.size();i++){
+			TeamVO tvo=tvoList.get(i);
+			table_2_rows[i][0]=tvo.getFullName();
+			table_2_rows[i][1]=tvo.getAppearance();table_2_rows[i][2]=tvo.getHit();table_2_rows[i][3]=tvo.getShot();
+			table_2_rows[i][4]=tvo.getThirdHit();table_2_rows[i][5]=tvo.getThirdshot();table_2_rows[i][6]=tvo.getFreeHit();
+			table_2_rows[i][7]=tvo.getFreeshot();table_2_rows[i][8]=tvo.getOffensiveRebound();table_2_rows[i][9]=tvo.getDefensiveRebound();
+			table_2_rows[i][10]=tvo.getTotalRebound();table_2_rows[i][11]=tvo.getAssist();table_2_rows[i][12]=tvo.getSteal();
+			table_2_rows[i][13]=tvo.getBlock();table_2_rows[i][14]=tvo.getMiss();table_2_rows[i][15]=tvo.getFoul();
+			table_2_rows[i][16]=tvo.getScore();
 		}
 		
 		Object table_1_rows[][] = new Object[30][12];
@@ -269,7 +295,16 @@ public class MainFrame {
 			table_1_rows[i][11]=tvo.getAssistEfficiency();
 		}
 		
-		DefaultTableModel model=new DefaultTableModel(table_rows, table_columns){
+		DefaultTableModel model2=new DefaultTableModel(table_rows, table_columns){
+			private static final long serialVersionUID = 1L;
+			public Class<?> getColumnClass(int columnIndex) {
+                return getValueAt(0,columnIndex).getClass();
+            }
+        };
+        TeamsRankingFrame.table_1.setModel(model2);
+        TeamsRankingFrame.table_1.setRowSorter(new TableRowSorter<TableModel>(model2));
+        
+        DefaultTableModel model=new DefaultTableModel(table_2_rows, table_4_columns){
 			private static final long serialVersionUID = 1L;
 			public Class<?> getColumnClass(int columnIndex) {
                 return getValueAt(0,columnIndex).getClass();
@@ -284,8 +319,8 @@ public class MainFrame {
                 return getValueAt(0,columnIndex).getClass();
             }
         };
-        TeamsRankingFrame.table_1.setModel(model1);
-        TeamsRankingFrame.table_1.setRowSorter(new TableRowSorter<TableModel>(model1));
+        TeamsRankingFrame.table_2.setModel(model1);
+        TeamsRankingFrame.table_2.setRowSorter(new TableRowSorter<TableModel>(model1));
 	}
 	
 	public void setPlayersRanking(){//设置球员排名面板信息
@@ -300,6 +335,7 @@ public class MainFrame {
 		for(int i=0;i<pvoList.size();i++){
 			if(pvoList.get(i)!=null){
 				pvo=pvoList.get(i);
+				int appearance=pvo.getAppearance();
 				table_rows[i][0]=pvo.getName();
 				if(pvo.getPosition()!=null){
 					s=JudeTheFilter(pvo.getPosition(), pvo.getDivision(), pvo.getZone());
@@ -307,10 +343,13 @@ public class MainFrame {
 				table_rows[i][1]=s[0];
 				table_rows[i][2]=s[1];
 				table_rows[i][3]=s[2];
-				table_rows[i][4]=pvo.getScore();table_rows[i][5]=pvo.getTotalRebound();table_rows[i][6]=pvo.getAssist();
-				table_rows[i][7]=pvo.getBlock();table_rows[i][8]=pvo.getSteal();table_rows[i][9]=pvo.getFoul();
-				table_rows[i][10]=pvo.getMiss();table_rows[i][11]=pvo.getPlayTime();table_rows[i][12]=pvo.getEfficiency();
-				table_rows[i][13]=pvo.getHitRate();table_rows[i][14]=pvo.getThirdHitRate();table_rows[i][15]=pvo.getFreeHitRate();
+				table_rows[i][4]=handle((double)pvo.getScore(), appearance);table_rows[i][5]=handle((double)pvo.getTotalRebound(), appearance);table_rows[i][6]=handle((double)pvo.getAssist(), appearance);
+				table_rows[i][7]=handle((double)pvo.getBlock(), appearance);table_rows[i][8]=handle((double)pvo.getSteal(), appearance);table_rows[i][9]=handle((double)pvo.getFoul(), appearance);
+				table_rows[i][10]=handle((double)pvo.getMiss(), appearance);table_rows[i][11]=handle((double)pvo.getPlayTime(), appearance);
+				table_rows[i][12]=pvo.getEfficiency();
+				table_rows[i][13]=pvo.getHitRate();
+				table_rows[i][14]=pvo.getThirdHitRate();
+				table_rows[i][15]=pvo.getFreeHitRate();
 				table_rows[i][16]="两双";//两双
 			}
 		}
@@ -321,7 +360,33 @@ public class MainFrame {
                 return getValueAt(0,columnIndex).getClass();
             }
         };
-        new PlayerRankingPanel(model);
+        
+        String [] s1=new String[3];
+		Object table_1_rows[][] = new Object[481][17];
+		for(int i=0;i<pvoList.size();i++){
+			if(pvoList.get(i)!=null){
+				pvo=pvoList.get(i);
+				table_1_rows[i][0]=pvo.getName();
+				if(pvo.getPosition()!=null){
+					s1=JudeTheFilter(pvo.getPosition(), pvo.getDivision(), pvo.getZone());
+				}
+				table_1_rows[i][1]=s1[0];
+				table_1_rows[i][2]=s1[1];
+				table_1_rows[i][3]=s1[2];
+				table_1_rows[i][4]=pvo.getScore();table_1_rows[i][5]=pvo.getTotalRebound();table_1_rows[i][6]=pvo.getAssist();
+				table_1_rows[i][7]=pvo.getBlock();table_1_rows[i][8]=pvo.getSteal();table_1_rows[i][9]=pvo.getFoul();
+				table_1_rows[i][10]=pvo.getMiss();table_1_rows[i][11]=pvo.getPlayTime();table_1_rows[i][12]=pvo.getEfficiency();
+				table_1_rows[i][13]=pvo.getHitRate();table_1_rows[i][14]=pvo.getThirdHitRate();table_1_rows[i][15]=pvo.getFreeHitRate();
+				table_1_rows[i][16]="两双";//两双
+			}
+		}
+        DefaultTableModel model1=new DefaultTableModel(table_1_rows, table_3_columns){
+			private static final long serialVersionUID = 1L;
+			public Class<?> getColumnClass(int columnIndex) {
+                return getValueAt(0,columnIndex).getClass();
+            }
+        };
+        new PlayerRankingPanel(model, model1);
 		frame.getContentPane().add(PlayerRankingPanel.scrollPane);
 		PlayerRankingPanel.scrollPane.setVisible(true);
 	}
@@ -384,6 +449,11 @@ public class MainFrame {
 	}
 	
 	
-	
+	public double handle(double a, int b){
+		double result=a/(double)b;
+		BigDecimal c=new BigDecimal(result);  
+		double f1=c.setScale(1,BigDecimal.ROUND_HALF_UP).doubleValue(); 
+		return f1;
+	}
 }
 

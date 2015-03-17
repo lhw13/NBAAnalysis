@@ -5,6 +5,8 @@ import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 
+import org.apache.batik.swing.JSVGCanvas;
+
 import server.po.MatchPO;
 import server.po.PlayerPO;
 import server.po.TeamPO;
@@ -42,5 +44,10 @@ public class DataController implements DataService{
 	public ImageIcon getPlayerPortrait(String name){
 		return picture.getPlayerPortrait(name);
 	}
-	
+	public ImageIcon getTeamPic(String abbreviation){
+		return picture.getTeamPic(abbreviation);
+	}
+	public JSVGCanvas getSwing(String abbreviation){
+		return  picture.getSwing(abbreviation);
+	}
 }

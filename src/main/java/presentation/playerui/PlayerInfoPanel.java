@@ -327,14 +327,14 @@ public class PlayerInfoPanel extends JPanel {
 		
 		Vector rowData_5 = new Vector();
 		Vector rowDatas_5 = new Vector();
-		rowData_5.add(handleDecimal(vo.getScore()));		
-		rowData_5.add(handleDecimal(vo.getPlayTime()));
-		rowData_5.add(handleDecimal(vo.getHit()));  	
-		rowData_5.add(handleDecimal(vo.getShot()));
-		rowData_5.add(handleDecimal(vo.getThirdHit()));		
-		rowData_5.add(handleDecimal(vo.getThirdshot()));
-		rowData_5.add(handleDecimal(vo.getFreeHit()));		
-		rowData_5.add(handleDecimal(vo.getFreeshot()));		
+		rowData_5.add(handleDecimal(vo.getScore()/num));		
+		rowData_5.add(handleDecimal(vo.getPlayTime()/num));
+		rowData_5.add(handleDecimal(vo.getHit()/num));  	
+		rowData_5.add(handleDecimal(vo.getShot()/num));
+		rowData_5.add(handleDecimal(vo.getThirdHit()/num));		
+		rowData_5.add(handleDecimal(vo.getThirdshot()/num));
+		rowData_5.add(handleDecimal(vo.getFreeHit()/num));		
+		rowData_5.add(handleDecimal(vo.getFreeshot()/num));		
 		rowData_5.add(0);
 		rowDatas_5.add(rowData_5);
 		 

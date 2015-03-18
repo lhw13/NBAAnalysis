@@ -159,19 +159,19 @@ public class Player {
 	{
 		if(shot==0)
 			return 0;
-		return hit/shot;
+		return (double)hit/shot;
 	}
 	private double getThirdHitRate()
 	{
 		if(thirdshot==0)
 			return 0;
-		return thirdHit/thirdshot;
+		return (double)thirdHit/thirdshot;
 	}
 	private double getFreeHitRate()
 	{
 		if(freeshot==0)
 			return 0;
-		return freeHit/freeshot;
+		return (double)freeHit/freeshot;
 	}
 	private double getEfficiency()
 	{
@@ -180,29 +180,29 @@ public class Player {
 	}
 	private double getGmScEfficiency()
 	{
-		return score+0.4*hit-0.7*shot-0.4*(freeshot-freeHit)
-				+0.7*offensiveRebound+0.3*defensiveRebound
-				+steal+0.7*assist+0.7*block-0.4*foul-miss;
+		return score+0.4*(double)hit-0.7*(double)shot-0.4*(double)(freeshot-freeHit)
+				+0.7*(double)offensiveRebound+0.3*(double)defensiveRebound
+				+steal+0.7*(double)assist+0.7*(double)block-0.4*(double)foul-miss;
 	}
 	private double getRealHitRate()
 	{
-		return score/(2*(shot+0.44*freeshot));
+		return (double)score/(2*(shot+0.44*(double)freeshot));
 	}
 	private double getShotEfficiency()
 	{
-		return (hit+0.5*thirdHit)/shot;
+		return (double)(hit+0.5*(double)thirdHit)/shot;
 	}
 	private double getReboundRate()
 	{
-		return totalRebound*(teamPlayTime/5)/playTime/(teamTotalRebound+teamTotalRebound2);
+		return (double)totalRebound*((double)teamPlayTime/5)/(double)playTime/(double)(teamTotalRebound+teamTotalRebound2);
 	}
 	private double getOffensiveReboundRate()
 	{
-		return offensiveRebound*(teamPlayTime/5)/playTime/(teamOffensiveRebound+teamOffensiveRebound2);
+		return (double)offensiveRebound*((double)teamPlayTime/5)/(double)playTime/(double)(teamOffensiveRebound+teamOffensiveRebound2);
 	}
 	private double getDefensiveReboundRate()
 	{
-		return defensiveRebound*(teamPlayTime/5)/playTime/(teamDefensiveRebound+teamDefensiveRebound2);
+		return (double)defensiveRebound*((double)teamPlayTime/5)/(double)playTime/(double)(teamDefensiveRebound+teamDefensiveRebound2);
 	}
 	private double getAssistRate()
 	{
@@ -210,24 +210,24 @@ public class Player {
 			return 0;
 		else if(assist==0)
 			return 0;
-		else if((playTime/(teamPlayTime/5)*teamHit-hit)==0)
+		else if(((double)playTime/((double)teamPlayTime/5)*teamHit-hit)==0)
 			return 0;
-		return assist/(playTime/(teamPlayTime/5)*teamHit-hit);
+		return (double)assist/((double)playTime/((double)teamPlayTime/5)*teamHit-hit);
 	}
 	private double getStealRate()
 	{
-		return steal*(teamPlayTime/5)/playTime/teamOffensiveRebound2;
+		return (double)steal*((double)teamPlayTime/5)/(double)playTime/(double)teamOffensiveRebound2;
 	}
 	private double getBlockRate()
 	{
-		return block*(teamPlayTime/5)/playTime/(teamshot2-teamThirdshot2);
+		return (double)block*((double)teamPlayTime/5)/(double)playTime/(double)(teamshot2-teamThirdshot2);
 	}
 	private double getMissRate()
 	{
-		return miss/(shot-thirdshot+0.44*freeshot+miss);
+		return (double)miss/(double)(shot-thirdshot+0.44*(double)freeshot+miss);
 	}
 	private double getUseRate()
 	{
-		return (shot+0.44*freeshot+miss)*(teamPlayTime/5)/playTime/(teamshot+0.44*teamFreeshot+teamMiss);
+		return (double)(shot+0.44*freeshot+miss)*((double)teamPlayTime/5)/playTime/(teamshot+0.44*teamFreeshot+teamMiss);
 	}
 }

@@ -93,7 +93,7 @@ public class Team {
 			TeamInMatches tim = thisTeam.get(i);
 			add(tim);
 			score+=tim.getFinalScore();
-			if(tim.finalScore>0)
+			if(tim.getWin()>0)
 				win++;
 		}
 		for(int i=0;i<appearance;i++)
@@ -101,7 +101,7 @@ public class Team {
 			TeamInMatches tim = opponentTeam.get(i);
 			addOpponent(tim);
 			score2+=tim.getFinalScore();
-			if(tim.finalScore>0)
+			if(tim.getWin()>0)
 				win2++;
 		}
 		return true;

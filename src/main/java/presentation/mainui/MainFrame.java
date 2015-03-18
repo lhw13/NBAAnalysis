@@ -466,7 +466,7 @@ public class MainFrame {
 				table_rows[i][13]=pvo.getHitRate();
 				table_rows[i][14]=pvo.getThirdHitRate();
 				table_rows[i][15]=pvo.getFreeHitRate();
-				table_rows[i][16]="两双";//两双
+				table_rows[i][16]=pvo.getTowPairs();//两双
 			}
 		}
 		

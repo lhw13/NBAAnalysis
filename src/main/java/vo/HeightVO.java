@@ -21,4 +21,8 @@ public class HeightVO {
 	public void setInch(int inch) {
 		this.inch = inch;
 	}
+	public String toString()
+	{
+		return feet+"英尺"+inch+"英寸";
+	}
 }

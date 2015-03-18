@@ -254,6 +254,7 @@ public class MainFrame {
 				}
 			}
 			
+			
 			if(flag2){
 				if(x7<1000){
 					x7++;

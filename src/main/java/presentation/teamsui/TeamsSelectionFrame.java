@@ -16,6 +16,8 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -116,7 +118,7 @@ public class TeamsSelectionFrame {
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
 					
-					setTeamsInfo("Bulls");
+					setTeamsInfo("CHI");
 					
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -146,7 +148,7 @@ public class TeamsSelectionFrame {
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
 					
-					setTeamsInfo("Cavaliers");
+					setTeamsInfo("CLE");
 					
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -175,7 +177,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
-					setTeamsInfo("Pistons");
+					setTeamsInfo("DET");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -202,7 +204,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_4.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				setTeamsInfo("Pacers");
+				setTeamsInfo("IND");
 				
 			}
 
@@ -226,7 +228,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_5.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				setTeamsInfo("Bucks");
+				setTeamsInfo("MIL");
 				
 			}
 
@@ -250,7 +252,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_6.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				setTeamsInfo("Nets");
+				setTeamsInfo("BKN");
 				
 			}
 
@@ -274,7 +276,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_7.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				setTeamsInfo("Celtics");
+				setTeamsInfo("BOS");
 				
 			}
 
@@ -298,7 +300,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_8.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				setTeamsInfo("Knicks");
+				setTeamsInfo("NYK");
 				
 			}
 
@@ -322,7 +324,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_9.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				setTeamsInfo("76ers");
+				setTeamsInfo("PHI");
 				
 			}
 
@@ -346,7 +348,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_10.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				setTeamsInfo("Raptors");
+				setTeamsInfo("TOR");
 				
 			}
 
@@ -370,7 +372,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_11.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				setTeamsInfo("Hawks");
+				setTeamsInfo("ATL");
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -393,7 +395,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_12.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				setTeamsInfo("Hornets");
+				setTeamsInfo("CHA");
 				
 			}
 
@@ -417,7 +419,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_13.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				setTeamsInfo("Heat");
+				setTeamsInfo("MIA");
 				
 			}
 
@@ -441,7 +443,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_14.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				setTeamsInfo("Magic");
+				setTeamsInfo("ORL");
 				
 			}
 
@@ -465,7 +467,7 @@ public class TeamsSelectionFrame {
 		lblNewLabel_15.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				setTeamsInfo("Wizards");
+				setTeamsInfo("WAS");
 				
 			}
 
@@ -539,17 +541,26 @@ public class TeamsSelectionFrame {
 		
 		compute=new Compute();
 		TeamWithPlayersVO twpvo=compute.getTeamAnalysis(teamName);
-		TeamVO tvo=twpvo.getTeam();
+		TeamVO tvo=new TeamVO();
+		String fullName="teamName";
+		String abbreviation="null";
+		String location="null";
+		char division=' ';
+		String zone="null";
+		String home="null";
+		int setupTime=0;
+		if(twpvo.getTeam()!=null){
+			tvo=twpvo.getTeam();
+			fullName=tvo.getFullName();
+			abbreviation=tvo.getAbbreviation();
+			location=tvo.getLocation();
+			division=tvo.getDivision();
+			zone=tvo.getZone();
+			home=tvo.getHome();
+			setupTime=tvo.getSetupTime();
+		}
 		ArrayList<PlayerVO> players=twpvo.getPlayers();
 		
-		String fullName=tvo.getFullName();
-		String abbreviation=tvo.getAbbreviation();
-		String location=tvo.getLocation();
-		char division=tvo.getDivision();
-		String zone=tvo.getZone();
-		String home=tvo.getHome();
-		int setupTime=tvo.getSetupTime();
-		 
 		Object rows[][] = new Object[1][7];
 		rows[0][0]=fullName;
 		rows[0][1]=abbreviation;
@@ -563,20 +574,22 @@ public class TeamsSelectionFrame {
 		
 		for(int i=0;i<players.size();i++){
 			PlayerVO pvo=players.get(i);
-			table_1_rows[i][0]=pvo.getName();table_1_rows[i][1]=pvo.getAppearance();table_1_rows[i][2]=pvo.getPlayTime();
-			table_1_rows[i][3]=pvo.getHit();table_1_rows[i][4]=pvo.getShot();table_1_rows[i][5]=pvo.getThirdHit();
-			table_1_rows[i][6]=pvo.getThirdshot();table_1_rows[i][7]=pvo.getFreeHit();table_1_rows[i][8]=pvo.getFreeshot();
-			table_1_rows[i][9]=pvo.getOffensiveRebound();table_1_rows[i][10]=pvo.getDefensiveRebound();table_1_rows[i][11]=pvo.getTotalRebound();
-			table_1_rows[i][12]=pvo.getAssist();table_1_rows[i][13]=pvo.getSteal();table_1_rows[i][14]=pvo.getBlock();
-			table_1_rows[i][15]=pvo.getMiss();table_1_rows[i][16]=pvo.getFoul();table_1_rows[i][17]=pvo.getScore();
+			int appearance=pvo.getAppearance();
+			table_1_rows[i][0]=pvo.getName();table_1_rows[i][1]=pvo.getAppearance();table_1_rows[i][2]=handle((double)pvo.getPlayTime(), appearance);
+			table_1_rows[i][3]=handle((double)pvo.getHit(), appearance);table_1_rows[i][4]=handle((double)pvo.getShot(), appearance);table_1_rows[i][5]=handle((double)pvo.getThirdHit(), appearance);
+			table_1_rows[i][6]=handle((double)pvo.getThirdshot(), appearance);table_1_rows[i][7]=handle((double)pvo.getFreeHit(), appearance);table_1_rows[i][8]=handle((double)pvo.getFreeshot(), appearance);
+			table_1_rows[i][9]=handle((double)pvo.getOffensiveRebound(), appearance);table_1_rows[i][10]=handle((double)pvo.getDefensiveRebound(), appearance);table_1_rows[i][11]=handle((double)pvo.getTotalRebound(), appearance);
+			table_1_rows[i][12]=handle((double)pvo.getAssist(), appearance);table_1_rows[i][13]=handle((double)pvo.getSteal(), appearance);table_1_rows[i][14]=handle((double)pvo.getBlock(), appearance);
+			table_1_rows[i][15]=handle((double)pvo.getMiss(), appearance);table_1_rows[i][16]=handle((double)pvo.getFoul(), appearance);table_1_rows[i][17]=handle((double)pvo.getScore(), appearance);
 		}
 		int k=players.size();
-		table_1_rows[k][0]=tvo.getFullName();table_1_rows[k][1]=tvo.getAppearance();table_1_rows[k][2]="/";
-		table_1_rows[k][3]=tvo.getHit();table_1_rows[k][4]=tvo.getShot();table_1_rows[k][5]=tvo.getThirdHit();
-		table_1_rows[k][6]=tvo.getThirdshot();table_1_rows[k][7]=tvo.getFreeHit();table_1_rows[k][8]=tvo.getFreeshot();
-		table_1_rows[k][9]=tvo.getOffensiveRebound();table_1_rows[k][10]=tvo.getDefensiveRebound();table_1_rows[k][11]=tvo.getTotalRebound();
-		table_1_rows[k][12]=tvo.getAssist();table_1_rows[k][13]=tvo.getSteal();table_1_rows[k][14]=tvo.getBlock();
-		table_1_rows[k][15]=tvo.getMiss();table_1_rows[k][16]=tvo.getFoul();table_1_rows[k][17]=tvo.getScore();
+		int appearance=tvo.getAppearance();
+		table_1_rows[k][0]=tvo.getFullName();table_1_rows[k][1]=tvo.getAppearance();table_1_rows[k][2]=0.0;
+		table_1_rows[k][3]=handle((double)tvo.getHit(), appearance);table_1_rows[k][4]=handle((double)tvo.getShot(), appearance);table_1_rows[k][5]=handle((double)tvo.getThirdHit(), appearance);
+		table_1_rows[k][6]=handle((double)tvo.getThirdshot(), appearance);table_1_rows[k][7]=handle((double)tvo.getFreeHit(), appearance);table_1_rows[k][8]=handle((double)tvo.getFreeshot(), appearance);
+		table_1_rows[k][9]=handle((double)tvo.getOffensiveRebound(), appearance);table_1_rows[k][10]=handle((double)tvo.getDefensiveRebound(), appearance);table_1_rows[k][11]=handle((double)tvo.getTotalRebound(), appearance);
+		table_1_rows[k][12]=handle((double)tvo.getAssist(), appearance);table_1_rows[k][13]=handle((double)tvo.getSteal(), appearance);table_1_rows[k][14]=handle((double)tvo.getBlock(), appearance);
+		table_1_rows[k][15]=handle((double)tvo.getMiss(), appearance);table_1_rows[k][16]=handle((double)tvo.getFoul(), appearance);table_1_rows[k][17]=handle((double)tvo.getScore(), appearance);
 
 		
 		Object table_2_rows[][] = new Object[20][18];
@@ -590,7 +603,7 @@ public class TeamsSelectionFrame {
 			table_2_rows[i][15]=pvo.getMiss();table_2_rows[i][16]=pvo.getFoul();table_2_rows[i][17]=pvo.getScore();
 		}
 		int n=players.size();
-		table_2_rows[n][0]=tvo.getFullName();table_2_rows[n][1]=tvo.getAppearance();table_2_rows[n][2]="/";
+		table_2_rows[n][0]=tvo.getFullName();table_2_rows[n][1]=tvo.getAppearance();table_2_rows[n][2]=0;
 		table_2_rows[n][3]=tvo.getHit();table_2_rows[n][4]=tvo.getShot();table_2_rows[n][5]=tvo.getThirdHit();
 		table_2_rows[n][6]=tvo.getThirdshot();table_2_rows[n][7]=tvo.getFreeHit();table_2_rows[n][8]=tvo.getFreeshot();
 		table_2_rows[n][9]=tvo.getOffensiveRebound();table_2_rows[n][10]=tvo.getDefensiveRebound();table_2_rows[n][11]=tvo.getTotalRebound();
@@ -605,10 +618,10 @@ public class TeamsSelectionFrame {
 			table_3_rows[i][1]=pvo.getHitRate();
 			table_3_rows[i][2]=pvo.getThirdHitRate();
 			table_3_rows[i][3]=pvo.getFreeHitRate();
-			table_3_rows[i][4]="/";
-			table_3_rows[i][5]="/";
-			table_3_rows[i][6]="/";
-			table_3_rows[i][7]="/";
+			table_3_rows[i][4]=0.0;
+			table_3_rows[i][5]=0.0;
+			table_3_rows[i][6]=0.0;
+			table_3_rows[i][7]=0.0;
 			table_3_rows[i][8]=pvo.getOffensiveReboundRate();
 			table_3_rows[i][9]=pvo.getDefensiveReboundRate();
 			table_3_rows[i][10]=pvo.getStealRate();
@@ -701,4 +714,14 @@ public class TeamsSelectionFrame {
         	
         	}
         }
+	
+	
+	public double handle(double a, int b){
+		double result=a/(double)b;
+		BigDecimal c=new BigDecimal(result);  
+		double f1=c.setScale(1,BigDecimal.ROUND_HALF_UP).doubleValue(); 
+		return f1;
+	}
+	
+	
 }

@@ -42,7 +42,7 @@ public class PlayerRankingPanel extends JPanel {
 	public static JCheckBox chckbxNewCheckBox_9;
 	public static JCheckBox chckbxNewCheckBox_10;
 	
-	public PlayerRankingPanel(DefaultTableModel model) {
+	public PlayerRankingPanel(DefaultTableModel model, DefaultTableModel model1) {
 		setLayout(null);
 		
 		scrollPane = new JScrollPane();
@@ -70,21 +70,10 @@ public class PlayerRankingPanel extends JPanel {
 		table.setRowSorter(sorter);
 
 		
-		Object table_1_rows[][] ={
-				{"姚明", "后卫", "东部大西洋区", 999, 888, 777, 666, 555, 444, 333, 500, 400, 0, 100, 200, 300},
-			};
-		String table_1_columns[] ={
-				"球员", "位置", "赛区", "得分", "篮板", "助攻", "盖帽", "抢断", "犯规", "失误", "分钟", "效率", "投篮", "三分", "罚球", "两双"
-			};
-		DefaultTableModel model1=new DefaultTableModel(table_1_rows, table_1_columns){
-			private static final long serialVersionUID = 1L;
-			public Class<?> getColumnClass(int columnIndex) {
-                return getValueAt(0,columnIndex).getClass();
-            }
-        };
 		table_1 = new JTable();
 		table_1.setModel(model1);
-		table_1.setRowSorter(new TableRowSorter<TableModel>(model1));
+		final TableRowSorter<TableModel> sorter1 = new TableRowSorter<TableModel>(model1);
+		table_1.setRowSorter(sorter1);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(50, 150, 1000, 400);
@@ -117,6 +106,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				}
@@ -128,6 +118,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				}
@@ -139,6 +130,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				}
@@ -150,6 +142,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				}
@@ -161,6 +154,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				}
@@ -172,6 +166,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				}
@@ -183,6 +178,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				}
@@ -194,12 +190,14 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				}
 				else if(chckbxNewCheckBox.isSelected()){
 					String text = "前锋";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
+					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				}
@@ -228,6 +226,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				}
@@ -239,6 +238,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				}
@@ -250,6 +250,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				}
@@ -261,6 +262,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				}
@@ -272,6 +274,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				}
@@ -283,6 +286,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				}
@@ -294,6 +298,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				}
@@ -305,12 +310,14 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				}
 				else if(chckbxNewCheckBox_1.isSelected()){
 					String text = "中锋";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
+					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				}
@@ -338,6 +345,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 				}
@@ -349,6 +357,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 				}
@@ -360,6 +369,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 				}
@@ -371,6 +381,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 				}
@@ -382,6 +393,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 				}
@@ -393,6 +405,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 				}
@@ -404,6 +417,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 				}
@@ -415,12 +429,14 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 				}
 				else if(chckbxNewCheckBox_2.isSelected()){
 					String text = "后卫";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
+					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 				}
@@ -448,6 +464,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 				}
 				else if(chckbxNewCheckBox_3.isSelected()&&chckbxNewCheckBox_6.isSelected()){
 					String text = "东部";
@@ -457,6 +474,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 				}
 				else if(chckbxNewCheckBox_3.isSelected()&&chckbxNewCheckBox_7.isSelected()){
 					String text = "东部";
@@ -466,6 +484,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 				}
 				else if(chckbxNewCheckBox.isSelected()&&chckbxNewCheckBox_3.isSelected()){
 					String text = "前锋";
@@ -475,6 +494,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
@@ -490,6 +510,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
@@ -505,6 +526,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
@@ -515,6 +537,7 @@ public class PlayerRankingPanel extends JPanel {
 				else if(chckbxNewCheckBox_3.isSelected()){
 					String text = "东部";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
+					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_8.setEnabled(false);
 					chckbxNewCheckBox_9.setEnabled(false);
@@ -546,6 +569,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 				}
 				else if(chckbxNewCheckBox_4.isSelected()&&chckbxNewCheckBox_9.isSelected()){
 					String text = "西部";
@@ -555,6 +579,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 				}
 				else if(chckbxNewCheckBox_4.isSelected()&&chckbxNewCheckBox_10.isSelected()){
 					String text = "西部";
@@ -564,6 +589,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 				}
 				else if(chckbxNewCheckBox.isSelected()&&chckbxNewCheckBox_4.isSelected()){
 					String text = "前锋";
@@ -573,6 +599,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 					chckbxNewCheckBox_3.setEnabled(false);
@@ -588,6 +615,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 					chckbxNewCheckBox_3.setEnabled(false);
@@ -603,6 +631,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_3.setEnabled(false);
@@ -613,6 +642,7 @@ public class PlayerRankingPanel extends JPanel {
 				else if(chckbxNewCheckBox_4.isSelected()){
 					String text = "西部";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
+					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -644,6 +674,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -660,6 +691,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -676,6 +708,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -687,6 +720,7 @@ public class PlayerRankingPanel extends JPanel {
 			    else if(chckbxNewCheckBox_5.isSelected()){
 					String text = "中区";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
+					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -734,6 +768,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
@@ -750,6 +785,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
@@ -766,6 +802,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
@@ -777,6 +814,7 @@ public class PlayerRankingPanel extends JPanel {
 				else if(chckbxNewCheckBox_6.isSelected()){
 					String text = "大西洋区";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
+					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
@@ -823,6 +861,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -839,6 +878,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -855,6 +895,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -866,6 +907,7 @@ public class PlayerRankingPanel extends JPanel {
 				else if(chckbxNewCheckBox_7.isSelected()){
 					String text = "东南区";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
+					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
@@ -912,6 +954,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -928,6 +971,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -944,6 +988,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -955,6 +1000,7 @@ public class PlayerRankingPanel extends JPanel {
 				else if(chckbxNewCheckBox_8.isSelected()){
 					String text = "西北区";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
+					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_9.setEnabled(false);
@@ -1001,6 +1047,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -1017,6 +1064,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -1033,6 +1081,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -1044,6 +1093,7 @@ public class PlayerRankingPanel extends JPanel {
 				else if(chckbxNewCheckBox_9.isSelected()){
 					String text = "太平洋区";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
+					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_8.setEnabled(false);
@@ -1090,6 +1140,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -1106,6 +1157,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -1122,6 +1174,7 @@ public class PlayerRankingPanel extends JPanel {
 					filters.add(RowFilter.regexFilter(text1));
 					RowFilter<Object,Object> fooBarFilter = RowFilter.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
+					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -1133,6 +1186,7 @@ public class PlayerRankingPanel extends JPanel {
 				else if(chckbxNewCheckBox_10.isSelected()){
 					String text = "西南区";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
+					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_8.setEnabled(false);
@@ -1174,6 +1228,7 @@ public class PlayerRankingPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				String text = "";
 				sorter.setRowFilter(RowFilter.regexFilter(text));
+				sorter1.setRowFilter(RowFilter.regexFilter(text));
 				chckbxNewCheckBox.setSelected(false);
 				chckbxNewCheckBox_1.setSelected(false);
 				chckbxNewCheckBox_2.setSelected(false);

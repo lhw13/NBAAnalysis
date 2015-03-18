@@ -93,7 +93,7 @@ public class Team {
 			TeamInMatches tim = thisTeam.get(i);
 			add(tim);
 			score+=tim.getFinalScore();
-			if(tim.finalScore>0)
+			if(tim.getWin()>0)
 				win++;
 		}
 		for(int i=0;i<appearance;i++)
@@ -101,7 +101,7 @@ public class Team {
 			TeamInMatches tim = opponentTeam.get(i);
 			addOpponent(tim);
 			score2+=tim.getFinalScore();
-			if(tim.finalScore>0)
+			if(tim.getWin()>0)
 				win2++;
 		}
 		return true;
@@ -150,51 +150,51 @@ public class Team {
 	}
 	private double getHitRate()
 	{
-		return hit/shot;
+		return (double)hit/shot;
 	}
 	private double getThirdHitRate()
 	{
-		return thirdHit/thirdshot;
+		return (double)thirdHit/thirdshot;
 	}
 	private double getFreeHitRate()
 	{
-		return freeHit/freeshot;
+		return (double)freeHit/freeshot;
 	}
 	private double getWinRate()
 	{
-		return win/appearance;
+		return (double)win/appearance;
 	}
 	private double getOffensiveRound()
 	{//进攻回合
-		return shot+0.4*freeshot-1.07*(offensiveRebound/(offensiveRebound+defensiveRebound2)*getLost())+1.07*miss;
+		return shot+0.4*freeshot-1.07*((double)offensiveRebound/(offensiveRebound+defensiveRebound2)*getLost())+1.07*miss;
 	}
 	private double getOffensiveEfficiency()
 	{
-		return score/getOffensiveRound()*100;
+		return (double)score/getOffensiveRound()*100;
 	}
 	private double getDefensiveRound()
 	{//whether it's right?
-		return shot2+0.4*freeshot2-1.07*(offensiveRebound2/(offensiveRebound2+defensiveRebound)*getLost2())+1.07*miss2;
+		return shot2+0.4*freeshot2-1.07*((double)offensiveRebound2/(offensiveRebound2+defensiveRebound)*getLost2())+1.07*miss2;
 	}
 	private double getDefensiveEfficiency()
 	{
-		return score2/getDefensiveRound()*100;
+		return (double)score2/getDefensiveRound()*100;
 	}
 	private double getOffensiveReboundEfficiency()
 	{//进攻篮板效率
-		return offensiveRebound/(offensiveRebound+defensiveRebound2);
+		return (double)offensiveRebound/(offensiveRebound+defensiveRebound2);
 	}
 	private double getDefensiveReboundEfficiency()
 	{
-		return defensiveRebound/(defensiveRebound+offensiveRebound2);
+		return (double)defensiveRebound/(defensiveRebound+offensiveRebound2);
 	}
 	private double getStealEfficiency()
 	{
-		return steal/getDefensiveRound()*100;
+		return (double)steal/getDefensiveRound()*100;
 	}
 	private double getAssistEfficiency()
 	{
-		return assist/getOffensiveRound()*100;
+		return (double)assist/getOffensiveRound()*100;
 	}
 	private int getLost()
 	{

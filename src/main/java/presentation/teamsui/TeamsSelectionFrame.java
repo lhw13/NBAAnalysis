@@ -34,6 +34,11 @@ public class TeamsSelectionFrame {
 	private final int INITIAL_DELAY = 100;
     private final int PERIOD_INTERVAL = 10;
     private static JLabel changeLabel;
+    private static JLabel changeLabel_1;
+    private static JLabel changeLabel_2;
+    private static JLabel changeLabel_3;
+    private static JLabel changeLabel_4;
+    private static JLabel changeLabel_5;
     
     public static JScrollPane scrollPane;
     
@@ -71,6 +76,13 @@ public class TeamsSelectionFrame {
     public static boolean flag=true;
     private JPanel panel_3;
     private JButton btnNewButton;
+    
+    private int x1=-750;
+    private int x2=-500;
+    private int x3=-250;
+    private int x4=0;
+    private int x5=250;
+    private int x6=500;
     
     Compute compute;
     
@@ -857,14 +869,51 @@ public class TeamsSelectionFrame {
 			}});
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(350, 0, 250, 100);
+		panel.setBounds(100, 0, 750, 100);
 		panel.setOpaque(false);
 		panel.setLayout(null);
 		
 		changeLabel = new JLabel("");
-		changeLabel.setBounds(0, 0, 250, 100);
+		changeLabel.setLocation(-750, 0);
+		changeLabel.setSize(250, 100);
+		ImageIcon ii = new ImageIcon("pictures\\KOBE.jpg");
+		changeLabel.setIcon(ii);
 		panel.add(changeLabel);
-		changeLabel.setIcon(new ImageIcon("pictures\\Kobe.jpg"));
+		
+		changeLabel_1 = new JLabel("");
+		changeLabel_1.setLocation(-500, 0);
+		changeLabel_1.setSize(250, 100);
+		ImageIcon ii0 = new ImageIcon("pictures\\WADE.jpg");
+		changeLabel_1.setIcon(ii0);
+		panel.add(changeLabel_1);
+		
+		changeLabel_3 = new JLabel("");
+		changeLabel_3.setLocation(0, 0);
+		changeLabel_3.setSize(250, 100);
+		ImageIcon ii2 = new ImageIcon("pictures\\ROYALTY.jpg");
+		changeLabel_3.setIcon(ii2);
+		panel.add(changeLabel_3);
+		
+		changeLabel_4 = new JLabel("");
+		changeLabel_4.setLocation(250, 0);
+		changeLabel_4.setSize(250, 100);
+		ImageIcon ii3 = new ImageIcon("pictures\\GARNETT.jpg");
+		changeLabel_4.setIcon(ii3);
+		panel.add(changeLabel_4);
+		
+		changeLabel_5 = new JLabel("");
+		changeLabel_5.setLocation(500, 0);
+		changeLabel_5.setSize(250, 100);
+		ImageIcon ii4 = new ImageIcon("pictures\\DURANT.jpg");
+		changeLabel_5.setIcon(ii4);
+		panel.add(changeLabel_5);
+		
+		changeLabel_2 = new JLabel("");
+		changeLabel_2.setLocation(-250, 0);
+		changeLabel_2.setSize(250, 100);
+		ImageIcon ii1 = new ImageIcon("pictures\\JORDAN.jpg");
+		changeLabel_2.setIcon(ii1);
+		panel.add(changeLabel_2);
 		
 		JPanel mainpanel = new JPanel();
 		mainpanel.setBounds(0, 0, 1000, 600);
@@ -875,12 +924,12 @@ public class TeamsSelectionFrame {
 		mainpanel.add(panel_2);
 		
 		panel_3 = new JPanel();
-		panel_3.setBounds(0, 0, 150, 100);
+		panel_3.setBounds(0, 0, 100, 100);
 		mainpanel.add(panel_3);
 		panel_3.setLayout(null);
 		
 		btnNewButton = new JButton("返回");
-		btnNewButton.setBounds(14, 31, 113, 27);
+		btnNewButton.setBounds(0, 20, 100, 50);
 		panel_3.add(btnNewButton);
 		
 		btnNewButton.addActionListener(new ActionListener(){
@@ -942,7 +991,7 @@ public class TeamsSelectionFrame {
 		rows[0][5]=home;
 		rows[0][6]=setupTime;
 		
-		Object table_1_rows[][] = new Object[20][18];
+		Object table_1_rows[][] = new Object[23][18];
 		
 		for(int i=0;i<players.size();i++){
 			PlayerVO pvo=players.get(i);
@@ -964,7 +1013,7 @@ public class TeamsSelectionFrame {
 		table_1_rows[k][15]=handle((double)tvo.getMiss(), appearance);table_1_rows[k][16]=handle((double)tvo.getFoul(), appearance);table_1_rows[k][17]=handle((double)tvo.getScore(), appearance);
 
 		
-		Object table_2_rows[][] = new Object[20][18];
+		Object table_2_rows[][] = new Object[23][18];
 		for(int i=0;i<players.size();i++){
 			PlayerVO pvo=players.get(i);
 			table_2_rows[i][0]=pvo.getName();table_2_rows[i][1]=pvo.getAppearance();table_2_rows[i][2]=pvo.getPlayTime();
@@ -983,7 +1032,7 @@ public class TeamsSelectionFrame {
 		table_2_rows[n][15]=tvo.getMiss();table_2_rows[n][16]=tvo.getFoul();table_2_rows[n][17]=tvo.getScore();
 		
 		
-		Object table_3_rows[][] = new Object[20][12];
+		Object table_3_rows[][] = new Object[23][12];
 		for(int i=0;i<players.size();i++){
 			PlayerVO pvo=players.get(i);
 			table_3_rows[i][0]=pvo.getName();
@@ -1057,28 +1106,52 @@ public class TeamsSelectionFrame {
 	private class ScheduleTask extends TimerTask {
 		
         public void run() {
-        	while(flag){
-        		changeLabel.setIcon(new ImageIcon("pictures\\Kobe.jpg"));
-            	try {
-            		Thread.sleep(3000);
-            		} 
-            	catch (InterruptedException e) {
-            		e.printStackTrace();
-            	}
-            	changeLabel.setIcon(new ImageIcon("pictures\\ROYALTY.jpg"));
-            	try {
-            		Thread.sleep(3000);
-            		} 
-            	catch (InterruptedException e) {
-            		e.printStackTrace();
-            	}
-            	changeLabel.setIcon(new ImageIcon("pictures\\WADE.jpg"));
-            	try {
-            		Thread.sleep(3000);
-            		} 
-            	catch (InterruptedException e) {
-            		e.printStackTrace();
-            	}
+        	if(flag){
+        		if(x1<750){
+        			x1++;
+            		changeLabel.setLocation(x1, 0);
+        		}else{
+        			x1=-750;
+        			changeLabel.setLocation(x1, 0);
+        		}
+        		if(x2<750){
+        			x2++;
+            		changeLabel_1.setLocation(x2, 0);
+        		}else{
+        			x2=-750;
+        			changeLabel.setLocation(x2, 0);
+        		}
+        		if(x3<750){
+        			x3++;
+            		changeLabel_2.setLocation(x3, 0);
+        		}else{
+        			x3=-750;
+        			changeLabel_2.setLocation(x3, 0);
+        		}
+        		
+        		if(x4<750){
+        			x4++;
+            		changeLabel_3.setLocation(x4, 0);
+        		}else{
+        			x4=-750;
+        			changeLabel_3.setLocation(x4, 0);
+        		}
+        		if(x5<750){
+        			x5++;
+            		changeLabel_4.setLocation(x5, 0);
+        		}else{
+        			x5=-750;
+        			changeLabel_4.setLocation(x5, 0);
+        		}
+        		if(x6<750){
+        			x6++;
+            		changeLabel_5.setLocation(x6, 0);
+        		}else{
+        			x6=-750;
+        			changeLabel_5.setLocation(x6, 0);
+        		}
+        		
+        		
     		}
         	
             	

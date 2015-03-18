@@ -58,11 +58,11 @@ public class TeamsRankingFrame {
 		scrollPane_2.setViewportView(table_1);
 		
 		JScrollPane scrollPane_3 = new JScrollPane();
-		scrollPane_3.setBounds(50, 377, 930, 269);
+		scrollPane_3.setBounds(50, 550, 1400, 400);
 		panel.add(scrollPane_3);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(50, 20, 1200, 350);
+		tabbedPane.setBounds(50, 20, 1400, 500);
 		tabbedPane.addTab("场均", null, scrollPane_2, null);
 		tabbedPane.addTab("总计", null, scrollPane_1, null);
 		

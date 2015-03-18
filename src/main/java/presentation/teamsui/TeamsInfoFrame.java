@@ -42,13 +42,13 @@ public class TeamsInfoFrame {
 	private void initialize(){
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(50, 750, 200, 84);
+		panel.setBounds(50, 800, 200, 84);
 		
 		JButton btnNewButton = new JButton("返回");
 		panel.add(btnNewButton);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(60, 135, 1169, 280);
+		tabbedPane.setBounds(60, 135, 1400, 300);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		tabbedPane.addTab("场均", null, scrollPane_1, null);
@@ -64,7 +64,7 @@ public class TeamsInfoFrame {
 		scrollPane_2.setViewportView(table_2);
 		
 		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_1.setBounds(60, 463, 868, 257);
+		tabbedPane_1.setBounds(60, 463, 1300, 300);
 		
 		JScrollPane scrollPane_3 = new JScrollPane();
 		tabbedPane_1.addTab("总计", null, scrollPane_3, null);
@@ -73,7 +73,7 @@ public class TeamsInfoFrame {
 		scrollPane_3.setViewportView(table_3);
 		
 		JScrollPane scrollPane_5 = new JScrollPane();
-		scrollPane_5.setBounds(60, 38, 788, 71);
+		scrollPane_5.setBounds(200, 50, 800, 60);
 		
 		table = new JTable();
 		table.setFont(new Font("黑体", Font.PLAIN, 20));

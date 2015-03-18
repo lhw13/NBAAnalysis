@@ -72,7 +72,7 @@ public class TeamsRankingFrame {
 		scrollPane_3.setViewportView(table_2);
 		
 		btnNewButton = new JButton("返回");
-		btnNewButton.setBounds(36, 687, 113, 27);
+		btnNewButton.setBounds(200, 10, 113, 27);
 		panel.add(btnNewButton);
 		
 		btnNewButton.addActionListener(new ActionListener(){

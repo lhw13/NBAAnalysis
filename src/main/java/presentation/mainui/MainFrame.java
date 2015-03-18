@@ -2,15 +2,18 @@ package presentation.mainui;
 
 import java.awt.EventQueue;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import java.awt.event.MouseListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -40,6 +43,19 @@ public class MainFrame {
 	public static JPanel panel;
 	
 	public static PlayerInfoPanel pip;
+	
+	public static boolean flag=false;
+	public static boolean flag0=false;
+	private Timer timer;
+	private final int INITIAL_DELAY = 100;
+    private final int PERIOD_INTERVAL = 1;
+    
+    public int x1=0;
+    public int y=0;
+    public int x2=-500;
+    
+    public JLabel lblNewLabel;
+    public JLabel lblNewLabelBack;
 	
 	Compute compute;
 	
@@ -105,6 +121,9 @@ public class MainFrame {
 	public MainFrame() {
 		initialize();
 		initPanels();
+		timer = new Timer();
+        timer.scheduleAtFixedRate(new ScheduleTask(), 
+                INITIAL_DELAY, PERIOD_INTERVAL);
 	}
 
 	/**
@@ -147,7 +166,29 @@ public class MainFrame {
 		frame.getContentPane().add(PlayerInfoPanel.scrollPane);
 		PlayerInfoPanel.scrollPane.setVisible(false);
 	}
-	
+
+	private class ScheduleTask extends TimerTask {
+		public void run() {
+			if(flag){
+				if(x1>-500){
+					x1--;
+					lblNewLabel.setLocation(x1, y);
+				}
+				if(x2<0){
+					x2++;
+					lblNewLabelBack.setLocation(x1, y);
+				}
+		
+			}
+			if(flag0){
+				
+			}
+		
+			
+        	
+        	}
+        }
+
 	private void initialize() {
 		
 		frame = new JFrame();
@@ -158,11 +199,83 @@ public class MainFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		panel = new JPanel();
+		panel=new JPanel();
 		panel.setBounds(0, 0, 1000, 600);
-		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
+		lblNewLabel = new JLabel("");
+		lblNewLabel.setLocation(0, 0);
+		lblNewLabel.setSize(500,300);
+		ImageIcon ii = new ImageIcon("pictures\\P1.png");
+		lblNewLabel.setIcon(ii);
+		panel.add(lblNewLabel);
+		
+		lblNewLabel.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				flag=true;
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+			}
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				flag=true;
+				flag=false;
+			}
+			
+		});
+		
+		lblNewLabelBack = new JLabel("");
+		lblNewLabelBack.setLocation(-500, 0);
+		lblNewLabelBack.setSize(500,300);
+		ImageIcon ii0 = new ImageIcon("pictures\\P1_1.png");
+		lblNewLabelBack.setIcon(ii0);
+		panel.add(lblNewLabelBack);
+		
+		lblNewLabel.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+			}
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				
+			}
+			
+		});
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("pictures\\P2.PNG"));
+		lblNewLabel_1.setBounds(0, 300, 500, 300);
+		panel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setBounds(500, 0, 500, 300);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setBounds(500, 300, 500, 300);
+		
+		frame.getContentPane().add(panel);
+		
+	
+		frame.repaint();
+		
+		/*
 		JButton btnNewButton = new JButton("NBA球队选择界面");
 		btnNewButton.setBounds(65, 34, 159, 55);
 		panel.add(btnNewButton);
@@ -239,6 +352,9 @@ public class MainFrame {
 			}
 			
 		});
+		
+	}
+	*/
 		
 	}
 	

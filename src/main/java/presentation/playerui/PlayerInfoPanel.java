@@ -135,7 +135,7 @@ public class PlayerInfoPanel extends JPanel {
 		panelOfBottom.add(scrollPane_1);
 		
 		table = new JTable(model);
-	
+		
 		scrollPane_1.setViewportView(table);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -338,7 +338,7 @@ public class PlayerInfoPanel extends JPanel {
 		rowData_5.add(handleDecimal(vo.getThirdshot()/num));
 		rowData_5.add(handleDecimal(vo.getFreeHit()/num));		
 		rowData_5.add(handleDecimal(vo.getFreeshot()/num));		
-		rowData_5.add(0);
+		rowData_5.add(handleDecimal(vo.getTowPairs()/num));
 		rowDatas_5.add(rowData_5);
 		 
 		for(int i=0; i<rowDatas_5.size(); i++){		
@@ -357,7 +357,7 @@ public class PlayerInfoPanel extends JPanel {
 		rowData_6.add(vo.getHit());  	rowData_6.add(vo.getShot());
 		rowData_6.add(vo.getThirdHit());		rowData_6.add(vo.getThirdshot());
 		rowData_6.add(vo.getFreeHit());		rowData_6.add(vo.getFreeshot());
-		rowData_6.add(0);	
+		rowData_6.add(vo.getTowPairs());	
 		rowDatas_6.add(rowData_6);
 		 
 		for(int i=0; i<rowDatas_6.size(); i++){		

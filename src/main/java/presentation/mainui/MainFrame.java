@@ -1,12 +1,14 @@
 package presentation.mainui;
 
+import java.awt.Cursor;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
@@ -46,17 +48,36 @@ public class MainFrame {
 	
 	public static boolean flag=false;
 	public static boolean flag0=false;
+	public static boolean flag1=false;
+	public static boolean flag2=false;
 	private Timer timer;
 	private final int INITIAL_DELAY = 100;
     private final int PERIOD_INTERVAL = 1;
     
     public int x1=0;
-    public int y=0;
     public int x2=-500;
+    
+    public int x3=0;
+    public int x4=-500;
+    
+    public int x5=500;
+    public int x6=1000;
+    
+    public int x7=500;
+    public int x8=1000;
     
     public JLabel lblNewLabel;
     public JLabel lblNewLabelBack;
+    
+    public JLabel lblNewLabel_1;
+    public JLabel lblNewLabel_1Back;
 	
+    public JLabel lblNewLabel_2;
+    public JLabel lblNewLabel_2Back;
+    
+    public JLabel lblNewLabel_3;
+    public JLabel lblNewLabel_3Back;
+    
 	Compute compute;
 	
 	String table_1_columns[] ={
@@ -172,22 +193,91 @@ public class MainFrame {
 			if(flag){
 				if(x1>-500){
 					x1--;
-					lblNewLabel.setLocation(x1, y);
+					lblNewLabel.setLocation(x1, 0);
 				}
 				if(x2<0){
 					x2++;
-					lblNewLabelBack.setLocation(x1, y);
+					lblNewLabelBack.setLocation(x2, 0);
+					
 				}
-		
+			}else{
+				if(x1<0){
+					x1++;
+					lblNewLabel.setLocation(x1, 0);
+				}
+				if(x2>-500){
+					x2--;
+					lblNewLabelBack.setLocation(x2, 0);
+					
+				}
 			}
-			if(flag0){
-				
-			}
-		
 			
-        	
-        	}
+			if(flag0){
+				if(x3>-500){
+					x3--;
+					lblNewLabel_1.setLocation(x3, 300);
+				}
+				if(x4<0){
+					x4++;
+					lblNewLabel_1Back.setLocation(x4, 300);
+				}
+			}else{
+				if(x3<0){
+					x3++;
+					lblNewLabel_1.setLocation(x3, 300);
+				}
+				if(x4>-500){
+					x4--;
+					lblNewLabel_1Back.setLocation(x4, 300);
+					
+				}
+			}
+			
+			if(flag1){
+				if(x5<1000){
+					x5++;
+					lblNewLabel_2.setLocation(x5, 0);
+				}
+				if(x6>500){
+					x6--;
+					lblNewLabel_2Back.setLocation(x6, 0);
+				}
+			}else{
+				if(x5>500){
+					x5--;
+					lblNewLabel_2.setLocation(x5, 0);
+				}
+				if(x6<1000){
+					x6++;
+					lblNewLabel_2Back.setLocation(x6, 0);
+					
+				}
+			}
+			
+			if(flag2){
+				if(x7<1000){
+					x7++;
+					lblNewLabel_3.setLocation(x7, 300);
+				}
+				if(x8>500){
+					x8--;
+					lblNewLabel_3Back.setLocation(x8, 300);
+				}
+			}else{
+				if(x7>500){
+					x7--;
+					lblNewLabel_3.setLocation(x7, 300);
+				}
+				if(x8<1000){
+					x8++;
+					lblNewLabel_3Back.setLocation(x8, 300);
+					
+				}
+			}
+			
+			
         }
+	}
 
 	private void initialize() {
 		
@@ -214,6 +304,9 @@ public class MainFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				flag=true;
+				flag0=false;
+				flag1=false;
+				flag2=false;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -226,8 +319,7 @@ public class MainFrame {
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
-				flag=true;
-				flag=false;
+				
 			}
 			
 		});
@@ -239,50 +331,10 @@ public class MainFrame {
 		lblNewLabelBack.setIcon(ii0);
 		panel.add(lblNewLabelBack);
 		
-		lblNewLabel.addMouseListener(new MouseListener(){
+		lblNewLabelBack.addMouseListener(new MouseListener(){
 
-			public void mouseClicked(java.awt.event.MouseEvent e) {
-			}
-
-			public void mousePressed(java.awt.event.MouseEvent e) {
-			}
-			public void mouseReleased(java.awt.event.MouseEvent e) {
-			}
-
-			public void mouseEntered(java.awt.event.MouseEvent e) {
-				
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent e) {
-				
-			}
-			
-		});
-		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("pictures\\P2.PNG"));
-		lblNewLabel_1.setBounds(0, 300, 500, 300);
-		panel.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setBounds(500, 0, 500, 300);
-		
-		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setBounds(500, 300, 500, 300);
-		
-		frame.getContentPane().add(panel);
-		
-	
-		frame.repaint();
-		
-		/*
-		JButton btnNewButton = new JButton("NBA球队选择界面");
-		btnNewButton.setBounds(65, 34, 159, 55);
-		panel.add(btnNewButton);
-		
-		btnNewButton.addActionListener(new ActionListener(){
-
-			public void actionPerformed(ActionEvent e) {
+			@Override
+			public void mouseClicked(MouseEvent e) {
 				try {
 					MainFrame.panel.setVisible(false);
 					TeamsSelectionFrame.scrollPane.setVisible(true);
@@ -293,35 +345,147 @@ public class MainFrame {
 				}
 				
 			}
-			
-		});
-		
-		JButton btnNewButton_1 = new JButton("NBA球队排名界面");
-		btnNewButton_1.setBounds(65, 121, 159, 55);
-		panel.add(btnNewButton_1);
-		
-		btnNewButton_1.addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent e) {
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabelBack.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabelBack.setCursor(Cursor.getDefaultCursor());
+				
+			}});
+		
+		lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("pictures\\P2.PNG"));
+		lblNewLabel_1.setBounds(0, 300, 500, 300);
+		panel.add(lblNewLabel_1);
+		
+		lblNewLabel_1.addMouseListener(new MouseListener(){
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				flag0=true;
+				flag=false;
+				flag1=false;
+				flag2=false;
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+			}});
+		
+		lblNewLabel_1Back = new JLabel("");
+		lblNewLabel_1Back.setLocation(-500, 300);
+		lblNewLabel_1Back.setSize(500,300);
+		ImageIcon ii1 = new ImageIcon("pictures\\P2_1.png");
+		lblNewLabel_1Back.setIcon(ii1);
+		panel.add(lblNewLabel_1Back);
+		
+		lblNewLabel_1Back.addMouseListener(new MouseListener(){
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
 				try {
-					
 					setTeamsRanking();
-					
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 				
 			}
-			
-		});
-		
-		JButton btnNewButton_2 = new JButton("NBA球员选择界面");
-		btnNewButton_2.setBounds(65, 211, 159, 55);
-		panel.add(btnNewButton_2);
-		
-		btnNewButton_2.addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent e) {
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_1Back.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_1Back.setCursor(Cursor.getDefaultCursor());
+				
+			}});
+		
+		
+		
+		lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setLocation(500, 0);
+		lblNewLabel_2.setSize(500,300);
+		ImageIcon ii2 = new ImageIcon("pictures\\P3.png");
+		lblNewLabel_2.setIcon(ii2);
+		panel.add(lblNewLabel_2);
+		
+		lblNewLabel_2.addMouseListener(new MouseListener(){
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				flag1=true;
+				flag0=false;
+				flag=false;
+				flag2=false;
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+			}});
+		
+		lblNewLabel_2Back = new JLabel("");
+		lblNewLabel_2Back.setLocation(1000, 0);
+		lblNewLabel_2Back.setSize(500,300);
+		ImageIcon ii3 = new ImageIcon("pictures\\P3_1.png");
+		lblNewLabel_2Back.setIcon(ii3);
+		panel.add(lblNewLabel_2Back);
+		
+		lblNewLabel_2Back.addMouseListener(new MouseListener(){
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
 				try {
 					MainFrame.panel.setVisible(false);
 					PlayerSelectionPanel.scrollPane.setVisible(true);
@@ -329,32 +493,101 @@ public class MainFrame {
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_2Back.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_2Back.setCursor(Cursor.getDefaultCursor());
+			}});
+		
+		lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setLocation(500, 300);
+		lblNewLabel_3.setSize(500,300);
+		ImageIcon ii4 = new ImageIcon("pictures\\P4.png");
+		lblNewLabel_3.setIcon(ii4);
+		panel.add(lblNewLabel_3);
+		
+		lblNewLabel_3.addMouseListener(new MouseListener(){
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				flag2=true;
+				flag1=false;
+				flag0=false;
+				flag=false;
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
 				
 			}
-			
-		});
-		
-		JButton btnNewButton_3 = new JButton("NBA球员排名界面");
-		btnNewButton_3.setBounds(65, 294, 159, 55);
-		panel.add(btnNewButton_3);
-		
-		btnNewButton_3.addActionListener(new ActionListener(){
 
-			public void actionPerformed(ActionEvent e) {
+			@Override
+			public void mouseExited(MouseEvent e) {
+				
+			}});
+		
+		lblNewLabel_3Back = new JLabel("");
+		lblNewLabel_3Back.setLocation(1000, 0);
+		lblNewLabel_3Back.setSize(500,300);
+		ImageIcon ii5 = new ImageIcon("pictures\\P4_1.png");
+		lblNewLabel_3Back.setIcon(ii5);
+		panel.add(lblNewLabel_3Back);
+		
+		lblNewLabel_3Back.addMouseListener(new MouseListener(){
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
 				try {
-					
 					setPlayersRanking();
 					
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
-				
 			}
-			
-		});
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_3Back.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_3Back.setCursor(Cursor.getDefaultCursor());
+			}});
 		
-	}
-	*/
+		frame.getContentPane().add(panel);
+		
+		frame.repaint();
 		
 	}
 	

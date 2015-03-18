@@ -135,7 +135,7 @@ public class PlayerInfoPanel extends JPanel {
 		panelOfBottom.add(scrollPane_1);
 		
 		table = new JTable(model);
-	
+		
 		scrollPane_1.setViewportView(table);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);

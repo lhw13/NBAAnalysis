@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -223,8 +224,10 @@ public class PlayerInfoPanel extends JPanel {
 		rowData.add(vo.getName());  rowData.add(vo.getTeamFullName());
 		rowData.add(vo.getDivision());  rowData.add(vo.getZone());		
 		rowData.add(vo.getNumber());rowData.add(vo.getPosition());
-		rowData.add(vo.getHeight());rowData.add(vo.getWeight());
-		rowData.add(vo.getBirth()); rowData.add(vo.getAge());
+		rowData.add(vo.getHeight().toString());rowData.add(vo.getWeight());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String dateStr = sdf.format(vo.getBirth().getTime());
+		rowData.add(dateStr); rowData.add(vo.getAge());
 		rowData.add(vo.getExp());   rowData.add(vo.getSchool());
 		rowDatas.add(rowData);
 		 

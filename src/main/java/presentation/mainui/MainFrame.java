@@ -45,7 +45,7 @@ public class MainFrame {
 	public static JPanel panel;
 	
 	public static PlayerInfoPanel pip;
-	 
+	
 	public static boolean flag=false;
 	public static boolean flag0=false;
 	public static boolean flag1=false;

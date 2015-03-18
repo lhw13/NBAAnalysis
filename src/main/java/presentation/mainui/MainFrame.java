@@ -597,7 +597,7 @@ public class MainFrame {
 		TeamsRankingFrame.scrollPane.setVisible(true);
 		MainFrame.frame.setTitle("NBA球队排名");
 		
-		compute=new Compute();
+		compute=Compute.getInstance();
 		ArrayList<TeamVO> tvoList=compute.getTeamAnalysis();
 		
 		Object table_rows[][] = new Object[30][17];
@@ -677,7 +677,7 @@ public class MainFrame {
 		MainFrame.panel.setVisible(false);
 		MainFrame.frame.setTitle("NBA球员排名");
 		
-		compute=new Compute();
+		compute=Compute.getInstance();
 		ArrayList<PlayerVO> pvoList=compute.getPlayerAnalysis();
 		PlayerVO pvo=new PlayerVO();
 		String [] s=new String[3];

@@ -960,7 +960,7 @@ public class TeamsSelectionFrame {
 		MainFrame.frame.setTitle(teamName);
 		
 		
-		compute=new Compute();
+		compute=Compute.getInstance();
 		TeamWithPlayersVO twpvo=compute.getTeamAnalysis(teamName);
 		TeamVO tvo=new TeamVO();
 		String fullName="teamName";

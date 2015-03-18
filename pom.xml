@@ -22,9 +22,18 @@
       <scope>test</scope>
     </dependency>
     <dependency>  
-		<groupId>org.apache.xmlgraphics</groupId>  
-		<artifactId>batik-codec</artifactId>  
-		<version>1.7</version>  
+		<groupId>batik-swing</groupId>
+    	<artifactId>batik-swing</artifactId>
+    	<version>2.6.10</version>
+    	<scope>system</scope>
+    	<systemPath>${project.basedir}/lib/batik-1.7/batik.jar</systemPath>
+	</dependency>
+	<dependency>  
+		<groupId>batik</groupId>
+    	<artifactId>batik</artifactId>
+    	<version>2.6.10</version>
+    	<scope>system</scope>
+    	<systemPath>${project.basedir}/lib/batik-1.7/lib/batik-swing.jar</systemPath>
 	</dependency>
     <dependency>
     	<groupId>substance</groupId>
@@ -41,20 +50,19 @@
     	<systemPath>${project.basedir}/lib/swingset3_beautyeye.jar</systemPath>
     </dependency>
   </dependencies>
-   <!-- 添加这一段 -->
-<build>
-<plugins>
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <version>3.1</version>
-    <configuration>
-     <source>1.7</source>
-     <target>1.7</target>
-    </configuration>
-   </plugin>
-   
-<plugin>
+  
+<build>  
+    <plugins>  
+        <plugin>  
+            <groupId>org.apache.maven.plugins</groupId>  
+            <artifactId>maven-compiler-plugin</artifactId>  
+            <version>3.1</version>  
+            <configuration>  
+                <source>1.7</source>  
+                <target>1.7</target>  
+            </configuration>  
+        </plugin>  
+        <plugin>
 <groupId>org.apache.maven.plugins</groupId>
 <artifactId>maven-surefire-plugin</artifactId>
 	<version>2.18</version>
@@ -68,6 +76,7 @@
 </excludes>
 </configuration>
 </plugin>
-</plugins>
-</build>
+    </plugins>  
+</build>  
+  
 </project>

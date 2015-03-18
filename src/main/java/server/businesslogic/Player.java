@@ -40,6 +40,7 @@ public class Player {
 	int miss=0;
 	int foul=0;
 	int score=0;
+	double twoPairs=0;
 	
 	//this team
 	int teamPlayTime=0;
@@ -87,6 +88,14 @@ public class Player {
 	}
 	public void add(PlayerInMatchesPO player)
 	{
+		//record two pairs
+		int scoretemp=player.getScore();
+		int totalReboundtemp = player.getTotalRebound();
+		int assisttemp = player.getAssist();
+		int stealtemp = player.getSteal();
+		int blocktemp = player.getBlock();
+		
+		
 		playTime += player.getPlayTime();
 		hit += player.getHit();//命中
 		shot += player.getShot();//出手
@@ -96,16 +105,29 @@ public class Player {
 		freeshot += player.getFreeshot();
 		offensiveRebound += player.getOffensiveRebound();
 		defensiveRebound += player.getDefensiveRebound();
-		totalRebound += player.getTotalRebound();
-		assist += player.getAssist();
-		steal += player.getSteal();
-		block += player.getBlock();
+		totalRebound += totalReboundtemp;
+		assist += assisttemp;
+		steal += stealtemp;
+		block += blocktemp;
 		miss += player.getMiss();
 		foul += player.getFoul();
-		score += player.getScore();
+		score += scoretemp;
 		char p = player.getPosition();
 		if(p=='F' || p=='G' || p=='C')
 			starting++;
+		int tp=0;
+		if(scoretemp>=10)
+			tp++;
+		if(totalReboundtemp>=10)
+			tp++;
+		if(assisttemp>=10)
+			tp++;
+		if(stealtemp>=10)
+			tp++;
+		if(blocktemp>=10)
+			tp++;
+		if(tp>=2)
+			twoPairs++;
 	}
 	public PlayerVO toVO()
 	{
@@ -122,7 +144,7 @@ public class Player {
 				 getShotEfficiency(),  getReboundRate(),
 				 getOffensiveReboundRate(),  getDefensiveReboundRate(),
 				 getAssistRate(),  getStealRate(),  getBlockRate(),
-				 getMissRate(),  getUseRate());
+				 getMissRate(),  getUseRate(),twoPairs);
 	}
 	public void addThisTeam(TeamInMatches tim,int order)
 	{

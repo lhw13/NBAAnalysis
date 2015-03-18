@@ -17,7 +17,7 @@ public class PlayerVO {
 			double shotEfficiency, double reboundRate,
 			double offensiveReboundRate, double defensiveReboundRate,
 			double assistRate, double stealRate, double blockRate,
-			double missRate, double useRate) {
+			double missRate, double useRate,double towPairs) {
 		super();
 		this.teamFullName = teamFullName;
 		this.teamAbbreviation = teamAbbreviation;
@@ -65,6 +65,7 @@ public class PlayerVO {
 		this.blockRate = blockRate;
 		this.missRate = missRate;
 		this.useRate = useRate;
+		this.towPairs = towPairs;
 	}
 	public PlayerVO()
 	{
@@ -120,6 +121,7 @@ public class PlayerVO {
 	double blockRate;
 	double missRate;
 	double useRate;
+	double towPairs;
 	public String getTeamFullName() {
 		return teamFullName;
 	}
@@ -257,5 +259,8 @@ public class PlayerVO {
 	}
 	public double getUseRate() {
 		return useRate;
+	}
+	public double getTowPairs() {
+		return towPairs;
 	}
 }

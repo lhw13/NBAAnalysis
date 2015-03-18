@@ -76,7 +76,7 @@ public class PlayerRankingPanel extends JPanel {
 		table_1.setRowSorter(sorter1);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(50, 150, 1000, 400);
+		tabbedPane.setBounds(50, 150, 1400, 600);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setViewportView(table);
@@ -86,7 +86,7 @@ public class PlayerRankingPanel extends JPanel {
 		scrollPane_2.setViewportView(table_1);
 		tabbedPane.addTab("总计", null, scrollPane_2, null);
 		
-		panel.setPreferredSize(new Dimension(1300,1000));
+		panel.setPreferredSize(new Dimension(1500,1000));
 		panel.add(btnNewButton);
 		panel.add(tabbedPane);
 		scrollPane.setViewportView(panel);

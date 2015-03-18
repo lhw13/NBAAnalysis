@@ -22,6 +22,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/wjc/git/NBAAnalysis/lib/batik-1.7/batik.jar"/>
+	<classpathentry kind="lib" path="C:/Users/sony/git/NBAAnalysis/lib/batik-1.7/batik.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

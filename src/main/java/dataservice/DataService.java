@@ -3,6 +3,10 @@ package dataservice;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.swing.ImageIcon;
+
+import org.apache.batik.swing.JSVGCanvas;
+
 import server.po.*;
 
 
@@ -14,6 +18,8 @@ public interface DataService {
 	 * 加入数据：m.put(String,PlayerPO/TeamPO);前面填球员或球队名称，后面填相应PO;
 	 */
 	ArrayList<MatchPO> getAllMatch();
-	//Pic getPlayerPic(String name);根据姓名得到一位球员图片
-	//Pic getTeamPic(String name);根据姓名得到一支球队队徽
+	public  ImageIcon getPlayerAction(String name);
+	public ImageIcon getPlayerPortrait(String name);
+	public ImageIcon getTeamPic(String abbreviation);
+	public JSVGCanvas getSwing(String abbreviation);
 }

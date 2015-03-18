@@ -6,6 +6,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
+import javax.swing.ImageIcon;
+
+import org.apache.batik.swing.JSVGCanvas;
+
 import dataservice.DataService;
 import server.data.DataController;
 import server.po.MatchPO;
@@ -33,6 +37,22 @@ public class Compute implements BLService{
 		if(instance == null)
 			instance = new Compute();
 		return instance;
+	}
+	public  ImageIcon getPlayerAction(String name)
+	{
+		return data.getPlayerAction(name);
+	}
+	public ImageIcon getPlayerPortrait(String name)
+	{
+		return data.getPlayerPortrait(name);
+	}
+	public ImageIcon getTeamPic(String abbreviation)
+	{
+		return data.getTeamPic(abbreviation);
+	}
+	public JSVGCanvas getSwing(String abbreviation)
+	{
+		return data.getSwing(abbreviation);
 	}
 	public ArrayList<PlayerVO> getPlayerAnalysis()
 	{

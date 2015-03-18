@@ -2,6 +2,10 @@ package blservice;
 
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+
+import org.apache.batik.swing.JSVGCanvas;
+
 import vo.*;
 
 public interface BLService {
@@ -10,4 +14,8 @@ public interface BLService {
 	PlayerVO getPlayerAnalysis(String name);//暂时认为名字唯一确定一名球员
 	TeamWithPlayersVO getTeamAnalysis(String abbreviation);//暂时认为球队全称唯一确定一支球队
 	ArrayList<TeamWithPlayersVO> getTeamsWithPlayers();//展示层要求按队伍显示球员的接口
+	public  ImageIcon getPlayerAction(String name);
+	public ImageIcon getPlayerPortrait(String name);
+	public ImageIcon getTeamPic(String abbreviation);
+	public JSVGCanvas getSwing(String abbreviation);
 }

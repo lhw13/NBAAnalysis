@@ -28,12 +28,12 @@ public class BLController implements BLService{
 	}
 	HashMap<String, Player> playersHash = new HashMap<String, Player>(606);
 	HashMap<String, Team> teamsHash = new HashMap<String, Team>(41);
-	ArrayList<Player> players = new ArrayList<Player>();
-	ArrayList<Team> teams = new ArrayList<Team>();
+	ArrayList<Player> players = new ArrayList<Player>(460);
+	ArrayList<Team> teams = new ArrayList<Team>(31);
 	DataService data = new DataController();
 	private static BLController instance = null;
 	public static BLController getInstance()
-	{
+	{//单体模式
 		if(instance == null)
 			instance = new BLController();
 		return instance;

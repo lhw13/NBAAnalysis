@@ -230,7 +230,10 @@ public class PlayerInfoPanel extends JPanel {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String dateStr = sdf.format(vo.getBirth().getTime());
 		rowData.add(dateStr); rowData.add(vo.getAge());
-		rowData.add(vo.getExp());   rowData.add(vo.getSchool());
+		if(vo.getExp()!=-1)
+			rowData.add(vo.getExp());   
+		else rowData.add("未知");  
+		rowData.add(vo.getSchool());
 		rowDatas.add(rowData);
 		 
 		for(int i=0; i<rowDatas.size(); i++){		

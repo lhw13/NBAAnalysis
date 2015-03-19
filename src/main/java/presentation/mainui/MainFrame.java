@@ -34,7 +34,7 @@ import presentation.playerui.PlayerSelectionPanel;
 import presentation.teamsui.TeamsSelectionFrame;
 import presentation.teamsui.TeamsInfoFrame;
 import presentation.teamsui.TeamsRankingFrame;
-import server.businesslogic.Compute;
+import server.businesslogic.BLController;
 import vo.PlayerVO;
 import vo.TeamVO;
  
@@ -78,7 +78,7 @@ public class MainFrame {
     public JLabel lblNewLabel_3;
     public JLabel lblNewLabel_3Back;
     
-	Compute compute;
+	BLController compute;
 	
 	String table_1_columns[] ={
 			"球队", "投篮命中率", "三分命中率", "罚球命中率", "胜率", "进攻回合", "进攻效率", "防守效率", "进攻篮板效率", "防守篮板效率", "抢断效率", "助攻率"
@@ -597,7 +597,7 @@ public class MainFrame {
 		TeamsRankingFrame.scrollPane.setVisible(true);
 		MainFrame.frame.setTitle("NBA球队排名");
 		
-		compute=Compute.getInstance();
+		compute=BLController.getInstance();
 		ArrayList<TeamVO> tvoList=compute.getTeamAnalysis();
 		
 		Object table_rows[][] = new Object[30][17];
@@ -677,7 +677,7 @@ public class MainFrame {
 		MainFrame.panel.setVisible(false);
 		MainFrame.frame.setTitle("NBA球员排名");
 		
-		compute=Compute.getInstance();
+		compute=BLController.getInstance();
 		ArrayList<PlayerVO> pvoList=compute.getPlayerAnalysis();
 		PlayerVO pvo=new PlayerVO();
 		String [] s=new String[3];

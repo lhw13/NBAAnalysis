@@ -22,14 +22,14 @@ import javax.swing.JButton;
 
 import blservice.BLService;
 import presentation.mainui.MainFrame;
-import server.businesslogic.Compute;
+import server.businesslogic.BLController;
 import vo.PlayerVO;
 import vo.TeamVO;
 import vo.TeamWithPlayersVO;
  
 public class PlayerSelectionPanel extends JPanel {
 	
-	BLService blservice = Compute.getInstance();
+	BLService blservice = BLController.getInstance();
 	ArrayList<TeamWithPlayersVO> teamWithPlayer = blservice.getTeamsWithPlayers();
 	DefaultTableModel modelOf1=new DefaultTableModel(new Object[][] {
 					{"Alex Len", "Chris Bosh", "Eric Gordon"},

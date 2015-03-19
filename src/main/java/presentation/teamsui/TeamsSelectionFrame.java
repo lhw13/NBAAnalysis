@@ -2,7 +2,7 @@ package presentation.teamsui;
 
 import presentation.mainui.MainFrame;
 import presentation.teamsui.TeamsInfoFrame;
-import server.businesslogic.Compute;
+import server.businesslogic.BLController;
 import vo.PlayerVO;
 import vo.TeamVO;
 import vo.TeamWithPlayersVO;
@@ -84,7 +84,7 @@ public class TeamsSelectionFrame {
     private int x5=250;
     private int x6=500;
     
-    Compute compute;
+    BLController compute;
     
     String columns[] ={
 			"球队", "球队缩写", "所在地", "赛区", "分区", "主场", "建立时间"
@@ -960,7 +960,7 @@ public class TeamsSelectionFrame {
 		MainFrame.frame.setTitle(teamName);
 		
 		
-		compute=Compute.getInstance();
+		compute=BLController.getInstance();
 		TeamWithPlayersVO twpvo=compute.getTeamAnalysis(teamName);
 		TeamVO tvo=new TeamVO();
 		String fullName="teamName";

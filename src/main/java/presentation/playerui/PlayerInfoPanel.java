@@ -25,7 +25,7 @@ import blservice.BLService;
 import presentation.ImageHandle;
 import presentation.mainui.MainFrame;
 import presentation.teamsui.TeamsRankingFrame;
-import server.businesslogic.Compute;
+import server.businesslogic.BLController;
 import vo.PlayerVO;
  
 public class PlayerInfoPanel extends JPanel {
@@ -110,7 +110,7 @@ public class PlayerInfoPanel extends JPanel {
 				"得分", "在场时间", "命中", "出手", "三分命中", "三分出手", "罚球命中", "罚球出手", "两双"
 			}
 		);
-	BLService blservice = Compute.getInstance();
+	BLService blservice = BLController.getInstance();
 	private JTable table_5;
 	private JTable table_6;
 	

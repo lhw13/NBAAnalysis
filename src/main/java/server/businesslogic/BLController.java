@@ -22,8 +22,8 @@ import vo.TeamVO;
 import vo.TeamWithPlayersVO;
 import blservice.BLService;
  
-public class Compute implements BLService{
-	private Compute()
+public class BLController implements BLService{
+	private BLController()
 	{
 	}
 	HashMap<String, Player> playersHash = new HashMap<String, Player>(606);
@@ -31,11 +31,11 @@ public class Compute implements BLService{
 	ArrayList<Player> players = new ArrayList<Player>();
 	ArrayList<Team> teams = new ArrayList<Team>();
 	DataService data = new DataController();
-	private static Compute instance = null;
-	public static Compute getInstance()
+	private static BLController instance = null;
+	public static BLController getInstance()
 	{
 		if(instance == null)
-			instance = new Compute();
+			instance = new BLController();
 		return instance;
 	}
 	public  ImageIcon getPlayerAction(String name)

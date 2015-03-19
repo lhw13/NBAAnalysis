@@ -138,6 +138,10 @@ public class Compute implements BLService{
 			TeamInMatches timtemp1 = new TeamInMatches(mttemp.getTeam1(),finalTemp.getTeam1(),scores1,finalTemp.getTeam1()-finalTemp.getTeam2());
 			TeamInMatches timtemp2 = new TeamInMatches(mttemp.getTeam2(),finalTemp.getTeam2(),scores2,finalTemp.getTeam2()-finalTemp.getTeam1());
 			
+			//to handle dirty data
+			timtemp1.clean();
+			timtemp2.clean();
+			
 			//put some data in team 1
 			String ab = timtemp1.getAbbreviation();
 			Team foundTeam = teamsHash.get(ab);

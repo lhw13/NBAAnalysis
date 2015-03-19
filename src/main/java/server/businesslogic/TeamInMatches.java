@@ -66,6 +66,30 @@ public class TeamInMatches {
 			playTime+=player.getPlayTime();
 		}
 	}
+	public void clean()
+	{
+		ArrayList<PlayerInMatchesPO> players= getPlayers();
+		int pt=0;
+		ArrayList<PlayerInMatchesPO> playersWithNullPlayTime = new ArrayList<PlayerInMatchesPO>();
+		for(int i=0;i<players.size();i++)
+		{
+			PlayerInMatchesPO player=players.get(i);
+			if(player.getScore()<0)
+				player.setScore((player.getHit()-player.getThirdHit())*2+player.getThirdHit()*3+player.getFreeHit());
+			if(player.getPlayTime()>=0)
+				pt+=player.getPlayTime();
+			else
+				playersWithNullPlayTime.add(player);
+		}
+		int size = playersWithNullPlayTime.size();
+		int eplayTime=48*60*5;
+		for(int j=4;j<getScores().size();j++)
+			eplayTime+=1500;
+		for(int i=0;i<size;i++)
+		{
+			playersWithNullPlayTime.get(i).setPlayTime((eplayTime-pt)/size);
+		}
+	}
 	public boolean containsPlayer(String name)
 	{
 		ArrayList<PlayerInMatchesPO> players = teamInMatchespo.getPlayers();

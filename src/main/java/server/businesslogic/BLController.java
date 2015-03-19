@@ -28,8 +28,8 @@ public class BLController implements BLService{
 	}
 	HashMap<String, Player> playersHash = new HashMap<String, Player>(606);
 	HashMap<String, Team> teamsHash = new HashMap<String, Team>(41);
-	ArrayList<Player> players = new ArrayList<Player>(460);
-	ArrayList<Team> teams = new ArrayList<Team>(31);
+	ArrayList<Player> players = new ArrayList<Player>(460);//buffer for analysed player datas
+	ArrayList<Team> teams = new ArrayList<Team>(31);//see above
 	DataService data = new DataController();
 	private static BLController instance = null;
 	public static BLController getInstance()
@@ -38,6 +38,8 @@ public class BLController implements BLService{
 			instance = new BLController();
 		return instance;
 	}
+	
+	//transform image of player or team
 	public  ImageIcon getPlayerAction(String name)
 	{
 		return data.getPlayerAction(name);
@@ -54,6 +56,8 @@ public class BLController implements BLService{
 	{
 		return data.getSwing(abbreviation);
 	}
+	
+	//4 key methods to implement the interface
 	public ArrayList<PlayerVO> getPlayerAnalysis()
 	{
 		analyse();
@@ -91,28 +95,30 @@ public class BLController implements BLService{
 		}
 		return result;
 	}
+	
+	
 	private boolean analyse()
-	{
-		if(players.size()>0)
+	{//the operation of core algorithm
+		if(players.size()>0)//already have content in buffer
 			return true;
 		else
-		{
+		{//when just start the program, we will first compute the data
 			linkDatas();
 			Iterator<Entry<String, Team>> iter = teamsHash.entrySet().iterator();
-			while(iter.hasNext())
+			while(iter.hasNext())//transfer data from hash to list to give to ui, meanwhile analyse each data
 			{
 				Team team = iter.next().getValue();
 				team.anaylse();
 				teams.add(team);
 			}
 			Iterator<Entry<String, Player>> iter2 = playersHash.entrySet().iterator();
-			while(iter2.hasNext())
+			while(iter2.hasNext())//see above
 			{
 				Player player = iter2.next().getValue();
 				player.anaylse();
 				players.add(player);
 			}
-			Collections.sort(players,new SortPlayersByTeam());
+			Collections.sort(players,new SortPlayersByTeam());//this sort improve the efficiency of getTeamWithPlayer
 			return true;
 		}
 	}
@@ -135,6 +141,7 @@ public class BLController implements BLService{
 				scores1.add(scoreTemp.getTeam1());
 				scores2.add(scoreTemp.getTeam2());
 			}
+			//encapsulate po in object in bl
 			TeamInMatches timtemp1 = new TeamInMatches(mttemp.getTeam1(),finalTemp.getTeam1(),scores1,finalTemp.getTeam1()-finalTemp.getTeam2());
 			TeamInMatches timtemp2 = new TeamInMatches(mttemp.getTeam2(),finalTemp.getTeam2(),scores2,finalTemp.getTeam2()-finalTemp.getTeam1());
 			
@@ -186,7 +193,7 @@ public class BLController implements BLService{
 					ab = timtemp1.getAbbreviation();
 					PlayerPO playerPO = playerPOHash.get(name);
 					if(playerPO == null)
-					{
+					{//if we can't find player's info, we creat an object without info
 						playerPO = new PlayerPO(name);
 					}
 					Player tPlayer = new Player(teamsHash.get(ab).getTeamPO(),playerPO);
@@ -213,7 +220,7 @@ public class BLController implements BLService{
 					ab = timtemp2.getAbbreviation();
 					PlayerPO playerPO = playerPOHash.get(name);
 					if(playerPO == null)
-					{
+					{//see above
 						playerPO = new PlayerPO(name);
 					}
 					Player tPlayer = new Player(teamsHash.get(ab).getTeamPO(),playerPO);
@@ -234,7 +241,7 @@ public class BLController implements BLService{
 	{//参数是简称
 		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
 		int i=5;
-		for(i=5;i<players.size();i+=15)
+		for(i=5;i<players.size();i+=10)//here just use some small trick to improve the efficiency
 			if(players.get(i).team.getAbbreviation().equals(abbreviation))
 			{
 				result.add(players.get(i).toVO());
@@ -254,14 +261,14 @@ public class BLController implements BLService{
 		return result;
 	}
 	private ArrayList<PlayerVO> toPVOs(ArrayList<Player> h)
-	{
+	{//transfor to list of vo
 		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
 		for(int i=0;i<h.size();i++)
 			result.add(h.get(i).toVO());
 		return result;
 	}
 	private ArrayList<TeamVO> toTVOs(ArrayList<Team> h)
-	{
+	{//see above
 		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
 		for(int i=0;i<h.size();i++)
 			result.add(h.get(i).toVO());

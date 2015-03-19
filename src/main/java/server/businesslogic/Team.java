@@ -21,21 +21,21 @@ public class Team {
 	int appearance=0;//比赛场数
 	int hit=0;//命中
 	int shot=0;//出手
-	int thirdHit=0;
+	int thirdHit=0;//三分
 	int thirdshot=0;
-	int freeHit=0;
+	int freeHit=0;//罚球
 	int freeshot=0;
-	int offensiveRebound=0;
+	int offensiveRebound=0;//篮板
 	int defensiveRebound=0;
 	int totalRebound=0;
-	int assist=0;
-	int steal=0;
-	int block=0;
-	int miss=0;
+	int assist=0;//助攻
+	int steal=0;//抢断
+	int block=0;//盖帽
+	int miss=0;//失误
 	int foul=0;
 	int score=0;
 	int win=0;//胜出场数
-	int playTime=0;
+	int playTime=0;//比赛时间
 	
 	//opponent's data
 	int hit2=0;//命中
@@ -86,10 +86,10 @@ public class Team {
 		return teamPO;
 	}
 	public boolean anaylse()
-	{
+	{//the core of team analysis
 		appearance = thisTeam.size();
 		for(int i=0;i<appearance;i++)
-		{
+		{//for more info, see Player.java
 			TeamInMatches tim = thisTeam.get(i);
 			add(tim);
 			score+=tim.getFinalScore();
@@ -107,7 +107,7 @@ public class Team {
 		return true;
 	}
 	private void add(TeamInMatches tim)
-	{
+	{//simple addition to each corresponding domain
 		tim.computeTotal();
 		hit+=tim.getHit();
 		shot+=tim.getShot();

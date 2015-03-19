@@ -7,7 +7,9 @@ import server.po.PlayerInMatchesPO;
 import server.po.TeamInMatchesPO;
 
 public class TeamInMatches {
+	//team data in matches
 	public TeamInMatches(TeamInMatchesPO teamInMatchespo, int finalScore, ArrayList<Integer> scores,int win) {
+		//we need use po and other infos to creat an object
 		super();
 		this.teamInMatchespo = teamInMatchespo;
 		this.finalScore = finalScore;
@@ -28,22 +30,22 @@ public class TeamInMatches {
 	//total of the players
 	int hit=0;//命中
 	int shot=0;//出手
-	int thirdHit=0;
+	int thirdHit=0;//三分
 	int thirdshot=0;
-	int freeHit=0;
+	int freeHit=0;//罚球
 	int freeshot=0;
-	int offensiveRebound=0;
+	int offensiveRebound=0;//篮板
 	int defensiveRebound=0;
 	int totalRebound=0;
 	int assist=0;
 	int steal=0;
-	int block=0;
-	int miss=0;
+	int block=0;//盖帽
+	int miss=0;//失误
 	int foul=0;
 	int score=0;
 	int playTime=0;
 	public void computeTotal()
-	{
+	{//sum all the players' data as the team data
 		ArrayList<PlayerInMatchesPO> players= getPlayers();
 		for(int i=0;i<players.size();i++)
 		{
@@ -67,12 +69,12 @@ public class TeamInMatches {
 		}
 	}
 	public void clean()
-	{
+	{//deal with dirty or null data
 		ArrayList<PlayerInMatchesPO> players= getPlayers();
 		int pt=0;
 		ArrayList<PlayerInMatchesPO> playersWithNullPlayTime = new ArrayList<PlayerInMatchesPO>();
 		for(int i=0;i<players.size();i++)
-		{
+		{//deal with dirty score
 			PlayerInMatchesPO player=players.get(i);
 			if(player.getScore()<0)
 				player.setScore((player.getHit()-player.getThirdHit())*2+player.getThirdHit()*3+player.getFreeHit());
@@ -86,7 +88,7 @@ public class TeamInMatches {
 		for(int j=4;j<getScores().size();j++)
 			eplayTime+=1500;
 		for(int i=0;i<size;i++)
-		{
+		{//deal with dirty play time
 			playersWithNullPlayTime.get(i).setPlayTime((eplayTime-pt)/size);
 		}
 	}

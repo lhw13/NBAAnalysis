@@ -27,11 +27,11 @@ public class Player {
 	int playTime=0;//在场时间
 	int hit=0;//命中
 	int shot=0;//出手
-	int thirdHit=0;
+	int thirdHit=0;//三分
 	int thirdshot=0;
-	int freeHit=0;
+	int freeHit=0;//罚球
 	int freeshot=0;
-	int offensiveRebound=0;
+	int offensiveRebound=0;//篮板
 	int defensiveRebound=0;
 	int totalRebound=0;
 	int assist=0;
@@ -60,13 +60,13 @@ public class Player {
 	int teamThirdshot2=0;
 	
 	public boolean anaylse()
-	{	
+	{//the core algorithm of player analysis
 		appearance = thisTeam.size();
 		for(int i=0;i<appearance;i++)
 		{
 			TeamInMatches tim = thisTeam.get(i);
-			add(tim.getPlayers().get(orders.get(i)));
-			teamPlayTime+=tim.getPlayTime();
+			add(tim.getPlayers().get(orders.get(i)));//add idividual data
+			teamPlayTime+=tim.getPlayTime();//add this team data below
 			teamTotalRebound+=tim.getTotalRebound();
 			teamOffensiveRebound+=tim.getOffensiveRebound();
 			teamDefensiveRebound+=tim.getDefensiveRebound();
@@ -76,7 +76,7 @@ public class Player {
 			teamMiss+=tim.getMiss();
 		}
 		for(int i=0;i<appearance;i++)
-		{
+		{//add opponent data below
 			TeamInMatches tim2 = opponentTeam.get(i);
 			teamTotalRebound2+=tim2.getTotalRebound();
 			teamOffensiveRebound2+=tim2.getOffensiveRebound();
@@ -87,7 +87,7 @@ public class Player {
 		return true;
 	}
 	public void add(PlayerInMatchesPO player)
-	{
+	{//simple add to each domain
 		//record two pairs
 		int scoretemp=player.getScore();
 		int totalReboundtemp = player.getTotalRebound();
@@ -155,6 +155,8 @@ public class Player {
 	{
 		opponentTeam.add(tim);
 	}
+	
+	//below are corresponding to our homework paper
 	private double getHitRate()
 	{
 		if(shot==0)

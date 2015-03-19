@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
@@ -1100,6 +1101,11 @@ public class TeamsSelectionFrame {
         TeamsInfoFrame.table_3.setRowSorter(new TableRowSorter<TableModel>(model3));
         
         
+        int width = 250; 
+		int height = 150; 
+		ImageIcon ii=compute.getTeamPic(teamName);
+		ii.setImage(ii.getImage().getScaledInstance(width,height,Image.SCALE_DEFAULT));
+		TeamsInfoFrame.teamPicture.setIcon(ii);
 	}
 	
 	//图片循环切换线程

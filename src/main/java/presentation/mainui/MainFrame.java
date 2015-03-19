@@ -297,6 +297,7 @@ public class MainFrame {
 		lblNewLabel = new JLabel("");
 		lblNewLabel.setLocation(0, 0);
 		lblNewLabel.setSize(500,300);
+		
 		ImageIcon ii = new ImageIcon("pictures\\P1.png");
 		lblNewLabel.setIcon(ii);
 		panel.add(lblNewLabel);

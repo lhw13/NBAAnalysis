@@ -49,7 +49,7 @@ public class PlayerInfoPanel extends JPanel {
 					{null, null,null,null,null, null, null, null, null, null,null,null},
 				},
 				new String[] {
-					"姓名","赛区","分区", "球队","号码", "位置", "身高", "体重", "生日", "年龄","球龄","毕业学校"
+					"姓名","联盟","分区", "球队","号码", "位置", "身高", "体重", "生日", "年龄","球龄","毕业学校"
 				}
 			);
 	
@@ -221,8 +221,10 @@ public class PlayerInfoPanel extends JPanel {
 		if(vo==null) return;
 		Vector rowData = new Vector();
 		Vector rowDatas = new Vector();
-		rowData.add(vo.getName());  rowData.add(vo.getTeamFullName());
-		rowData.add(vo.getDivision());  rowData.add(vo.getZone());		
+		rowData.add(vo.getName());
+		rowData.add(vo.getDivision());   
+		rowData.add(vo.getZone());
+		rowData.add(vo.getTeamFullName());		
 		rowData.add(vo.getNumber());rowData.add(vo.getPosition());
 		rowData.add(vo.getHeight().toString());rowData.add(vo.getWeight());
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

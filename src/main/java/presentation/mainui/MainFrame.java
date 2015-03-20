@@ -37,7 +37,7 @@ import presentation.teamsui.TeamsRankingFrame;
 import server.businesslogic.BLController;
 import vo.PlayerVO;
 import vo.TeamVO;
- 
+
 public class MainFrame {
 
 	public static JFrame frame;

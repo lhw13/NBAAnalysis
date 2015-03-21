@@ -9,13 +9,16 @@ public class TeamsData {
 	private static ArrayList<TeamPO> teamPOList;
 	static {
 		teamsFile = new File("nba/teams/teams");
-		teamPOList=TeamsDataAnalyse.teamPOListMade(DataReader.dataReader(teamsFile));
+		teamPOList = TeamsDataAnalyse.teamPOListMade(DataReader
+				.dataReader(teamsFile));
 	}
-public static String get(){
-	return teamPOList.get(0).getAbbreviation();
-}
-public ArrayList<TeamPO> getTeamPOList(){
-	return teamPOList;
-}
+
+	public static String get() {
+		return teamPOList.get(0).getAbbreviation();
+	}
+
+	public ArrayList<TeamPO> getTeamPOList() {
+		return teamPOList;
+	}
 
 }

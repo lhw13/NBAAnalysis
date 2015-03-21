@@ -10,8 +10,8 @@ public class MatchesDataTest {
 
 	@Test
 	public void testGetMatchesList() {
-		//fail("Not yet implemented");
-		assertTrue(MatchesData.getMatchesList()>50);
+		// fail("Not yet implemented");
+		assertTrue(MatchesData.getMatchesList() > 50);
 	}
 
 }

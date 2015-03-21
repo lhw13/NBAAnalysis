@@ -10,7 +10,7 @@ public class TeamsDataTest {
 
 	@Test
 	public void test() {
-		assertEquals(TeamsData.get(),"ATL");
+		assertEquals(TeamsData.get(), "ATL");
 	}
 
 }

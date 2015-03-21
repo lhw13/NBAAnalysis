@@ -7,7 +7,7 @@ import server.po.MatchPO;
 
 public class MatchesData {
 	private static File[] matchesFile;
-	private static ArrayList<MatchPO> matchesList=new ArrayList<MatchPO>();
+	private static ArrayList<MatchPO> matchesList = new ArrayList<MatchPO>();
 	static {
 		File f = new File("nba/matches");
 		matchesFile = f.listFiles();
@@ -16,10 +16,13 @@ public class MatchesData {
 					.dataReader(i)));
 		}
 	}
-	public static int getMatchesList(){
-		return matchesList.get(matchesList.size()-1).getFinalScore().getTeam1();
+
+	public static int getMatchesList() {
+		return matchesList.get(matchesList.size() - 1).getFinalScore()
+				.getTeam1();
 	}
-	public ArrayList<MatchPO> getMatchPOList(){
+
+	public ArrayList<MatchPO> getMatchPOList() {
 		return matchesList;
 	}
 }

@@ -4,7 +4,6 @@ package NBAAnalyse;
  * Hello world!
  *
  */
-public class App 
-{
-      
+public class App {
+
 }

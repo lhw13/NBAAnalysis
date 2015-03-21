@@ -10,7 +10,7 @@ public class PlayersDataTest {
 
 	@Test
 	public void test() {
-		assertTrue(PlayersData.getData()>20);
+		assertTrue(PlayersData.getData() > 20);
 	}
 
 }

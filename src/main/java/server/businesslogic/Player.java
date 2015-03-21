@@ -58,6 +58,10 @@ public class Player {
 	int teamDefensiveRebound2=0;
 	int teamshot2=0;
 	int teamThirdshot2=0;
+	int teamFreeshot2=0;
+	int teamHit2=0;
+	int teamMiss2=0;
+	
 	
 	public boolean anaylse()
 	{//the core algorithm of player analysis
@@ -83,6 +87,9 @@ public class Player {
 			teamDefensiveRebound2+=tim2.getDefensiveRebound();
 			teamshot2+=tim2.getShot();
 			teamThirdshot2+=tim2.getThirdshot();
+			teamFreeshot2+=tim2.getFreeshot();
+			teamHit2+=tim2.getHit();
+			teamMiss2+=tim2.getMiss();
 		}
 		return true;
 	}
@@ -216,9 +223,17 @@ public class Player {
 			return 0;
 		return (double)assist/((double)playTime/((double)teamPlayTime/5)*teamHit-hit);
 	}
+	private double getOffensiveRound()
+	{//进攻回合
+		return teamshot+0.4*teamFreeshot-1.07*((double)teamOffensiveRebound/(teamOffensiveRebound+teamDefensiveRebound2)*(teamshot-teamHit))+1.07*teamMiss;
+	}
+	private double getOffensiveRound2()
+	{//whether it's right?
+		return teamshot2+0.4*teamFreeshot2-1.07*((double)teamOffensiveRebound2/(teamOffensiveRebound2+teamDefensiveRebound)*(teamshot2-teamHit2))+1.07*teamMiss2;
+	}
 	private double getStealRate()
 	{
-		return (double)steal*((double)teamPlayTime/5)/(double)playTime/(double)teamOffensiveRebound2;
+		return (double)steal*((double)teamPlayTime/5)/(double)playTime/getOffensiveRound2();
 	}
 	private double getBlockRate()
 	{

@@ -263,4 +263,34 @@ public class PlayerVO {
 	public double getTowPairs() {
 		return towPairs;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "PlayerVO [teamFullName=" + teamFullName + ", teamAbbreviation="
+				+ teamAbbreviation + ", division=" + division + ", zone="
+				+ zone + ", name=" + name + ", number=" + number
+				+ ", position=" + position + ", height=" + height + ", weight="
+				+ weight + ", birth=" + birth + ", age=" + age + ", exp=" + exp
+				+ ", school=" + school + ", appearance=" + appearance
+				+ ", starting=" + starting + ", playTime=" + playTime
+				+ ", hit=" + hit + ", shot=" + shot + ", thirdHit=" + thirdHit
+				+ ", thirdshot=" + thirdshot + ", freeHit=" + freeHit
+				+ ", freeshot=" + freeshot + ", offensiveRebound="
+				+ offensiveRebound + ", defensiveRebound=" + defensiveRebound
+				+ ", totalRebound=" + totalRebound + ", assist=" + assist
+				+ ", steal=" + steal + ", block=" + block + ", miss=" + miss
+				+ ", foul=" + foul + ", score=" + score + ", hitRate="
+				+ hitRate + ", thirdHitRate=" + thirdHitRate + ", freeHitRate="
+				+ freeHitRate + ", efficiency=" + efficiency
+				+ ", gmScEfficiency=" + gmScEfficiency + ", realHitRate="
+				+ realHitRate + ", shotEfficiency=" + shotEfficiency
+				+ ", reboundRate=" + reboundRate + ", offensiveReboundRate="
+				+ offensiveReboundRate + ", defensiveReboundRate="
+				+ defensiveReboundRate + ", assistRate=" + assistRate
+				+ ", stealRate=" + stealRate + ", blockRate=" + blockRate
+				+ ", missRate=" + missRate + ", useRate=" + useRate
+				+ ", towPairs=" + towPairs + "]";
+	}
 }

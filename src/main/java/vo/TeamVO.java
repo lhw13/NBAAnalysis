@@ -192,4 +192,27 @@ public class TeamVO {
 	public int getSetupTime() {
 		return setupTime;
 	}
+	@Override
+	public String toString() {
+		return "TeamVO [fullName=" + fullName + ", abbreviation="
+				+ abbreviation + ", location=" + location + ", division="
+				+ division + ", zone=" + zone + ", home=" + home
+				+ ", setupTime=" + setupTime + ", appearance=" + appearance
+				+ ", hit=" + hit + ", shot=" + shot + ", thirdHit=" + thirdHit
+				+ ", thirdshot=" + thirdshot + ", freeHit=" + freeHit
+				+ ", freeshot=" + freeshot + ", offensiveRebound="
+				+ offensiveRebound + ", defensiveRebound=" + defensiveRebound
+				+ ", totalRebound=" + totalRebound + ", assist=" + assist
+				+ ", steal=" + steal + ", block=" + block + ", miss=" + miss
+				+ ", foul=" + foul + ", score=" + score + ", hitRate="
+				+ hitRate + ", thirdHitRate=" + thirdHitRate + ", freeHitRate="
+				+ freeHitRate + ", winRate=" + winRate + ", offensiveRound="
+				+ offensiveRound + ", offensiveEfficiency="
+				+ offensiveEfficiency + ", defensiveRound=" + defensiveRound
+				+ ", defensiveEfficiency=" + defensiveEfficiency
+				+ ", offensiveReboundEfficiency=" + offensiveReboundEfficiency
+				+ ", defensiveReboundEfficiency=" + defensiveReboundEfficiency
+				+ ", stealEfficiency=" + stealEfficiency
+				+ ", assistEfficiency=" + assistEfficiency + "]";
+	}
 }

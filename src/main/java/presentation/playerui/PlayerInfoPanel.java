@@ -357,7 +357,7 @@ public class PlayerInfoPanel extends JPanel {
 
 	// 保留小数点
 	public String handleDecimal(double f) {
-		return String.format("%.1f", f);
+		return String.format("%.2f", f);
 	}
 
 	public class MouseListen extends MouseAdapter {

@@ -108,7 +108,8 @@ public class MatchesDataAnalyse {
 		int month = stringToInt(monthAndDay.split("-")[0]);
 		int day = stringToInt(monthAndDay.split("-")[1]);
 		int year = 2000;
-		if (month >= 11) {
+		//if (month >= 11)//changed by lhw 
+		if (month >= 10){
 			year = year + year1;
 		} else {
 			year = year + year2;

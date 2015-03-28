@@ -131,6 +131,7 @@ public class BLController implements BLService {
 									// construct some hashmap, to accelarate the
 									// speed of it
 		ArrayList<MatchPO> matches = data.getAllMatch();
+		Collections.sort(matches, new SortMatchesByCalendar());
 		HashMap<String, TeamPO> teamPOHash = data.getAllTeams();
 		HashMap<String, PlayerPO> playerPOHash = data.getAllPlayers();
 		for (int i = matches.size() - 1; i >= 0; i--) {

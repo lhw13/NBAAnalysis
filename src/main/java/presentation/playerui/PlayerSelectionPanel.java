@@ -619,7 +619,8 @@ public class PlayerSelectionPanel extends JPanel {
 		for (int i = 0; i < rowDatas.size(); i++) {
 
 			if (size < 3)
-				k = 2;
+				//k = 2;//change by lhw
+				k=size;
 			for (int j = 0; j < k; j++) {
 				m.setValueAt(((Vector) rowDatas.get(i)).get(j), i, j);
 			}

@@ -24,5 +24,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/batik-1.7/lib/batik-swing.jar"/>
 	<classpathentry kind="lib" path="lib/batik-1.7/batik.jar"/>
+	<classpathentry kind="lib" path="lib/testData.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

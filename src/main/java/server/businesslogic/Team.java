@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import server.po.PlayerInMatchesPO;
 import server.po.TeamInMatchesPO;
 import server.po.TeamPO;
+import test.data.*;
 import vo.TeamVO;
 
 public class Team {
@@ -68,6 +69,39 @@ public class Team {
 				getOffensiveReboundEfficiency(),
 				getDefensiveReboundEfficiency(), getStealEfficiency(),
 				getAssistEfficiency());
+	}
+	
+	public TeamHighInfo toHighInfo() {
+		TeamHighInfo thi = new TeamHighInfo();
+		thi.setAssistEfficient(getAssistEfficiency());
+		thi.setDefendEfficient(getDefensiveEfficiency());
+		thi.setDefendReboundEfficient(getDefensiveReboundEfficiency());
+		thi.setOffendEfficient(getOffensiveEfficiency());
+		thi.setOffendReboundEfficient(getOffensiveReboundEfficiency());
+		thi.setOffendRound(getOffensiveRound());
+		thi.setStealEfficient(getStealEfficiency());
+		thi.setTeamName(teamPO.getAbbreviation());
+		thi.setWinRate(getWinRate());
+		return thi;
+	}
+	
+	public TeamNormalInfo toNormalInfo() {
+		TeamNormalInfo tni = new TeamNormalInfo();
+		tni.setAssist(assist);
+		tni.setBlockShot(block);
+		tni.setDefendRebound(defensiveRebound);
+		tni.setFault(miss);
+		tni.setFoul(foul);
+		tni.setNumOfGame(appearance);
+		tni.setOffendRebound(offensiveRebound);
+		tni.setPenalty(getFreeHitRate());
+		tni.setPoint(score);
+		tni.setRebound(totalRebound);
+		tni.setShot(getHitRate());
+		tni.setSteal(steal);
+		tni.setTeamName(teamPO.getAbbreviation());
+		tni.setThree(getThirdHitRate());
+		return tni;
 	}
 
 	public void addThisTeam(TeamInMatches tim) {

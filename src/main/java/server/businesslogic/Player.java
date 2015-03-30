@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import server.po.*;
+import test.data.*;
 import vo.*;
 
 public class Player {
@@ -150,6 +151,50 @@ public class Player {
 				getReboundRate(), getOffensiveReboundRate(),
 				getDefensiveReboundRate(), getAssistRate(), getStealRate(),
 				getBlockRate(), getMissRate(), getUseRate(), twoPairs);
+	}
+	
+	public PlayerHighInfo toHighInfo(){
+		PlayerHighInfo phi = new PlayerHighInfo();
+		phi.setAssistEfficient(getAssistRate());
+		phi.setBlockShotEfficient(getBlockRate());
+		phi.setDefendReboundEfficient(getDefensiveReboundRate());
+		phi.setFaultEfficient(getMissRate());
+		phi.setFrequency(getUseRate());
+		phi.setGmSc(getGmScEfficiency());
+		//phi.setLeague(team.);
+		phi.setName(player.getName());
+		phi.setOffendReboundEfficient(getOffensiveReboundRate());
+		phi.setPosition(player.getPosition());
+		phi.setRealShot(getRealHitRate());
+		phi.setReboundEfficient(getReboundRate());
+		phi.setShotEfficient(getShotEfficiency());
+		phi.setStealEfficient(getStealRate());
+		phi.setTeamName(team.getAbbreviation());
+		return phi;
+	}
+	
+	public PlayerNormalInfo toNormalInfo(){
+		PlayerNormalInfo pni = new PlayerNormalInfo();
+		pni.setAge(player.getAge());
+		pni.setAssist(assist);
+		pni.setBlockShot(block);
+		pni.setDefend(defensiveRebound);
+		pni.setEfficiency(getEfficiency());
+		pni.setFault(miss);
+		pni.setFoul(foul);
+		pni.setMinute(playTime/60);
+		pni.setName(player.getName());
+		pni.setNumOfGame(appearance);
+		pni.setOffend(offensiveRebound);
+		pni.setPenalty(getFreeHitRate());
+		pni.setPoint(score);
+		pni.setRebound(totalRebound);
+		pni.setShot(getHitRate());
+		pni.setStart(starting);
+		pni.setSteal(steal);
+		pni.setTeamName(team.getAbbreviation());
+		pni.setThree(getThirdHitRate());
+		return pni;
 	}
 
 	public void addThisTeam(TeamInMatches tim, int order) {

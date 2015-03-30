@@ -170,6 +170,7 @@ public class PlayerInfoPanel extends JPanel {
 
 		scrollPane_7.setViewportView(table_6);
 		scrollPane.setBounds(0, 0, 990, 600);
+		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		add(scrollPane);
 
 	}

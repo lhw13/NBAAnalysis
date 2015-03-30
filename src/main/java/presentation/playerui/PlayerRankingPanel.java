@@ -91,7 +91,7 @@ public class PlayerRankingPanel extends JPanel {
 		panel.add(btnNewButton);
 		panel.add(tabbedPane);
 		scrollPane.setViewportView(panel);
-
+		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		chckbxNewCheckBox = new JCheckBox("前锋");
 		chckbxNewCheckBox.setBounds(200, 30, 150, 30);
 		panel.add(chckbxNewCheckBox);

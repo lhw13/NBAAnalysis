@@ -107,6 +107,7 @@ public class TeamsInfoFrame {
 
 		scrollPane = new JScrollPane(panel_1);
 		scrollPane.setBounds(0, 0, 990, 560);
+		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 
 		btnNewButton.addActionListener(new ActionListener() {
 

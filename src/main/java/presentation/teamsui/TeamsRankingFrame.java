@@ -42,6 +42,7 @@ public class TeamsRankingFrame {
 
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 0, 990, 560);
+		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(1500, 1000));

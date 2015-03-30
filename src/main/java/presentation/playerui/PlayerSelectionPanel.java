@@ -323,6 +323,7 @@ public class PlayerSelectionPanel extends JPanel {
 
 		scrollPane = new JScrollPane(panelOfBottom);
 		scrollPane.setBounds(0, 0, 990, 600);
+		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		add(scrollPane);
 		panelOfBottom.setPreferredSize(new Dimension(1000, 3700));
 		panelOfBottom.setLayout(null);

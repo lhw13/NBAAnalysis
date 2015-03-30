@@ -1280,7 +1280,7 @@ public class TeamsSelectionFrame {
 	public double handle(double a, int b) {
 		double result = a / (double) b;
 		BigDecimal c = new BigDecimal(result);
-		double f1 = c.setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
+		double f1 = c.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 		return f1;
 	}
 

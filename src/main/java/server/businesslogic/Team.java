@@ -27,13 +27,13 @@ public class Team {
 	int thirdshot = 0;
 	int freeHit = 0;// 罚球
 	int freeshot = 0;
-	int offensiveRebound = 0;// 篮板
-	int defensiveRebound = 0;
-	int totalRebound = 0;
+	int offendRebound = 0;// 篮板
+	int defendRebound = 0;
+	int rebound = 0;
 	int assist = 0;// 助攻
 	int steal = 0;// 抢断
-	int block = 0;// 盖帽
-	int miss = 0;// 失误
+	int blockShot = 0;// 盖帽
+	int fault = 0;// 失误
 	int foul = 0;
 	int score = 0;
 	int win = 0;// 胜出场数
@@ -61,8 +61,8 @@ public class Team {
 		return new TeamVO(teamPO.getFullName(), teamPO.getAbbreviation(),
 				teamPO.getLocation(), teamPO.getDivision(), teamPO.getZone(),
 				teamPO.getHome(), teamPO.getSetupTime(), appearance, hit, shot,
-				thirdHit, thirdshot, freeHit, freeshot, offensiveRebound,
-				defensiveRebound, totalRebound, assist, steal, block, miss,
+				thirdHit, thirdshot, freeHit, freeshot, offendRebound,
+				defendRebound, rebound, assist, steal, blockShot, fault,
 				foul, score, getHitRate(), getThirdHitRate(), getFreeHitRate(),
 				getWinRate(), getOffensiveRound(), getOffensiveEfficiency(),
 				getDefensiveRound(), getDefensiveEfficiency(),
@@ -88,15 +88,15 @@ public class Team {
 	public TeamNormalInfo toNormalInfo() {
 		TeamNormalInfo tni = new TeamNormalInfo();
 		tni.setAssist(assist);
-		tni.setBlockShot(block);
-		tni.setDefendRebound(defensiveRebound);
-		tni.setFault(miss);
+		tni.setBlockShot(blockShot);
+		tni.setDefendRebound(defendRebound);
+		tni.setFault(fault);
 		tni.setFoul(foul);
 		tni.setNumOfGame(appearance);
-		tni.setOffendRebound(offensiveRebound);
+		tni.setOffendRebound(offendRebound);
 		tni.setPenalty(getFreeHitRate());
 		tni.setPoint(score);
-		tni.setRebound(totalRebound);
+		tni.setRebound(rebound);
 		tni.setShot(getHitRate());
 		tni.setSteal(steal);
 		tni.setTeamName(teamPO.getAbbreviation());
@@ -148,13 +148,13 @@ public class Team {
 		thirdshot += tim.getThirdshot();
 		freeHit += tim.getFreeHit();
 		freeshot += tim.getFreeshot();
-		offensiveRebound += tim.getOffensiveRebound();
-		defensiveRebound += tim.getDefensiveRebound();
-		totalRebound += tim.getTotalRebound();
+		offendRebound += tim.getOffensiveRebound();
+		defendRebound += tim.getDefensiveRebound();
+		rebound += tim.getTotalRebound();
 		assist += tim.getAssist();
 		steal += tim.getSteal();
-		block += tim.getBlock();
-		miss += tim.getMiss();
+		blockShot += tim.getBlock();
+		fault += tim.getMiss();
 		foul += tim.getFoul();
 		// score will be dealt in other place
 	}
@@ -203,9 +203,9 @@ public class Team {
 				+ 0.4
 				* freeshot
 				- 1.07
-				* ((double) offensiveRebound
-						/ (offensiveRebound + defensiveRebound2) * getLost())
-				+ 1.07 * miss;
+				* ((double) offendRebound
+						/ (offendRebound + defensiveRebound2) * getLost())
+				+ 1.07 * fault;
 	}
 
 	private double getOffensiveEfficiency() {
@@ -218,7 +218,7 @@ public class Team {
 				* freeshot2
 				- 1.07
 				* ((double) offensiveRebound2
-						/ (offensiveRebound2 + defensiveRebound) * getLost2())
+						/ (offensiveRebound2 + defendRebound) * getLost2())
 				+ 1.07 * miss2;
 	}
 
@@ -227,13 +227,13 @@ public class Team {
 	}
 
 	private double getOffensiveReboundEfficiency() {// 进攻篮板效率
-		return (double) offensiveRebound
-				/ (offensiveRebound + defensiveRebound2);
+		return (double) offendRebound
+				/ (offendRebound + defensiveRebound2);
 	}
 
 	private double getDefensiveReboundEfficiency() {
-		return (double) defensiveRebound
-				/ (defensiveRebound + offensiveRebound2);
+		return (double) defendRebound
+				/ (defendRebound + offensiveRebound2);
 	}
 
 	private double getStealEfficiency() {

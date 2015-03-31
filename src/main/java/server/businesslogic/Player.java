@@ -37,13 +37,13 @@ public class Player {
 	int freeshot = 0;
 	int offensiveRebound = 0;// 篮板
 	int defensiveRebound = 0;
-	int totalRebound = 0;
+	int rebound = 0;
 	int assist = 0;
 	int steal = 0;
-	int block = 0;
-	int miss = 0;
+	int blockShot = 0;
+	int fault = 0;
 	int foul = 0;
-	int score = 0;
+	int point = 0;
 	double twoPairs = 0;
 
 	// this team
@@ -111,13 +111,13 @@ public class Player {
 		freeshot += player.getFreeshot();
 		offensiveRebound += player.getOffensiveRebound();
 		defensiveRebound += player.getDefensiveRebound();
-		totalRebound += totalReboundtemp;
+		rebound += totalReboundtemp;
 		assist += assisttemp;
 		steal += stealtemp;
-		block += blocktemp;
-		miss += player.getMiss();
+		blockShot += blocktemp;
+		fault += player.getMiss();
 		foul += player.getFoul();
-		score += scoretemp;
+		point += scoretemp;
 		char p = player.getPosition();
 		if (p == 'F' || p == 'G' || p == 'C')
 			starting++;
@@ -144,8 +144,8 @@ public class Player {
 				player.getWeight(), player.getBirth(), player.getAge(),
 				player.getExp(), player.getSchool(), appearance, starting,
 				playTime, hit, shot, thirdHit, thirdshot, freeHit, freeshot,
-				offensiveRebound, defensiveRebound, totalRebound, assist,
-				steal, block, miss, foul, score, getHitRate(),
+				offensiveRebound, defensiveRebound, rebound, assist,
+				steal, blockShot, fault, foul, point, getHitRate(),
 				getThirdHitRate(), getFreeHitRate(), getEfficiency(),
 				getGmScEfficiency(), getRealHitRate(), getShotEfficiency(),
 				getReboundRate(), getOffensiveReboundRate(),
@@ -177,18 +177,18 @@ public class Player {
 		PlayerNormalInfo pni = new PlayerNormalInfo();
 		pni.setAge(player.getAge());
 		pni.setAssist(assist);
-		pni.setBlockShot(block);
+		pni.setBlockShot(blockShot);
 		pni.setDefend(defensiveRebound);
 		pni.setEfficiency(getEfficiency());
-		pni.setFault(miss);
+		pni.setFault(fault);
 		pni.setFoul(foul);
 		pni.setMinute(playTime/60);
 		pni.setName(player.getName());
 		pni.setNumOfGame(appearance);
 		pni.setOffend(offensiveRebound);
 		pni.setPenalty(getFreeHitRate());
-		pni.setPoint(score);
-		pni.setRebound(totalRebound);
+		pni.setPoint(point);
+		pni.setRebound(rebound);
 		pni.setShot(getHitRate());
 		pni.setStart(starting);
 		pni.setSteal(steal);
@@ -226,20 +226,20 @@ public class Player {
 	}
 
 	private double getEfficiency() {
-		return (score + totalRebound + assist + steal + block) - (shot - hit)
-				- (freeshot - freeHit) - miss;
+		return (point + rebound + assist + steal + blockShot) - (shot - hit)
+				- (freeshot - freeHit) - fault;
 	}
 
 	private double getGmScEfficiency() {
-		return score + 0.4 * (double) hit - 0.7 * (double) shot - 0.4
+		return point + 0.4 * (double) hit - 0.7 * (double) shot - 0.4
 				* (double) (freeshot - freeHit) + 0.7
 				* (double) offensiveRebound + 0.3 * (double) defensiveRebound
-				+ steal + 0.7 * (double) assist + 0.7 * (double) block - 0.4
-				* (double) foul - miss;
+				+ steal + 0.7 * (double) assist + 0.7 * (double) blockShot - 0.4
+				* (double) foul - fault;
 	}
 
 	private double getRealHitRate() {
-		return (double) score / (2 * (shot + 0.44 * (double) freeshot));
+		return (double) point / (2 * (shot + 0.44 * (double) freeshot));
 	}
 
 	private double getShotEfficiency() {
@@ -247,7 +247,7 @@ public class Player {
 	}
 
 	private double getReboundRate() {
-		return (double) totalRebound * ((double) teamPlayTime / 5)
+		return (double) rebound * ((double) teamPlayTime / 5)
 				/ (double) playTime
 				/ (double) (teamTotalRebound + teamTotalRebound2);
 	}
@@ -301,17 +301,17 @@ public class Player {
 	}
 
 	private double getBlockRate() {
-		return (double) block * ((double) teamPlayTime / 5) / (double) playTime
+		return (double) blockShot * ((double) teamPlayTime / 5) / (double) playTime
 				/ (double) (teamshot2 - teamThirdshot2);
 	}
 
 	private double getMissRate() {
-		return (double) miss
-				/ (double) (shot - thirdshot + 0.44 * (double) freeshot + miss);
+		return (double) fault
+				/ (double) (shot - thirdshot + 0.44 * (double) freeshot + fault);
 	}
 
 	private double getUseRate() {
-		return (double) (shot + 0.44 * freeshot + miss)
+		return (double) (shot + 0.44 * freeshot + fault)
 				* ((double) teamPlayTime / 5) / playTime
 				/ (teamshot + 0.44 * teamFreeshot + teamMiss);
 	}

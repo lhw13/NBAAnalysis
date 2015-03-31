@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: lib/testData.jar lib/swingset3_beautyeye.jar lib/javasubstance.jar lib/batik-1.7/batik.jar
+Main-Class: presentation.mainui.MainFrame
+

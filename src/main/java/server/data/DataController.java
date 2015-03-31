@@ -13,13 +13,8 @@ import server.po.TeamPO;
 import dataservice.DataService;
 
 public class DataController implements DataService {
-	MatchesData matchesData = new MatchesData();
-	PlayersData playersData = new PlayersData();
-	TeamsData teamsData = new TeamsData();
-	Picture picture = new Picture();
-
 	public HashMap<String, PlayerPO> getAllPlayers() {
-		ArrayList<PlayerPO> playerPOList = playersData.getPlayerPOList();
+		ArrayList<PlayerPO> playerPOList = PlayersData.getPlayerPOList();
 		int n = playerPOList.size();
 		HashMap<String, PlayerPO> m = new HashMap<String, PlayerPO>(
 				(int) (n / 0.74) + 1, 0.75f);
@@ -30,7 +25,7 @@ public class DataController implements DataService {
 	}
 
 	public HashMap<String, TeamPO> getAllTeams() {
-		ArrayList<TeamPO> teamPOList = teamsData.getTeamPOList();
+		ArrayList<TeamPO> teamPOList = TeamsData.getTeamPOList();
 		int n = teamPOList.size();
 		HashMap<String, TeamPO> m = new HashMap<String, TeamPO>(
 				(int) (n / 0.74) + 1, 0.75f);
@@ -41,22 +36,22 @@ public class DataController implements DataService {
 	}
 
 	public ArrayList<MatchPO> getAllMatch() {
-		return matchesData.getMatchPOList();
+		return MatchesData.getMatchPOList();
 	}
 
 	public ImageIcon getPlayerAction(String name) {
-		return picture.getPlayerAction(name);
+		return Picture.getPlayerAction(name);
 	}
 
 	public ImageIcon getPlayerPortrait(String name) {
-		return picture.getPlayerPortrait(name);
+		return Picture.getPlayerPortrait(name);
 	}
 
 	public ImageIcon getTeamPic(String abbreviation) {
-		return picture.getTeamPic(abbreviation);
+		return Picture.getTeamPic(abbreviation);
 	}
 
 	public JSVGCanvas getSwing(String abbreviation) {
-		return picture.getSwing(abbreviation);
+		return Picture.getSwing(abbreviation);
 	}
 }

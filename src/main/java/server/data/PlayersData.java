@@ -27,7 +27,7 @@ public class PlayersData {
 		return playersList.get(0).getAge();
 	}
 
-	public ArrayList<PlayerPO> getPlayerPOList() {
+	public static ArrayList<PlayerPO> getPlayerPOList() {
 		return playersList;
 	}
 }

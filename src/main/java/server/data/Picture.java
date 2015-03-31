@@ -15,7 +15,7 @@ import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.image.PNGTranscoder;
 
 public class Picture {
-	public ImageIcon getTeamPic(String abbreviation) {
+	public static  ImageIcon getTeamPic(String abbreviation) {
 		File file = new File("./transferStation/transferPic.png");
 		FileOutputStream outputStream = null;
 		try {
@@ -57,17 +57,17 @@ public class Picture {
 		outputStream.flush();
 	}
 
-	public ImageIcon getPlayerAction(String name) {
+	public static ImageIcon getPlayerAction(String name) {
 		ImageIcon image = new ImageIcon("nba/players/action/" + name + ".png");
 		return image;
 	}
 
-	public ImageIcon getPlayerPortrait(String name) {
+	public static ImageIcon getPlayerPortrait(String name) {
 		ImageIcon image = new ImageIcon("nba/players/portrait/" + name + ".png");
 		return image;
 	}
 
-	public JSVGCanvas getSwing(String abbreviation) {
+	public static JSVGCanvas getSwing(String abbreviation) {
 		JSVGCanvas s = new JSVGCanvas();
 		String path = System.getProperty("user.dir");
 		s.loadSVGDocument("file:/" + path + "/nba/teams/" + abbreviation

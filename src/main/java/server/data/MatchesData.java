@@ -22,7 +22,7 @@ public class MatchesData {
 				.getTeam1();
 	}
 
-	public ArrayList<MatchPO> getMatchPOList() {
+	public static  ArrayList<MatchPO> getMatchPOList() {
 		return matchesList;
 	}
 }

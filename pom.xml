@@ -40,7 +40,7 @@
     	<artifactId>substance</artifactId>
     	<version>2.6.10</version>
     	<scope>system</scope>
-    	<systemPath>${project.basedir}/lib/java程序界面美化包substance.jar</systemPath>
+    	<systemPath>${project.basedir}/lib/javasubstance.jar</systemPath>
     </dependency>
     <dependency>
     	<groupId>swingset3_beautyeye</groupId>

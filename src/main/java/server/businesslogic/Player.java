@@ -43,7 +43,7 @@ public class Player {
 	int blockShot = 0;
 	int fault = 0;
 	int foul = 0;
-	int point = 0;
+	int score = 0;
 	double twoPairs = 0;
 
 	// this team
@@ -117,7 +117,7 @@ public class Player {
 		blockShot += blocktemp;
 		fault += player.getMiss();
 		foul += player.getFoul();
-		point += scoretemp;
+		score += scoretemp;
 		char p = player.getPosition();
 		if (p == 'F' || p == 'G' || p == 'C')
 			starting++;
@@ -145,7 +145,7 @@ public class Player {
 				player.getExp(), player.getSchool(), appearance, starting,
 				playTime, hit, shot, thirdHit, thirdshot, freeHit, freeshot,
 				offensiveRebound, defensiveRebound, rebound, assist,
-				steal, blockShot, fault, foul, point, getHitRate(),
+				steal, blockShot, fault, foul, score, getHitRate(),
 				getThirdHitRate(), getFreeHitRate(), getEfficiency(),
 				getGmScEfficiency(), getRealHitRate(), getShotEfficiency(),
 				getReboundRate(), getOffensiveReboundRate(),
@@ -187,11 +187,35 @@ public class Player {
 		pni.setNumOfGame(appearance);
 		pni.setOffend(offensiveRebound);
 		pni.setPenalty(getFreeHitRate());
-		pni.setPoint(point);
+		pni.setPoint(score);
 		pni.setRebound(rebound);
 		pni.setShot(getHitRate());
 		pni.setStart(starting);
 		pni.setSteal(steal);
+		pni.setTeamName(team.getAbbreviation());
+		pni.setThree(getThirdHitRate());
+		return pni;
+	}
+	
+	public PlayerNormalInfo toNormalInfoAvg() {
+		PlayerNormalInfo pni = new PlayerNormalInfo();
+		pni.setAge(player.getAge());
+		pni.setAssist(assist/appearance);
+		pni.setBlockShot(blockShot/appearance);
+		pni.setDefend(defensiveRebound/appearance);
+		pni.setEfficiency(getEfficiency());
+		pni.setFault(fault/appearance);
+		pni.setFoul(foul/appearance);
+		pni.setMinute(playTime/60/appearance);
+		pni.setName(player.getName());
+		pni.setNumOfGame(appearance);
+		pni.setOffend(offensiveRebound/appearance);
+		pni.setPenalty(getFreeHitRate());
+		pni.setPoint(score/appearance);
+		pni.setRebound(rebound/appearance);
+		pni.setShot(getHitRate());
+		pni.setStart(starting/appearance);
+		pni.setSteal(steal/appearance);
 		pni.setTeamName(team.getAbbreviation());
 		pni.setThree(getThirdHitRate());
 		return pni;
@@ -226,12 +250,12 @@ public class Player {
 	}
 
 	private double getEfficiency() {
-		return (point + rebound + assist + steal + blockShot) - (shot - hit)
+		return (score + rebound + assist + steal + blockShot) - (shot - hit)
 				- (freeshot - freeHit) - fault;
 	}
 
 	private double getGmScEfficiency() {
-		return point + 0.4 * (double) hit - 0.7 * (double) shot - 0.4
+		return score + 0.4 * (double) hit - 0.7 * (double) shot - 0.4
 				* (double) (freeshot - freeHit) + 0.7
 				* (double) offensiveRebound + 0.3 * (double) defensiveRebound
 				+ steal + 0.7 * (double) assist + 0.7 * (double) blockShot - 0.4
@@ -239,7 +263,7 @@ public class Player {
 	}
 
 	private double getRealHitRate() {
-		return (double) point / (2 * (shot + 0.44 * (double) freeshot));
+		return (double) score / (2 * (shot + 0.44 * (double) freeshot));
 	}
 
 	private double getShotEfficiency() {

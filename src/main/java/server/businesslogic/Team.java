@@ -103,6 +103,25 @@ public class Team {
 		tni.setThree(getThirdHitRate());
 		return tni;
 	}
+	
+	public TeamNormalInfo toNormalInfoAvg() {
+		TeamNormalInfo tni = new TeamNormalInfo();
+		tni.setAssist(assist/appearance);
+		tni.setBlockShot(blockShot/appearance);
+		tni.setDefendRebound(defendRebound/appearance);
+		tni.setFault(fault/appearance);
+		tni.setFoul(foul/appearance);
+		tni.setNumOfGame(appearance);
+		tni.setOffendRebound(offendRebound/appearance);
+		tni.setPenalty(getFreeHitRate());
+		tni.setPoint(score/appearance);
+		tni.setRebound(rebound/appearance);
+		tni.setShot(getHitRate());
+		tni.setSteal(steal/appearance);
+		tni.setTeamName(teamPO.getAbbreviation());
+		tni.setThree(getThirdHitRate());
+		return tni;
+	}
 
 	public void addThisTeam(TeamInMatches tim) {
 		thisTeam.add(tim);

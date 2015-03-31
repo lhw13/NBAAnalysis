@@ -15,7 +15,7 @@ public class TeamsDataAnalyse {
 		String home;
 		int setupTime;
 		for (int i = 2; i < teamsList.size() - 1; i++) {
-			String[] oneLine = teamsList.get(i).replaceAll("║", "").split("│");
+			String[] oneLine = teamsList.get(i).replaceAll("║", "").split("\\│");
 			fullName = oneLine[0].trim();
 			abbreviation = oneLine[1].trim();
 			location = oneLine[2].trim();

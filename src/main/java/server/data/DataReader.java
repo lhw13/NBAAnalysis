@@ -2,18 +2,18 @@ package server.data;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class DataReader {
 	private static BufferedReader br;
-	private static FileReader file;
+	private static InputStreamReader file;
 
 	public static ArrayList<String> dataReader(File filePoint) {
 		ArrayList<String> result = new ArrayList<String>();
 		try {
-			file = new FileReader(filePoint);
+			file = new InputStreamReader(new FileInputStream(filePoint), "UTF-8");
 			br = new BufferedReader(file);
 			String line = "";
 			result.add(filePoint.getName());

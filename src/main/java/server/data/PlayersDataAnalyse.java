@@ -22,7 +22,7 @@ public class PlayersDataAnalyse {
 		String school;
 		ArrayList<String> playerData = new ArrayList<String>();
 		for (int i = 2; i < playerForm.size(); i = i + 2) {
-			playerData.add(playerForm.get(i).split("│")[1].replace("║", ""));
+			playerData.add(playerForm.get(i).split("\\│")[1].replace("║", ""));
 		}
 		name = playerData.get(0).trim();
 		number = stringToInt(playerData.get(1).replaceAll("\t", ""));

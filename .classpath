@@ -25,6 +25,6 @@
 	<classpathentry kind="lib" path="lib/batik-1.7/lib/batik-swing.jar"/>
 	<classpathentry kind="lib" path="lib/batik-1.7/batik.jar"/>
 	<classpathentry kind="lib" path="lib/testData.jar"/>
-	<classpathentry kind="lib" path="C:/Users/wjc/git/NBAAnalysis/lib/javasubstance.jar"/>
+	<classpathentry kind="lib" path="lib/javasubstance.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

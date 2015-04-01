@@ -339,4 +339,172 @@ public class Player {
 				* ((double) teamPlayTime / 5) / playTime
 				/ (teamshot + 0.44 * teamFreeshot + teamMiss);
 	}
+
+	public boolean isAnalysed() {
+		return analysed;
+	}
+
+	public TeamPO getTeam() {
+		return team;
+	}
+
+	public PlayerPO getPlayer() {
+		return player;
+	}
+
+	public PlayerInMatchesPO getPlayerInMatches() {
+		return playerInMatches;
+	}
+
+	public ArrayList<TeamInMatches> getThisTeam() {
+		return thisTeam;
+	}
+
+	public ArrayList<Integer> getOrders() {
+		return orders;
+	}
+
+	public ArrayList<TeamInMatches> getOpponentTeam() {
+		return opponentTeam;
+	}
+
+	public int getAppearance() {
+		return appearance;
+	}
+
+	public int getStarting() {
+		return starting;
+	}
+
+	public int getPlayTime() {
+		return playTime;
+	}
+
+	public int getHit() {
+		return hit;
+	}
+
+	public int getShot() {
+		return shot;
+	}
+
+	public int getThirdHit() {
+		return thirdHit;
+	}
+
+	public int getThirdshot() {
+		return thirdshot;
+	}
+
+	public int getFreeHit() {
+		return freeHit;
+	}
+
+	public int getFreeshot() {
+		return freeshot;
+	}
+
+	public int getOffensiveRebound() {
+		return offensiveRebound;
+	}
+
+	public int getDefensiveRebound() {
+		return defensiveRebound;
+	}
+
+	public int getRebound() {
+		return rebound;
+	}
+
+	public int getAssist() {
+		return assist;
+	}
+
+	public int getSteal() {
+		return steal;
+	}
+
+	public int getBlockShot() {
+		return blockShot;
+	}
+
+	public int getFault() {
+		return fault;
+	}
+
+	public int getFoul() {
+		return foul;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public double getTwoPairs() {
+		return twoPairs;
+	}
+
+	public int getTeamPlayTime() {
+		return teamPlayTime;
+	}
+
+	public int getTeamTotalRebound() {
+		return teamTotalRebound;
+	}
+
+	public int getTeamOffensiveRebound() {
+		return teamOffensiveRebound;
+	}
+
+	public int getTeamDefensiveRebound() {
+		return teamDefensiveRebound;
+	}
+
+	public int getTeamshot() {
+		return teamshot;
+	}
+
+	public int getTeamHit() {
+		return teamHit;
+	}
+
+	public int getTeamFreeshot() {
+		return teamFreeshot;
+	}
+
+	public int getTeamMiss() {
+		return teamMiss;
+	}
+
+	public int getTeamTotalRebound2() {
+		return teamTotalRebound2;
+	}
+
+	public int getTeamOffensiveRebound2() {
+		return teamOffensiveRebound2;
+	}
+
+	public int getTeamDefensiveRebound2() {
+		return teamDefensiveRebound2;
+	}
+
+	public int getTeamshot2() {
+		return teamshot2;
+	}
+
+	public int getTeamThirdshot2() {
+		return teamThirdshot2;
+	}
+
+	public int getTeamFreeshot2() {
+		return teamFreeshot2;
+	}
+
+	public int getTeamHit2() {
+		return teamHit2;
+	}
+
+	public int getTeamMiss2() {
+		return teamMiss2;
+	}
 }

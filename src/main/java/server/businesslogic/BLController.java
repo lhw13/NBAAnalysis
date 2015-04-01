@@ -270,4 +270,14 @@ public class BLController implements BLService {
 			result.add(h.get(i).toVO());
 		return result;
 	}
+
+	public ArrayList<Player> getPlayers() {
+		analyse();
+		return players;
+	}
+
+	public ArrayList<Team> getTeams() {
+		analyse();
+		return teams;
+	}
 }

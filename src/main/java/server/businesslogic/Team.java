@@ -270,4 +270,152 @@ public class Team {
 	private int getLost2() {
 		return shot2 - hit2;
 	}
+
+	public boolean isAnalysed() {
+		return analysed;
+	}
+
+	public ArrayList<TeamInMatches> getThisTeam() {
+		return thisTeam;
+	}
+
+	public ArrayList<TeamInMatches> getOpponentTeam() {
+		return opponentTeam;
+	}
+
+	public int getAppearance() {
+		return appearance;
+	}
+
+	public int getHit() {
+		return hit;
+	}
+
+	public int getShot() {
+		return shot;
+	}
+
+	public int getThirdHit() {
+		return thirdHit;
+	}
+
+	public int getThirdshot() {
+		return thirdshot;
+	}
+
+	public int getFreeHit() {
+		return freeHit;
+	}
+
+	public int getFreeshot() {
+		return freeshot;
+	}
+
+	public int getOffendRebound() {
+		return offendRebound;
+	}
+
+	public int getDefendRebound() {
+		return defendRebound;
+	}
+
+	public int getRebound() {
+		return rebound;
+	}
+
+	public int getAssist() {
+		return assist;
+	}
+
+	public int getSteal() {
+		return steal;
+	}
+
+	public int getBlockShot() {
+		return blockShot;
+	}
+
+	public int getFault() {
+		return fault;
+	}
+
+	public int getFoul() {
+		return foul;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public int getWin() {
+		return win;
+	}
+
+	public int getPlayTime() {
+		return playTime;
+	}
+
+	public int getHit2() {
+		return hit2;
+	}
+
+	public int getShot2() {
+		return shot2;
+	}
+
+	public int getThirdHit2() {
+		return thirdHit2;
+	}
+
+	public int getThirdshot2() {
+		return thirdshot2;
+	}
+
+	public int getFreeHit2() {
+		return freeHit2;
+	}
+
+	public int getFreeshot2() {
+		return freeshot2;
+	}
+
+	public int getOffensiveRebound2() {
+		return offensiveRebound2;
+	}
+
+	public int getDefensiveRebound2() {
+		return defensiveRebound2;
+	}
+
+	public int getTotalRebound2() {
+		return totalRebound2;
+	}
+
+	public int getAssist2() {
+		return assist2;
+	}
+
+	public int getSteal2() {
+		return steal2;
+	}
+
+	public int getBlock2() {
+		return block2;
+	}
+
+	public int getMiss2() {
+		return miss2;
+	}
+
+	public int getFoul2() {
+		return foul2;
+	}
+
+	public int getScore2() {
+		return score2;
+	}
+
+	public int getWin2() {
+		return win2;
+	}
 }

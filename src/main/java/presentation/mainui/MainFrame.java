@@ -91,10 +91,10 @@ public class MainFrame {
 			"罚球命中数", "出手数", "进攻篮板", "防守篮板", "总篮板数", "助攻", "抢断", "盖帽", "失误",
 			"犯规", "得分" };
 
-	String table_2_columns[] = { "球员", "位置", "赛区", "分区", "得分", "篮板", "助攻",
+	String table_2_columns[] = { "球员", "位置", "赛区", "分区", "得分", "篮板", "助攻", "得分/篮板/助攻", 
 			"盖帽", "抢断", "犯规", "失误", "分钟", "效率", "投篮", "三分", "罚球", "两双" };
 
-	String table_3_columns[] = { "球员", "位置", "赛区", "分区", "得分", "篮板", "助攻",
+	String table_3_columns[] = { "球员", "位置", "赛区", "分区", "得分", "篮板", "助攻", "得分/篮板/助攻", 
 			"盖帽", "抢断", "犯规", "失误", "分钟", "效率", "投篮", "三分", "罚球", "两双" };
 
 	public static void main(String[] args) {
@@ -166,9 +166,9 @@ public class MainFrame {
 		frame.getContentPane().add(PlayerSelectionPanel.scrollPane);
 		PlayerSelectionPanel.scrollPane.setVisible(false);
 
-		Object table_rows[][] = { { "X0", "中锋", "西部西南区", 999, 888, 777, 666,
+		Object table_rows[][] = { { "X0", "中锋", "西部西南区", 999, 888, 777, 666, 222, 
 				555, 444, 333, 500, 400, 0, 100, 200, 300 }, };
-		String table_columns[] = { "球员", "位置", "赛区", "得分", "篮板", "助攻", "盖帽",
+		String table_columns[] = { "球员", "位置", "赛区", "得分", "篮板", "助攻", "得分/篮板/助攻", "盖帽",
 				"抢断", "犯规", "失误", "分钟", "效率", "投篮", "三分", "罚球", "两双" };
 		DefaultTableModel model = new DefaultTableModel(table_rows,
 				table_columns) {
@@ -719,7 +719,7 @@ public class MainFrame {
 		ArrayList<PlayerVO> pvoList = compute.getPlayerAnalysis();
 		PlayerVO pvo = new PlayerVO();
 		String[] s = new String[3];
-		Object table_rows[][] = new Object[481][17];
+		Object table_rows[][] = new Object[481][18];
 		for (int i = 0; i < pvoList.size(); i++) {
 			if (pvoList.get(i) != null) {
 				pvo = pvoList.get(i);
@@ -736,17 +736,18 @@ public class MainFrame {
 				table_rows[i][5] = handle((double) pvo.getTotalRebound(),
 						appearance);
 				table_rows[i][6] = handle((double) pvo.getAssist(), appearance);
-				table_rows[i][7] = handle((double) pvo.getBlock(), appearance);
-				table_rows[i][8] = handle((double) pvo.getSteal(), appearance);
-				table_rows[i][9] = handle((double) pvo.getFoul(), appearance);
-				table_rows[i][10] = handle((double) pvo.getMiss(), appearance);
-				table_rows[i][11] = handle((double) pvo.getPlayTime(),
+				table_rows[i][7] = handle((double) (pvo.getScore()+pvo.getAssist()+pvo.getTotalRebound())*(0.33333), appearance);
+				table_rows[i][8] = handle((double) pvo.getBlock(), appearance);
+				table_rows[i][9] = handle((double) pvo.getSteal(), appearance);
+				table_rows[i][10] = handle((double) pvo.getFoul(), appearance);
+				table_rows[i][11] = handle((double) pvo.getMiss(), appearance);
+				table_rows[i][12] = handle((double) pvo.getPlayTime(),
 						appearance);
-				table_rows[i][12] = pvo.getEfficiency();
-				table_rows[i][13] = pvo.getHitRate();
-				table_rows[i][14] = pvo.getThirdHitRate();
-				table_rows[i][15] = pvo.getFreeHitRate();
-				table_rows[i][16] = pvo.getTowPairs();// 两双
+				table_rows[i][13] = pvo.getEfficiency();
+				table_rows[i][14] = pvo.getHitRate();
+				table_rows[i][15] = pvo.getThirdHitRate();
+				table_rows[i][16] = pvo.getFreeHitRate();
+				table_rows[i][17] = pvo.getTowPairs();// 两双
 			}
 		}
 
@@ -760,7 +761,7 @@ public class MainFrame {
 		};
 
 		String[] s1 = new String[3];
-		Object table_1_rows[][] = new Object[481][17];
+		Object table_1_rows[][] = new Object[481][18];
 		for (int i = 0; i < pvoList.size(); i++) {
 			if (pvoList.get(i) != null) {
 				pvo = pvoList.get(i);
@@ -775,16 +776,17 @@ public class MainFrame {
 				table_1_rows[i][4] = pvo.getScore();
 				table_1_rows[i][5] = pvo.getTotalRebound();
 				table_1_rows[i][6] = pvo.getAssist();
-				table_1_rows[i][7] = pvo.getBlock();
-				table_1_rows[i][8] = pvo.getSteal();
-				table_1_rows[i][9] = pvo.getFoul();
-				table_1_rows[i][10] = pvo.getMiss();
-				table_1_rows[i][11] = pvo.getPlayTime();
-				table_1_rows[i][12] = pvo.getEfficiency();
-				table_1_rows[i][13] = pvo.getHitRate();
-				table_1_rows[i][14] = pvo.getThirdHitRate();
-				table_1_rows[i][15] = pvo.getFreeHitRate();
-				table_1_rows[i][16] = "两双";// 两双
+				table_1_rows[i][7] = (pvo.getScore()+pvo.getAssist()+pvo.getTotalRebound())*(0.33333);
+				table_1_rows[i][8] = pvo.getBlock();
+				table_1_rows[i][9] = pvo.getSteal();
+				table_1_rows[i][10] = pvo.getFoul();
+				table_1_rows[i][11] = pvo.getMiss();
+				table_1_rows[i][12] = pvo.getPlayTime();
+				table_1_rows[i][13] = pvo.getEfficiency();
+				table_1_rows[i][14] = pvo.getHitRate();
+				table_1_rows[i][15] = pvo.getThirdHitRate();
+				table_1_rows[i][16] = pvo.getFreeHitRate();
+				table_1_rows[i][17] = pvo.getTowPairs();// 两双
 			}
 		}
 		DefaultTableModel model1 = new DefaultTableModel(table_1_rows,

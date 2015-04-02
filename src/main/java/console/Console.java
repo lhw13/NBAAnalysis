@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import server.businesslogic.BLController;
+import server.businesslogic.Player;
 import server.businesslogic.Team;
 
 import org.apache.commons.beanutils.BeanComparator;
@@ -17,6 +18,13 @@ public class Console {
 		//for detailed information, see http://dongwei.iteye.com/blog/230458
 		if(args[0].equals("-team"))
 			team(out,args);
+		if(args[0].equals("-player"))
+			player(out,args);
+	}
+	
+	public void player(PrintStream out, String[] args) {
+		ArrayList<Player> players = BLController.getInstance().getPlayers();
+		
 	}
 	public void team(PrintStream out, String[] args) {
 		ArrayList<Team> teams = BLController.getInstance().getTeams();

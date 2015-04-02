@@ -24,7 +24,9 @@ import javax.swing.JTabbedPane;
 import javax.swing.JCheckBox;
 
 public class PlayerRankingPanel extends JPanel {
-
+	public DefaultTableModel dtmodel;//by major
+	public DefaultTableModel dtmodel1;
+	
 	public static JScrollPane scrollPane;
 	private JButton btnNewButton;
 	public static JTable table;
@@ -45,6 +47,8 @@ public class PlayerRankingPanel extends JPanel {
 	public PlayerRankingPanel(DefaultTableModel model, DefaultTableModel model1) {
 		setLayout(null);
 
+		dtmodel = model;
+		dtmodel1 = model1;
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 0, 990, 560);
 
@@ -64,7 +68,7 @@ public class PlayerRankingPanel extends JPanel {
 
 		});
 
-		table = new JTable();
+		table = new JTable();		
 		table.setModel(model);
 		final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(
 				model);
@@ -99,6 +103,12 @@ public class PlayerRankingPanel extends JPanel {
 		chckbxNewCheckBox.addItemListener(new ItemListener() {
 
 			public void itemStateChanged(ItemEvent e) {
+				dtmodel.setRowCount(50);
+				dtmodel1.setRowCount(50);
+				table.setModel(dtmodel);
+				table_1.setModel(dtmodel1);
+				table.updateUI();
+				table_1.updateUI();
 				if (chckbxNewCheckBox.isSelected()
 						&& chckbxNewCheckBox_5.isSelected()) {
 					String text = "前锋";
@@ -233,6 +243,12 @@ public class PlayerRankingPanel extends JPanel {
 		chckbxNewCheckBox_1.addItemListener(new ItemListener() {
 
 			public void itemStateChanged(ItemEvent e) {
+				dtmodel.setRowCount(50);
+				dtmodel1.setRowCount(50);
+				table.setModel(dtmodel);
+				table_1.setModel(dtmodel1);
+				table.updateUI();
+				table_1.updateUI();
 				if (chckbxNewCheckBox_1.isSelected()
 						&& chckbxNewCheckBox_5.isSelected()) {
 					String text = "中锋";
@@ -367,6 +383,12 @@ public class PlayerRankingPanel extends JPanel {
 		chckbxNewCheckBox_2.addItemListener(new ItemListener() {
 
 			public void itemStateChanged(ItemEvent e) {
+				dtmodel.setRowCount(50);
+				dtmodel1.setRowCount(50);
+				table.setModel(dtmodel);
+				table_1.setModel(dtmodel1);
+				table.updateUI();
+				table_1.updateUI();
 				if (chckbxNewCheckBox_2.isSelected()
 						&& chckbxNewCheckBox_5.isSelected()) {
 					String text = "后卫";
@@ -501,6 +523,12 @@ public class PlayerRankingPanel extends JPanel {
 		chckbxNewCheckBox_3.addItemListener(new ItemListener() {
 
 			public void itemStateChanged(ItemEvent e) {
+				dtmodel.setRowCount(50);
+				dtmodel1.setRowCount(50);
+				table.setModel(dtmodel);
+				table_1.setModel(dtmodel1);
+				table.updateUI();
+				table_1.updateUI();
 				if (chckbxNewCheckBox_3.isSelected()
 						&& chckbxNewCheckBox_5.isSelected()) {
 					String text = "东部";
@@ -617,6 +645,12 @@ public class PlayerRankingPanel extends JPanel {
 		chckbxNewCheckBox_4.addItemListener(new ItemListener() {
 
 			public void itemStateChanged(ItemEvent e) {
+				dtmodel.setRowCount(50);
+				dtmodel1.setRowCount(50);
+				table.setModel(dtmodel);
+				table_1.setModel(dtmodel1);
+				table.updateUI();
+				table_1.updateUI();
 				if (chckbxNewCheckBox_4.isSelected()
 						&& chckbxNewCheckBox_8.isSelected()) {
 					String text = "西部";
@@ -733,6 +767,12 @@ public class PlayerRankingPanel extends JPanel {
 		chckbxNewCheckBox_5.addItemListener(new ItemListener() {
 
 			public void itemStateChanged(ItemEvent e) {
+				dtmodel.setRowCount(50);
+				dtmodel1.setRowCount(50);
+				table.setModel(dtmodel);
+				table_1.setModel(dtmodel1);
+				table.updateUI();
+				table_1.updateUI();
 				if (chckbxNewCheckBox.isSelected()
 						&& chckbxNewCheckBox_5.isSelected()) {
 					String text = "前锋";
@@ -831,6 +871,12 @@ public class PlayerRankingPanel extends JPanel {
 		chckbxNewCheckBox_6.addItemListener(new ItemListener() {
 
 			public void itemStateChanged(ItemEvent e) {
+				dtmodel.setRowCount(50);
+				dtmodel1.setRowCount(50);
+				table.setModel(dtmodel);
+				table_1.setModel(dtmodel1);
+				table.updateUI();
+				table_1.updateUI();
 				if (chckbxNewCheckBox.isSelected()
 						&& chckbxNewCheckBox_6.isSelected()) {
 					String text = "前锋";
@@ -929,6 +975,12 @@ public class PlayerRankingPanel extends JPanel {
 		chckbxNewCheckBox_7.addItemListener(new ItemListener() {
 
 			public void itemStateChanged(ItemEvent e) {
+				dtmodel.setRowCount(50);
+				dtmodel1.setRowCount(50);
+				table.setModel(dtmodel);
+				table_1.setModel(dtmodel1);
+				table.updateUI();
+				table_1.updateUI();
 				if (chckbxNewCheckBox.isSelected()
 						&& chckbxNewCheckBox_7.isSelected()) {
 					String text = "前锋";
@@ -1027,6 +1079,12 @@ public class PlayerRankingPanel extends JPanel {
 		chckbxNewCheckBox_8.addItemListener(new ItemListener() {
 
 			public void itemStateChanged(ItemEvent e) {
+				dtmodel.setRowCount(50);
+				dtmodel1.setRowCount(50);
+				table.setModel(dtmodel);
+				table_1.setModel(dtmodel1);
+				table.updateUI();
+				table_1.updateUI();
 				if (chckbxNewCheckBox.isSelected()
 						&& chckbxNewCheckBox_8.isSelected()) {
 					String text = "前锋";
@@ -1125,6 +1183,12 @@ public class PlayerRankingPanel extends JPanel {
 		chckbxNewCheckBox_9.addItemListener(new ItemListener() {
 
 			public void itemStateChanged(ItemEvent e) {
+				dtmodel.setRowCount(50);
+				dtmodel1.setRowCount(50);
+				table.setModel(dtmodel);
+				table_1.setModel(dtmodel1);
+				table.updateUI();
+				table_1.updateUI();
 				if (chckbxNewCheckBox.isSelected()
 						&& chckbxNewCheckBox_9.isSelected()) {
 					String text = "前锋";
@@ -1223,6 +1287,12 @@ public class PlayerRankingPanel extends JPanel {
 		chckbxNewCheckBox_10.addItemListener(new ItemListener() {
 
 			public void itemStateChanged(ItemEvent e) {
+				dtmodel.setRowCount(50);
+				dtmodel1.setRowCount(50);
+				table.setModel(dtmodel);
+				table_1.setModel(dtmodel1);
+				table.updateUI();
+				table_1.updateUI();
 				if (chckbxNewCheckBox.isSelected()
 						&& chckbxNewCheckBox_10.isSelected()) {
 					String text = "前锋";
@@ -1322,6 +1392,7 @@ public class PlayerRankingPanel extends JPanel {
 		btnNewButton_1.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
+				
 				String text = "";
 				sorter.setRowFilter(RowFilter.regexFilter(text));
 				sorter1.setRowFilter(RowFilter.regexFilter(text));

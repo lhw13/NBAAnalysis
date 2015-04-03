@@ -22,7 +22,7 @@ public class Team {
 	// this team's data
 	int appearance = 0;// 比赛场数
 	int hit = 0;// 命中
-	int shot = 0;// 出手
+	int chuShou = 0;// 出手
 	int thirdHit = 0;// 三分
 	int thirdshot = 0;
 	int freeHit = 0;// 罚球
@@ -60,26 +60,26 @@ public class Team {
 	public TeamVO toVO() {
 		return new TeamVO(teamPO.getFullName(), teamPO.getAbbreviation(),
 				teamPO.getLocation(), teamPO.getDivision(), teamPO.getZone(),
-				teamPO.getHome(), teamPO.getSetupTime(), appearance, hit, shot,
+				teamPO.getHome(), teamPO.getSetupTime(), appearance, hit, chuShou,
 				thirdHit, thirdshot, freeHit, freeshot, offendRebound,
 				defendRebound, rebound, assist, steal, blockShot, fault,
-				foul, score, getHitRate(), getThirdHitRate(), getFreeHitRate(),
-				getWinRate(), getOffensiveRound(), getOffensiveEfficiency(),
-				getDefensiveRound(), getDefensiveEfficiency(),
-				getOffensiveReboundEfficiency(),
-				getDefensiveReboundEfficiency(), getStealEfficiency(),
-				getAssistEfficiency());
+				foul, score, getHitRate(), getThree(), getPenalty(),
+				getWinRate(), getOffendRound(), getOffendEfficient(),
+				getDefendRound(), getDefendEfficient(),
+				getOffendReboundEfficient(),
+				getDefendReboundEfficient(), getStealEfficient(),
+				getAssistEfficient());
 	}
 	
 	public TeamHighInfo toHighInfo() {
 		TeamHighInfo thi = new TeamHighInfo();
-		thi.setAssistEfficient(getAssistEfficiency());
-		thi.setDefendEfficient(getDefensiveEfficiency());
-		thi.setDefendReboundEfficient(getDefensiveReboundEfficiency());
-		thi.setOffendEfficient(getOffensiveEfficiency());
-		thi.setOffendReboundEfficient(getOffensiveReboundEfficiency());
-		thi.setOffendRound(getOffensiveRound());
-		thi.setStealEfficient(getStealEfficiency());
+		thi.setAssistEfficient(getAssistEfficient());
+		thi.setDefendEfficient(getDefendEfficient());
+		thi.setDefendReboundEfficient(getDefendReboundEfficient());
+		thi.setOffendEfficient(getOffendEfficient());
+		thi.setOffendReboundEfficient(getOffendReboundEfficient());
+		thi.setOffendRound(getOffendRound());
+		thi.setStealEfficient(getStealEfficient());
 		thi.setTeamName(teamPO.getAbbreviation());
 		thi.setWinRate(getWinRate());
 		return thi;
@@ -94,13 +94,13 @@ public class Team {
 		tni.setFoul(foul);
 		tni.setNumOfGame(appearance);
 		tni.setOffendRebound(offendRebound);
-		tni.setPenalty(getFreeHitRate());
+		tni.setPenalty(getPenalty());
 		tni.setPoint(score);
 		tni.setRebound(rebound);
 		tni.setShot(getHitRate());
 		tni.setSteal(steal);
 		tni.setTeamName(teamPO.getAbbreviation());
-		tni.setThree(getThirdHitRate());
+		tni.setThree(getThree());
 		return tni;
 	}
 	
@@ -113,13 +113,13 @@ public class Team {
 		tni.setFoul(foul/appearance);
 		tni.setNumOfGame(appearance);
 		tni.setOffendRebound(offendRebound/appearance);
-		tni.setPenalty(getFreeHitRate());
+		tni.setPenalty(getPenalty());
 		tni.setPoint(score/appearance);
 		tni.setRebound(rebound/appearance);
 		tni.setShot(getHitRate());
 		tni.setSteal(steal/appearance);
 		tni.setTeamName(teamPO.getAbbreviation());
-		tni.setThree(getThirdHitRate());
+		tni.setThree(getThree());
 		return tni;
 	}
 
@@ -162,7 +162,7 @@ public class Team {
 											// corresponding domain
 		tim.computeTotal();
 		hit += tim.getHit();
-		shot += tim.getShot();
+		chuShou += tim.getShot();
 		thirdHit += tim.getThirdHit();
 		thirdshot += tim.getThirdshot();
 		freeHit += tim.getFreeHit();
@@ -202,23 +202,27 @@ public class Team {
 	}
 
 	private double getHitRate() {
-		return (double) hit / shot;
+		return (double) hit / chuShou;
+	}
+	
+	public double getShot() {
+		return (double) hit / chuShou;
 	}
 
-	private double getThirdHitRate() {
+	public double getThree() {
 		return (double) thirdHit / thirdshot;
 	}
 
-	private double getFreeHitRate() {
+	public double getPenalty() {
 		return (double) freeHit / freeshot;
 	}
 
-	private double getWinRate() {
+	public double getWinRate() {
 		return (double) win / appearance;
 	}
 
-	private double getOffensiveRound() {// 进攻回合
-		return shot
+	public double getOffendRound() {// 进攻回合
+		return chuShou
 				+ 0.4
 				* freeshot
 				- 1.07
@@ -227,11 +231,11 @@ public class Team {
 				+ 1.07 * fault;
 	}
 
-	private double getOffensiveEfficiency() {
-		return (double) score / getOffensiveRound() * 100;
+	public double getOffendEfficient() {
+		return (double) score / getOffendRound() * 100;
 	}
 
-	private double getDefensiveRound() {// whether it's right?
+	public double getDefendRound() {// whether it's right?
 		return shot2
 				+ 0.4
 				* freeshot2
@@ -241,30 +245,30 @@ public class Team {
 				+ 1.07 * miss2;
 	}
 
-	private double getDefensiveEfficiency() {
-		return (double) score2 / getDefensiveRound() * 100;
+	public double getDefendEfficient() {
+		return (double) score2 / getDefendRound() * 100;
 	}
 
-	private double getOffensiveReboundEfficiency() {// 进攻篮板效率
+	private double getOffendReboundEfficient() {// 进攻篮板效率
 		return (double) offendRebound
 				/ (offendRebound + defensiveRebound2);
 	}
 
-	private double getDefensiveReboundEfficiency() {
+	private double getDefendReboundEfficient() {
 		return (double) defendRebound
 				/ (defendRebound + offensiveRebound2);
 	}
 
-	private double getStealEfficiency() {
-		return (double) steal / getDefensiveRound() * 100;
+	private double getStealEfficient() {
+		return (double) steal / getDefendRound() * 100;
 	}
 
-	private double getAssistEfficiency() {
-		return (double) assist / getOffensiveRound() * 100;
+	private double getAssistEfficient() {
+		return (double) assist / getOffendRound() * 100;
 	}
 
 	private int getLost() {
-		return shot - hit;
+		return chuShou - hit;
 	}
 
 	private int getLost2() {
@@ -291,8 +295,8 @@ public class Team {
 		return hit;
 	}
 
-	public int getShot() {
-		return shot;
+	public int getChuShou() {
+		return chuShou;
 	}
 
 	public int getThirdHit() {
@@ -344,6 +348,10 @@ public class Team {
 	}
 
 	public int getScore() {
+		return score;
+	}
+	
+	public int getPoint() {
 		return score;
 	}
 

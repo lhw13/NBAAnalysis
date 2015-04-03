@@ -42,7 +42,7 @@ public class Console {
 		
 		
 		String[] sortCons = null;
-		String[] filterCons;
+		String[] filterCons = null;
 		String condition = null;
 		String timeCon = null;//判断是赛季还是当日
 		

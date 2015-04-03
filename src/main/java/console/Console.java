@@ -1,16 +1,22 @@
 package console;
 
+import User;
+
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 import server.businesslogic.BLController;
 import server.businesslogic.Player;
 import server.businesslogic.Team;
 
 import org.apache.commons.beanutils.BeanComparator;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.ComparatorUtils;
+import org.apache.commons.collections.Predicate;
+import org.apache.commons.collections.Transformer;
 import org.apache.commons.collections.comparators.ComparableComparator;
 import org.apache.commons.collections.comparators.ComparatorChain;
 
@@ -23,8 +29,10 @@ public class Console {
 			player(out,args);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void player(PrintStream out, String[] args) {
-		ArrayList<Player> players = BLController.getInstance().getPlayers();		
+		ArrayList<Player> players = BLController.getInstance().getPlayers();
+		List<Player> playerList = players;
 		int n=50;//default
 		
 		boolean total = false;
@@ -68,11 +76,66 @@ public class Console {
 		
 		if(hot) {
 			sortCons[0] = condition+".desc";
+			sort = true;
 		}
 		
 		if(king) {
 			sortCons[0] = condition+".desc";
+			sort = true;
 		}
+		
+		if(filter){
+			for(String temp : filterCons) {//遍历所有排序命令
+			    final String[] temps = temp.split("\\.");
+			    if(!temps[1].equals("All")){
+			    	playerList = (List<Player>) CollectionUtils.select(playerList,
+			                new Predicate() {
+			                    public boolean evaluate(Object arg0) {
+			                    	Player p = (Player) arg0;
+			                    	switch(temps[0]){
+			                    	case "position": return temps[1].equals(p.getPosition());
+			                    	case "league": return temps[1].equals(p.getLeague());
+			                    	case "age": 
+			                    		switch(temps[1]){
+			                    		case "<=22": 
+			                    			if(p.getAge()<=22){
+			                    				return true;
+			                    			}
+			                    			break;
+			                    		case "22<X<=25": 
+			                    			if(22<p.getAge() && p.getAge()<=25){
+			                    				return true;
+			                    			}
+			                    			break;
+			                    		case "25<X<=30":
+			                    			if(25<p.getAge() && p.getAge()<=30){
+			                    				return true;
+			                    			}
+			                    			break;
+			                    		case ">30": 
+			                    			if(p.getAge()>30){
+			                    				return true;
+			                    			}
+			                    			break;
+			                    		}
+			                    	default: return false;
+			                    	}
+			                        
+			                    }
+			                });
+					players = (ArrayList<Player>) CollectionUtils.collect(
+							playerList, new Transformer() {
+			                    public Object transform(Object arg0) {
+			                    	Player p = (Player) arg0;
+			                        return p;
+			                    }
+			                });
+			    }
+				
+			}
+			
+		}
+		
 		Comparator mycmp = ComparableComparator.getInstance();              
 		mycmp = ComparatorUtils.reversedComparator(mycmp);//逆序
 		ArrayList<Object> sortFields = new ArrayList<Object>();

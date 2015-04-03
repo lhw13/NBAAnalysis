@@ -1,7 +1,5 @@
 package console;
 
-import User;
-
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;

@@ -31,6 +31,8 @@ public class Console {
 		boolean high = false;
 		boolean sort = false;//是否有sort命令
 		boolean filter = false;//是否有filter命令
+		boolean hot = false;//是否有热点命令
+		boolean king = false;//是否有数据王命令
 		
 		String[] sortCons = null;
 		String[] filterCons;
@@ -41,9 +43,9 @@ public class Console {
 			{
 				case "-total":total = true;break;
 				case "-n":n=Integer.parseInt(args[++i]);break;
-				case "-high":high=true;
-				case "-hot":;
-				case "-king":;
+				case "-high":high=true; break;
+				case "-hot": hot = true; break;
+				case "-king":king = true;break;
 				case "-sort":	sort = true;
 								sortCons=args[++i].split(",");
 								break;
@@ -52,31 +54,40 @@ public class Console {
 								break;
 				
 			}
-		if(total) {//返回的数据是总数据
-			Comparator mycmp = ComparableComparator.getInstance();              
-			mycmp = ComparatorUtils.reversedComparator(mycmp);//逆序
-			ArrayList<Object> sortFields = new ArrayList<Object>();
-			if(sort) {//如果有sort命令			                
-				for(String temp : sortCons) {//遍历所有排序命令
-					String[] temps = temp.split("\\.");
-					if(temps[1].equals("asc")) {//升序
-						sortFields.add(new BeanComparator<Player>(temps[0]));				
-					} else {//降序 
-						sortFields.add(new BeanComparator<Player>(temps[0],mycmp));
-					}
+		Comparator mycmp = ComparableComparator.getInstance();              
+		mycmp = ComparatorUtils.reversedComparator(mycmp);//逆序
+		ArrayList<Object> sortFields = new ArrayList<Object>();
+		if(sort) {//如果有sort命令			                
+			for(String temp : sortCons) {//遍历所有排序命令
+				String[] temps = temp.split("\\.");
+				if(temps[1].equals("asc")) {//升序
+					sortFields.add(new BeanComparator<Player>(temps[0]));				
+				} else {//降序 
+					sortFields.add(new BeanComparator<Player>(temps[0],mycmp));
 				}
-							
-			} else {//没有sort命令，使用默认排序命令
-				if(high)//如果是高阶数据，用高阶数据的默认，否则用基本数据
-					sortFields.add(new BeanComparator<Player>("realShot",mycmp));
-				else 
-					sortFields.add(new BeanComparator<Player>("score",mycmp));
-				sortFields.add(new BeanComparator<Player>("name"));				
 			}
+						
+		} else {//没有sort命令，使用默认排序命令
+			if(high)//如果是高阶数据，用高阶数据的默认，否则用基本数据
+				sortFields.add(new BeanComparator<Player>("realShot",mycmp));
+			else 
+				sortFields.add(new BeanComparator<Player>("score",mycmp));
+			sortFields.add(new BeanComparator<Player>("name"));				
+		}
+		
+		sortFields.add(new BeanComparator<Player>("name"));//如果之前的排序结果都一样，就按照姓名升序排列
+		ComparatorChain multiSort = new ComparatorChain(sortFields);//多重排序链
+		Collections.sort(players,multiSort);
+		
+		if(hot) {
 			
-			sortFields.add(new BeanComparator<Player>("name"));//如果之前的排序结果都一样，就按照姓名升序排列
-			ComparatorChain multiSort = new ComparatorChain(sortFields);//多重排序链
-			Collections.sort(players,multiSort);
+		}
+		
+		if(king) {
+			
+		}
+		if(total) {//返回的数据是总数据
+			
 			for(int i=0;i<n && i<players.size();i++)//这是模仿刘瀚文，不知道干嘛
 			{
 				out.println(players.get(i).toNormalInfo());//to use which function
@@ -84,6 +95,11 @@ public class Console {
 			}
 		} else {//返回的数据是场均数据
 			
+			for(int i=0;i<n && i<players.size();i++)//这是模仿刘瀚文，不知道干嘛
+			{
+				out.println(players.get(i).toNormalInfoAvg());//to use which function
+				out.println(players.get(i).toVO());
+			}
 		}
 	}
 	public void team(PrintStream out, String[] args) {

@@ -34,8 +34,11 @@ public class Console {
 		boolean hot = false;//是否有热点命令
 		boolean king = false;//是否有数据王命令
 		
+		
 		String[] sortCons = null;
 		String[] filterCons;
+		String condition = null;
+		String timeCon = null;//判断是赛季还是当日
 		
 		String filterCondition = "position.F,league.West";
 		for(int i=1;i<args.length;i++)
@@ -44,8 +47,16 @@ public class Console {
 				case "-total":total = true;break;
 				case "-n":n=Integer.parseInt(args[++i]);break;
 				case "-high":high=true; break;
-				case "-hot": hot = true; break;
-				case "-king":king = true;break;
+				
+				case "-hot": hot = true; 
+							 condition = args[++i];
+							 break;
+				case "-king":king = true; 
+							 condition = args[++i];
+							 timeCon = args[++i];
+							 n=5; 
+							 break;
+				
 				case "-sort":	sort = true;
 								sortCons=args[++i].split(",");
 								break;
@@ -54,9 +65,18 @@ public class Console {
 								break;
 				
 			}
+		
+		if(hot) {
+			sortCons[0] = condition+".desc";
+		}
+		
+		if(king) {
+			sortCons[0] = condition+".desc";
+		}
 		Comparator mycmp = ComparableComparator.getInstance();              
 		mycmp = ComparatorUtils.reversedComparator(mycmp);//逆序
 		ArrayList<Object> sortFields = new ArrayList<Object>();
+		
 		if(sort) {//如果有sort命令			                
 			for(String temp : sortCons) {//遍历所有排序命令
 				String[] temps = temp.split("\\.");
@@ -79,13 +99,7 @@ public class Console {
 		ComparatorChain multiSort = new ComparatorChain(sortFields);//多重排序链
 		Collections.sort(players,multiSort);
 		
-		if(hot) {
-			
-		}
 		
-		if(king) {
-			
-		}
 		if(total) {//返回的数据是总数据
 			
 			for(int i=0;i<n && i<players.size();i++)//这是模仿刘瀚文，不知道干嘛

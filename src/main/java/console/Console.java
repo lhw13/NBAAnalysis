@@ -49,7 +49,7 @@ public class Console {
 				case "-sort":	sort = true;
 								sortCons=args[++i].split(",");
 								break;
-				case "filter":	filter = true;
+				case "-filter":	filter = true;
 								filterCons=args[++i].split(",");
 								break;
 				

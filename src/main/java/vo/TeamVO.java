@@ -260,4 +260,8 @@ public class TeamVO {
 				+ ", stealEfficiency=" + stealEfficiency
 				+ ", assistEfficiency=" + assistEfficiency + "]";
 	}
+
+	public ArrayList<MatchPO> getMatches() {
+		return matches;
+	}
 }

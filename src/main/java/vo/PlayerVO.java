@@ -357,4 +357,20 @@ public class PlayerVO {
 				+ ", missRate=" + missRate + ", useRate=" + useRate
 				+ ", towPairs=" + towPairs + "]";
 	}
+
+	public ArrayList<MatchPO> getMatches() {
+		return matches;
+	}
+
+	public double getScorePromotion() {
+		return scorePromotion;
+	}
+
+	public double getReboundPromotion() {
+		return reboundPromotion;
+	}
+
+	public double getAssistPromotion() {
+		return assistPromotion;
+	}
 }

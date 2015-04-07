@@ -16,7 +16,7 @@ import server.businesslogic.Player;
 import server.businesslogic.Team;
 
 public class PerformanceTest {
-	String[] args={"point","blockShot","winRate","penalty"};
+	String[] args={"point","blockShot"};
 	ArrayList<Team> teams = BLController.getInstance().getTeams();
 	ArrayList<Player> players = BLController.getInstance().getPlayers();
 	
@@ -33,10 +33,7 @@ public class PerformanceTest {
 	public void testNewComparator()
 	{
 		for(int j=0;j<num;j++){
-			for(String temp : args) {//遍历所有排序命令
-				
-				
-				
+			for(String temp : args) {//遍历所有排序命令												
 					switch(temp) {
 					case "point": sortConsList.add(comparePoint); break;
 					

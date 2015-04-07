@@ -1,5 +1,9 @@
 package vo;
 
+import java.util.ArrayList;
+
+import server.po.MatchPO;
+
 public class TeamVO {
 	public TeamVO(String fullName, String abbreviation, String location,
 			char division, String zone, String home, int setupTime,
@@ -12,7 +16,7 @@ public class TeamVO {
 			double defensiveRound, double defensiveEfficiency,
 			double offensiveReboundEfficiency,
 			double defensiveReboundEfficiency, double stealEfficiency,
-			double assistEfficiency) {
+			double assistEfficiency, ArrayList<MatchPO> matches) {
 		super();
 		this.fullName = fullName;
 		this.abbreviation = abbreviation;
@@ -49,6 +53,7 @@ public class TeamVO {
 		this.defensiveReboundEfficiency = defensiveReboundEfficiency;
 		this.stealEfficiency = stealEfficiency;
 		this.assistEfficiency = assistEfficiency;
+		this.matches = matches;
 	}
 
 	public TeamVO() {
@@ -90,6 +95,7 @@ public class TeamVO {
 	double defensiveReboundEfficiency;// 防守篮板效率
 	double stealEfficiency;// 抢断效率
 	double assistEfficiency;// 助攻效率
+	ArrayList<MatchPO> matches;
 
 	public String getFullName() {
 		return fullName;

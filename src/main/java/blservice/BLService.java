@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 
 import org.apache.batik.swing.JSVGCanvas;
 
+import server.po.MatchPO;
 import vo.*;
 
 public interface BLService {
@@ -18,6 +19,8 @@ public interface BLService {
 	TeamWithPlayersVO getTeamAnalysis(String abbreviation);// 暂时认为球队全称唯一确定一支球队
 
 	ArrayList<TeamWithPlayersVO> getTeamsWithPlayers();// 展示层要求按队伍显示球员的接口
+	
+	public ArrayList<MatchPO> getAllMatch();//先暂时这么用吧，还能避免些缺陷，等我些差不多了我就把类型一改，其他代码都不用动
 
 	public ImageIcon getPlayerAction(String name);
 

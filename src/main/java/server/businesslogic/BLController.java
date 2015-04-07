@@ -57,6 +57,10 @@ public class BLController implements BLService {
 	public JSVGCanvas getSwing(String abbreviation) {
 		return data.getSwing(abbreviation);
 	}
+	
+	public ArrayList<MatchPO> getAllMatch() {
+		return data.getAllMatch();
+	}
 
 	// 4 key methods to implement the interface
 	public ArrayList<PlayerVO> getPlayerAnalysis() {
@@ -164,10 +168,12 @@ public class BLController implements BLService {
 				Team tTeam = new Team(teamPOHash.get(ab));
 				tTeam.addThisTeam(timtemp1);
 				tTeam.addOpponentTeam(timtemp2);
+				tTeam.addMatch(mttemp);
 				teamsHash.put(ab, tTeam);
 			} else {
 				foundTeam.addThisTeam(timtemp1);
 				foundTeam.addOpponentTeam(timtemp2);
+				foundTeam.addMatch(mttemp);
 			}
 
 			// put some data in team 2
@@ -177,10 +183,12 @@ public class BLController implements BLService {
 				Team tTeam = new Team(teamPOHash.get(ab));
 				tTeam.addThisTeam(timtemp2);
 				tTeam.addOpponentTeam(timtemp1);
+				tTeam.addMatch(mttemp);
 				teamsHash.put(ab, tTeam);
 			} else {
 				foundTeam.addThisTeam(timtemp2);
 				foundTeam.addOpponentTeam(timtemp1);
+				foundTeam.addMatch(mttemp);
 			}
 
 			// put some data in team 1's players
@@ -200,10 +208,12 @@ public class BLController implements BLService {
 							playerPO);
 					tPlayer.addThisTeam(timtemp1, j);
 					tPlayer.addOpponentTeam(timtemp2);
+					tPlayer.addMatch(mttemp);
 					playersHash.put(name, tPlayer);
 				} else {
 					foundPlayer.addThisTeam(timtemp1, j);
 					foundPlayer.addOpponentTeam(timtemp2);
+					foundPlayer.addMatch(mttemp);
 				}
 			}
 
@@ -223,10 +233,12 @@ public class BLController implements BLService {
 							playerPO);
 					tPlayer.addThisTeam(timtemp2, j);
 					tPlayer.addOpponentTeam(timtemp1);
+					tPlayer.addMatch(mttemp);
 					playersHash.put(name, tPlayer);
 				} else {
 					foundPlayer.addThisTeam(timtemp2, j);
 					foundPlayer.addOpponentTeam(timtemp1);
+					foundPlayer.addMatch(mttemp);
 				}
 			}
 		}

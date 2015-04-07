@@ -1,8 +1,10 @@
 package vo;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import server.po.HeightPO;
+import server.po.MatchPO;
 
 public class PlayerVO {
 	public PlayerVO(String teamFullName, String teamAbbreviation,
@@ -17,7 +19,8 @@ public class PlayerVO {
 			double gmScEfficiency, double realHitRate, double shotEfficiency,
 			double reboundRate, double offensiveReboundRate,
 			double defensiveReboundRate, double assistRate, double stealRate,
-			double blockRate, double missRate, double useRate, double towPairs) {
+			double blockRate, double missRate, double useRate, double towPairs, ArrayList<MatchPO> matches, 
+			double scorePromotion, double reboundPromotion, double assistPromotion) {
 		super();
 		this.teamFullName = teamFullName;
 		this.teamAbbreviation = teamAbbreviation;
@@ -66,6 +69,10 @@ public class PlayerVO {
 		this.missRate = missRate;
 		this.useRate = useRate;
 		this.towPairs = towPairs;
+		this.matches = matches;
+		this.scorePromotion = scorePromotion;
+		this.reboundPromotion = reboundPromotion;
+		this.assistPromotion = assistPromotion;
 	}
 
 	public PlayerVO() {
@@ -123,6 +130,12 @@ public class PlayerVO {
 	double missRate;
 	double useRate;
 	double towPairs;
+	
+	//iteration 2
+	ArrayList<MatchPO> matches;
+	double scorePromotion;
+	double reboundPromotion;
+	double assistPromotion;
 
 	public String getTeamFullName() {
 		return teamFullName;

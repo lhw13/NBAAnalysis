@@ -2,6 +2,7 @@ package server.businesslogic;
 
 import java.util.ArrayList;
 
+import server.po.MatchPO;
 import server.po.PlayerInMatchesPO;
 import server.po.TeamInMatchesPO;
 import server.po.TeamPO;
@@ -16,6 +17,7 @@ public class Team {
 
 	boolean analysed = false;
 	TeamPO teamPO;
+	ArrayList<MatchPO> matches = new ArrayList<MatchPO>();
 	ArrayList<TeamInMatches> thisTeam = new ArrayList<TeamInMatches>();
 	ArrayList<TeamInMatches> opponentTeam = new ArrayList<TeamInMatches>();
 
@@ -68,7 +70,7 @@ public class Team {
 				getDefendRound(), getDefendEfficient(),
 				getOffendReboundEfficient(),
 				getDefendReboundEfficient(), getStealEfficient(),
-				getAssistEfficient());
+				getAssistEfficient(),matches);
 	}
 	
 	public TeamHighInfo toHighInfo() {
@@ -129,6 +131,11 @@ public class Team {
 
 	public void addOpponentTeam(TeamInMatches tim) {
 		opponentTeam.add(tim);
+	}
+	
+	public void addMatch(MatchPO mp)
+	{
+		matches.add(mp);
 	}
 
 	public String getFullName() {

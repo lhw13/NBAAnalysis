@@ -21,6 +21,7 @@ public class Player {
 	TeamPO team;
 	PlayerPO player;
 	PlayerInMatchesPO playerInMatches = new PlayerInMatchesPO();
+	ArrayList<MatchPO> matches = new ArrayList<MatchPO>();
 	ArrayList<TeamInMatches> thisTeam = new ArrayList<TeamInMatches>();
 	ArrayList<Integer> orders = new ArrayList<Integer>();// this array just to
 															// promote
@@ -138,6 +139,7 @@ public class Player {
 	}
 
 	public PlayerVO toVO() {
+		computePromotion();
 		return new PlayerVO(team.getFullName(), team.getAbbreviation(),
 				team.getDivision(), team.getZone(), player.getName(),
 				player.getNumber(), player.getPosition(), new HeightVO(player
@@ -151,7 +153,8 @@ public class Player {
 				getGmSc(), getRealShot(), getShotEfficient(),
 				getReboundEfficient(), getOffendReboundEfficient(),
 				getDefendReboundEfficient(), getAssistEfficient(), getStealEfficient(),
-				getBlockShotEfficient(), getFaultEfficient(), getFrequency(), doubleTwo);
+				getBlockShotEfficient(), getFaultEfficient(), getFrequency(), doubleTwo, matches,
+				scorePromotion, reboundPromotion, assistPromotion);
 	}
 	
 	public PlayerHighInfo toHighInfo(){
@@ -229,6 +232,10 @@ public class Player {
 
 	public void addOpponentTeam(TeamInMatches tim) {
 		opponentTeam.add(tim);
+	}
+	
+	public void addMatch(MatchPO mp) {
+		matches.add(mp);
 	}
 
 	// below are corresponding to our homework paper
@@ -543,7 +550,45 @@ public class Player {
 		return player.getName();
 	}
 	
+	int scorePromotion;
+	int assistPromotion;
+	int reboundPromotion;
 	
-
-
+	public void computePromotion() {
+		int size = thisTeam.size();
+		if(size<=5)
+		{ //information is not enough
+			scorePromotion=0;
+			assistPromotion=0;
+			reboundPromotion=0;
+			return;
+		}
+		int scoreRecent=0;
+		int assistRecent=0;
+		int reboundRecent=0;
+		for(int i=size-5; i<size; i++)
+		{
+			TeamInMatches tim = thisTeam.get(i);
+			PlayerInMatchesPO player = tim.getPlayers().get(orders.get(i));
+			scoreRecent+=player.getScore();
+			assistRecent+=player.getAssist();
+			reboundRecent+=player.getTotalRebound();
+		}
+		int appearancePast = appearance-5;
+		int scorePastAvg = (score - scoreRecent)/appearancePast;
+		int assistPastAvg = (assist - assistRecent)/appearancePast;
+		int reboundPashAvg = (rebound - reboundRecent)/appearancePast;
+		if(scorePastAvg==0)
+			scorePromotion=0;
+		else
+			scorePromotion = (scoreRecent/5 - scorePastAvg)/scorePastAvg;
+		if(assistPastAvg==0)
+			assistPromotion=0;
+		else
+			assistPromotion = (assistRecent/5 - assistPastAvg)/assistPastAvg;
+		if(reboundPashAvg==0)
+			reboundPromotion=0;
+		else
+			reboundPromotion = (reboundRecent/5 - reboundPashAvg)/reboundPashAvg;
+	}
 }

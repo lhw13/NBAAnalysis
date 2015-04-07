@@ -9,7 +9,7 @@ public class ConsoleTest {
 	public void executableTest()
 	{
 		Console c = new Console();
-		String ss[] = {"-team","-total"};
+		String ss[] = {"-player","-total","-all","-sort","point.desc"};
 		c.execute(System.out, ss);
 	}
 }

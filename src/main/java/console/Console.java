@@ -30,7 +30,6 @@ public class Console {
 	}
 	
 	
-	@SuppressWarnings("unchecked")
 	public void player(PrintStream out, String[] args) {
 		ArrayList<Player> players = BLController.getInstance().getPlayers();
 		List<Player> playerList = players;
@@ -203,10 +202,9 @@ public class Console {
 			if(high)//如果是高阶数据，用高阶数据的默认，否则用基本数据
 				sortConsList.add(compareRealShot);
 			else 
-				sortConsList.add(compareRealShot);
-		sort(players, sortConsList);
+				sortConsList.add(comparePoint);			
 		}
-		
+		sort(players, sortConsList);
 		
 		if(total) {//返回的数据是总数据
 			
@@ -214,6 +212,7 @@ public class Console {
 			{
 				out.println(players.get(i).toNormalInfo());//to use which function
 				out.println(players.get(i).toVO());
+				System.out.println();
 			}
 		} else {//返回的数据是场均数据
 			
@@ -221,6 +220,8 @@ public class Console {
 			{
 				out.println(players.get(i).toNormalInfoAvg());//to use which function
 				out.println(players.get(i).toVO());
+				
+				System.out.println();
 			}
 		}
 	
@@ -466,6 +467,7 @@ public class Console {
                 return 0;  
             }  
         };  
+        System.out.println("!!!!");
         Collections.sort(list, cmp);  
     }  
 }

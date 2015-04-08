@@ -210,7 +210,7 @@ public class MainFrame {
 
 				}
 			}
-
+ 
 			if (flag0) {
 				if (x3 > -500) {
 					x3--;

@@ -24,13 +24,11 @@ import javax.swing.JTabbedPane;
 import javax.swing.JCheckBox;
 
 public class PlayerRankingPanel extends JPanel {
-	public DefaultTableModel dtmodel;//by major
-	public DefaultTableModel dtmodel1;
 	
 	public static JScrollPane scrollPane;
 	private JButton btnNewButton;
+	private JComboBox<String> comboBox;
 	public static JTable table;
-	public static JTable table_1;
 
 	public static JCheckBox chckbxNewCheckBox;
 	public static JCheckBox chckbxNewCheckBox_1;
@@ -43,12 +41,11 @@ public class PlayerRankingPanel extends JPanel {
 	public static JCheckBox chckbxNewCheckBox_8;
 	public static JCheckBox chckbxNewCheckBox_9;
 	public static JCheckBox chckbxNewCheckBox_10;
+	
 
-	public PlayerRankingPanel(DefaultTableModel model, DefaultTableModel model1) {
+	public PlayerRankingPanel(DefaultTableModel model) {
 		setLayout(null);
 
-		dtmodel = model;
-		dtmodel1 = model1;
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 0, 990, 560);
 
@@ -88,37 +85,21 @@ public class PlayerRankingPanel extends JPanel {
 		table0.setModel(model0);
 		table0.setPreferredScrollableViewportSize(new Dimension(50, 1000));
 		
-		JTable table00 = new JTable();
-		DefaultTableModel model00 = new DefaultTableModel(table_0_rows,table_0_columns);
-		table00.setModel(model00);
-		table00.setPreferredScrollableViewportSize(new Dimension(50, 1000));
-		
 		table = new JTable();
 		table.setModel(model);
 		final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(
 				model);
 		table.setRowSorter(sorter);
 
-		table_1 = new JTable();
-		table_1.setModel(model1);
-		final TableRowSorter<TableModel> sorter1 = new TableRowSorter<TableModel>(
-				model1);
-		table_1.setRowSorter(sorter1);
-
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(50, 150, 1400, 1167);
+		tabbedPane.setBounds(50, 175, 800, 1167);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setViewportView(table);
 		scrollPane_1.setRowHeaderView(table0);
-		tabbedPane.addTab("场均", null, scrollPane_1, null);
+		tabbedPane.addTab("球员排名", null, scrollPane_1, null);
 
-		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setViewportView(table_1);
-		scrollPane_2.setRowHeaderView(table00);
-		tabbedPane.addTab("总计", null, scrollPane_2, null);
-
-		panel.setPreferredSize(new Dimension(1500, 1400));
+		panel.setPreferredSize(new Dimension(1000, 1400));
 		panel.add(btnNewButton);
 		panel.add(tabbedPane);
 		scrollPane.setViewportView(panel);
@@ -126,6 +107,120 @@ public class PlayerRankingPanel extends JPanel {
 		chckbxNewCheckBox = new JCheckBox("前锋");
 		chckbxNewCheckBox.setBounds(200, 30, 150, 30);
 		panel.add(chckbxNewCheckBox);
+		
+		comboBox = new JComboBox<String>();
+		comboBox.addItem("得分");
+		comboBox.addItem("篮板");
+		comboBox.addItem("助攻");
+		comboBox.addItem("得分/篮板/助攻");
+		comboBox.addItem("盖帽");
+		comboBox.addItem("抢断");
+		comboBox.addItem("犯规");
+		comboBox.addItem("失误");
+		comboBox.addItem("分钟");
+		comboBox.addItem("效率");
+		comboBox.addItem("投篮");
+		comboBox.addItem("三分");
+		comboBox.addItem("罚球");
+		comboBox.addItem("两双");
+		comboBox.setSelectedItem(MainFrame.selection1);
+		comboBox.setBounds(700, 160, 150, 30);
+		panel.add(comboBox);
+		
+		comboBox.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int index = comboBox.getSelectedIndex();
+				switch(index){
+				case 0: 
+					MainFrame.selection1="得分";
+					MainFrame.table_2_columns[4]="得分(场均)";
+					MainFrame.table_2_columns[5]="得分(总计)";
+					MainFrame.setPlayersRanking();
+					break;
+				case 1: 
+					MainFrame.selection1="篮板";
+					MainFrame.table_2_columns[4]="篮板(场均)";
+					MainFrame.table_2_columns[5]="篮板(总计)";
+					MainFrame.setPlayersRanking();
+					break;
+				case 2: 
+					MainFrame.selection1="助攻";
+					MainFrame.table_2_columns[4]="助攻(场均)";
+					MainFrame.table_2_columns[5]="助攻(总计)";
+					MainFrame.setPlayersRanking();
+					break;
+				case 3: 
+					MainFrame.selection1="得分/篮板/助攻";
+					MainFrame.table_2_columns[4]="得分/篮板/助攻(场均)";
+					MainFrame.table_2_columns[5]="得分/篮板/助攻(总计)";
+					MainFrame.setPlayersRanking();
+					break;
+				case 4: 
+					MainFrame.selection1="盖帽";
+					MainFrame.table_2_columns[4]="盖帽(场均)";
+					MainFrame.table_2_columns[5]="盖帽(总计)";
+					MainFrame.setPlayersRanking();
+					break;
+				case 5: 
+					MainFrame.selection1="抢断";
+					MainFrame.table_2_columns[4]="抢断(场均)";
+					MainFrame.table_2_columns[5]="抢断(总计)";
+					MainFrame.setPlayersRanking();
+					break;
+				case 6: 
+					MainFrame.selection1="犯规";
+					MainFrame.table_2_columns[4]="犯规(场均)";
+					MainFrame.table_2_columns[5]="犯规(总计)";
+					MainFrame.setPlayersRanking();
+					break;
+				case 7: 
+					MainFrame.selection1="失误";
+					MainFrame.table_2_columns[4]="失误(场均)";
+					MainFrame.table_2_columns[5]="失误(总计)";
+					MainFrame.setPlayersRanking();
+					break;
+				case 8: 
+					MainFrame.selection1="分钟";
+					MainFrame.table_2_columns[4]="分钟(场均)";
+					MainFrame.table_2_columns[5]="分钟(总计)";
+					MainFrame.setPlayersRanking();
+					break;
+				case 9: 
+					MainFrame.selection1="效率";
+					MainFrame.table_2_columns[4]="效率(场均)";
+					MainFrame.table_2_columns[5]="效率(总计)";
+					MainFrame.setPlayersRanking();
+					break;
+				case 10: 
+					MainFrame.selection1="投篮";
+					MainFrame.table_2_columns[4]="投篮(场均)";
+					MainFrame.table_2_columns[5]="投篮(总计)";
+					MainFrame.setPlayersRanking();
+					break;
+				case 11: 
+					MainFrame.selection1="三分";
+					MainFrame.table_2_columns[4]="三分(场均)";
+					MainFrame.table_2_columns[5]="三分(总计)";
+					MainFrame.setPlayersRanking();
+					break;
+				case 12: 
+					MainFrame.selection1="罚球";
+					MainFrame.table_2_columns[4]="罚球(场均)";
+					MainFrame.table_2_columns[5]="罚球(总计)";
+					MainFrame.setPlayersRanking();
+					break;
+				case 13: 
+					MainFrame.selection1="两双";
+					MainFrame.table_2_columns[4]="两双(场均)";
+					MainFrame.table_2_columns[5]="两双(总计)";
+					MainFrame.setPlayersRanking();
+					break;
+				}
+			}
+			
+		});
 
 		chckbxNewCheckBox.addItemListener(new ItemListener() {
 
@@ -141,7 +236,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				} else if (chckbxNewCheckBox.isSelected()
@@ -155,7 +249,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				} else if (chckbxNewCheckBox.isSelected()
@@ -169,7 +262,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				} else if (chckbxNewCheckBox.isSelected()
@@ -183,7 +275,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				} else if (chckbxNewCheckBox.isSelected()
@@ -197,7 +288,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				} else if (chckbxNewCheckBox.isSelected()
@@ -211,7 +301,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				} else if (chckbxNewCheckBox.isSelected()
@@ -225,7 +314,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				} else if (chckbxNewCheckBox.isSelected()
@@ -239,13 +327,11 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				} else if (chckbxNewCheckBox.isSelected()) {
 					String text = "前锋";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
-					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				} else if (!chckbxNewCheckBox.isSelected()) {
@@ -275,7 +361,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				} else if (chckbxNewCheckBox_1.isSelected()
@@ -289,7 +374,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				} else if (chckbxNewCheckBox_1.isSelected()
@@ -303,7 +387,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				} else if (chckbxNewCheckBox_1.isSelected()
@@ -317,7 +400,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				} else if (chckbxNewCheckBox_1.isSelected()
@@ -331,7 +413,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				} else if (chckbxNewCheckBox_1.isSelected()
@@ -345,7 +426,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				} else if (chckbxNewCheckBox_1.isSelected()
@@ -359,7 +439,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				} else if (chckbxNewCheckBox_1.isSelected()
@@ -373,13 +452,11 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				} else if (chckbxNewCheckBox_1.isSelected()) {
 					String text = "中锋";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
-					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 				} else if (!chckbxNewCheckBox_1.isSelected()) {
@@ -409,7 +486,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 				} else if (chckbxNewCheckBox_2.isSelected()
@@ -423,7 +499,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 				} else if (chckbxNewCheckBox_2.isSelected()
@@ -437,7 +512,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 				} else if (chckbxNewCheckBox_2.isSelected()
@@ -451,7 +525,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 				} else if (chckbxNewCheckBox_2.isSelected()
@@ -465,7 +538,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 				} else if (chckbxNewCheckBox_2.isSelected()
@@ -479,7 +551,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 				} else if (chckbxNewCheckBox_2.isSelected()
@@ -493,7 +564,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 				} else if (chckbxNewCheckBox_2.isSelected()
@@ -507,13 +577,11 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 				} else if (chckbxNewCheckBox_2.isSelected()) {
 					String text = "后卫";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
-					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 				} else if (!chckbxNewCheckBox_2.isSelected()) {
@@ -543,7 +611,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 				} else if (chckbxNewCheckBox_3.isSelected()
 						&& chckbxNewCheckBox_6.isSelected()) {
 					String text = "东部";
@@ -555,7 +622,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 				} else if (chckbxNewCheckBox_3.isSelected()
 						&& chckbxNewCheckBox_7.isSelected()) {
 					String text = "东部";
@@ -567,7 +633,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 				} else if (chckbxNewCheckBox.isSelected()
 						&& chckbxNewCheckBox_3.isSelected()) {
 					String text = "前锋";
@@ -579,7 +644,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
@@ -597,7 +661,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
@@ -615,7 +678,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
@@ -625,7 +687,6 @@ public class PlayerRankingPanel extends JPanel {
 				} else if (chckbxNewCheckBox_3.isSelected()) {
 					String text = "东部";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
-					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_8.setEnabled(false);
 					chckbxNewCheckBox_9.setEnabled(false);
@@ -659,7 +720,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 				} else if (chckbxNewCheckBox_4.isSelected()
 						&& chckbxNewCheckBox_9.isSelected()) {
 					String text = "西部";
@@ -671,7 +731,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 				} else if (chckbxNewCheckBox_4.isSelected()
 						&& chckbxNewCheckBox_10.isSelected()) {
 					String text = "西部";
@@ -683,7 +742,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 				} else if (chckbxNewCheckBox.isSelected()
 						&& chckbxNewCheckBox_4.isSelected()) {
 					String text = "前锋";
@@ -695,7 +753,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 					chckbxNewCheckBox_3.setEnabled(false);
@@ -713,7 +770,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_2.setEnabled(false);
 					chckbxNewCheckBox_3.setEnabled(false);
@@ -731,7 +787,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox.setEnabled(false);
 					chckbxNewCheckBox_1.setEnabled(false);
 					chckbxNewCheckBox_3.setEnabled(false);
@@ -741,7 +796,6 @@ public class PlayerRankingPanel extends JPanel {
 				} else if (chckbxNewCheckBox_4.isSelected()) {
 					String text = "西部";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
-					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -775,7 +829,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -794,7 +847,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -813,7 +865,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -824,7 +875,6 @@ public class PlayerRankingPanel extends JPanel {
 				} else if (chckbxNewCheckBox_5.isSelected()) {
 					String text = "中区";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
-					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -873,7 +923,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
@@ -892,7 +941,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
@@ -911,7 +959,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
@@ -922,7 +969,6 @@ public class PlayerRankingPanel extends JPanel {
 				} else if (chckbxNewCheckBox_6.isSelected()) {
 					String text = "大西洋区";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
-					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
@@ -971,7 +1017,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -990,7 +1035,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -1009,7 +1053,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -1020,7 +1063,6 @@ public class PlayerRankingPanel extends JPanel {
 				} else if (chckbxNewCheckBox_7.isSelected()) {
 					String text = "东南区";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
-					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_5.setEnabled(false);
@@ -1069,7 +1111,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -1088,7 +1129,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -1107,7 +1147,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -1118,7 +1157,6 @@ public class PlayerRankingPanel extends JPanel {
 				} else if (chckbxNewCheckBox_8.isSelected()) {
 					String text = "西北区";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
-					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_9.setEnabled(false);
@@ -1167,7 +1205,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -1186,7 +1223,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -1205,7 +1241,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -1216,7 +1251,6 @@ public class PlayerRankingPanel extends JPanel {
 				} else if (chckbxNewCheckBox_9.isSelected()) {
 					String text = "太平洋区";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
-					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_8.setEnabled(false);
@@ -1248,7 +1282,7 @@ public class PlayerRankingPanel extends JPanel {
 		});
 
 		chckbxNewCheckBox_10 = new JCheckBox("西南区");
-		chckbxNewCheckBox_10.setBounds(690, 110, 150, 30);
+		chckbxNewCheckBox_10.setBounds(690, 116, 150, 30);
 		panel.add(chckbxNewCheckBox_10);
 
 		chckbxNewCheckBox_10.addItemListener(new ItemListener() {
@@ -1265,7 +1299,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -1284,7 +1317,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -1303,7 +1335,6 @@ public class PlayerRankingPanel extends JPanel {
 					RowFilter<Object, Object> fooBarFilter = RowFilter
 							.andFilter(filters);
 					sorter.setRowFilter(fooBarFilter);
-					sorter1.setRowFilter(fooBarFilter);
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_6.setEnabled(false);
@@ -1314,7 +1345,6 @@ public class PlayerRankingPanel extends JPanel {
 				} else if (chckbxNewCheckBox_10.isSelected()) {
 					String text = "西南区";
 					sorter.setRowFilter(RowFilter.regexFilter(text));
-					sorter1.setRowFilter(RowFilter.regexFilter(text));
 					chckbxNewCheckBox_3.setEnabled(false);
 					chckbxNewCheckBox_4.setEnabled(false);
 					chckbxNewCheckBox_8.setEnabled(false);
@@ -1348,6 +1378,7 @@ public class PlayerRankingPanel extends JPanel {
 		JButton btnNewButton_1 = new JButton("显示全部");
 		btnNewButton_1.setBounds(50, 90, 100, 30);
 		panel.add(btnNewButton_1);
+		
 		add(scrollPane);
 
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -1356,7 +1387,6 @@ public class PlayerRankingPanel extends JPanel {
 				
 				String text = "";
 				sorter.setRowFilter(RowFilter.regexFilter(text));
-				sorter1.setRowFilter(RowFilter.regexFilter(text));
 				chckbxNewCheckBox.setSelected(false);
 				chckbxNewCheckBox_1.setSelected(false);
 				chckbxNewCheckBox_2.setSelected(false);

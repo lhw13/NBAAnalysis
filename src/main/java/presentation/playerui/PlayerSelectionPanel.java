@@ -329,7 +329,7 @@ public class PlayerSelectionPanel extends JPanel {
 		panelOfBottom.setLayout(null);
 
 		btnNewButton = new JButton("返回");
-		btnNewButton.setBounds(400, 0, 120, 30);
+		btnNewButton.setBounds(400, 0, 120, 23);
 		panelOfBottom.add(btnNewButton);
 
 		btnNewButton.addActionListener(new ActionListener() {

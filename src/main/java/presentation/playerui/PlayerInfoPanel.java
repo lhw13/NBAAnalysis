@@ -10,6 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -18,6 +19,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import javax.swing.JLayeredPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JButton;
@@ -27,6 +30,9 @@ import presentation.ImageHandle;
 import presentation.mainui.MainFrame;
 import presentation.teamsui.TeamsRankingFrame;
 import server.businesslogic.BLController;
+import server.po.MatchPO;
+import server.po.PlayerInMatchesPO;
+import server.po.TeamInMatchesPO;
 import vo.PlayerVO;
 
 public class PlayerInfoPanel extends JPanel {
@@ -48,8 +54,7 @@ public class PlayerInfoPanel extends JPanel {
 	DefaultTableModel model = new DefaultTableModel(
 			new Object[][] { { null, null, null, null, null, null, null, null,
 					null, null, null, null }, }, new String[] { "姓名", "联盟",
-					"分区", "球队", "号码", "位置", "身高", "体重", "生日", "年龄", "球龄",
-					"毕业学校" });
+					"分区", "球队", "号码", "位置"  });
 
 	DefaultTableModel model_1 = new DefaultTableModel(new Object[][] { { null,
 			null, null, null, null, null, null, null, null, null }, },
@@ -75,9 +80,19 @@ public class PlayerInfoPanel extends JPanel {
 	DefaultTableModel model_6 = new DefaultTableModel(new Object[][] { { null,
 			null, null, null, null, null, null, null, null }, }, new String[] {
 			"得分", "在场时间", "命中", "出手", "三分命中", "三分出手", "罚球命中", "罚球出手", "两双" });
+	
+	DefaultTableModel model_7 =new DefaultTableModel(new Object[][] { {null, 
+		null, null, null, null,null},},new String[] {"身高", "体重", "生日", "年龄", "球龄",
+			"毕业学校"	});
+	
+	DefaultTableModel model_8 = new DefaultTableModel();
+	Vector columnName8 = new Vector();
+	
 	BLService blservice = BLController.getInstance();
 	private JTable table_5;
 	private JTable table_6;
+	private JTable table_7;
+	private JTable table_8;
 
 	public PlayerInfoPanel() {
 		this.setBounds(0, 0, 1000, 600);
@@ -96,7 +111,7 @@ public class PlayerInfoPanel extends JPanel {
 		panelOfBottom.add(labelOfAct);
 
 		scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(5, 43, 686, 81);
+		scrollPane_1.setBounds(5, 43, 686, 43);
 		panelOfBottom.add(scrollPane_1);
 
 		table = new JTable(model);
@@ -104,7 +119,7 @@ public class PlayerInfoPanel extends JPanel {
 		scrollPane_1.setViewportView(table);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(5, 280, 686, 106);
+		tabbedPane.setBounds(5, 257, 686, 77);
 		panelOfBottom.add(tabbedPane);
 
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -120,7 +135,7 @@ public class PlayerInfoPanel extends JPanel {
 		scrollPane_3.setViewportView(table_2);
 
 		button = new JButton("返回");
-		button.setBounds(325, 523, 93, 23);
+		button.setBounds(5, 10, 93, 23);
 		button.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -139,14 +154,14 @@ public class PlayerInfoPanel extends JPanel {
 
 		JScrollPane scrollPane_4 = new JScrollPane();
 
-		scrollPane_4.setBounds(5, 124, 686, 73);
+		scrollPane_4.setBounds(5, 149, 686, 43);
 		panelOfBottom.add(scrollPane_4);
 
 		table_3 = new JTable(model_3);
 		scrollPane_4.setViewportView(table_3);
 
 		scrollPane_5 = new JScrollPane();
-		scrollPane_5.setBounds(5, 198, 686, 73);
+		scrollPane_5.setBounds(5, 202, 686, 43);
 		panelOfBottom.add(scrollPane_5);
 
 		table_4 = new JTable(model_4);
@@ -154,7 +169,7 @@ public class PlayerInfoPanel extends JPanel {
 		scrollPane_5.setViewportView(table_4);
 
 		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_1.setBounds(5, 390, 686, 92);
+		tabbedPane_1.setBounds(5, 343, 686, 77);
 		panelOfBottom.add(tabbedPane_1);
 
 		JScrollPane scrollPane_6 = new JScrollPane();
@@ -169,12 +184,49 @@ public class PlayerInfoPanel extends JPanel {
 		table_6 = new JTable(model_6);
 
 		scrollPane_7.setViewportView(table_6);
+		
+		JScrollPane scrollPane_8 = new JScrollPane();
+		scrollPane_8.setBounds(5, 96, 686, 43);
+		panelOfBottom.add(scrollPane_8);
+		
+		table_7 = new JTable();
+		table_7.setModel(model_7);
+		scrollPane_8.setViewportView(table_7);
+		
+		JScrollPane scrollPane_9 = new JScrollPane();
+		scrollPane_9.setBounds(5, 456, 686, 123);
+		panelOfBottom.add(scrollPane_9);
+		
+		String[] cname8 = new String[] {
+				"日期", "比赛", "时间", "投篮", "三分", "罚球","前篮板","后篮板","篮板",
+				"助攻","抢断","盖帽","失误","犯规"
+			};
+		for(int i=0;i<cname8.length;i++) {
+			columnName8.add(cname8[i]);
+		}
+		
+		
+		table_8 = new JTable(model_8);
+		
+		table_8.setRowHeight(20);
+		scrollPane_9.setViewportView(table_8);
+		
+		JLabel label = new JLabel("最近五场统计");
+		label.setBounds(5, 425, 110, 29);
+		panelOfBottom.add(label);
 		scrollPane.setBounds(0, 0, 990, 600);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		add(scrollPane);
 
 	}
-
+	public TableColumnModel getColumn(JTable table, int[] width) {  
+	    TableColumnModel columns = table.getColumnModel();  
+	    for (int i = 0; i < width.length; i++) {  
+	        TableColumn column = columns.getColumn(i);  
+	        column.setPreferredWidth(width[i]);  
+	    }  
+	    return columns;  
+	}  
 	public void update(String name) {
 		picture = ImageHandle.loadPlayer(name);
 		pictureOfAct = ImageHandle.loadPlayerAct(name);
@@ -321,14 +373,14 @@ public class PlayerInfoPanel extends JPanel {
 		rowData_5.add(handleDecimal(vo.getFreeshot() / num));
 		rowData_5.add(handleDecimal(vo.getTowPairs() / num));
 		rowDatas_5.add(rowData_5);
-
+		model_5.setColumnCount(table_5.getColumnCount());
+		model_5.setRowCount(rowDatas_5.size());
 		for (int i = 0; i < rowDatas_5.size(); i++) {
 			for (int j = 0; j < table_5.getColumnCount(); j++) {
 				model_5.setValueAt(((Vector) rowDatas_5.get(i)).get(j), i, j);
 			}
 		}
-		model_5.setColumnCount(table_5.getColumnCount());
-		model_5.setRowCount(rowDatas_5.size());
+		
 		table_5.setModel(model_5);
 		table_5.updateUI();
 
@@ -354,6 +406,90 @@ public class PlayerInfoPanel extends JPanel {
 		model_6.setRowCount(rowDatas_6.size());
 		table_6.setModel(model_6);
 		table_6.updateUI();
+		
+		Vector rowData7 = new Vector();
+		Vector rowDatas7 = new Vector();
+		
+		rowData7.add(vo.getHeight().toString());
+		rowData7.add(vo.getWeight());
+		SimpleDateFormat sdf7 = new SimpleDateFormat("yyyy-MM-dd");
+		String dateStr7 = sdf.format(vo.getBirth().getTime());
+		rowData7.add(dateStr7);
+		rowData7.add(vo.getAge());
+		if (vo.getExp() != -1)
+			rowData7.add(vo.getExp());
+		else
+			rowData7.add("未知");
+		rowData7.add(vo.getSchool());
+		rowDatas7.add(rowData7);
+
+		for (int i = 0; i < rowDatas7.size(); i++) {
+			for (int j = 0; j < table_7.getColumnCount(); j++) {
+				model_7.setValueAt(((Vector) rowDatas7.get(i)).get(j), i, j);
+			}
+		}
+		model_7.setColumnCount(table_7.getColumnCount());
+		model_7.setRowCount(rowDatas7.size());
+		table_7.setModel(model_7);
+		table_7.updateUI();
+		
+		
+		Vector rowDatas8 = new Vector();
+		ArrayList<MatchPO> matches = vo.getMatches();
+		for(int i=0;i<matches.size()&&i<5;i++) {
+			Vector rowData8 = new Vector();
+			MatchPO matchTemp = matches.get(i);
+			TeamInMatchesPO team = null;
+			if(matchTemp.getTeam1().getAbbreviation().equals
+					(vo.getTeamAbbreviation())){
+				team = matchTemp.getTeam1();
+			} else {
+				team = matchTemp.getTeam2();
+			}
+			ArrayList<PlayerInMatchesPO> playersInMatch = team.getPlayers();
+			PlayerInMatchesPO playerTemp = null; 
+			for(int j=0;j<playersInMatch.size();j++) {
+				playerTemp = playersInMatch.get(j);
+				if(playerTemp.getName().equals(vo.getName())) break; 
+			}
+			
+			SimpleDateFormat sdf8 = new SimpleDateFormat("yyyy-MM-dd");
+			String dateStr8 = sdf.format(matchTemp.getDate().getTime());
+			rowData8.add(dateStr8);//日期
+			rowData8.add(matchTemp.getFinalScore().toString()+" "+					
+					matchTemp.getTeam2().getAbbreviation());//得分
+			rowData8.add(playerTemp.getPlayTime());
+			rowData8.add(playerTemp.getHit()+"-"+playerTemp.getShot());
+			rowData8.add(playerTemp.getThirdHit()+"-"+playerTemp.getThirdshot());
+			rowData8.add(playerTemp.getFreeHit()+"-"+playerTemp.getFreeshot());
+			rowData8.add(playerTemp.getOffensiveRebound());
+			rowData8.add(playerTemp.getDefensiveRebound());
+			rowData8.add(playerTemp.getTotalRebound());
+			rowData8.add(playerTemp.getAssist());
+			rowData8.add(playerTemp.getSteal());
+			rowData8.add(playerTemp.getBlock());
+			rowData8.add(playerTemp.getMiss());
+			rowData8.add(playerTemp.getFoul());
+			rowData8.add(playerTemp.getScore());
+			
+			rowDatas8.add(rowData8);
+		}
+		
+		
+
+//		for (int i = 0; i < rowDatas8.size(); i++) {
+//			for (int j = 0; j < table_8.getColumnCount(); j++) {
+//				model_8.setValueAt(((Vector) rowDatas8.get(i)).get(j), i, j);
+//			}
+//		}
+		
+		model_8.setDataVector(rowDatas8, columnName8);		
+		model_8.setColumnCount(table_8.getColumnCount());
+		model_8.setRowCount(rowDatas8.size());
+		table_8.setModel(model_8);
+		int[] width={50,55,5,3,3,3,3,3,3,3,3,3,3,3};
+		table_8.setColumnModel(getColumn(table_8, width));
+		table_8.updateUI();
 	}
 
 	// 保留小数点

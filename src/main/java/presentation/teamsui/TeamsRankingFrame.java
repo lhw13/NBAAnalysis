@@ -69,7 +69,8 @@ public class TeamsRankingFrame {
 		table = new JTable();
 		table.setModel(model);
 		table.setRowSorter(new TableRowSorter<TableModel>(model));
-		
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		 
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setViewportView(table);
 		scrollPane_1.setRowHeaderView(table0);

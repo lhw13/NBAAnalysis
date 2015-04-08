@@ -90,6 +90,8 @@ public class PlayerRankingPanel extends JPanel {
 		final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(
 				model);
 		table.setRowSorter(sorter);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(50, 175, 800, 1167);

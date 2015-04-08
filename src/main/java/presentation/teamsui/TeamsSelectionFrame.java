@@ -86,24 +86,13 @@ public class TeamsSelectionFrame {
 	private int x5 = 250;
 	private int x6 = 500;
 
-	BLController compute;
+	private static BLController compute;
 
-	String columns[] = { "球队", "球队缩写", "所在地", "赛区", "分区", "主场", "建立时间" };
+	private static String columns[] = { "球队", "球队缩写", "所在地", "赛区", "分区", "主场", "建立时间" };
 
-	String table_1_columns[] = { "球员", "场数", "在场时间", "投篮命中数", "出手数", "三分命中数",
-			"出手数", "罚球命中数", "出手数", "进攻篮板", "防守篮板", "总篮板数", "助攻", "抢断", "盖帽",
-			"失误", "犯规", "得分" };
+	public static String table_1_columns[] = { "球员", "场数", "在场时间", "投篮命中数(场均)", "投篮命中数(总计)" };
 
-	String table_2_columns[] = { "球员", "场数", "在场时间", "投篮命中数", "出手数", "三分命中数",
-			"出手数", "罚球命中数", "出手数", "进攻篮板", "防守篮板", "总篮板数", "助攻", "抢断", "盖帽",
-			"失误", "犯规", "得分" };
-
-	String table_3_columns[] = { "球员", "投篮命中率", "三分命中率", "罚球命中率", "胜率", "进攻回合",
-			"进攻效率", "防守效率", "进攻篮板效率", "防守篮板效率", "抢断效率", "助攻率" };
-
-	String table_4_columns[] = { "球员", "投篮命中率", "三分命中率", "罚球命中率", "胜率", "进攻回合",
-			"进攻效率", "防守效率", "进攻篮板效率", "防守篮板效率", "抢断效率", "助攻率" };
-
+	public static String selection="投篮命中数";
 	/**
 	 * Create the application.
 	 */
@@ -1011,9 +1000,8 @@ public class TeamsSelectionFrame {
 	}
 
 	//传递制定球队信息
-	public void setTeamsInfo(String teamName) {
+	public static void setTeamsInfo(String teamName) {
 		TeamsSelectionFrame.scrollPane.setVisible(false);
-		TeamsInfoFrame.scrollPane.setVisible(true);
 		TeamsSelectionFrame.flag = false;
 		MainFrame.frame.setTitle(teamName);
 
@@ -1049,127 +1037,232 @@ public class TeamsSelectionFrame {
 		rows[0][6] = setupTime;
 
 		int playersNum=players.size();
-		Object table_1_rows[][] = new Object[playersNum+1][18];
+		Object table_1_rows[][] = new Object[playersNum+1][5];
 
 		for (int i = 0; i < players.size(); i++) {
 			PlayerVO pvo = players.get(i);
 			int appearance = pvo.getAppearance();
 			table_1_rows[i][0] = pvo.getName();
 			table_1_rows[i][1] = pvo.getAppearance();
-			table_1_rows[i][2] = handle((double) pvo.getPlayTime(), appearance);
-			table_1_rows[i][3] = handle((double) pvo.getHit(), appearance);
-			table_1_rows[i][4] = handle((double) pvo.getShot(), appearance);
-			table_1_rows[i][5] = handle((double) pvo.getThirdHit(), appearance);
-			table_1_rows[i][6] = handle((double) pvo.getThirdshot(), appearance);
-			table_1_rows[i][7] = handle((double) pvo.getFreeHit(), appearance);
-			table_1_rows[i][8] = handle((double) pvo.getFreeshot(), appearance);
-			table_1_rows[i][9] = handle((double) pvo.getOffensiveRebound(),
-					appearance);
-			table_1_rows[i][10] = handle((double) pvo.getDefensiveRebound(),
-					appearance);
-			table_1_rows[i][11] = handle((double) pvo.getTotalRebound(),
-					appearance);
-			table_1_rows[i][12] = handle((double) pvo.getAssist(), appearance);
-			table_1_rows[i][13] = handle((double) pvo.getSteal(), appearance);
-			table_1_rows[i][14] = handle((double) pvo.getBlock(), appearance);
-			table_1_rows[i][15] = handle((double) pvo.getMiss(), appearance);
-			table_1_rows[i][16] = handle((double) pvo.getFoul(), appearance);
-			table_1_rows[i][17] = handle((double) pvo.getScore(), appearance);
+			table_1_rows[i][2] = pvo.getPlayTime();
+			switch(selection){
+			case "投篮命中数":
+				table_1_rows[i][4] = tvo.getHit();
+				table_1_rows[i][3] = handle((double) tvo.getHit(), appearance);
+				break;
+			case "投篮出手数":
+				table_1_rows[i][4] = tvo.getShot();
+				table_1_rows[i][3] = handle((double) tvo.getShot(), appearance);
+				break;
+			case "三分命中数":
+				table_1_rows[i][4] = tvo.getThirdHit();
+				table_1_rows[i][3] = handle((double) tvo.getThirdHit(), appearance);
+				break;
+			case "三分出手数":
+				table_1_rows[i][4] = tvo.getThirdshot();
+				table_1_rows[i][3] = handle((double) tvo.getThirdshot(), appearance);
+				break;
+			case "罚球命中数":
+				table_1_rows[i][4] = tvo.getFreeHit();
+				table_1_rows[i][3] = handle((double) tvo.getFreeHit(), appearance);
+				break;
+			case "罚球出手数":
+				table_1_rows[i][4] = tvo.getFreeshot();
+				table_1_rows[i][3] = handle((double) tvo.getFreeshot(), appearance);
+				break;
+			case "进攻篮板":
+				table_1_rows[i][4] = tvo.getOffensiveRebound();
+				table_1_rows[i][3] = handle((double) tvo.getOffensiveRebound(),appearance);
+				break;
+			case "防守篮板":
+				table_1_rows[i][4] = tvo.getDefensiveRebound();
+				table_1_rows[i][3] = handle((double) tvo.getDefensiveRebound(),appearance);
+				break;
+			case "总篮板":
+				table_1_rows[i][4] = tvo.getTotalRebound();
+				table_1_rows[i][3] = handle((double) tvo.getTotalRebound(),appearance);
+				break;
+			case "助攻":
+				table_1_rows[i][4] = tvo.getAssist();
+				table_1_rows[i][3] = handle((double) tvo.getAssist(), appearance);
+				break;
+			case "抢断":
+				table_1_rows[i][4] = tvo.getSteal();
+				table_1_rows[i][3] = handle((double) tvo.getSteal(), appearance);
+				break;
+			case "盖帽":
+				table_1_rows[i][4] = tvo.getBlock();
+				table_1_rows[i][3] = handle((double) tvo.getBlock(), appearance);
+				break;
+			case "失误":
+				table_1_rows[i][4] = tvo.getMiss();
+				table_1_rows[i][3] = handle((double) tvo.getMiss(), appearance);
+				break;
+			case "犯规":
+				table_1_rows[i][4] = tvo.getFoul();
+				table_1_rows[i][3] = handle((double) tvo.getFoul(), appearance);
+				break;
+			case "得分":
+				table_1_rows[i][4] = tvo.getScore();
+				table_1_rows[i][3] = handle((double) tvo.getScore(), appearance);
+				break;
+			case "投篮命中率":
+				table_1_rows[i][4] = tvo.getHitRate();
+				table_1_rows[i][3] = tvo.getHitRate();
+				break;
+			case "三分命中率":
+				table_1_rows[i][4] = tvo.getThirdHitRate();
+				table_1_rows[i][3] = tvo.getThirdHitRate();
+				break;
+			case "罚球命中率":
+				table_1_rows[i][4] = tvo.getFreeHitRate();
+				table_1_rows[i][3] = tvo.getFreeHitRate();
+				break;
+			case "胜率":
+				table_1_rows[i][4] = 0;
+				table_1_rows[i][3] = 0;
+				break;
+			case "进攻回合":
+				table_1_rows[i][4] = 0;
+				table_1_rows[i][3] = 0;
+				break;
+			case "进攻效率":
+				table_1_rows[i][4] = 0;
+				table_1_rows[i][3] = 0;
+				break;
+			case "防守效率":
+				table_1_rows[i][4] = 0;
+				table_1_rows[i][3] = 0;
+				break;
+			case "进攻篮板效率":
+				table_1_rows[i][4] = tvo.getOffensiveReboundEfficiency();
+				table_1_rows[i][3] = tvo.getOffensiveReboundEfficiency();
+				break;
+			case "防守篮板效率":
+				table_1_rows[i][4] = tvo.getDefensiveReboundEfficiency();
+				table_1_rows[i][3] = tvo.getDefensiveReboundEfficiency();
+				break;
+			case "抢断效率":
+				table_1_rows[i][4] = tvo.getStealEfficiency();
+				table_1_rows[i][3] = tvo.getStealEfficiency();
+				break;
+			case "助攻率":
+				table_1_rows[i][4] = tvo.getAssistEfficiency();
+				table_1_rows[i][3] = tvo.getAssistEfficiency();
+				break;
+			}
 		}
 		int k = players.size();
 		int appearance = tvo.getAppearance();
 		table_1_rows[k][0] = tvo.getFullName();
 		table_1_rows[k][1] = tvo.getAppearance();
-		table_1_rows[k][2] = 0.0;
-		table_1_rows[k][3] = handle((double) tvo.getHit(), appearance);
-		table_1_rows[k][4] = handle((double) tvo.getShot(), appearance);
-		table_1_rows[k][5] = handle((double) tvo.getThirdHit(), appearance);
-		table_1_rows[k][6] = handle((double) tvo.getThirdshot(), appearance);
-		table_1_rows[k][7] = handle((double) tvo.getFreeHit(), appearance);
-		table_1_rows[k][8] = handle((double) tvo.getFreeshot(), appearance);
-		table_1_rows[k][9] = handle((double) tvo.getOffensiveRebound(),
-				appearance);
-		table_1_rows[k][10] = handle((double) tvo.getDefensiveRebound(),
-				appearance);
-		table_1_rows[k][11] = handle((double) tvo.getTotalRebound(), appearance);
-		table_1_rows[k][12] = handle((double) tvo.getAssist(), appearance);
-		table_1_rows[k][13] = handle((double) tvo.getSteal(), appearance);
-		table_1_rows[k][14] = handle((double) tvo.getBlock(), appearance);
-		table_1_rows[k][15] = handle((double) tvo.getMiss(), appearance);
-		table_1_rows[k][16] = handle((double) tvo.getFoul(), appearance);
-		table_1_rows[k][17] = handle((double) tvo.getScore(), appearance);
-
-		Object table_2_rows[][] = new Object[playersNum+1][18];
-		for (int i = 0; i < players.size(); i++) {
-			PlayerVO pvo = players.get(i);
-			table_2_rows[i][0] = pvo.getName();
-			table_2_rows[i][1] = pvo.getAppearance();
-			table_2_rows[i][2] = pvo.getPlayTime();
-			table_2_rows[i][3] = pvo.getHit();
-			table_2_rows[i][4] = pvo.getShot();
-			table_2_rows[i][5] = pvo.getThirdHit();
-			table_2_rows[i][6] = pvo.getThirdshot();
-			table_2_rows[i][7] = pvo.getFreeHit();
-			table_2_rows[i][8] = pvo.getFreeshot();
-			table_2_rows[i][9] = pvo.getOffensiveRebound();
-			table_2_rows[i][10] = pvo.getDefensiveRebound();
-			table_2_rows[i][11] = pvo.getTotalRebound();
-			table_2_rows[i][12] = pvo.getAssist();
-			table_2_rows[i][13] = pvo.getSteal();
-			table_2_rows[i][14] = pvo.getBlock();
-			table_2_rows[i][15] = pvo.getMiss();
-			table_2_rows[i][16] = pvo.getFoul();
-			table_2_rows[i][17] = pvo.getScore();
+		table_1_rows[k][2] = 0;
+		switch(selection){
+		case "投篮命中数":
+			table_1_rows[k][4] = tvo.getHit();
+			table_1_rows[k][3] = handle((double) tvo.getHit(), appearance);
+			break;
+		case "投篮出手数":
+			table_1_rows[k][4] = tvo.getShot();
+			table_1_rows[k][3] = handle((double) tvo.getShot(), appearance);
+			break;
+		case "三分命中数":
+			table_1_rows[k][4] = tvo.getThirdHit();
+			table_1_rows[k][3] = handle((double) tvo.getThirdHit(), appearance);
+			break;
+		case "三分出手数":
+			table_1_rows[k][4] = tvo.getThirdshot();
+			table_1_rows[k][3] = handle((double) tvo.getThirdshot(), appearance);
+			break;
+		case "罚球命中数":
+			table_1_rows[k][4] = tvo.getFreeHit();
+			table_1_rows[k][3] = handle((double) tvo.getFreeHit(), appearance);
+			break;
+		case "罚球出手数":
+			table_1_rows[k][4] = tvo.getFreeshot();
+			table_1_rows[k][3] = handle((double) tvo.getFreeshot(), appearance);
+			break;
+		case "进攻篮板":
+			table_1_rows[k][4] = tvo.getOffensiveRebound();
+			table_1_rows[k][3] = handle((double) tvo.getOffensiveRebound(),appearance);
+			break;
+		case "防守篮板":
+			table_1_rows[k][4] = tvo.getDefensiveRebound();
+			table_1_rows[k][3] = handle((double) tvo.getDefensiveRebound(),appearance);
+			break;
+		case "总篮板":
+			table_1_rows[k][4] = tvo.getTotalRebound();
+			table_1_rows[k][3] = handle((double) tvo.getTotalRebound(),appearance);
+			break;
+		case "助攻":
+			table_1_rows[k][4] = tvo.getAssist();
+			table_1_rows[k][3] = handle((double) tvo.getAssist(), appearance);
+			break;
+		case "抢断":
+			table_1_rows[k][4] = tvo.getSteal();
+			table_1_rows[k][3] = handle((double) tvo.getSteal(), appearance);
+			break;
+		case "盖帽":
+			table_1_rows[k][4] = tvo.getBlock();
+			table_1_rows[k][3] = handle((double) tvo.getBlock(), appearance);
+			break;
+		case "失误":
+			table_1_rows[k][4] = tvo.getMiss();
+			table_1_rows[k][3] = handle((double) tvo.getMiss(), appearance);
+			break;
+		case "犯规":
+			table_1_rows[k][4] = tvo.getFoul();
+			table_1_rows[k][3] = handle((double) tvo.getFoul(), appearance);
+			break;
+		case "得分":
+			table_1_rows[k][4] = tvo.getScore();
+			table_1_rows[k][3] = handle((double) tvo.getScore(), appearance);
+			break;
+		case "投篮命中率":
+			table_1_rows[k][4] = tvo.getHitRate();
+			table_1_rows[k][3] = tvo.getHitRate();
+			break;
+		case "三分命中率":
+			table_1_rows[k][4] = tvo.getThirdHitRate();
+			table_1_rows[k][3] = tvo.getThirdHitRate();
+			break;
+		case "罚球命中率":
+			table_1_rows[k][4] = tvo.getFreeHitRate();
+			table_1_rows[k][3] = tvo.getFreeHitRate();
+			break;
+		case "胜率":
+			table_1_rows[k][4] = tvo.getWinRate();
+			table_1_rows[k][3] = tvo.getWinRate();
+			break;
+		case "进攻回合":
+			table_1_rows[k][4] = tvo.getOffensiveRound();
+			table_1_rows[k][3] = tvo.getOffensiveRound();
+			break;
+		case "进攻效率":
+			table_1_rows[k][4] = tvo.getOffensiveEfficiency();
+			table_1_rows[k][3] = tvo.getOffensiveEfficiency();
+			break;
+		case "防守效率":
+			table_1_rows[k][4] = tvo.getDefensiveEfficiency();
+			table_1_rows[k][3] = tvo.getDefensiveEfficiency();
+			break;
+		case "进攻篮板效率":
+			table_1_rows[k][4] = tvo.getOffensiveReboundEfficiency();
+			table_1_rows[k][3] = tvo.getOffensiveReboundEfficiency();
+			break;
+		case "防守篮板效率":
+			table_1_rows[k][4] = tvo.getDefensiveReboundEfficiency();
+			table_1_rows[k][3] = tvo.getDefensiveReboundEfficiency();
+			break;
+		case "抢断效率":
+			table_1_rows[k][4] = tvo.getStealEfficiency();
+			table_1_rows[k][3] = tvo.getStealEfficiency();
+			break;
+		case "助攻率":
+			table_1_rows[k][4] = tvo.getAssistEfficiency();
+			table_1_rows[k][3] = tvo.getAssistEfficiency();
+			break;
 		}
-		int n = players.size();
-		table_2_rows[n][0] = tvo.getFullName();
-		table_2_rows[n][1] = tvo.getAppearance();
-		table_2_rows[n][2] = 0;
-		table_2_rows[n][3] = tvo.getHit();
-		table_2_rows[n][4] = tvo.getShot();
-		table_2_rows[n][5] = tvo.getThirdHit();
-		table_2_rows[n][6] = tvo.getThirdshot();
-		table_2_rows[n][7] = tvo.getFreeHit();
-		table_2_rows[n][8] = tvo.getFreeshot();
-		table_2_rows[n][9] = tvo.getOffensiveRebound();
-		table_2_rows[n][10] = tvo.getDefensiveRebound();
-		table_2_rows[n][11] = tvo.getTotalRebound();
-		table_2_rows[n][12] = tvo.getAssist();
-		table_2_rows[n][13] = tvo.getSteal();
-		table_2_rows[n][14] = tvo.getBlock();
-		table_2_rows[n][15] = tvo.getMiss();
-		table_2_rows[n][16] = tvo.getFoul();
-		table_2_rows[n][17] = tvo.getScore();
-
-		Object table_3_rows[][] = new Object[playersNum+1][12];
-		for (int i = 0; i < players.size(); i++) {
-			PlayerVO pvo = players.get(i);
-			table_3_rows[i][0] = pvo.getName();
-			table_3_rows[i][1] = pvo.getHitRate();
-			table_3_rows[i][2] = pvo.getThirdHitRate();
-			table_3_rows[i][3] = pvo.getFreeHitRate();
-			table_3_rows[i][4] = 0.0;
-			table_3_rows[i][5] = 0.0;
-			table_3_rows[i][6] = 0.0;
-			table_3_rows[i][7] = 0.0;
-			table_3_rows[i][8] = pvo.getOffensiveReboundRate();
-			table_3_rows[i][9] = pvo.getDefensiveReboundRate();
-			table_3_rows[i][10] = pvo.getStealRate();
-			table_3_rows[i][11] = pvo.getAssistRate();
-		}
-		int m = players.size();
-		table_3_rows[m][0] = tvo.getFullName();
-		table_3_rows[m][1] = tvo.getHitRate();
-		table_3_rows[m][2] = tvo.getThirdHitRate();
-		table_3_rows[m][3] = tvo.getFreeHitRate();
-		table_3_rows[m][4] = tvo.getWinRate();
-		table_3_rows[m][5] = tvo.getOffensiveRound();
-		table_3_rows[m][6] = tvo.getOffensiveEfficiency();
-		table_3_rows[m][7] = tvo.getDefensiveEfficiency();
-		table_3_rows[m][8] = tvo.getOffensiveReboundEfficiency();
-		table_3_rows[m][9] = tvo.getDefensiveReboundEfficiency();
-		table_3_rows[m][10] = tvo.getStealEfficiency();
-		table_3_rows[m][11] = tvo.getAssistEfficiency();
 
 		DefaultTableModel model = new DefaultTableModel(rows, columns) {
 			private static final long serialVersionUID = 1L;
@@ -1178,9 +1271,7 @@ public class TeamsSelectionFrame {
 				return getValueAt(0, columnIndex).getClass();
 			}
 		};
-		model = new DefaultTableModel(rows, columns);
-		TeamsInfoFrame.table.setModel(model);
-
+		
 		DefaultTableModel model1 = new DefaultTableModel(table_1_rows,
 				table_1_columns) {
 			private static final long serialVersionUID = 1L;
@@ -1189,40 +1280,24 @@ public class TeamsSelectionFrame {
 				return getValueAt(0, columnIndex).getClass();
 			}
 		};
-		TeamsInfoFrame.table_1.setModel(model1);
-		TeamsInfoFrame.table_1.setRowSorter(new TableRowSorter<TableModel>(
-				model1));
-
-		DefaultTableModel model2 = new DefaultTableModel(table_2_rows,
-				table_2_columns) {
-			private static final long serialVersionUID = 1L;
-
-			public Class<?> getColumnClass(int columnIndex) {
-				return getValueAt(0, columnIndex).getClass();
-			}
-		};
-		TeamsInfoFrame.table_2.setModel(model2);
-		TeamsInfoFrame.table_2.setRowSorter(new TableRowSorter<TableModel>(
-				model2));
-
-		DefaultTableModel model3 = new DefaultTableModel(table_3_rows,
-				table_3_columns) {
-			private static final long serialVersionUID = 1L;
-
-			public Class<?> getColumnClass(int columnIndex) {
-				return getValueAt(0, columnIndex).getClass();
-			}
-		};
-		TeamsInfoFrame.table_3.setModel(model3);
-		TeamsInfoFrame.table_3.setRowSorter(new TableRowSorter<TableModel>(
-				model3));
 
 		int width = 250;
 		int height = 150;
 		ImageIcon ii = compute.getTeamPic(teamName);
 		ii.setImage(ii.getImage().getScaledInstance(width, height,
 				Image.SCALE_DEFAULT));
-		TeamsInfoFrame.teamPicture.setIcon(ii);
+		
+		if(TeamsInfoFrame.scrollPane!=null){
+			MainFrame.frame.getContentPane().remove(TeamsInfoFrame.scrollPane);
+			TeamsInfoFrame.scrollPane=null;
+			TeamsInfoFrame tip = new TeamsInfoFrame(teamName,ii,model,model1);
+			MainFrame.frame.getContentPane().add(tip.scrollPane);
+			MainFrame.frame.repaint();//刷新重画 
+			MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+		}else{
+			MainFrame.frame.getContentPane().add(TeamsInfoFrame.scrollPane);
+			TeamsInfoFrame.scrollPane.setVisible(true);
+		}
 	}
 
 	// 图片循环切换线程
@@ -1279,7 +1354,7 @@ public class TeamsSelectionFrame {
 		}
 	}
 
-	public double handle(double a, int b) {
+	public static double handle(double a, int b) {
 		double result = a / (double) b;
 		BigDecimal c = new BigDecimal(result);
 		double f1 = c.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();

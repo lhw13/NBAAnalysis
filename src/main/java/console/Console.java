@@ -80,7 +80,7 @@ public class Console {
 			sort = true;
 		}
 		
-		if(king) {
+		if(king) {//数据王的season/daily接口还没弄好
 			sortCons[0] = condition+".desc";
 			sort = true;
 		}

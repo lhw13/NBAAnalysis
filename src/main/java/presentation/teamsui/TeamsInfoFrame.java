@@ -70,7 +70,7 @@ public class TeamsInfoFrame {
 		scrollPane_1.setViewportView(table_1);
 		
 		JScrollPane scrollPane_5 = new JScrollPane();
-		scrollPane_5.setBounds(350, 150, 800, 60);
+		scrollPane_5.setBounds(60, 150, 600, 60);
 
 		table = new JTable();
 		table.setFont(new Font("黑体", Font.PLAIN, 20));
@@ -78,7 +78,7 @@ public class TeamsInfoFrame {
 		table.setModel(model);
 
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(60, 60, 250, 150);
+		panel_2.setBounds(700, 60, 250, 150);
 		panel_2.setLayout(null);
 
 		teamPicture = new JLabel("");
@@ -87,7 +87,7 @@ public class TeamsInfoFrame {
 		panel_2.add(teamPicture);
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setPreferredSize(new Dimension(1500, 1000));
+		panel_1.setPreferredSize(new Dimension(1100, 1000));
 		panel_1.setLayout(null);
 		panel_1.add(scrollPane_5);
 		panel_1.add(panel);
@@ -126,7 +126,7 @@ public class TeamsInfoFrame {
 		comboBox.addItem("抢断效率");
 		comboBox.addItem("助攻率");
 		comboBox.setSelectedItem(TeamsSelectionFrame.selection);
-		comboBox.setBounds(600, 230, 150, 30);
+		comboBox.setBounds(700, 230, 150, 30);
 		panel_1.add(comboBox);
 		
 		comboBox.addActionListener(new ActionListener(){

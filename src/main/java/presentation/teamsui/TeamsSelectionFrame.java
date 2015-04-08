@@ -1010,6 +1010,7 @@ public class TeamsSelectionFrame {
 
 	}
 
+	//传递制定球队信息
 	public void setTeamsInfo(String teamName) {
 		TeamsSelectionFrame.scrollPane.setVisible(false);
 		TeamsInfoFrame.scrollPane.setVisible(true);
@@ -1047,7 +1048,8 @@ public class TeamsSelectionFrame {
 		rows[0][5] = home;
 		rows[0][6] = setupTime;
 
-		Object table_1_rows[][] = new Object[23][18];
+		int playersNum=players.size();
+		Object table_1_rows[][] = new Object[playersNum+1][18];
 
 		for (int i = 0; i < players.size(); i++) {
 			PlayerVO pvo = players.get(i);
@@ -1097,7 +1099,7 @@ public class TeamsSelectionFrame {
 		table_1_rows[k][16] = handle((double) tvo.getFoul(), appearance);
 		table_1_rows[k][17] = handle((double) tvo.getScore(), appearance);
 
-		Object table_2_rows[][] = new Object[23][18];
+		Object table_2_rows[][] = new Object[playersNum+1][18];
 		for (int i = 0; i < players.size(); i++) {
 			PlayerVO pvo = players.get(i);
 			table_2_rows[i][0] = pvo.getName();
@@ -1139,7 +1141,7 @@ public class TeamsSelectionFrame {
 		table_2_rows[n][16] = tvo.getFoul();
 		table_2_rows[n][17] = tvo.getScore();
 
-		Object table_3_rows[][] = new Object[23][12];
+		Object table_3_rows[][] = new Object[playersNum+1][12];
 		for (int i = 0; i < players.size(); i++) {
 			PlayerVO pvo = players.get(i);
 			table_3_rows[i][0] = pvo.getName();

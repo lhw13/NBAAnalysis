@@ -53,6 +53,7 @@ public class MainFrame {
 	public static boolean flag1 = false;
 	public static boolean flag2 = false;
 	public static boolean flag3 = false;
+	public static boolean flag4 = false;
 	private Timer timer;
 	private final int INITIAL_DELAY = 100;
 	private final int PERIOD_INTERVAL = 1;
@@ -66,11 +67,14 @@ public class MainFrame {
 	public int x5 = 500;
 	public int x6 = 1000;
 
-	public int x7 = 500;
+	public int x7 = 600;
 	public int x8 = 1000;
 	
 	public int y9 = 0;
 	public int y10 = -300;
+	
+	public int y11 = 300;
+	public int y12 = 600;
 
 	public JLabel lblNewLabel;
 	public JLabel lblNewLabelBack;
@@ -86,6 +90,9 @@ public class MainFrame {
 
 	public JLabel lblNewLabel_4;
 	public JLabel lblNewLabel_4Back;
+	
+	public JLabel lblNewLabel_5;
+	public JLabel lblNewLabel_5Back;
 	
 	private static BLController compute;
 
@@ -306,12 +313,12 @@ public class MainFrame {
 					x7++;
 					lblNewLabel_3.setLocation(x7, 300);
 				}
-				if (x8 > 500) {
+				if (x8 > 600) {
 					x8--;
 					lblNewLabel_3Back.setLocation(x8, 300);
 				}
 			} else {
-				if (x7 > 500) {
+				if (x7 > 600) {
 					x7--;
 					lblNewLabel_3.setLocation(x7, 300);
 				}
@@ -340,6 +347,28 @@ public class MainFrame {
 				if (y10 > -300) {
 					y10--;
 					lblNewLabel_4Back.setLocation(400, y10);
+
+				}
+			}
+			
+			if (flag4) {
+				if (y11 < 600) {
+					y11++;
+					lblNewLabel_5.setLocation(400, y11);
+				}
+				if (y12 > 300) {
+					y12--;
+					lblNewLabel_5Back.setLocation(400, y12);
+
+				}
+			} else {
+				if (y11 > 300) {
+					y11--;
+					lblNewLabel_5.setLocation(400, y11);
+				}
+				if (y12 < 600) {
+					y12++;
+					lblNewLabel_5Back.setLocation(400, y12);
 
 				}
 			}
@@ -378,6 +407,7 @@ public class MainFrame {
 				flag1 = false;
 				flag2 = false;
 				flag3 = false;
+				flag4 = false;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -442,7 +472,7 @@ public class MainFrame {
 
 		lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon("pictures\\P2.PNG"));
-		lblNewLabel_1.setBounds(0, 300, 500, 300);
+		lblNewLabel_1.setBounds(0, 300, 400, 300);
 		panel.add(lblNewLabel_1);
 
 		lblNewLabel_1.addMouseListener(new MouseListener() {
@@ -454,6 +484,7 @@ public class MainFrame {
 				flag1 = false;
 				flag2 = false;
 				flag3 = false;
+				flag4 = false;
 			}
 
 			@Override
@@ -476,8 +507,8 @@ public class MainFrame {
 		});
 
 		lblNewLabel_1Back = new JLabel("");
-		lblNewLabel_1Back.setLocation(-500, 300);
-		lblNewLabel_1Back.setSize(500, 300);
+		lblNewLabel_1Back.setLocation(-400, 300);
+		lblNewLabel_1Back.setSize(400, 300);
 		ImageIcon ii1 = new ImageIcon("pictures\\P2_1.png");
 		lblNewLabel_1Back.setIcon(ii1);
 		panel.add(lblNewLabel_1Back);
@@ -532,6 +563,7 @@ public class MainFrame {
 				flag = false;
 				flag2 = false;
 				flag3 = false;
+				flag4 = false;
 			}
 
 			@Override
@@ -594,8 +626,8 @@ public class MainFrame {
 		});
 
 		lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setLocation(500, 300);
-		lblNewLabel_3.setSize(500, 300);
+		lblNewLabel_3.setLocation(600, 300);
+		lblNewLabel_3.setSize(400, 300);
 		ImageIcon ii4 = new ImageIcon("pictures\\P4.png");
 		lblNewLabel_3.setIcon(ii4);
 		panel.add(lblNewLabel_3);
@@ -609,6 +641,7 @@ public class MainFrame {
 				flag0 = false;
 				flag = false;
 				flag3 = false;
+				flag4 = false;
 			}
 
 			@Override
@@ -632,7 +665,7 @@ public class MainFrame {
 
 		lblNewLabel_3Back = new JLabel("");
 		lblNewLabel_3Back.setLocation(1000, 500);
-		lblNewLabel_3Back.setSize(500, 300);
+		lblNewLabel_3Back.setSize(400, 300);
 		ImageIcon ii5 = new ImageIcon("pictures\\P4_1.png");
 		lblNewLabel_3Back.setIcon(ii5);
 		panel.add(lblNewLabel_3Back);
@@ -684,6 +717,7 @@ public class MainFrame {
 				flag0 = false;
 				flag = false;
 				flag2 = false;
+				flag4 = false;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -732,6 +766,75 @@ public class MainFrame {
 
 			public void mouseExited(MouseEvent e) {
 				lblNewLabel_4Back.setCursor(Cursor.getDefaultCursor());
+			}
+
+		});
+		
+		lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setLocation(400, 300);
+		lblNewLabel_5.setSize(200, 300);
+		ImageIcon ii8 = new ImageIcon("pictures\\P6.png");
+		lblNewLabel_5.setIcon(ii8);
+		panel.add(lblNewLabel_5);
+		 
+		lblNewLabel_5.addMouseListener(new MouseListener() {
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				flag4=true;
+				flag3 = false;
+				flag1 = false;
+				flag0 = false;
+				flag = false;
+				flag2 = false;
+				
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+
+			}
+
+		});
+		
+		lblNewLabel_5Back = new JLabel("");
+		lblNewLabel_5Back.setLocation(400, 600);
+		lblNewLabel_5Back.setSize(200, 300);
+		ImageIcon ii9 = new ImageIcon("pictures\\P6_1.png");
+		lblNewLabel_5Back.setIcon(ii9);
+		panel.add(lblNewLabel_5Back);
+		
+		lblNewLabel_5Back.addMouseListener(new MouseListener() {
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				try {
+					
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_5Back.setCursor(Cursor
+						.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_5Back.setCursor(Cursor.getDefaultCursor());
 			}
 
 		});

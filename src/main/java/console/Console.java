@@ -124,7 +124,7 @@ public class Console {
 			                        
 			                    }
 			                });
-					players = (ArrayList<Player>) CollectionUtils.collect(
+			    	playerList = (ArrayList<Player>) CollectionUtils.collect(
 							playerList, new Transformer() {
 			                    public Object transform(Object arg0) {
 			                    	Player p = (Player) arg0;
@@ -207,21 +207,21 @@ public class Console {
 			}
 		}
 		sortConsList.add(comparePlayerNameAsc);
-		sort(players, sortConsList);
+		sort(playerList, sortConsList);
 		
 		if(total) {//返回的数据是总数据
 			
-			for(int i=0;i<n && i<players.size();i++)//这是模仿刘瀚文，不知道干嘛
+			for(int i=0;i<n && i<playerList.size();i++)//这是模仿刘瀚文，不知道干嘛
 			{
-				out.println(players.get(i).toNormalInfo());//to use which function
-				out.println(players.get(i).toVO());
+				out.println(playerList.get(i).toNormalInfo());//to use which function
+				out.println(playerList.get(i).toVO());
 			}
 		} else {//返回的数据是场均数据
 			
-			for(int i=0;i<n && i<players.size();i++)
+			for(int i=0;i<n && i<playerList.size();i++)
 			{
-				out.println(players.get(i).toNormalInfoAvg());//to use which function
-				out.println(players.get(i).toVO());
+				out.println(playerList.get(i).toNormalInfoAvg());//to use which function
+				out.println(playerList.get(i).toVO());
 			}
 		}
 	

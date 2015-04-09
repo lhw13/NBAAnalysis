@@ -784,14 +784,7 @@ public class MainFrame {
 			}
 		}
 		
-		DefaultTableModel model = new DefaultTableModel(table_rows,
-				table_5_columns) {
-			private static final long serialVersionUID = 1L;
-
-			public Class<?> getColumnClass(int columnIndex) {
-				return getValueAt(0, columnIndex).getClass();
-			}
-		};
+		DefaultTableModel model = new DefaultTableModel(table_rows,table_5_columns);
 		
 		if(MatchSelectionPanel.scrollPane!=null){
 			frame.getContentPane().remove(MatchSelectionPanel.scrollPane);

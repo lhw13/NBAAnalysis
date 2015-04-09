@@ -1,5 +1,7 @@
 package presentation.mainui;
 
+import hotui.HotRankingPanel;
+
 import java.awt.Cursor;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
@@ -816,7 +818,11 @@ public class MainFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
-					
+					HotRankingPanel hrp = new HotRankingPanel();
+					MainFrame.panel.setVisible(false);
+					frame.getContentPane().add(hrp.scrollPane);
+					frame.repaint();//刷新重画 
+					frame.validate();//保证重画后的窗口能正常立即显示 
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

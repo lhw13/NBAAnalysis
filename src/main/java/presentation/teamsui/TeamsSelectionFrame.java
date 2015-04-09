@@ -994,7 +994,7 @@ public class TeamsSelectionFrame {
 		});
 
 		scrollPane = new JScrollPane(mainpanel);
-		scrollPane.setBounds(0, 0, 990, 560);
+		scrollPane.setBounds(0, 100, 990, 560);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 
 	}

@@ -42,7 +42,7 @@ public class TeamsRankingFrame {
 	private void initialize(DefaultTableModel model) {
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 0, 990, 560);
+		scrollPane.setBounds(0, 100, 990, 560);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 
 		JPanel panel = new JPanel();
@@ -70,7 +70,7 @@ public class TeamsRankingFrame {
 		table.setModel(model);
 		table.setRowSorter(new TableRowSorter<TableModel>(model));
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-		 
+		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setViewportView(table);
 		scrollPane_1.setRowHeaderView(table0);

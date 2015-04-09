@@ -72,6 +72,20 @@ public class BLController implements BLService {
 		return result;
 	}
 	
+	public ArrayList<PlayerVO> getBestPromotion(String sortCon, int n) {
+		analyse();
+		switch(sortCon) {
+		case "point": Collections.sort(players, compareScorePromotionDesc);break;
+		case "score": Collections.sort(players, compareScorePromotionDesc);break;
+		case "assist": Collections.sort(players, compareAssistPromotionDesc);break;
+		case "rebound": Collections.sort(players, compareReboundPromotionDesc);break;
+		}
+		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		for(int i=0;i<n && i<players.size();i++)
+			result.add(players.get(i).toVO());
+		return result;
+	}
+	
 	//public ArrayList<Player> getDailyPlayer()
 	//{
 		
@@ -694,6 +708,30 @@ public class BLController implements BLService {
         @Override  
         public int compare(Player o1, Player o2) {  
             return (double)o2.getMinute()/(double)o2.appearance > (double)o1.getMinute()/(double)o1.appearance? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareAssistPromotionDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.assistPromotion > o1.assistPromotion? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareScorePromotionDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.scorePromotion > o1.scorePromotion? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareReboundPromotionDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.reboundPromotion > o1.reboundPromotion? 1 : -1;
         }
     };
     

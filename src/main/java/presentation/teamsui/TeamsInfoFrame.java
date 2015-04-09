@@ -84,6 +84,11 @@ public class TeamsInfoFrame {
 		panel_1.add(panel);
 		panel_1.add(panel_2);
 		panel_1.add(tabbedPane);
+		
+		teamPicture = new JLabel("");
+		teamPicture.setBounds(700, 25, 250, 150);
+		teamPicture.setIcon(ii);
+		panel_1.add(teamPicture);
 
 		scrollPane = new JScrollPane(panel_1);
 		scrollPane.setBounds(0, 0, 990, 560);
@@ -128,13 +133,6 @@ public class TeamsInfoFrame {
 		table_1.setModel(model1);
 		table_1.setRowSorter(new TableRowSorter<TableModel>(model1));
 		scrollPane_1.setViewportView(table_1);
-		
-		teamPicture = new JLabel("");
-		teamPicture.setBounds(700, 27, 250, 150);
-		panel_1.add(teamPicture);
-		teamPicture.setIcon(ii);
-				
-						
 		
 		comboBox.addActionListener(new ActionListener(){
 

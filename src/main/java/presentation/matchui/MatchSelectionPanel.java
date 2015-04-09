@@ -1,6 +1,7 @@
 package presentation.matchui;
 
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
@@ -20,6 +22,7 @@ import presentation.playerui.PlayerInfoPanel;
 import presentation.playerui.PlayerSelectionPanel;
 import presentation.playerui.PlayerInfoPanel.MouseListen;
 import presentation.teamsui.TeamsRankingFrame;
+import server.businesslogic.BLController;
 import server.po.MatchPO;
 
 import javax.swing.JButton;
@@ -36,6 +39,8 @@ public class MatchSelectionPanel extends JPanel {
 	MouseListen listener = new MouseListen();
 	
 	ArrayList<MatchPO> mpoList;
+	
+	BLController compute;
 	
 	public MatchSelectionPanel(DefaultTableModel model,ArrayList<MatchPO> selectedMatchs) {
 		this.setBounds(0, 100, 1000, 600);
@@ -265,9 +270,20 @@ public class MatchSelectionPanel extends JPanel {
 		model3.setColumnCount(columnName3.size());
 		model3.setRowCount(rowDatas3.size());
 		
+		int width = 200;
+		int height = 150;
+		compute = BLController.getInstance();
+		ImageIcon[] ii=new ImageIcon[2];
+		ii[0] = compute.getTeamPic(mpo.getTeam1().getAbbreviation());
+		ii[0].setImage(ii[0].getImage().getScaledInstance(width, height,
+				Image.SCALE_DEFAULT));
+		ii[1] = compute.getTeamPic(mpo.getTeam2().getAbbreviation());
+		ii[1].setImage(ii[1].getImage().getScaledInstance(width, height,
+				Image.SCALE_DEFAULT));
+		
 		if(MatchSelectionPanel.scrollPane!=null){
 			MatchSelectionPanel.scrollPane.setVisible(false);
-			MatchDetailInfoPanel mdip = new MatchDetailInfoPanel(model1,model2,model3);
+			MatchDetailInfoPanel mdip = new MatchDetailInfoPanel(ii,model1,model2,model3);
 			MainFrame.frame.getContentPane().add(mdip.scrollPane);
 			MainFrame.frame.repaint();//刷新重画 
 			MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 

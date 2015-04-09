@@ -10,16 +10,18 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import presentation.mainui.MainFrame;
+
 public class MatchSelectionPanel extends JPanel {
 	public static JScrollPane scrollPane;
 	public static JTable table;
 	
 	private JPanel panelOfBottom = new JPanel();
 	private JComboBox<String> comboBox;
-	private JComboBox<String> comboBox_1;
+	private JComboBox<Integer> comboBox_1;
 	private JScrollPane scrollPane_1;
 	
-	public MatchSelectionPanel() {
+	public MatchSelectionPanel(DefaultTableModel model) {
 		this.setBounds(0, 100, 1000, 600);
 		setLayout(null);
 		
@@ -34,9 +36,10 @@ public class MatchSelectionPanel extends JPanel {
 		
 		comboBox = new JComboBox<String>();
 		comboBox.setBounds(200, 50, 100, 30);
-		comboBox.addItem("选择年份");
-		comboBox.addItem("2013");
-		comboBox.addItem("2014");
+		comboBox.addItem("12-13");
+		comboBox.addItem("13-14");
+		comboBox.addItem("14-15");
+		comboBox.setSelectedItem(MainFrame.season);
 		panelOfBottom.add(comboBox);
 		
 		comboBox.addActionListener(new ActionListener(){
@@ -45,27 +48,37 @@ public class MatchSelectionPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				int index = comboBox.getSelectedIndex();
 				switch(index){
-				case 1:break;
-				case 2:break;
+				case 0:
+					MainFrame.season="12-13";
+					MainFrame.searchTheMatch();
+					break;
+				case 1:
+					MainFrame.season="13-14";
+					MainFrame.searchTheMatch();
+					break;
+				case 2:
+					MainFrame.season="14-15";
+					MainFrame.searchTheMatch();
+					break;
 				}
 			}
 			
 		});
 		
-		comboBox_1 = new JComboBox<String>();
-		comboBox_1.addItem("选择月份");
-		comboBox_1.addItem("1");
-		comboBox_1.addItem("2");
-		comboBox_1.addItem("3");
-		comboBox_1.addItem("4");
-		comboBox_1.addItem("5");
-		comboBox_1.addItem("6");
-		comboBox_1.addItem("7");
-		comboBox_1.addItem("8");
-		comboBox_1.addItem("9");
-		comboBox_1.addItem("10");
-		comboBox_1.addItem("11");
-		comboBox_1.addItem("12");
+		comboBox_1 = new JComboBox<Integer>();
+		comboBox_1.addItem(1);
+		comboBox_1.addItem(2);
+		comboBox_1.addItem(3);
+		comboBox_1.addItem(4);
+		comboBox_1.addItem(5);
+		comboBox_1.addItem(6);
+		comboBox_1.addItem(7);
+		comboBox_1.addItem(8);
+		comboBox_1.addItem(9);
+		comboBox_1.addItem(10);
+		comboBox_1.addItem(11);
+		comboBox_1.addItem(12);
+		comboBox_1.setSelectedItem(MainFrame.date);
 		comboBox_1.setBounds(350, 50, 100, 30);
 		panelOfBottom.add(comboBox_1);
 		
@@ -75,38 +88,66 @@ public class MatchSelectionPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				int index = comboBox_1.getSelectedIndex();
 				switch(index){
-				case 1:break;
-				case 2:break;
-				case 3:break;
-				case 4:break;
-				case 5:break;
-				case 6:break;
-				case 7:break;
-				case 8:break;
-				case 9:break;
-				case 10:break;
-				case 11:break;
-				case 12:break;
+				case 0:
+					MainFrame.date=1;
+					MainFrame.searchTheMatch();
+					break;
+				case 1:
+					MainFrame.date=2;
+					MainFrame.searchTheMatch();
+					break;
+				case 2:
+					MainFrame.date=3;
+					MainFrame.searchTheMatch();
+					break;
+				case 3:
+					MainFrame.date=4;
+					MainFrame.searchTheMatch();
+					break;
+				case 4:
+					MainFrame.date=5;
+					MainFrame.searchTheMatch();
+					break;
+				case 5:
+					MainFrame.date=6;
+					MainFrame.searchTheMatch();
+					break;
+				case 6:
+					MainFrame.date=7;
+					MainFrame.searchTheMatch();
+					break;
+				case 7:
+					MainFrame.date=8;
+					MainFrame.searchTheMatch();
+					break;
+				case 8:
+					MainFrame.date=9;
+					MainFrame.searchTheMatch();
+					break;
+				case 9:
+					MainFrame.date=10;
+					MainFrame.searchTheMatch();
+					break;
+				case 10:
+					MainFrame.date=11;
+					MainFrame.searchTheMatch();
+					break;
+				case 11:
+					MainFrame.date=12;
+					MainFrame.searchTheMatch();
+					break;
 				}
 			}
 			
 		});
 		
+		table = new JTable();
+		table.setModel(model);
+		
 		scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(50, 100, 700, 400);
 		panelOfBottom.add(scrollPane_1);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-			},
-			new String[] {
-				"New column", "New column", "New column", "New column", "New column"
-			}
-		));
 		scrollPane_1.setViewportView(table);
 	}
 }

@@ -42,7 +42,7 @@ public class TeamsRankingFrame {
 	private void initialize(DefaultTableModel model) {
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 100, 990, 560);
+		scrollPane.setBounds(0, 0, 990, 560);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 
 		JPanel panel = new JPanel();

@@ -53,6 +53,11 @@ public class BLController implements BLService {
 		sortTeams(sortCon);
 		return teams;
 	}
+	
+	//public ArrayList<Player> getDailyPlayer()
+	//{
+		
+	//}
 
 	// transform image of player or team
 	public ImageIcon getPlayerAction(String name) {
@@ -407,6 +412,347 @@ public class BLController implements BLService {
 			return t1.getAssistEfficient()>t2.getAssistEfficient()?1:-1;
 		}
 	};
+	
+	
+	
+	public Comparator<Player> comparePlayerNameDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getName().compareTo(o1.getName());
+        }
+    };
+	
+	public Comparator<Player> comparePointDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getPoint() > o1.getPoint() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareReboundDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getRebound() > o1.getRebound() ? 1 : -1;
+        }
+    };
+    public Comparator<Player> compareAssistDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getAssist() > o1.getAssist() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareBlockShotDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getBlockShot() > o1.getBlockShot() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareStealDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getSteal() > o1.getSteal() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareFoulDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getFoul() > o1.getFoul() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareFaultDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getFault() > o1.getFault() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareMinuteDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getMinute() > o1.getMinute() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareEfficientDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getEfficient() > o1.getEfficient() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareShotDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getShot() > o1.getShot() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareThreeDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getThree() > o1.getThree() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> comparePenaltyDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getPenalty() > o1.getPenalty() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareDoubleTwoDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getDoubleTwo() > o1.getDoubleTwo() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareRealShotDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getRealShot() > o1.getRealShot() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareGmScDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getGmSc() > o1.getGmSc() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareShotEfficientDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getShotEfficient() > o1.getShotEfficient() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareReboundEfficientDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getReboundEfficient() > o1.getReboundEfficient() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareOffendReboundEfficientDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getOffendReboundEfficient() > o1.getOffendReboundEfficient() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareDefendReboundEfficientDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getDefendReboundEfficient() > o1.getDefendReboundEfficient() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareAssistEfficientDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getAssistEfficient() > o1.getAssistEfficient() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareStealEfficientDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getStealEfficient() > o1.getStealEfficient() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareBlockShotEfficientDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getBlockShotEfficient() > o1.getBlockShotEfficient() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareFaultEfficientDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getFaultEfficient() > o1.getFaultEfficient() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareFrequencyDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getFrequency() > o1.getFrequency() ? 1 : -1;
+        }
+    };
+    
+    
+    //avg player descent comparator
+	public Comparator<Player> comparePointAvgDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return (double)o2.getPoint()/(double)o2.appearance > (double)o1.getPoint()/(double)o1.appearance? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareReboundAvgDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return (double)o2.getRebound()/(double)o2.appearance > (double)o1.getRebound()/(double)o1.appearance? 1 : -1;
+        }
+    };
+    public Comparator<Player> compareAssistAvgDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return (double)o2.getAssist()/(double)o2.appearance > (double)o1.getAssist()/(double)o1.appearance? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareBlockShotAvgDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return (double)o2.getBlockShot()/(double)o2.appearance > (double)o1.getBlockShot()/(double)o1.appearance? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareStealAvgDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return (double)o2.getSteal()/(double)o2.appearance > (double)o1.getSteal()/(double)o1.appearance? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareFoulAvgDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return (double)o2.getFoul()/(double)o2.appearance > (double)o1.getFoul()/(double)o1.appearance? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareFaultAvgDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return (double)o2.getFault()/(double)o2.appearance > (double)o1.getFault()/(double)o1.appearance? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareMinuteAvgDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return (double)o2.getMinute()/(double)o2.appearance > (double)o1.getMinute()/(double)o1.appearance? 1 : -1;
+        }
+    };
+    
+    
+	public Comparator<Player> getPlayerComparator(String sort) {
+		switch(sort) {
+		case "point": return comparePointDesc;
+		case "rebound": return compareReboundDesc;
+		case "assist": return compareAssistDesc;					
+		case "blockShot": return compareBlockShotDesc;
+		case "steal": return compareStealDesc;
+		case "foul": return compareFoulDesc;
+		case "fault": return compareFaultDesc;
+		case "minute": return compareMinuteDesc;
+		case "efficient": return compareEfficientDesc;
+		case "shot": return compareShotDesc;
+		case "three": return compareThreeDesc;
+		case "penalty": return comparePenaltyDesc;
+		case "doubleTwo": return compareDoubleTwoDesc;
+		case "realShot": return compareRealShotDesc;
+		case "GmSc": return compareGmScDesc;
+		case "shotEfficient": return compareShotEfficientDesc;
+		case "reboundEfficient": return compareReboundEfficientDesc;
+		case "offendReboundEfficient": return compareOffendReboundEfficientDesc;
+		case "defendReboundEfficient": return compareDefendReboundEfficientDesc;
+		case "assistEfficient": return compareAssistEfficientDesc;
+		case "stealEfficient": return compareStealEfficientDesc;		
+		case "blockShotEfficient": return compareBlockShotEfficientDesc;
+		case "faultEfficient": return compareFaultEfficientDesc;
+		case "frequency": return compareFrequencyDesc;
+		default: return null;
+		}
+	}
+	
+	public Comparator<Player> getPlayerAvgComparator(String sort) {
+		switch(sort) {
+		case "point": return comparePointAvgDesc;
+		case "rebound": return compareReboundAvgDesc;
+		case "assist": return compareAssistAvgDesc;					
+		case "blockShot": return compareBlockShotAvgDesc;
+		case "steal": return compareStealAvgDesc;
+		case "foul": return compareFoulAvgDesc;
+		case "fault": return compareFaultAvgDesc;
+		case "minute": return compareMinuteAvgDesc;
+		default: return null;
+		}
+	}
+	
+	/*public boolean sortPlayers(String sort) {
+		switch(sort) {
+		case "point": sortConsList.add(comparePointDesc); break;
+		case "rebound": sortConsList.add(compareReboundDesc);break;
+		case "assist": sortConsList.add(compareAssistDesc);break;					
+		case "blockShot": sortConsList.add(compareBlockShotDesc);break;
+		case "steal": sortConsList.add(compareStealDesc);break;
+		case "foul": sortConsList.add(compareFoulDesc);break;
+		case "fault": sortConsList.add(compareFaultDesc);break;
+		case "minute": sortConsList.add(compareMinuteDesc);break;
+		case "efficient": sortConsList.add(compareEfficientDesc);break;
+		case "shot": sortConsList.add(compareShotDesc);break;
+		case "three": sortConsList.add(compareThreeDesc);break;
+		case "penalty": sortConsList.add(comparePenaltyDesc);break;
+		case "doubleTwo": sortConsList.add(compareDoubleTwoDesc);break;
+		case "realShot": sortConsList.add(compareRealShotDesc);break;
+		case "GmSc": sortConsList.add(compareGmScDesc);break;
+		case "shotEfficient": sortConsList.add(compareShotEfficientDesc);break;
+		case "reboundEfficient": sortConsList.add(compareReboundEfficientDesc);break;
+		case "offendReboundEfficient": sortConsList.add(compareOffendReboundEfficientDesc);break;
+		case "defendReboundEfficient": sortConsList.add(compareDefendReboundEfficientDesc);break;
+		case "assistEfficient": sortConsList.add(compareAssistEfficientDesc);break;
+		case "stealEfficient": sortConsList.add(compareStealEfficientDesc);break;		
+		case "blockShotEfficient": sortConsList.add(compareBlockShotEfficientDesc);break;
+		case "faultEfficient": sortConsList.add(compareFaultEfficientDesc);break;
+		case "frequency": sortConsList.add(compareFrequencyDesc);break;
+		}
+	}*/
+	
 	public boolean sortTeams(String sort) {
 		switch(sort) {
 		case "point": Collections.sort(teams, TeamByPoint);break;

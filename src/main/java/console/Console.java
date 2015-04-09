@@ -20,7 +20,7 @@ import org.apache.commons.collections.comparators.ComparatorChain;
 
 public class Console {
 	
-	
+	BLController bl = BLController.getInstance();
 	public void execute(PrintStream out, String[] args){
 		//for detailed information, see http://dongwei.iteye.com/blog/230458
 		if(args[0].equals("-team"))
@@ -31,7 +31,7 @@ public class Console {
 	
 	
 	public void player(PrintStream out, String[] args) {
-		ArrayList<Player> players = BLController.getInstance().getPlayers();
+		ArrayList<Player> players = bl.getPlayers();
 		List<Player> playerList = players;
 		List<Comparator<Player>> sortConsList = new ArrayList<Comparator<Player>>();
 		int n=50;//default
@@ -168,8 +168,9 @@ public class Console {
 					case "faultEfficient": sortConsList.add(compareFaultEfficientAsc);break;
 					case "frequency": sortConsList.add(compareFrequencyAsc);break;
 					}				
-				} else {//降序 
-					switch(temps[0]) {
+				} else {//降序
+					sortConsList.add(bl.getPlayerComparator(temps[0]));
+					/*switch(temps[0]) {
 					case "point": sortConsList.add(comparePointDesc); break;
 					case "rebound": sortConsList.add(compareReboundDesc);break;
 					case "assist": sortConsList.add(compareAssistDesc);break;					
@@ -194,15 +195,15 @@ public class Console {
 					case "blockShotEfficient": sortConsList.add(compareBlockShotEfficientDesc);break;
 					case "faultEfficient": sortConsList.add(compareFaultEfficientDesc);break;
 					case "frequency": sortConsList.add(compareFrequencyDesc);break;
-					}
+					}*/
 				}
 			}
 			
 		} else {//没有sort命令，使用默认排序命令
 			if(high){//如果是高阶数据，用高阶数据的默认，否则用基本数据
-				sortConsList.add(compareRealShotDesc);
+				sortConsList.add(bl.compareRealShotDesc);
 			}else{ 
-				sortConsList.add(comparePointDesc);
+				sortConsList.add(bl.comparePointDesc);
 			}
 		}
 		sortConsList.add(comparePlayerNameAsc);
@@ -249,14 +250,13 @@ public class Console {
 			for(int i=0;i<n && i<teams.size();i++)
 			{
 				out.println(teams.get(i).toNormalInfo());//to use which function
-				out.println(teams.get(i).toVO());
+				//out.println(teams.get(i).toVO());
 			}
-			//new ComparatorChain();
-			//out.append(c);
+			
 		}
 	}
 	
-	//降序Comparator
+/*	//降序Comparator
 	public Comparator<Player> comparePlayerNameDesc = new Comparator<Player>() {  
 		  
         @Override  
@@ -280,7 +280,7 @@ public class Console {
             return o2.getRebound() > o1.getRebound() ? 1 : -1;
         }
     };
-    private Comparator<Player> compareAssistDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareAssistDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -288,7 +288,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareBlockShotDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareBlockShotDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -296,7 +296,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareStealDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareStealDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -304,7 +304,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareFoulDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareFoulDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -312,7 +312,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareFaultDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareFaultDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -320,7 +320,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareMinuteDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareMinuteDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -328,7 +328,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareEfficientDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareEfficientDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -336,7 +336,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareShotDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareShotDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -344,7 +344,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareThreeDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareThreeDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -352,7 +352,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> comparePenaltyDesc = new Comparator<Player>() {  
+    public Comparator<Player> comparePenaltyDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -360,7 +360,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareDoubleTwoDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareDoubleTwoDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -368,7 +368,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareRealShotDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareRealShotDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -376,7 +376,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareGmScDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareGmScDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -384,7 +384,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareShotEfficientDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareShotEfficientDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -392,7 +392,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareReboundEfficientDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareReboundEfficientDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -400,7 +400,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareOffendReboundEfficientDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareOffendReboundEfficientDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -408,7 +408,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareDefendReboundEfficientDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareDefendReboundEfficientDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -416,7 +416,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareAssistEfficientDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareAssistEfficientDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -424,7 +424,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareStealEfficientDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareStealEfficientDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -432,7 +432,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareBlockShotEfficientDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareBlockShotEfficientDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -440,7 +440,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareFaultEfficientDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareFaultEfficientDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -448,13 +448,13 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareFrequencyDesc = new Comparator<Player>() {  
+    public Comparator<Player> compareFrequencyDesc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
             return o2.getFrequency() > o1.getFrequency() ? 1 : -1;
         }
-    };
+    };*/
     
     //升序Comparator
     public Comparator<Player> comparePlayerNameAsc = new Comparator<Player>() {  

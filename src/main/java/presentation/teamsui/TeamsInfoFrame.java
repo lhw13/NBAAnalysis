@@ -39,17 +39,11 @@ public class TeamsInfoFrame {
 	private JComboBox<String> comboBox;
 
 	BLController controller;
-
-	/**
-	 * Create the application.
-	 */
+	
 	public TeamsInfoFrame(String teamName ,ImageIcon ii, DefaultTableModel model, DefaultTableModel model1) {// 构造函数
 		initialize(teamName, ii, model, model1);
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize(final String teamName, ImageIcon ii, DefaultTableModel model, DefaultTableModel model1) {
 
 		JPanel panel = new JPanel();

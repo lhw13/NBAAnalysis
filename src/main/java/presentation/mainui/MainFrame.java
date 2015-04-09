@@ -97,7 +97,7 @@ public class MainFrame {
 	
 	private String table_4_columns[] = { "球队", "球队缩写", "所在地", "赛区", "分区", "主场", "建立时间" };
 	
-	private static String table_5_columns[] = { "赛季", "日期", "球队", "总比分", "第一节", "第二节", "第三节", "第四节" };
+	private static String table_5_columns[] = { "赛季", "日期", "球队", "总比分", "第一节", "第二节", "第三节", "第四节", "详情" };
 	
 	public static String selection1="得分";
 	public static String selection2="投篮命中数";
@@ -160,15 +160,9 @@ public class MainFrame {
 	private void initPanels() {
 		//初始化查询面板
 		Object table_4_rows[][] = { {"13-14","01-01", "CHI-MIN", "100-120", "25-30", "25-30", "25-30", "25-30"}, };
-		DefaultTableModel model4 = new DefaultTableModel(table_4_rows,
-				table_5_columns) {
-			private static final long serialVersionUID = 1L;
-
-			public Class<?> getColumnClass(int columnIndex) {
-				return getValueAt(0, columnIndex).getClass();
-			}
-		};
-		new MatchSelectionPanel(model4);
+		DefaultTableModel model4 = new DefaultTableModel(table_4_rows,table_5_columns);
+		ArrayList<MatchPO> mpoList = new ArrayList<MatchPO>();
+		new MatchSelectionPanel(model4, mpoList);
 		frame.getContentPane().add(MatchSelectionPanel.scrollPane);
 		MatchSelectionPanel.scrollPane.setVisible(false);
 		
@@ -757,31 +751,31 @@ public class MainFrame {
 		compute = BLController.getInstance();
 		ArrayList<MatchPO> matchList = compute.getAllMatch();
 		
-		Object table_rows[][] = new Object[300][8];
-		for(int n=0;n<8;n++){
-			table_rows[0][n]="";
-		}
-		int row=0;
+		ArrayList<MatchPO> selectedMatchs = new ArrayList<MatchPO>();
 		for(int i=0;i<matchList.size();i++){
 			if(matchList.get(i).getSeason().equals(season) && 
 					matchList.get(i).getDate().get(Calendar.MONTH)==date){
-				table_rows[row][0] = matchList.get(i).getSeason();
-				table_rows[row][1] = matchList.get(i).getDate().get(Calendar.MONTH)+"-"+
-						             matchList.get(i).getDate().get(Calendar.DAY_OF_MONTH);
-				table_rows[row][2] = matchList.get(i).getTeam1().getAbbreviation()+"-"+
-						             matchList.get(i).getTeam2().getAbbreviation();
-				table_rows[row][3] = matchList.get(i).getFinalScore().getTeam1()+"-"+
-						             matchList.get(i).getFinalScore().getTeam2();
-				table_rows[row][4] = matchList.get(i).getScores().get(0).getTeam1()+"-"+
-						             matchList.get(i).getScores().get(0).getTeam2();
-				table_rows[row][5] = matchList.get(i).getScores().get(1).getTeam1()+"-"+
-						             matchList.get(i).getScores().get(1).getTeam2();
-				table_rows[row][6] = matchList.get(i).getScores().get(2).getTeam1()+"-"+
-						             matchList.get(i).getScores().get(2).getTeam2();
-				table_rows[row][7] = matchList.get(i).getScores().get(3).getTeam1()+"-"+
-						             matchList.get(i).getScores().get(3).getTeam2();
-				row++;
+				selectedMatchs.add(matchList.get(i));
 			}
+		}
+		Object table_rows[][] = new Object[selectedMatchs.size()][9];
+		for(int i=0;i<selectedMatchs.size();i++){
+			table_rows[i][0] = selectedMatchs.get(i).getSeason();
+			table_rows[i][1] = selectedMatchs.get(i).getDate().get(Calendar.MONTH)+"-"+
+					selectedMatchs.get(i).getDate().get(Calendar.DAY_OF_MONTH);
+			table_rows[i][2] = selectedMatchs.get(i).getTeam1().getAbbreviation()+"-"+
+					selectedMatchs.get(i).getTeam2().getAbbreviation();
+			table_rows[i][3] = selectedMatchs.get(i).getFinalScore().getTeam1()+"-"+
+					selectedMatchs.get(i).getFinalScore().getTeam2();
+			table_rows[i][4] = selectedMatchs.get(i).getScores().get(0).getTeam1()+"-"+
+					selectedMatchs.get(i).getScores().get(0).getTeam2();
+			table_rows[i][5] = matchList.get(i).getScores().get(1).getTeam1()+"-"+
+					selectedMatchs.get(i).getScores().get(1).getTeam2();
+			table_rows[i][6] = selectedMatchs.get(i).getScores().get(2).getTeam1()+"-"+
+					selectedMatchs.get(i).getScores().get(2).getTeam2();
+			table_rows[i][7] = selectedMatchs.get(i).getScores().get(3).getTeam1()+"-"+
+					selectedMatchs.get(i).getScores().get(3).getTeam2();
+			table_rows[i][8] = "详情";
 		}
 		
 		DefaultTableModel model = new DefaultTableModel(table_rows,table_5_columns);
@@ -789,7 +783,7 @@ public class MainFrame {
 		if(MatchSelectionPanel.scrollPane!=null){
 			frame.getContentPane().remove(MatchSelectionPanel.scrollPane);
 			MatchSelectionPanel.scrollPane=null;
-			MatchSelectionPanel msp = new MatchSelectionPanel(model);
+			MatchSelectionPanel msp = new MatchSelectionPanel(model, selectedMatchs);
 			frame.getContentPane().add(msp.scrollPane);
 			frame.repaint();//刷新重画 
 			frame.validate();//保证重画后的窗口能正常立即显示 

@@ -3,6 +3,8 @@ package presentation.matchui;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -11,6 +13,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import presentation.mainui.MainFrame;
+import presentation.playerui.PlayerInfoPanel;
+import presentation.playerui.PlayerSelectionPanel;
+import presentation.playerui.PlayerInfoPanel.MouseListen;
 import presentation.teamsui.TeamsRankingFrame;
 
 import javax.swing.JButton;
@@ -23,6 +28,8 @@ public class MatchSelectionPanel extends JPanel {
 	private JComboBox<String> comboBox;
 	private JComboBox<Integer> comboBox_1;
 	private JScrollPane scrollPane_1;
+	
+	MouseListen listener = new MouseListen();
 	
 	public MatchSelectionPanel(DefaultTableModel model) {
 		this.setBounds(0, 100, 1000, 600);
@@ -121,8 +128,7 @@ public class MatchSelectionPanel extends JPanel {
 		
 		table = new JTable();
 		table.setModel(model);
-		
-		
+		table.addMouseListener(listener);
 		
 		scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(50, 100, 700, 400);
@@ -144,5 +150,31 @@ public class MatchSelectionPanel extends JPanel {
 			}
 			
 		});
+	}
+	
+	public class MouseListen extends MouseAdapter {
+		public void mouseClicked(MouseEvent e) {
+
+			JTable table = (JTable) e.getSource();
+			int r = table.getSelectedRow();
+			int c = table.getSelectedColumn();
+			Object temp = table.getValueAt(r, c);
+			String name = null;
+			if (temp != null)
+				name = temp.toString();
+			  
+			try {
+				if (name != null) {
+					setMatchInfo();
+				}
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
+	
+	private void setMatchInfo(){
+		MatchSelectionPanel.scrollPane.setVisible(false);
+		
 	}
 }

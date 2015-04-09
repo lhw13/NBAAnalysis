@@ -22,7 +22,13 @@ public interface BLService {
 	
 	public ArrayList<MatchPO> getAllMatch();//先暂时这么用吧，还能避免些缺陷，等我些差不多了我就把类型一改，其他代码都不用动
 
-	public ArrayList<TeamVO> getHotTeamVO(String sortCon);//赛季热点球队，参数为排序依据
+	public ArrayList<TeamVO> getHotTeamVO(String sortCon);//赛季热点球队，参数为排序依据，默认前5名
+	
+	public ArrayList<TeamVO> getHotTeamVO(String sortCon, int n);//获得前n名
+	
+	public ArrayList<PlayerVO> getHotPlayerVO(String sortCon, int n);//获得前n名
+	
+	public ArrayList<PlayerVO> getBestPromotion(String sortCon, int n);//进步最快
 	
 	public ImageIcon getPlayerAction(String name);
 

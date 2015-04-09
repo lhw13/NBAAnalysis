@@ -44,14 +44,46 @@ public class BLController implements BLService {
 	
 	//iteration 2
 	public ArrayList<TeamVO> getHotTeamVO(String sortCon) {
-		ArrayList <Team>h = getHotTeam(sortCon);
-		return toTVOs(h);
+		return getHotTeamVO(sortCon,5);
+	}
+	public ArrayList<TeamVO> getHotTeamVO(String sortCon,int n) {
+		getHotTeam(sortCon);
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(int i=0;i<n && i<teams.size();i++)
+			result.add(teams.get(i).toVO());
+		return result;
 	}
 	
 	public ArrayList<Team> getHotTeam(String sortCon) {
 		analyse();
 		sortTeams(sortCon);
 		return teams;
+	}
+	
+	public ArrayList<PlayerVO> getHotPlayerVO(String sortCon, int n) {
+		analyse();
+		Comparator<Player> comp = getPlayerAvgComparator(sortCon);
+		if(comp==null)
+			comp = getPlayerComparator(sortCon);
+		Collections.sort(players, comp);
+		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		for(int i=0;i<n && i<players.size();i++)
+			result.add(players.get(i).toVO());
+		return result;
+	}
+	
+	public ArrayList<PlayerVO> getBestPromotion(String sortCon, int n) {
+		analyse();
+		switch(sortCon) {
+		case "point": Collections.sort(players, compareScorePromotionDesc);break;
+		case "score": Collections.sort(players, compareScorePromotionDesc);break;
+		case "assist": Collections.sort(players, compareAssistPromotionDesc);break;
+		case "rebound": Collections.sort(players, compareReboundPromotionDesc);break;
+		}
+		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		for(int i=0;i<n && i<players.size();i++)
+			result.add(players.get(i).toVO());
+		return result;
 	}
 	
 	//public ArrayList<Player> getDailyPlayer()
@@ -679,6 +711,30 @@ public class BLController implements BLService {
         }
     };
     
+    public Comparator<Player> compareAssistPromotionDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.assistPromotion > o1.assistPromotion? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareScorePromotionDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.scorePromotion > o1.scorePromotion? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareReboundPromotionDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.reboundPromotion > o1.reboundPromotion? 1 : -1;
+        }
+    };
+    
     
 	public Comparator<Player> getPlayerComparator(String sort) {
 		switch(sort) {
@@ -723,35 +779,6 @@ public class BLController implements BLService {
 		default: return null;
 		}
 	}
-	
-	/*public boolean sortPlayers(String sort) {
-		switch(sort) {
-		case "point": sortConsList.add(comparePointDesc); break;
-		case "rebound": sortConsList.add(compareReboundDesc);break;
-		case "assist": sortConsList.add(compareAssistDesc);break;					
-		case "blockShot": sortConsList.add(compareBlockShotDesc);break;
-		case "steal": sortConsList.add(compareStealDesc);break;
-		case "foul": sortConsList.add(compareFoulDesc);break;
-		case "fault": sortConsList.add(compareFaultDesc);break;
-		case "minute": sortConsList.add(compareMinuteDesc);break;
-		case "efficient": sortConsList.add(compareEfficientDesc);break;
-		case "shot": sortConsList.add(compareShotDesc);break;
-		case "three": sortConsList.add(compareThreeDesc);break;
-		case "penalty": sortConsList.add(comparePenaltyDesc);break;
-		case "doubleTwo": sortConsList.add(compareDoubleTwoDesc);break;
-		case "realShot": sortConsList.add(compareRealShotDesc);break;
-		case "GmSc": sortConsList.add(compareGmScDesc);break;
-		case "shotEfficient": sortConsList.add(compareShotEfficientDesc);break;
-		case "reboundEfficient": sortConsList.add(compareReboundEfficientDesc);break;
-		case "offendReboundEfficient": sortConsList.add(compareOffendReboundEfficientDesc);break;
-		case "defendReboundEfficient": sortConsList.add(compareDefendReboundEfficientDesc);break;
-		case "assistEfficient": sortConsList.add(compareAssistEfficientDesc);break;
-		case "stealEfficient": sortConsList.add(compareStealEfficientDesc);break;		
-		case "blockShotEfficient": sortConsList.add(compareBlockShotEfficientDesc);break;
-		case "faultEfficient": sortConsList.add(compareFaultEfficientDesc);break;
-		case "frequency": sortConsList.add(compareFrequencyDesc);break;
-		}
-	}*/
 	
 	public boolean sortTeams(String sort) {
 		switch(sort) {

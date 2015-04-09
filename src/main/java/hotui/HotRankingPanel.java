@@ -18,6 +18,7 @@ import server.businesslogic.BLController;
 import server.po.MatchPO;
 import server.po.PlayerInMatchesPO;
 import server.po.TeamInMatchesPO;
+import vo.PlayerVO;
 import vo.TeamVO;
 
 import java.awt.Font;
@@ -170,16 +171,22 @@ public class HotRankingPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int index = comboBox_2.getSelectedIndex();
-				ArrayList<TeamVO> teams;
+				ArrayList<PlayerVO> players;
 				switch(index){				
 				case 1: 
 					columnName2.setElementAt("场均得分", 3);
+					players = blservice.getBestPromotion("point", 5);
+					update2(players,"point");
 					break;
 				case 2: 
 					columnName2.setElementAt("场均篮板", 3);
+					players = blservice.getBestPromotion("rebound", 5);
+					update2(players,"rebound");
 					break;
 				case 3: 
 					columnName2.setElementAt("场均助攻", 3);
+					players = blservice.getBestPromotion("assist", 5);
+					update2(players,"assist");
 					break;
 				
 				}
@@ -301,8 +308,51 @@ public class HotRankingPanel extends JPanel {
 		
 	}
 
-	public void update2(ArrayList<TeamVO> teams, String con) {
-		
+	public void update2(ArrayList<PlayerVO> players, String con) {
+		Vector rowDatas2 = new Vector();
+		switch(con) {
+		case "point":
+			for(int i=0;i<players.size()&&i<5;i++) {
+				Vector rowData2 = new Vector();
+				PlayerVO playerTemp = players.get(i);			
+				rowData2.add(playerTemp.getName());
+				rowData2.add(playerTemp.getTeamFullName());			
+				rowData2.add(handleDecimal(playerTemp.getScorePromotion()));
+				rowData2.add(handleDecimal((double)playerTemp.getScore()/(double)playerTemp.getAppearance()));			
+				rowDatas2.add(rowData2);
+			}
+			break;
+		case "rebound":
+			for(int i=0;i<players.size()&&i<5;i++) {
+				Vector rowData2 = new Vector();
+				PlayerVO playerTemp = players.get(i);			
+				rowData2.add(playerTemp.getName());
+				rowData2.add(playerTemp.getTeamFullName());			
+				rowData2.add(handleDecimal(playerTemp.getReboundPromotion()));
+				rowData2.add(handleDecimal((double)playerTemp.getTotalRebound()/(double)playerTemp.getAppearance()));					
+				rowDatas2.add(rowData2);
+			}
+			break;
+		case "assist":
+			for(int i=0;i<players.size()&&i<5;i++) {
+				Vector rowData2 = new Vector();
+				PlayerVO playerTemp = players.get(i);			
+				rowData2.add(playerTemp.getName());
+				rowData2.add(playerTemp.getTeamFullName());			
+				rowData2.add(handleDecimal(playerTemp.getReboundPromotion()));
+				rowData2.add(handleDecimal((double)playerTemp.getAssist()/(double)playerTemp.getAppearance()));									
+				rowDatas2.add(rowData2);
+			}
+			break;
+		}
+			model_2.setDataVector(rowDatas2, columnName2);		
+			model_2.setColumnCount(table_2.getColumnCount());
+			model_2.setRowCount(rowDatas2.size());
+			table_2.setModel(model_2);
+//			int[] width={50,55,5,3,3,3,3,3,3,3,3,3,3,3};
+//			table_2.setColumnModel(getColumn(table_2, width));
+			table_2.updateUI();
+			
 	}
 	public void updateTeam(ArrayList<TeamVO> teams, String con) {
 		Vector rowDatas3 = new Vector();

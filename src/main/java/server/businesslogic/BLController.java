@@ -2,6 +2,7 @@ package server.businesslogic;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -39,6 +40,18 @@ public class BLController implements BLService {
 		if (instance == null)
 			instance = new BLController();
 		return instance;
+	}
+	
+	//iteration 2
+	public ArrayList<TeamVO> getHotTeamVO(String sortCon) {
+		ArrayList <Team>h = getHotTeam(sortCon);
+		return toTVOs(h);
+	}
+	
+	public ArrayList<Team> getHotTeam(String sortCon) {
+		analyse();
+		sortTeams(teams,sortCon);
+		return teams;
 	}
 
 	// transform image of player or team
@@ -291,5 +304,59 @@ public class BLController implements BLService {
 	public ArrayList<Team> getTeams() {
 		analyse();
 		return teams;
+	}
+	
+	
+	private static final Comparator<Team> TeamByPoint = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return (double)t1.score/t1.appearance>(double)t2.score/t2.appearance?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByRebound = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return (double)t1.rebound/t1.appearance>(double)t2.rebound/t2.appearance?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByAssist = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return (double)t1.assist/t1.appearance>(double)t2.assist/t2.appearance?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByBlock = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return (double)t1.blockShot/t1.appearance>(double)t2.blockShot/t2.appearance?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamBySteal = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return (double)t1.steal/t1.appearance>(double)t2.steal/t2.appearance?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByThree = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getThree()>t2.getThree()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByShot = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getShot()>t2.getShot()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByPenalty = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getPenalty()>t2.getPenalty()?1:-1;
+		}
+	};
+	private void sortTeams(ArrayList<Team> h,String sort) {
+		switch(sort) {
+		case "point": Collections.sort(h, TeamByPoint);break;
+		case "score": Collections.sort(h, TeamByPoint);break;
+		case "rebound": Collections.sort(h, TeamByRebound);break;
+		case "assist": Collections.sort(h, TeamByAssist);break;
+		case "steal": Collections.sort(h, TeamBySteal);break;
+		case "three": Collections.sort(h, TeamByThree);break;
+		case "shot": Collections.sort(h, TeamByShot);break;
+		case "penalty": Collections.sort(h, TeamByPenalty);break;
+		}
 	}
 }

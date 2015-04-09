@@ -22,6 +22,8 @@ public interface BLService {
 	
 	public ArrayList<MatchPO> getAllMatch();//先暂时这么用吧，还能避免些缺陷，等我些差不多了我就把类型一改，其他代码都不用动
 
+	public ArrayList<TeamVO> getHotTeamVO(String sortCon);//赛季热点球队，参数为排序依据
+	
 	public ImageIcon getPlayerAction(String name);
 
 	public ImageIcon getPlayerPortrait(String name);

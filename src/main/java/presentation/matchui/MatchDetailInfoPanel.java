@@ -4,15 +4,19 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import javax.swing.JButton;
 
 import presentation.mainui.MainFrame;
 import presentation.teamsui.TeamsInfoFrame;
 import presentation.teamsui.TeamsSelectionFrame;
+import javax.swing.JLabel;
 
 public class MatchDetailInfoPanel extends JPanel {
 	public static JScrollPane scrollPane;
@@ -24,8 +28,19 @@ public class MatchDetailInfoPanel extends JPanel {
 	private JTable table_1;
 	private JTable table_2;
 	private JButton btnNewButton;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
 	
-	public MatchDetailInfoPanel(DefaultTableModel model1, DefaultTableModel model2, DefaultTableModel model3) {
+	public TableColumnModel getColumn(JTable table, int[] width) {  
+	    TableColumnModel columns = table.getColumnModel();  
+	    for (int i = 0; i < width.length; i++) {  
+	        TableColumn column = columns.getColumn(i);  
+	        column.setPreferredWidth(width[i]);  
+	    }  
+	    return columns;  
+	}  
+	
+	public MatchDetailInfoPanel(ImageIcon ii[], DefaultTableModel model1, DefaultTableModel model2, DefaultTableModel model3) {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
 		
@@ -56,15 +71,28 @@ public class MatchDetailInfoPanel extends JPanel {
 		
 		table_2 = new JTable();
 		table_2.setModel(model3);
+		int[] width={50,25,60,50,30,30,30,30};
+		table_2.setColumnModel(getColumn(table_2, width));
+		
 		
 		scrollPane_3 = new JScrollPane();
-		scrollPane_3.setBounds(200, 100, 600, 100);
+		scrollPane_3.setBounds(250, 100, 500, 100);
 		scrollPane_3.setViewportView(table_2);
 		panelOfBottom.add(scrollPane_3);
 		
 		btnNewButton = new JButton("返回");
 		btnNewButton.setBounds(450, 250, 120, 25);
 		panelOfBottom.add(btnNewButton);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(50, 50, 200, 150);
+		lblNewLabel.setIcon(ii[0]);
+		panelOfBottom.add(lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(750, 50, 200, 150);
+		lblNewLabel_1.setIcon(ii[1]);
+		panelOfBottom.add(lblNewLabel_1);
 		
 		btnNewButton.addActionListener(new ActionListener(){
 

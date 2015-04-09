@@ -43,7 +43,7 @@ public class TeamsInfoFrame {
 	public static JTable table;
 	public static JTable table_1;
 
-	public static JLabel teamPicture;
+	public JLabel teamPicture;
 
 	public static JScrollPane scrollPane;
 	
@@ -66,16 +66,20 @@ public class TeamsInfoFrame {
 		tabbedPane.setBounds(60, 231, 800, 500);
 		
 		JScrollPane scrollPane_5 = new JScrollPane();
-		scrollPane_5.setBounds(60, 60, 600, 60);
+		scrollPane_5.setBounds(300, 60, 600, 60);
 
 		table = new JTable();
 		table.setFont(new Font("黑体", Font.PLAIN, 20));
-		scrollPane_5.setViewportView(table);
 		table.setModel(model);
+		scrollPane_5.setViewportView(table);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(700, 45, 250, 150);
 		panel_2.setLayout(null);
+		
+		teamPicture = new JLabel("");
+		teamPicture.setBounds(50, 20, 250, 150);
+		teamPicture.setIcon(ii);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setPreferredSize(new Dimension(1100, 1000));
@@ -84,7 +88,8 @@ public class TeamsInfoFrame {
 		panel_1.add(panel);
 		panel_1.add(panel_2);
 		panel_1.add(tabbedPane);
-
+		panel_1.add(teamPicture);
+		
 		scrollPane = new JScrollPane(panel_1);
 		scrollPane.setBounds(0, 0, 990, 560);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
@@ -117,7 +122,7 @@ public class TeamsInfoFrame {
 		comboBox.addItem("抢断效率");
 		comboBox.addItem("助攻率");
 		comboBox.setSelectedItem(TeamsSelectionFrame.selection);
-		comboBox.setBounds(510, 148, 150, 30);
+		comboBox.setBounds(700, 200, 150, 30);
 		panel_1.add(comboBox);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -128,13 +133,7 @@ public class TeamsInfoFrame {
 		table_1.setModel(model1);
 		table_1.setRowSorter(new TableRowSorter<TableModel>(model1));
 		scrollPane_1.setViewportView(table_1);
-		
-		teamPicture = new JLabel("");
-		teamPicture.setBounds(700, 27, 250, 150);
-		panel_1.add(teamPicture);
-		teamPicture.setIcon(ii);
-				
-						
+		tabbedPane.addTab("球队信息", null, scrollPane_1, null);
 		
 		comboBox.addActionListener(new ActionListener(){
 

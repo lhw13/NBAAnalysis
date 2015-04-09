@@ -226,7 +226,7 @@ public class PlayerInfoPanel extends JPanel {
 		panelOfBottom.add(comboBox);
 		
 		comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"选择月份", "01", "02", "03", "04", "09", "10", "11", "12"}));
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"选择月份", "01", "02", "03", "04", "10", "11", "12"}));
 		comboBox_1.setBounds(366, 425, 110, 29);
 		panelOfBottom.add(comboBox_1);
 		

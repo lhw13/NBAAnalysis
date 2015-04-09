@@ -46,6 +46,7 @@ public class HotRankingPanel extends JPanel {
 	DefaultTableModel model_4 = new DefaultTableModel();
 	
 	BLService blservice = BLController.getInstance();
+	private JTable table_4;
 	public HotRankingPanel() {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
@@ -59,26 +60,29 @@ public class HotRankingPanel extends JPanel {
 		scrollPane_1.setBounds(38, 108, 452, 154);
 		panelOfBottom.add(scrollPane_1);
 		
-		table_1 = new JTable();
+		table_1 = new JTable(model_1);
 		scrollPane_1.setViewportView(table_1);
 		
 		scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(38, 335, 452, 154);
+		scrollPane_2.setBounds(500, 108, 452, 154);
 		panelOfBottom.add(scrollPane_2);
 		
-		table_2 = new JTable();
+		table_2 = new JTable(model_2);
 		scrollPane_2.setViewportView(table_2);
 		
 		scrollPane_3 = new JScrollPane();
-		scrollPane_3.setBounds(500, 108, 452, 154);
+		scrollPane_3.setBounds(38, 335, 452, 154);
 		panelOfBottom.add(scrollPane_3);
 		
-		table_3 = new JTable();
+		table_3 = new JTable(model_3);
 		scrollPane_3.setViewportView(table_3);
 		
 		scrollPane_4 = new JScrollPane();
 		scrollPane_4.setBounds(500, 335, 452, 154);
 		panelOfBottom.add(scrollPane_4);
+		
+		table_4 = new JTable(model_4);
+		scrollPane_4.setViewportView(table_4);
 		
 		final JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"个人技术",
@@ -449,7 +453,108 @@ public class HotRankingPanel extends JPanel {
 		table_3.updateUI();
 	}
 	
-	public void update4(ArrayList<TeamVO> teams, String con) {
+	public void update4(ArrayList<PlayerVO> players, String con) {
+		Vector rowDatas4 = new Vector();
+		switch(con) {
+		case "point":
+			for(int i=0;i<players.size()&&i<5;i++) {
+				Vector rowData4 = new Vector();
+				PlayerVO playerTemp = players.get(i);			
+				rowData4.add(playerTemp.getName());
+				rowData4.add(playerTemp.getTeamFullName());			
+				rowData4.add(playerTemp.getPosition());
+				rowData4.add(handleDecimal((double)playerTemp.getScore()/(double)playerTemp.getAppearance()));			
+				rowDatas4.add(rowData4);
+			}
+			break;
+		case "rebound":
+			for(int i=0;i<players.size()&&i<5;i++) {
+				Vector rowData4 = new Vector();
+				PlayerVO playerTemp = players.get(i);			
+				rowData4.add(playerTemp.getName());
+				rowData4.add(playerTemp.getTeamFullName());			
+				rowData4.add(playerTemp.getPosition());
+				rowData4.add(handleDecimal((double)playerTemp.getTotalRebound()/(double)playerTemp.getAppearance()));					
+				rowDatas4.add(rowData4);
+			}
+			break;
+		case "assist":
+			for(int i=0;i<players.size()&&i<5;i++) {
+				Vector rowData4 = new Vector();
+				PlayerVO playerTemp = players.get(i);			
+				rowData4.add(playerTemp.getName());
+				rowData4.add(playerTemp.getTeamFullName());			
+				rowData4.add(playerTemp.getPosition());
+				rowData4.add(handleDecimal((double)playerTemp.getAssist()/(double)playerTemp.getAppearance()));									
+				rowDatas4.add(rowData4);
+			}
+			break;
+		case "blockShot":
+			for(int i=0;i<players.size()&&i<5;i++) {
+				Vector rowData4 = new Vector();
+				PlayerVO playerTemp = players.get(i);			
+				rowData4.add(playerTemp.getName());
+				rowData4.add(playerTemp.getTeamFullName());			
+				rowData4.add(playerTemp.getPosition());
+				rowData4.add(handleDecimal((double)playerTemp.getBlock()/(double)playerTemp.getAppearance()));									
+				rowDatas4.add(rowData4);
+			}
+			break;
+		case "steal":
+			for(int i=0;i<players.size()&&i<5;i++) {
+				Vector rowData4 = new Vector();
+				PlayerVO playerTemp = players.get(i);			
+				rowData4.add(playerTemp.getName());
+				rowData4.add(playerTemp.getTeamFullName());			
+				rowData4.add(playerTemp.getPosition());
+				rowData4.add(handleDecimal((double)playerTemp.getSteal()/(double)playerTemp.getAppearance()));									
+				rowDatas4.add(rowData4);
+			}
+			break;
+/*		case "assist":
+			for(int i=0;i<players.size()&&i<5;i++) {
+				Vector rowData4 = new Vector();
+				PlayerVO playerTemp = players.get(i);			
+				rowData4.add(playerTemp.getName());
+				rowData4.add(playerTemp.getTeamFullName());			
+				rowData4.add(playerTemp.getPosition());
+				rowData4.add(handleDecimal((double)playerTemp.getAssist()/(double)playerTemp.getAppearance()));									
+				rowDatas4.add(rowData4);
+			}
+			break;
+		case "assist":
+			for(int i=0;i<players.size()&&i<5;i++) {
+				Vector rowData4 = new Vector();
+				PlayerVO playerTemp = players.get(i);			
+				rowData4.add(playerTemp.getName());
+				rowData4.add(playerTemp.getTeamFullName());			
+				rowData4.add(playerTemp.getPosition());
+				rowData4.add(handleDecimal((double)playerTemp.getAssist()/(double)playerTemp.getAppearance()));									
+				rowDatas4.add(rowData4);
+			}
+			break;
+		case "assist":
+			for(int i=0;i<players.size()&&i<5;i++) {
+				Vector rowData4 = new Vector();
+				PlayerVO playerTemp = players.get(i);			
+				rowData4.add(playerTemp.getName());
+				rowData4.add(playerTemp.getTeamFullName());			
+				rowData4.add(playerTemp.getPosition());
+				rowData4.add(handleDecimal((double)playerTemp.getAssist()/(double)playerTemp.getAppearance()));									
+				rowDatas4.add(rowData4);
+			}
+			break;*/
+		}
+			
 		
+		
+		
+			model_4.setDataVector(rowDatas4, columnName4);		
+			model_4.setColumnCount(table_4.getColumnCount());
+			model_4.setRowCount(rowDatas4.size());
+			table_4.setModel(model_4);
+//			int[] width={50,55,5,3,3,3,3,3,3,3,3,3,3,3};
+//			table_4.setColumnModel(getColumn(table_4, width));
+			table_4.updateUI();
 	}
 }

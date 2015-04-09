@@ -95,13 +95,13 @@ public class TeamsInfoFrame {
 		panel_1.add(tabbedPane);
 
 		scrollPane = new JScrollPane(panel_1);
-		scrollPane.setBounds(0, 0, 990, 560);
+		scrollPane.setBounds(0, 100, 990, 560);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		
 		comboBox = new JComboBox<String>();
 		comboBox.addItem("投篮命中数");
 		comboBox.addItem("投篮出手数");
-		comboBox.addItem("三分命中");
+		comboBox.addItem("三分命中数");
 		comboBox.addItem("三分出手数");
 		comboBox.addItem("罚球命中数");
 		comboBox.addItem("罚球出手数");

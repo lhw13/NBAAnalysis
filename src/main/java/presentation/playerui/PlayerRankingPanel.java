@@ -47,7 +47,7 @@ public class PlayerRankingPanel extends JPanel {
 		setLayout(null);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 0, 990, 560);
+		scrollPane.setBounds(0, 100, 990, 560);
 
 		JPanel panel = new JPanel();
 		panel.setLayout(null);

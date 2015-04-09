@@ -19,7 +19,7 @@ public class MatchDetailInfoPanel extends JPanel {
 		setLayout(null);
 		
 		scrollPane = new JScrollPane();
-		scrollPane.setRowHeaderView(panelOfBottom);
+		scrollPane.setViewportView(panelOfBottom);
 		scrollPane.setBounds(0, 0, 990, 600);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		add(scrollPane);
@@ -28,7 +28,7 @@ public class MatchDetailInfoPanel extends JPanel {
 		panelOfBottom.setLayout(null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(66, 155, 720, 199);
+		scrollPane_1.setBounds(50, 50, 700, 300);
 		panelOfBottom.add(scrollPane_1);
 		
 		table = new JTable();
@@ -45,7 +45,7 @@ public class MatchDetailInfoPanel extends JPanel {
 		scrollPane_1.setViewportView(table);
 		
 		scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(66, 427, 720, 163);
+		scrollPane_2.setBounds(50, 400, 700, 300);
 		panelOfBottom.add(scrollPane_2);
 		
 		table_1 = new JTable();

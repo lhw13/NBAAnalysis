@@ -27,6 +27,7 @@ import org.jvnet.substance.theme.SubstanceEbonyTheme;
 import org.jvnet.substance.title.Glass3DTitlePainter;
 import org.jvnet.substance.watermark.SubstanceWoodWatermark;
 
+import presentation.matchui.MatchSelectionPanel;
 import presentation.playerui.PlayerInfoPanel;
 import presentation.playerui.PlayerRankingPanel;
 import presentation.playerui.PlayerSelectionPanel;
@@ -77,7 +78,10 @@ public class MainFrame {
 	public JLabel lblNewLabel_3;
 	public JLabel lblNewLabel_3Back;
 
-	static BLController compute;
+	public JLabel lblNewLabel_4;
+	public JLabel lblNewLabel_4Back;
+	
+	private static BLController compute;
 
 	public static String table_1_columns[] = { "球队", "场数", "投篮命中数(场均)", "投篮命中数(总计)" };
 
@@ -143,10 +147,17 @@ public class MainFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initPanels() {
+		//初始化查询面板
+		new MatchSelectionPanel();
+		frame.getContentPane().add(MatchSelectionPanel.scrollPane);
+		MatchSelectionPanel.scrollPane.setVisible(false);
+		
+		//初始化球队选择面板
 		TeamsSelectionFrame window = new TeamsSelectionFrame();
 		frame.getContentPane().add(TeamsSelectionFrame.scrollPane);
 		TeamsSelectionFrame.scrollPane.setVisible(false);
 
+		//初始化球队信息面板
 		Object table_3_rows[][] = { {"球队", "球队缩写", "所在地", "赛区", "分区", "主场", "建立时间"}, };
 		DefaultTableModel model3 = new DefaultTableModel(table_3_rows,
 				table_4_columns) {
@@ -170,6 +181,7 @@ public class MainFrame {
 		frame.getContentPane().add(TeamsInfoFrame.scrollPane);
 		TeamsInfoFrame.scrollPane.setVisible(false);
 
+		//初始化球队排名面板
 		Object table_1_rows[][] = { {"湖人", 82, 1000, 1000}, };
 		DefaultTableModel model0 = new DefaultTableModel(table_1_rows,
 				table_1_columns) {
@@ -183,10 +195,12 @@ public class MainFrame {
 		frame.getContentPane().add(TeamsRankingFrame.scrollPane);
 		TeamsRankingFrame.scrollPane.setVisible(false);
 
+		//初始化球员选择面板
 		new PlayerSelectionPanel();
 		frame.getContentPane().add(PlayerSelectionPanel.scrollPane);
 		PlayerSelectionPanel.scrollPane.setVisible(false);
 		
+		//初始化球员排名面板
 		Object table_rows[][] = { { "科比", "中锋", "西部西南区", 999, 888}, };
 		String table_columns[] = { "球员", "位置", "赛区", "得分(场均)", "得分(总计)"};
 		DefaultTableModel model1 = new DefaultTableModel(table_rows,
@@ -201,6 +215,7 @@ public class MainFrame {
 		frame.getContentPane().add(PlayerRankingPanel.scrollPane);
 		PlayerRankingPanel.scrollPane.setVisible(false);
 
+		//初始化球员信息面板
 		pip = new PlayerInfoPanel();
 		frame.getContentPane().add(PlayerInfoPanel.scrollPane);
 		PlayerInfoPanel.scrollPane.setVisible(false);
@@ -211,21 +226,21 @@ public class MainFrame {
 			if (flag) {
 				if (x1 > -500) {
 					x1--;
-					lblNewLabel.setLocation(x1, 0);
+					lblNewLabel.setLocation(x1, 100);
 				}
 				if (x2 < 0) {
 					x2++;
-					lblNewLabelBack.setLocation(x2, 0);
+					lblNewLabelBack.setLocation(x2, 100);
 
 				}
 			} else {
 				if (x1 < 0) {
 					x1++;
-					lblNewLabel.setLocation(x1, 0);
+					lblNewLabel.setLocation(x1, 100);
 				}
 				if (x2 > -500) {
 					x2--;
-					lblNewLabelBack.setLocation(x2, 0);
+					lblNewLabelBack.setLocation(x2, 100);
 
 				}
 			}
@@ -233,20 +248,20 @@ public class MainFrame {
 			if (flag0) {
 				if (x3 > -500) {
 					x3--;
-					lblNewLabel_1.setLocation(x3, 300);
+					lblNewLabel_1.setLocation(x3, 400);
 				}
 				if (x4 < 0) {
 					x4++;
-					lblNewLabel_1Back.setLocation(x4, 300);
+					lblNewLabel_1Back.setLocation(x4, 400);
 				}
 			} else {
 				if (x3 < 0) {
 					x3++;
-					lblNewLabel_1.setLocation(x3, 300);
+					lblNewLabel_1.setLocation(x3, 400);
 				}
 				if (x4 > -500) {
 					x4--;
-					lblNewLabel_1Back.setLocation(x4, 300);
+					lblNewLabel_1Back.setLocation(x4, 400);
 
 				}
 			}
@@ -254,20 +269,20 @@ public class MainFrame {
 			if (flag1) {
 				if (x5 < 1000) {
 					x5++;
-					lblNewLabel_2.setLocation(x5, 0);
+					lblNewLabel_2.setLocation(x5, 100);
 				}
 				if (x6 > 500) {
 					x6--;
-					lblNewLabel_2Back.setLocation(x6, 0);
+					lblNewLabel_2Back.setLocation(x6, 100);
 				}
 			} else {
 				if (x5 > 500) {
 					x5--;
-					lblNewLabel_2.setLocation(x5, 0);
+					lblNewLabel_2.setLocation(x5, 100);
 				}
 				if (x6 < 1000) {
 					x6++;
-					lblNewLabel_2Back.setLocation(x6, 0);
+					lblNewLabel_2Back.setLocation(x6, 100);
 
 				}
 			}
@@ -275,20 +290,20 @@ public class MainFrame {
 			if (flag2) {
 				if (x7 < 1000) {
 					x7++;
-					lblNewLabel_3.setLocation(x7, 300);
+					lblNewLabel_3.setLocation(x7, 400);
 				}
 				if (x8 > 500) {
 					x8--;
-					lblNewLabel_3Back.setLocation(x8, 300);
+					lblNewLabel_3Back.setLocation(x8, 400);
 				}
 			} else {
 				if (x7 > 500) {
 					x7--;
-					lblNewLabel_3.setLocation(x7, 300);
+					lblNewLabel_3.setLocation(x7, 400);
 				}
 				if (x8 < 1000) {
 					x8++;
-					lblNewLabel_3Back.setLocation(x8, 300);
+					lblNewLabel_3Back.setLocation(x8, 400);
 
 				}
 			}
@@ -300,7 +315,7 @@ public class MainFrame {
 
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 1000, 600);
+		frame.setBounds(100, 100, 1000, 700);
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(
 				"pictures\\NBA.jpg"));
 		frame.setTitle("NBA");
@@ -308,11 +323,11 @@ public class MainFrame {
 		frame.getContentPane().setLayout(null);
 
 		panel = new JPanel();
-		panel.setBounds(0, 0, 1000, 600);
+		panel.setBounds(0, 0, 1000, 700);
 		panel.setLayout(null);
-
+		
 		lblNewLabel = new JLabel("");
-		lblNewLabel.setLocation(0, 0);
+		lblNewLabel.setLocation(0, 100);
 		lblNewLabel.setSize(500, 300);
 
 		ImageIcon ii = new ImageIcon("pictures\\P1.png");
@@ -345,7 +360,7 @@ public class MainFrame {
 		});
 
 		lblNewLabelBack = new JLabel("");
-		lblNewLabelBack.setLocation(-500, 0);
+		lblNewLabelBack.setLocation(-500, 100);
 		lblNewLabelBack.setSize(500, 300);
 		ImageIcon ii0 = new ImageIcon("pictures\\P1_1.png");
 		lblNewLabelBack.setIcon(ii0);
@@ -390,7 +405,7 @@ public class MainFrame {
 
 		lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon("pictures\\P2.PNG"));
-		lblNewLabel_1.setBounds(0, 300, 500, 300);
+		lblNewLabel_1.setBounds(0, 400, 500, 300);
 		panel.add(lblNewLabel_1);
 
 		lblNewLabel_1.addMouseListener(new MouseListener() {
@@ -423,7 +438,7 @@ public class MainFrame {
 		});
 
 		lblNewLabel_1Back = new JLabel("");
-		lblNewLabel_1Back.setLocation(-500, 300);
+		lblNewLabel_1Back.setLocation(-500, 400);
 		lblNewLabel_1Back.setSize(500, 300);
 		ImageIcon ii1 = new ImageIcon("pictures\\P2_1.png");
 		lblNewLabel_1Back.setIcon(ii1);
@@ -464,7 +479,7 @@ public class MainFrame {
 		});
 
 		lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setLocation(500, 0);
+		lblNewLabel_2.setLocation(500, 100);
 		lblNewLabel_2.setSize(500, 300);
 		ImageIcon ii2 = new ImageIcon("pictures\\P3.png");
 		lblNewLabel_2.setIcon(ii2);
@@ -500,7 +515,7 @@ public class MainFrame {
 		});
 
 		lblNewLabel_2Back = new JLabel("");
-		lblNewLabel_2Back.setLocation(1000, 0);
+		lblNewLabel_2Back.setLocation(1000, 100);
 		lblNewLabel_2Back.setSize(500, 300);
 		ImageIcon ii3 = new ImageIcon("pictures\\P3_1.png");
 		lblNewLabel_2Back.setIcon(ii3);
@@ -540,7 +555,7 @@ public class MainFrame {
 		});
 
 		lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setLocation(500, 300);
+		lblNewLabel_3.setLocation(500, 400);
 		lblNewLabel_3.setSize(500, 300);
 		ImageIcon ii4 = new ImageIcon("pictures\\P4.png");
 		lblNewLabel_3.setIcon(ii4);
@@ -576,7 +591,7 @@ public class MainFrame {
 		});
 
 		lblNewLabel_3Back = new JLabel("");
-		lblNewLabel_3Back.setLocation(1000, 0);
+		lblNewLabel_3Back.setLocation(1000, 400);
 		lblNewLabel_3Back.setSize(500, 300);
 		ImageIcon ii5 = new ImageIcon("pictures\\P4_1.png");
 		lblNewLabel_3Back.setIcon(ii5);
@@ -613,6 +628,39 @@ public class MainFrame {
 				lblNewLabel_3Back.setCursor(Cursor.getDefaultCursor());
 			}
 		});
+		
+		lblNewLabel_4 = new JLabel("查询");
+		lblNewLabel_4.setLocation(0, 0);
+		lblNewLabel_4.setSize(1000, 100);
+		panel.add(lblNewLabel_4);
+		
+		lblNewLabel_4.addMouseListener(new MouseListener() {
+
+			public void mouseClicked(java.awt.event.MouseEvent e) {
+				try {
+					MainFrame.panel.setVisible(false);
+					MatchSelectionPanel.scrollPane.setVisible(true);
+					MainFrame.frame.setTitle("查询");
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+
+			public void mousePressed(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent e) {
+
+			}
+
+		});
 
 		frame.getContentPane().add(panel);
 
@@ -620,6 +668,10 @@ public class MainFrame {
 
 	}
 
+	public static void searchTheMatch(String date){
+		
+	}
+	
 	public static void setTeamsRanking() {// 设置球队排名面板信息
 		MainFrame.panel.setVisible(false);
 		MainFrame.frame.setTitle("NBA球队排名");

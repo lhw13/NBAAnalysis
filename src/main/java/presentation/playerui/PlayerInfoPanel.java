@@ -220,8 +220,7 @@ public class PlayerInfoPanel extends JPanel {
 		
 		JLabel label = new JLabel("最近五场统计");
 		label.setBounds(5, 425, 110, 29);
-		panelOfBottom.add(label);
-		
+		panelOfBottom.add(label);	
 		
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"选择年份", "2015", "2014", "2013"}));
 		comboBox.setBounds(246, 425, 110, 29);
@@ -253,7 +252,9 @@ public class PlayerInfoPanel extends JPanel {
 		JLabel lblNewLabel = new JLabel("过往查询");
 		lblNewLabel.setBounds(174, 425, 64, 29);
 		panelOfBottom.add(lblNewLabel);
-		scrollPane.setBounds(0, 0, 990, 600);
+		//scrollPane.setBounds(0, 0, 990, 600);
+
+		scrollPane.setBounds(0, 100, 990, 600);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		add(scrollPane);
 

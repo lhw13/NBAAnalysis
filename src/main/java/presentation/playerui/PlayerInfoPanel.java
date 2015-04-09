@@ -210,8 +210,7 @@ public class PlayerInfoPanel extends JPanel {
 			};
 		for(int i=0;i<cname8.length;i++) {
 			columnName8.add(cname8[i]);
-		}
-		
+		}	
 		
 		table_8 = new JTable(model_8);
 		
@@ -222,7 +221,7 @@ public class PlayerInfoPanel extends JPanel {
 		label.setBounds(5, 425, 110, 29);
 		panelOfBottom.add(label);	
 		
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"选择年份", "2015", "2014", "2013"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"选择赛季", "13-14"}));
 		comboBox.setBounds(246, 425, 110, 29);
 		panelOfBottom.add(comboBox);
 		
@@ -586,10 +585,10 @@ public class PlayerInfoPanel extends JPanel {
 			MatchPO matchTemp = matches.get(i);
 			SimpleDateFormat sdf8 = new SimpleDateFormat("yyyy-MM-dd");
 			String dateStr8 = sdf8.format(matchTemp.getDate().getTime());
-			String year = (String) comboBox.getSelectedItem();
+			String[] time =  dateStr8.split("-");
+			String season = (String) comboBox.getSelectedItem();
 			String month = (String) comboBox_1.getSelectedItem();
-			String con = year+"-"+month;
-			if(!dateStr8.startsWith(con)) continue;
+			if((!matchTemp.getSeason().equals(season))||(!month.equals(time[1]))) continue;
 			TeamInMatchesPO team = null;
 			
 			if(matchTemp.getTeam1().getAbbreviation().equals

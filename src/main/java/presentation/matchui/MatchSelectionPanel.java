@@ -70,11 +70,6 @@ public class MatchSelectionPanel extends JPanel {
 		comboBox_1.addItem(2);
 		comboBox_1.addItem(3);
 		comboBox_1.addItem(4);
-		comboBox_1.addItem(5);
-		comboBox_1.addItem(6);
-		comboBox_1.addItem(7);
-		comboBox_1.addItem(8);
-		comboBox_1.addItem(9);
 		comboBox_1.addItem(10);
 		comboBox_1.addItem(11);
 		comboBox_1.addItem(12);
@@ -105,34 +100,14 @@ public class MatchSelectionPanel extends JPanel {
 					MainFrame.searchTheMatch();
 					break;
 				case 4:
-					MainFrame.date=5;
-					MainFrame.searchTheMatch();
-					break;
-				case 5:
-					MainFrame.date=6;
-					MainFrame.searchTheMatch();
-					break;
-				case 6:
-					MainFrame.date=7;
-					MainFrame.searchTheMatch();
-					break;
-				case 7:
-					MainFrame.date=8;
-					MainFrame.searchTheMatch();
-					break;
-				case 8:
-					MainFrame.date=9;
-					MainFrame.searchTheMatch();
-					break;
-				case 9:
 					MainFrame.date=10;
 					MainFrame.searchTheMatch();
 					break;
-				case 10:
+				case 5:
 					MainFrame.date=11;
 					MainFrame.searchTheMatch();
 					break;
-				case 11:
+				case 6:
 					MainFrame.date=12;
 					MainFrame.searchTheMatch();
 					break;
@@ -143,6 +118,8 @@ public class MatchSelectionPanel extends JPanel {
 		
 		table = new JTable();
 		table.setModel(model);
+		
+		
 		
 		scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(50, 100, 700, 400);

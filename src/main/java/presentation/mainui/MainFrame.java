@@ -711,7 +711,7 @@ public class MainFrame {
 		lblNewLabel_4Back = new JLabel("");
 		lblNewLabel_4Back.setLocation(400, -300);
 		lblNewLabel_4Back.setSize(200, 300);
-		ImageIcon ii7 = new ImageIcon("pictures\\P5.png");
+		ImageIcon ii7 = new ImageIcon("pictures\\P5_1.png");
 		lblNewLabel_4Back.setIcon(ii7);
 		panel.add(lblNewLabel_4Back);
 		
@@ -731,12 +731,13 @@ public class MainFrame {
 			public void mouseReleased(java.awt.event.MouseEvent e) {
 			}
 
-			public void mouseEntered(java.awt.event.MouseEvent e) {
-
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_4Back.setCursor(Cursor
+						.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 
-			public void mouseExited(java.awt.event.MouseEvent e) {
-
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_4Back.setCursor(Cursor.getDefaultCursor());
 			}
 
 		});

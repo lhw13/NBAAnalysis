@@ -253,7 +253,7 @@ public class PlayerInfoPanel extends JPanel {
 		panelOfBottom.add(lblNewLabel);
 		//scrollPane.setBounds(0, 0, 990, 600);
 
-		scrollPane.setBounds(0, 100, 990, 600);
+		scrollPane.setBounds(0, 0, 990, 600);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		add(scrollPane);
 

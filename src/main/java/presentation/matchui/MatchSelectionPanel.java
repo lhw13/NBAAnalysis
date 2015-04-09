@@ -11,6 +11,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import presentation.mainui.MainFrame;
+import presentation.teamsui.TeamsRankingFrame;
+
+import javax.swing.JButton;
 
 public class MatchSelectionPanel extends JPanel {
 	public static JScrollPane scrollPane;
@@ -126,5 +129,20 @@ public class MatchSelectionPanel extends JPanel {
 		panelOfBottom.add(scrollPane_1);
 		
 		scrollPane_1.setViewportView(table);
+		
+		JButton btnNewButton = new JButton("返回");
+		btnNewButton.setBounds(50, 50, 100, 30);
+		panelOfBottom.add(btnNewButton);
+		
+		btnNewButton.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MatchSelectionPanel.scrollPane.setVisible(false);
+				MainFrame.panel.setVisible(true);
+				MainFrame.frame.setTitle("NBA");
+			}
+			
+		});
 	}
 }

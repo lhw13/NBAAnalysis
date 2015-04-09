@@ -162,7 +162,7 @@ public class MatchSelectionPanel extends JPanel {
 			String name = null;
 			if (temp != null)
 				name = temp.toString();
-			 
+			  
 			try {
 				if (name != null) {
 					setMatchInfo();

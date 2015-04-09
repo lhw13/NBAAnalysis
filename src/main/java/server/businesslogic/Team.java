@@ -256,21 +256,21 @@ public class Team {
 		return (double) score2 / getDefendRound() * 100;
 	}
 
-	private double getOffendReboundEfficient() {// 进攻篮板效率
+	public double getOffendReboundEfficient() {// 进攻篮板效率
 		return (double) offendRebound
 				/ (offendRebound + defensiveRebound2);
 	}
 
-	private double getDefendReboundEfficient() {
+	public double getDefendReboundEfficient() {
 		return (double) defendRebound
 				/ (defendRebound + offensiveRebound2);
 	}
 
-	private double getStealEfficient() {
+	public double getStealEfficient() {
 		return (double) steal / getDefendRound() * 100;
 	}
 
-	private double getAssistEfficient() {
+	public double getAssistEfficient() {
 		return (double) assist / getOffendRound() * 100;
 	}
 

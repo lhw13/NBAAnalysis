@@ -50,7 +50,7 @@ public class BLController implements BLService {
 	
 	public ArrayList<Team> getHotTeam(String sortCon) {
 		analyse();
-		sortTeams(teams,sortCon);
+		sortTeams(sortCon);
 		return teams;
 	}
 
@@ -347,16 +347,91 @@ public class BLController implements BLService {
 			return t1.getPenalty()>t2.getPenalty()?1:-1;
 		}
 	};
-	private void sortTeams(ArrayList<Team> h,String sort) {
-		switch(sort) {
-		case "point": Collections.sort(h, TeamByPoint);break;
-		case "score": Collections.sort(h, TeamByPoint);break;
-		case "rebound": Collections.sort(h, TeamByRebound);break;
-		case "assist": Collections.sort(h, TeamByAssist);break;
-		case "steal": Collections.sort(h, TeamBySteal);break;
-		case "three": Collections.sort(h, TeamByThree);break;
-		case "shot": Collections.sort(h, TeamByShot);break;
-		case "penalty": Collections.sort(h, TeamByPenalty);break;
+	private static final Comparator<Team> TeamByFoul = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.foul>t2.foul?1:-1;
 		}
+	};
+	private static final Comparator<Team> TeamByFault = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.fault>t2.fault?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByDefendRebound = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.defendRebound>t2.defendRebound?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByWinRate = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.offendRebound>t2.offendRebound?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByOffendRebound = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.offendRebound>t2.offendRebound?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByOffendRound = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getOffendRound()>t2.getOffendRound()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByOffendEfficient = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getOffendEfficient()>t2.getOffendEfficient()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByDefendEfficient = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getDefendEfficient()>t2.getDefendEfficient()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByOffendReboundEfficient = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getOffendReboundEfficient()>t2.getOffendReboundEfficient()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByDefendReboundEfficient = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getDefendReboundEfficient()>t2.getDefendReboundEfficient()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByStealEfficient = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getStealEfficient()>t2.getStealEfficient()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByAssistEfficient = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getAssistEfficient()>t2.getAssistEfficient()?1:-1;
+		}
+	};
+	public boolean sortTeams(String sort) {
+		switch(sort) {
+		case "point": Collections.sort(teams, TeamByPoint);break;
+		case "score": Collections.sort(teams, TeamByPoint);break;
+		case "rebound": Collections.sort(teams, TeamByRebound);break;
+		case "blockShot": Collections.sort(teams, TeamByBlock);break;
+		case "assist": Collections.sort(teams, TeamByAssist);break;
+		case "steal": Collections.sort(teams, TeamBySteal);break;
+		case "foul": Collections.sort(teams, TeamByFoul);break;
+		case "fault": Collections.sort(teams, TeamByFault);break;
+		case "three": Collections.sort(teams, TeamByThree);break;
+		case "shot": Collections.sort(teams, TeamByShot);break;
+		case "penalty": Collections.sort(teams, TeamByPenalty);break;
+		case "defendRebound": Collections.sort(teams, TeamByDefendRebound);break;
+		case "offendRebound": Collections.sort(teams, TeamByOffendRebound);break;
+		case "winRate": Collections.sort(teams, TeamByWinRate);break;
+		case "offendRound": Collections.sort(teams, TeamByOffendRound);break;
+		case "offendEfficient": Collections.sort(teams, TeamByOffendEfficient);break;
+		case "defendEfficient": Collections.sort(teams, TeamByDefendEfficient);break;
+		case "offendReboundEfficient": Collections.sort(teams, TeamByOffendReboundEfficient);break;
+		case "defendReboundEfficient": Collections.sort(teams, TeamByDefendReboundEfficient);break;
+		case "stealEfficient": Collections.sort(teams, TeamByStealEfficient);break;
+		case "assistEfficient": Collections.sort(teams, TeamByAssistEfficient);break;
+		default: return false;
+		}
+		return true;
 	}
 }

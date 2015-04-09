@@ -35,6 +35,9 @@ import server.po.PlayerInMatchesPO;
 import server.po.TeamInMatchesPO;
 import vo.PlayerVO;
 
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+
 public class PlayerInfoPanel extends JPanel {
 	JPanel panelOfBottom = new JPanel();
 	public static JScrollPane scrollPane;
@@ -89,11 +92,15 @@ public class PlayerInfoPanel extends JPanel {
 	Vector columnName8 = new Vector();
 	
 	BLService blservice = BLController.getInstance();
+	PlayerVO vo;
+	String playerName;
 	private JTable table_5;
 	private JTable table_6;
 	private JTable table_7;
 	private JTable table_8;
-
+	private JComboBox comboBox_1;
+	JComboBox comboBox = new JComboBox();
+	private JButton btnNewButton;
 	public PlayerInfoPanel() {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
@@ -214,6 +221,38 @@ public class PlayerInfoPanel extends JPanel {
 		JLabel label = new JLabel("最近五场统计");
 		label.setBounds(5, 425, 110, 29);
 		panelOfBottom.add(label);
+		
+		
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"选择年份", "2015", "2014", "2013"}));
+		comboBox.setBounds(246, 425, 110, 29);
+		panelOfBottom.add(comboBox);
+		
+		comboBox_1 = new JComboBox();
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"选择月份", "01", "02", "03", "04", "09", "10", "11", "12"}));
+		comboBox_1.setBounds(366, 425, 110, 29);
+		panelOfBottom.add(comboBox_1);
+		
+		JButton button_1 = new JButton("确定");
+		button_1.setBounds(489, 424, 93, 30);
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				showPass();
+			}
+		});
+		panelOfBottom.add(button_1);
+		
+		btnNewButton = new JButton("最新");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				backToLatest();
+			}
+		});
+		btnNewButton.setBounds(592, 424, 93, 30);
+		panelOfBottom.add(btnNewButton);
+		
+		JLabel lblNewLabel = new JLabel("过往查询");
+		lblNewLabel.setBounds(174, 425, 64, 29);
+		panelOfBottom.add(lblNewLabel);
 		scrollPane.setBounds(0, 0, 990, 600);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		add(scrollPane);
@@ -228,6 +267,7 @@ public class PlayerInfoPanel extends JPanel {
 	    return columns;  
 	}  
 	public void update(String name) {
+		playerName = name;
 		picture = ImageHandle.loadPlayer(name);
 		pictureOfAct = ImageHandle.loadPlayerAct(name);
 		labelOfPhoto.setIcon(picture);
@@ -235,7 +275,7 @@ public class PlayerInfoPanel extends JPanel {
 				labelOfAct.getWidth(), labelOfAct.getHeight(),
 				Image.SCALE_DEFAULT));
 		labelOfAct.setIcon(pictureOfAct);
-		PlayerVO vo = blservice.getPlayerAnalysis(name);
+		vo = blservice.getPlayerAnalysis(name);
 		if (vo == null)
 			return;
 		Vector rowData = new Vector();
@@ -453,7 +493,7 @@ public class PlayerInfoPanel extends JPanel {
 				if(playerTemp.getName().equals(vo.getName())) break; 
 			}
 			
-			SimpleDateFormat sdf8 = new SimpleDateFormat("yyyy-MM-dd");
+			
 			String dateStr8 = sdf.format(matchTemp.getDate().getTime());
 			rowData8.add(dateStr8);//日期
 			rowData8.add(matchTemp.getFinalScore().toString()+" "+					
@@ -475,14 +515,6 @@ public class PlayerInfoPanel extends JPanel {
 			rowDatas8.add(rowData8);
 		}
 		
-		
-
-//		for (int i = 0; i < rowDatas8.size(); i++) {
-//			for (int j = 0; j < table_8.getColumnCount(); j++) {
-//				model_8.setValueAt(((Vector) rowDatas8.get(i)).get(j), i, j);
-//			}
-//		}
-		
 		model_8.setDataVector(rowDatas8, columnName8);		
 		model_8.setColumnCount(table_8.getColumnCount());
 		model_8.setRowCount(rowDatas8.size());
@@ -492,6 +524,115 @@ public class PlayerInfoPanel extends JPanel {
 		table_8.updateUI();
 	}
 
+	public void backToLatest() {
+		Vector rowDatas8 = new Vector();
+		vo = blservice.getPlayerAnalysis(playerName);
+		update(playerName);
+		ArrayList<MatchPO> matches = vo.getMatches();
+		for(int i=0;i<matches.size()&&i<5;i++) {
+			Vector rowData8 = new Vector();
+			MatchPO matchTemp = matches.get(i);
+			TeamInMatchesPO team = null;
+			if(matchTemp.getTeam1().getAbbreviation().equals
+					(vo.getTeamAbbreviation())){
+				team = matchTemp.getTeam1();
+			} else {
+				team = matchTemp.getTeam2();
+			}
+			ArrayList<PlayerInMatchesPO> playersInMatch = team.getPlayers();
+			PlayerInMatchesPO playerTemp = null; 
+			for(int j=0;j<playersInMatch.size();j++) {
+				playerTemp = playersInMatch.get(j);
+				if(playerTemp.getName().equals(vo.getName())) break; 
+			}
+			
+			SimpleDateFormat sdf8 = new SimpleDateFormat("yyyy-MM-dd");
+			String dateStr8 = sdf8.format(matchTemp.getDate().getTime());
+			rowData8.add(dateStr8);//日期
+			rowData8.add(matchTemp.getFinalScore().toString()+" "+					
+					matchTemp.getTeam2().getAbbreviation());//得分
+			rowData8.add(playerTemp.getPlayTime());
+			rowData8.add(playerTemp.getHit()+"-"+playerTemp.getShot());
+			rowData8.add(playerTemp.getThirdHit()+"-"+playerTemp.getThirdshot());
+			rowData8.add(playerTemp.getFreeHit()+"-"+playerTemp.getFreeshot());
+			rowData8.add(playerTemp.getOffensiveRebound());
+			rowData8.add(playerTemp.getDefensiveRebound());
+			rowData8.add(playerTemp.getTotalRebound());
+			rowData8.add(playerTemp.getAssist());
+			rowData8.add(playerTemp.getSteal());
+			rowData8.add(playerTemp.getBlock());
+			rowData8.add(playerTemp.getMiss());
+			rowData8.add(playerTemp.getFoul());
+			rowData8.add(playerTemp.getScore());
+			
+			rowDatas8.add(rowData8);
+		}
+		
+		model_8.setDataVector(rowDatas8, columnName8);		
+		model_8.setColumnCount(table_8.getColumnCount());
+		model_8.setRowCount(rowDatas8.size());
+		table_8.setModel(model_8);
+		int[] width={50,55,5,3,3,3,3,3,3,3,3,3,3,3};
+		table_8.setColumnModel(getColumn(table_8, width));
+		table_8.updateUI();
+	}
+	public void showPass() {
+		Vector rowDatas8 = new Vector();
+		ArrayList<MatchPO> matches = vo.getMatches();
+		
+		for(int i=0;i<matches.size();i++) {
+			Vector rowData8 = new Vector();
+			MatchPO matchTemp = matches.get(i);
+			SimpleDateFormat sdf8 = new SimpleDateFormat("yyyy-MM-dd");
+			String dateStr8 = sdf8.format(matchTemp.getDate().getTime());
+			String year = (String) comboBox.getSelectedItem();
+			String month = (String) comboBox_1.getSelectedItem();
+			String con = year+"-"+month;
+			if(!dateStr8.startsWith(con)) continue;
+			TeamInMatchesPO team = null;
+			
+			if(matchTemp.getTeam1().getAbbreviation().equals
+					(vo.getTeamAbbreviation())){
+				team = matchTemp.getTeam1();
+			} else {
+				team = matchTemp.getTeam2();
+			}
+			ArrayList<PlayerInMatchesPO> playersInMatch = team.getPlayers();
+			PlayerInMatchesPO playerTemp = null; 
+			for(int j=0;j<playersInMatch.size();j++) {
+				playerTemp = playersInMatch.get(j);
+				if(playerTemp.getName().equals(vo.getName())) break; 
+			}
+			
+			
+			rowData8.add(dateStr8);//日期
+			rowData8.add(matchTemp.getFinalScore().toString()+" "+					
+					matchTemp.getTeam2().getAbbreviation());//得分
+			rowData8.add(playerTemp.getPlayTime());
+			rowData8.add(playerTemp.getHit()+"-"+playerTemp.getShot());
+			rowData8.add(playerTemp.getThirdHit()+"-"+playerTemp.getThirdshot());
+			rowData8.add(playerTemp.getFreeHit()+"-"+playerTemp.getFreeshot());
+			rowData8.add(playerTemp.getOffensiveRebound());
+			rowData8.add(playerTemp.getDefensiveRebound());
+			rowData8.add(playerTemp.getTotalRebound());
+			rowData8.add(playerTemp.getAssist());
+			rowData8.add(playerTemp.getSteal());
+			rowData8.add(playerTemp.getBlock());
+			rowData8.add(playerTemp.getMiss());
+			rowData8.add(playerTemp.getFoul());
+			rowData8.add(playerTemp.getScore());
+			
+			rowDatas8.add(rowData8);
+		}
+		
+		model_8.setDataVector(rowDatas8, columnName8);		
+		model_8.setColumnCount(table_8.getColumnCount());
+		model_8.setRowCount(rowDatas8.size());
+		table_8.setModel(model_8);
+		int[] width={50,55,5,3,3,3,3,3,3,3,3,3,3,3};
+		table_8.setColumnModel(getColumn(table_8, width));
+		table_8.updateUI();
+	}
 	// 保留小数点
 	public String handleDecimal(double f) {
 		return String.format("%.2f", f);

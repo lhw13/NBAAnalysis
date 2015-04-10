@@ -20,6 +20,9 @@ public class Team {
 	ArrayList<MatchPO> matches = new ArrayList<MatchPO>();
 	ArrayList<TeamInMatches> thisTeam = new ArrayList<TeamInMatches>();
 	ArrayList<TeamInMatches> opponentTeam = new ArrayList<TeamInMatches>();
+	
+	ArrayList<TeamInMatches> thisTeamPast = new ArrayList<TeamInMatches>();
+	ArrayList<TeamInMatches> opponentTeamPast = new ArrayList<TeamInMatches>();
 
 	// this team's data
 	int appearance = 0;// 比赛场数
@@ -131,6 +134,14 @@ public class Team {
 
 	public void addOpponentTeam(TeamInMatches tim) {
 		opponentTeam.add(tim);
+	}
+	
+	public void addThisTeamPast(TeamInMatches tim) {
+		thisTeamPast.add(tim);
+	}
+
+	public void addOpponentTeamPast(TeamInMatches tim) {
+		opponentTeamPast.add(tim);
 	}
 	
 	public void addMatch(MatchPO mp)
@@ -256,21 +267,21 @@ public class Team {
 		return (double) score2 / getDefendRound() * 100;
 	}
 
-	private double getOffendReboundEfficient() {// 进攻篮板效率
+	public double getOffendReboundEfficient() {// 进攻篮板效率
 		return (double) offendRebound
 				/ (offendRebound + defensiveRebound2);
 	}
 
-	private double getDefendReboundEfficient() {
+	public double getDefendReboundEfficient() {
 		return (double) defendRebound
 				/ (defendRebound + offensiveRebound2);
 	}
 
-	private double getStealEfficient() {
+	public double getStealEfficient() {
 		return (double) steal / getDefendRound() * 100;
 	}
 
-	private double getAssistEfficient() {
+	public double getAssistEfficient() {
 		return (double) assist / getOffendRound() * 100;
 	}
 

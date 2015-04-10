@@ -2,6 +2,7 @@ package server.businesslogic;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -25,7 +26,7 @@ import blservice.BLService;
 public class BLController implements BLService {
 	private BLController() {
 	}
-
+	static String season=null;
 	HashMap<String, Player> playersHash = new HashMap<String, Player>(606);
 	HashMap<String, Team> teamsHash = new HashMap<String, Team>(41);
 	ArrayList<Player> players = new ArrayList<Player>(460);// buffer for
@@ -40,6 +41,55 @@ public class BLController implements BLService {
 			instance = new BLController();
 		return instance;
 	}
+	
+	//iteration 2
+	public ArrayList<TeamVO> getHotTeamVO(String sortCon) {
+		return getHotTeamVO(sortCon,5);
+	}
+	public ArrayList<TeamVO> getHotTeamVO(String sortCon,int n) {
+		getHotTeam(sortCon);
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(int i=0;i<n && i<teams.size();i++)
+			result.add(teams.get(i).toVO());
+		return result;
+	}
+	
+	public ArrayList<Team> getHotTeam(String sortCon) {
+		analyse();
+		sortTeams(sortCon);
+		return teams;
+	}
+	
+	public ArrayList<PlayerVO> getHotPlayerVO(String sortCon, int n) {
+		analyse();
+		Comparator<Player> comp = getPlayerAvgComparator(sortCon);
+		if(comp==null)
+			comp = getPlayerComparator(sortCon);
+		Collections.sort(players, comp);
+		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		for(int i=0;i<n && i<players.size();i++)
+			result.add(players.get(i).toVO());
+		return result;
+	}
+	
+	public ArrayList<PlayerVO> getBestPromotion(String sortCon, int n) {
+		analyse();
+		switch(sortCon) {
+		case "point": Collections.sort(players, compareScorePromotionDesc);break;
+		case "score": Collections.sort(players, compareScorePromotionDesc);break;
+		case "assist": Collections.sort(players, compareAssistPromotionDesc);break;
+		case "rebound": Collections.sort(players, compareReboundPromotionDesc);break;
+		}
+		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		for(int i=0;i<n && i<players.size();i++)
+			result.add(players.get(i).toVO());
+		return result;
+	}
+	
+	//public ArrayList<Player> getDailyPlayer()
+	//{
+		
+	//}
 
 	// transform image of player or team
 	public ImageIcon getPlayerAction(String name) {
@@ -136,10 +186,15 @@ public class BLController implements BLService {
 									// speed of it
 		ArrayList<MatchPO> matches = data.getAllMatch();
 		Collections.sort(matches, new SortMatchesByCalendar());
+		int matchesSize = matches.size();
+		String thisSeason = matches.get(matchesSize-1).getSeason();
+		if(season==null || season.compareTo(thisSeason)<0)
+			season=thisSeason;
 		HashMap<String, TeamPO> teamPOHash = data.getAllTeams();
 		HashMap<String, PlayerPO> playerPOHash = data.getAllPlayers();
-		for (int i = matches.size() - 1; i >= 0; i--) {
+		for (int i = matchesSize - 1; i >= 0; i--) {
 			MatchPO mttemp = matches.get(i);
+			boolean theSeason = mttemp.getSeason().compareTo(season)<0;
 			ScorePO finalTemp = mttemp.getFinalScore();
 			ArrayList<ScorePO> scoresTemp = mttemp.getScores();
 			ArrayList<Integer> scores1 = new ArrayList<Integer>();
@@ -163,31 +218,83 @@ public class BLController implements BLService {
 
 			// put some data in team 1
 			String ab = timtemp1.getAbbreviation();
+			if(ab.equals("NOH") && season.compareTo("13-14")>=0)
+			{
+				Team foundTeam = teamsHash.get(ab);
+				ab = "NOP";
+				if(foundTeam!=null)
+				{
+					teamsHash.put(ab, foundTeam);
+					teamsHash.remove("NOH");
+				}
+			}
+			else if(ab.equals("CHA") && season.compareTo("14-15")>=0)
+			{
+				Team foundTeam = teamsHash.get(ab);
+				ab = "NO";
+				if(foundTeam!=null)
+				{
+					teamsHash.put(ab, foundTeam);
+					teamsHash.remove("CHA");
+				}
+			}
 			Team foundTeam = teamsHash.get(ab);
 			if (foundTeam == null) {
 				Team tTeam = new Team(teamPOHash.get(ab));
-				tTeam.addThisTeam(timtemp1);
-				tTeam.addOpponentTeam(timtemp2);
+				if(theSeason)
+				{//if the match belongs to this season
+					tTeam.addThisTeam(timtemp1);
+					tTeam.addOpponentTeam(timtemp2);
+				}
 				tTeam.addMatch(mttemp);
 				teamsHash.put(ab, tTeam);
 			} else {
-				foundTeam.addThisTeam(timtemp1);
-				foundTeam.addOpponentTeam(timtemp2);
+				if(theSeason)
+				{
+					foundTeam.addThisTeam(timtemp1);
+					foundTeam.addOpponentTeam(timtemp2);
+				}
 				foundTeam.addMatch(mttemp);
 			}
 
 			// put some data in team 2
 			ab = timtemp2.getAbbreviation();
+			if(ab.equals("NOH") && season.compareTo("13-14")>=0)
+			{
+				foundTeam = teamsHash.get(ab);
+				ab = "NOP";
+				if(foundTeam!=null)
+				{
+					teamsHash.put(ab, foundTeam);
+					teamsHash.remove("NOH");
+				}
+			}
+			else if(ab.equals("CHA") && season.compareTo("14-15")>=0)
+			{
+				foundTeam = teamsHash.get(ab);
+				ab = "NO";
+				if(foundTeam!=null)
+				{
+					teamsHash.put(ab, foundTeam);
+					teamsHash.remove("CHA");
+				}
+			}
 			foundTeam = teamsHash.get(ab);
 			if (foundTeam == null) {
 				Team tTeam = new Team(teamPOHash.get(ab));
-				tTeam.addThisTeam(timtemp2);
-				tTeam.addOpponentTeam(timtemp1);
+				if(theSeason)
+				{
+					tTeam.addThisTeam(timtemp2);
+					tTeam.addOpponentTeam(timtemp1);
+				}
 				tTeam.addMatch(mttemp);
 				teamsHash.put(ab, tTeam);
 			} else {
-				foundTeam.addThisTeam(timtemp2);
-				foundTeam.addOpponentTeam(timtemp1);
+				if(theSeason)
+				{
+					foundTeam.addThisTeam(timtemp2);
+					foundTeam.addOpponentTeam(timtemp1);
+				}
 				foundTeam.addMatch(mttemp);
 			}
 
@@ -206,13 +313,19 @@ public class BLController implements BLService {
 					}
 					Player tPlayer = new Player(teamsHash.get(ab).getTeamPO(),
 							playerPO);
-					tPlayer.addThisTeam(timtemp1, j);
-					tPlayer.addOpponentTeam(timtemp2);
+					if(theSeason)
+					{
+						tPlayer.addThisTeam(timtemp1, j);
+						tPlayer.addOpponentTeam(timtemp2);
+					}
 					tPlayer.addMatch(mttemp);
 					playersHash.put(name, tPlayer);
 				} else {
-					foundPlayer.addThisTeam(timtemp1, j);
-					foundPlayer.addOpponentTeam(timtemp2);
+					if(theSeason)
+					{
+						foundPlayer.addThisTeam(timtemp1, j);
+						foundPlayer.addOpponentTeam(timtemp2);
+					}
 					foundPlayer.addMatch(mttemp);
 				}
 			}
@@ -231,13 +344,19 @@ public class BLController implements BLService {
 					}
 					Player tPlayer = new Player(teamsHash.get(ab).getTeamPO(),
 							playerPO);
-					tPlayer.addThisTeam(timtemp2, j);
-					tPlayer.addOpponentTeam(timtemp1);
+					if(theSeason)
+					{
+						tPlayer.addThisTeam(timtemp2, j);
+						tPlayer.addOpponentTeam(timtemp1);
+					}
 					tPlayer.addMatch(mttemp);
 					playersHash.put(name, tPlayer);
 				} else {
-					foundPlayer.addThisTeam(timtemp2, j);
-					foundPlayer.addOpponentTeam(timtemp1);
+					if(theSeason)
+					{
+						foundPlayer.addThisTeam(timtemp2, j);
+						foundPlayer.addOpponentTeam(timtemp1);
+					}
 					foundPlayer.addMatch(mttemp);
 				}
 			}
@@ -291,5 +410,470 @@ public class BLController implements BLService {
 	public ArrayList<Team> getTeams() {
 		analyse();
 		return teams;
+	}
+	
+	
+	private static final Comparator<Team> TeamByPoint = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return (double)t1.score/t1.appearance>(double)t2.score/t2.appearance?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByRebound = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return (double)t1.rebound/t1.appearance>(double)t2.rebound/t2.appearance?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByAssist = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return (double)t1.assist/t1.appearance>(double)t2.assist/t2.appearance?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByBlock = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return (double)t1.blockShot/t1.appearance>(double)t2.blockShot/t2.appearance?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamBySteal = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return (double)t1.steal/t1.appearance>(double)t2.steal/t2.appearance?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByThree = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getThree()>t2.getThree()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByShot = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getShot()>t2.getShot()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByPenalty = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getPenalty()>t2.getPenalty()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByFoul = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.foul>t2.foul?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByFault = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.fault>t2.fault?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByDefendRebound = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.defendRebound>t2.defendRebound?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByWinRate = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.offendRebound>t2.offendRebound?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByOffendRebound = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.offendRebound>t2.offendRebound?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByOffendRound = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getOffendRound()>t2.getOffendRound()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByOffendEfficient = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getOffendEfficient()>t2.getOffendEfficient()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByDefendEfficient = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getDefendEfficient()>t2.getDefendEfficient()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByOffendReboundEfficient = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getOffendReboundEfficient()>t2.getOffendReboundEfficient()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByDefendReboundEfficient = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getDefendReboundEfficient()>t2.getDefendReboundEfficient()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByStealEfficient = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getStealEfficient()>t2.getStealEfficient()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByAssistEfficient = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			return t1.getAssistEfficient()>t2.getAssistEfficient()?1:-1;
+		}
+	};
+	
+	
+	
+	public Comparator<Player> comparePlayerNameDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getName().compareTo(o1.getName());
+        }
+    };
+	
+	public Comparator<Player> comparePointDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getPoint() > o1.getPoint() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareReboundDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getRebound() > o1.getRebound() ? 1 : -1;
+        }
+    };
+    public Comparator<Player> compareAssistDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getAssist() > o1.getAssist() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareBlockShotDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getBlockShot() > o1.getBlockShot() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareStealDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getSteal() > o1.getSteal() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareFoulDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getFoul() > o1.getFoul() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareFaultDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getFault() > o1.getFault() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareMinuteDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getMinute() > o1.getMinute() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareEfficientDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getEfficient() > o1.getEfficient() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareShotDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getShot() > o1.getShot() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareThreeDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getThree() > o1.getThree() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> comparePenaltyDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getPenalty() > o1.getPenalty() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareDoubleTwoDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getDoubleTwo() > o1.getDoubleTwo() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareRealShotDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getRealShot() > o1.getRealShot() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareGmScDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getGmSc() > o1.getGmSc() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareShotEfficientDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getShotEfficient() > o1.getShotEfficient() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareReboundEfficientDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getReboundEfficient() > o1.getReboundEfficient() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareOffendReboundEfficientDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getOffendReboundEfficient() > o1.getOffendReboundEfficient() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareDefendReboundEfficientDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getDefendReboundEfficient() > o1.getDefendReboundEfficient() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareAssistEfficientDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getAssistEfficient() > o1.getAssistEfficient() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareStealEfficientDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getStealEfficient() > o1.getStealEfficient() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareBlockShotEfficientDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getBlockShotEfficient() > o1.getBlockShotEfficient() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareFaultEfficientDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getFaultEfficient() > o1.getFaultEfficient() ? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareFrequencyDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.getFrequency() > o1.getFrequency() ? 1 : -1;
+        }
+    };
+    
+    
+    //avg player descent comparator
+	public Comparator<Player> comparePointAvgDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return (double)o2.getPoint()/(double)o2.appearance > (double)o1.getPoint()/(double)o1.appearance? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareReboundAvgDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return (double)o2.getRebound()/(double)o2.appearance > (double)o1.getRebound()/(double)o1.appearance? 1 : -1;
+        }
+    };
+    public Comparator<Player> compareAssistAvgDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return (double)o2.getAssist()/(double)o2.appearance > (double)o1.getAssist()/(double)o1.appearance? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareBlockShotAvgDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return (double)o2.getBlockShot()/(double)o2.appearance > (double)o1.getBlockShot()/(double)o1.appearance? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareStealAvgDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return (double)o2.getSteal()/(double)o2.appearance > (double)o1.getSteal()/(double)o1.appearance? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareFoulAvgDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return (double)o2.getFoul()/(double)o2.appearance > (double)o1.getFoul()/(double)o1.appearance? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareFaultAvgDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return (double)o2.getFault()/(double)o2.appearance > (double)o1.getFault()/(double)o1.appearance? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareMinuteAvgDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return (double)o2.getMinute()/(double)o2.appearance > (double)o1.getMinute()/(double)o1.appearance? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareAssistPromotionDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.assistPromotion > o1.assistPromotion? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareScorePromotionDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.scorePromotion > o1.scorePromotion? 1 : -1;
+        }
+    };
+    
+    public Comparator<Player> compareReboundPromotionDesc = new Comparator<Player>(){  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+            return o2.reboundPromotion > o1.reboundPromotion? 1 : -1;
+        }
+    };
+    
+    
+	public Comparator<Player> getPlayerComparator(String sort) {
+		switch(sort) {
+		case "point": return comparePointDesc;
+		case "rebound": return compareReboundDesc;
+		case "assist": return compareAssistDesc;					
+		case "blockShot": return compareBlockShotDesc;
+		case "steal": return compareStealDesc;
+		case "foul": return compareFoulDesc;
+		case "fault": return compareFaultDesc;
+		case "minute": return compareMinuteDesc;
+		case "efficient": return compareEfficientDesc;
+		case "shot": return compareShotDesc;
+		case "three": return compareThreeDesc;
+		case "penalty": return comparePenaltyDesc;
+		case "doubleTwo": return compareDoubleTwoDesc;
+		case "realShot": return compareRealShotDesc;
+		case "GmSc": return compareGmScDesc;
+		case "shotEfficient": return compareShotEfficientDesc;
+		case "reboundEfficient": return compareReboundEfficientDesc;
+		case "offendReboundEfficient": return compareOffendReboundEfficientDesc;
+		case "defendReboundEfficient": return compareDefendReboundEfficientDesc;
+		case "assistEfficient": return compareAssistEfficientDesc;
+		case "stealEfficient": return compareStealEfficientDesc;		
+		case "blockShotEfficient": return compareBlockShotEfficientDesc;
+		case "faultEfficient": return compareFaultEfficientDesc;
+		case "frequency": return compareFrequencyDesc;
+		default: return null;
+		}
+	}
+	
+	public Comparator<Player> getPlayerAvgComparator(String sort) {
+		switch(sort) {
+		case "point": return comparePointAvgDesc;
+		case "rebound": return compareReboundAvgDesc;
+		case "assist": return compareAssistAvgDesc;					
+		case "blockShot": return compareBlockShotAvgDesc;
+		case "steal": return compareStealAvgDesc;
+		case "foul": return compareFoulAvgDesc;
+		case "fault": return compareFaultAvgDesc;
+		case "minute": return compareMinuteAvgDesc;
+		default: return null;
+		}
+	}
+	
+	public boolean sortTeams(String sort) {
+		switch(sort) {
+		case "point": Collections.sort(teams, TeamByPoint);break;
+		case "score": Collections.sort(teams, TeamByPoint);break;
+		case "rebound": Collections.sort(teams, TeamByRebound);break;
+		case "blockShot": Collections.sort(teams, TeamByBlock);break;
+		case "assist": Collections.sort(teams, TeamByAssist);break;
+		case "steal": Collections.sort(teams, TeamBySteal);break;
+		case "foul": Collections.sort(teams, TeamByFoul);break;
+		case "fault": Collections.sort(teams, TeamByFault);break;
+		case "three": Collections.sort(teams, TeamByThree);break;
+		case "shot": Collections.sort(teams, TeamByShot);break;
+		case "penalty": Collections.sort(teams, TeamByPenalty);break;
+		case "defendRebound": Collections.sort(teams, TeamByDefendRebound);break;
+		case "offendRebound": Collections.sort(teams, TeamByOffendRebound);break;
+		case "winRate": Collections.sort(teams, TeamByWinRate);break;
+		case "offendRound": Collections.sort(teams, TeamByOffendRound);break;
+		case "offendEfficient": Collections.sort(teams, TeamByOffendEfficient);break;
+		case "defendEfficient": Collections.sort(teams, TeamByDefendEfficient);break;
+		case "offendReboundEfficient": Collections.sort(teams, TeamByOffendReboundEfficient);break;
+		case "defendReboundEfficient": Collections.sort(teams, TeamByDefendReboundEfficient);break;
+		case "stealEfficient": Collections.sort(teams, TeamByStealEfficient);break;
+		case "assistEfficient": Collections.sort(teams, TeamByAssistEfficient);break;
+		default: return false;
+		}
+		return true;
 	}
 }

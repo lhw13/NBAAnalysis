@@ -93,6 +93,7 @@ public class Player {
 			teamHit2 += tim2.getHit();
 			teamMiss2 += tim2.getMiss();
 		}
+		computePromotion();
 		return true;
 	}
 
@@ -550,9 +551,9 @@ public class Player {
 		return player.getName();
 	}
 	
-	int scorePromotion;
-	int assistPromotion;
-	int reboundPromotion;
+	double scorePromotion;
+	double assistPromotion;
+	double reboundPromotion;
 	
 	public void computePromotion() {
 		int size = thisTeam.size();
@@ -575,9 +576,9 @@ public class Player {
 			reboundRecent+=player.getTotalRebound();
 		}
 		int appearancePast = appearance-5;
-		int scorePastAvg = (score - scoreRecent)/appearancePast;
-		int assistPastAvg = (assist - assistRecent)/appearancePast;
-		int reboundPashAvg = (rebound - reboundRecent)/appearancePast;
+		double scorePastAvg = (double)(score - scoreRecent)/appearancePast;
+		double assistPastAvg = (double)(assist - assistRecent)/appearancePast;
+		double reboundPashAvg = (double)(rebound - reboundRecent)/appearancePast;
 		if(scorePastAvg==0)
 			scorePromotion=0;
 		else

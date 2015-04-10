@@ -60,7 +60,7 @@ public class HotRankingPanel extends JPanel {
 		scrollPane = new JScrollPane(panelOfBottom);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(38, 108, 452, 154);
+		scrollPane_1.setBounds(38, 108, 452, 123);
 		panelOfBottom.add(scrollPane_1);
 		JButton button = new JButton("返回");
 		button.setBounds(5, 10, 93, 23);
@@ -84,7 +84,7 @@ public class HotRankingPanel extends JPanel {
 		scrollPane_1.setViewportView(table_1);
 		
 		scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(500, 108, 452, 154);
+		scrollPane_2.setBounds(500, 108, 452, 123);
 		panelOfBottom.add(scrollPane_2);
 		
 		table_2 = new JTable(model_2);
@@ -92,7 +92,7 @@ public class HotRankingPanel extends JPanel {
 		scrollPane_2.setViewportView(table_2);
 		
 		scrollPane_3 = new JScrollPane();
-		scrollPane_3.setBounds(38, 335, 452, 154);
+		scrollPane_3.setBounds(38, 335, 452, 123);
 		panelOfBottom.add(scrollPane_3);
 		
 		table_3 = new JTable(model_3);
@@ -100,7 +100,7 @@ public class HotRankingPanel extends JPanel {
 		scrollPane_3.setViewportView(table_3);
 		
 		scrollPane_4 = new JScrollPane();
-		scrollPane_4.setBounds(500, 335, 452, 154);
+		scrollPane_4.setBounds(500, 335, 452, 123);
 		panelOfBottom.add(scrollPane_4);
 		
 		table_4 = new JTable(model_4);

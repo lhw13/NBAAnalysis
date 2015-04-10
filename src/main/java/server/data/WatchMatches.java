@@ -10,7 +10,7 @@ import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 
 public class WatchMatches {
-private static String path="C:/Users/wjc/Desktop/nba/matches/";  
+private static String path="C:/Users/wjc/Desktop/nba/matches/";//文件位置  
 	public static void watch() {
 		// TODO Auto-generated method stub
 		try {

@@ -30,6 +30,7 @@ import org.jvnet.substance.theme.SubstanceEbonyTheme;
 import org.jvnet.substance.title.Glass3DTitlePainter;
 import org.jvnet.substance.watermark.SubstanceWoodWatermark;
 
+import blservice.BLService;
 import presentation.matchui.MatchSelectionPanel;
 import presentation.playerui.PlayerInfoPanel;
 import presentation.playerui.PlayerRankingPanel;
@@ -114,6 +115,7 @@ public class MainFrame {
 	public static String season="13-14";
 	public static int date=1;
 
+	BLService blservice = BLController.getInstance();
 	public static void main(String[] args) {
 		try {
 			UIManager.setLookAndFeel(new SubstanceLookAndFeel());
@@ -821,6 +823,9 @@ public class MainFrame {
 					HotRankingPanel hrp = new HotRankingPanel();
 					MainFrame.panel.setVisible(false);
 					frame.getContentPane().add(hrp.scrollPane);
+					//hrp.update2(blservice.getBestPromotion("point", 5), "point");
+					hrp.updateTeam(blservice.getHotTeamVO("point", 5), "point");
+					hrp.update4(blservice.getHotPlayerVO("point", 5), "point");					
 					frame.repaint();//刷新重画 
 					frame.validate();//保证重画后的窗口能正常立即显示 
 				} catch (Exception e1) {

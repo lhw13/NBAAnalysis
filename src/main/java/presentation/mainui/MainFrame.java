@@ -796,7 +796,7 @@ public class MainFrame {
 					HotRankingPanel hrp = new HotRankingPanel();
 					MainFrame.panel.setVisible(false);
 					frame.getContentPane().add(hrp.scrollPane);
-					//hrp.update2(blservice.getBestPromotion("point", 5), "point");
+					hrp.update2(blservice.getBestPromotion("point", 5), "point");
 					hrp.updateTeam(blservice.getHotTeamVO("point", 5), "point");
 					hrp.update4(blservice.getHotPlayerVO("point", 5), "point");					
 					frame.repaint();//刷新重画 

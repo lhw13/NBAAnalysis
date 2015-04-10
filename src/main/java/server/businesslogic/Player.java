@@ -27,6 +27,9 @@ public class Player {
 															// promote
 															// efficiency
 	ArrayList<TeamInMatches> opponentTeam = new ArrayList<TeamInMatches>();
+	
+	ArrayList<TeamInMatches> thisTeamPast = new ArrayList<TeamInMatches>();
+	ArrayList<TeamInMatches> opponentTeamPast = new ArrayList<TeamInMatches>();
 
 	int appearance = 0;// 比赛场数
 	int starting = 0;// 先发场数
@@ -233,6 +236,14 @@ public class Player {
 
 	public void addOpponentTeam(TeamInMatches tim) {
 		opponentTeam.add(tim);
+	}
+	
+	public void addThisTeamPast(TeamInMatches tim) {
+		thisTeamPast.add(tim);
+	}
+
+	public void addOpponentTeamPast(TeamInMatches tim) {
+		opponentTeamPast.add(tim);
 	}
 	
 	public void addMatch(MatchPO mp) {

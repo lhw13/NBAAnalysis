@@ -25,4 +25,11 @@ public class MatchesData {
 	public static  ArrayList<MatchPO> getMatchPOList() {
 		return matchesList;
 	}
+	public static void add(File f){
+		matchesList.add(MatchesDataAnalyse.MatchPOMade(DataReader
+				.dataReader(f)));
+	}
+	public static void remove(String name){
+		
+	}
 }

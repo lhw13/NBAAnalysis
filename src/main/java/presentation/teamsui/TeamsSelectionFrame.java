@@ -1011,8 +1011,8 @@ public class TeamsSelectionFrame {
 		
 		TeamsInfoFrame tip = new TeamsInfoFrame(twpvo,ii);
 		MainFrame.frame.getContentPane().add(tip.scrollPane);
-		tip.updateTeam(twpvo, "投篮命中数");
 		MainFrame.frame.repaint();//刷新重画 
+		tip.updateTeam(twpvo, "投篮命中数");
 		MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
 		
 	}

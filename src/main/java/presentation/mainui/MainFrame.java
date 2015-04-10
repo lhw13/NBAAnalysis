@@ -36,7 +36,6 @@ import presentation.playerui.PlayerInfoPanel;
 import presentation.playerui.PlayerRankingPanel;
 import presentation.playerui.PlayerSelectionPanel;
 import presentation.teamsui.TeamsSelectionFrame;
-import presentation.teamsui.TeamsInfoFrame;
 import presentation.teamsui.TeamsRankingFrame;
 import server.businesslogic.BLController;
 import server.po.MatchPO;
@@ -166,13 +165,6 @@ public class MainFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initPanels() {
-		//初始化查询面板
-		Object table_4_rows[][] = { {"13-14","01-01", "CHI-MIN", "100-120", "25-30", "25-30", "25-30", "25-30"}, };
-		DefaultTableModel model4 = new DefaultTableModel(table_4_rows,table_5_columns);
-		ArrayList<MatchPO> mpoList = new ArrayList<MatchPO>();
-		new MatchSelectionPanel(model4, mpoList);
-		frame.getContentPane().add(MatchSelectionPanel.scrollPane);
-		MatchSelectionPanel.scrollPane.setVisible(false);
 		
 		//初始化球队选择面板
 		TeamsSelectionFrame window = new TeamsSelectionFrame();
@@ -874,6 +866,11 @@ public class MainFrame {
 			frame.getContentPane().add(msp.scrollPane);
 			frame.repaint();//刷新重画 
 			frame.validate();//保证重画后的窗口能正常立即显示 
+		}else{
+			MatchSelectionPanel msp = new MatchSelectionPanel(model, selectedMatchs);
+			frame.getContentPane().add(msp.scrollPane);
+			frame.repaint();//刷新重画 
+			frame.validate();//保证重画后的窗口能正常立即显示 
 		}
 		
 	}
@@ -1174,10 +1171,10 @@ public class MainFrame {
 		return s;
 	}
 
+
 	public static double handle(double a, int b) {
 		double result = a / (double) b;
-		BigDecimal c = new BigDecimal(result);
-		double f1 = c.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-		return f1;
+		
+		return result;
 	}
 }

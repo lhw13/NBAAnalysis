@@ -157,7 +157,8 @@ public class MatchSelectionPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MatchSelectionPanel.scrollPane.setVisible(false);
+				MainFrame.frame.getContentPane().remove(MatchSelectionPanel.scrollPane);
+				MatchSelectionPanel.scrollPane=null;
 				MainFrame.panel.setVisible(true);
 				MainFrame.frame.setTitle("NBA");
 			}

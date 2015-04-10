@@ -1,6 +1,7 @@
 package presentation.teamsui;
 
 import java.awt.Dimension;
+import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -13,15 +14,20 @@ import javax.swing.table.TableRowSorter;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JTabbedPane;
 
 import presentation.mainui.MainFrame;
+import presentation.matchui.MatchDetailInfoPanel;
 import server.businesslogic.BLController;
+import server.po.MatchPO;
 import vo.PlayerVO;
 import vo.TeamVO;
 import vo.TeamWithPlayersVO;
@@ -36,12 +42,23 @@ public class TeamsInfoFrame extends JPanel{
 
 	private static JTable table;
 	private static JTable table_1;
+	private static JTable table_2;
 
 	public JLabel teamPicture;
 
 	public static JScrollPane scrollPane;
 	
-	private BLController compute;
+	private JScrollPane scrollPane_search;
+	private JComboBox<String> comboBox_1;
+	private JComboBox<Integer> comboBox_2;
+	private static String season="13-14";
+	private static int date=1;
+	Vector columnName3;
+	DefaultTableModel model_3=new DefaultTableModel();
+	private ArrayList<MatchPO> mpoList;
+	private MouseListen listener = new MouseListen();
+	
+	private static BLController compute;
 	
 	Vector columnName1;
 	DefaultTableModel model_1=new DefaultTableModel();
@@ -101,23 +118,119 @@ public class TeamsInfoFrame extends JPanel{
 		table.setModel(model);
 		
 		scrollPane_5.setViewportView(table);
-
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(700, 45, 250, 150);
-		panel_2.setLayout(null);
 		
 		teamPicture = new JLabel("");
 		teamPicture.setBounds(50, 20, 250, 150);
 		teamPicture.setIcon(ii);
+		
+		scrollPane_search = new JScrollPane();
+		scrollPane_search.setBounds(60, 800, 700, 300);
+		
+		String[] names3 = new String[]{"赛季", "日期", "球队", "总比分", "第一节", "第二节", "第三节", "第四节", "详情"};
+		columnName3 = new Vector();
+		for(int i=0;i<names3.length;i++) {
+			columnName3.add(names3[i]);
+		}
+		
+		JLabel lblNewLabel = new JLabel("球队过往比赛查询");
+		lblNewLabel.setBounds(60, 750, 150, 30);
+		
+        table_2 = new JTable(model_3);
+		scrollPane_search.setViewportView(table_2);
+		
+		table_2.addMouseListener(listener);
+		
+		comboBox_1 = new JComboBox<String>();
+		comboBox_1.setBounds(400, 750, 150, 30);
+		comboBox_1.addItem("12-13");
+		comboBox_1.addItem("13-14");
+		comboBox_1.addItem("14-15");
+		
+		final String teamName = twpvo.getTeam().getAbbreviation();
+		
+		comboBox_1.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int index = comboBox_1.getSelectedIndex();
+				switch(index){
+				case 0:
+					season="12-13";
+					searchTheMatch(teamName);
+					break;
+				case 1:
+					season="13-14";
+					searchTheMatch(teamName);
+					break;
+				case 2:
+					season="14-15";
+					searchTheMatch(teamName);
+					break;
+				}
+			}
+			
+		});
+		
+		comboBox_2 = new JComboBox<Integer>();
+		comboBox_2.addItem(1);
+		comboBox_2.addItem(2);
+		comboBox_2.addItem(3);
+		comboBox_2.addItem(4);
+		comboBox_2.addItem(10);
+		comboBox_2.addItem(11);
+		comboBox_2.addItem(12);
+		comboBox_2.setBounds(600, 750, 150, 30);
+		
+		comboBox_2.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int index = comboBox_2.getSelectedIndex();
+				switch(index){
+				case 0:
+					date=1;
+					searchTheMatch(teamName);
+					break;
+				case 1:
+					date=2;
+					searchTheMatch(teamName);
+					break;
+				case 2:
+					date=3;
+					searchTheMatch(teamName);
+					break;
+				case 3:
+					date=4;
+					searchTheMatch(teamName);
+					break;
+				case 4:
+					date=10;
+					searchTheMatch(teamName);
+					break;
+				case 5:
+					date=11;
+					searchTheMatch(teamName);
+					break;
+				case 6:
+					date=12;
+					searchTheMatch(teamName);
+					break;
+				}
+			}
+			
+		});
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setPreferredSize(new Dimension(1100, 1000));
+		panel_1.setPreferredSize(new Dimension(1100, 1200));
 		panel_1.setLayout(null);
 		panel_1.add(scrollPane_5);
 		panel_1.add(panel);
-		panel_1.add(panel_2);
 		panel_1.add(tabbedPane);
 		panel_1.add(teamPicture);
+		panel_1.add(scrollPane_search);
+		panel_1.add(comboBox_1);
+		panel_1.add(comboBox_2);
+		panel_1.add(lblNewLabel);
 		
 		scrollPane = new JScrollPane(panel_1);
 		scrollPane.setBounds(0, 0, 990, 560);
@@ -162,7 +275,6 @@ public class TeamsInfoFrame extends JPanel{
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(60, 231, 795, 471);
-		panel_1.add(scrollPane_1);
 		
 		table_1 = new JTable(model_1);
 		
@@ -908,13 +1020,6 @@ public class TeamsInfoFrame extends JPanel{
 			break;
 		}
 		
-		model_1 = new DefaultTableModel(rowDatas1, columnName1) {
-			private static final long serialVersionUID = 1L;
-
-			public Class<?> getColumnClass(int columnIndex) {
-				return getValueAt(0, columnIndex).getClass();
-			}
-		};
 		model_1.setDataVector(rowDatas1, columnName1);
 		model_1.setColumnCount(table_1.getColumnCount());
 		model_1.setRowCount(rowDatas1.size());
@@ -925,11 +1030,185 @@ public class TeamsInfoFrame extends JPanel{
 		table_1.updateUI();
 	}
 	
-	private double handle(double a, int b) {
-		double result = a / (double) b;
-		BigDecimal c = new BigDecimal(result);
-		double f1 = c.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-		return f1;
+	//球队过往查询
+	public void searchTheMatch(String teamName){
+		
+		compute = BLController.getInstance();
+		ArrayList<MatchPO> matchList = compute.getAllMatch();
+		
+		ArrayList<MatchPO> selectedMatchs = new ArrayList<MatchPO>();
+		for(int i=0;i<matchList.size();i++){
+			if(matchList.get(i).getSeason().equals(season) && 
+					matchList.get(i).getDate().get(Calendar.MONTH)==date &&
+					(matchList.get(i).getTeam1().getAbbreviation().equals(teamName) ||
+					 matchList.get(i).getTeam2().getAbbreviation().equals(teamName))){
+				selectedMatchs.add(matchList.get(i));
+			}
+		}
+		
+		mpoList = selectedMatchs;
+		
+		Vector rowDatas1 = new Vector();
+		
+		for(int i=0;i<selectedMatchs.size();i++){
+			Vector rowData1 = new Vector();
+			rowData1.add(selectedMatchs.get(i).getSeason());
+			rowData1.add(selectedMatchs.get(i).getDate().get(Calendar.MONTH)+"-"+
+					selectedMatchs.get(i).getDate().get(Calendar.DAY_OF_MONTH));
+			rowData1.add(selectedMatchs.get(i).getTeam1().getAbbreviation()+"-"+
+					selectedMatchs.get(i).getTeam2().getAbbreviation());
+			rowData1.add(selectedMatchs.get(i).getFinalScore().getTeam1()+"-"+
+					selectedMatchs.get(i).getFinalScore().getTeam2());
+			rowData1.add(selectedMatchs.get(i).getScores().get(0).getTeam1()+"-"+
+					selectedMatchs.get(i).getScores().get(0).getTeam2());
+			rowData1.add(selectedMatchs.get(i).getScores().get(1).getTeam1()+"-"+
+					selectedMatchs.get(i).getScores().get(1).getTeam2());
+			rowData1.add(selectedMatchs.get(i).getScores().get(2).getTeam1()+"-"+
+					selectedMatchs.get(i).getScores().get(2).getTeam2());
+			rowData1.add(selectedMatchs.get(i).getScores().get(3).getTeam1()+"-"+
+					selectedMatchs.get(i).getScores().get(3).getTeam2());
+			rowData1.add("详情");
+			rowDatas1.add(rowData1);
+		}
+		
+		
+		model_3.setDataVector(rowDatas1, columnName3);
+		model_3.setColumnCount(table_2.getColumnCount());
+		model_3.setRowCount(rowDatas1.size());
+		table_2.setModel(model_3);
+		table_2.updateUI();
+		
 	}
 	
+	public class MouseListen extends MouseAdapter {
+		public void mouseClicked(MouseEvent e) {
+
+			JTable table = (JTable) e.getSource();
+			int r = table.getSelectedRow();
+			int c = table.getSelectedColumn();
+			try {
+				if(c==8){
+					setMatchInfo(r);
+				}
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
+	
+	private void setMatchInfo(int rowNum){
+		MatchPO mpo = mpoList.get(rowNum);
+		String[] cname1 = new String[] {
+				"球员", "位置", "在场时间", "投篮命中", "出手", "三分命中", "出手", "罚球命中", "出手",
+				"前篮板","后篮板","篮板","助攻","抢断","盖帽","失误","犯规", "得分" };
+		
+		DefaultTableModel model1 = new DefaultTableModel();
+		Vector<String> columnName1 = new Vector<String>();
+		Vector rowDatas1 = new Vector();
+		for(int i=0;i<cname1.length;i++) {
+			columnName1.add(cname1[i]);
+		}
+		for(int i=0;i<mpo.getTeam1().getPlayers().size();i++){
+			Vector rowData1 = new Vector();
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getName());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPosition()+"");
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPlayTime());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getHit());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getShot());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getThirdHit());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getThirdshot());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getFreeHit());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getThirdshot());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getOffensiveRebound());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getDefensiveRebound());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getTotalRebound());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getAssist());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getSteal());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getBlock());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getMiss());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getFoul());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getScore());
+			rowDatas1.add(rowData1);
+		}
+		model1.setDataVector(rowDatas1, columnName1);		
+		model1.setColumnCount(columnName1.size());
+		model1.setRowCount(rowDatas1.size());
+		
+		DefaultTableModel model2 = new DefaultTableModel();
+		Vector rowDatas2 = new Vector();
+		for(int i=0;i<mpo.getTeam2().getPlayers().size();i++){
+			Vector rowData2 = new Vector();
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getName());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPosition()+"");
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPlayTime());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getHit());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getShot());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getThirdHit());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getThirdshot());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getFreeHit());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getThirdshot());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getOffensiveRebound());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getDefensiveRebound());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getTotalRebound());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getAssist());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getSteal());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getBlock());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getMiss());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getFoul());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getScore());
+			rowDatas2.add(rowData2);
+		}
+		model2.setDataVector(rowDatas2, columnName1);		
+		model2.setColumnCount(mpo.getTeam2().getPlayers().size());
+		model2.setRowCount(rowDatas2.size());
+		
+		String[] cname2 = new String[] {
+				"赛季", "日期", "球队", "总比分", "第一节", "第二节", "第三节", "第四节"};
+		DefaultTableModel model3 = new DefaultTableModel();
+		Vector<String> columnName3 = new Vector<String>();
+		for(int i=0;i<cname2.length;i++) {
+			columnName3.add(cname2[i]);
+		}
+		Vector rowDatas3 = new Vector();
+		Vector rowData3 = new Vector();
+		rowData3.add(mpo.getSeason());
+		rowData3.add(mpo.getDate().get(Calendar.MONTH)+"-"+
+	                 mpo.getDate().get(Calendar.DAY_OF_MONTH));
+		rowData3.add(mpo.getTeam1().getAbbreviation()+"-"+mpo.getTeam2().getAbbreviation());
+		rowData3.add(mpo.getFinalScore().getTeam1()+"-"+mpo.getFinalScore().getTeam2());
+		rowData3.add(mpo.getScores().get(0).getTeam1()+"-"+mpo.getScores().get(0).getTeam2());
+		rowData3.add(mpo.getScores().get(1).getTeam1()+"-"+mpo.getScores().get(1).getTeam2());
+		rowData3.add(mpo.getScores().get(2).getTeam1()+"-"+mpo.getScores().get(2).getTeam2());
+		rowData3.add(mpo.getScores().get(3).getTeam1()+"-"+mpo.getScores().get(3).getTeam2());
+		rowDatas3.add(rowData3);
+		model3.setDataVector(rowDatas3, columnName3);		
+		model3.setColumnCount(columnName3.size());
+		model3.setRowCount(rowDatas3.size());
+		
+		int width = 200;
+		int height = 150;
+		compute = BLController.getInstance();
+		ImageIcon[] ii=new ImageIcon[2];
+		ii[0] = compute.getTeamPic(mpo.getTeam1().getAbbreviation());
+		ii[0].setImage(ii[0].getImage().getScaledInstance(width, height,
+				Image.SCALE_DEFAULT));
+		ii[1] = compute.getTeamPic(mpo.getTeam2().getAbbreviation());
+		ii[1].setImage(ii[1].getImage().getScaledInstance(width, height,
+				Image.SCALE_DEFAULT));
+		
+		TeamsInfoFrame.scrollPane.setVisible(false);
+		MatchDetailInfoPanel mdip = new MatchDetailInfoPanel(ii,model1,model2,model3);
+		MainFrame.frame.getContentPane().add(mdip.scrollPane);
+		MainFrame.frame.repaint();//刷新重画 
+		MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+		
+		
+		
+	}
+	
+	public static double handle(double a, int b) {
+		double result = a / (double) b;
+		
+		return result;
+	}
 }

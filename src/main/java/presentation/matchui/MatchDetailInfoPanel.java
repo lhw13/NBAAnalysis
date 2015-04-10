@@ -101,8 +101,14 @@ public class MatchDetailInfoPanel extends JPanel {
 				try {
 					MatchDetailInfoPanel.scrollPane.setVisible(false);
 					MatchDetailInfoPanel.scrollPane=null;
-					MatchSelectionPanel.scrollPane.setVisible(true);
-					MainFrame.frame.setTitle("NBA比赛查询");
+					if(MatchSelectionPanel.scrollPane!=null){
+						MatchSelectionPanel.scrollPane.setVisible(true);
+						MainFrame.frame.setTitle("NBA比赛查询");
+					}else{
+						TeamsInfoFrame.scrollPane.setVisible(true);
+						MainFrame.frame.setTitle("NBA比赛查询");
+					}
+					
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

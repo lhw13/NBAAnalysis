@@ -2,6 +2,7 @@ package hotui;
 
 import java.awt.Dimension;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -14,6 +15,8 @@ import javax.swing.table.TableColumnModel;
 
 import blservice.BLService;
 import presentation.mainui.MainFrame;
+import presentation.playerui.PlayerInfoPanel;
+import presentation.playerui.PlayerSelectionPanel;
 import server.businesslogic.BLController;
 import server.po.MatchPO;
 import server.po.PlayerInMatchesPO;
@@ -59,8 +62,25 @@ public class HotRankingPanel extends JPanel {
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(38, 108, 452, 154);
 		panelOfBottom.add(scrollPane_1);
-		
+		JButton button = new JButton("返回");
+		button.setBounds(5, 10, 93, 23);
+		button.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				try {
+					HotRankingPanel.scrollPane.setVisible(false);
+					MainFrame.panel.setVisible(true);
+					MainFrame.frame.setTitle("NBA");
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+
+			}
+
+		});
+		panelOfBottom.add(button);
 		table_1 = new JTable(model_1);
+		table_1.setRowHeight(20);
 		scrollPane_1.setViewportView(table_1);
 		
 		scrollPane_2 = new JScrollPane();
@@ -68,6 +88,7 @@ public class HotRankingPanel extends JPanel {
 		panelOfBottom.add(scrollPane_2);
 		
 		table_2 = new JTable(model_2);
+		table_2.setRowHeight(20);
 		scrollPane_2.setViewportView(table_2);
 		
 		scrollPane_3 = new JScrollPane();
@@ -75,6 +96,7 @@ public class HotRankingPanel extends JPanel {
 		panelOfBottom.add(scrollPane_3);
 		
 		table_3 = new JTable(model_3);
+		table_3.setRowHeight(20);
 		scrollPane_3.setViewportView(table_3);
 		
 		scrollPane_4 = new JScrollPane();
@@ -82,6 +104,7 @@ public class HotRankingPanel extends JPanel {
 		panelOfBottom.add(scrollPane_4);
 		
 		table_4 = new JTable(model_4);
+		table_4.setRowHeight(20);
 		scrollPane_4.setViewportView(table_4);
 		
 		final JComboBox comboBox_1 = new JComboBox();

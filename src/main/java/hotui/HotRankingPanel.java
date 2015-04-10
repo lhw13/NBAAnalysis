@@ -315,12 +315,18 @@ public class HotRankingPanel extends JPanel {
 					break;
 				case 6: 
 					columnName4.setElementAt("三分命中率", 3);
+					players = blservice.getHotPlayerVO("three", 5);	
+					update4(players,"three");
 					break;
 				case 7: 
-					columnName4.setElementAt("投篮命中率", 3);										
+					columnName4.setElementAt("投篮命中率", 3);	
+					players = blservice.getHotPlayerVO("shot", 5);	
+					update4(players,"shot");
 					break;
 				case 8: 
-					columnName4.setElementAt("罚球命中率", 3);				
+					columnName4.setElementAt("罚球命中率", 3);	
+					players = blservice.getHotPlayerVO("penalty", 5);	
+					update4(players,"penalty");
 					break;
 				}
 			}
@@ -376,7 +382,7 @@ public class HotRankingPanel extends JPanel {
 				PlayerVO playerTemp = players.get(i);			
 				rowData2.add(playerTemp.getName());
 				rowData2.add(playerTemp.getTeamFullName());			
-				rowData2.add(handleDecimal(playerTemp.getReboundPromotion()));
+				rowData2.add(handleDecimal(playerTemp.getAssistPromotion()));
 				rowData2.add(handleDecimal((double)playerTemp.getAssist()/(double)playerTemp.getAppearance()));									
 				rowDatas2.add(rowData2);
 			}
@@ -544,39 +550,39 @@ public class HotRankingPanel extends JPanel {
 				rowDatas4.add(rowData4);
 			}
 			break;
-/*		case "assist":
+		case "three":
 			for(int i=0;i<players.size()&&i<5;i++) {
 				Vector rowData4 = new Vector();
 				PlayerVO playerTemp = players.get(i);			
 				rowData4.add(playerTemp.getName());
 				rowData4.add(playerTemp.getTeamFullName());			
 				rowData4.add(playerTemp.getPosition());
-				rowData4.add(handleDecimal((double)playerTemp.getAssist()/(double)playerTemp.getAppearance()));									
+				rowData4.add(handleDecimal(playerTemp.getThirdHitRate()));									
 				rowDatas4.add(rowData4);
 			}
 			break;
-		case "assist":
+		case "shot":
 			for(int i=0;i<players.size()&&i<5;i++) {
 				Vector rowData4 = new Vector();
 				PlayerVO playerTemp = players.get(i);			
 				rowData4.add(playerTemp.getName());
 				rowData4.add(playerTemp.getTeamFullName());			
 				rowData4.add(playerTemp.getPosition());
-				rowData4.add(handleDecimal((double)playerTemp.getAssist()/(double)playerTemp.getAppearance()));									
+				rowData4.add(handleDecimal(playerTemp.getHitRate()));									
 				rowDatas4.add(rowData4);
 			}
 			break;
-		case "assist":
+		case "penalty":
 			for(int i=0;i<players.size()&&i<5;i++) {
 				Vector rowData4 = new Vector();
 				PlayerVO playerTemp = players.get(i);			
 				rowData4.add(playerTemp.getName());
 				rowData4.add(playerTemp.getTeamFullName());			
 				rowData4.add(playerTemp.getPosition());
-				rowData4.add(handleDecimal((double)playerTemp.getAssist()/(double)playerTemp.getAppearance()));									
+				rowData4.add(handleDecimal(playerTemp.getFreeHitRate()));		
 				rowDatas4.add(rowData4);
 			}
-			break;*/
+			break;
 		}
 			
 		

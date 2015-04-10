@@ -42,6 +42,7 @@ import server.businesslogic.BLController;
 import server.po.MatchPO;
 import vo.PlayerVO;
 import vo.TeamVO;
+import vo.TeamWithPlayersVO;
 
 public class MainFrame {
 
@@ -102,10 +103,6 @@ public class MainFrame {
 	public static String table_1_columns[] = { "球队", "场数", "投篮命中数(场均)", "投篮命中数(总计)" };
 
 	public static String table_2_columns[] = { "球员", "位置", "赛区", "分区", "得分(场均)", "得分(总计)" };
-	
-	private String table_3_columns[] = { "球员", "场数", "在场时间", "投篮命中数(场均)", "投篮命中数(总计)" };
-	
-	private String table_4_columns[] = { "球队", "球队缩写", "所在地", "赛区", "分区", "主场", "建立时间" };
 	
 	private static String table_5_columns[] = { "赛季", "日期", "球队", "总比分", "第一节", "第二节", "第三节", "第四节", "详情" };
 	
@@ -181,30 +178,6 @@ public class MainFrame {
 		TeamsSelectionFrame window = new TeamsSelectionFrame();
 		frame.getContentPane().add(TeamsSelectionFrame.scrollPane);
 		TeamsSelectionFrame.scrollPane.setVisible(false);
-
-		//初始化球队信息面板
-		Object table_3_rows[][] = { {"球队", "球队缩写", "所在地", "赛区", "分区", "主场", "建立时间"}, };
-		DefaultTableModel model3 = new DefaultTableModel(table_3_rows,
-				table_4_columns) {
-			private static final long serialVersionUID = 1L;
-
-			public Class<?> getColumnClass(int columnIndex) {
-				return getValueAt(0, columnIndex).getClass();
-			}
-		};
-		Object table_2_rows[][] = { {"科比", 82, 1000, 1000, 1000}, };
-		DefaultTableModel model2 = new DefaultTableModel(table_2_rows,
-				table_3_columns) {
-			private static final long serialVersionUID = 1L;
-
-			public Class<?> getColumnClass(int columnIndex) {
-				return getValueAt(0, columnIndex).getClass();
-			}
-		};
-		ImageIcon ii = new ImageIcon("pictures\\JORDAN.jpg");
-		TeamsInfoFrame window1 = new TeamsInfoFrame("CHI", ii, model3, model2);
-		frame.getContentPane().add(TeamsInfoFrame.scrollPane);
-		TeamsInfoFrame.scrollPane.setVisible(false);
 
 		//初始化球队排名面板
 		Object table_1_rows[][] = { {"湖人", 82, 1000, 1000}, };

@@ -200,6 +200,11 @@ public class PlayerSelectionPanel extends JPanel {
 	private JLabel labelOf1;
 	private JLabel labelOf2;
 	private JLabel labelOf3;
+	private JLabel labelOf4;
+	private JLabel labelOf5;
+	private JLabel labelOf6;
+	private JLabel labelOf7;
+	
 	public PlayerSelectionPanel() {
 		this.setBounds(0, 0, 1000, 600);
 		// 设置面板透明
@@ -388,6 +393,23 @@ public class PlayerSelectionPanel extends JPanel {
 		labelOf3 = new JLabel("球员");
 		labelOf3.setBounds(250, 4, 43, 19);
 		panelOfBottom.add(labelOf3);
+		
+		labelOf4 = new JLabel("球队排名");
+		labelOf4.setBounds(250, 4, 43, 19);
+		panelOfBottom.add(labelOf4);
+		
+		labelOf5 = new JLabel("球员排名");
+		labelOf5.setBounds(250, 4, 43, 19);
+		panelOfBottom.add(labelOf3);
+		
+		labelOf6 = new JLabel("热点");
+		labelOf6.setBounds(250, 4, 43, 19);
+		panelOfBottom.add(labelOf6);
+		
+		labelOf7 = new JLabel("比赛");
+		labelOf7.setBounds(250, 4, 43, 19);
+		panelOfBottom.add(labelOf7);
+
 
 		if (teamWithPlayer != null && teamWithPlayer.size() != 0) {
 			int index = 0;
@@ -651,6 +673,7 @@ public class PlayerSelectionPanel extends JPanel {
 	}
 
 	public class MouseListen extends MouseAdapter {
+		
 		public void mouseClicked(MouseEvent e) {
 			JTable table = (JTable) e.getSource();
 			int r = table.getSelectedRow();
@@ -672,5 +695,45 @@ public class PlayerSelectionPanel extends JPanel {
 				e1.printStackTrace();
 			}
 		}
+		
+	}
+	
+public class ChangeMouseListen extends MouseAdapter {
+		
+		public void mouseClicked(MouseEvent e) {
+			JLabel label = (JLabel) e.getSource();
+			String text = label.getText();
+
+			
+			switch(text) {
+			case "主界面":
+				try {
+				
+				PlayerSelectionPanel.scrollPane.setVisible(false);				
+				MainFrame.panel.setVisible(true);
+				MainFrame.frame.setTitle("NBA");		
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				break;
+			case "球队":
+				try {
+					
+					PlayerSelectionPanel.scrollPane.setVisible(false);				
+					MainFrame.panel.setVisible(true);
+					MainFrame.frame.setTitle("NBA");		
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				break;
+			case "球员":break;
+			case "球队排名":break;
+			case "球员排名":break;
+			case "热点":break;
+			case "比赛":break;
+			
+			}
+		}
+		
 	}
 }

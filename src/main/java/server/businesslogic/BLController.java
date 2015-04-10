@@ -26,7 +26,7 @@ import blservice.BLService;
 public class BLController implements BLService {
 	private BLController() {
 	}
-
+	static String season=null;
 	HashMap<String, Player> playersHash = new HashMap<String, Player>(606);
 	HashMap<String, Team> teamsHash = new HashMap<String, Team>(41);
 	ArrayList<Player> players = new ArrayList<Player>(460);// buffer for
@@ -186,10 +186,15 @@ public class BLController implements BLService {
 									// speed of it
 		ArrayList<MatchPO> matches = data.getAllMatch();
 		Collections.sort(matches, new SortMatchesByCalendar());
+		int matchesSize = matches.size();
+		String thisSeason = matches.get(matchesSize-1).getSeason();
+		if(season==null || season.compareTo(thisSeason)<0)
+			season=thisSeason;
 		HashMap<String, TeamPO> teamPOHash = data.getAllTeams();
 		HashMap<String, PlayerPO> playerPOHash = data.getAllPlayers();
-		for (int i = matches.size() - 1; i >= 0; i--) {
+		for (int i = matchesSize - 1; i >= 0; i--) {
 			MatchPO mttemp = matches.get(i);
+			boolean theSeason = mttemp.getSeason().compareTo(season)<0;
 			ScorePO finalTemp = mttemp.getFinalScore();
 			ArrayList<ScorePO> scoresTemp = mttemp.getScores();
 			ArrayList<Integer> scores1 = new ArrayList<Integer>();
@@ -213,31 +218,83 @@ public class BLController implements BLService {
 
 			// put some data in team 1
 			String ab = timtemp1.getAbbreviation();
+			if(ab.equals("NOH") && season.compareTo("13-14")>=0)
+			{
+				Team foundTeam = teamsHash.get(ab);
+				ab = "NOP";
+				if(foundTeam!=null)
+				{
+					teamsHash.put(ab, foundTeam);
+					teamsHash.remove("NOH");
+				}
+			}
+			else if(ab.equals("CHA") && season.compareTo("14-15")>=0)
+			{
+				Team foundTeam = teamsHash.get(ab);
+				ab = "NO";
+				if(foundTeam!=null)
+				{
+					teamsHash.put(ab, foundTeam);
+					teamsHash.remove("CHA");
+				}
+			}
 			Team foundTeam = teamsHash.get(ab);
 			if (foundTeam == null) {
 				Team tTeam = new Team(teamPOHash.get(ab));
-				tTeam.addThisTeam(timtemp1);
-				tTeam.addOpponentTeam(timtemp2);
+				if(theSeason)
+				{//if the match belongs to this season
+					tTeam.addThisTeam(timtemp1);
+					tTeam.addOpponentTeam(timtemp2);
+				}
 				tTeam.addMatch(mttemp);
 				teamsHash.put(ab, tTeam);
 			} else {
-				foundTeam.addThisTeam(timtemp1);
-				foundTeam.addOpponentTeam(timtemp2);
+				if(theSeason)
+				{
+					foundTeam.addThisTeam(timtemp1);
+					foundTeam.addOpponentTeam(timtemp2);
+				}
 				foundTeam.addMatch(mttemp);
 			}
 
 			// put some data in team 2
 			ab = timtemp2.getAbbreviation();
+			if(ab.equals("NOH") && season.compareTo("13-14")>=0)
+			{
+				foundTeam = teamsHash.get(ab);
+				ab = "NOP";
+				if(foundTeam!=null)
+				{
+					teamsHash.put(ab, foundTeam);
+					teamsHash.remove("NOH");
+				}
+			}
+			else if(ab.equals("CHA") && season.compareTo("14-15")>=0)
+			{
+				foundTeam = teamsHash.get(ab);
+				ab = "NO";
+				if(foundTeam!=null)
+				{
+					teamsHash.put(ab, foundTeam);
+					teamsHash.remove("CHA");
+				}
+			}
 			foundTeam = teamsHash.get(ab);
 			if (foundTeam == null) {
 				Team tTeam = new Team(teamPOHash.get(ab));
-				tTeam.addThisTeam(timtemp2);
-				tTeam.addOpponentTeam(timtemp1);
+				if(theSeason)
+				{
+					tTeam.addThisTeam(timtemp2);
+					tTeam.addOpponentTeam(timtemp1);
+				}
 				tTeam.addMatch(mttemp);
 				teamsHash.put(ab, tTeam);
 			} else {
-				foundTeam.addThisTeam(timtemp2);
-				foundTeam.addOpponentTeam(timtemp1);
+				if(theSeason)
+				{
+					foundTeam.addThisTeam(timtemp2);
+					foundTeam.addOpponentTeam(timtemp1);
+				}
 				foundTeam.addMatch(mttemp);
 			}
 
@@ -256,13 +313,19 @@ public class BLController implements BLService {
 					}
 					Player tPlayer = new Player(teamsHash.get(ab).getTeamPO(),
 							playerPO);
-					tPlayer.addThisTeam(timtemp1, j);
-					tPlayer.addOpponentTeam(timtemp2);
+					if(theSeason)
+					{
+						tPlayer.addThisTeam(timtemp1, j);
+						tPlayer.addOpponentTeam(timtemp2);
+					}
 					tPlayer.addMatch(mttemp);
 					playersHash.put(name, tPlayer);
 				} else {
-					foundPlayer.addThisTeam(timtemp1, j);
-					foundPlayer.addOpponentTeam(timtemp2);
+					if(theSeason)
+					{
+						foundPlayer.addThisTeam(timtemp1, j);
+						foundPlayer.addOpponentTeam(timtemp2);
+					}
 					foundPlayer.addMatch(mttemp);
 				}
 			}
@@ -281,13 +344,19 @@ public class BLController implements BLService {
 					}
 					Player tPlayer = new Player(teamsHash.get(ab).getTeamPO(),
 							playerPO);
-					tPlayer.addThisTeam(timtemp2, j);
-					tPlayer.addOpponentTeam(timtemp1);
+					if(theSeason)
+					{
+						tPlayer.addThisTeam(timtemp2, j);
+						tPlayer.addOpponentTeam(timtemp1);
+					}
 					tPlayer.addMatch(mttemp);
 					playersHash.put(name, tPlayer);
 				} else {
-					foundPlayer.addThisTeam(timtemp2, j);
-					foundPlayer.addOpponentTeam(timtemp1);
+					if(theSeason)
+					{
+						foundPlayer.addThisTeam(timtemp2, j);
+						foundPlayer.addOpponentTeam(timtemp1);
+					}
 					foundPlayer.addMatch(mttemp);
 				}
 			}

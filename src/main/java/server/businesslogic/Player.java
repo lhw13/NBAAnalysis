@@ -8,13 +8,24 @@ import server.po.*;
 import test.data.*;
 import vo.*;
 
-public class Player {
+public class Player implements Cloneable{
 	public Player(TeamPO team, PlayerPO player) {
 		super();
 		// this.teamFullName = teamFullName;
 		// this.teamAbbreviation = teamAbbreviation;
 		this.team = team;
 		this.player = player;
+	}
+	
+	public Player clone() {
+		Player p =null;
+		try {
+			p = (Player)super.clone();
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return p;
 	}
 
 	boolean analysed = false;

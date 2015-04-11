@@ -84,10 +84,10 @@ public class BLController implements BLService {
 		Comparator<Player> comp = getPlayerAvgComparator(sortCon);
 		if(comp==null)
 			comp = getPlayerComparator(sortCon);
-		Collections.sort(players, comp);
+		Collections.sort(todayPlayers, comp);
 		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
-		for(int i=0;i<n && i<players.size();i++)
-			result.add(players.get(i).toVO());
+		for(int i=0;i<n && i<todayPlayers.size();i++)
+			result.add(todayPlayers.get(i).toVO());
 		return result;
 	}
 	
@@ -219,6 +219,7 @@ public class BLController implements BLService {
 		for (int i = matchesSize - 1; i >= 0; i--) {
 			MatchPO mttemp = matches.get(i);
 			boolean theSeason = mttemp.getSeason().compareTo(season)==0;
+			boolean theDay = day.compareTo(thisDay)==0;
 			ScorePO finalTemp = mttemp.getFinalScore();
 			ArrayList<ScorePO> scoresTemp = mttemp.getScores();
 			ArrayList<Integer> scores1 = new ArrayList<Integer>();
@@ -341,6 +342,11 @@ public class BLController implements BLService {
 					{
 						tPlayer.addThisTeam(timtemp1, j);
 						tPlayer.addOpponentTeam(timtemp2);
+						if(theDay)
+						{
+							tPlayer.anaylse();
+							todayPlayers.add(tPlayer.clone());
+						}
 					}
 					tPlayer.addMatch(mttemp);
 					playersHash.put(name, tPlayer);
@@ -349,6 +355,11 @@ public class BLController implements BLService {
 					{
 						foundPlayer.addThisTeam(timtemp1, j);
 						foundPlayer.addOpponentTeam(timtemp2);
+						if(theDay)
+						{
+							foundPlayer.anaylse();
+							todayPlayers.add(foundPlayer.clone());
+						}
 					}
 					foundPlayer.addMatch(mttemp);
 				}
@@ -372,6 +383,11 @@ public class BLController implements BLService {
 					{
 						tPlayer.addThisTeam(timtemp2, j);
 						tPlayer.addOpponentTeam(timtemp1);
+						if(theDay)
+						{
+							tPlayer.anaylse();
+							todayPlayers.add(tPlayer.clone());
+						}
 					}
 					tPlayer.addMatch(mttemp);
 					playersHash.put(name, tPlayer);
@@ -380,6 +396,11 @@ public class BLController implements BLService {
 					{
 						foundPlayer.addThisTeam(timtemp2, j);
 						foundPlayer.addOpponentTeam(timtemp1);
+						if(theDay)
+						{
+							foundPlayer.anaylse();
+							todayPlayers.add(foundPlayer.clone());
+						}
 					}
 					foundPlayer.addMatch(mttemp);
 				}

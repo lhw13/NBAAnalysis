@@ -28,6 +28,8 @@ public interface BLService {
 	
 	public ArrayList<PlayerVO> getHotPlayerVO(String sortCon, int n);//获得前n名
 	
+	public ArrayList<PlayerVO> getDailyHotPlayerVO(String sortCon, int n);
+	
 	public ArrayList<PlayerVO> getBestPromotion(String sortCon, int n);//进步最快
 	
 	public ImageIcon getPlayerAction(String name);

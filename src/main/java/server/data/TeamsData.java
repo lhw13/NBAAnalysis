@@ -2,13 +2,15 @@ package server.data;
 
 import java.io.File;
 import java.util.ArrayList;
+
+import console.Console;
 import server.po.TeamPO;
 
 public class TeamsData {
 	private static File teamsFile;
 	private static ArrayList<TeamPO> teamPOList;
 	static {
-		teamsFile = new File("nba/teams/teams");
+		teamsFile = new File(Console.path+"/teams/teams");
 		teamPOList = TeamsDataAnalyse.teamPOListMade(DataReader
 				.dataReader(teamsFile));
 	}

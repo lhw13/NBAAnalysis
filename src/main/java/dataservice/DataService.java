@@ -29,4 +29,6 @@ public interface DataService {
 	public ImageIcon getTeamPic(String abbreviation);
 
 	public JSVGCanvas getSwing(String abbreviation);
+	
+	public void startWatchMatches();
 }

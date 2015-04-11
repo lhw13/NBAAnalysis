@@ -9,11 +9,13 @@ import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 
-public class WatchMatches {
-private static String path="C:/Users/wjc/Desktop/nba/matches/";//文件位置  
-	public static void watch() {
+import console.Console;
+
+public class WatchMatches implements Runnable {
+	public  void run() {
 		// TODO Auto-generated method stub
 		try {
+			String path=Console.path+"/matches/";
 			WatchService watchService=FileSystems.getDefault().newWatchService();
 			 Paths.get(path).register(watchService,   
 		                StandardWatchEventKinds.ENTRY_CREATE,  
@@ -31,7 +33,7 @@ private static String path="C:/Users/wjc/Desktop/nba/matches/";//文件位置
 		                	MatchesData.add(f);
 		                }
 		                else if(event.kind().name().equals("ENTRY_DELETE")){
-		                	
+		                	MatchesData.remove(event.context().toString());
 		                }
 		            }  
 		            if(!key.reset())  

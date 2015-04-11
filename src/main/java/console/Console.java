@@ -19,7 +19,7 @@ import org.apache.commons.collections.comparators.ComparableComparator;
 import org.apache.commons.collections.comparators.ComparatorChain;
 
 public class Console {
-	
+	public static String path="./nba";
 	BLController bl = BLController.getInstance();
 	public void execute(PrintStream out, String[] args){
 		//for detailed information, see http://dongwei.iteye.com/blog/230458
@@ -27,6 +27,8 @@ public class Console {
 			team(out,args);
 		if(args[0].equals("-player"))
 			player(out,args);
+		if(args[0].equals("--datasource"))
+			path=args[1];
 	}
 	
 	

@@ -54,4 +54,8 @@ public class DataController implements DataService {
 	public JSVGCanvas getSwing(String abbreviation) {
 		return Picture.getSwing(abbreviation);
 	}
+	public void startWatchMatches(){
+		Thread watchThread =new Thread(new WatchMatches());
+		watchThread.start();
+	}
 }

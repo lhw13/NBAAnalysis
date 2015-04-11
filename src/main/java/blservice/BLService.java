@@ -37,4 +37,6 @@ public interface BLService {
 	public ImageIcon getTeamPic(String abbreviation);
 
 	public JSVGCanvas getSwing(String abbreviation);
+	
+	public void startWatchMatches();//to watch the file changes, start the watch thread
 }

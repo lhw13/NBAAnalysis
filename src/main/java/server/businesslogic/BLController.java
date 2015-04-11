@@ -43,6 +43,10 @@ public class BLController implements BLService {
 	}
 	
 	//iteration 2
+	public void startWatchMatches() {
+		data.startWatchMatches();
+	}
+	
 	public ArrayList<TeamVO> getHotTeamVO(String sortCon) {
 		return getHotTeamVO(sortCon,5);
 	}

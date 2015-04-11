@@ -174,7 +174,7 @@ public class BLController implements BLService {
 		}
 		return result;
 	}
-
+	
 	private boolean analyse() {// the operation of core algorithm
 		//if (players.size() > 0)// already have content in buffer
 			//return true;
@@ -204,9 +204,21 @@ public class BLController implements BLService {
 			return true;
 	}
 
+	private void clear()
+	{
+		season=null;
+		day = null;
+		players.clear();
+		todayPlayers.clear();
+		teams.clear();
+		teamsHash.clear();
+		playersHash.clear();
+	}
+	
 	private boolean linkDatas() {// some prepared procedure before analyse,
 									// construct some hashmap, to accelarate the
 									// speed of it
+		clear();
 		ArrayList<MatchPO> matches = data.getAllMatch();
 		Collections.sort(matches, new SortMatchesByCalendar());
 		int matchesSize = matches.size();

@@ -33,7 +33,7 @@ public class MatchSelectionPanel extends JPanel {
 	
 	private JPanel panelOfBottom = new JPanel();
 	private JComboBox<String> comboBox;
-	private JComboBox<Integer> comboBox_1;
+	private JComboBox comboBox_1;
 	private JScrollPane scrollPane_1;
 	
 	MouseListen listener = new MouseListen();
@@ -57,10 +57,11 @@ public class MatchSelectionPanel extends JPanel {
 		
 		comboBox = new JComboBox<String>();
 		comboBox.setBounds(200, 50, 100, 30);
+		comboBox.addItem("选择赛季");
 		comboBox.addItem("12-13");
 		comboBox.addItem("13-14");
 		comboBox.addItem("14-15");
-		comboBox.setSelectedItem(MainFrame.season);
+		comboBox.setSelectedItem("选择赛季");
 		panelOfBottom.add(comboBox);
 		
 		comboBox.addActionListener(new ActionListener(){
@@ -69,15 +70,15 @@ public class MatchSelectionPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				int index = comboBox.getSelectedIndex();
 				switch(index){
-				case 0:
+				case 1:
 					MainFrame.season="12-13";
 					MainFrame.searchTheMatch();
 					break;
-				case 1:
+				case 2:
 					MainFrame.season="13-14";
 					MainFrame.searchTheMatch();
 					break;
-				case 2:
+				case 3:
 					MainFrame.season="14-15";
 					MainFrame.searchTheMatch();
 					break;
@@ -86,7 +87,8 @@ public class MatchSelectionPanel extends JPanel {
 			
 		});
 		
-		comboBox_1 = new JComboBox<Integer>();
+		comboBox_1 = new JComboBox();
+		comboBox_1.addItem("选择月份");
 		comboBox_1.addItem(1);
 		comboBox_1.addItem(2);
 		comboBox_1.addItem(3);
@@ -94,7 +96,7 @@ public class MatchSelectionPanel extends JPanel {
 		comboBox_1.addItem(10);
 		comboBox_1.addItem(11);
 		comboBox_1.addItem(12);
-		comboBox_1.setSelectedItem(MainFrame.date);
+		comboBox_1.setSelectedItem("选择月份");
 		comboBox_1.setBounds(350, 50, 100, 30);
 		panelOfBottom.add(comboBox_1);
 		
@@ -104,32 +106,32 @@ public class MatchSelectionPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				int index = comboBox_1.getSelectedIndex();
 				switch(index){
-				case 0:
-					MainFrame.date=1;
-					MainFrame.searchTheMatch();
-					break;
 				case 1:
-					MainFrame.date=2;
+					MainFrame.date=0;
 					MainFrame.searchTheMatch();
 					break;
 				case 2:
-					MainFrame.date=3;
+					MainFrame.date=1;
 					MainFrame.searchTheMatch();
 					break;
 				case 3:
-					MainFrame.date=4;
+					MainFrame.date=2;
 					MainFrame.searchTheMatch();
 					break;
 				case 4:
-					MainFrame.date=10;
+					MainFrame.date=3;
 					MainFrame.searchTheMatch();
 					break;
 				case 5:
-					MainFrame.date=11;
+					MainFrame.date=9;
 					MainFrame.searchTheMatch();
 					break;
 				case 6:
-					MainFrame.date=12;
+					MainFrame.date=10;
+					MainFrame.searchTheMatch();
+					break;
+				case 7:
+					MainFrame.date=11;
 					MainFrame.searchTheMatch();
 					break;
 				}
@@ -258,7 +260,7 @@ public class MatchSelectionPanel extends JPanel {
 		Vector rowDatas3 = new Vector();
 		Vector rowData3 = new Vector();
 		rowData3.add(mpo.getSeason());
-		rowData3.add(mpo.getDate().get(Calendar.MONTH)+"-"+
+		rowData3.add((mpo.getDate().get(Calendar.MONTH)+1)+"-"+
 	                 mpo.getDate().get(Calendar.DAY_OF_MONTH));
 		rowData3.add(mpo.getTeam1().getAbbreviation()+"-"+mpo.getTeam2().getAbbreviation());
 		rowData3.add(mpo.getFinalScore().getTeam1()+"-"+mpo.getFinalScore().getTeam2());

@@ -109,7 +109,7 @@ public class MainFrame {
 	public static String selection2="投篮命中数";
 	
 	public static String season="13-14";
-	public static int date=1;
+	public static int date=0;
 
 	BLService blservice = BLController.getInstance();
 	public static void main(String[] args) {
@@ -809,7 +809,7 @@ public class MainFrame {
 		Object table_rows[][] = new Object[selectedMatchs.size()][9];
 		for(int i=0;i<selectedMatchs.size();i++){
 			table_rows[i][0] = selectedMatchs.get(i).getSeason();
-			table_rows[i][1] = selectedMatchs.get(i).getDate().get(Calendar.MONTH)+"-"+
+			table_rows[i][1] = (selectedMatchs.get(i).getDate().get(Calendar.MONTH)+1)+"-"+
 					selectedMatchs.get(i).getDate().get(Calendar.DAY_OF_MONTH);
 			table_rows[i][2] = selectedMatchs.get(i).getTeam1().getAbbreviation()+"-"+
 					selectedMatchs.get(i).getTeam2().getAbbreviation();

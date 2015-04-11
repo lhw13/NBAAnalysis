@@ -52,7 +52,7 @@ public class TeamsInfoFrame extends JPanel{
 	private JComboBox<String> comboBox_1;
 	private JComboBox comboBox_2;
 	private static String season="13-14";
-	private static int date=1;
+	private static int date=0;
 	Vector columnName3;
 	DefaultTableModel model_3=new DefaultTableModel();
 	private ArrayList<MatchPO> mpoList;
@@ -195,31 +195,31 @@ public class TeamsInfoFrame extends JPanel{
 				int index = comboBox_2.getSelectedIndex();
 				switch(index){
 				case 1:
-					date=1;
+					date=0;
 					searchTheMatch(teamName);
 					break;
 				case 2:
-					date=2;
+					date=1;
 					searchTheMatch(teamName);
 					break;
 				case 3:
-					date=3;
+					date=2;
 					searchTheMatch(teamName);
 					break;
 				case 4:
-					date=4;
+					date=3;
 					searchTheMatch(teamName);
 					break;
 				case 5:
-					date=10;
+					date=9;
 					searchTheMatch(teamName);
 					break;
 				case 6:
-					date=11;
+					date=10;
 					searchTheMatch(teamName);
 					break;
 				case 7:
-					date=12;
+					date=11;
 					searchTheMatch(teamName);
 					break;
 				}
@@ -1045,22 +1045,33 @@ public class TeamsInfoFrame extends JPanel{
 		ArrayList<MatchPO> matchList = compute.getAllMatch();
 		
 		ArrayList<MatchPO> selectedMatchs = new ArrayList<MatchPO>();
-		int monthMax=1;
-		int compareNum=0;
+		int monthMax1 = 9;
+		int monthMax2 = 0;
+		boolean jude = false;
+		int compareNum = 0;
 		
 		for(int i=0;i<matchList.size();i++){
 			if(matchList.get(i).getSeason().equals(season) && 
 					(matchList.get(i).getTeam1().getAbbreviation().equals(teamName) ||
 					 matchList.get(i).getTeam2().getAbbreviation().equals(teamName))){
 
-				compareNum=matchList.get(i).getDate().get(Calendar.MONTH);
-				if(compareNum > monthMax){
-					monthMax = compareNum;
+				compareNum=matchList.get(i).getDate().get(Calendar.MONTH)+1;
+				if(compareNum >4 && compareNum > monthMax1){
+					monthMax1 = compareNum;
+				}
+				if(compareNum < 10 && compareNum > monthMax2){
+					monthMax2 = compareNum;
+					jude = true;
 				}
 			}
+			
+		}
+		if(jude){
+			date = monthMax2-1;
+		}else{
+			date = monthMax1-1;
 		}
 		
-		date = monthMax;
 		
 		for(int i=0;i<matchList.size();i++){
 			if(matchList.get(i).getSeason().equals(season) && 
@@ -1078,7 +1089,7 @@ public class TeamsInfoFrame extends JPanel{
 		for(int i=0;i<selectedMatchs.size();i++){
 			Vector rowData1 = new Vector();
 			rowData1.add(selectedMatchs.get(i).getSeason());
-			rowData1.add(selectedMatchs.get(i).getDate().get(Calendar.MONTH)+"-"+
+			rowData1.add((selectedMatchs.get(i).getDate().get(Calendar.MONTH)+1)+"-"+
 					selectedMatchs.get(i).getDate().get(Calendar.DAY_OF_MONTH));
 			rowData1.add(selectedMatchs.get(i).getTeam1().getAbbreviation()+"-"+
 					selectedMatchs.get(i).getTeam2().getAbbreviation());
@@ -1128,7 +1139,7 @@ public class TeamsInfoFrame extends JPanel{
 		for(int i=0;i<selectedMatchs.size();i++){
 			Vector rowData1 = new Vector();
 			rowData1.add(selectedMatchs.get(i).getSeason());
-			rowData1.add(selectedMatchs.get(i).getDate().get(Calendar.MONTH)+"-"+
+			rowData1.add((selectedMatchs.get(i).getDate().get(Calendar.MONTH)+1)+"-"+
 					selectedMatchs.get(i).getDate().get(Calendar.DAY_OF_MONTH));
 			rowData1.add(selectedMatchs.get(i).getTeam1().getAbbreviation()+"-"+
 					selectedMatchs.get(i).getTeam2().getAbbreviation());
@@ -1249,7 +1260,7 @@ public class TeamsInfoFrame extends JPanel{
 		Vector rowDatas3 = new Vector();
 		Vector rowData3 = new Vector();
 		rowData3.add(mpo.getSeason());
-		rowData3.add(mpo.getDate().get(Calendar.MONTH)+"-"+
+		rowData3.add((mpo.getDate().get(Calendar.MONTH)+1)+"-"+
 	                 mpo.getDate().get(Calendar.DAY_OF_MONTH));
 		rowData3.add(mpo.getTeam1().getAbbreviation()+"-"+mpo.getTeam2().getAbbreviation());
 		rowData3.add(mpo.getFinalScore().getTeam1()+"-"+mpo.getFinalScore().getTeam2());

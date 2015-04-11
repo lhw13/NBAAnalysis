@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.RowFilter;
 
 import presentation.mainui.MainFrame;
+import presentation.teamsui.TeamsRankingFrame;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -59,6 +60,8 @@ public class PlayerRankingPanel extends JPanel {
 
 			public void actionPerformed(ActionEvent e) {
 				PlayerRankingPanel.scrollPane.setVisible(false);
+				MainFrame.frame.getContentPane().remove(PlayerRankingPanel.scrollPane);
+				PlayerRankingPanel.scrollPane=null;
 				MainFrame.panel.setVisible(true);
 				MainFrame.frame.setTitle("NBA");
 			}

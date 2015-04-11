@@ -977,7 +977,10 @@ public class TeamsSelectionFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					TeamsSelectionFrame.scrollPane.setVisible(false);
+					MainFrame.frame.getContentPane().remove(TeamsSelectionFrame.scrollPane);
+					TeamsSelectionFrame.scrollPane=null;
 					TeamsSelectionFrame.flag = false;
+					timer.cancel();
 					MainFrame.panel.setVisible(true);
 					MainFrame.frame.setTitle("NBA");
 				} catch (Exception e1) {

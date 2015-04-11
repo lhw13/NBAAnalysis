@@ -50,7 +50,7 @@ public class TeamsInfoFrame extends JPanel{
 	
 	private JScrollPane scrollPane_search;
 	private JComboBox<String> comboBox_1;
-	private JComboBox<Integer> comboBox_2;
+	private JComboBox comboBox_2;
 	private static String season="13-14";
 	private static int date=1;
 	Vector columnName3;
@@ -133,7 +133,10 @@ public class TeamsInfoFrame extends JPanel{
 		}
 		
 		JLabel lblNewLabel = new JLabel("球队过往比赛查询");
-		lblNewLabel.setBounds(60, 750, 150, 30);
+		lblNewLabel.setBounds(300, 750, 150, 30);
+		
+		JLabel lblNewLabel_1 = new JLabel("球队近期比赛");
+		lblNewLabel_1.setBounds(60, 750, 150, 30);
 		
         table_2 = new JTable(model_3);
 		scrollPane_search.setViewportView(table_2);
@@ -141,10 +144,12 @@ public class TeamsInfoFrame extends JPanel{
 		table_2.addMouseListener(listener);
 		
 		comboBox_1 = new JComboBox<String>();
-		comboBox_1.setBounds(400, 750, 150, 30);
+		comboBox_1.setBounds(450, 750, 150, 30);
+		comboBox_1.addItem("选择赛季");
 		comboBox_1.addItem("12-13");
 		comboBox_1.addItem("13-14");
 		comboBox_1.addItem("14-15");
+		comboBox_1.setSelectedItem("选择赛季");
 		
 		final String teamName = twpvo.getTeam().getAbbreviation();
 		
@@ -154,15 +159,15 @@ public class TeamsInfoFrame extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				int index = comboBox_1.getSelectedIndex();
 				switch(index){
-				case 0:
+				case 1:
 					season="12-13";
 					searchTheMatch(teamName);
 					break;
-				case 1:
+				case 2:
 					season="13-14";
 					searchTheMatch(teamName);
 					break;
-				case 2:
+				case 3:
 					season="14-15";
 					searchTheMatch(teamName);
 					break;
@@ -171,7 +176,8 @@ public class TeamsInfoFrame extends JPanel{
 			
 		});
 		
-		comboBox_2 = new JComboBox<Integer>();
+		comboBox_2 = new JComboBox();
+		comboBox_2.addItem("选择月份");
 		comboBox_2.addItem(1);
 		comboBox_2.addItem(2);
 		comboBox_2.addItem(3);
@@ -179,7 +185,8 @@ public class TeamsInfoFrame extends JPanel{
 		comboBox_2.addItem(10);
 		comboBox_2.addItem(11);
 		comboBox_2.addItem(12);
-		comboBox_2.setBounds(600, 750, 150, 30);
+		comboBox_2.setSelectedItem("选择月份");
+		comboBox_2.setBounds(620, 750, 150, 30);
 		
 		comboBox_2.addActionListener(new ActionListener(){
 
@@ -187,31 +194,31 @@ public class TeamsInfoFrame extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				int index = comboBox_2.getSelectedIndex();
 				switch(index){
-				case 0:
+				case 1:
 					date=1;
 					searchTheMatch(teamName);
 					break;
-				case 1:
+				case 2:
 					date=2;
 					searchTheMatch(teamName);
 					break;
-				case 2:
+				case 3:
 					date=3;
 					searchTheMatch(teamName);
 					break;
-				case 3:
+				case 4:
 					date=4;
 					searchTheMatch(teamName);
 					break;
-				case 4:
+				case 5:
 					date=10;
 					searchTheMatch(teamName);
 					break;
-				case 5:
+				case 6:
 					date=11;
 					searchTheMatch(teamName);
 					break;
-				case 6:
+				case 7:
 					date=12;
 					searchTheMatch(teamName);
 					break;
@@ -231,6 +238,7 @@ public class TeamsInfoFrame extends JPanel{
 		panel_1.add(comboBox_1);
 		panel_1.add(comboBox_2);
 		panel_1.add(lblNewLabel);
+		panel_1.add(lblNewLabel_1);
 		
 		scrollPane = new JScrollPane(panel_1);
 		scrollPane.setBounds(0, 0, 990, 560);
@@ -1030,6 +1038,73 @@ public class TeamsInfoFrame extends JPanel{
 		table_1.updateUI();
 	}
 	
+	//最新比赛数据
+	public void latestMatchs(String teamName){
+		
+		compute = BLController.getInstance();
+		ArrayList<MatchPO> matchList = compute.getAllMatch();
+		
+		ArrayList<MatchPO> selectedMatchs = new ArrayList<MatchPO>();
+		int monthMax=1;
+		int compareNum=0;
+		
+		for(int i=0;i<matchList.size();i++){
+			if(matchList.get(i).getSeason().equals(season) && 
+					(matchList.get(i).getTeam1().getAbbreviation().equals(teamName) ||
+					 matchList.get(i).getTeam2().getAbbreviation().equals(teamName))){
+
+				compareNum=matchList.get(i).getDate().get(Calendar.MONTH);
+				if(compareNum > monthMax){
+					monthMax = compareNum;
+				}
+			}
+		}
+		
+		date = monthMax;
+		
+		for(int i=0;i<matchList.size();i++){
+			if(matchList.get(i).getSeason().equals(season) && 
+					matchList.get(i).getDate().get(Calendar.MONTH)==date &&
+					(matchList.get(i).getTeam1().getAbbreviation().equals(teamName) ||
+					 matchList.get(i).getTeam2().getAbbreviation().equals(teamName))){
+				selectedMatchs.add(matchList.get(i));
+			}
+		}
+		
+		mpoList = selectedMatchs;
+		
+		Vector rowDatas1 = new Vector();
+		
+		for(int i=0;i<selectedMatchs.size();i++){
+			Vector rowData1 = new Vector();
+			rowData1.add(selectedMatchs.get(i).getSeason());
+			rowData1.add(selectedMatchs.get(i).getDate().get(Calendar.MONTH)+"-"+
+					selectedMatchs.get(i).getDate().get(Calendar.DAY_OF_MONTH));
+			rowData1.add(selectedMatchs.get(i).getTeam1().getAbbreviation()+"-"+
+					selectedMatchs.get(i).getTeam2().getAbbreviation());
+			rowData1.add(selectedMatchs.get(i).getFinalScore().getTeam1()+"-"+
+					selectedMatchs.get(i).getFinalScore().getTeam2());
+			rowData1.add(selectedMatchs.get(i).getScores().get(0).getTeam1()+"-"+
+					selectedMatchs.get(i).getScores().get(0).getTeam2());
+			rowData1.add(selectedMatchs.get(i).getScores().get(1).getTeam1()+"-"+
+					selectedMatchs.get(i).getScores().get(1).getTeam2());
+			rowData1.add(selectedMatchs.get(i).getScores().get(2).getTeam1()+"-"+
+					selectedMatchs.get(i).getScores().get(2).getTeam2());
+			rowData1.add(selectedMatchs.get(i).getScores().get(3).getTeam1()+"-"+
+					selectedMatchs.get(i).getScores().get(3).getTeam2());
+			rowData1.add("详情");
+			rowDatas1.add(rowData1);
+		}
+		
+		
+		model_3.setDataVector(rowDatas1, columnName3);
+		model_3.setColumnCount(table_2.getColumnCount());
+		model_3.setRowCount(rowDatas1.size());
+		table_2.setModel(model_3);
+		table_2.updateUI();
+		
+	}
+	
 	//球队过往查询
 	public void searchTheMatch(String teamName){
 		
@@ -1079,6 +1154,8 @@ public class TeamsInfoFrame extends JPanel{
 		table_2.updateUI();
 		
 	}
+	
+	
 	
 	public class MouseListen extends MouseAdapter {
 		public void mouseClicked(MouseEvent e) {

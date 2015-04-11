@@ -152,9 +152,9 @@ public class BLController implements BLService {
 	}
 
 	private boolean analyse() {// the operation of core algorithm
-		if (players.size() > 0)// already have content in buffer
-			return true;
-		else {// when just start the program, we will first compute the data
+		//if (players.size() > 0)// already have content in buffer
+			//return true;
+		//else {// when just start the program, we will first compute the data
 			linkDatas();
 			Iterator<Entry<String, Team>> iter = teamsHash.entrySet()
 					.iterator();
@@ -178,7 +178,6 @@ public class BLController implements BLService {
 																// efficiency of
 																// getTeamWithPlayer
 			return true;
-		}
 	}
 
 	private boolean linkDatas() {// some prepared procedure before analyse,
@@ -194,7 +193,7 @@ public class BLController implements BLService {
 		HashMap<String, PlayerPO> playerPOHash = data.getAllPlayers();
 		for (int i = matchesSize - 1; i >= 0; i--) {
 			MatchPO mttemp = matches.get(i);
-			boolean theSeason = mttemp.getSeason().compareTo(season)<0;
+			boolean theSeason = mttemp.getSeason().compareTo(season)==0;
 			ScorePO finalTemp = mttemp.getFinalScore();
 			ArrayList<ScorePO> scoresTemp = mttemp.getScores();
 			ArrayList<Integer> scores1 = new ArrayList<Integer>();
@@ -367,7 +366,7 @@ public class BLController implements BLService {
 	private ArrayList<PlayerVO> getPlayersInTeam(String abbreviation) {// 参数是简称
 		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
 		int i = 5;
-		for (i = 5; i < players.size(); i += 10)
+		for (i = 0; i < players.size(); i ++)
 			// here just use some small trick to improve the efficiency
 			if (players.get(i).team.getAbbreviation().equals(abbreviation)) {
 				result.add(players.get(i).toVO());

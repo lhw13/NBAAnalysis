@@ -80,15 +80,20 @@ public class BLController implements BLService {
 	}
 	
 	public ArrayList<PlayerVO> getDailyHotPlayerVO(String sortCon, int n) {
+		getDailyHotPlayer(sortCon);
+		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		for(int i=0;i<n && i<todayPlayers.size();i++)
+			result.add(todayPlayers.get(i).toVO());
+		return result;
+	}
+	
+	public ArrayList<Player> getDailyHotPlayer(String sortCon) {
 		analyse();
 		Comparator<Player> comp = getPlayerAvgComparator(sortCon);
 		if(comp==null)
 			comp = getPlayerComparator(sortCon);
 		Collections.sort(todayPlayers, comp);
-		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
-		for(int i=0;i<n && i<todayPlayers.size();i++)
-			result.add(todayPlayers.get(i).toVO());
-		return result;
+		return todayPlayers;
 	}
 	
 	public ArrayList<PlayerVO> getBestPromotion(String sortCon, int n) {

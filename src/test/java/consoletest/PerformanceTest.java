@@ -9,6 +9,7 @@ import java.util.List;
 import org.apache.commons.beanutils.BeanComparator;
 import org.apache.commons.collections.ComparatorUtils;
 import org.apache.commons.collections.comparators.ComparableComparator;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import server.businesslogic.BLController;
@@ -29,7 +30,7 @@ public class PerformanceTest {
 				for(int i=0;i<args.length;i++)
 					Collections.sort(teams,new BeanComparator<Team>(args[i]));			
 	}
-	@Test
+	@Ignore
 	public void testNewComparator()
 	{
 		for(int j=0;j<num;j++){

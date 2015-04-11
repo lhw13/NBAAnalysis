@@ -26,7 +26,7 @@ public class SortTest {
 	
 	String[] args={"point","assist","foul"};
 	ArrayList<Player> players = BLController.getInstance().getPlayers();
-	static final int num=10000;
+	static final int num=1000;
 	@Test
 	public void testMyComparator(){
 		
@@ -1632,13 +1632,6 @@ public class SortTest {
         }       
     };
 	
-	
-	
-	@Test
-	public void testNormalComparator(){
-		
-		
-	}
 	
 	private Comparator<Player> comparePoint = new Comparator<Player>() {  
 		  

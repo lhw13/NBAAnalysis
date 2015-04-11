@@ -846,6 +846,7 @@ public class BLController implements BLService {
         }
     };
     
+    //Promotion
     public Comparator<Player> compareAssistPromotionDesc = new Comparator<Player>(){  
 		  
         @Override  
@@ -873,6 +874,7 @@ public class BLController implements BLService {
     
 	public Comparator<Player> getPlayerComparator(String sort) {
 		switch(sort) {
+		case "score": return comparePointDesc;
 		case "point": return comparePointDesc;
 		case "rebound": return compareReboundDesc;
 		case "assist": return compareAssistDesc;					
@@ -903,6 +905,7 @@ public class BLController implements BLService {
 	
 	public Comparator<Player> getPlayerAvgComparator(String sort) {
 		switch(sort) {
+		case "score": return comparePointAvgDesc;
 		case "point": return comparePointAvgDesc;
 		case "rebound": return compareReboundAvgDesc;
 		case "assist": return compareAssistAvgDesc;					

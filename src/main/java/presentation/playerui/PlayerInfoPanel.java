@@ -221,7 +221,7 @@ public class PlayerInfoPanel extends JPanel {
 		label.setBounds(5, 425, 110, 29);
 		panelOfBottom.add(label);	
 		
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"选择赛季", "13-14"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"选择赛季", "13-14","12-13"}));
 		comboBox.setBounds(246, 425, 110, 29);
 		panelOfBottom.add(comboBox);
 		

@@ -167,22 +167,32 @@ public class HotRankingPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int index = comboBox_1.getSelectedIndex();
-				ArrayList<TeamVO> teams;
+				ArrayList<PlayerVO> players;
 				switch(index){				
 				case 1: 
 					columnName1.setElementAt("得分", 3);
+					players = blservice.getDailyHotPlayerVO("point", 5);
+					update1(players,"point");
 					break;
 				case 2: 
 					columnName1.setElementAt("篮板", 3);
+					players = blservice.getDailyHotPlayerVO("rebound", 5);
+					update1(players,"rebound");
 					break;
 				case 3: 
 					columnName1.setElementAt("助攻", 3);
+					players = blservice.getDailyHotPlayerVO("assist", 5);
+					update1(players,"assist");
 					break;
 				case 4: 
-					columnName1.setElementAt("盖帽", 3);					
+					columnName1.setElementAt("盖帽", 3);
+					players = blservice.getDailyHotPlayerVO("blockShot", 5);
+					update1(players,"blockShot");
 					break;
 				case 5: 
 					columnName1.setElementAt("抢断", 3);
+					players = blservice.getDailyHotPlayerVO("steal", 5);
+					update1(players,"steal");
 					break;
 				}
 			}
@@ -347,8 +357,72 @@ public class HotRankingPanel extends JPanel {
 		return String.format("%.2f", f);
 	}
 	
-	public void update1(ArrayList<TeamVO> teams, String con) {
-		
+	public void update1(ArrayList<PlayerVO> players, String con) {
+		Vector rowDatas1 = new Vector();
+		switch(con) {
+		case "point":
+			for(int i=0;i<players.size()&&i<5;i++) {
+				Vector rowData1 = new Vector();
+				PlayerVO playerTemp = players.get(i);			
+				rowData1.add(playerTemp.getName());
+				rowData1.add(playerTemp.getTeamFullName());	
+				rowData1.add(playerTemp.getPosition());					
+				rowData1.add(playerTemp.getScore());			
+				rowDatas1.add(rowData1);
+			}
+			break;
+		case "rebound":
+			for(int i=0;i<players.size()&&i<5;i++) {
+				Vector rowData1 = new Vector();
+				PlayerVO playerTemp = players.get(i);			
+				rowData1.add(playerTemp.getName());
+				rowData1.add(playerTemp.getTeamFullName());			
+				rowData1.add(playerTemp.getPosition());					
+				rowData1.add(playerTemp.getTotalRebound());					
+				rowDatas1.add(rowData1);
+			}
+			break;
+		case "assist":
+			for(int i=0;i<players.size()&&i<5;i++) {
+				Vector rowData1 = new Vector();
+				PlayerVO playerTemp = players.get(i);			
+				rowData1.add(playerTemp.getName());
+				rowData1.add(playerTemp.getTeamFullName());	
+				rowData1.add(playerTemp.getPosition());					
+				rowData1.add(playerTemp.getAssist());									
+				rowDatas1.add(rowData1);
+			}
+			break;
+		case "blockShot":
+			for(int i=0;i<players.size()&&i<5;i++) {
+				Vector rowData1 = new Vector();
+				PlayerVO playerTemp = players.get(i);			
+				rowData1.add(playerTemp.getName());
+				rowData1.add(playerTemp.getTeamFullName());	
+				rowData1.add(playerTemp.getPosition());					
+				rowData1.add(playerTemp.getAssist());									
+				rowDatas1.add(rowData1);
+			}
+			break;
+		case "steal":
+			for(int i=0;i<players.size()&&i<5;i++) {
+				Vector rowData1 = new Vector();
+				PlayerVO playerTemp = players.get(i);			
+				rowData1.add(playerTemp.getName());
+				rowData1.add(playerTemp.getTeamFullName());	
+				rowData1.add(playerTemp.getPosition());					
+				rowData1.add(playerTemp.getSteal());									
+				rowDatas1.add(rowData1);
+			}
+			break;
+		}
+			model_1.setDataVector(rowDatas1, columnName1);		
+			model_1.setColumnCount(table_1.getColumnCount());
+			model_1.setRowCount(rowDatas1.size());
+			table_1.setModel(model_1);
+//			int[] width={50,55,5,3,3,3,3,3,3,3,3,3,3,3};
+//			table_1.setColumnModel(getColumn(table_1, width));
+			table_1.updateUI();
 	}
 
 	public void update2(ArrayList<PlayerVO> players, String con) {

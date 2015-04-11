@@ -84,7 +84,8 @@ public class Console {
 		
 		if(king) {//数据王的season/daily接口还没弄好
 			sortCons[0] = condition+".desc";
-			sort = true;
+			if(timeCon.equals("season"))sort = true;
+			else playerList = bl.getDailyHotPlayer(condition);
 		}
 		
 		if(filter){
@@ -145,6 +146,7 @@ public class Console {
 				String[] temps = temp.split("\\.");
 				if(temps[1].equals("asc")) {//升序
 					switch(temps[0]) {
+					case "score": sortConsList.add(comparePointAsc); break;
 					case "point": sortConsList.add(comparePointAsc); break;
 					case "rebound": sortConsList.add(compareReboundAsc);break;
 					case "assist": sortConsList.add(compareAssistAsc);break;					
@@ -206,10 +208,12 @@ public class Console {
 				sortConsList.add(bl.compareRealShotDesc);
 			}else{ 
 				sortConsList.add(bl.comparePointDesc);
-			}
+			} 
 		}
-		sortConsList.add(comparePlayerNameAsc);
-		sort(playerList, sortConsList);
+		if(!king) {
+			sortConsList.add(comparePlayerNameAsc);
+			sort(playerList, sortConsList);
+		}
 		
 		if(total) {//返回的数据是总数据
 			

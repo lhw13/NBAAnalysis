@@ -481,102 +481,102 @@ public class BLController implements BLService {
 	
 	private static final Comparator<Team> TeamByPoint = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return (double)t1.score/t1.appearance>(double)t2.score/t2.appearance?1:-1;
+			return (double)t1.score/t1.appearance<(double)t2.score/t2.appearance?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamByRebound = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return (double)t1.rebound/t1.appearance>(double)t2.rebound/t2.appearance?1:-1;
+			return (double)t1.rebound/t1.appearance<(double)t2.rebound/t2.appearance?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamByAssist = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return (double)t1.assist/t1.appearance>(double)t2.assist/t2.appearance?1:-1;
+			return (double)t1.assist/t1.appearance<(double)t2.assist/t2.appearance?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamByBlock = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return (double)t1.blockShot/t1.appearance>(double)t2.blockShot/t2.appearance?1:-1;
+			return (double)t1.blockShot/t1.appearance<(double)t2.blockShot/t2.appearance?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamBySteal = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return (double)t1.steal/t1.appearance>(double)t2.steal/t2.appearance?1:-1;
+			return (double)t1.steal/t1.appearance<(double)t2.steal/t2.appearance?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamByThree = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return t1.getThree()>t2.getThree()?1:-1;
+			return t1.getThree()<t2.getThree()?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamByShot = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return t1.getShot()>t2.getShot()?1:-1;
+			return t1.getShot()<t2.getShot()?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamByPenalty = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return t1.getPenalty()>t2.getPenalty()?1:-1;
+			return t1.getPenalty()<t2.getPenalty()?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamByFoul = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return t1.foul>t2.foul?1:-1;
+			return t1.foul<t2.foul?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamByFault = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return t1.fault>t2.fault?1:-1;
+			return t1.fault<t2.fault?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamByDefendRebound = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return t1.defendRebound>t2.defendRebound?1:-1;
+			return t1.defendRebound<t2.defendRebound?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamByWinRate = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return t1.offendRebound>t2.offendRebound?1:-1;
+			return t1.offendRebound<t2.offendRebound?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamByOffendRebound = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return t1.offendRebound>t2.offendRebound?1:-1;
+			return t1.offendRebound<t2.offendRebound?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamByOffendRound = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return t1.getOffendRound()>t2.getOffendRound()?1:-1;
+			return t1.getOffendRound()<t2.getOffendRound()?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamByOffendEfficient = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return t1.getOffendEfficient()>t2.getOffendEfficient()?1:-1;
+			return t1.getOffendEfficient()<t2.getOffendEfficient()?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamByDefendEfficient = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return t1.getDefendEfficient()>t2.getDefendEfficient()?1:-1;
+			return t1.getDefendEfficient()<t2.getDefendEfficient()?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamByOffendReboundEfficient = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return t1.getOffendReboundEfficient()>t2.getOffendReboundEfficient()?1:-1;
+			return t1.getOffendReboundEfficient()<t2.getOffendReboundEfficient()?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamByDefendReboundEfficient = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return t1.getDefendReboundEfficient()>t2.getDefendReboundEfficient()?1:-1;
+			return t1.getDefendReboundEfficient()<t2.getDefendReboundEfficient()?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamByStealEfficient = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return t1.getStealEfficient()>t2.getStealEfficient()?1:-1;
+			return t1.getStealEfficient()<t2.getStealEfficient()?1:-1;
 		}
 	};
 	private static final Comparator<Team> TeamByAssistEfficient = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			return t1.getAssistEfficient()>t2.getAssistEfficient()?1:-1;
+			return t1.getAssistEfficient()<t2.getAssistEfficient()?1:-1;
 		}
 	};
 	

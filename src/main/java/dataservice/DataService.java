@@ -30,5 +30,9 @@ public interface DataService {
 
 	public JSVGCanvas getSwing(String abbreviation);
 	
-	public void startWatchMatches();
+	public void startWatchMatches();//开始线程
+	
+	public   ArrayList<MatchPO> getNewMatch();//获得新增比赛数据
+	
+	public boolean isDEL();//是否出现比赛数据删除
 }

@@ -46,7 +46,9 @@ public class MatchesDataAnalyse {
 		}
 		team2 = new TeamInMatchesPO(abbreviation2, players2);
 
-		return new MatchPO(season, date, finalScore, scores, team1, team2);
+		MatchPO matchPO= new MatchPO(season, date, finalScore, scores, team1, team2);
+		matchPO.setFileName(matchData.get(0));
+		return matchPO;
 	}
 
 	private static int stringToInt(String str) {

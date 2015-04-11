@@ -58,4 +58,10 @@ public class DataController implements DataService {
 		Thread watchThread =new Thread(new WatchMatches());
 		watchThread.start();
 	}
+	public ArrayList<MatchPO> getNewMatch(){
+		return MatchesData.getNewMatch();
+	}
+	public boolean isDEL(){
+		return MatchesData.isDEL();
+	}
 }

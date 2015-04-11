@@ -18,7 +18,7 @@ public class MatchPO {
 		this.team1 = team1;
 		this.team2 = team2;
 	}
-
+	String fileName;
 	String season;
 	Calendar date;
 	ScorePO finalScore;
@@ -26,6 +26,13 @@ public class MatchPO {
 	TeamInMatchesPO team1;
 	TeamInMatchesPO team2;
 
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 	public String getSeason() {
 		return season;
 	}

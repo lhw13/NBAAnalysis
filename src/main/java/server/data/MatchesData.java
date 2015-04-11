@@ -9,6 +9,8 @@ import server.po.MatchPO;
 public class MatchesData {
 	private static File[] matchesFile;
 	private static ArrayList<MatchPO> matchesList = new ArrayList<MatchPO>();
+	private static ArrayList<MatchPO> matchesAddList = new ArrayList<MatchPO>();
+	private static boolean isDEL=false;
 	static {
 		File f = new File(Console.path+"/matches");
 		matchesFile = f.listFiles();
@@ -23,14 +25,37 @@ public class MatchesData {
 				.getTeam1();
 	}
 
-	public static  ArrayList<MatchPO> getMatchPOList() {
+	public static synchronized ArrayList<MatchPO> getMatchPOList() {
 		return matchesList;
 	}
 	public static synchronized void add(File f){
-		matchesList.add(MatchesDataAnalyse.MatchPOMade(DataReader
-				.dataReader(f)));
+		MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
+				.dataReader(f));
+		matchesList.add(newMatchPO);
+		matchesAddList.add(newMatchPO);
 	}
-	public static synchronized void remove(String name){
-		
+	public  static synchronized void remove(String name){
+		isDEL=true;
+		for(int i=0;i<matchesList.size();i++){
+			if(matchesList.get(i).getFileName().equals(name)){
+				matchesList.remove(i);
+				matchesAddList.clear();
+				break;
+			}
+		}
+	}
+	public  static synchronized ArrayList<MatchPO> getNewMatch(){
+		ArrayList<MatchPO> result=(ArrayList<MatchPO>) matchesAddList.clone();
+		matchesAddList.clear();
+		return result;
+	}
+	public  static synchronized boolean isDEL(){
+		if(isDEL==true){
+			isDEL=false;
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 }

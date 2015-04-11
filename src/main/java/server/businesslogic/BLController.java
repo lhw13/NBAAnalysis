@@ -361,8 +361,9 @@ public class BLController implements BLService {
 						tPlayer.addOpponentTeam(timtemp2);
 						if(theDay)
 						{
-							tPlayer.anaylse();
-							todayPlayers.add(tPlayer.clone());
+							Player pc = tPlayer.clone();
+							pc.anaylse();
+							todayPlayers.add(pc);
 						}
 					}
 					tPlayer.addMatch(mttemp);
@@ -374,8 +375,9 @@ public class BLController implements BLService {
 						foundPlayer.addOpponentTeam(timtemp2);
 						if(theDay)
 						{
-							foundPlayer.anaylse();
-							todayPlayers.add(foundPlayer.clone());
+							Player pc = foundPlayer.clone();
+							pc.anaylse();
+							todayPlayers.add(pc);
 						}
 					}
 					foundPlayer.addMatch(mttemp);
@@ -402,8 +404,9 @@ public class BLController implements BLService {
 						tPlayer.addOpponentTeam(timtemp1);
 						if(theDay)
 						{
-							tPlayer.anaylse();
-							todayPlayers.add(tPlayer.clone());
+							Player pc = tPlayer.clone();
+							pc.anaylse();
+							todayPlayers.add(pc);
 						}
 					}
 					tPlayer.addMatch(mttemp);
@@ -415,8 +418,9 @@ public class BLController implements BLService {
 						foundPlayer.addOpponentTeam(timtemp1);
 						if(theDay)
 						{
-							foundPlayer.anaylse();
-							todayPlayers.add(foundPlayer.clone());
+							Player pc = foundPlayer.clone();
+							pc.anaylse();
+							todayPlayers.add(pc);
 						}
 					}
 					foundPlayer.addMatch(mttemp);

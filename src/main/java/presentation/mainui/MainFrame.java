@@ -849,7 +849,7 @@ public class MainFrame {
 		compute = BLController.getInstance();
 		ArrayList<TeamVO> tvoList = compute.getTeamAnalysis();
 
-		Object table_rows[][] = new Object[30][4];
+		Object table_rows[][] = new Object[tvoList.size()][4];
 		for (int i = 0; i < tvoList.size(); i++) {
 			TeamVO tvo = tvoList.get(i);
 			int appearance = tvo.getAppearance();
@@ -1001,7 +1001,7 @@ public class MainFrame {
 		ArrayList<PlayerVO> pvoList = compute.getPlayerAnalysis();
 		PlayerVO pvo = new PlayerVO();
 		String[] s = new String[3];
-		Object table_rows[][] = new Object[481][6];
+		Object table_rows[][] = new Object[pvoList.size()][6];
 		for (int i = 0; i < pvoList.size(); i++) {
 			if (pvoList.get(i) != null) {
 				pvo = pvoList.get(i);
@@ -1155,7 +1155,8 @@ public class MainFrame {
 
 	public static double handle(double a, int b) {
 		double result = a / (double) b;
-		
-		return result;
+		BigDecimal bg = new BigDecimal(result);
+        double f1 = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+		return f1;
 	}
 }

@@ -215,8 +215,6 @@ public class Console {
 				sort(playerList, sortConsList);
 			}
 			
-			
-				
 				for(int i=0;i<n && i<playerList.size();i++)//这是模仿刘瀚文，不知道干嘛
 				{
 					out.println(playerList.get(i).toNormalInfo());//to use which function

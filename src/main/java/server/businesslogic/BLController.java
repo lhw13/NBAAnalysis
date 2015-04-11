@@ -1,6 +1,7 @@
 package server.businesslogic;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -27,11 +28,13 @@ public class BLController implements BLService {
 	private BLController() {
 	}
 	static String season=null;
+	static Calendar day = null;
 	HashMap<String, Player> playersHash = new HashMap<String, Player>(606);
 	HashMap<String, Team> teamsHash = new HashMap<String, Team>(41);
 	ArrayList<Player> players = new ArrayList<Player>(460);// buffer for
 															// analysed player
 															// datas
+	ArrayList<Player> todayPlayers = new ArrayList<Player>(40);
 	ArrayList<Team> teams = new ArrayList<Team>(31);// see above
 	DataService data = new DataController();
 	private static BLController instance = null;
@@ -65,6 +68,18 @@ public class BLController implements BLService {
 	}
 	
 	public ArrayList<PlayerVO> getHotPlayerVO(String sortCon, int n) {
+		analyse();
+		Comparator<Player> comp = getPlayerAvgComparator(sortCon);
+		if(comp==null)
+			comp = getPlayerComparator(sortCon);
+		Collections.sort(players, comp);
+		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		for(int i=0;i<n && i<players.size();i++)
+			result.add(players.get(i).toVO());
+		return result;
+	}
+	
+	public ArrayList<PlayerVO> getDailyHotPlayerVO(String sortCon, int n) {
 		analyse();
 		Comparator<Player> comp = getPlayerAvgComparator(sortCon);
 		if(comp==null)
@@ -191,8 +206,14 @@ public class BLController implements BLService {
 		Collections.sort(matches, new SortMatchesByCalendar());
 		int matchesSize = matches.size();
 		String thisSeason = matches.get(matchesSize-1).getSeason();
+		Calendar thisDay = matches.get(matchesSize-1).getDate();
 		if(season==null || season.compareTo(thisSeason)<0)
 			season=thisSeason;
+		if(day==null || day.before(thisDay))
+		{
+			day=thisDay;
+			todayPlayers.clear();
+		}
 		HashMap<String, TeamPO> teamPOHash = data.getAllTeams();
 		HashMap<String, PlayerPO> playerPOHash = data.getAllPlayers();
 		for (int i = matchesSize - 1; i >= 0; i--) {

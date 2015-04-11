@@ -60,6 +60,7 @@ public class Player {
 	int teamHit = 0;
 	int teamFreeshot = 0;
 	int teamMiss = 0;
+	double teamOffendRound = 0;
 
 	// opponent team
 	int teamTotalRebound2 = 0;
@@ -70,6 +71,7 @@ public class Player {
 	int teamFreeshot2 = 0;
 	int teamHit2 = 0;
 	int teamMiss2 = 0;
+	double teamOffendRound2 = 0;
 
 	public boolean anaylse() {// the core algorithm of player analysis
 		appearance = thisTeam.size();
@@ -78,23 +80,49 @@ public class Player {
 			add(tim.getPlayers().get(orders.get(i)));// add idividual data
 			teamPlayTime += tim.getPlayTime();// add this team data below
 			teamTotalRebound += tim.getTotalRebound();
-			teamOffensiveRebound += tim.getOffensiveRebound();
-			teamDefensiveRebound += tim.getDefensiveRebound();
-			teamshot += tim.getShot();
-			teamHit += tim.getHit();
-			teamFreeshot += tim.getFreeshot();
-			teamMiss += tim.getMiss();
-		}
-		for (int i = 0; i < appearance; i++) {// add opponent data below
+			int teamOffensiveRebound = tim.getOffensiveRebound();
+			this.teamOffensiveRebound+=teamOffensiveRebound;
+			int teamDefensiveRebound = tim.getDefensiveRebound();
+			this.teamDefensiveRebound+=teamDefensiveRebound;
+			int teamshot = tim.getShot();
+			this.teamshot+=teamshot;
+			int teamHit = tim.getHit();
+			this.teamHit+=teamHit;
+			int teamFreeshot = tim.getFreeshot();
+			this.teamFreeshot+=teamFreeshot;
+			int teamMiss = tim.getMiss();
+			this.teamMiss+=teamMiss;
+			// add opponent data below
 			TeamInMatches tim2 = opponentTeam.get(i);
 			teamTotalRebound2 += tim2.getTotalRebound();
-			teamOffensiveRebound2 += tim2.getOffensiveRebound();
-			teamDefensiveRebound2 += tim2.getDefensiveRebound();
-			teamshot2 += tim2.getShot();
+			int teamOffensiveRebound2 = tim2.getOffensiveRebound();
+			this.teamOffensiveRebound2 += teamOffensiveRebound2;
+			int teamDefensiveRebound2 = tim2.getDefensiveRebound();
+			this.teamDefensiveRebound2 +=teamDefensiveRebound2;
+			int teamshot2 = tim2.getShot();
+			this.teamshot2+=teamshot2;
 			teamThirdshot2 += tim2.getThirdshot();
-			teamFreeshot2 += tim2.getFreeshot();
-			teamHit2 += tim2.getHit();
-			teamMiss2 += tim2.getMiss();
+			int teamFreeshot2 = tim2.getFreeshot();
+			this.teamFreeshot2+=teamFreeshot2;
+			int teamHit2 = tim2.getHit();
+			this.teamHit2+=teamHit2;
+			int teamMiss2 = tim2.getMiss();
+			this.teamMiss2+=teamMiss2;
+			
+			teamOffendRound +=teamshot
+					+ 0.4
+					* teamFreeshot
+					- 1.07
+					* ((double) teamOffensiveRebound
+							/ (teamOffensiveRebound + teamDefensiveRebound2) * (teamshot - teamHit))
+					+ 1.07 * teamMiss;
+			teamOffendRound2 +=teamshot2
+			+ 0.4
+			* teamFreeshot2
+			- 1.07
+			* ((double) teamOffensiveRebound2
+					/ (teamOffensiveRebound2 + teamDefensiveRebound) * (teamshot2 - teamHit2))
+			+ 1.07 * teamMiss2;
 		}
 		computePromotion();
 		return true;
@@ -326,23 +354,11 @@ public class Player {
 	}
 
 	private double getOffensiveRound() {// 进攻回合
-		return teamshot
-				+ 0.4
-				* teamFreeshot
-				- 1.07
-				* ((double) teamOffensiveRebound
-						/ (teamOffensiveRebound + teamDefensiveRebound2) * (teamshot - teamHit))
-				+ 1.07 * teamMiss;
+		return teamOffendRound;
 	}
 
 	private double getOffensiveRound2() {// whether it's right?
-		return teamshot2
-				+ 0.4
-				* teamFreeshot2
-				- 1.07
-				* ((double) teamOffensiveRebound2
-						/ (teamOffensiveRebound2 + teamDefensiveRebound) * (teamshot2 - teamHit2))
-				+ 1.07 * teamMiss2;
+		return teamOffendRound2;
 	}
 
 	public double getStealEfficient() {

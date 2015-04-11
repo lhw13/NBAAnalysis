@@ -286,6 +286,8 @@ public class TeamsRankingFrame {
 
 			public void actionPerformed(ActionEvent e) {
 				TeamsRankingFrame.scrollPane.setVisible(false);
+				MainFrame.frame.getContentPane().remove(TeamsRankingFrame.scrollPane);
+				TeamsRankingFrame.scrollPane=null;
 				MainFrame.panel.setVisible(true);
 				MainFrame.frame.setTitle("NBA");
 			}

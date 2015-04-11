@@ -165,45 +165,11 @@ public class MainFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private void initPanels() {
-		
-		//初始化球队选择面板
-		TeamsSelectionFrame window = new TeamsSelectionFrame();
-		frame.getContentPane().add(TeamsSelectionFrame.scrollPane);
-		TeamsSelectionFrame.scrollPane.setVisible(false);
-
-		//初始化球队排名面板
-		Object table_1_rows[][] = { {"湖人", 82, 1000, 1000}, };
-		DefaultTableModel model0 = new DefaultTableModel(table_1_rows,
-				table_1_columns) {
-			private static final long serialVersionUID = 1L;
-
-			public Class<?> getColumnClass(int columnIndex) {
-				return getValueAt(0, columnIndex).getClass();
-			}
-		};
-		TeamsRankingFrame window2 = new TeamsRankingFrame(model0);
-		frame.getContentPane().add(TeamsRankingFrame.scrollPane);
-		TeamsRankingFrame.scrollPane.setVisible(false);
 
 		//初始化球员选择面板
 		new PlayerSelectionPanel();
 		frame.getContentPane().add(PlayerSelectionPanel.scrollPane);
 		PlayerSelectionPanel.scrollPane.setVisible(false);
-		
-		//初始化球员排名面板
-		Object table_rows[][] = { { "科比", "中锋", "西部西南区", 999, 888}, };
-		String table_columns[] = { "球员", "位置", "赛区", "得分(场均)", "得分(总计)"};
-		DefaultTableModel model1 = new DefaultTableModel(table_rows,
-				table_columns) {
-			private static final long serialVersionUID = 1L;
-
-			public Class<?> getColumnClass(int columnIndex) {
-				return getValueAt(0, columnIndex).getClass();
-			}
-		};
-		new PlayerRankingPanel(model1);
-		frame.getContentPane().add(PlayerRankingPanel.scrollPane);
-		PlayerRankingPanel.scrollPane.setVisible(false);
 
 		//初始化球员信息面板
 		pip = new PlayerInfoPanel();
@@ -407,9 +373,12 @@ public class MainFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
+					//初始化球队选择面板
 					MainFrame.panel.setVisible(false);
-					TeamsSelectionFrame.scrollPane.setVisible(true);
-					TeamsSelectionFrame.flag = true;
+					TeamsSelectionFrame tsp = new TeamsSelectionFrame();
+					frame.getContentPane().add(tsp.scrollPane);
+					tsp.scrollPane.setVisible(true);
+					tsp.flag = true;
 					MainFrame.frame.setTitle("NBA球队选择");
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -877,9 +846,6 @@ public class MainFrame {
 	
 	// 设置球队排名面板信息
 	public static void setTeamsRanking() {
-		MainFrame.panel.setVisible(false);
-		MainFrame.frame.setTitle("NBA球队排名");
-
 		compute = BLController.getInstance();
 		ArrayList<TeamVO> tvoList = compute.getTeamAnalysis();
 
@@ -1006,17 +972,24 @@ public class MainFrame {
 			}
 		};
 		
+		
 		if(TeamsRankingFrame.scrollPane!=null){
-			frame.getContentPane().remove(TeamsRankingFrame.scrollPane);
-			TeamsRankingFrame.scrollPane=null;
+			TeamsRankingFrame.scrollPane.setVisible(false);
+			MainFrame.frame.getContentPane().remove(TeamsRankingFrame.scrollPane);
+			TeamsSelectionFrame.scrollPane=null;
 			TeamsRankingFrame trp = new TeamsRankingFrame(model);
-			frame.getContentPane().add(TeamsRankingFrame.scrollPane);
+			frame.getContentPane().add(trp.scrollPane);
 			frame.repaint();//刷新重画 
-			frame.validate();//保证重画后的窗口能正常立即显示 
+			frame.validate();//保证重画后的窗口能正常立即显示
+		}else{
+			MainFrame.panel.setVisible(false);
+			MainFrame.frame.setTitle("NBA球队排名");
+			TeamsRankingFrame trp = new TeamsRankingFrame(model);
+			frame.getContentPane().add(trp.scrollPane);
+			frame.repaint();//刷新重画 
+			frame.validate();//保证重画后的窗口能正常立即显示
 		}
 		
-		
-
 	}
 	
 	// 设置球员排名面板信息
@@ -1113,9 +1086,17 @@ public class MainFrame {
 		};
 
 		if(PlayerRankingPanel.scrollPane!=null){
-			frame.getContentPane().remove(PlayerRankingPanel.scrollPane);
+			PlayerRankingPanel.scrollPane.setVisible(false);
+			MainFrame.frame.getContentPane().remove(PlayerRankingPanel.scrollPane);
 			PlayerRankingPanel.scrollPane=null;
-			new PlayerRankingPanel(model);
+			PlayerRankingPanel prp = new PlayerRankingPanel(model);
+			frame.getContentPane().add(prp.scrollPane);
+			frame.repaint();//刷新重画 
+			frame.validate();//保证重画后的窗口能正常立即显示
+		}else{
+			MainFrame.panel.setVisible(false);
+			MainFrame.frame.setTitle("NBA球员排名");
+			PlayerRankingPanel prp = new PlayerRankingPanel(model);
 			frame.getContentPane().add(PlayerRankingPanel.scrollPane);
 			frame.repaint();//刷新重画 
 			frame.validate();//保证重画后的窗口能正常立即显示 

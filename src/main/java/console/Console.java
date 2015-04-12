@@ -84,7 +84,8 @@ public class Console {
 		
 		if(king) {//数据王的season/daily接口还没弄好
 			sortCons[0] = condition+".desc";
-			sort = true;
+			if(timeCon.equals("season"))sort = true;
+			else playerList = bl.getDailyHotPlayer(condition);
 		}
 		
 		if(filter){
@@ -139,86 +140,160 @@ public class Console {
 			
 		}
 		
-		
-		if(sort) {//如果有sort命令			                
-			for(String temp : sortCons) {//遍历所有排序命令
-				String[] temps = temp.split("\\.");
-				if(temps[1].equals("asc")) {//升序
-					switch(temps[0]) {
-					case "point": sortConsList.add(comparePointAsc); break;
-					case "rebound": sortConsList.add(compareReboundAsc);break;
-					case "assist": sortConsList.add(compareAssistAsc);break;					
-					case "blockShot": sortConsList.add(compareBlockShotAsc);break;
-					case "steal": sortConsList.add(compareStealAsc);break;
-					case "foul": sortConsList.add(compareFoulAsc);break;
-					case "fault": sortConsList.add(compareFaultAsc);break;
-					case "minute": sortConsList.add(compareMinuteAsc);break;
-					case "efficient": sortConsList.add(compareEfficientAsc);break;
-					case "shot": sortConsList.add(compareShotAsc);break;
-					case "three": sortConsList.add(compareThreeAsc);break;
-					case "penalty": sortConsList.add(comparePenaltyAsc);break;
-					case "doubleTwo": sortConsList.add(compareDoubleTwoAsc);break;
-					case "realShot": sortConsList.add(compareRealShotAsc);break;
-					case "GmSc": sortConsList.add(compareGmScAsc);break;
-					case "shotEfficient": sortConsList.add(compareShotEfficientAsc);break;
-					case "reboundEfficient": sortConsList.add(compareReboundEfficientAsc);break;
-					case "offendReboundEfficient": sortConsList.add(compareOffendReboundEfficientAsc);break;
-					case "defendReboundEfficient": sortConsList.add(compareDefendReboundEfficientAsc);break;
-					case "assistEfficient": sortConsList.add(compareAssistEfficientAsc);break;
-					case "stealEfficient": sortConsList.add(compareStealEfficientAsc);break;		
-					case "blockShotEfficient": sortConsList.add(compareBlockShotEfficientAsc);break;
-					case "faultEfficient": sortConsList.add(compareFaultEfficientAsc);break;
-					case "frequency": sortConsList.add(compareFrequencyAsc);break;
-					}				
-				} else {//降序
-					sortConsList.add(bl.getPlayerComparator(temps[0]));
-					/*switch(temps[0]) {
-					case "point": sortConsList.add(comparePointDesc); break;
-					case "rebound": sortConsList.add(compareReboundDesc);break;
-					case "assist": sortConsList.add(compareAssistDesc);break;					
-					case "blockShot": sortConsList.add(compareBlockShotDesc);break;
-					case "steal": sortConsList.add(compareStealDesc);break;
-					case "foul": sortConsList.add(compareFoulDesc);break;
-					case "fault": sortConsList.add(compareFaultDesc);break;
-					case "minute": sortConsList.add(compareMinuteDesc);break;
-					case "efficient": sortConsList.add(compareEfficientDesc);break;
-					case "shot": sortConsList.add(compareShotDesc);break;
-					case "three": sortConsList.add(compareThreeDesc);break;
-					case "penalty": sortConsList.add(comparePenaltyDesc);break;
-					case "doubleTwo": sortConsList.add(compareDoubleTwoDesc);break;
-					case "realShot": sortConsList.add(compareRealShotDesc);break;
-					case "GmSc": sortConsList.add(compareGmScDesc);break;
-					case "shotEfficient": sortConsList.add(compareShotEfficientDesc);break;
-					case "reboundEfficient": sortConsList.add(compareReboundEfficientDesc);break;
-					case "offendReboundEfficient": sortConsList.add(compareOffendReboundEfficientDesc);break;
-					case "defendReboundEfficient": sortConsList.add(compareDefendReboundEfficientDesc);break;
-					case "assistEfficient": sortConsList.add(compareAssistEfficientDesc);break;
-					case "stealEfficient": sortConsList.add(compareStealEfficientDesc);break;		
-					case "blockShotEfficient": sortConsList.add(compareBlockShotEfficientDesc);break;
-					case "faultEfficient": sortConsList.add(compareFaultEfficientDesc);break;
-					case "frequency": sortConsList.add(compareFrequencyDesc);break;
-					}*/
-				}
-			}
-			
-		} else {//没有sort命令，使用默认排序命令
-			if(high){//如果是高阶数据，用高阶数据的默认，否则用基本数据
-				sortConsList.add(bl.compareRealShotDesc);
-			}else{ 
-				sortConsList.add(bl.comparePointDesc);
-			}
-		}
-		sortConsList.add(comparePlayerNameAsc);
-		sort(playerList, sortConsList);
-		
 		if(total) {//返回的数据是总数据
-			
-			for(int i=0;i<n && i<playerList.size();i++)//这是模仿刘瀚文，不知道干嘛
-			{
-				out.println(playerList.get(i).toNormalInfo());//to use which function
-				out.println(playerList.get(i).toVO());
+			if(sort) {//如果有sort命令			                
+				for(String temp : sortCons) {//遍历所有排序命令
+					String[] temps = temp.split("\\.");
+					if(temps[1].equals("asc")) {//升序
+						switch(temps[0]) {
+						case "score": sortConsList.add(comparePointAsc); break;
+						case "point": sortConsList.add(comparePointAsc); break;
+						case "rebound": sortConsList.add(compareReboundAsc);break;
+						case "assist": sortConsList.add(compareAssistAsc);break;					
+						case "blockShot": sortConsList.add(compareBlockShotAsc);break;
+						case "steal": sortConsList.add(compareStealAsc);break;
+						case "foul": sortConsList.add(compareFoulAsc);break;
+						case "fault": sortConsList.add(compareFaultAsc);break;
+						case "minute": sortConsList.add(compareMinuteAsc);break;
+						case "efficient": sortConsList.add(compareEfficientAsc);break;
+						case "shot": sortConsList.add(compareShotAsc);break;
+						case "three": sortConsList.add(compareThreeAsc);break;
+						case "penalty": sortConsList.add(comparePenaltyAsc);break;
+						case "doubleTwo": sortConsList.add(compareDoubleTwoAsc);break;
+						case "realShot": sortConsList.add(compareRealShotAsc);break;
+						case "GmSc": sortConsList.add(compareGmScAsc);break;
+						case "shotEfficient": sortConsList.add(compareShotEfficientAsc);break;
+						case "reboundEfficient": sortConsList.add(compareReboundEfficientAsc);break;
+						case "offendReboundEfficient": sortConsList.add(compareOffendReboundEfficientAsc);break;
+						case "defendReboundEfficient": sortConsList.add(compareDefendReboundEfficientAsc);break;
+						case "assistEfficient": sortConsList.add(compareAssistEfficientAsc);break;
+						case "stealEfficient": sortConsList.add(compareStealEfficientAsc);break;		
+						case "blockShotEfficient": sortConsList.add(compareBlockShotEfficientAsc);break;
+						case "faultEfficient": sortConsList.add(compareFaultEfficientAsc);break;
+						case "frequency": sortConsList.add(compareFrequencyAsc);break;
+						}				
+					} else {//降序
+						sortConsList.add(bl.getPlayerComparator(temps[0]));
+						/*switch(temps[0]) {
+						case "point": sortConsList.add(comparePointDesc); break;
+						case "rebound": sortConsList.add(compareReboundDesc);break;
+						case "assist": sortConsList.add(compareAssistDesc);break;					
+						case "blockShot": sortConsList.add(compareBlockShotDesc);break;
+						case "steal": sortConsList.add(compareStealDesc);break;
+						case "foul": sortConsList.add(compareFoulDesc);break;
+						case "fault": sortConsList.add(compareFaultDesc);break;
+						case "minute": sortConsList.add(compareMinuteDesc);break;
+						case "efficient": sortConsList.add(compareEfficientDesc);break;
+						case "shot": sortConsList.add(compareShotDesc);break;
+						case "three": sortConsList.add(compareThreeDesc);break;
+						case "penalty": sortConsList.add(comparePenaltyDesc);break;
+						case "doubleTwo": sortConsList.add(compareDoubleTwoDesc);break;
+						case "realShot": sortConsList.add(compareRealShotDesc);break;
+						case "GmSc": sortConsList.add(compareGmScDesc);break;
+						case "shotEfficient": sortConsList.add(compareShotEfficientDesc);break;
+						case "reboundEfficient": sortConsList.add(compareReboundEfficientDesc);break;
+						case "offendReboundEfficient": sortConsList.add(compareOffendReboundEfficientDesc);break;
+						case "defendReboundEfficient": sortConsList.add(compareDefendReboundEfficientDesc);break;
+						case "assistEfficient": sortConsList.add(compareAssistEfficientDesc);break;
+						case "stealEfficient": sortConsList.add(compareStealEfficientDesc);break;		
+						case "blockShotEfficient": sortConsList.add(compareBlockShotEfficientDesc);break;
+						case "faultEfficient": sortConsList.add(compareFaultEfficientDesc);break;
+						case "frequency": sortConsList.add(compareFrequencyDesc);break;
+						}*/
+					}
+				}
+				
+			} else {//没有sort命令，使用默认排序命令
+				if(high){//如果是高阶数据，用高阶数据的默认，否则用基本数据
+					sortConsList.add(bl.compareRealShotDesc);
+				}else{ 
+					sortConsList.add(bl.comparePointDesc);
+				} 
 			}
+			if(timeCon.equals("season")) {
+				sortConsList.add(comparePlayerNameAsc);
+				sort(playerList, sortConsList);
+			}
+			
+				for(int i=0;i<n && i<playerList.size();i++)//这是模仿刘瀚文，不知道干嘛
+				{
+					out.println(playerList.get(i).toNormalInfo());//to use which function
+					out.println(playerList.get(i).toVO());
+				}
 		} else {//返回的数据是场均数据
+			if(sort) {//如果有sort命令			                
+				for(String temp : sortCons) {//遍历所有排序命令
+					String[] temps = temp.split("\\.");
+					if(temps[1].equals("asc")) {//升序
+						switch(temps[0]) {
+						case "score": sortConsList.add(comparePointAvgAsc); break;
+						case "point": sortConsList.add(comparePointAvgAsc); break;
+						case "rebound": sortConsList.add(compareReboundAvgAsc);break;
+						case "assist": sortConsList.add(compareAssistAvgAsc);break;					
+						case "blockShot": sortConsList.add(compareBlockShotAvgAsc);break;
+						case "steal": sortConsList.add(compareStealAvgAsc);break;
+						case "foul": sortConsList.add(compareFoulAvgAsc);break;
+						case "fault": sortConsList.add(compareFaultAvgAsc);break;
+						case "minute": sortConsList.add(compareMinuteAvgAsc);break;
+						case "efficient": sortConsList.add(compareEfficientAsc);break;
+						case "shot": sortConsList.add(compareShotAsc);break;
+						case "three": sortConsList.add(compareThreeAsc);break;
+						case "penalty": sortConsList.add(comparePenaltyAsc);break;
+						case "doubleTwo": sortConsList.add(compareDoubleTwoAsc);break;
+						case "realShot": sortConsList.add(compareRealShotAsc);break;
+						case "GmSc": sortConsList.add(compareGmScAsc);break;
+						case "shotEfficient": sortConsList.add(compareShotEfficientAsc);break;
+						case "reboundEfficient": sortConsList.add(compareReboundEfficientAsc);break;
+						case "offendReboundEfficient": sortConsList.add(compareOffendReboundEfficientAsc);break;
+						case "defendReboundEfficient": sortConsList.add(compareDefendReboundEfficientAsc);break;
+						case "assistEfficient": sortConsList.add(compareAssistEfficientAsc);break;
+						case "stealEfficient": sortConsList.add(compareStealEfficientAsc);break;		
+						case "blockShotEfficient": sortConsList.add(compareBlockShotEfficientAsc);break;
+						case "faultEfficient": sortConsList.add(compareFaultEfficientAsc);break;
+						case "frequency": sortConsList.add(compareFrequencyAsc);break;
+						}				
+					} else {//降序
+						
+						switch(temps[0]) {
+						case "point": 
+						case "rebound": 
+						case "assist":					
+						case "blockShot": 
+						case "steal": 
+						case "foul": 
+						case "fault": 
+						case "minute": sortConsList.add(bl.getPlayerAvgComparator(temps[0]));break;
+						case "efficient": 
+						case "shot": 
+						case "three": 
+						case "penalty": 
+						case "doubleTwo": 
+						case "realShot": 
+						case "GmSc": 
+						case "shotEfficient": 
+						case "reboundEfficient": 
+						case "offendReboundEfficient": ;
+						case "defendReboundEfficient": 
+						case "assistEfficient": 
+						case "stealEfficient": 
+						case "blockShotEfficient": 
+						case "faultEfficient": 
+						case "frequency": sortConsList.add(bl.getPlayerComparator(temps[0]));break;
+						}
+					}
+				}
+				
+			} else {//没有sort命令，使用默认排序命令
+				if(high){//如果是高阶数据，用高阶数据的默认，否则用基本数据
+					sortConsList.add(bl.compareRealShotDesc);
+				}else{ 
+					sortConsList.add(bl.comparePointDesc);
+				} 
+			}
+			if(timeCon.equals("season")) {
+				sortConsList.add(comparePlayerNameAsc);
+				sort(playerList, sortConsList);
+			}
 			
 			for(int i=0;i<n && i<playerList.size();i++)
 			{
@@ -258,6 +333,69 @@ public class Console {
 		}
 	}
 	
+	//avg player asc comparator
+		public Comparator<Player> comparePointAvgAsc = new Comparator<Player>(){  
+			  
+	        @Override  
+	        public int compare(Player o1, Player o2) {  
+	            return (double)o2.getPoint()/(double)o2.getAppearance() < (double)o1.getPoint()/(double)o1.getAppearance()? 1 : -1;
+	        }
+	    };
+	    
+	    public Comparator<Player> compareReboundAvgAsc = new Comparator<Player>(){  
+			  
+	        @Override  
+	        public int compare(Player o1, Player o2) {  
+	            return (double)o2.getRebound()/(double)o2.getAppearance() < (double)o1.getRebound()/(double)o1.getAppearance()? 1 : -1;
+	        }
+	    };
+	    public Comparator<Player> compareAssistAvgAsc = new Comparator<Player>(){  
+			  
+	        @Override  
+	        public int compare(Player o1, Player o2) {  
+	            return (double)o2.getAssist()/(double)o2.getAppearance() < (double)o1.getAssist()/(double)o1.getAppearance()? 1 : -1;
+	        }
+	    };
+	    
+	    public Comparator<Player> compareBlockShotAvgAsc = new Comparator<Player>(){  
+			  
+	        @Override  
+	        public int compare(Player o1, Player o2) {  
+	            return (double)o2.getBlockShot()/(double)o2.getAppearance() < (double)o1.getBlockShot()/(double)o1.getAppearance()? 1 : -1;
+	        }
+	    };
+	    
+	    public Comparator<Player> compareStealAvgAsc = new Comparator<Player>(){  
+			  
+	        @Override  
+	        public int compare(Player o1, Player o2) {  
+	            return (double)o2.getSteal()/(double)o2.getAppearance() < (double)o1.getSteal()/(double)o1.getAppearance()? 1 : -1;
+	        }
+	    };
+	    
+	    public Comparator<Player> compareFoulAvgAsc = new Comparator<Player>(){  
+			  
+	        @Override  
+	        public int compare(Player o1, Player o2) {  
+	            return (double)o2.getFoul()/(double)o2.getAppearance() < (double)o1.getFoul()/(double)o1.getAppearance()? 1 : -1;
+	        }
+	    };
+	    
+	    public Comparator<Player> compareFaultAvgAsc = new Comparator<Player>(){  
+			  
+	        @Override  
+	        public int compare(Player o1, Player o2) {  
+	            return (double)o2.getFault()/(double)o2.getAppearance() < (double)o1.getFault()/(double)o1.getAppearance()? 1 : -1;
+	        }
+	    };
+	    
+	    public Comparator<Player> compareMinuteAvgAsc = new Comparator<Player>(){  
+			  
+	        @Override  
+	        public int compare(Player o1, Player o2) {  
+	            return (double)o2.getMinute()/(double)o2.getAppearance() < (double)o1.getMinute()/(double)o1.getAppearance()? 1 : -1;
+	        }
+	    };
 /*	//降序Comparator
 	public Comparator<Player> comparePlayerNameDesc = new Comparator<Player>() {  
 		  

@@ -35,7 +35,7 @@ import vo.TeamWithPlayersVO;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 
-/*
+/* 
  * 单个球队比赛信息面板
  */
 public class TeamsInfoFrame extends JPanel{

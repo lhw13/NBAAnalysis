@@ -34,7 +34,7 @@ public class Console {
 	
 	public void player(PrintStream out, String[] args) {
 		ArrayList<Player> players = bl.getPlayers();
-		List<Player> playerList = new ArrayList<Player>();
+		List<Player> playerList = players;
 		List<Comparator<Player>> sortConsList = new ArrayList<Comparator<Player>>();
 		int n=50;//default
 		
@@ -48,8 +48,8 @@ public class Console {
 		
 		String[] sortCons = null;
 		String[] filterCons = null;
-		String condition = null;
-		String timeCon = null;//判断是赛季还是当日
+		String condition = "score";
+		String timeCon = "season";//判断是赛季还是当日
 		
 		
 		for(int i=1;i<args.length;i++)
@@ -92,7 +92,7 @@ public class Console {
 			for(String temp : filterCons) {//遍历所有排序命令
 			    final String[] temps = temp.split("\\.");
 			    if(!temps[1].equals("All")){
-			    	playerList = (List<Player>) CollectionUtils.select(players,
+			    	playerList = (List<Player>) CollectionUtils.select(playerList,
 			                new Predicate() {
 			                    public boolean evaluate(Object arg0) {
 			                    	Player p = (Player) arg0;
@@ -206,15 +206,17 @@ public class Console {
 			} else {//没有sort命令，使用默认排序命令
 				if(high){//如果是高阶数据，用高阶数据的默认，否则用基本数据
 					sortConsList.add(bl.compareRealShotDesc);
-				}else{ 
+				}else{
 					sortConsList.add(bl.comparePointDesc);
 				} 
 			}
-			if(timeCon.equals("season")) {
+			if(!timeCon.equals("daily")) {
 				sortConsList.add(comparePlayerNameAsc);
 				sort(playerList, sortConsList);
 			}
-			
+//			System.out.println("====================="+playerList.size());
+//			System.out.println("====================="+players.size());
+//			
 				for(int i=0;i<n && i<playerList.size();i++)//这是模仿刘瀚文，不知道干嘛
 				{
 					out.println(playerList.get(i).toNormalInfo());//to use which function
@@ -290,7 +292,7 @@ public class Console {
 					sortConsList.add(bl.comparePointDesc);
 				} 
 			}
-			if(timeCon.equals("season")) {
+			if(!timeCon.equals("daily")) {
 				sortConsList.add(comparePlayerNameAsc);
 				sort(playerList, sortConsList);
 			}

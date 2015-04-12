@@ -481,40 +481,117 @@ public class BLController implements BLService {
 	}
 	
 	
-	private static final Comparator<Team> TeamByPoint = new Comparator<Team>() {
+	//avgteam comparator
+
+
+
+	
+	
+	
+	private static final Comparator<Team> TeamByPointAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
 			Double d2 = (double)t2.score/t2.appearance;
 			Double d1 = (double)t1.score/t1.appearance;
 			return d2.compareTo(d1);
 		}
 	};
+	private static final Comparator<Team> TeamByPoint = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Integer d2 = t2.score;
+			Integer d1 = t1.score;
+			return d2.compareTo(d1);
+		}
+	};
+	private static final Comparator<Team> TeamByPointAsc = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Integer d2 = t2.score;
+			Integer d1 = t1.score;
+			return -d2.compareTo(d1);
+		}
+	};
 
-	private static final Comparator<Team> TeamByRebound = new Comparator<Team>() {
+	private static final Comparator<Team> TeamByReboundAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
 			Double d2 = (double)t2.rebound/t2.appearance;
 			Double d1 = (double)t1.rebound/t1.appearance;
 			return d2.compareTo(d1);
 		}
 	};
-	private static final Comparator<Team> TeamByAssist = new Comparator<Team>() {
+	private static final Comparator<Team> TeamByRebound = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Integer d2 = t2.rebound;
+			Integer d1 = t1.rebound;
+			return d2.compareTo(d1);
+		}
+	};
+	private static final Comparator<Team> TeamByReboundAsc = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Integer d2 = t2.rebound;
+			Integer d1 = t1.rebound;
+			return -d2.compareTo(d1);
+		}
+	};
+	private static final Comparator<Team> TeamByAssistAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
 			Double d2 = (double)t2.assist/t2.appearance;
 			Double d1 = (double)t1.assist/t1.appearance;
 			return d2.compareTo(d1);
 		}
 	};
-	private static final Comparator<Team> TeamByBlock = new Comparator<Team>() {
+	private static final Comparator<Team> TeamByAssist = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Integer d2 = t2.assist;
+			Integer d1 = t1.assist;
+			return d2.compareTo(d1);
+		}
+	};
+	private static final Comparator<Team> TeamByAssistAsc = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Integer d2 = t2.assist;
+			Integer d1 = t1.assist;
+			return -d2.compareTo(d1);
+		}
+	};
+	private static final Comparator<Team> TeamByBlockAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
 			Double d2 = (double)t2.blockShot/t2.appearance;
 			Double d1 = (double)t1.blockShot/t1.appearance;
 			return d2.compareTo(d1);
 		}
 	};
-	private static final Comparator<Team> TeamBySteal = new Comparator<Team>() {
+	private static final Comparator<Team> TeamByBlock = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Integer d2 = t2.blockShot;
+			Integer d1 = t1.blockShot;
+			return d2.compareTo(d1);
+		}
+	};
+	private static final Comparator<Team> TeamByBlockAsc = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Integer d2 = t2.blockShot;
+			Integer d1 = t1.blockShot;
+			return -d2.compareTo(d1);
+		}
+	};
+	private static final Comparator<Team> TeamByStealAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
 			Double d2 = (double)t2.steal/t2.appearance;
 			Double d1 = (double)t1.steal/t1.appearance;
 			return d2.compareTo(d1);
+		}
+	};
+	private static final Comparator<Team> TeamBySteal = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Integer d2 = t2.steal;
+			Integer d1 = t1.steal;
+			return d2.compareTo(d1);
+		}
+	};
+	private static final Comparator<Team> TeamByStealAsc = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Integer d2 = t2.steal;
+			Integer d1 = t1.steal;
+			return -d2.compareTo(d1);
 		}
 	};
 	private static final Comparator<Team> TeamByThree = new Comparator<Team>() {
@@ -545,6 +622,22 @@ public class BLController implements BLService {
 			return i2.compareTo(i1);
 		}
 	};
+	
+	private static final Comparator<Team> TeamByFoulAvg = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Double d2 = (double)t2.foul/t2.appearance;
+			Double d1 = (double)t1.foul/t1.appearance;
+			return d2.compareTo(d1);
+		}
+	};
+	private static final Comparator<Team> TeamByFoulAvgAsc = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Double d2 = (double)t2.foul/t2.appearance;
+			Double d1 = (double)t1.foul/t1.appearance;
+			return -d2.compareTo(d1);
+		}
+	};
+	
 	private static final Comparator<Team> TeamByFault = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
 			Integer i2 = t2.fault;
@@ -552,11 +645,39 @@ public class BLController implements BLService {
 			return i2.compareTo(i1);
 		}
 	};
+	private static final Comparator<Team> TeamByFaultAvg = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Integer i2 = t2.fault/t2.appearance;
+			Integer i1 = t1.fault/t2.appearance;
+			return i2.compareTo(i1);
+		}
+	};
+	private static final Comparator<Team> TeamByFaultAvgAsc = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Integer i2 = t2.fault;
+			Integer i1 = t1.fault;
+			return -i2.compareTo(i1);
+		}
+	};
 	private static final Comparator<Team> TeamByDefendRebound = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
 			Integer i1= t1.defendRebound;
 			Integer i2 = t2.defendRebound;
 			return i2.compareTo(i1);
+		}
+	};
+	private static final Comparator<Team> TeamByDefendReboundAvg = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Double i1= (double)t1.defendRebound/t1.appearance;
+			Double i2 = (double)t2.defendRebound/t2.appearance;
+			return i2.compareTo(i1);
+		}
+	};
+	private static final Comparator<Team> TeamByDefendReboundAvgAsc = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Double i1= (double)t1.defendRebound/t1.appearance;
+			Double i2 = (double)t2.defendRebound/t2.appearance;
+			return -i2.compareTo(i1);
 		}
 	};
 
@@ -576,11 +697,47 @@ public class BLController implements BLService {
 			//return t1.offendRebound<t2.offendRebound?1:-1;
 		}
 	};
+	private static final Comparator<Team> TeamByOffendReboundAvg = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Double d2 = (double)t2.offendRebound/t2.appearance;
+			Double d1 = (double)t1.offendRebound/t1.appearance;
+            return d2.compareTo(d1);
+			//return t1.offendRebound<t2.offendRebound?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByOffendReboundAvgAsc = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Double d2 = (double)t2.offendRebound/t2.appearance;
+			Double d1 = (double)t1.offendRebound/t1.appearance;
+            return -d2.compareTo(d1);
+			//return t1.offendRebound<t2.offendRebound?1:-1;
+		}
+	};
+
+	
+	
+	
 	private static final Comparator<Team> TeamByOffendRound = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
 			Double d2 = t2.getOffendRound();
         	Double d1 = t1.getOffendRound();
             return d2.compareTo(d1);
+			//return t1.getOffendRound()<t2.getOffendRound()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByOffendRoundAvg = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Double d2 = t2.getOffendRound()/t2.appearance;
+        	Double d1 = t1.getOffendRound()/t1.appearance;
+            return d2.compareTo(d1);
+			//return t1.getOffendRound()<t2.getOffendRound()?1:-1;
+		}
+	};
+	private static final Comparator<Team> TeamByOffendRoundAvgAsc = new Comparator<Team>() {
+		public int compare(Team t1,Team t2) {
+			Double d2 = t2.getOffendRound()/t2.appearance;
+        	Double d1 = t1.getOffendRound()/t1.appearance;
+            return -d2.compareTo(d1);
 			//return t1.getOffendRound()<t2.getOffendRound()?1:-1;
 		}
 	};
@@ -641,7 +798,7 @@ public class BLController implements BLService {
 		}
 	};
 	
-	private static final Comparator<Team> TeamByPointAsc = new Comparator<Team>() {
+	private static final Comparator<Team> TeamByPointAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
 			Double d2 = (double)t2.score/t2.appearance;
 			Double d1 = (double)t1.score/t1.appearance;
@@ -649,28 +806,28 @@ public class BLController implements BLService {
 		}
 	};
 
-	private static final Comparator<Team> TeamByReboundAsc = new Comparator<Team>() {
+	private static final Comparator<Team> TeamByReboundAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
 			Double d2 = (double)t2.rebound/t2.appearance;
 			Double d1 = (double)t1.rebound/t1.appearance;
 			return -d2.compareTo(d1);
 		}
 	};
-	private static final Comparator<Team> TeamByAssistAsc = new Comparator<Team>() {
+	private static final Comparator<Team> TeamByAssistAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
 			Double d2 = (double)t2.assist/t2.appearance;
 			Double d1 = (double)t1.assist/t1.appearance;
 			return -d2.compareTo(d1);
 		}
 	};
-	private static final Comparator<Team> TeamByBlockAsc = new Comparator<Team>() {
+	private static final Comparator<Team> TeamByBlockAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
 			Double d2 = (double)t2.blockShot/t2.appearance;
 			Double d1 = (double)t1.blockShot/t1.appearance;
 			return -d2.compareTo(d1);
 		}
 	};
-	private static final Comparator<Team> TeamByStealAsc = new Comparator<Team>() {
+	private static final Comparator<Team> TeamByStealAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
 			Double d2 = (double)t2.steal/t2.appearance;
 			Double d1 = (double)t1.steal/t1.appearance;
@@ -1230,6 +1387,86 @@ public class BLController implements BLService {
 		}
 	}
 	
+	public Comparator<Team> getTeamComparatorAvg(String sort) {
+		switch(sort) {
+		case "point": return TeamByPointAvg;
+		case "score": return TeamByPointAvg;
+		case "rebound": return TeamByReboundAvg;
+		case "blockShot": return TeamByBlockAvg;
+		case "assist": return TeamByAssistAvg;
+		case "steal": return TeamByStealAvg;
+		case "foul": return TeamByFoulAvg;
+		case "fault": return TeamByFaultAvg;
+		case "three": return TeamByThree;
+		case "shot": return TeamByShot;
+		case "penalty": return TeamByPenalty;
+		case "defendRebound": return TeamByDefendReboundAvg;
+		case "offendRebound": return TeamByOffendReboundAvg;
+		case "winRate": return TeamByWinRate;
+		case "offendRound": return TeamByOffendRoundAvg;
+		case "offendEfficient": return TeamByOffendEfficient;
+		case "defendEfficient": return TeamByDefendEfficient;
+		case "offendReboundEfficient": return TeamByOffendReboundEfficient;
+		case "defendReboundEfficient": return TeamByDefendReboundEfficient;
+		case "stealEfficient": return TeamByStealEfficient;
+		case "assistEfficient": return TeamByAssistEfficient;
+		default: return null;
+		}
+	}
+	
+	public Comparator<Team> getTeamComparatorAvgAsc(String sort) {
+		switch(sort) {
+		case "point": return TeamByPointAvgAsc;
+		case "score": return TeamByPointAvgAsc;
+		case "rebound": return TeamByReboundAvgAsc;
+		case "blockShot": return TeamByBlockAvgAsc;
+		case "assist": return TeamByAssistAvgAsc;
+		case "steal": return TeamByStealAvgAsc;
+		case "foul": return TeamByFoulAvgAsc;
+		case "fault": return TeamByFaultAvgAsc;
+		case "three": return TeamByThreeAsc;
+		case "shot": return TeamByShotAsc;
+		case "penalty": return TeamByPenaltyAsc;
+		case "defendRebound": return TeamByDefendReboundAvgAsc;
+		case "offendRebound": return TeamByOffendReboundAvgAsc;
+		case "winRate": return TeamByWinRateAsc;
+		case "offendRound": return TeamByOffendRoundAvgAsc;
+		case "offendEfficient": return TeamByOffendEfficientAsc;
+		case "defendEfficient": return TeamByDefendEfficientAsc;
+		case "offendReboundEfficient": return TeamByOffendReboundEfficientAsc;
+		case "defendReboundEfficient": return TeamByDefendReboundEfficientAsc;
+		case "stealEfficient": return TeamByStealEfficientAsc;
+		case "assistEfficient": return TeamByAssistEfficientAsc;
+		default: return null;
+		}
+	}
+	
+	public Comparator<Team> getTeamComparatorAsc(String sort) {
+		switch(sort) {
+		case "point": return TeamByPointAsc;
+		case "score": return TeamByPointAsc;
+		case "rebound": return TeamByReboundAsc;
+		case "blockShot": return TeamByBlockAsc;
+		case "assist": return TeamByAssistAsc;
+		case "steal": return TeamByStealAsc;
+		case "foul": return TeamByFoulAsc;
+		case "fault": return TeamByFaultAsc;
+		case "three": return TeamByThreeAsc;
+		case "shot": return TeamByShotAsc;
+		case "penalty": return TeamByPenaltyAsc;
+		case "defendRebound": return TeamByDefendReboundAsc;
+		case "offendRebound": return TeamByOffendReboundAsc;
+		case "winRate": return TeamByWinRateAsc;
+		case "offendRound": return TeamByOffendRoundAsc;
+		case "offendEfficient": return TeamByOffendEfficientAsc;
+		case "defendEfficient": return TeamByDefendEfficientAsc;
+		case "offendReboundEfficient": return TeamByOffendReboundEfficientAsc;
+		case "defendReboundEfficient": return TeamByDefendReboundEfficientAsc;
+		case "stealEfficient": return TeamByStealEfficientAsc;
+		case "assistEfficient": return TeamByAssistEfficientAsc;
+		default: return null;
+		}
+	}
 	public Comparator<Team> getTeamComparator(String sort) {
 		switch(sort) {
 		case "point": return TeamByPoint;
@@ -1253,12 +1490,12 @@ public class BLController implements BLService {
 		case "defendReboundEfficient": return TeamByDefendReboundEfficient;
 		case "stealEfficient": return TeamByStealEfficient;
 		case "assistEfficient": return TeamByAssistEfficient;
-		default: return TeamByPoint;
+		default: return null;
 		}
 	}
 	
 	public boolean sortTeams(String sort) {
-		Comparator<Team> ct = getTeamComparator(sort);
+		Comparator<Team> ct = getTeamComparatorAvg(sort);
 		if(ct==null)
 			return false;
 		Collections.sort(teams, ct);

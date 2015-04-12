@@ -34,7 +34,7 @@ public class Console {
 	
 	public void player(PrintStream out, String[] args) {
 		ArrayList<Player> players = bl.getPlayers();
-		List<Player> playerList = players;
+		List<Player> playerList = new ArrayList<Player>();
 		List<Comparator<Player>> sortConsList = new ArrayList<Comparator<Player>>();
 		int n=50;//default
 		
@@ -92,7 +92,7 @@ public class Console {
 			for(String temp : filterCons) {//遍历所有排序命令
 			    final String[] temps = temp.split("\\.");
 			    if(!temps[1].equals("All")){
-			    	playerList = (List<Player>) CollectionUtils.select(playerList,
+			    	playerList = (List<Player>) CollectionUtils.select(players,
 			                new Predicate() {
 			                    public boolean evaluate(Object arg0) {
 			                    	Player p = (Player) arg0;

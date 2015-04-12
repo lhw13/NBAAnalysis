@@ -10,7 +10,7 @@ public class ConsoleTest {
 	public void executableTest()
 	{
 		Console c = new Console();
-		String ss[] = {"-player","-total","-all","-n","5","-filter","position.F"};
+		String ss[] = {"-player","-hot","assist","-n","5"};
 		c.execute(System.out, ss);
 	}
 }

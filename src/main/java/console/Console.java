@@ -78,11 +78,13 @@ public class Console {
 			}
 		
 		if(hot) {
+			sortCons = new String[1];
 			sortCons[0] = condition+".desc";
 			sort = true;
 		}
 		
-		if(king) {//数据王的season/daily接口还没弄好
+		if(king) {	
+			sortCons = new String[1];
 			sortCons[0] = condition+".desc";
 			if(timeCon.equals("season"))sort = true;
 			else playerList = bl.getDailyHotPlayer(condition);
@@ -255,7 +257,6 @@ public class Console {
 						case "frequency": sortConsList.add(compareFrequencyAsc);break;
 						}				
 					} else {//降序
-						
 						switch(temps[0]) {
 						case "point": 
 						case "rebound": 
@@ -264,7 +265,7 @@ public class Console {
 						case "steal": 
 						case "foul": 
 						case "fault": 
-						case "minute": sortConsList.add(bl.getPlayerAvgComparator(temps[0]));break;
+						case "minute": System.out.println(temps[0]);sortConsList.add(bl.getPlayerAvgComparator(temps[0]));break;
 						case "efficient": 
 						case "shot": 
 						case "three": 

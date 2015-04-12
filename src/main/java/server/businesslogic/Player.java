@@ -39,6 +39,12 @@ public class Player implements Cloneable{
 															// efficiency
 	ArrayList<TeamInMatches> opponentTeam = new ArrayList<TeamInMatches>();
 	
+	ArrayList<TeamInMatches> thisTeamNew = new ArrayList<TeamInMatches>();
+	ArrayList<Integer> ordersNew = new ArrayList<Integer>();// this array just to
+															// promote
+															// efficiency
+	ArrayList<TeamInMatches> opponentTeamNew = new ArrayList<TeamInMatches>();
+	
 	ArrayList<TeamInMatches> thisTeamPast = new ArrayList<TeamInMatches>();
 	ArrayList<TeamInMatches> opponentTeamPast = new ArrayList<TeamInMatches>();
 
@@ -85,6 +91,8 @@ public class Player implements Cloneable{
 	double teamOffendRound2 = 0;
 
 	public boolean anaylse() {// the core algorithm of player analysis
+		if(BLController.isDEL)
+		{
 		appearance = thisTeam.size();
 		for (int i = 0; i < appearance; i++) {
 			TeamInMatches tim = thisTeam.get(i);
@@ -134,6 +142,61 @@ public class Player implements Cloneable{
 			* ((double) teamOffensiveRebound2
 					/ (teamOffensiveRebound2 + teamDefensiveRebound) * (teamshot2 - teamHit2))
 			+ 1.07 * teamMiss2;
+		}
+		}
+		else {
+			appearance = thisTeamNew.size();
+			for (int i = 0; i < thisTeamNew.size(); i++) {
+				TeamInMatches tim = thisTeamNew.get(i);
+				add(tim.getPlayers().get(ordersNew.get(i)));// add idividual data
+				teamPlayTime += tim.getPlayTime();// add this team data below
+				teamTotalRebound += tim.getTotalRebound();
+				int teamOffensiveRebound = tim.getOffensiveRebound();
+				this.teamOffensiveRebound+=teamOffensiveRebound;
+				int teamDefensiveRebound = tim.getDefensiveRebound();
+				this.teamDefensiveRebound+=teamDefensiveRebound;
+				int teamshot = tim.getShot();
+				this.teamshot+=teamshot;
+				int teamHit = tim.getHit();
+				this.teamHit+=teamHit;
+				int teamFreeshot = tim.getFreeshot();
+				this.teamFreeshot+=teamFreeshot;
+				int teamMiss = tim.getMiss();
+				this.teamMiss+=teamMiss;
+				// add opponent data below
+				TeamInMatches tim2 = opponentTeamNew.get(i);
+				teamTotalRebound2 += tim2.getTotalRebound();
+				int teamOffensiveRebound2 = tim2.getOffensiveRebound();
+				this.teamOffensiveRebound2 += teamOffensiveRebound2;
+				int teamDefensiveRebound2 = tim2.getDefensiveRebound();
+				this.teamDefensiveRebound2 +=teamDefensiveRebound2;
+				int teamshot2 = tim2.getShot();
+				this.teamshot2+=teamshot2;
+				teamThirdshot2 += tim2.getThirdshot();
+				int teamFreeshot2 = tim2.getFreeshot();
+				this.teamFreeshot2+=teamFreeshot2;
+				int teamHit2 = tim2.getHit();
+				this.teamHit2+=teamHit2;
+				int teamMiss2 = tim2.getMiss();
+				this.teamMiss2+=teamMiss2;
+				
+				teamOffendRound +=teamshot
+						+ 0.4
+						* teamFreeshot
+						- 1.07
+						* ((double) teamOffensiveRebound
+								/ (teamOffensiveRebound + teamDefensiveRebound2) * (teamshot - teamHit))
+						+ 1.07 * teamMiss;
+				teamOffendRound2 +=teamshot2
+				+ 0.4
+				* teamFreeshot2
+				- 1.07
+				* ((double) teamOffensiveRebound2
+						/ (teamOffensiveRebound2 + teamDefensiveRebound) * (teamshot2 - teamHit2))
+				+ 1.07 * teamMiss2;
+				thisTeamNew.clear();
+				opponentTeamNew.clear();
+			}
 		}
 		computePromotion();
 		return true;
@@ -269,16 +332,35 @@ public class Player implements Cloneable{
 	}
 
 	public void addThisTeam(TeamInMatches tim, int order) {
-		thisTeam.add(tim);
-		orders.add(order);
+		if(BLController.isDEL)
+		{
+			thisTeam.add(tim);
+			orders.add(order);
+		}
+		else
+		{
+			thisTeamNew.add(tim);
+			ordersNew.add(order);
+		}
+	}
+	public void addThisTeamNew(TeamInMatches tim, int order) {
+		thisTeamNew.add(tim);
+		ordersNew.add(order);
 	}
 
 	public void addOpponentTeam(TeamInMatches tim) {
-		opponentTeam.add(tim);
+		if(BLController.isDEL)
+			opponentTeam.add(tim);
+		else
+			opponentTeamNew.add(tim);
+			
 	}
 	
 	public void addThisTeamPast(TeamInMatches tim) {
 		thisTeamPast.add(tim);
+	}
+	public void addOpponentTeamNew(TeamInMatches tim) {
+		opponentTeamNew.add(tim);
 	}
 
 	public void addOpponentTeamPast(TeamInMatches tim) {

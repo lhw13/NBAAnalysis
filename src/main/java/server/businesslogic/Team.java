@@ -23,6 +23,9 @@ public class Team {
 	
 	ArrayList<TeamInMatches> thisTeamPast = new ArrayList<TeamInMatches>();
 	ArrayList<TeamInMatches> opponentTeamPast = new ArrayList<TeamInMatches>();
+	
+	ArrayList<TeamInMatches> thisTeamNew = new ArrayList<TeamInMatches>();
+	ArrayList<TeamInMatches> opponentTeamNew = new ArrayList<TeamInMatches>();
 
 	// this team's data
 	int appearance = 0;// 比赛场数
@@ -129,11 +132,17 @@ public class Team {
 	}
 
 	public void addThisTeam(TeamInMatches tim) {
-		thisTeam.add(tim);
+		if(BLController.isDEL)
+			thisTeam.add(tim);
+		else
+			thisTeamNew.add(tim);
 	}
 
 	public void addOpponentTeam(TeamInMatches tim) {
-		opponentTeam.add(tim);
+		if(BLController.isDEL)
+			opponentTeam.add(tim);
+		else
+			opponentTeamNew.add(tim);
 	}
 	
 	public void addThisTeamPast(TeamInMatches tim) {
@@ -142,6 +151,14 @@ public class Team {
 
 	public void addOpponentTeamPast(TeamInMatches tim) {
 		opponentTeamPast.add(tim);
+	}
+	
+	public void addThisTeamNew(TeamInMatches tim) {
+		thisTeamNew.add(tim);
+	}
+
+	public void addOpponentTeamNew(TeamInMatches tim) {
+		opponentTeamNew.add(tim);
 	}
 	
 	public void addMatch(MatchPO mp)
@@ -158,6 +175,8 @@ public class Team {
 	}
 
 	public boolean anaylse() {// the core of team analysis
+		if(BLController.isDEL)
+		{
 		appearance = thisTeam.size();
 		for (int i = 0; i < appearance; i++) {// for more info, see Player.java
 			TeamInMatches tim = thisTeam.get(i);
@@ -172,6 +191,28 @@ public class Team {
 			score2 += tim.getFinalScore();
 			if (tim.getWin() > 0)
 				win2++;
+		}
+		}
+		else
+		{
+			int size = thisTeamNew.size();
+			appearance += size;
+			for (int i = 0; i < size; i++) {// for more info, see Player.java
+				TeamInMatches tim = thisTeamNew.get(i);
+				add(tim);
+				score += tim.getFinalScore();
+				if (tim.getWin() > 0)
+					win++;
+			}
+			thisTeamNew.clear();
+			for (int i = 0; i < size; i++) {
+				TeamInMatches tim = opponentTeamNew.get(i);
+				addOpponent(tim);
+				score2 += tim.getFinalScore();
+				if (tim.getWin() > 0)
+					win2++;
+			}
+			opponentTeamNew.clear();
 		}
 		return true;
 	}

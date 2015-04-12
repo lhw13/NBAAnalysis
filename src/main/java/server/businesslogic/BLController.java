@@ -26,9 +26,12 @@ import blservice.BLService;
 
 public class BLController implements BLService {
 	private BLController() {
+		data.startWatchMatches();
 	}
 	static String season=null;
 	static Calendar day = null;
+	static boolean isDEL = true;
+	static boolean isBegin = true;
 	HashMap<String, Player> playersHash = new HashMap<String, Player>(606);
 	HashMap<String, Team> teamsHash = new HashMap<String, Team>(41);
 	ArrayList<Player> players = new ArrayList<Player>(460);// buffer for
@@ -37,6 +40,7 @@ public class BLController implements BLService {
 	ArrayList<Player> todayPlayers = new ArrayList<Player>(40);
 	ArrayList<Team> teams = new ArrayList<Team>(31);// see above
 	DataService data = new DataController();
+	ArrayList<MatchPO> matches = data.getAllMatch();
 	private static BLController instance = null;
 
 	public static BLController getInstance() {// 单体模式
@@ -92,8 +96,6 @@ public class BLController implements BLService {
 		Comparator<Player> comp = Comparators.getPlayerAvgComparator(sortCon);
 		if(comp==null)
 			comp = Comparators.getPlayerComparator(sortCon);
-		for(int i=0;i<todayPlayers.size();i++)
-			System.out.println(todayPlayers.get(i).getBlockShot());
 		Collections.sort(todayPlayers, comp);
 		return todayPlayers;
 	}
@@ -181,29 +183,33 @@ public class BLController implements BLService {
 		//if (players.size() > 0)// already have content in buffer
 			//return true;
 		//else {// when just start the program, we will first compute the data
-			linkDatas();
-			Iterator<Entry<String, Team>> iter = teamsHash.entrySet()
-					.iterator();
-			while (iter.hasNext())// transfer data from hash to list to give to
-									// ui, meanwhile analyse each data
-			{
-				Team team = iter.next().getValue();
-				team.anaylse();
-				teams.add(team);
-			}
-			Iterator<Entry<String, Player>> iter2 = playersHash.entrySet()
-					.iterator();
-			while (iter2.hasNext())// see above
-			{
-				Player player = iter2.next().getValue();
-				player.anaylse();
-				players.add(player);
-			}
-			Collections.sort(players, new SortPlayersByTeam());// this sort
+		isDEL=data.isDEL() || isBegin;
+		isBegin=false;
+		linkDatas();
+		if(matches.size()==0)
+			return true;
+		Iterator<Entry<String, Team>> iter = teamsHash.entrySet()
+				.iterator();
+		while (iter.hasNext())// transfer data from hash to list to give to
+								// ui, meanwhile analyse each data
+		{
+			Team team = iter.next().getValue();
+			team.anaylse();
+			teams.add(team);
+		}
+		Iterator<Entry<String, Player>> iter2 = playersHash.entrySet()
+				.iterator();
+		while (iter2.hasNext())// see above
+		{
+			Player player = iter2.next().getValue();
+			player.anaylse();
+			players.add(player);
+		}
+		Collections.sort(players, new SortPlayersByTeam());// this sort
 																// improve the
 																// efficiency of
 																// getTeamWithPlayer
-			return true;
+		return true;
 	}
 
 	private void clear()
@@ -220,8 +226,15 @@ public class BLController implements BLService {
 	private boolean linkDatas() {// some prepared procedure before analyse,
 									// construct some hashmap, to accelarate the
 									// speed of it
-		clear();
-		ArrayList<MatchPO> matches = data.getAllMatch();
+		if(isDEL)
+		{
+			clear();
+			matches = data.getAllMatch();
+		}
+		else
+			matches = data.getNewMatch();
+		if(matches.size()==0)
+			return true;
 		Collections.sort(matches, new SortMatchesByCalendar());
 		int matchesSize = matches.size();
 		String thisSeason = matches.get(matchesSize-1).getSeason();
@@ -479,15 +492,7 @@ public class BLController implements BLService {
 		analyse();
 		return teams;
 	}
-	
-	
-	//avgteam comparator
 
-
-
-	
-	
-	
 	public boolean sortTeams(String sort) {
 		Comparator<Team> ct = Comparators.getTeamComparatorAvg(sort);
 		if(ct==null)

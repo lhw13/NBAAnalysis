@@ -92,6 +92,8 @@ public class BLController implements BLService {
 		Comparator<Player> comp = getPlayerAvgComparator(sortCon);
 		if(comp==null)
 			comp = getPlayerComparator(sortCon);
+		for(int i=0;i<todayPlayers.size();i++)
+			System.out.println(todayPlayers.get(i).getBlockShot());
 		Collections.sort(todayPlayers, comp);
 		return todayPlayers;
 	}
@@ -236,7 +238,7 @@ public class BLController implements BLService {
 		for (int i = matchesSize - 1; i >= 0; i--) {
 			MatchPO mttemp = matches.get(i);
 			boolean theSeason = mttemp.getSeason().compareTo(season)==0;
-			boolean theDay = day.compareTo(thisDay)==0;
+			boolean theDay = mttemp.getDate().equals(day);
 			ScorePO finalTemp = mttemp.getFinalScore();
 			ArrayList<ScorePO> scoresTemp = mttemp.getScores();
 			ArrayList<Integer> scores1 = new ArrayList<Integer>();
@@ -617,7 +619,9 @@ public class BLController implements BLService {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-            return o2.getBlockShot() > o1.getBlockShot() ? 1 : -1;
+        	Integer i2=o2.getBlockShot();
+        	Integer i1=o1.getBlockShot();
+            return i2.compareTo(i1);
         }
     };
     

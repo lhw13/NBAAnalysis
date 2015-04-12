@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import server.businesslogic.BLController;
+import server.businesslogic.Comparators;
 import server.businesslogic.Player;
 import server.businesslogic.Team;
 
@@ -175,7 +176,7 @@ public class Console {
 						case "frequency": sortConsList.add(compareFrequencyAsc);break;
 						}				
 					} else {//降序
-						sortConsList.add(bl.getPlayerComparator(temps[0]));
+						sortConsList.add(Comparators.getPlayerComparator(temps[0]));
 						/*switch(temps[0]) {
 						case "point": sortConsList.add(comparePointDesc); break;
 						case "rebound": sortConsList.add(compareReboundDesc);break;
@@ -207,9 +208,9 @@ public class Console {
 				
 			} else {//没有sort命令，使用默认排序命令
 				if(high){//如果是高阶数据，用高阶数据的默认，否则用基本数据
-					sortConsList.add(bl.compareRealShotDesc);
+					sortConsList.add(Comparators.compareRealShotDesc);
 				}else{
-					sortConsList.add(bl.comparePointDesc);
+					sortConsList.add(Comparators.comparePointDesc);
 				} 
 			}
 			if(!timeCon.equals("daily")) {
@@ -265,7 +266,7 @@ public class Console {
 						case "steal": 
 						case "foul": 
 						case "fault": 
-						case "minute": System.out.println(temps[0]);sortConsList.add(bl.getPlayerAvgComparator(temps[0]));break;
+						case "minute": System.out.println(temps[0]);sortConsList.add(Comparators.getPlayerAvgComparator(temps[0]));break;
 						case "efficient": 
 						case "shot": 
 						case "three": 
@@ -281,16 +282,16 @@ public class Console {
 						case "stealEfficient": 
 						case "blockShotEfficient": 
 						case "faultEfficient": 
-						case "frequency": sortConsList.add(bl.getPlayerComparator(temps[0]));break;
+						case "frequency": sortConsList.add(Comparators.getPlayerComparator(temps[0]));break;
 						}
 					}
 				}
 				
 			} else {//没有sort命令，使用默认排序命令
 				if(high){//如果是高阶数据，用高阶数据的默认，否则用基本数据
-					sortConsList.add(bl.compareRealShotDesc);
+					sortConsList.add(Comparators.compareRealShotDesc);
 				}else{ 
-					sortConsList.add(bl.comparePointDesc);
+					sortConsList.add(Comparators.comparePointDesc);
 				} 
 			}
 			if(!timeCon.equals("daily")) {

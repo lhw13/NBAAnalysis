@@ -444,4 +444,8 @@ public class Team {
 	public int getWin2() {
 		return win2;
 	}
+	
+	public String getAbbreviation() {
+		return teamPO.getAbbreviation();
+	}
 }

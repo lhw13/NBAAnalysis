@@ -151,6 +151,19 @@ public class MatchSelectionPanel extends JPanel {
 		
 		scrollPane_1.setViewportView(table);
 		
+		JButton refreshButton = new JButton("最新");
+		refreshButton.setBounds(500, 50, 100, 30);
+		panelOfBottom.add(refreshButton);
+		
+		refreshButton.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MainFrame.searchTheMatch();
+			}
+			
+		});
+		
 		JButton btnNewButton = new JButton("返回");
 		btnNewButton.setBounds(50, 50, 100, 30);
 		panelOfBottom.add(btnNewButton);

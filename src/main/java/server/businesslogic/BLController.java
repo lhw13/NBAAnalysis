@@ -1070,31 +1070,38 @@ public class BLController implements BLService {
 		}
 	}
 	
-	public boolean sortTeams(String sort) {
+	public Comparator<Team> getTeamComparator(String sort) {
 		switch(sort) {
-		case "point": Collections.sort(teams, TeamByPoint);break;
-		case "score": Collections.sort(teams, TeamByPoint);break;
-		case "rebound": Collections.sort(teams, TeamByRebound);break;
-		case "blockShot": Collections.sort(teams, TeamByBlock);break;
-		case "assist": Collections.sort(teams, TeamByAssist);break;
-		case "steal": Collections.sort(teams, TeamBySteal);break;
-		case "foul": Collections.sort(teams, TeamByFoul);break;
-		case "fault": Collections.sort(teams, TeamByFault);break;
-		case "three": Collections.sort(teams, TeamByThree);break;
-		case "shot": Collections.sort(teams, TeamByShot);break;
-		case "penalty": Collections.sort(teams, TeamByPenalty);break;
-		case "defendRebound": Collections.sort(teams, TeamByDefendRebound);break;
-		case "offendRebound": Collections.sort(teams, TeamByOffendRebound);break;
-		case "winRate": Collections.sort(teams, TeamByWinRate);break;
-		case "offendRound": Collections.sort(teams, TeamByOffendRound);break;
-		case "offendEfficient": Collections.sort(teams, TeamByOffendEfficient);break;
-		case "defendEfficient": Collections.sort(teams, TeamByDefendEfficient);break;
-		case "offendReboundEfficient": Collections.sort(teams, TeamByOffendReboundEfficient);break;
-		case "defendReboundEfficient": Collections.sort(teams, TeamByDefendReboundEfficient);break;
-		case "stealEfficient": Collections.sort(teams, TeamByStealEfficient);break;
-		case "assistEfficient": Collections.sort(teams, TeamByAssistEfficient);break;
-		default: return false;
+		case "point": return TeamByPoint;
+		case "score": return TeamByPoint;
+		case "rebound": return TeamByRebound;
+		case "blockShot": return TeamByBlock;
+		case "assist": return TeamByAssist;
+		case "steal": return TeamBySteal;
+		case "foul": return TeamByFoul;
+		case "fault": return TeamByFault;
+		case "three": return TeamByThree;
+		case "shot": return TeamByShot;
+		case "penalty": return TeamByPenalty;
+		case "defendRebound": return TeamByDefendRebound;
+		case "offendRebound": return TeamByOffendRebound;
+		case "winRate": return TeamByWinRate;
+		case "offendRound": return TeamByOffendRound;
+		case "offendEfficient": return TeamByOffendEfficient;
+		case "defendEfficient": return TeamByDefendEfficient;
+		case "offendReboundEfficient": return TeamByOffendReboundEfficient;
+		case "defendReboundEfficient": return TeamByDefendReboundEfficient;
+		case "stealEfficient": return TeamByStealEfficient;
+		case "assistEfficient": return TeamByAssistEfficient;
+		default: return null;
 		}
+	}
+	
+	public boolean sortTeams(String sort) {
+		Comparator<Team> ct = getTeamComparator(sort);
+		if(ct==null)
+			return false;
+		Collections.sort(teams, ct);
 		return true;
 	}
 }

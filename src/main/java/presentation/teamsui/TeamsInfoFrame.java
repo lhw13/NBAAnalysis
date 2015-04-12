@@ -35,7 +35,7 @@ import vo.TeamWithPlayersVO;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 
-/*
+/* 
  * 单个球队比赛信息面板
  */
 public class TeamsInfoFrame extends JPanel{
@@ -72,10 +72,15 @@ public class TeamsInfoFrame extends JPanel{
 	public TeamsInfoFrame(final TeamWithPlayersVO twpvo ,ImageIcon ii) {// 构造函数
 
 		JPanel panel = new JPanel();
-		panel.setBounds(5, 5, 100, 50);
+		panel.setBounds(5, 5, 300, 50);
 
 		JButton btnNewButton = new JButton("返回");
+		btnNewButton.setBounds(0, 0, 100, 30);
 		panel.add(btnNewButton);
+		
+		JButton refreshButton = new JButton("最新");
+		refreshButton.setBounds(110, 0, 100, 30);
+		panel.add(refreshButton);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(60, 231, 800, 500);
@@ -120,7 +125,7 @@ public class TeamsInfoFrame extends JPanel{
 		scrollPane_5.setViewportView(table);
 		
 		teamPicture = new JLabel("");
-		teamPicture.setBounds(50, 20, 250, 150);
+		teamPicture.setBounds(50, 50, 250, 150);
 		teamPicture.setIcon(ii);
 		
 		scrollPane_search = new JScrollPane();
@@ -467,6 +472,21 @@ public class TeamsInfoFrame extends JPanel{
 					e1.printStackTrace();
 				}
 
+			}
+
+		});
+		
+		refreshButton.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				selection="投篮命中数";
+				columnName1.setElementAt("投篮命中数(场均)", 3);
+				columnName1.setElementAt("投篮命中数(总计)", 4);
+				updateTeam(twpvo, "投篮命中数");
+				comboBox.setSelectedItem(selection);
+				latestMatchs(teamName);
+				comboBox_1.setSelectedItem("选择赛季");
+				comboBox_2.setSelectedItem("选择月份");
 			}
 
 		});

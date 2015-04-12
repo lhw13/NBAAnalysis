@@ -28,6 +28,7 @@ public class PlayerRankingPanel extends JPanel {
 	
 	public static JScrollPane scrollPane;
 	private JButton btnNewButton;
+	private JButton refreshButton;
 	private JComboBox<String> comboBox;
 	public static JTable table;
 
@@ -64,6 +65,18 @@ public class PlayerRankingPanel extends JPanel {
 				PlayerRankingPanel.scrollPane=null;
 				MainFrame.panel.setVisible(true);
 				MainFrame.frame.setTitle("NBA");
+			}
+
+		});
+		
+		refreshButton = new JButton("最新");
+		refreshButton.setBounds(50, 130, 100, 30);
+		panel.add(refreshButton);
+
+		refreshButton.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				MainFrame.setPlayersRanking();
 			}
 
 		});

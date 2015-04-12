@@ -27,6 +27,7 @@ public class TeamsRankingFrame {
 
 	public static JScrollPane scrollPane;
 	private JButton btnNewButton;
+	private JButton refreshButton;
 	private JComboBox<String> comboBox;
 
 	/**
@@ -82,8 +83,12 @@ public class TeamsRankingFrame {
 		panel.add(tabbedPane);
 
 		btnNewButton = new JButton("返回");
-		btnNewButton.setBounds(200, 10, 113, 27);
+		btnNewButton.setBounds(200, 10, 120, 30);
 		panel.add(btnNewButton);
+		
+		refreshButton = new JButton("最新");
+		refreshButton.setBounds(350, 10, 120, 30);
+		panel.add(refreshButton);
 		
 		comboBox = new JComboBox<String>();
 		comboBox.addItem("投篮命中数");
@@ -290,6 +295,13 @@ public class TeamsRankingFrame {
 				TeamsRankingFrame.scrollPane=null;
 				MainFrame.panel.setVisible(true);
 				MainFrame.frame.setTitle("NBA");
+			}
+		});
+		
+		refreshButton.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				MainFrame.setTeamsRanking();
 			}
 		});
 	}

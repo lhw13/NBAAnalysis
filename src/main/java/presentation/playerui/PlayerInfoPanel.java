@@ -221,7 +221,7 @@ public class PlayerInfoPanel extends JPanel {
 		label.setBounds(5, 425, 110, 29);
 		panelOfBottom.add(label);	
 		
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"选择赛季", "13-14","12-13"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"选择赛季","14-15", "13-14","12-13"}));
 		comboBox.setBounds(246, 425, 110, 29);
 		panelOfBottom.add(comboBox);
 		
@@ -519,7 +519,7 @@ public class PlayerInfoPanel extends JPanel {
 		model_8.setColumnCount(table_8.getColumnCount());
 		model_8.setRowCount(rowDatas8.size());
 		table_8.setModel(model_8);
-		int[] width={50,55,5,3,3,3,3,3,3,3,3,3,3,3};
+		int[] width={50,60,5,3,3,3,3,3,3,3,3,3,3,3};
 		table_8.setColumnModel(getColumn(table_8, width));
 		table_8.updateUI();
 	}
@@ -528,53 +528,6 @@ public class PlayerInfoPanel extends JPanel {
 		Vector rowDatas8 = new Vector();
 		vo = blservice.getPlayerAnalysis(playerName);
 		update(playerName);
-		ArrayList<MatchPO> matches = vo.getMatches();
-		for(int i=0;i<matches.size()&&i<5;i++) {
-			Vector rowData8 = new Vector();
-			MatchPO matchTemp = matches.get(i);
-			TeamInMatchesPO team = null;
-			if(matchTemp.getTeam1().getAbbreviation().equals
-					(vo.getTeamAbbreviation())){
-				team = matchTemp.getTeam1();
-			} else {
-				team = matchTemp.getTeam2();
-			}
-			ArrayList<PlayerInMatchesPO> playersInMatch = team.getPlayers();
-			PlayerInMatchesPO playerTemp = null; 
-			for(int j=0;j<playersInMatch.size();j++) {
-				playerTemp = playersInMatch.get(j);
-				if(playerTemp.getName().equals(vo.getName())) break; 
-			}
-			
-			SimpleDateFormat sdf8 = new SimpleDateFormat("yyyy-MM-dd");
-			String dateStr8 = sdf8.format(matchTemp.getDate().getTime());
-			rowData8.add(dateStr8);//日期
-			rowData8.add(matchTemp.getFinalScore().toString()+" "+					
-					matchTemp.getTeam2().getAbbreviation());//得分
-			rowData8.add(playerTemp.getPlayTime());
-			rowData8.add(playerTemp.getHit()+"-"+playerTemp.getShot());
-			rowData8.add(playerTemp.getThirdHit()+"-"+playerTemp.getThirdshot());
-			rowData8.add(playerTemp.getFreeHit()+"-"+playerTemp.getFreeshot());
-			rowData8.add(playerTemp.getOffensiveRebound());
-			rowData8.add(playerTemp.getDefensiveRebound());
-			rowData8.add(playerTemp.getTotalRebound());
-			rowData8.add(playerTemp.getAssist());
-			rowData8.add(playerTemp.getSteal());
-			rowData8.add(playerTemp.getBlock());
-			rowData8.add(playerTemp.getMiss());
-			rowData8.add(playerTemp.getFoul());
-			rowData8.add(playerTemp.getScore());
-			
-			rowDatas8.add(rowData8);
-		}
-		
-		model_8.setDataVector(rowDatas8, columnName8);		
-		model_8.setColumnCount(table_8.getColumnCount());
-		model_8.setRowCount(rowDatas8.size());
-		table_8.setModel(model_8);
-		int[] width={50,55,5,3,3,3,3,3,3,3,3,3,3,3};
-		table_8.setColumnModel(getColumn(table_8, width));
-		table_8.updateUI();
 	}
 	public void showPass() {
 		Vector rowDatas8 = new Vector();
@@ -629,7 +582,7 @@ public class PlayerInfoPanel extends JPanel {
 		model_8.setColumnCount(table_8.getColumnCount());
 		model_8.setRowCount(rowDatas8.size());
 		table_8.setModel(model_8);
-		int[] width={50,55,5,3,3,3,3,3,3,3,3,3,3,3};
+		int[] width={50,60,5,3,3,3,3,3,3,3,3,3,3,3};
 		table_8.setColumnModel(getColumn(table_8, width));
 		table_8.updateUI();
 	}

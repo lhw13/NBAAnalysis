@@ -153,6 +153,18 @@ public class HotRankingPanel extends JPanel {
 		lblNewLabel_1.setBounds(500, 286, 101, 31);
 		panelOfBottom.add(lblNewLabel_1);
 		
+		JButton button_1 = new JButton("最新");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				update1(blservice.getDailyHotPlayerVO("point", 5), "point");
+				update2(blservice.getBestPromotion("point", 5), "point");
+				updateTeam(blservice.getHotTeamVO("point", 5), "point");
+				update4(blservice.getHotPlayerVO("point", 5), "point");					
+			}
+		});
+		button_1.setBounds(123, 10, 93, 23);
+		panelOfBottom.add(button_1);
+		
 		scrollPane.setBounds(0, 0, 1000, 600);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		add(scrollPane);

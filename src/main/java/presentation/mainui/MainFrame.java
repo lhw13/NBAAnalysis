@@ -50,6 +50,7 @@ public class MainFrame {
 	public static JPanel panel;
 
 	public static PlayerInfoPanel pip;
+	public static PlayerSelectionPanel psp;
 
 	public static boolean flag = false;
 	public static boolean flag0 = false;
@@ -167,7 +168,7 @@ public class MainFrame {
 	private void initPanels() {
 
 		//初始化球员选择面板
-		new PlayerSelectionPanel();
+		psp = new PlayerSelectionPanel();
 		frame.getContentPane().add(PlayerSelectionPanel.scrollPane);
 		PlayerSelectionPanel.scrollPane.setVisible(false);
 
@@ -536,6 +537,7 @@ public class MainFrame {
 			public void mouseClicked(MouseEvent e) {
 				try {
 					MainFrame.panel.setVisible(false);
+					psp.update();
 					PlayerSelectionPanel.scrollPane.setVisible(true);
 					MainFrame.frame.setTitle("NBA球员选择");
 				} catch (Exception e1) {

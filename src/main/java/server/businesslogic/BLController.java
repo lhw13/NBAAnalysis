@@ -814,9 +814,10 @@ public class BLController implements BLService {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Double d2 = (double)o2.getBlockShot()/(double)o2.appearance;
-        	Double d1 = (double)o1.getBlockShot()/(double)o1.appearance;
-            return d2.compareTo(d1);
+        	return (double)o2.getBlockShot()/(double)o2.appearance > (double)o1.getBlockShot()/(double)o1.appearance? 1 : -1;
+//        	Double d2 = (double)o2.getBlockShot()/(double)o2.appearance;
+//        	Double d1 = (double)o1.getBlockShot()/(double)o1.appearance;
+//            return d2.compareTo(d1);
         }
     };
     
@@ -824,7 +825,9 @@ public class BLController implements BLService {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-            return (double)o2.getSteal()/(double)o2.appearance > (double)o1.getSteal()/(double)o1.appearance? 1 : -1;
+        	Double d2 =(double)o2.getSteal()/(double)o2.appearance ;
+        	Double d1 =(double)o1.getSteal()/(double)o1.appearance ;
+        	return d2.compareTo(d1);      
         }
     };
     
@@ -832,7 +835,9 @@ public class BLController implements BLService {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-            return (double)o2.getFoul()/(double)o2.appearance > (double)o1.getFoul()/(double)o1.appearance? 1 : -1;
+        	Double d2 =(double)o2.getFoul()/(double)o2.appearance ;
+        	Double d1 =(double)o1.getFoul()/(double)o1.appearance ;
+        	return d2.compareTo(d1);            	
         }
     };
     
@@ -840,7 +845,9 @@ public class BLController implements BLService {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-            return (double)o2.getFault()/(double)o2.appearance > (double)o1.getFault()/(double)o1.appearance? 1 : -1;
+        	Double d2 =(double)o2.getFault()/(double)o2.appearance ;
+        	Double d1 =(double)o1.getFault()/(double)o1.appearance ;
+        	return d2.compareTo(d1);  
         }
     };
     
@@ -848,7 +855,9 @@ public class BLController implements BLService {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-            return (double)o2.getMinute()/(double)o2.appearance > (double)o1.getMinute()/(double)o1.appearance? 1 : -1;
+        	Double d2 =(double)o2.getMinute()/(double)o2.appearance ;
+        	Double d1 =(double)o1.getMinute()/(double)o1.appearance ;
+        	return d2.compareTo(d1);  
         }
     };
     
@@ -857,7 +866,7 @@ public class BLController implements BLService {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-            return o2.assistPromotion > o1.assistPromotion? 1 : -1;
+        	return o2.assistPromotion > o1.assistPromotion? 1 : -1;
         }
     };
     

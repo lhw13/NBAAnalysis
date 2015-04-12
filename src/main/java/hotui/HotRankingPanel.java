@@ -400,7 +400,7 @@ public class HotRankingPanel extends JPanel {
 				rowData1.add(playerTemp.getName());
 				rowData1.add(playerTemp.getTeamFullName());	
 				rowData1.add(playerTemp.getPosition());					
-				rowData1.add(playerTemp.getAssist());									
+				rowData1.add(playerTemp.getBlock());									
 				rowDatas1.add(rowData1);
 			}
 			break;

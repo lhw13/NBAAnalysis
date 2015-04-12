@@ -814,7 +814,9 @@ public class BLController implements BLService {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-            return (double)o2.getBlockShot()/(double)o2.appearance > (double)o1.getBlockShot()/(double)o1.appearance? 1 : -1;
+        	Double d2 = (double)o2.getBlockShot()/(double)o2.appearance;
+        	Double d1 = (double)o1.getBlockShot()/(double)o1.appearance;
+            return d2.compareTo(d1);
         }
     };
     

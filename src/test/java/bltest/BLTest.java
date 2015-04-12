@@ -9,6 +9,13 @@ import blservice.BLService;
 
 public class BLTest {
 	@Test
+	public void testSort() {
+		BLService bl = BLController.getInstance();
+		bl.getDailyHotPlayerVO("blockShot", 5);
+		assertTrue(true);
+	}
+	
+	@Test
 	public void testTeamAnalyse() {
 		BLService bl = BLController.getInstance();
 		bl.getTeamAnalysis();

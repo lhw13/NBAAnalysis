@@ -144,10 +144,15 @@ public class Player implements Cloneable{
 			+ 1.07 * teamMiss2;
 		}
 		}
+		
+		
+		//increment
 		else {
 			appearance = thisTeamNew.size();
 			for (int i = 0; i < thisTeamNew.size(); i++) {
 				TeamInMatches tim = thisTeamNew.get(i);
+				thisTeam.add(tim);
+				orders.add(ordersNew.get(i));
 				add(tim.getPlayers().get(ordersNew.get(i)));// add idividual data
 				teamPlayTime += tim.getPlayTime();// add this team data below
 				teamTotalRebound += tim.getTotalRebound();
@@ -165,6 +170,7 @@ public class Player implements Cloneable{
 				this.teamMiss+=teamMiss;
 				// add opponent data below
 				TeamInMatches tim2 = opponentTeamNew.get(i);
+				opponentTeam.add(tim2);
 				teamTotalRebound2 += tim2.getTotalRebound();
 				int teamOffensiveRebound2 = tim2.getOffensiveRebound();
 				this.teamOffensiveRebound2 += teamOffensiveRebound2;
@@ -194,9 +200,11 @@ public class Player implements Cloneable{
 				* ((double) teamOffensiveRebound2
 						/ (teamOffensiveRebound2 + teamDefensiveRebound) * (teamshot2 - teamHit2))
 				+ 1.07 * teamMiss2;
-				thisTeamNew.clear();
-				opponentTeamNew.clear();
+				
 			}
+			thisTeamNew.clear();
+			ordersNew.clear();
+			opponentTeamNew.clear();
 		}
 		computePromotion();
 		return true;
@@ -684,9 +692,9 @@ public class Player implements Cloneable{
 			reboundPromotion=0;
 			return;
 		}
-		int scoreRecent=0;
-		int assistRecent=0;
-		int reboundRecent=0;
+		double scoreRecent=0;
+		double assistRecent=0;
+		double reboundRecent=0;
 		for(int i=size-5; i<size; i++)
 		{
 			TeamInMatches tim = thisTeam.get(i);
@@ -711,6 +719,15 @@ public class Player implements Cloneable{
 			reboundPromotion=0;
 		else
 			reboundPromotion = (reboundRecent/5 - reboundPashAvg)/reboundPashAvg;
+		if(player.getName().equals("Allen Crabbe"))
+		{
+			for(int i=0;i<matches.size();i++)
+				System.out.println(matches.get(i).toString());
+			System.out.println("appearancePast"+appearancePast);
+			System.out.println("reboundPashAvg"+reboundPashAvg);
+			System.out.println("reboundRecent/5"+reboundRecent/5);
+			System.out.println("reboundPromotion"+reboundPromotion);
+		}
 	}
 	
 	public double getValue(String value) {

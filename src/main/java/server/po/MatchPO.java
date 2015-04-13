@@ -18,6 +18,12 @@ public class MatchPO {
 		this.team1 = team1;
 		this.team2 = team2;
 	}
+	public String toString()
+	{
+		int month = date.get(Calendar.MONTH)+1;
+		int day = date.get(Calendar.DAY_OF_MONTH);
+		return (season+"_"+month+"-"+day+"_"+team1.abbreviation+"-"+team2.abbreviation);
+	}
 	String fileName;
 	String season;
 	Calendar date;

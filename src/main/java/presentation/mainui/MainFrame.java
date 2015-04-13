@@ -110,7 +110,7 @@ public class MainFrame {
 	public static String selection2="投篮命中数";
 	
 	public static String season="13-14";
-	public static int date=0;
+	public static int date=3;
 
 	BLService blservice = BLController.getInstance();
 	public static void main(String[] args) {

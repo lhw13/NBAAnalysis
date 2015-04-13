@@ -160,6 +160,8 @@ public class MainFrame {
 		timer = new Timer();
 		timer.scheduleAtFixedRate(new ScheduleTask(), INITIAL_DELAY,
 				PERIOD_INTERVAL);
+		BLService blservice = BLController.getInstance();
+		blservice.startWatchMatches();
 	}
 
 	/**

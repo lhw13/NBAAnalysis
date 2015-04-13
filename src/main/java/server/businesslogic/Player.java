@@ -252,7 +252,7 @@ public class Player implements Cloneable{
 						.getHeight().getFeet(), player.getHeight().getInch()),
 				player.getWeight(), player.getBirth(), player.getAge(),
 				player.getExp(), player.getSchool(), appearance, starting,
-				playTime, hit, chuShou, thirdHit, thirdshot, freeHit, freeshot,
+				playTime/60, hit, chuShou, thirdHit, thirdshot, freeHit, freeshot,
 				offensiveRebound, defensiveRebound, rebound, assist,
 				steal, blockShot, fault, foul, score, getHitRate(),
 				getThree(), getPenalty(), getEfficient(),

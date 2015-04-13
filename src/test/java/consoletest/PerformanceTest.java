@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.apache.commons.beanutils.BeanComparator;
 import org.apache.commons.collections.ComparatorUtils;
 import org.apache.commons.collections.comparators.ComparableComparator;
 import org.junit.Ignore;
@@ -24,12 +23,6 @@ public class PerformanceTest {
 	List<Comparator<Player>> sortConsList = new ArrayList<Comparator<Player>>();
 	static final int num=10000;
 	
-	public void testBeanComparator()
-	{
-			for(int j=0;j<num;j++)
-				for(int i=0;i<args.length;i++)
-					Collections.sort(teams,new BeanComparator<Team>(args[i]));			
-	}
 	@Ignore
 	public void testNewComparator()
 	{

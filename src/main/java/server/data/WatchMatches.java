@@ -29,7 +29,7 @@ public class WatchMatches implements Runnable {
 		            for(WatchEvent<?> event:key.pollEvents())  
 		            {  
 		               // System.out.println(event.context()+"发生了"+event.kind()+"事件"); 
-		                if(event.kind().name().equals("ENTRY_MODIFY")){
+		            	if(event.kind().name().equals("ENTRY_CREATE")){
 		                	String name= event.context().toString();
 		                	File f=new File(path+name);
 		                	MatchesData.add(f);

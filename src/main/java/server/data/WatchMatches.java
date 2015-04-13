@@ -23,6 +23,7 @@ public class WatchMatches implements Runnable {
 		                StandardWatchEventKinds.ENTRY_CREATE,  
 		                StandardWatchEventKinds.ENTRY_DELETE,  
 		                StandardWatchEventKinds.ENTRY_MODIFY);  
+			  char a='n';//前一次事件
 		        while(true)  
 		        {  
 		            WatchKey key=watchService.take();  
@@ -30,13 +31,29 @@ public class WatchMatches implements Runnable {
 		            {  
 		               // System.out.println(event.context()+"发生了"+event.kind()+"事件"); 
 		            	if(event.kind().name().equals("ENTRY_MODIFY")){
+		            		if(a=='C'){
 		                	String name= event.context().toString();
 		                	File f=new File(path+name);
 		                	MatchesData.add(f);
+		                	a='n';//事件归元
+		            		}
+		            		else{
+		            		a='M';//事件记为修改
+		            		}
 		                }
 		                else if(event.kind().name().equals("ENTRY_DELETE")){
+		                	if(a=='M'){
 		                	MatchesData.remove(event.context().toString());
+		                	a='n';//事件归元
+		                	}
+		                	else{
+		                	a='D';//事件记为删除
+		                	}
 		                }
+		                else{
+		                	a='C';//事件记为创建
+		                }
+		                
 		            }  
 		            if(!key.reset())  
 		            {  

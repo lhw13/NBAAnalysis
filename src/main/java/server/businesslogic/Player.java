@@ -695,7 +695,7 @@ public class Player implements Cloneable{
 		double scoreRecent=0;
 		double assistRecent=0;
 		double reboundRecent=0;
-		for(int i=size-5; i<size; i++)
+		for(int i=0; i<5; i++)
 		{
 			TeamInMatches tim = thisTeam.get(i);
 			PlayerInMatchesPO player = tim.getPlayers().get(orders.get(i));
@@ -719,7 +719,7 @@ public class Player implements Cloneable{
 			reboundPromotion=0;
 		else
 			reboundPromotion = (reboundRecent/5 - reboundPashAvg)/reboundPashAvg;
-		if(player.getName().equals("Allen Crabbe"))
+		/*if(player.getName().equals("Allen Crabbe"))
 		{
 			for(int i=0;i<matches.size();i++)
 				System.out.println(matches.get(i).toString());
@@ -727,7 +727,7 @@ public class Player implements Cloneable{
 			System.out.println("reboundPashAvg"+reboundPashAvg);
 			System.out.println("reboundRecent/5"+reboundRecent/5);
 			System.out.println("reboundPromotion"+reboundPromotion);
-		}
+		}*/
 	}
 	
 	public double getValue(String value) {

@@ -10,6 +10,8 @@ import server.businesslogic.BLController;
 import server.businesslogic.Comparators;
 import server.businesslogic.Player;
 import server.businesslogic.Team;
+import test.data.PlayerHotInfo;
+import test.data.PlayerKingInfo;
 import test.data.TeamHotInfo;
 
 import org.apache.commons.beanutils.BeanComparator;
@@ -178,32 +180,7 @@ public class Console {
 						}				
 					} else {//降序
 						sortConsList.add(Comparators.getPlayerComparator(temps[0]));
-						/*switch(temps[0]) {
-						case "point": sortConsList.add(comparePointDesc); break;
-						case "rebound": sortConsList.add(compareReboundDesc);break;
-						case "assist": sortConsList.add(compareAssistDesc);break;					
-						case "blockShot": sortConsList.add(compareBlockShotDesc);break;
-						case "steal": sortConsList.add(compareStealDesc);break;
-						case "foul": sortConsList.add(compareFoulDesc);break;
-						case "fault": sortConsList.add(compareFaultDesc);break;
-						case "minute": sortConsList.add(compareMinuteDesc);break;
-						case "efficient": sortConsList.add(compareEfficientDesc);break;
-						case "shot": sortConsList.add(compareShotDesc);break;
-						case "three": sortConsList.add(compareThreeDesc);break;
-						case "penalty": sortConsList.add(comparePenaltyDesc);break;
-						case "doubleTwo": sortConsList.add(compareDoubleTwoDesc);break;
-						case "realShot": sortConsList.add(compareRealShotDesc);break;
-						case "GmSc": sortConsList.add(compareGmScDesc);break;
-						case "shotEfficient": sortConsList.add(compareShotEfficientDesc);break;
-						case "reboundEfficient": sortConsList.add(compareReboundEfficientDesc);break;
-						case "offendReboundEfficient": sortConsList.add(compareOffendReboundEfficientDesc);break;
-						case "defendReboundEfficient": sortConsList.add(compareDefendReboundEfficientDesc);break;
-						case "assistEfficient": sortConsList.add(compareAssistEfficientDesc);break;
-						case "stealEfficient": sortConsList.add(compareStealEfficientDesc);break;		
-						case "blockShotEfficient": sortConsList.add(compareBlockShotEfficientDesc);break;
-						case "faultEfficient": sortConsList.add(compareFaultEfficientDesc);break;
-						case "frequency": sortConsList.add(compareFrequencyDesc);break;
-						}*/
+						
 					}
 				}
 				
@@ -305,7 +282,32 @@ public class Console {
 					out.println(playerList.get(i).toHighInfo());//to use which function
 					out.println(playerList.get(i).toVO());
 				}
-			} else {
+			} else if(hot) {
+				for(int i=0;i<n && i<playerList.size();i++)
+				{
+					Player p = playerList.get(i);
+					PlayerHotInfo playerHot = new PlayerHotInfo();
+					playerHot.setName(p.getName());
+					playerHot.setTeamName(p.getTeam().getAbbreviation());
+					playerHot.setField(condition);
+					playerHot.setValue(p.getValue(condition));
+					playerHot.setPosition(p.getPosition());
+					playerHot.setUpgradeRate(p.getUpgradeRate(condition));
+					out.println(playerHot);//to use which function
+				}
+			} else if (king) {
+				for(int i=0;i<n && i<playerList.size();i++)
+				{
+					Player p = playerList.get(i);
+					PlayerKingInfo playerKing = new PlayerKingInfo();
+					playerKing.setName(p.getName());
+					playerKing.setTeamName(p.getTeam().getAbbreviation());
+					playerKing.setField(condition);
+					playerKing.setValue(p.getValue(condition));
+					playerKing.setPosition(p.getPosition());
+					out.println(playerKing);//to use which function
+				}
+			}else {
 				for(int i=0;i<n && i<playerList.size();i++)
 				{
 					out.println(playerList.get(i).toNormalInfoAvg());//to use which function

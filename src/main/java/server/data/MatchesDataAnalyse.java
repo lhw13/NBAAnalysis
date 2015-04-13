@@ -21,7 +21,6 @@ public class MatchesDataAnalyse {
 		if(abbreviation2.equals("NOH")){
 			abbreviation2="NOP";
 		}
-		System.out.println(matchData.get(0));
 		String[] firstLine = matchData.get(1).split(";");
 		ScorePO finalScore = stringToScorePO(firstLine[2]);
 		String[] secondLine = matchData.get(2).split(";");

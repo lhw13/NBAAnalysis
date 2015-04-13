@@ -489,4 +489,31 @@ public class Team {
 	public String getAbbreviation() {
 		return teamPO.getAbbreviation();
 	}
+	
+	public String getLeague() {
+		char c = teamPO.getDivision();
+		if(c=='W')
+			return "West";
+		else
+			return "East";
+	}
+	
+	public double getValue(String value) {
+		switch(value) {
+		case "point": return score;
+		case "score": return score;
+		case "rebound": return rebound;
+		case "blockShot": return blockShot;
+		case "assist": return assist;
+		case "steal": return steal;
+		case "foul": return foul;
+		case "fault": return fault;
+		case "three": return getThree();
+		case "shot": return getShot();
+		case "penalty": return getPenalty();
+		case "defendRebound": return getDefendRebound();
+		case "offendRebound": return getOffendRebound();
+		default: return 0;
+		}
+	}
 }

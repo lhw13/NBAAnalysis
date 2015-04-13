@@ -61,7 +61,7 @@ public class MatchSelectionPanel extends JPanel {
 		comboBox.addItem("12-13");
 		comboBox.addItem("13-14");
 		comboBox.addItem("14-15");
-		comboBox.setSelectedItem("选择赛季");
+		comboBox.setSelectedItem(MainFrame.season);
 		panelOfBottom.add(comboBox);
 		
 		comboBox.addActionListener(new ActionListener(){
@@ -96,7 +96,7 @@ public class MatchSelectionPanel extends JPanel {
 		comboBox_1.addItem(10);
 		comboBox_1.addItem(11);
 		comboBox_1.addItem(12);
-		comboBox_1.setSelectedItem("选择月份");
+		comboBox_1.setSelectedItem(MainFrame.date+1);
 		comboBox_1.setBounds(350, 50, 100, 30);
 		panelOfBottom.add(comboBox_1);
 		

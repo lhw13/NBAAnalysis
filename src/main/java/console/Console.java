@@ -10,6 +10,7 @@ import server.businesslogic.BLController;
 import server.businesslogic.Comparators;
 import server.businesslogic.Player;
 import server.businesslogic.Team;
+import test.data.TeamHotInfo;
 
 import org.apache.commons.beanutils.BeanComparator;
 import org.apache.commons.collections.CollectionUtils;
@@ -298,42 +299,122 @@ public class Console {
 				sortConsList.add(comparePlayerNameAsc);
 				sort(playerList, sortConsList);
 			}
-			
-			for(int i=0;i<n && i<playerList.size();i++)
-			{
-				out.println(playerList.get(i).toNormalInfoAvg());//to use which function
-				out.println(playerList.get(i).toVO());
+			if(high) {
+				for(int i=0;i<n && i<playerList.size();i++)
+				{
+					out.println(playerList.get(i).toHighInfo());//to use which function
+					out.println(playerList.get(i).toVO());
+				}
+			} else {
+				for(int i=0;i<n && i<playerList.size();i++)
+				{
+					out.println(playerList.get(i).toNormalInfoAvg());//to use which function
+					out.println(playerList.get(i).toVO());
+				}
 			}
 		}
 	
 	}
 	public void team(PrintStream out, String[] args) {
+		Comparator<Team> teamByName = Comparators.TeamByNameAsc;
 		ArrayList<Team> teams = BLController.getInstance().getTeams();
 		//注意是Team 不是 TeamVO
 		boolean total = false;
 		int n=30;
 		String sortCondition = "score";
+		String sortOrder = "desc";
 		boolean high = false;
+		boolean hot = false;
+		boolean sort=false;
 		for(int i=1;i<args.length;i++)
 			switch(args[i])
 			{
 				case "-total":total = true;break;
 				case "-n":n=Integer.parseInt(args[++i]);break;
-				case "-sort":sortCondition=args[++i].split(".")[1];break;
+				case "-sort": 
+					sort = true;
+					String temps[] = args[++i].split("\\."); 
+					sortCondition =temps[0]; sortOrder=temps[1];
+					break;
 				case "-high":high=true;
+				case "-hot": hot = true; sortCondition = args[++i]; break;				
 			}
-		if(total)
+		ArrayList<Comparator<Team>> sortConsList = new ArrayList<Comparator<Team>>();
+		if(high && !sort)
+			sortCondition = "winRate";
+		if(!high)
 		{
-			Comparator mycmp = ComparableComparator.getInstance();              
-			mycmp = ComparatorUtils.reversedComparator(mycmp);
-			BeanComparator<Team> bc = new BeanComparator<Team>(sortCondition,mycmp);
-			Collections.sort(teams,bc);
+		if(total)
+		{         
+			//mycmp = ComparatorUtils.reversedComparator(mycmp);
+			//BeanComparator<Team> bc = new BeanComparator<Team>(sortCondition,mycmp);
+				if(sortOrder.equals("desc"))
+				{
+					sortConsList.add(Comparators.getTeamComparator(sortCondition));
+				}
+				else
+				{
+					Collections.sort(teams,Comparators.getTeamComparatorAsc(sortCondition));
+				}
+				sortConsList.add(teamByName);
+				sortTeam(teams,sortConsList);
 			for(int i=0;i<n && i<teams.size();i++)
 			{
 				out.println(teams.get(i).toNormalInfo());//to use which function
 				//out.println(teams.get(i).toVO());
 			}
-			
+		}
+		else if(hot)
+		{
+			sortConsList.add(Comparators.getTeamComparatorAvg(sortCondition));
+			sortConsList.add(teamByName);
+			sortTeam(teams,sortConsList);
+			for(int i=0;i<n && i<teams.size();i++)
+			{
+				Team ts = teams.get(i);
+				TeamHotInfo td = new TeamHotInfo();
+				td.setField(sortCondition);
+				td.setLeague(ts.getLeague());
+				td.setTeamName(ts.getAbbreviation());
+				td.setValue(ts.getValue(sortCondition));
+				out.println(td);//to use which function
+				//out.println(teams.get(i).toVO());
+			}
+		}
+		else {//avg
+			if(sortOrder.equals("desc"))
+			{
+				sortConsList.add(Comparators.getTeamComparatorAvg(sortCondition));
+			}
+			else
+			{
+				sortConsList.add(Comparators.getTeamComparatorAvgAsc(sortCondition));
+			}
+			sortConsList.add(teamByName);
+			sortTeam(teams,sortConsList);
+			for(int i=0;i<n && i<teams.size();i++)
+			{
+				out.println(teams.get(i).toNormalInfoAvg());//to use which function
+				//out.println(teams.get(i).toVO());
+			}
+		}
+		}
+		else {//高阶数据
+			if(sortOrder.equals("desc"))
+			{
+				sortConsList.add(Comparators.getTeamComparator(sortCondition));
+			}
+			else
+			{
+				Collections.sort(teams,Comparators.getTeamComparatorAsc(sortCondition));
+			}
+			sortConsList.add(teamByName);
+			sortTeam(teams,sortConsList);
+		for(int i=0;i<n && i<teams.size();i++)
+		{
+			out.println(teams.get(i).toHighInfo());//to use which function
+			//out.println(teams.get(i).toVO());
+		}
 		}
 	}
 	
@@ -916,4 +997,22 @@ public class Console {
         };  
         Collections.sort(list, cmp);  
     }  
+	public void sortTeam(ArrayList<Team> list, final ArrayList<Comparator<Team>> comList) {  
+        if (comList == null)  
+            return;  
+        Comparator<Team> cmp = new Comparator<Team>() {  
+            @Override  
+            public int compare(Team o1, Team o2) {  
+                for (Comparator<Team> comparator : comList) {  
+                    if (comparator.compare(o1, o2) > 0) {  
+                        return 1;  
+                    } else if (comparator.compare(o1, o2) < 0) {  
+                        return -1;  
+                    }  
+                }  
+                return 0;  
+            }  
+        };  
+        Collections.sort(list, cmp);  
+    }
 }

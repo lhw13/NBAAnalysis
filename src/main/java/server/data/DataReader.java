@@ -10,7 +10,7 @@ public class DataReader {
 	private static BufferedReader br;
 	private static InputStreamReader file;
 
-	public static ArrayList<String> dataReader(File filePoint) {
+	public static synchronized ArrayList<String> dataReader(File filePoint) {
 		ArrayList<String> result = new ArrayList<String>();
 		try {
 			file = new InputStreamReader(new FileInputStream(filePoint), "UTF-8");

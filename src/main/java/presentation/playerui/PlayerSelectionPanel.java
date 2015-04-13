@@ -843,16 +843,17 @@ public class PlayerSelectionPanel extends JPanel {
 		Vector rowData5 = new Vector();
 		Vector rowDatas = new Vector();
 		ArrayList<PlayerVO> players = vo.getPlayers();
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 3&&i<players.size(); i++) {
+			
 			rowData1.add(players.get(i).getName());
 		}
-		for (int i = 3; i < 6; i++) {
+		for (int i = 3; i < 6&&i<players.size(); i++) {
 			rowData2.add(players.get(i).getName());
 		}
-		for (int i = 6; i < 9; i++) {
+		for (int i = 6; i < 9&&i<players.size(); i++) {
 			rowData3.add(players.get(i).getName());
 		}
-		for (int i = 9; i < 12; i++) {
+		for (int i = 9; i < 12&&i<players.size(); i++) {
 			rowData4.add(players.get(i).getName());
 		}
 		for (int i = 12; i < players.size(); i++) {// 动态修改为球员list size数量

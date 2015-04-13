@@ -15,6 +15,13 @@ public class MatchesDataAnalyse {
 		Calendar date = getDate(season, monthAndDay);
 		String abbreviation1 = fileName[2].split("-")[0];
 		String abbreviation2 = fileName[2].split("-")[1];
+		if(abbreviation1.equals("NOH")){
+			abbreviation1="NOP";
+		}
+		if(abbreviation2.equals("NOH")){
+			abbreviation2="NOP";
+		}
+		System.out.println(matchData.get(0));
 		String[] firstLine = matchData.get(1).split(";");
 		ScorePO finalScore = stringToScorePO(firstLine[2]);
 		String[] secondLine = matchData.get(2).split(";");
@@ -28,7 +35,7 @@ public class MatchesDataAnalyse {
 		ArrayList<PlayerInMatchesPO> players1 = new ArrayList<PlayerInMatchesPO>();
 		ArrayList<PlayerInMatchesPO> players2 = new ArrayList<PlayerInMatchesPO>();
 		int line = 4;
-		while (!matchData.get(line).equals(abbreviation2)) {
+		while (!(matchData.get(line).equals(abbreviation2)||matchData.get(line).equals("NOH"))) {
 			// 球队一的队员情况
 			players1.add(stringToPlayerInMatchesPO(matchData.get(line)));
 			line++;

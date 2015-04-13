@@ -368,6 +368,8 @@ public class BLController implements BLService {
 											// creat an object without info
 						playerPO = new PlayerPO(name);
 					}
+					if(teamsHash.get(ab)==null)
+						System.out.print(ab);
 					Player tPlayer = new Player(teamsHash.get(ab).getTeamPO(),
 							playerPO);
 					if(theSeason)
@@ -411,6 +413,8 @@ public class BLController implements BLService {
 					if (playerPO == null) {// see above
 						playerPO = new PlayerPO(name);
 					}
+					if(teamsHash.get(ab)==null)
+						System.out.println("123"+ab);
 					Player tPlayer = new Player(teamsHash.get(ab).getTeamPO(),
 							playerPO);
 					if(theSeason)

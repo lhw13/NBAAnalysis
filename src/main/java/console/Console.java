@@ -14,13 +14,10 @@ import test.data.PlayerHotInfo;
 import test.data.PlayerKingInfo;
 import test.data.TeamHotInfo;
 
-import org.apache.commons.beanutils.BeanComparator;
+
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.ComparatorUtils;
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.collections.Transformer;
-import org.apache.commons.collections.comparators.ComparableComparator;
-import org.apache.commons.collections.comparators.ComparatorChain;
 
 public class Console {
 	public static String path="./nba";

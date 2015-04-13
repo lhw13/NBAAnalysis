@@ -248,7 +248,7 @@ public class BLController implements BLService {
 		}
 		HashMap<String, TeamPO> teamPOHash = data.getAllTeams();
 		HashMap<String, PlayerPO> playerPOHash = data.getAllPlayers();
-		for (int i = matchesSize - 1; i >= 0; i--) {
+		for (int i = 0; i < matches.size(); i++) {
 			MatchPO mttemp = matches.get(i);
 			boolean theSeason = mttemp.getSeason().compareTo(season)==0;
 			boolean theDay = mttemp.getDate().equals(day);

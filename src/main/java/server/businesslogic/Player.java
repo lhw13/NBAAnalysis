@@ -209,6 +209,13 @@ public class Player implements Cloneable{
 		computePromotion();
 		return true;
 	}
+	
+	public void updateTeam() {
+		String teamAb = thisTeam.get(thisTeam.size()-1).getAbbreviation();
+		BLController bl = BLController.getInstance();
+		if(!teamAb.equals(team.getAbbreviation()))
+			team=bl.teamsHash.get(teamAb).teamPO;
+	}
 
 	public void add(PlayerInMatchesPO player) {// simple add to each domain
 												// record two pairs
@@ -695,7 +702,7 @@ public class Player implements Cloneable{
 		double scoreRecent=0;
 		double assistRecent=0;
 		double reboundRecent=0;
-		for(int i=0; i<5; i++)
+		for(int i=thisTeam.size()-1; i>=thisTeam.size()-5; i--)
 		{
 			TeamInMatches tim = thisTeam.get(i);
 			PlayerInMatchesPO player = tim.getPlayers().get(orders.get(i));

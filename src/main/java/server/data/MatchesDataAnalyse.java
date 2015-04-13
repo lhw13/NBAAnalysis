@@ -79,7 +79,7 @@ public class MatchesDataAnalyse {
 		String name = player[0];
 		char position;
 		if (player[1].isEmpty()) {
-			position = 0;
+			position = ' ';
 		} else {
 			position = player[1].charAt(0);
 		}

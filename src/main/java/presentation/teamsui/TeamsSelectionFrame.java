@@ -1012,12 +1012,14 @@ public class TeamsSelectionFrame {
 		ii.setImage(ii.getImage().getScaledInstance(width, height,
 				Image.SCALE_DEFAULT));
 		
-		TeamsInfoFrame tip = new TeamsInfoFrame(twpvo,ii);
-		MainFrame.frame.getContentPane().add(tip.scrollPane);
-		MainFrame.frame.repaint();//刷新重画 
-		tip.updateTeam(twpvo, "投篮命中数");
-		tip.latestMatchs(teamName);
-		MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+		if(twpvo!=null&&twpvo.getTeam()!=null) {
+			TeamsInfoFrame tip = new TeamsInfoFrame(twpvo,ii);
+			MainFrame.frame.getContentPane().add(tip.scrollPane);
+			MainFrame.frame.repaint();//刷新重画 
+			tip.updateTeam(twpvo, "投篮命中数");
+			tip.latestMatchs(teamName);
+			MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+		}
 		
 	}
 

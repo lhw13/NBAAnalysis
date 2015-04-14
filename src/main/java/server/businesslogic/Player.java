@@ -28,7 +28,8 @@ public class Player implements Cloneable{
 		return p;
 	}
 
-	boolean analysed = false;
+	boolean added = false;
+	boolean newData = true;
 	TeamPO team;
 	PlayerPO player;
 	PlayerInMatchesPO playerInMatches = new PlayerInMatchesPO();
@@ -207,6 +208,7 @@ public class Player implements Cloneable{
 			opponentTeamNew.clear();
 		}
 		computePromotion();
+		newData=false;
 		return true;
 	}
 	
@@ -491,7 +493,7 @@ public class Player implements Cloneable{
 	}
 
 	public boolean isAnalysed() {
-		return analysed;
+		return added;
 	}
 
 	public TeamPO getTeam() {

@@ -15,7 +15,8 @@ public class Team {
 		this.teamPO = teamPO;
 	}
 
-	boolean analysed = false;
+	boolean newData = true;
+	boolean added = false;
 	TeamPO teamPO;
 	ArrayList<MatchPO> matches = new ArrayList<MatchPO>();
 	ArrayList<TeamInMatches> thisTeam = new ArrayList<TeamInMatches>();
@@ -214,6 +215,7 @@ public class Team {
 			}
 			opponentTeamNew.clear();
 		}
+		newData=false;
 		return true;
 	}
 
@@ -335,7 +337,7 @@ public class Team {
 	}
 
 	public boolean isAnalysed() {
-		return analysed;
+		return added;
 	}
 
 	public ArrayList<TeamInMatches> getThisTeam() {

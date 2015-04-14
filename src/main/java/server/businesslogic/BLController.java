@@ -1,5 +1,6 @@
 package server.businesslogic;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -194,16 +195,26 @@ public class BLController implements BLService {
 								// ui, meanwhile analyse each data
 		{
 			Team team = iter.next().getValue();
-			team.anaylse();
-			teams.add(team);
+			if(team.newData)
+				team.anaylse();
+			if(!team.added)
+			{//we should check if it has been added to result list in iteration 2 because of dynamic data
+				team.added=true;
+				teams.add(team);
+			}
 		}
 		Iterator<Entry<String, Player>> iter2 = playersHash.entrySet()
 				.iterator();
 		while (iter2.hasNext())// see above
 		{
 			Player player = iter2.next().getValue();
-			player.anaylse();
-			players.add(player);
+			if(player.newData)
+				player.anaylse();
+			if(!player.added)
+			{
+				player.added=true;
+				players.add(player);
+			}
 		}
 		Collections.sort(players, new SortPlayersByTeam());// this sort
 																// improve the
@@ -241,7 +252,7 @@ public class BLController implements BLService {
 		Calendar thisDay = matches.get(matchesSize-1).getDate();
 		if(season==null || season.compareTo(thisSeason)<0)
 			season=thisSeason;
-		if(day==null || day.before(thisDay))
+		if(day==null || (day.get(Calendar.YEAR)==thisDay.get(Calendar.YEAR) && day.get(Calendar.MONTH)==thisDay.get(Calendar.MONTH) && day.get(Calendar.DAY_OF_MONTH)==thisDay.get(Calendar.DAY_OF_MONTH)))
 		{
 			day=thisDay;
 			todayPlayers.clear();
@@ -452,7 +463,7 @@ public class BLController implements BLService {
 	private ArrayList<PlayerVO> getPlayersInTeam(String abbreviation) {// 参数是简称
 		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
 		int i = 5;
-		for (i = 0; i < players.size(); i ++)
+		/*for (i = 0; i < players.size(); i ++)
 			// here just use some small trick to improve the efficiency
 			if (players.get(i).team.getAbbreviation().equals(abbreviation)) {
 				result.add(players.get(i).toVO());
@@ -468,7 +479,11 @@ public class BLController implements BLService {
 			if (players.get(i).team.getAbbreviation().equals(abbreviation))
 				result.add(players.get(i).toVO());
 			else
-				break;
+				break;*/
+		for (i = 0; i < players.size(); i ++)
+			if (players.get(i).team.getAbbreviation().equals(abbreviation)) {
+				result.add(players.get(i).toVO());
+			}
 		return result;
 	}
 

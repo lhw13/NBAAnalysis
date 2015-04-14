@@ -1317,7 +1317,7 @@ public class TeamsInfoFrame extends JPanel{
 	public static double handle(double a, int b) {
 		double result = a / (double) b;
 		Double r = new Double(result);
-		if(result!=0||!r.isNaN()) {
+		if(result!=0&&!r.isNaN()&&!r.isInfinite()) {
 			BigDecimal bg = new BigDecimal(result);
 			result = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 		}

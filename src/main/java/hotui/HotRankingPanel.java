@@ -366,7 +366,10 @@ public class HotRankingPanel extends JPanel {
 	
 	// 保留小数点
 	public String handleDecimal(double f) {
+		Double result = new Double(f);
+		if(!result.isInfinite()&&!result.isNaN())
 		return String.format("%.2f", f);
+		return result.toString();
 	}
 	
 	public void update1(ArrayList<PlayerVO> players, String con) {

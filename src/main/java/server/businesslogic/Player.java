@@ -739,15 +739,15 @@ public class Player implements Cloneable{
 	
 	public double getValue(String value) {
 		switch(value) {
-		case "point": return score;
-		case "score": return score;
-		case "rebound": return rebound;		
-		case "assist": return assist;
-		case "blockShot": return blockShot;
-		case "steal": return steal;
-		case "foul": return foul;
+		case "point": return score/(double)appearance;
+		case "score": return score/(double)appearance;
+		case "rebound": return rebound/(double)appearance;		
+		case "assist": return assist/(double)appearance;
+		case "blockShot": return blockShot/(double)appearance;
+		case "steal": return steal/(double)appearance;
+		case "foul": return foul/(double)appearance;
 		case "fault": return fault;
-		case "minute": return playTime/60.0;
+		case "minute": return (playTime/60.0)/(double)appearance;
 		case "efficient": return getEfficient();
 		case "shot": return getShot();
 		case "three": return getThree();
@@ -767,14 +767,6 @@ public class Player implements Cloneable{
 		default: return 0;
 		}
 	}
-	public double getUpgradeRate(String value) {
-		switch(value) {
-		case "point": return scorePromotion;
-		case "score": return scorePromotion;
-		case "rebound": return reboundPromotion;	
-		case "assist": return assistPromotion;
-		default: return 0;
-		}
-	}
+	
 	
 }

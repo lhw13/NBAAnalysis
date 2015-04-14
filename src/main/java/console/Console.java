@@ -15,6 +15,8 @@ import test.data.PlayerKingInfo;
 import test.data.TeamHotInfo;
 
 
+import vo.PlayerVO;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.collections.Transformer;
@@ -77,12 +79,6 @@ public class Console {
 								break;
 				
 			}
-		
-		if(hot) {
-			sortCons = new String[1];
-			sortCons[0] = condition+".desc";
-			sort = true;
-		}
 		
 		if(king) {	
 			sortCons = new String[1];
@@ -269,7 +265,7 @@ public class Console {
 					sortConsList.add(Comparators.comparePointDesc);
 				} 
 			}
-			if(!timeCon.equals("daily")) {
+			if(!timeCon.equals("daily")&&!hot) {
 				sortConsList.add(comparePlayerNameAsc);
 				sort(playerList, sortConsList);
 			}
@@ -280,12 +276,13 @@ public class Console {
 					out.println(playerList.get(i).toVO());
 				}
 			} else if(hot) {
-				for(int i=0;i<n && i<playerList.size();i++)
+				ArrayList<PlayerVO> list = bl.getBestPromotion(condition, n);
+				for(int i=0;i<n && i<list.size();i++)
 				{
-					Player p = playerList.get(i);
+					PlayerVO p = list.get(i);
 					PlayerHotInfo playerHot = new PlayerHotInfo();
 					playerHot.setName(p.getName());
-					playerHot.setTeamName(p.getTeam().getAbbreviation());
+					playerHot.setTeamName(p.getTeamAbbreviation());
 					playerHot.setField(condition);
 					playerHot.setValue(p.getValue(condition));
 					playerHot.setPosition(p.getPosition());

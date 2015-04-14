@@ -373,4 +373,23 @@ public class PlayerVO {
 	public double getAssistPromotion() {
 		return assistPromotion;
 	}
+	public double getValue(String value) {
+		switch(value) {
+		case "point": return score/(double)appearance;
+		case "score": return score/(double)appearance;
+		case "rebound": return totalRebound/(double)appearance;		
+		case "assist": return assist/(double)appearance;
+		
+		default: return 0;
+		}
+	}
+	public double getUpgradeRate(String value) {
+		switch(value) {
+		case "point": return scorePromotion;
+		case "score": return scorePromotion;
+		case "rebound": return reboundPromotion;	
+		case "assist": return assistPromotion;
+		default: return 0;
+		}
+	}
 }

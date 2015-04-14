@@ -79,6 +79,36 @@ public class ConsoleTest {
 	}
 	
 	@Test
+	public void testAllTeam()
+	{
+		Console c = new Console();
+		String ss[] = {"-team","-all","-total"};
+		PrintStream p = null;
+		try {
+			p = new PrintStream(new File("testAllTeam.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		c.execute(p, ss);
+	}
+	
+	@Test
+	public void testAllPlayer()
+	{
+		Console c = new Console();
+		String ss[] = {"-player","-all","n","50","-total"};
+		PrintStream p = null;
+		try {
+			p = new PrintStream(new File("testAllPlayer.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		c.execute(p, ss);
+	}
+	
+	@Test
 	public void testTeamPerformanceStatic()
 	{
 		String ss[] = {"-player","-hot","assist","-n","5"};

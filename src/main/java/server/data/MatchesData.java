@@ -15,8 +15,11 @@ public class MatchesData {
 		File f = new File(Console.path+"/matches");
 		matchesFile = f.listFiles();
 		for (File i : matchesFile) {
-			matchesList.add(MatchesDataAnalyse.MatchPOMade(DataReader
-					.dataReader(i)));
+			MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
+					.dataReader(i));
+			if(newMatchPO!=null){
+			matchesList.add(newMatchPO);
+			}
 		}
 	}
 
@@ -31,8 +34,10 @@ public class MatchesData {
 	public static synchronized void add(File f){
 		MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
 				.dataReader(f));
+		if(newMatchPO!=null){
 		matchesList.add(newMatchPO);
 		matchesAddList.add(newMatchPO);
+		}
 	}
 	public  static synchronized void remove(String name){
 		isDEL=true;

@@ -42,6 +42,12 @@ public class MatchesDataAnalyse {
 		team1 = new TeamInMatchesPO(abbreviation1, players1);
 
 		line = line + 1;
+		try{
+			matchData.get(line);
+		}
+		catch(Exception e){
+			return null;
+		}
 		while (matchData.get(line).trim().length() > 0) {
 			// 球队二的队员情况
 			players2.add(stringToPlayerInMatchesPO(matchData.get(line)));

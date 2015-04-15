@@ -121,10 +121,8 @@ public class ConsoleTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		for(int i=0;i<10;i++)
-		{
 			c.execute(p, ss);
 			c.execute(p, ss2);
-		}
+		
 	}
 }

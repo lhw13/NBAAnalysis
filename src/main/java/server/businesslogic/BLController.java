@@ -485,7 +485,8 @@ public class BLController implements BLService {
 				break;*/
 		for (i = 0; i < players.size(); i ++)
 			if (players.get(i).team.getAbbreviation().equals(abbreviation)) {
-				result.add(players.get(i).toVO());
+				if(players.get(i).active)
+					result.add(players.get(i).toVO());
 			}
 		return result;
 	}

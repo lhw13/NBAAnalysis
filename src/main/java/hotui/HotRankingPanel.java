@@ -30,7 +30,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Vector;
 
-public class HotRankingPanel extends JPanel {
+public class HotRankingPanel extends JPanel implements ActionListener {
 	public static JScrollPane scrollPane;
 	JPanel panelOfBottom = new JPanel();
 	private JTable table_1;
@@ -50,6 +50,11 @@ public class HotRankingPanel extends JPanel {
 	
 	BLService blservice = BLController.getInstance();
 	private JTable table_4;
+	
+	final JComboBox comboBox_1 = new JComboBox();
+	final JComboBox comboBox_2 = new JComboBox();
+	final JComboBox comboBox_3 = new JComboBox();
+	final JComboBox comboBox_4 = new JComboBox();
 	public HotRankingPanel() {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
@@ -105,28 +110,27 @@ public class HotRankingPanel extends JPanel {
 		
 		table_4 = new JTable(model_4);
 		table_4.setRowHeight(20);
-		scrollPane_4.setViewportView(table_4);
+		scrollPane_4.setViewportView(table_4);		
 		
-		final JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"个人技术",
 				"得分", "篮板", "助攻", "盖帽", "抢断"}));
 		comboBox_1.setBounds(389, 58, 101, 31);
 		panelOfBottom.add(comboBox_1);
 		
-		final JComboBox comboBox_2 = new JComboBox();
+		
 		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"个人技术",
 				"场均得分", "场均篮板", "场均助攻"}));
 		comboBox_2.setBounds(851, 58, 101, 31);
 		panelOfBottom.add(comboBox_2);
 		
-		final JComboBox comboBox_3 = new JComboBox();
+		
 		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"技术项",
 				"场均得分", "场均篮板", "场均助攻", "场均盖帽", "场均抢断", "三分命中率",
 				"投篮命中率", "罚球命中率"}));
 		comboBox_3.setBounds(389, 287, 101, 31);
 		panelOfBottom.add(comboBox_3);
 		
-		final JComboBox comboBox_4 = new JComboBox();
+		
 		comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"个人技术",
 				"场均得分", "场均篮板", "场均助攻", "场均盖帽", "场均抢断", "三分命中率",
 				"投篮命中率", "罚球命中率"}));
@@ -154,14 +158,7 @@ public class HotRankingPanel extends JPanel {
 		panelOfBottom.add(lblNewLabel_1);
 		
 		JButton button_1 = new JButton("最新");
-		button_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				update1(blservice.getDailyHotPlayerVO("point", 5), "point");
-				update2(blservice.getBestPromotion("point", 5), "point");
-				updateTeam(blservice.getHotTeamVO("point", 5), "point");
-				update4(blservice.getHotPlayerVO("point", 5), "point");					
-			}
-		});
+		button_1.addActionListener(this);
 		button_1.setBounds(123, 10, 93, 23);
 		panelOfBottom.add(button_1);
 		
@@ -174,185 +171,28 @@ public class HotRankingPanel extends JPanel {
 		for(int i=0;i<names1.length;i++) {
 			columnName1.add(names1[i]);
 		}		
-		comboBox_1.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int index = comboBox_1.getSelectedIndex();
-				ArrayList<PlayerVO> players;
-				switch(index){				
-				case 1: 
-					columnName1.setElementAt("得分", 3);
-					players = blservice.getDailyHotPlayerVO("point", 5);
-					update1(players,"point");
-					break;
-				case 2: 
-					columnName1.setElementAt("篮板", 3);
-					players = blservice.getDailyHotPlayerVO("rebound", 5);
-					update1(players,"rebound");
-					break;
-				case 3: 
-					columnName1.setElementAt("助攻", 3);
-					players = blservice.getDailyHotPlayerVO("assist", 5);
-					update1(players,"assist");
-					break;
-				case 4: 
-					columnName1.setElementAt("盖帽", 3);
-					players = blservice.getDailyHotPlayerVO("blockShot", 5);
-					update1(players,"blockShot");
-					break;
-				case 5: 
-					columnName1.setElementAt("抢断", 3);
-					players = blservice.getDailyHotPlayerVO("steal", 5);
-					update1(players,"steal");
-					break;
-				}
-			}
-		});
+		comboBox_1.addActionListener(this);
 		
 		String[] names2 = {"球员","球队","近五场提升率","场均得分"};
 		columnName2 = new Vector();
 		for(int i=0;i<names2.length;i++) {
 			columnName2.add(names2[i]);
 		}		
-		comboBox_2.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int index = comboBox_2.getSelectedIndex();
-				ArrayList<PlayerVO> players;
-				switch(index){				
-				case 1: 
-					columnName2.setElementAt("场均得分", 3);
-					players = blservice.getBestPromotion("point", 5);
-					update2(players,"point");
-					break;
-				case 2: 
-					columnName2.setElementAt("场均篮板", 3);
-					players = blservice.getBestPromotion("rebound", 5);
-					update2(players,"rebound");
-					break;
-				case 3: 
-					columnName2.setElementAt("场均助攻", 3);
-					players = blservice.getBestPromotion("assist", 5);
-					update2(players,"assist");
-					break;
-				
-				}
-			}
-		});
+		comboBox_2.addActionListener(this);
 		
 		String[] names3 = {"队名","联盟","场均得分"};
 		columnName3 = new Vector();
 		for(int i=0;i<names3.length;i++) {
 			columnName3.add(names3[i]);
 		}
-		comboBox_3.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int index = comboBox_3.getSelectedIndex();
-				ArrayList<TeamVO> teams;
-				switch(index){				
-				case 1: 
-					columnName3.setElementAt("场均得分", 2);
-					teams = blservice.getHotTeamVO("point",5);
-					updateTeam(teams,"point");
-					break;
-				case 2: 
-					columnName3.setElementAt("场均篮板", 2);
-					teams = blservice.getHotTeamVO("rebound",5);
-					updateTeam(teams,"rebound");
-					break;
-				case 3: 
-					columnName3.setElementAt("场均助攻", 2);
-					teams = blservice.getHotTeamVO("assist",5);
-					updateTeam(teams,"assist");
-					break;
-				case 4: 
-					columnName3.setElementAt("场均盖帽", 2);
-					teams = blservice.getHotTeamVO("blockShot",5);
-					updateTeam(teams,"blockShot");
-					break;
-				case 5: 
-					columnName3.setElementAt("场均抢断", 2);
-					teams = blservice.getHotTeamVO("steal",5);					
-					updateTeam(teams,"steal");
-					break;
-				case 6: 
-					columnName3.setElementAt("三分命中率", 2);
-					teams = blservice.getHotTeamVO("three",5);
-					updateTeam(teams,"three");
-					break;
-				case 7: 
-					teams = blservice.getHotTeamVO("shot",5);
-					columnName3.setElementAt("投篮命中率", 2);										
-					updateTeam(teams,"shot");
-					break;
-				case 8: 
-					teams = blservice.getHotTeamVO("penalty",5);
-					columnName3.setElementAt("罚球命中率", 2);				
-					updateTeam(teams,"penalty");
-					break;
-				}
-			}
-		});
+		comboBox_3.addActionListener(this);
 		
 		String[] names4 = {"球员","球队","位置","场均得分"};
 		columnName4 = new Vector();
 		for(int i=0;i<names4.length;i++) {
 			columnName4.add(names4[i]);
 		}
-		comboBox_4.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int index = comboBox_4.getSelectedIndex();
-				ArrayList<PlayerVO> players;
-				switch(index){				
-				case 1:									
-					columnName4.setElementAt("场均得分", 3);
-					players = blservice.getHotPlayerVO("point", 5);	
-					update4(players,"point");
-					break;
-				case 2: 
-					columnName4.setElementAt("场均篮板", 3);
-					players = blservice.getHotPlayerVO("rebound", 5);	
-					update4(players,"rebound");
-					break;
-				case 3: 
-					columnName4.setElementAt("场均助攻", 3);
-					players = blservice.getHotPlayerVO("assist", 5);	
-					update4(players,"assist");
-					break;
-				case 4: 
-					columnName4.setElementAt("场均盖帽", 3);
-					players = blservice.getHotPlayerVO("blockShot", 5);	
-					update4(players,"blockShot");
-					break;
-				case 5: 
-					columnName4.setElementAt("场均抢断", 3);
-					players = blservice.getHotPlayerVO("steal", 5);	
-					update4(players,"steal");
-					break;
-				case 6: 
-					columnName4.setElementAt("三分命中率", 3);
-					players = blservice.getHotPlayerVO("three", 5);	
-					update4(players,"three");
-					break;
-				case 7: 
-					columnName4.setElementAt("投篮命中率", 3);	
-					players = blservice.getHotPlayerVO("shot", 5);	
-					update4(players,"shot");
-					break;
-				case 8: 
-					columnName4.setElementAt("罚球命中率", 3);	
-					players = blservice.getHotPlayerVO("penalty", 5);	
-					update4(players,"penalty");
-					break;
-				}
-			}
-		});
+		comboBox_4.addActionListener(this);
 	}
 	
 	public TableColumnModel getColumn(JTable table, int[] width) {  
@@ -684,5 +524,147 @@ public class HotRankingPanel extends JPanel {
 //			int[] width={50,55,5,3,3,3,3,3,3,3,3,3,3,3};
 //			table_4.setColumnModel(getColumn(table_4, width));
 			table_4.updateUI();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		int index = comboBox_1.getSelectedIndex();
+		ArrayList<PlayerVO> players;
+		switch(index){				
+		case 1: 
+			columnName1.setElementAt("得分", 3);
+			players = blservice.getDailyHotPlayerVO("point", 5);
+			update1(players,"point");
+			break;
+		case 2: 
+			columnName1.setElementAt("篮板", 3);
+			players = blservice.getDailyHotPlayerVO("rebound", 5);
+			update1(players,"rebound");
+			break;
+		case 3: 
+			columnName1.setElementAt("助攻", 3);
+			players = blservice.getDailyHotPlayerVO("assist", 5);
+			update1(players,"assist");
+			break;
+		case 4: 
+			columnName1.setElementAt("盖帽", 3);
+			players = blservice.getDailyHotPlayerVO("blockShot", 5);
+			update1(players,"blockShot");
+			break;
+		case 5: 
+			columnName1.setElementAt("抢断", 3);
+			players = blservice.getDailyHotPlayerVO("steal", 5);
+			update1(players,"steal");
+			break;
+		}
+		
+		index = comboBox_2.getSelectedIndex();
+		
+		switch(index){				
+		case 1: 
+			columnName2.setElementAt("场均得分", 3);
+			players = blservice.getBestPromotion("point", 5);
+			update2(players,"point");
+			break;
+		case 2: 
+			columnName2.setElementAt("场均篮板", 3);
+			players = blservice.getBestPromotion("rebound", 5);
+			update2(players,"rebound");
+			break;
+		case 3: 
+			columnName2.setElementAt("场均助攻", 3);
+			players = blservice.getBestPromotion("assist", 5);
+			update2(players,"assist");
+			break;
+		
+		}
+		index = comboBox_3.getSelectedIndex();
+		ArrayList<TeamVO> teams;
+		switch(index){				
+		case 1: 
+			columnName3.setElementAt("场均得分", 2);
+			teams = blservice.getHotTeamVO("point",5);
+			updateTeam(teams,"point");
+			break;
+		case 2: 
+			columnName3.setElementAt("场均篮板", 2);
+			teams = blservice.getHotTeamVO("rebound",5);
+			updateTeam(teams,"rebound");
+			break;
+		case 3: 
+			columnName3.setElementAt("场均助攻", 2);
+			teams = blservice.getHotTeamVO("assist",5);
+			updateTeam(teams,"assist");
+			break;
+		case 4: 
+			columnName3.setElementAt("场均盖帽", 2);
+			teams = blservice.getHotTeamVO("blockShot",5);
+			updateTeam(teams,"blockShot");
+			break;
+		case 5: 
+			columnName3.setElementAt("场均抢断", 2);
+			teams = blservice.getHotTeamVO("steal",5);					
+			updateTeam(teams,"steal");
+			break;
+		case 6: 
+			columnName3.setElementAt("三分命中率", 2);
+			teams = blservice.getHotTeamVO("three",5);
+			updateTeam(teams,"three");
+			break;
+		case 7: 
+			teams = blservice.getHotTeamVO("shot",5);
+			columnName3.setElementAt("投篮命中率", 2);										
+			updateTeam(teams,"shot");
+			break;
+		case 8: 
+			teams = blservice.getHotTeamVO("penalty",5);
+			columnName3.setElementAt("罚球命中率", 2);				
+			updateTeam(teams,"penalty");
+			break;
+		}
+		
+		index = comboBox_4.getSelectedIndex();
+		switch(index){				
+		case 1:									
+			columnName4.setElementAt("场均得分", 3);
+			players = blservice.getHotPlayerVO("point", 5);	
+			update4(players,"point");
+			break;
+		case 2: 
+			columnName4.setElementAt("场均篮板", 3);
+			players = blservice.getHotPlayerVO("rebound", 5);	
+			update4(players,"rebound");
+			break;
+		case 3: 
+			columnName4.setElementAt("场均助攻", 3);
+			players = blservice.getHotPlayerVO("assist", 5);	
+			update4(players,"assist");
+			break;
+		case 4: 
+			columnName4.setElementAt("场均盖帽", 3);
+			players = blservice.getHotPlayerVO("blockShot", 5);	
+			update4(players,"blockShot");
+			break;
+		case 5: 
+			columnName4.setElementAt("场均抢断", 3);
+			players = blservice.getHotPlayerVO("steal", 5);	
+			update4(players,"steal");
+			break;
+		case 6: 
+			columnName4.setElementAt("三分命中率", 3);
+			players = blservice.getHotPlayerVO("three", 5);	
+			update4(players,"three");
+			break;
+		case 7: 
+			columnName4.setElementAt("投篮命中率", 3);	
+			players = blservice.getHotPlayerVO("shot", 5);	
+			update4(players,"shot");
+			break;
+		case 8: 
+			columnName4.setElementAt("罚球命中率", 3);	
+			players = blservice.getHotPlayerVO("penalty", 5);	
+			update4(players,"penalty");
+			break;
+		}
 	}
 }

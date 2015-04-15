@@ -476,7 +476,7 @@ public class PlayerInfoPanel extends JPanel {
 		
 		Vector rowDatas8 = new Vector();
 		ArrayList<MatchPO> matches = vo.getMatches();
-		for(int i=0;i<matches.size()&&i<5;i++) {
+		for(int i=matches.size()-1;i>=0&&i>matches.size()-6;i--) {
 			Vector rowData8 = new Vector();
 			MatchPO matchTemp = matches.get(i);
 			TeamInMatchesPO team = null;
@@ -555,8 +555,7 @@ public class PlayerInfoPanel extends JPanel {
 			for(int j=0;j<playersInMatch.size();j++) {
 				playerTemp = playersInMatch.get(j);
 				if(playerTemp.getName().equals(vo.getName())) break; 
-			}
-			
+			}			
 			
 			rowData8.add(dateStr8);//日期
 			rowData8.add(matchTemp.getFinalScore().toString()+" "+					

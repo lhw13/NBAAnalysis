@@ -80,7 +80,10 @@ public class BLController implements BLService {
 		Collections.sort(players, comp);
 		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
 		for(int i=0;i<n && i<players.size();i++)
-			result.add(players.get(i).toVO());
+			if(players.get(i).active)
+				result.add(players.get(i).toVO());
+			else
+				n++;
 		return result;
 	}
 	
@@ -216,7 +219,7 @@ public class BLController implements BLService {
 				players.add(player);
 			}
 		}
-		Collections.sort(players, new SortPlayersByTeam());// this sort
+		//Collections.sort(players, new SortPlayersByTeam());// this sort
 																// improve the
 																// efficiency of
 																// getTeamWithPlayer

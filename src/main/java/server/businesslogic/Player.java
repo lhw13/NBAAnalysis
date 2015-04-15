@@ -28,6 +28,7 @@ public class Player implements Cloneable{
 		return p;
 	}
 
+	boolean active = false;//whether the player is in this season
 	boolean added = false;
 	boolean newData = true;
 	TeamPO team;
@@ -209,6 +210,7 @@ public class Player implements Cloneable{
 		}
 		computePromotion();
 		newData=false;
+		active = (appearance>0);
 		return true;
 	}
 	

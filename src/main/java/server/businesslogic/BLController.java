@@ -248,7 +248,9 @@ public class BLController implements BLService {
 		else
 			matches = data.getNewMatch();
 		if(matches.size()==0)
+		{
 			return true;
+		}
 		Collections.sort(matches, new SortMatchesByCalendar());
 		int matchesSize = matches.size();
 		String thisSeason = matches.get(matchesSize-1).getSeason();

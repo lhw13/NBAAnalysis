@@ -853,9 +853,11 @@ public class MainFrame {
 		ArrayList<TeamVO> tvoList = compute.getTeamAnalysis();
 
 		Object table_rows[][] = new Object[tvoList.size()][4];
+		System.out.println(tvoList.get(0).getAppearance());
 		for (int i = 0; i < tvoList.size(); i++) {
 			TeamVO tvo = tvoList.get(i);
 			int appearance = tvo.getAppearance();
+			
 			table_rows[i][0] = tvo.getFullName();
 			table_rows[i][1] = tvo.getAppearance();
 			switch(selection2){

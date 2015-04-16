@@ -255,7 +255,7 @@ public class BLController implements BLService {
 		Calendar thisDay = matches.get(matchesSize-1).getDate();
 		if(season==null || season.compareTo(thisSeason)<0)
 			season=thisSeason;
-		if(day==null || (day.get(Calendar.YEAR)==thisDay.get(Calendar.YEAR) && day.get(Calendar.MONTH)==thisDay.get(Calendar.MONTH) && day.get(Calendar.DAY_OF_MONTH)==thisDay.get(Calendar.DAY_OF_MONTH)))
+		if(day==null || !(day.get(Calendar.YEAR)==thisDay.get(Calendar.YEAR) && day.get(Calendar.MONTH)==thisDay.get(Calendar.MONTH) && day.get(Calendar.DAY_OF_MONTH)==thisDay.get(Calendar.DAY_OF_MONTH)))
 		{
 			day=thisDay;
 			todayPlayers.clear();

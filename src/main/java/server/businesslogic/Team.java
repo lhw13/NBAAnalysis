@@ -133,6 +133,7 @@ public class Team {
 	}
 
 	public void addThisTeam(TeamInMatches tim) {
+		newData=true;
 		if(BLController.isDEL)
 			thisTeam.add(tim);
 		else

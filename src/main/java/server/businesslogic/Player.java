@@ -351,6 +351,7 @@ public class Player implements Cloneable{
 	}
 
 	public void addThisTeam(TeamInMatches tim, int order) {
+		newData=true;
 		if(BLController.isDEL)
 		{
 			thisTeam.add(tim);

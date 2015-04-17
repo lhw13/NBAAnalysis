@@ -150,7 +150,7 @@ public class Player implements Cloneable{
 		
 		//increment
 		else {
-			appearance = thisTeamNew.size();
+			appearance += thisTeamNew.size();
 			for (int i = 0; i < thisTeamNew.size(); i++) {
 				TeamInMatches tim = thisTeamNew.get(i);
 				thisTeam.add(tim);

@@ -523,7 +523,7 @@ public class TeamsSelectionFrame {
 
 		lblNewLabel_16 = new JLabel("");
 		lblNewLabel_16.setIcon(new ImageIcon("pictures\\DEN.jpg"));
-		lblNewLabel_16.setBounds(515, 10, 150, 100);
+		lblNewLabel_16.setBounds(505, 10, 150, 100);
 		panel_2.add(lblNewLabel_16);
 		lblNewLabel_16.addMouseListener(new MouseListener() {
 
@@ -548,7 +548,7 @@ public class TeamsSelectionFrame {
 
 		lblNewLabel_17 = new JLabel("");
 		lblNewLabel_17.setIcon(new ImageIcon("pictures\\MIN.jpg"));
-		lblNewLabel_17.setBounds(515, 120, 150, 100);
+		lblNewLabel_17.setBounds(505, 120, 150, 100);
 		panel_2.add(lblNewLabel_17);
 		lblNewLabel_17.addMouseListener(new MouseListener() {
 
@@ -574,7 +574,7 @@ public class TeamsSelectionFrame {
 
 		lblNewLabel_18 = new JLabel("");
 		lblNewLabel_18.setIcon(new ImageIcon("pictures\\OKC.jpg"));
-		lblNewLabel_18.setBounds(515, 230, 150, 100);
+		lblNewLabel_18.setBounds(505, 230, 150, 100);
 		panel_2.add(lblNewLabel_18);
 		lblNewLabel_18.addMouseListener(new MouseListener() {
 
@@ -600,7 +600,7 @@ public class TeamsSelectionFrame {
 
 		lblNewLabel_19 = new JLabel("");
 		lblNewLabel_19.setIcon(new ImageIcon("pictures\\POR.jpg"));
-		lblNewLabel_19.setBounds(515, 340, 150, 100);
+		lblNewLabel_19.setBounds(505, 340, 150, 100);
 		panel_2.add(lblNewLabel_19);
 		lblNewLabel_19.addMouseListener(new MouseListener() {
 
@@ -626,7 +626,7 @@ public class TeamsSelectionFrame {
 
 		lblNewLabel_20 = new JLabel("");
 		lblNewLabel_20.setIcon(new ImageIcon("pictures\\UTA.jpg"));
-		lblNewLabel_20.setBounds(515, 450, 150, 100);
+		lblNewLabel_20.setBounds(505, 450, 150, 100);
 		panel_2.add(lblNewLabel_20);
 		lblNewLabel_20.addMouseListener(new MouseListener() {
 
@@ -652,7 +652,7 @@ public class TeamsSelectionFrame {
 
 		lblNewLabel_21 = new JLabel("");
 		lblNewLabel_21.setIcon(new ImageIcon("pictures\\GSW.jpg"));
-		lblNewLabel_21.setBounds(680, 10, 150, 100);
+		lblNewLabel_21.setBounds(670, 10, 150, 100);
 		panel_2.add(lblNewLabel_21);
 		lblNewLabel_21.addMouseListener(new MouseListener() {
 
@@ -677,7 +677,7 @@ public class TeamsSelectionFrame {
 
 		lblNewLabel_22 = new JLabel("");
 		lblNewLabel_22.setIcon(new ImageIcon("pictures\\LAC.jpg"));
-		lblNewLabel_22.setBounds(680, 120, 150, 100);
+		lblNewLabel_22.setBounds(670, 120, 150, 100);
 		panel_2.add(lblNewLabel_22);
 		lblNewLabel_22.addMouseListener(new MouseListener() {
 
@@ -703,7 +703,7 @@ public class TeamsSelectionFrame {
 
 		lblNewLabel_23 = new JLabel("");
 		lblNewLabel_23.setIcon(new ImageIcon("pictures\\LAL.jpg"));
-		lblNewLabel_23.setBounds(680, 230, 150, 100);
+		lblNewLabel_23.setBounds(670, 230, 150, 100);
 		panel_2.add(lblNewLabel_23);
 		lblNewLabel_23.addMouseListener(new MouseListener() {
 
@@ -729,7 +729,7 @@ public class TeamsSelectionFrame {
 
 		lblNewLabel_24 = new JLabel("");
 		lblNewLabel_24.setIcon(new ImageIcon("pictures\\PHX.jpg"));
-		lblNewLabel_24.setBounds(680, 340, 150, 100);
+		lblNewLabel_24.setBounds(670, 340, 150, 100);
 		panel_2.add(lblNewLabel_24);
 		lblNewLabel_24.addMouseListener(new MouseListener() {
 
@@ -755,7 +755,7 @@ public class TeamsSelectionFrame {
 
 		lblNewLabel_25 = new JLabel("");
 		lblNewLabel_25.setIcon(new ImageIcon("pictures\\SAC.jpg"));
-		lblNewLabel_25.setBounds(680, 450, 150, 100);
+		lblNewLabel_25.setBounds(670, 450, 150, 100);
 		panel_2.add(lblNewLabel_25);
 		lblNewLabel_25.addMouseListener(new MouseListener() {
 
@@ -781,7 +781,7 @@ public class TeamsSelectionFrame {
 
 		lblNewLabel_26 = new JLabel("");
 		lblNewLabel_26.setIcon(new ImageIcon("pictures\\DAL.jpg"));
-		lblNewLabel_26.setBounds(850, 10, 150, 100);
+		lblNewLabel_26.setBounds(830, 10, 150, 100);
 		panel_2.add(lblNewLabel_26);
 		lblNewLabel_26.addMouseListener(new MouseListener() {
 
@@ -806,7 +806,7 @@ public class TeamsSelectionFrame {
 
 		lblNewLabel_27 = new JLabel("");
 		lblNewLabel_27.setIcon(new ImageIcon("pictures\\HOU.jpg"));
-		lblNewLabel_27.setBounds(850, 120, 150, 100);
+		lblNewLabel_27.setBounds(830, 120, 150, 100);
 		panel_2.add(lblNewLabel_27);
 		lblNewLabel_27.addMouseListener(new MouseListener() {
 
@@ -832,7 +832,7 @@ public class TeamsSelectionFrame {
 
 		lblNewLabel_28 = new JLabel("");
 		lblNewLabel_28.setIcon(new ImageIcon("pictures\\MEM.jpg"));
-		lblNewLabel_28.setBounds(850, 230, 150, 100);
+		lblNewLabel_28.setBounds(830, 230, 150, 100);
 		panel_2.add(lblNewLabel_28);
 		lblNewLabel_28.addMouseListener(new MouseListener() {
 
@@ -858,7 +858,7 @@ public class TeamsSelectionFrame {
 
 		lblNewLabel_29 = new JLabel("");
 		lblNewLabel_29.setIcon(new ImageIcon("pictures\\NOP.jpg"));
-		lblNewLabel_29.setBounds(850, 340, 150, 100);
+		lblNewLabel_29.setBounds(830, 340, 150, 100);
 		panel_2.add(lblNewLabel_29);
 		lblNewLabel_29.addMouseListener(new MouseListener() {
 
@@ -884,7 +884,7 @@ public class TeamsSelectionFrame {
 
 		lblNewLabel_30 = new JLabel("");
 		lblNewLabel_30.setIcon(new ImageIcon("pictures\\SAS.jpg"));
-		lblNewLabel_30.setBounds(850, 450, 150, 100);
+		lblNewLabel_30.setBounds(830, 450, 150, 100);
 		panel_2.add(lblNewLabel_30);
 		lblNewLabel_30.addMouseListener(new MouseListener() {
 
@@ -957,7 +957,7 @@ public class TeamsSelectionFrame {
 
 		JPanel mainpanel = new JPanel();
 		mainpanel.setBounds(0, 0, 1000, 600);
-		mainpanel.setPreferredSize(new Dimension(1000, 1000));
+		mainpanel.setPreferredSize(new Dimension(900, 800));
 		mainpanel.setLayout(null);
 		mainpanel.add(panel);
 		mainpanel.add(panel_1);

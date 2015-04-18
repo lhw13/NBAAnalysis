@@ -117,7 +117,7 @@ public class PlayerRankingPanel extends JPanel {
 		scrollPane_1.setRowHeaderView(table0);
 		tabbedPane.addTab("球员排名", null, scrollPane_1, null);
 
-		panel.setPreferredSize(new Dimension(1000, 1400));
+		panel.setPreferredSize(new Dimension(900, 1400));
 		panel.add(btnNewButton);
 		panel.add(tabbedPane);
 		scrollPane.setViewportView(panel);

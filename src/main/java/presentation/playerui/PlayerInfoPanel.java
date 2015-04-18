@@ -28,6 +28,7 @@ import javax.swing.JButton;
 import blservice.BLService;
 import presentation.ImageHandle;
 import presentation.mainui.MainFrame;
+import presentation.mainui.Panels;
 import presentation.teamsui.TeamsRankingFrame;
 import server.businesslogic.BLController;
 import server.po.MatchPO;
@@ -93,7 +94,7 @@ public class PlayerInfoPanel extends JPanel {
 	
 	BLService blservice = BLController.getInstance();
 	PlayerVO vo;
-	String playerName;
+	public String playerName;
 	private JTable table_5;
 	private JTable table_6;
 	private JTable table_7;
@@ -150,6 +151,7 @@ public class PlayerInfoPanel extends JPanel {
 					PlayerInfoPanel.scrollPane.setVisible(false);
 					PlayerSelectionPanel.scrollPane.setVisible(true);
 					MainFrame.frame.setTitle("NBA球员选择");
+					MainFrame.currentPanel = Panels.PlayerSelectionPanel;
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -524,9 +526,257 @@ public class PlayerInfoPanel extends JPanel {
 		table_8.setColumnModel(getColumn(table_8, width));
 		table_8.updateUI();
 	}
+	public void backToLatest(){
+		Vector rowDatas8 = new Vector();
+		ArrayList<MatchPO> matches = vo.getMatches();
+		for(int i=matches.size()-1;i>=0&&i>matches.size()-6;i--) {
+			Vector rowData8 = new Vector();
+			MatchPO matchTemp = matches.get(i);
+			TeamInMatchesPO team = null;
+			if(matchTemp.getTeam1().getAbbreviation().equals
+					(vo.getTeamAbbreviation())){
+				team = matchTemp.getTeam1();
+			} else {
+				team = matchTemp.getTeam2();
+			}
+			ArrayList<PlayerInMatchesPO> playersInMatch = team.getPlayers();
+			PlayerInMatchesPO playerTemp = null; 
+			for(int j=0;j<playersInMatch.size();j++) {
+				playerTemp = playersInMatch.get(j);
+				if(playerTemp.getName().equals(vo.getName())) break; 
+			}
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String dateStr8 = sdf.format(matchTemp.getDate().getTime());
+			rowData8.add(dateStr8);//日期
+			rowData8.add(matchTemp.getFinalScore().toString()+" "+					
+					matchTemp.getTeam2().getAbbreviation());//得分
+			rowData8.add(playerTemp.getPlayTime());
+			rowData8.add(playerTemp.getHit()+"-"+playerTemp.getShot());
+			rowData8.add(playerTemp.getThirdHit()+"-"+playerTemp.getThirdshot());
+			rowData8.add(playerTemp.getFreeHit()+"-"+playerTemp.getFreeshot());
+			rowData8.add(playerTemp.getOffensiveRebound());
+			rowData8.add(playerTemp.getDefensiveRebound());
+			rowData8.add(playerTemp.getTotalRebound());
+			rowData8.add(playerTemp.getAssist());
+			rowData8.add(playerTemp.getSteal());
+			rowData8.add(playerTemp.getBlock());
+			rowData8.add(playerTemp.getMiss());
+			rowData8.add(playerTemp.getFoul());
+			rowData8.add(playerTemp.getScore());
+			
+			rowDatas8.add(rowData8);
+		}
+		
+		model_8.setDataVector(rowDatas8, columnName8);		
+		model_8.setColumnCount(table_8.getColumnCount());
+		model_8.setRowCount(rowDatas8.size());
+		table_8.setModel(model_8);
+		int[] width={50,60,5,3,3,3,3,3,3,3,3,3,3,3};
+		table_8.setColumnModel(getColumn(table_8, width));
+		table_8.updateUI();
+	}
+	public void refresh(String name) {		
+		
+		labelOfAct.setIcon(pictureOfAct);
+		vo = blservice.getPlayerAnalysis(name);
+		if (vo == null)
+			return;
+		Vector rowData = new Vector();
+		Vector rowDatas = new Vector();
+		rowData.add(vo.getName());
+		rowData.add(vo.getDivision());
+		rowData.add(vo.getZone());
+		rowData.add(vo.getTeamFullName());
+		rowData.add(vo.getNumber());
+		rowData.add(vo.getPosition());
+		rowData.add(vo.getHeight().toString());
+		rowData.add(vo.getWeight());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String dateStr = sdf.format(vo.getBirth().getTime());
+		rowData.add(dateStr);
+		rowData.add(vo.getAge());
+		if (vo.getExp() != -1)
+			rowData.add(vo.getExp());
+		else
+			rowData.add("未知");
+		rowData.add(vo.getSchool());
+		rowDatas.add(rowData);
 
-	public void backToLatest() {
-		update(playerName);
+		for (int i = 0; i < rowDatas.size(); i++) {
+			for (int j = 0; j < table.getColumnCount(); j++) {
+				model.setValueAt(((Vector) rowDatas.get(i)).get(j), i, j);
+			}
+		}
+		model.setColumnCount(table.getColumnCount());
+		model.setRowCount(rowDatas.size());
+		table.setModel(model);
+		table.updateUI();
+
+		Vector rowData_1 = new Vector();
+		Vector rowDatas_1 = new Vector();
+		double num = vo.getAppearance();
+		rowData_1.add(vo.getAppearance());
+		rowData_1.add(vo.getStarting());
+		rowData_1.add(handleDecimal(vo.getTotalRebound() / num));
+		rowData_1.add(handleDecimal(vo.getAssist() / num));
+		rowData_1.add(handleDecimal(vo.getOffensiveRebound() / num));
+		rowData_1.add(handleDecimal(vo.getDefensiveRebound() / num));
+		rowData_1.add(handleDecimal(vo.getSteal() / num));
+		rowData_1.add(handleDecimal(vo.getBlock() / num));
+		rowData_1.add(handleDecimal(vo.getMiss() / num));
+		rowData_1.add(handleDecimal(vo.getFoul() / num));
+		rowDatas_1.add(rowData_1);
+
+		for (int i = 0; i < rowDatas_1.size(); i++) {
+			for (int j = 0; j < table_1.getColumnCount(); j++) {
+				model_1.setValueAt(((Vector) rowDatas_1.get(i)).get(j), i, j);
+			}
+		}
+		model_1.setColumnCount(table_1.getColumnCount());
+		model_1.setRowCount(rowDatas_1.size());
+		table_1.setModel(model_1);
+		table_1.updateUI();
+
+		Vector rowData_2 = new Vector();
+		Vector rowDatas_2 = new Vector();
+		rowData_2.add(vo.getAppearance());
+		rowData_2.add(vo.getStarting());
+		rowData_2.add(vo.getTotalRebound());
+		rowData_2.add(vo.getAssist());
+		rowData_2.add(vo.getOffensiveRebound());
+		rowData_2.add(vo.getDefensiveRebound());
+		rowData_2.add(vo.getSteal());
+		rowData_2.add(vo.getBlock());
+		rowData_2.add(vo.getMiss());
+		rowData_2.add(vo.getFoul());
+		rowDatas_2.add(rowData_2);
+
+		for (int i = 0; i < rowDatas_2.size(); i++) {
+			for (int j = 0; j < table_2.getColumnCount(); j++) {
+				model_2.setValueAt(((Vector) rowDatas_2.get(i)).get(j), i, j);
+			}
+		}
+		model_2.setColumnCount(table_2.getColumnCount());
+		model_2.setRowCount(rowDatas_2.size());
+		table_2.setModel(model_2);
+		table_2.updateUI();
+
+		Vector rowData_3 = new Vector();
+		Vector rowDatas_3 = new Vector();
+		rowData_3.add(handleDecimal(vo.getHitRate()));
+		rowData_3.add(handleDecimal(vo.getThirdHitRate()));
+		rowData_3.add(handleDecimal(vo.getFreeHitRate()));
+		rowData_3.add(handleDecimal(vo.getRealHitRate()));
+		rowData_3.add(handleDecimal(vo.getEfficiency()));
+		rowData_3.add(handleDecimal(vo.getGmScEfficiency()));
+		rowData_3.add(handleDecimal(vo.getShotEfficiency()));
+		rowDatas_3.add(rowData_3);
+
+		for (int i = 0; i < rowDatas_3.size(); i++) {
+			for (int j = 0; j < table_3.getColumnCount(); j++) {
+				model_3.setValueAt(((Vector) rowDatas_3.get(i)).get(j), i, j);
+			}
+		}
+		model_3.setColumnCount(table_3.getColumnCount());
+		model_3.setRowCount(rowDatas_3.size());
+		table_3.setModel(model_3);
+		table_3.updateUI();
+
+		Vector rowData_4 = new Vector();
+		Vector rowDatas_4 = new Vector();
+		rowData_4.add(handleDecimal(vo.getReboundRate()));
+		rowData_4.add(handleDecimal(vo.getOffensiveReboundRate()));
+		rowData_4.add(handleDecimal(vo.getDefensiveReboundRate()));
+		rowData_4.add(handleDecimal(vo.getBlockRate()));
+		rowData_4.add(handleDecimal(vo.getMissRate()));
+		rowData_4.add(handleDecimal(vo.getUseRate()));
+		rowData_4.add(handleDecimal(vo.getAssistRate()));
+		rowData_4.add(handleDecimal(vo.getStealRate()));
+		rowDatas_4.add(rowData_4);
+
+		for (int i = 0; i < rowDatas_4.size(); i++) {
+			for (int j = 0; j < table_4.getColumnCount(); j++) {
+				model_4.setValueAt(((Vector) rowDatas_4.get(i)).get(j), i, j);
+			}
+		}
+		model_4.setColumnCount(table_4.getColumnCount());
+		model_4.setRowCount(rowDatas_4.size());
+		table_4.setModel(model_4);
+		table_4.updateUI();
+
+		Vector rowData_5 = new Vector();
+		Vector rowDatas_5 = new Vector();
+		rowData_5.add(handleDecimal(vo.getScore() / num));
+		rowData_5.add(handleDecimal(vo.getPlayTime() / num));
+		rowData_5.add(handleDecimal(vo.getHit() / num));
+		rowData_5.add(handleDecimal(vo.getShot() / num));
+		rowData_5.add(handleDecimal(vo.getThirdHit() / num));
+		rowData_5.add(handleDecimal(vo.getThirdshot() / num));
+		rowData_5.add(handleDecimal(vo.getFreeHit() / num));
+		rowData_5.add(handleDecimal(vo.getFreeshot() / num));
+		rowData_5.add(handleDecimal(vo.getTowPairs() / num));
+		rowDatas_5.add(rowData_5);
+		model_5.setColumnCount(table_5.getColumnCount());
+		model_5.setRowCount(rowDatas_5.size());
+		for (int i = 0; i < rowDatas_5.size(); i++) {
+			for (int j = 0; j < table_5.getColumnCount(); j++) {
+				model_5.setValueAt(((Vector) rowDatas_5.get(i)).get(j), i, j);
+			}
+		}
+		
+		table_5.setModel(model_5);
+		table_5.updateUI();
+
+		Vector rowData_6 = new Vector();
+		Vector rowDatas_6 = new Vector();
+		rowData_6.add(vo.getScore());
+		rowData_6.add(vo.getPlayTime());
+		rowData_6.add(vo.getHit());
+		rowData_6.add(vo.getShot());
+		rowData_6.add(vo.getThirdHit());
+		rowData_6.add(vo.getThirdshot());
+		rowData_6.add(vo.getFreeHit());
+		rowData_6.add(vo.getFreeshot());
+		rowData_6.add(vo.getTowPairs());
+		rowDatas_6.add(rowData_6);
+
+		for (int i = 0; i < rowDatas_6.size(); i++) {
+			for (int j = 0; j < table_6.getColumnCount(); j++) {
+				model_6.setValueAt(((Vector) rowDatas_6.get(i)).get(j), i, j);
+			}
+		}
+		model_6.setColumnCount(table_6.getColumnCount());
+		model_6.setRowCount(rowDatas_6.size());
+		table_6.setModel(model_6);
+		table_6.updateUI();
+		
+		Vector rowData7 = new Vector();
+		Vector rowDatas7 = new Vector();
+		
+		rowData7.add(vo.getHeight().toString());
+		rowData7.add(vo.getWeight());
+		SimpleDateFormat sdf7 = new SimpleDateFormat("yyyy-MM-dd");
+		String dateStr7 = sdf.format(vo.getBirth().getTime());
+		rowData7.add(dateStr7);
+		rowData7.add(vo.getAge());
+		if (vo.getExp() != -1)
+			rowData7.add(vo.getExp());
+		else
+			rowData7.add("未知");
+		rowData7.add(vo.getSchool());
+		rowDatas7.add(rowData7);
+
+		for (int i = 0; i < rowDatas7.size(); i++) {
+			for (int j = 0; j < table_7.getColumnCount(); j++) {
+				model_7.setValueAt(((Vector) rowDatas7.get(i)).get(j), i, j);
+			}
+		}
+		model_7.setColumnCount(table_7.getColumnCount());
+		model_7.setRowCount(rowDatas7.size());
+		table_7.setModel(model_7);
+		table_7.updateUI();
+		
 	}
 	public void showPass() {
 		Vector rowDatas8 = new Vector();

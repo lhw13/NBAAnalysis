@@ -18,6 +18,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import presentation.mainui.MainFrame;
+import presentation.mainui.Panels;
 import presentation.playerui.PlayerInfoPanel;
 import presentation.playerui.PlayerSelectionPanel;
 import presentation.playerui.PlayerInfoPanel.MouseListen;
@@ -176,6 +177,7 @@ public class MatchSelectionPanel extends JPanel {
 				MatchSelectionPanel.scrollPane=null;
 				MainFrame.panel.setVisible(true);
 				MainFrame.frame.setTitle("NBA");
+				MainFrame.currentPanel = Panels.MainFrame;
 			}
 			
 		});
@@ -190,6 +192,7 @@ public class MatchSelectionPanel extends JPanel {
 			try {
 				if(c==8){
 					setMatchInfo(r);
+					MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
 				}
 			} catch (Exception e1) {
 				e1.printStackTrace();

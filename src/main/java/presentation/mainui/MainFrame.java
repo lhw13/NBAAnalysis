@@ -1161,4 +1161,11 @@ public class MainFrame {
 		}
 		return result;
 	}
+	
+	public static void refresh() {
+		switch(currentPanel) {
+		case PlayerInfoPanel: pip.refresh(pip.playerName); break;
+		case PlayerSelectionPanel: psp.update();break;
+		}
+	}
 }

@@ -10,6 +10,7 @@ import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 import java.util.ArrayList;
 
+import presentation.mainui.MainFrame;
 import server.po.MatchPO;
 import console.Console;
 
@@ -35,6 +36,7 @@ public class WatchMatches implements Runnable {
 		                	String name= event.context().toString();
 		                	File f=new File(path+name);
 		                	MatchesData.add(f);
+		                	MainFrame.refresh();
 		                	a='n';//事件归元
 		            		}
 		            		else{
@@ -62,7 +64,6 @@ public class WatchMatches implements Runnable {
 		        }  
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

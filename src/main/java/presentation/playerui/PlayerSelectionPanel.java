@@ -22,6 +22,7 @@ import javax.swing.JButton;
 
 import blservice.BLService;
 import presentation.mainui.MainFrame;
+import presentation.mainui.Panels;
 import server.businesslogic.BLController;
 import vo.PlayerVO;
 import vo.TeamVO;
@@ -380,6 +381,7 @@ public class PlayerSelectionPanel extends JPanel {
 				PlayerSelectionPanel.scrollPane.setVisible(false);
 				MainFrame.panel.setVisible(true);
 				MainFrame.frame.setTitle("NBA");
+				MainFrame.currentPanel = Panels.MainFrame;
 			}
 		});
 
@@ -450,15 +452,6 @@ public class PlayerSelectionPanel extends JPanel {
 		labelOf7.addMouseListener(changeListener);
 		panelOfBottom.add(labelOf7);
 		
-		button = new JButton("最新");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				update();
-			}
-		});
-		button.setBounds(126, 0, 93, 23);
-		panelOfBottom.add(button);
-
 
 		if (teamWithPlayer != null && teamWithPlayer.size() != 0) {
 			int index = 0,size = teamWithPlayer.size();
@@ -960,7 +953,7 @@ public class PlayerSelectionPanel extends JPanel {
 					MainFrame.pip.update(name);
 					PlayerInfoPanel.scrollPane.setVisible(true);
 					MainFrame.frame.setTitle("NBA球员信息");
-
+					MainFrame.currentPanel = Panels.PlayerInfoPanel;
 				}
 			} catch (Exception e1) {
 				e1.printStackTrace();
@@ -982,7 +975,8 @@ public class ChangeMouseListen extends MouseAdapter {
 				
 				PlayerSelectionPanel.scrollPane.setVisible(false);				
 				MainFrame.panel.setVisible(true);
-				MainFrame.frame.setTitle("NBA");		
+				MainFrame.frame.setTitle("NBA");	
+				MainFrame.currentPanel = Panels.MainFrame;
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

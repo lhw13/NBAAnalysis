@@ -14,8 +14,10 @@ import javax.swing.table.TableColumnModel;
 import javax.swing.JButton;
 
 import presentation.mainui.MainFrame;
+import presentation.mainui.Panels;
 import presentation.teamsui.TeamsInfoFrame;
 import presentation.teamsui.TeamsSelectionFrame;
+
 import javax.swing.JLabel;
 
 public class MatchDetailInfoPanel extends JPanel {
@@ -103,8 +105,10 @@ public class MatchDetailInfoPanel extends JPanel {
 					MatchDetailInfoPanel.scrollPane=null;
 					if(MatchSelectionPanel.scrollPane!=null){
 						MatchSelectionPanel.scrollPane.setVisible(true);
+						MainFrame.currentPanel = Panels.MatchSelectionInfoPanel;
 					}else{
 						TeamsInfoFrame.scrollPane.setVisible(true);
+						MainFrame.currentPanel = Panels.TeamsInfoFrame;
 					}
 					
 				} catch (Exception e1) {

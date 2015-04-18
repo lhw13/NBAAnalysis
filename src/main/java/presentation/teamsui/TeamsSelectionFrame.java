@@ -1,6 +1,7 @@
 package presentation.teamsui;
 
 import presentation.mainui.MainFrame;
+import presentation.mainui.Panels;
 import presentation.teamsui.TeamsInfoFrame;
 import server.businesslogic.BLController;
 import vo.PlayerVO;
@@ -126,7 +127,7 @@ public class TeamsSelectionFrame {
 				try {
 
 					setTeamsInfo("CHI");
-
+					MainFrame.currentPanel = Panels.TeamsInfoFrame;
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -158,7 +159,7 @@ public class TeamsSelectionFrame {
 				try {
 
 					setTeamsInfo("CLE");
-
+					MainFrame.currentPanel = Panels.TeamsInfoFrame;
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -189,6 +190,7 @@ public class TeamsSelectionFrame {
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
 					setTeamsInfo("DET");
+					MainFrame.currentPanel = Panels.TeamsInfoFrame;
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -218,7 +220,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("IND");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -244,7 +246,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("MIL");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -270,7 +272,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("BKN");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -296,7 +298,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("BOS");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -322,7 +324,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("NYK");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -348,7 +350,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("PHI");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -374,7 +376,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("TOR");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -400,6 +402,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("ATL");
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -425,7 +428,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("CHA");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -451,7 +454,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("MIA");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -477,7 +480,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("ORL");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -503,7 +506,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("WAS");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -529,6 +532,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("DEN");
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -554,7 +558,8 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("MIN");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
+				
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -580,7 +585,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("OKC");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -606,7 +611,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("POR");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -632,7 +637,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("UTA");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -658,6 +663,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("GSW");
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -683,7 +689,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("LAC");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -709,7 +715,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("LAL");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -735,7 +741,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("PHX");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -761,7 +767,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("SAC");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -787,6 +793,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("DAL");
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -812,7 +819,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("HOU");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -838,7 +845,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("MEM");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -864,7 +871,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("NOP");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -890,7 +897,7 @@ public class TeamsSelectionFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				setTeamsInfo("SAS");
-
+				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -983,6 +990,7 @@ public class TeamsSelectionFrame {
 					timer.cancel();
 					MainFrame.panel.setVisible(true);
 					MainFrame.frame.setTitle("NBA");
+					MainFrame.currentPanel = Panels.MainFrame;
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

@@ -25,6 +25,7 @@ import javax.swing.JButton;
 import javax.swing.JTabbedPane;
 
 import presentation.mainui.MainFrame;
+import presentation.mainui.Panels;
 import presentation.matchui.MatchDetailInfoPanel;
 import server.businesslogic.BLController;
 import server.po.MatchPO;
@@ -468,6 +469,7 @@ public class TeamsInfoFrame extends JPanel{
 					TeamsSelectionFrame.scrollPane.setVisible(true);
 					TeamsSelectionFrame.flag = true;
 					MainFrame.frame.setTitle("NBA球队选择");
+					MainFrame.currentPanel = Panels.TeamsSelectionFrame;
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

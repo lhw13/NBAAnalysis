@@ -4,6 +4,7 @@ import hotui.HotRankingPanel;
 
 import java.awt.Cursor;
 import java.awt.EventQueue;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ import org.jvnet.substance.SubstanceLookAndFeel;
 import org.jvnet.substance.skin.MagmaSkin;
 
 import blservice.BLService;
+import presentation.ImageHandle;
 import presentation.matchui.MatchSelectionPanel;
 import presentation.playerui.PlayerInfoPanel;
 import presentation.playerui.PlayerRankingPanel;
@@ -96,7 +98,7 @@ public class MainFrame {
 
 	public static String table_1_columns[] = { "球队", "场数", "投篮命中数(场均)", "投篮命中数(总计)" };
 
-	public static String table_2_columns[] = { "球员", "位置", "赛区", "分区", "得分(场均)", "得分(总计)" };
+	public static String table_2_columns[] = { "", "球员", "位置", "赛区", "分区", "得分(场均)", "得分(总计)" };
 	
 	private static String table_5_columns[] = { "赛季", "日期", "球队", "总比分", "第一节", "第二节", "第三节", "第四节", "详情" };
 	
@@ -1000,75 +1002,80 @@ public class MainFrame {
 		ArrayList<PlayerVO> pvoList = compute.getPlayerAnalysis();
 		PlayerVO pvo = new PlayerVO();
 		String[] s = new String[3];
-		Object table_rows[][] = new Object[pvoList.size()][6];
+		Object table_rows[][] = new Object[pvoList.size()][7];
+		ImageIcon picture;
 		for (int i = 0; i < pvoList.size(); i++) {
 			if (pvoList.get(i) != null) {
 				pvo = pvoList.get(i);
 				int appearance = pvo.getAppearance();
-				table_rows[i][0] = pvo.getName();
+				table_rows[i][1] = pvo.getName();
 				if (pvo.getPosition() != null) {
 					s = JudeTheFilter(pvo.getPosition(), pvo.getDivision(),
 							pvo.getZone());
 				}
-				table_rows[i][1] = s[0];
-				table_rows[i][2] = s[1];
-				table_rows[i][3] = s[2];
+				table_rows[i][2] = s[0];
+				table_rows[i][3] = s[1];
+				table_rows[i][4] = s[2];
+				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture.setImage(picture.getImage().getScaledInstance(100, 80,
+						Image.SCALE_DEFAULT));
+				table_rows[i][0] = picture;
 				switch(selection1){
 				case "得分":
-					table_rows[i][5] = pvo.getScore();
-					table_rows[i][4] = handle((double) pvo.getScore(), appearance);
+					table_rows[i][6] = pvo.getScore();
+					table_rows[i][5] = handle((double) pvo.getScore(), appearance);
 					break;
 				case "篮板":
-					table_rows[i][5] = pvo.getTotalRebound();
-					table_rows[i][4] = handle((double) pvo.getTotalRebound(),appearance);
+					table_rows[i][6] = pvo.getTotalRebound();
+					table_rows[i][5] = handle((double) pvo.getTotalRebound(),appearance);
 					break;
 				case "助攻":
-					table_rows[i][5] = pvo.getAssist();
-					table_rows[i][4] = handle((double) pvo.getAssist(), appearance);
+					table_rows[i][6] = pvo.getAssist();
+					table_rows[i][5] = handle((double) pvo.getAssist(), appearance);
 					break;
 				case "得分/篮板/助攻":
-					table_rows[i][5] = (pvo.getScore()+pvo.getAssist()+pvo.getTotalRebound())*(0.33333);
-					table_rows[i][4] = handle((double) (pvo.getScore()+pvo.getAssist()+pvo.getTotalRebound())*(0.33333), appearance);
+					table_rows[i][6] = (pvo.getScore()+pvo.getAssist()+pvo.getTotalRebound())*(0.33333);
+					table_rows[i][5] = handle((double) (pvo.getScore()+pvo.getAssist()+pvo.getTotalRebound())*(0.33333), appearance);
 					break;
 				case "盖帽":
-					table_rows[i][5] = pvo.getBlock();
-					table_rows[i][4] = handle((double) pvo.getBlock(), appearance);
+					table_rows[i][6] = pvo.getBlock();
+					table_rows[i][5] = handle((double) pvo.getBlock(), appearance);
 					break;
 				case "抢断":
-					table_rows[i][5] = pvo.getSteal();
-					table_rows[i][4] = handle((double) pvo.getSteal(), appearance);
+					table_rows[i][6] = pvo.getSteal();
+					table_rows[i][5] = handle((double) pvo.getSteal(), appearance);
 					break;
 				case "犯规":
-					table_rows[i][5] = pvo.getFoul();
-					table_rows[i][4] = handle((double) pvo.getFoul(), appearance);
+					table_rows[i][6] = pvo.getFoul();
+					table_rows[i][5] = handle((double) pvo.getFoul(), appearance);
 					break;
 				case "失误":
-					table_rows[i][5] = pvo.getMiss();
-					table_rows[i][4] = handle((double) pvo.getMiss(), appearance);
+					table_rows[i][6] = pvo.getMiss();
+					table_rows[i][5] = handle((double) pvo.getMiss(), appearance);
 					break;
 				case "分钟":
-					table_rows[i][5] = pvo.getPlayTime();
-					table_rows[i][4] = handle((double) pvo.getPlayTime(),appearance);
+					table_rows[i][6] = pvo.getPlayTime();
+					table_rows[i][5] = handle((double) pvo.getPlayTime(),appearance);
 					break;
 				case "效率":
+					table_rows[i][6] = pvo.getEfficiency();
 					table_rows[i][5] = pvo.getEfficiency();
-					table_rows[i][4] = pvo.getEfficiency();
 					break;
 				case "投篮":
+					table_rows[i][6] = pvo.getHitRate();
 					table_rows[i][5] = pvo.getHitRate();
-					table_rows[i][4] = pvo.getHitRate();
 					break;
 				case "三分":
+					table_rows[i][6] = pvo.getThirdHitRate();
 					table_rows[i][5] = pvo.getThirdHitRate();
-					table_rows[i][4] = pvo.getThirdHitRate();
 					break;
 				case "罚球":
+					table_rows[i][6] = pvo.getFreeHitRate();
 					table_rows[i][5] = pvo.getFreeHitRate();
-					table_rows[i][4] = pvo.getFreeHitRate();
 					break;
 				case "两双":
-					table_rows[i][5] = pvo.getTowPairs();
-					table_rows[i][4] = handle((double) pvo.getTowPairs(),appearance);
+					table_rows[i][6] = pvo.getTowPairs();
+					table_rows[i][5] = handle((double) pvo.getTowPairs(),appearance);
 					break;
 				}
 				
@@ -1150,7 +1157,6 @@ public class MainFrame {
 		}
 		return s;
 	}
-
 
 	public static double handle(double a, int b) {
 		double result = a / (double) b;

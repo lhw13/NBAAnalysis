@@ -691,9 +691,9 @@ public class Player implements Cloneable{
 		return player.getName();
 	}
 	
-	double scorePromotion;
-	double assistPromotion;
-	double reboundPromotion;
+	double scorePromotion=0;
+	double assistPromotion=0;
+	double reboundPromotion=0;
 	
 	public void computePromotion() {
 		int size = thisTeam.size();

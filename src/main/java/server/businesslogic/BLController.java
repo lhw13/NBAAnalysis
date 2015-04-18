@@ -114,7 +114,8 @@ public class BLController implements BLService {
 		}
 		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
 		for(int i=0;i<n && i<players.size();i++)
-			result.add(players.get(i).toVO());
+			if(players.get(i).active)
+				result.add(players.get(i).toVO());
 		return result;
 	}
 	

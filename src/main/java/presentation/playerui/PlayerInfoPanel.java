@@ -223,21 +223,22 @@ public class PlayerInfoPanel extends JPanel {
 		
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"选择赛季","14-15", "13-14","12-13"}));
 		comboBox.setBounds(246, 425, 110, 29);
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				showPass();
+			}
+		});
 		panelOfBottom.add(comboBox);
 		
 		comboBox_1 = new JComboBox();
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"选择月份", "01", "02", "03", "04", "10", "11", "12"}));
 		comboBox_1.setBounds(366, 425, 110, 29);
-		panelOfBottom.add(comboBox_1);
-		
-		JButton button_1 = new JButton("确定");
-		button_1.setBounds(489, 424, 93, 30);
-		button_1.addActionListener(new ActionListener() {
+		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				showPass();
 			}
 		});
-		panelOfBottom.add(button_1);
+		panelOfBottom.add(comboBox_1);
 		
 		btnNewButton = new JButton("最新");
 		btnNewButton.addActionListener(new ActionListener() {

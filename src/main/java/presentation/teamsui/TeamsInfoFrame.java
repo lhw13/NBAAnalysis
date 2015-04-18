@@ -24,9 +24,11 @@ import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JTabbedPane;
 
+import presentation.ImageHandle;
 import presentation.mainui.MainFrame;
 import presentation.mainui.Panels;
 import presentation.matchui.MatchDetailInfoPanel;
+import presentation.playerui.PlayerRankingPanel;
 import server.businesslogic.BLController;
 import server.po.MatchPO;
 import vo.PlayerVO;
@@ -70,7 +72,7 @@ public class TeamsInfoFrame extends JPanel{
 	private String columns[] = { "球队", "球队缩写", "所在地", "赛区", "分区", "主场", "建立时间" };
 
 
-	public TeamsInfoFrame(final TeamWithPlayersVO twpvo ,ImageIcon ii) {// 构造函数
+	public TeamsInfoFrame(final TeamWithPlayersVO twpvo) {// 构造函数
 
 		JPanel panel = new JPanel();
 		panel.setBounds(5, 5, 300, 50);
@@ -125,9 +127,12 @@ public class TeamsInfoFrame extends JPanel{
 		
 		scrollPane_5.setViewportView(table);
 		
+		ImageIcon picture = ImageHandle.loadTeam(twpvo.getTeam().getAbbreviation());
+		picture.setImage(picture.getImage().getScaledInstance(100, 80,
+				Image.SCALE_DEFAULT));
 		teamPicture = new JLabel("");
 		teamPicture.setBounds(50, 50, 250, 150);
-		teamPicture.setIcon(ii);
+		teamPicture.setIcon(picture);
 		
 		scrollPane_search = new JScrollPane();
 		scrollPane_search.setBounds(60, 800, 700, 300);
@@ -465,11 +470,28 @@ public class TeamsInfoFrame extends JPanel{
 
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TeamsInfoFrame.scrollPane.setVisible(false);
-					TeamsSelectionFrame.scrollPane.setVisible(true);
-					TeamsSelectionFrame.flag = true;
-					MainFrame.frame.setTitle("NBA球队选择");
-					MainFrame.currentPanel = Panels.TeamsSelectionFrame;
+					if(TeamsSelectionFrame.scrollPane==null){
+						TeamsInfoFrame.scrollPane.setVisible(false);
+						MainFrame.frame.getContentPane().remove(TeamsInfoFrame.scrollPane);
+						TeamsInfoFrame.scrollPane = null;
+						TeamsSelectionFrame tsp = new TeamsSelectionFrame();
+						MainFrame.frame.getContentPane().add(tsp.scrollPane);
+						tsp.scrollPane.setVisible(true);
+						tsp.flag = true;
+						MainFrame.frame.setTitle("NBA球队选择");
+						MainFrame.frame.repaint();//刷新重画 
+						MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+						MainFrame.currentPanel = Panels.TeamsSelectionFrame;
+					}else{
+						TeamsInfoFrame.scrollPane.setVisible(false);
+						TeamsSelectionFrame.scrollPane.setVisible(true);
+						TeamsSelectionFrame.flag = true;
+						MainFrame.frame.setTitle("NBA球队选择");
+						MainFrame.frame.repaint();//刷新重画 
+						MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+						MainFrame.currentPanel = Panels.TeamsSelectionFrame;
+					}
+					
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

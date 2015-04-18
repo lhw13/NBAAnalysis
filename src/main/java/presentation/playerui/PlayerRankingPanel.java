@@ -1536,7 +1536,6 @@ public class PlayerRankingPanel extends JPanel {
 	
 	public class MouseListen extends MouseAdapter {
 		public void mouseClicked(MouseEvent e) {
-
 			JTable table = (JTable) e.getSource();
 			int r = table.getSelectedRow();
 			int c = table.getSelectedColumn();

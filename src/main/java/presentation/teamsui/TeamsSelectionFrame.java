@@ -1021,7 +1021,7 @@ public class TeamsSelectionFrame {
 				Image.SCALE_DEFAULT));
 		
 		if(twpvo!=null&&twpvo.getTeam()!=null) {
-			TeamsInfoFrame tip = new TeamsInfoFrame(twpvo,ii);
+			TeamsInfoFrame tip = new TeamsInfoFrame(twpvo);
 			MainFrame.frame.getContentPane().add(tip.scrollPane);
 			tip.updateTeam(twpvo, "投篮命中数");
 			tip.latestMatchs(teamName);

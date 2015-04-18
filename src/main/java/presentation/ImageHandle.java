@@ -17,4 +17,9 @@ public class ImageHandle {
 		ImageIcon PLAYER = new ImageIcon("nba/players/action/" + name + ".png");
 		return PLAYER;
 	}
+	
+	public static ImageIcon loadTeam(String name) {
+		ImageIcon TEAM = new ImageIcon("pictures/" + name + ".png");
+		return TEAM;
+	}
 }

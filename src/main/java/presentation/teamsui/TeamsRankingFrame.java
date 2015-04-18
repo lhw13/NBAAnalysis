@@ -1,24 +1,36 @@
 package presentation.teamsui;
 
+import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JButton;
 
+import presentation.ImageHandle;
 import presentation.mainui.MainFrame;
+import presentation.playerui.PlayerInfoPanel;
+import presentation.playerui.PlayerRankingPanel;
+import presentation.playerui.PlayerRankingPanel.MouseListen;
 import server.businesslogic.BLController;
 import vo.TeamVO;
+import vo.TeamWithPlayersVO;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -43,6 +55,8 @@ public class TeamsRankingFrame {
 			return getValueAt(0, columnIndex).getClass();
 		}
 	};
+	
+	MouseListen listener = new MouseListen();
 	
 	private BLController compute;
 	/**
@@ -70,6 +84,12 @@ public class TeamsRankingFrame {
 		table.setModel(model_1);
 		table.setRowSorter(new TableRowSorter<TableModel>(model_1));
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		table.setRowHeight(100);
+		table.addMouseListener(listener);
+		
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(JLabel.CENTER);
+		table.setDefaultRenderer(Object.class, tcr);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setViewportView(table);
@@ -88,7 +108,7 @@ public class TeamsRankingFrame {
 		refreshButton.setBounds(350, 10, 120, 30);
 		panel.add(refreshButton);
 		
-		String[] names1 = new String[]{"球队", "场数", "投篮命中数(场均)", "投篮命中数(总计)"};
+		String[] names1 = new String[]{"","球队", "场数", "投篮命中数(场均)", "投篮命中数(总计)"};
 		columnName1 = new Vector();
 		for(int i=0;i<names1.length;i++) {
 			columnName1.add(names1[i]);
@@ -133,158 +153,158 @@ public class TeamsRankingFrame {
 				switch(index){
 				case 0: 
 					MainFrame.selection2="投篮命中数";
-					columnName1.setElementAt("投篮命中数(场均)", 2);
-					columnName1.setElementAt("投篮命中数(总计)", 3);
+					columnName1.setElementAt("投篮命中数(场均)", 3);
+					columnName1.setElementAt("投篮命中数(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 1: 
 					MainFrame.selection2="投篮出手数";
-					columnName1.setElementAt("投篮出手数(场均)", 2);
-					columnName1.setElementAt("投篮出手数(总计)", 3);
+					columnName1.setElementAt("投篮出手数(场均)", 3);
+					columnName1.setElementAt("投篮出手数(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 2: 
 					MainFrame.selection2="三分命中数";
-					columnName1.setElementAt("三分命中数(场均)", 2);
-					columnName1.setElementAt("三分命中数(总计)", 3);
+					columnName1.setElementAt("三分命中数(场均)", 3);
+					columnName1.setElementAt("三分命中数(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 3: 
 					MainFrame.selection2="三分出手数";
-					columnName1.setElementAt("三分出手数(场均)", 2);
-					columnName1.setElementAt("三分出手数(总计)", 3);
+					columnName1.setElementAt("三分出手数(场均)", 3);
+					columnName1.setElementAt("三分出手数(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 4: 
 					MainFrame.selection2="罚球命中数";
-					columnName1.setElementAt("罚球命中数(场均)", 2);
-					columnName1.setElementAt("罚球命中数(总计)", 3);
+					columnName1.setElementAt("罚球命中数(场均)", 3);
+					columnName1.setElementAt("罚球命中数(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 5: 
 					MainFrame.selection2="罚球出手数";
-					columnName1.setElementAt("罚球出手数(场均)", 2);
-					columnName1.setElementAt("罚球出手数(总计)", 3);
+					columnName1.setElementAt("罚球出手数(场均)", 3);
+					columnName1.setElementAt("罚球出手数(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 6: 
 					MainFrame.selection2="进攻篮板";
-					columnName1.setElementAt("进攻篮板(场均)", 2);
-					columnName1.setElementAt("进攻篮板(总计)", 3);
+					columnName1.setElementAt("进攻篮板(场均)", 3);
+					columnName1.setElementAt("进攻篮板(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 7: 
 					MainFrame.selection2="防守篮板";
-					columnName1.setElementAt("防守篮板(场均)", 2);
-					columnName1.setElementAt("防守篮板(总计)", 3);
+					columnName1.setElementAt("防守篮板(场均)", 3);
+					columnName1.setElementAt("防守篮板(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 8: 
 					MainFrame.selection2="总篮板";
-					columnName1.setElementAt("总篮板(场均)", 2);
-					columnName1.setElementAt("总篮板(总计)", 3);
+					columnName1.setElementAt("总篮板(场均)", 3);
+					columnName1.setElementAt("总篮板(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 9: 
 					MainFrame.selection2="助攻";
-					columnName1.setElementAt("助攻(场均)", 2);
-					columnName1.setElementAt("助攻(总计)", 3);
+					columnName1.setElementAt("助攻(场均)", 3);
+					columnName1.setElementAt("助攻(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 10: 
 					MainFrame.selection2="抢断";
-					columnName1.setElementAt("抢断(场均)", 2);
-					columnName1.setElementAt("抢断(总计)", 3);
+					columnName1.setElementAt("抢断(场均)", 3);
+					columnName1.setElementAt("抢断(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 11: 
 					MainFrame.selection2="盖帽";
-					columnName1.setElementAt("盖帽(场均)", 2);
-					columnName1.setElementAt("盖帽(总计)", 3);
+					columnName1.setElementAt("盖帽(场均)", 3);
+					columnName1.setElementAt("盖帽(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 12: 
 					MainFrame.selection2="失误";
-					columnName1.setElementAt("失误(场均)", 2);
-					columnName1.setElementAt("失误(总计)", 3);
+					columnName1.setElementAt("失误(场均)", 3);
+					columnName1.setElementAt("失误(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 13: 
 					MainFrame.selection2="犯规";
-					columnName1.setElementAt("犯规(场均)", 2);
-					columnName1.setElementAt("犯规(总计)", 3);
+					columnName1.setElementAt("犯规(场均)", 3);
+					columnName1.setElementAt("犯规(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 14: 
 					MainFrame.selection2="得分";
-					columnName1.setElementAt("得分(场均)", 2);
-					columnName1.setElementAt("得分(总计)", 3);
+					columnName1.setElementAt("得分(场均)", 3);
+					columnName1.setElementAt("得分(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 15: 
 					MainFrame.selection2="投篮命中率";
-					columnName1.setElementAt("投篮命中率(场均)", 2);
-					columnName1.setElementAt("投篮命中率(总计)", 3);
+					columnName1.setElementAt("投篮命中率(场均)", 3);
+					columnName1.setElementAt("投篮命中率(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 16: 
 					MainFrame.selection2="三分命中率";
-					columnName1.setElementAt("三分命中率(场均)", 2);
-					columnName1.setElementAt("三分命中率(总计)", 3);
+					columnName1.setElementAt("三分命中率(场均)", 3);
+					columnName1.setElementAt("三分命中率(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 17: 
 					MainFrame.selection2="罚球命中率";
-					columnName1.setElementAt("罚球命中率(场均)", 2);
-					columnName1.setElementAt("罚球命中率(总计)", 3);
+					columnName1.setElementAt("罚球命中率(场均)", 3);
+					columnName1.setElementAt("罚球命中率(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 18: 
 					MainFrame.selection2="胜率";
-					columnName1.setElementAt("胜率(场均)", 2);
-					columnName1.setElementAt("胜率(总计)", 3);
+					columnName1.setElementAt("胜率(场均)", 3);
+					columnName1.setElementAt("胜率(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 19: 
 					MainFrame.selection2="进攻回合";
-					columnName1.setElementAt("进攻回合(场均)", 2);
-					columnName1.setElementAt("进攻回合(总计)", 3);
+					columnName1.setElementAt("进攻回合(场均)", 3);
+					columnName1.setElementAt("进攻回合(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 20: 
 					MainFrame.selection2="进攻效率";
-					columnName1.setElementAt("进攻效率(场均)", 2);
-					columnName1.setElementAt("进攻效率(总计)", 3);
+					columnName1.setElementAt("进攻效率(场均)", 3);
+					columnName1.setElementAt("进攻效率(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 21: 
 					MainFrame.selection2="防守效率";
-					columnName1.setElementAt("防守效率(场均)", 2);
-					columnName1.setElementAt("防守效率(总计)", 3);
+					columnName1.setElementAt("防守效率(场均)", 3);
+					columnName1.setElementAt("防守效率(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 22: 
 					MainFrame.selection2="进攻篮板效率";
-					columnName1.setElementAt("进攻篮板效率(场均)", 2);
-					columnName1.setElementAt("进攻篮板效率(总计)", 3);
+					columnName1.setElementAt("进攻篮板效率(场均)", 3);
+					columnName1.setElementAt("进攻篮板效率(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 23: 
 					MainFrame.selection2="防守篮板效率";
-					columnName1.setElementAt("防守篮板效率(场均)", 2);
-					columnName1.setElementAt("防守篮板效率(总计)", 3);
+					columnName1.setElementAt("防守篮板效率(场均)", 3);
+					columnName1.setElementAt("防守篮板效率(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 24: 
 					MainFrame.selection2="抢断效率";
-					columnName1.setElementAt("抢断效率(场均)", 2);
-					columnName1.setElementAt("抢断效率(总计)", 3);
+					columnName1.setElementAt("抢断效率(场均)", 3);
+					columnName1.setElementAt("抢断效率(总计)", 4);
 					updataTeamsRanking();
 					break;
 				case 25: 
 					MainFrame.selection2="助攻率";
-					columnName1.setElementAt("助攻率(场均)", 2);
-					columnName1.setElementAt("助攻率(总计)", 3);
+					columnName1.setElementAt("助攻率(场均)", 3);
+					columnName1.setElementAt("助攻率(总计)", 4);
 					updataTeamsRanking();
 					break;
 				}
@@ -313,12 +333,16 @@ public class TeamsRankingFrame {
 	public void updataTeamsRanking(){
 		compute = BLController.getInstance();
 		ArrayList<TeamVO> tvoList = compute.getTeamAnalysis();
-		
+		ImageIcon picture;
 		Vector rowDatas1 = new Vector();
 		for (int i = 0; i < tvoList.size(); i++) {
 			Vector rowData1 = new Vector();
 			TeamVO tvo = tvoList.get(i);
 			int appearance = tvo.getAppearance();
+			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
+			picture.setImage(picture.getImage().getScaledInstance(100, 100,
+					Image.SCALE_DEFAULT));
+			rowData1.add(picture);
 			rowData1.add(tvo.getFullName());
 			rowData1.add(tvo.getAppearance());
 			switch(MainFrame.selection2){
@@ -435,6 +459,104 @@ public class TeamsRankingFrame {
 		model_1.setRowCount(rowDatas1.size());
 		table.setModel(model_1);
 		table.updateUI();
+		
+	}
+	
+	public class MouseListen extends MouseAdapter {
+		public void mouseClicked(MouseEvent e) {
+			JTable table = (JTable) e.getSource();
+			int r = table.getSelectedRow();
+			int c = table.getSelectedColumn();
+			try {
+				TeamsRankingFrame.scrollPane.setVisible(false);
+				MainFrame.frame.getContentPane().remove(TeamsRankingFrame.scrollPane);
+				TeamsRankingFrame.scrollPane=null;
+				TeamWithPlayersVO twpvo = getTeam(table.getValueAt(r,1).toString());
+				TeamsInfoFrame tif = new TeamsInfoFrame(twpvo);
+				tif.updateTeam(twpvo, "投篮命中数");
+				MainFrame.frame.getContentPane().add(tif.scrollPane);
+				tif.scrollPane.setVisible(true);
+				MainFrame.frame.setTitle(twpvo.getTeam().getAbbreviation());
+				MainFrame.frame.repaint();//刷新重画 
+				MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
+		public void mouseEntered(MouseEvent e) {
+			table.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		}
+		public void mouseExited(MouseEvent e) {
+			table.setCursor(Cursor.getDefaultCursor());
+		}
+	}
+	
+	public TeamWithPlayersVO getTeam(String teamName){
+		compute = BLController.getInstance();
+		switch(teamName){
+		case "Hawks":
+			return compute.getTeamAnalysis("ATL");
+		case "Nets":
+			return compute.getTeamAnalysis("BKN");
+		case "Celtics":
+			return compute.getTeamAnalysis("BOS");
+		case "Hornets":
+			return compute.getTeamAnalysis("CHA");
+		case "Bulls":
+			return compute.getTeamAnalysis("CHI");
+		case "Cavaliers":
+			return compute.getTeamAnalysis("CLE");
+		case "Mavericks":
+			return compute.getTeamAnalysis("DAL");
+		case "Nuggets":
+			return compute.getTeamAnalysis("DEN");
+		case "Pistons":
+			return compute.getTeamAnalysis("DET");
+		case "Warriors":
+			return compute.getTeamAnalysis("GSW");
+		case "Rockets":
+			return compute.getTeamAnalysis("HOU");
+		case "Pacers":
+			return compute.getTeamAnalysis("IND");
+		case "Clippers":
+			return compute.getTeamAnalysis("LAC");
+		case "Lakers":
+			return compute.getTeamAnalysis("LAL");
+		case "Grizzlies":
+			return compute.getTeamAnalysis("MEM");
+		case "Heat":
+			return compute.getTeamAnalysis("MIA");
+		case "Bucks":
+			return compute.getTeamAnalysis("MIL");
+		case "Timberwolves":
+			return compute.getTeamAnalysis("MIN");
+		case "Pelicans":
+			return compute.getTeamAnalysis("NOP");
+		case "Knicks":
+			return compute.getTeamAnalysis("NYK");
+		case "Thunder":
+			return compute.getTeamAnalysis("OKC");
+		case "Magic":
+			return compute.getTeamAnalysis("ORL");
+		case "76ers":
+			return compute.getTeamAnalysis("PHI");
+		case "Suns":
+			return compute.getTeamAnalysis("PHX");
+		case "Trail Blazers":
+			return compute.getTeamAnalysis("POR");
+		case "Kings":
+			return compute.getTeamAnalysis("SAC");
+		case "Spurs":
+			return compute.getTeamAnalysis("SAS");
+		case "Raptors":
+			return compute.getTeamAnalysis("TOR");
+		case "Jazz":
+			return compute.getTeamAnalysis("UTA");
+		case "Wizards":
+			return compute.getTeamAnalysis("WAS");
+		default:
+			return null;
+		}
 		
 	}
 	

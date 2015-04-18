@@ -750,7 +750,11 @@ public class PlayerSelectionPanel extends JPanel {
 				initialName(modelOf6, tableOf6, vo);
 			}
 			if(index<size) {
-				vo = teamWithPlayer.get(index);
+//				vo = teamWithPlayer.get(index);
+//				System.out.println(vo);
+//				System.out.println(vo.getTeam());
+//				System.out.println(vo.getTeam().getFullName());
+//				
 				index++;
 				label7.setText(vo.getTeam().getFullName());
 				initialName(modelOf7, tableOf7, vo);

@@ -525,8 +525,6 @@ public class PlayerInfoPanel extends JPanel {
 	}
 
 	public void backToLatest() {
-		Vector rowDatas8 = new Vector();
-		vo = blservice.getPlayerAnalysis(playerName);
 		update(playerName);
 	}
 	public void showPass() {

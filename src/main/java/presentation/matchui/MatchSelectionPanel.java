@@ -1,5 +1,6 @@
 package presentation.matchui;
 
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -241,13 +242,18 @@ public class MatchSelectionPanel extends JPanel {
 			int r = table.getSelectedRow();
 			int c = table.getSelectedColumn();
 			try {
-				if(c==8){
-					setMatchInfo(r);
-					MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
-				}
+				setMatchInfo(r);
+				MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
+			
+		}
+		public void mouseEntered(MouseEvent e) {
+			table.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		}
+		public void mouseExited(MouseEvent e) {
+			table.setCursor(Cursor.getDefaultCursor());
 		}
 	}
 	

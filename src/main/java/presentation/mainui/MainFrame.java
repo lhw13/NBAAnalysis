@@ -95,12 +95,6 @@ public class MainFrame {
 	public JLabel lblNewLabel_5Back;
 	
 	private static BLController compute;
-
-	public static String table_1_columns[] = { "球队", "场数", "投篮命中数(场均)", "投篮命中数(总计)" };
-
-	public static String table_2_columns[] = { "", "球员", "位置", "赛区", "分区", "得分(场均)", "得分(总计)" };
-	
-	private static String table_5_columns[] = { "赛季", "日期", "球队", "总比分", "第一节", "第二节", "第三节", "第四节", "详情" };
 	
 	public static String selection1="得分";
 	public static String selection2="投篮命中数";
@@ -796,47 +790,17 @@ public class MainFrame {
 		MainFrame.panel.setVisible(false);
 		MainFrame.frame.setTitle("NBA比赛查询");
 		
-		compute = BLController.getInstance();
-		ArrayList<MatchPO> matchList = compute.getAllMatch();
-		
-		ArrayList<MatchPO> selectedMatchs = new ArrayList<MatchPO>();
-		for(int i=0;i<matchList.size();i++){
-			if(matchList.get(i).getSeason().equals(season) && 
-					matchList.get(i).getDate().get(Calendar.MONTH)==date){
-				selectedMatchs.add(matchList.get(i));
-			}
-		}
-		Object table_rows[][] = new Object[selectedMatchs.size()][9];
-		for(int i=0;i<selectedMatchs.size();i++){
-			table_rows[i][0] = selectedMatchs.get(i).getSeason();
-			table_rows[i][1] = (selectedMatchs.get(i).getDate().get(Calendar.MONTH)+1)+"-"+
-					selectedMatchs.get(i).getDate().get(Calendar.DAY_OF_MONTH);
-			table_rows[i][2] = selectedMatchs.get(i).getTeam1().getAbbreviation()+"-"+
-					selectedMatchs.get(i).getTeam2().getAbbreviation();
-			table_rows[i][3] = selectedMatchs.get(i).getFinalScore().getTeam1()+"-"+
-					selectedMatchs.get(i).getFinalScore().getTeam2();
-			table_rows[i][4] = selectedMatchs.get(i).getScores().get(0).getTeam1()+"-"+
-					selectedMatchs.get(i).getScores().get(0).getTeam2();
-			table_rows[i][5] = matchList.get(i).getScores().get(1).getTeam1()+"-"+
-					selectedMatchs.get(i).getScores().get(1).getTeam2();
-			table_rows[i][6] = selectedMatchs.get(i).getScores().get(2).getTeam1()+"-"+
-					selectedMatchs.get(i).getScores().get(2).getTeam2();
-			table_rows[i][7] = selectedMatchs.get(i).getScores().get(3).getTeam1()+"-"+
-					selectedMatchs.get(i).getScores().get(3).getTeam2();
-			table_rows[i][8] = "详情";
-		}
-		
-		DefaultTableModel model = new DefaultTableModel(table_rows,table_5_columns);
-		
 		if(MatchSelectionPanel.scrollPane!=null){
 			frame.getContentPane().remove(MatchSelectionPanel.scrollPane);
 			MatchSelectionPanel.scrollPane=null;
-			MatchSelectionPanel msp = new MatchSelectionPanel(model, selectedMatchs);
+			MatchSelectionPanel msp = new MatchSelectionPanel();
+			msp.update();
 			frame.getContentPane().add(msp.scrollPane);
 			frame.repaint();//刷新重画 
 			frame.validate();//保证重画后的窗口能正常立即显示 
 		}else{
-			MatchSelectionPanel msp = new MatchSelectionPanel(model, selectedMatchs);
+			MatchSelectionPanel msp = new MatchSelectionPanel();
+			msp.update();
 			frame.getContentPane().add(msp.scrollPane);
 			frame.repaint();//刷新重画 
 			frame.validate();//保证重画后的窗口能正常立即显示 
@@ -846,146 +810,21 @@ public class MainFrame {
 	
 	// 设置球队排名面板信息
 	public static void setTeamsRanking() {
-		compute = BLController.getInstance();
-		ArrayList<TeamVO> tvoList = compute.getTeamAnalysis();
-
-		Object table_rows[][] = new Object[tvoList.size()][4];
-		for (int i = 0; i < tvoList.size(); i++) {
-			TeamVO tvo = tvoList.get(i);
-			int appearance = tvo.getAppearance();
-			
-			table_rows[i][0] = tvo.getFullName();
-			table_rows[i][1] = tvo.getAppearance();
-			switch(selection2){
-			case "投篮命中数":
-				table_rows[i][3] = tvo.getHit();
-				table_rows[i][2] = handle((double) tvo.getHit(), appearance);
-				break;
-			case "投篮出手数":
-				table_rows[i][3] = tvo.getShot();
-				table_rows[i][2] = handle((double) tvo.getShot(), appearance);
-				break;
-			case "三分命中数":
-				table_rows[i][3] = tvo.getThirdHit();
-				table_rows[i][2] = handle((double) tvo.getThirdHit(), appearance);
-				break;
-			case "三分出手数":
-				table_rows[i][3] = tvo.getThirdshot();
-				table_rows[i][2] = handle((double) tvo.getThirdshot(), appearance);
-				break;
-			case "罚球命中数":
-				table_rows[i][3] = tvo.getFreeHit();
-				table_rows[i][2] = handle((double) tvo.getFreeHit(), appearance);
-				break;
-			case "罚球出手数":
-				table_rows[i][3] = tvo.getFreeshot();
-				table_rows[i][2] = handle((double) tvo.getFreeshot(), appearance);
-				break;
-			case "进攻篮板":
-				table_rows[i][3] = tvo.getOffensiveRebound();
-				table_rows[i][2] = handle((double) tvo.getOffensiveRebound(),appearance);
-				break;
-			case "防守篮板":
-				table_rows[i][3] = tvo.getDefensiveRebound();
-				table_rows[i][2] = handle((double) tvo.getDefensiveRebound(),appearance);
-				break;
-			case "总篮板":
-				table_rows[i][3] = tvo.getTotalRebound();
-				table_rows[i][2] = handle((double) tvo.getTotalRebound(),appearance);
-				break;
-			case "助攻":
-				table_rows[i][3] = tvo.getAssist();
-				table_rows[i][2] = handle((double) tvo.getAssist(), appearance);
-				break;
-			case "抢断":
-				table_rows[i][3] = tvo.getSteal();
-				table_rows[i][2] = handle((double) tvo.getSteal(), appearance);
-				break;
-			case "盖帽":
-				table_rows[i][3] = tvo.getBlock();
-				table_rows[i][2] = handle((double) tvo.getBlock(), appearance);
-				break;
-			case "失误":
-				table_rows[i][3] = tvo.getMiss();
-				table_rows[i][2] = handle((double) tvo.getMiss(), appearance);
-				break;
-			case "犯规":
-				table_rows[i][3] = tvo.getFoul();
-				table_rows[i][2] = handle((double) tvo.getFoul(), appearance);
-				break;
-			case "得分":
-				table_rows[i][3] = tvo.getScore();
-				table_rows[i][2] = handle((double) tvo.getScore(), appearance);
-				break;
-			case "投篮命中率":
-				table_rows[i][3] = tvo.getHitRate();
-				table_rows[i][2] = tvo.getHitRate();
-				break;
-			case "三分命中率":
-				table_rows[i][3] = tvo.getThirdHitRate();
-				table_rows[i][2] = tvo.getThirdHitRate();
-				break;
-			case "罚球命中率":
-				table_rows[i][3] = tvo.getFreeHitRate();
-				table_rows[i][2] = tvo.getFreeHitRate();
-				break;
-			case "胜率":
-				table_rows[i][3] = tvo.getWinRate();
-				table_rows[i][2] = tvo.getWinRate();
-				break;
-			case "进攻回合":
-				table_rows[i][3] = tvo.getOffensiveRound();
-				table_rows[i][2] = tvo.getOffensiveRound();
-				break;
-			case "进攻效率":
-				table_rows[i][3] = tvo.getOffensiveEfficiency();
-				table_rows[i][2] = tvo.getOffensiveEfficiency();
-				break;
-			case "防守效率":
-				table_rows[i][3] = tvo.getDefensiveEfficiency();
-				table_rows[i][2] = tvo.getDefensiveEfficiency();
-				break;
-			case "进攻篮板效率":
-				table_rows[i][3] = tvo.getOffensiveReboundEfficiency();
-				table_rows[i][2] = tvo.getOffensiveReboundEfficiency();
-				break;
-			case "防守篮板效率":
-				table_rows[i][3] = tvo.getDefensiveReboundEfficiency();
-				table_rows[i][2] = tvo.getDefensiveReboundEfficiency();
-				break;
-			case "抢断效率":
-				table_rows[i][3] = tvo.getStealEfficiency();
-				table_rows[i][2] = tvo.getStealEfficiency();
-				break;
-			case "助攻率":
-				table_rows[i][3] = tvo.getAssistEfficiency();
-				table_rows[i][2] = tvo.getAssistEfficiency();
-				break;
-			}
-		}
-
-		DefaultTableModel model = new DefaultTableModel(table_rows,
-				table_1_columns) {
-			private static final long serialVersionUID = 1L;
-
-			public Class<?> getColumnClass(int columnIndex) {
-				return getValueAt(0, columnIndex).getClass();
-			}
-		};
-		
+		MainFrame.panel.setVisible(false);
+		frame.setTitle("NBA球队排名");
 		
 		if(TeamsRankingFrame.scrollPane!=null){
 			TeamsRankingFrame.scrollPane.setVisible(false);
 			MainFrame.frame.getContentPane().remove(TeamsRankingFrame.scrollPane);
 			TeamsSelectionFrame.scrollPane=null;
-			TeamsRankingFrame trp = new TeamsRankingFrame(model);
+			TeamsRankingFrame trp = new TeamsRankingFrame();
+			trp.updataTeamsRanking();
 			frame.getContentPane().add(trp.scrollPane);
 			frame.repaint();//刷新重画 
 			frame.validate();//保证重画后的窗口能正常立即显示
 		}else{
-			MainFrame.panel.setVisible(false);
-			MainFrame.frame.setTitle("NBA球队排名");
-			TeamsRankingFrame trp = new TeamsRankingFrame(model);
+			TeamsRankingFrame trp = new TeamsRankingFrame();
+			trp.updataTeamsRanking();
 			frame.getContentPane().add(trp.scrollPane);
 			frame.repaint();//刷新重画 
 			frame.validate();//保证重画后的窗口能正常立即显示
@@ -998,164 +837,24 @@ public class MainFrame {
 		MainFrame.panel.setVisible(false);
 		MainFrame.frame.setTitle("NBA球员排名");
 
-		compute = BLController.getInstance();
-		ArrayList<PlayerVO> pvoList = compute.getPlayerAnalysis();
-		PlayerVO pvo = new PlayerVO();
-		String[] s = new String[3];
-		Object table_rows[][] = new Object[pvoList.size()][7];
-		ImageIcon picture;
-		for (int i = 0; i < pvoList.size(); i++) {
-			if (pvoList.get(i) != null) {
-				pvo = pvoList.get(i);
-				int appearance = pvo.getAppearance();
-				table_rows[i][1] = pvo.getName();
-				if (pvo.getPosition() != null) {
-					s = JudeTheFilter(pvo.getPosition(), pvo.getDivision(),
-							pvo.getZone());
-				}
-				table_rows[i][2] = s[0];
-				table_rows[i][3] = s[1];
-				table_rows[i][4] = s[2];
-				picture = ImageHandle.loadPlayer(pvo.getName());
-				picture.setImage(picture.getImage().getScaledInstance(100, 80,
-						Image.SCALE_DEFAULT));
-				table_rows[i][0] = picture;
-				switch(selection1){
-				case "得分":
-					table_rows[i][6] = pvo.getScore();
-					table_rows[i][5] = handle((double) pvo.getScore(), appearance);
-					break;
-				case "篮板":
-					table_rows[i][6] = pvo.getTotalRebound();
-					table_rows[i][5] = handle((double) pvo.getTotalRebound(),appearance);
-					break;
-				case "助攻":
-					table_rows[i][6] = pvo.getAssist();
-					table_rows[i][5] = handle((double) pvo.getAssist(), appearance);
-					break;
-				case "得分/篮板/助攻":
-					table_rows[i][6] = (pvo.getScore()+pvo.getAssist()+pvo.getTotalRebound())*(0.33333);
-					table_rows[i][5] = handle((double) (pvo.getScore()+pvo.getAssist()+pvo.getTotalRebound())*(0.33333), appearance);
-					break;
-				case "盖帽":
-					table_rows[i][6] = pvo.getBlock();
-					table_rows[i][5] = handle((double) pvo.getBlock(), appearance);
-					break;
-				case "抢断":
-					table_rows[i][6] = pvo.getSteal();
-					table_rows[i][5] = handle((double) pvo.getSteal(), appearance);
-					break;
-				case "犯规":
-					table_rows[i][6] = pvo.getFoul();
-					table_rows[i][5] = handle((double) pvo.getFoul(), appearance);
-					break;
-				case "失误":
-					table_rows[i][6] = pvo.getMiss();
-					table_rows[i][5] = handle((double) pvo.getMiss(), appearance);
-					break;
-				case "分钟":
-					table_rows[i][6] = pvo.getPlayTime();
-					table_rows[i][5] = handle((double) pvo.getPlayTime(),appearance);
-					break;
-				case "效率":
-					table_rows[i][6] = pvo.getEfficiency();
-					table_rows[i][5] = pvo.getEfficiency();
-					break;
-				case "投篮":
-					table_rows[i][6] = pvo.getHitRate();
-					table_rows[i][5] = pvo.getHitRate();
-					break;
-				case "三分":
-					table_rows[i][6] = pvo.getThirdHitRate();
-					table_rows[i][5] = pvo.getThirdHitRate();
-					break;
-				case "罚球":
-					table_rows[i][6] = pvo.getFreeHitRate();
-					table_rows[i][5] = pvo.getFreeHitRate();
-					break;
-				case "两双":
-					table_rows[i][6] = pvo.getTowPairs();
-					table_rows[i][5] = handle((double) pvo.getTowPairs(),appearance);
-					break;
-				}
-				
-			}
-		}
-
-		DefaultTableModel model = new DefaultTableModel(table_rows,
-				table_2_columns) {
-			private static final long serialVersionUID = 1L;
-
-			public Class<?> getColumnClass(int columnIndex) {
-				return getValueAt(0, columnIndex).getClass();
-			}
-		};
-
 		if(PlayerRankingPanel.scrollPane!=null){
 			PlayerRankingPanel.scrollPane.setVisible(false);
 			MainFrame.frame.getContentPane().remove(PlayerRankingPanel.scrollPane);
 			PlayerRankingPanel.scrollPane=null;
-			PlayerRankingPanel prp = new PlayerRankingPanel(model);
+			PlayerRankingPanel prp = new PlayerRankingPanel();
+			prp.updatePlayerRanking();
 			frame.getContentPane().add(prp.scrollPane);
 			frame.repaint();//刷新重画 
 			frame.validate();//保证重画后的窗口能正常立即显示
 		}else{
-			MainFrame.panel.setVisible(false);
-			MainFrame.frame.setTitle("NBA球员排名");
-			PlayerRankingPanel prp = new PlayerRankingPanel(model);
+			PlayerRankingPanel prp = new PlayerRankingPanel();
+			prp.updatePlayerRanking();
 			frame.getContentPane().add(PlayerRankingPanel.scrollPane);
 			frame.repaint();//刷新重画 
 			frame.validate();//保证重画后的窗口能正常立即显示 
 		}
 		
 		
-	}
-
-	public static String[] JudeTheFilter(String position, char division, String zone) {
-		String s[] = new String[3];
-		if (position.equals("F")) {
-			s[0] = "前锋";
-		} else if (position.equals("C")) {
-			s[0] = "中锋";
-		} else if (position.equals("G")) {
-			s[0] = "后卫";
-		} else if (position.equals("F-C")) {
-			s[0] = "前锋-中锋";
-		} else if (position.equals("F-G")) {
-			s[0] = "前锋-后卫";
-		} else if (position.equals("C-F")) {
-			s[0] = "中锋-前锋";
-		} else if (position.equals("C-G")) {
-			s[0] = "中锋-后卫";
-		} else if (position.equals("G-F")) {
-			s[0] = "后卫-前锋";
-		} else if (position.equals("G-C")) {
-			s[0] = "后卫-中锋";
-		}
-		switch (division) {
-		case 'E':
-			s[1] = "东部";
-			break;
-		case 'W':
-			s[1] = "西部";
-			break;
-		}
-		if (zone.equals("Southeast")) {
-			s[2] = "东南区";
-		} else if (zone.equals("Southwest")) {
-			s[2] = "西南区";
-		} else if (zone.equals("Northwest")) {
-			s[2] = "西北区";
-		} else if (zone.equals("Atlantic")) {
-			s[2] = "大西洋区";
-		} else if (zone.equals("Central")) {
-			s[2] = "中区";
-		} else if (zone.equals("Pacific")) {
-			s[2] = "太平洋区";
-		} else if (zone.equals("Pacific")) {
-			s[2] = "太平洋区";
-		}
-		return s;
 	}
 
 	public static double handle(double a, int b) {

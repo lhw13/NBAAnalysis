@@ -2,15 +2,19 @@ package presentation.playerui;
 
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -18,9 +22,12 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.RowFilter;
 
+import presentation.ImageHandle;
 import presentation.mainui.MainFrame;
 import presentation.matchui.MatchSelectionPanel.MouseListen;
 import presentation.teamsui.TeamsRankingFrame;
+import server.businesslogic.BLController;
+import vo.PlayerVO;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -51,8 +58,19 @@ public class PlayerRankingPanel extends JPanel {
 	public static JCheckBox chckbxNewCheckBox_10;
 	
 	MouseListen listener = new MouseListen();
+	
+	Vector columnName1;
+	DefaultTableModel model_1=new DefaultTableModel() {
+		private static final long serialVersionUID = 1L;
 
-	public PlayerRankingPanel(DefaultTableModel model) {
+		public Class<?> getColumnClass(int columnIndex) {
+			return getValueAt(0, columnIndex).getClass();
+		}
+	};
+	
+	private BLController compute;
+
+	public PlayerRankingPanel() {
 		setLayout(null);
 
 		scrollPane = new JScrollPane();
@@ -76,6 +94,12 @@ public class PlayerRankingPanel extends JPanel {
 
 		});
 		
+		String[] names1 = new String[]{"", "球员", "位置", "赛区", "分区", "得分(场均)", "得分(总计)"};
+		columnName1 = new Vector();
+		for(int i=0;i<names1.length;i++) {
+			columnName1.add(names1[i]);
+		}
+		
 		refreshButton = new JButton("最新");
 		refreshButton.setBounds(50, 130, 100, 30);
 		panel.add(refreshButton);
@@ -83,15 +107,15 @@ public class PlayerRankingPanel extends JPanel {
 		refreshButton.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.setPlayersRanking();
+				updatePlayerRanking();
 			}
 
 		});
 		
 		table = new JTable();
-		table.setModel(model);
+		table.setModel(model_1);
 		final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(
-				model);
+				model_1);
 		table.setRowSorter(sorter);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		table.setRowHeight(80);
@@ -145,87 +169,87 @@ public class PlayerRankingPanel extends JPanel {
 				switch(index){
 				case 0: 
 					MainFrame.selection1="得分";
-					MainFrame.table_2_columns[5]="得分(场均)";
-					MainFrame.table_2_columns[6]="得分(总计)";
-					MainFrame.setPlayersRanking();
+					columnName1.setElementAt("得分(场均)", 5);
+					columnName1.setElementAt("得分(总计)", 6);
+					updatePlayerRanking();
 					break;
 				case 1: 
 					MainFrame.selection1="篮板";
-					MainFrame.table_2_columns[5]="篮板(场均)";
-					MainFrame.table_2_columns[6]="篮板(总计)";
-					MainFrame.setPlayersRanking();
+					columnName1.setElementAt("篮板(场均)", 5);
+					columnName1.setElementAt("篮板(总计)", 6);
+					updatePlayerRanking();
 					break;
 				case 2: 
 					MainFrame.selection1="助攻";
-					MainFrame.table_2_columns[5]="助攻(场均)";
-					MainFrame.table_2_columns[6]="助攻(总计)";
-					MainFrame.setPlayersRanking();
+					columnName1.setElementAt("助攻(场均)", 5);
+					columnName1.setElementAt("助攻(总计)", 6);
+					updatePlayerRanking();
 					break;
 				case 3: 
 					MainFrame.selection1="得分/篮板/助攻";
-					MainFrame.table_2_columns[5]="得分/篮板/助攻(场均)";
-					MainFrame.table_2_columns[6]="得分/篮板/助攻(总计)";
-					MainFrame.setPlayersRanking();
+					columnName1.setElementAt("得分/篮板/助攻(场均)", 5);
+					columnName1.setElementAt("得分/篮板/助攻(总计)", 6);
+					updatePlayerRanking();
 					break;
 				case 4: 
 					MainFrame.selection1="盖帽";
-					MainFrame.table_2_columns[5]="盖帽(场均)";
-					MainFrame.table_2_columns[6]="盖帽(总计)";
-					MainFrame.setPlayersRanking();
+					columnName1.setElementAt("盖帽(场均)", 5);
+					columnName1.setElementAt("盖帽(总计)", 6);
+					updatePlayerRanking();
 					break;
 				case 5: 
 					MainFrame.selection1="抢断";
-					MainFrame.table_2_columns[5]="抢断(场均)";
-					MainFrame.table_2_columns[6]="抢断(总计)";
-					MainFrame.setPlayersRanking();
+					columnName1.setElementAt("抢断(场均)", 5);
+					columnName1.setElementAt("抢断(总计)", 6);
+					updatePlayerRanking();
 					break;
 				case 6: 
 					MainFrame.selection1="犯规";
-					MainFrame.table_2_columns[5]="犯规(场均)";
-					MainFrame.table_2_columns[6]="犯规(总计)";
-					MainFrame.setPlayersRanking();
+					columnName1.setElementAt("犯规(场均)", 5);
+					columnName1.setElementAt("犯规(总计)", 6);
+					updatePlayerRanking();
 					break;
 				case 7: 
 					MainFrame.selection1="失误";
-					MainFrame.table_2_columns[5]="失误(场均)";
-					MainFrame.table_2_columns[6]="失误(总计)";
-					MainFrame.setPlayersRanking();
+					columnName1.setElementAt("失误(场均)", 5);
+					columnName1.setElementAt("失误(总计)", 6);
+					updatePlayerRanking();
 					break;
 				case 8: 
 					MainFrame.selection1="分钟";
-					MainFrame.table_2_columns[5]="分钟(场均)";
-					MainFrame.table_2_columns[6]="分钟(总计)";
-					MainFrame.setPlayersRanking();
+					columnName1.setElementAt("分钟(场均)", 5);
+					columnName1.setElementAt("分钟(总计)", 6);
+					updatePlayerRanking();
 					break;
 				case 9: 
 					MainFrame.selection1="效率";
-					MainFrame.table_2_columns[5]="效率(场均)";
-					MainFrame.table_2_columns[6]="效率(总计)";
-					MainFrame.setPlayersRanking();
+					columnName1.setElementAt("效率(场均)", 5);
+					columnName1.setElementAt("效率(总计)", 6);
+					updatePlayerRanking();
 					break;
 				case 10: 
 					MainFrame.selection1="投篮";
-					MainFrame.table_2_columns[5]="投篮(场均)";
-					MainFrame.table_2_columns[6]="投篮(总计)";
-					MainFrame.setPlayersRanking();
+					columnName1.setElementAt("投篮(场均)", 5);
+					columnName1.setElementAt("投篮(总计)", 6);
+					updatePlayerRanking();
 					break;
 				case 11: 
 					MainFrame.selection1="三分";
-					MainFrame.table_2_columns[5]="三分(场均)";
-					MainFrame.table_2_columns[6]="三分(总计)";
-					MainFrame.setPlayersRanking();
+					columnName1.setElementAt("三分(场均)", 5);
+					columnName1.setElementAt("三分(总计)", 6);
+					updatePlayerRanking();
 					break;
 				case 12: 
 					MainFrame.selection1="罚球";
-					MainFrame.table_2_columns[5]="罚球(场均)";
-					MainFrame.table_2_columns[6]="罚球(总计)";
-					MainFrame.setPlayersRanking();
+					columnName1.setElementAt("罚球(场均)", 5);
+					columnName1.setElementAt("罚球(总计)", 6);
+					updatePlayerRanking();
 					break;
 				case 13: 
 					MainFrame.selection1="两双";
-					MainFrame.table_2_columns[5]="两双(场均)";
-					MainFrame.table_2_columns[6]="两双(总计)";
-					MainFrame.setPlayersRanking();
+					columnName1.setElementAt("两双(场均)", 5);
+					columnName1.setElementAt("两双(总计)", 6);
+					updatePlayerRanking();
 					break;
 				}
 			}
@@ -1414,6 +1438,102 @@ public class PlayerRankingPanel extends JPanel {
 
 	}
 	
+	public void updatePlayerRanking(){
+		
+		
+		compute = BLController.getInstance();
+		ArrayList<PlayerVO> pvoList = compute.getPlayerAnalysis();
+		PlayerVO pvo = new PlayerVO();
+		String[] s = new String[3];
+		Vector rowDatas1 = new Vector();
+		ImageIcon picture;
+		for (int i = 0; i < pvoList.size(); i++) {
+			Vector rowData1 = new Vector();
+			if (pvoList.get(i) != null) {
+				pvo = pvoList.get(i);
+				int appearance = pvo.getAppearance();
+				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture.setImage(picture.getImage().getScaledInstance(100, 80,
+						Image.SCALE_DEFAULT));
+				rowData1.add(picture);
+				rowData1.add(pvo.getName());
+				if (pvo.getPosition() != null) {
+					s = JudeTheFilter(pvo.getPosition(), pvo.getDivision(),
+							pvo.getZone());
+				}
+				rowData1.add(s[0]);
+				rowData1.add(s[1]);
+				rowData1.add(s[2]);
+				switch(MainFrame.selection1){
+				case "得分":
+					rowData1.add(handle((double) pvo.getScore(), appearance));
+					rowData1.add(pvo.getScore());
+					break;
+				case "篮板":
+					rowData1.add(handle((double) pvo.getTotalRebound(),appearance));
+					rowData1.add(pvo.getTotalRebound());
+					break;
+				case "助攻":
+					rowData1.add(handle((double) pvo.getAssist(), appearance));
+					rowData1.add(pvo.getAssist());
+					break;
+				case "得分/篮板/助攻":
+					rowData1.add(handle((double) (pvo.getScore()+pvo.getAssist()+pvo.getTotalRebound())*(0.33333), appearance));
+					rowData1.add((pvo.getScore()+pvo.getAssist()+pvo.getTotalRebound())*(0.33333));
+					break;
+				case "盖帽":
+					rowData1.add(handle((double) pvo.getBlock(), appearance));
+					rowData1.add(pvo.getBlock());
+					break;
+				case "抢断":
+					rowData1.add(handle((double) pvo.getSteal(), appearance));
+					rowData1.add(pvo.getSteal());
+					break;
+				case "犯规":
+					rowData1.add(handle((double) pvo.getFoul(), appearance));
+					rowData1.add(pvo.getFoul());
+					break;
+				case "失误":
+					rowData1.add(pvo.getMiss());
+					rowData1.add(handle((double) pvo.getMiss(), appearance));
+					break;
+				case "分钟":
+					rowData1.add(handle((double) pvo.getPlayTime(),appearance));
+					rowData1.add(pvo.getPlayTime());
+					break;
+				case "效率":
+					rowData1.add(pvo.getEfficiency());
+					rowData1.add(pvo.getEfficiency());
+					break;
+				case "投篮":
+					rowData1.add(pvo.getHitRate());
+					rowData1.add(pvo.getHitRate());
+					break;
+				case "三分":
+					rowData1.add(pvo.getThirdHitRate());
+					rowData1.add(pvo.getThirdHitRate());
+					break;
+				case "罚球":
+					rowData1.add(pvo.getFreeHitRate());
+					rowData1.add(pvo.getFreeHitRate());
+					break;
+				case "两双":
+					rowData1.add(handle((double) pvo.getTowPairs(),appearance));
+					rowData1.add(pvo.getTowPairs());
+					break;
+				}
+				rowDatas1.add(rowData1);
+			}
+		}
+		
+		model_1.setDataVector(rowDatas1, columnName1);
+		model_1.setColumnCount(table.getColumnCount());
+		model_1.setRowCount(rowDatas1.size());
+		table.setModel(model_1);
+		table.updateUI();
+		
+	}
+	
 	public class MouseListen extends MouseAdapter {
 		public void mouseClicked(MouseEvent e) {
 
@@ -1442,4 +1562,62 @@ public class PlayerRankingPanel extends JPanel {
 			table.setCursor(Cursor.getDefaultCursor());
 		}
 	}
+	
+	public static String[] JudeTheFilter(String position, char division, String zone) {
+		String s[] = new String[3];
+		if (position.equals("F")) {
+			s[0] = "前锋";
+		} else if (position.equals("C")) {
+			s[0] = "中锋";
+		} else if (position.equals("G")) {
+			s[0] = "后卫";
+		} else if (position.equals("F-C")) {
+			s[0] = "前锋-中锋";
+		} else if (position.equals("F-G")) {
+			s[0] = "前锋-后卫";
+		} else if (position.equals("C-F")) {
+			s[0] = "中锋-前锋";
+		} else if (position.equals("C-G")) {
+			s[0] = "中锋-后卫";
+		} else if (position.equals("G-F")) {
+			s[0] = "后卫-前锋";
+		} else if (position.equals("G-C")) {
+			s[0] = "后卫-中锋";
+		}
+		switch (division) {
+		case 'E':
+			s[1] = "东部";
+			break;
+		case 'W':
+			s[1] = "西部";
+			break;
+		}
+		if (zone.equals("Southeast")) {
+			s[2] = "东南区";
+		} else if (zone.equals("Southwest")) {
+			s[2] = "西南区";
+		} else if (zone.equals("Northwest")) {
+			s[2] = "西北区";
+		} else if (zone.equals("Atlantic")) {
+			s[2] = "大西洋区";
+		} else if (zone.equals("Central")) {
+			s[2] = "中区";
+		} else if (zone.equals("Pacific")) {
+			s[2] = "太平洋区";
+		} else if (zone.equals("Pacific")) {
+			s[2] = "太平洋区";
+		}
+		return s;
+	}
+	
+	public static double handle(double a, int b) {
+		double result = a / (double) b;
+		Double r = new Double(result);
+		if(result!=0&&!r.isNaN()&&!r.isInfinite()) {
+			BigDecimal bg = new BigDecimal(result);
+			result = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+		}
+		return result;
+	}
+	
 }

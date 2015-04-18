@@ -16,6 +16,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import presentation.mainui.MainFrame;
 import presentation.mainui.Panels;
@@ -39,11 +41,14 @@ public class MatchSelectionPanel extends JPanel {
 	
 	MouseListen listener = new MouseListen();
 	
+	DefaultTableModel model_1=new DefaultTableModel();
+	Vector columnName1;
+	
 	ArrayList<MatchPO> mpoList;
 	
 	BLController compute;
 	
-	public MatchSelectionPanel(DefaultTableModel model,ArrayList<MatchPO> selectedMatchs) {
+	public MatchSelectionPanel() {
 		this.setBounds(0, 100, 1000, 600);
 		setLayout(null);
 		
@@ -55,6 +60,12 @@ public class MatchSelectionPanel extends JPanel {
 		
 		panelOfBottom.setPreferredSize(new Dimension(1000, 600));
 		panelOfBottom.setLayout(null);
+		
+		String[] names1 = new String[]{"赛季", "日期", "球队", "总比分", "第一节", "第二节", "第三节", "第四节", "详情"};
+		columnName1 = new Vector();
+		for(int i=0;i<names1.length;i++) {
+			columnName1.add(names1[i]);
+		}
 		
 		comboBox = new JComboBox<String>();
 		comboBox.setBounds(200, 50, 100, 30);
@@ -73,15 +84,15 @@ public class MatchSelectionPanel extends JPanel {
 				switch(index){
 				case 1:
 					MainFrame.season="12-13";
-					MainFrame.searchTheMatch();
+					update();
 					break;
 				case 2:
 					MainFrame.season="13-14";
-					MainFrame.searchTheMatch();
+					update();
 					break;
 				case 3:
 					MainFrame.season="14-15";
-					MainFrame.searchTheMatch();
+					update();
 					break;
 				}
 			}
@@ -109,31 +120,31 @@ public class MatchSelectionPanel extends JPanel {
 				switch(index){
 				case 1:
 					MainFrame.date=0;
-					MainFrame.searchTheMatch();
+					update();
 					break;
 				case 2:
 					MainFrame.date=1;
-					MainFrame.searchTheMatch();
+					update();
 					break;
 				case 3:
 					MainFrame.date=2;
-					MainFrame.searchTheMatch();
+					update();
 					break;
 				case 4:
 					MainFrame.date=3;
-					MainFrame.searchTheMatch();
+					update();
 					break;
 				case 5:
 					MainFrame.date=9;
-					MainFrame.searchTheMatch();
+					update();
 					break;
 				case 6:
 					MainFrame.date=10;
-					MainFrame.searchTheMatch();
+					update();
 					break;
 				case 7:
 					MainFrame.date=11;
-					MainFrame.searchTheMatch();
+					update();
 					break;
 				}
 			}
@@ -141,13 +152,11 @@ public class MatchSelectionPanel extends JPanel {
 		});
 		
 		table = new JTable();
-		table.setModel(model);
+		table.setModel(model_1);
 		table.addMouseListener(listener);
 		
-		mpoList=selectedMatchs;
-		
 		scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(50, 100, 700, 400);
+		scrollPane_1.setBounds(50, 100, 800, 400);
 		panelOfBottom.add(scrollPane_1);
 		
 		scrollPane_1.setViewportView(table);
@@ -160,7 +169,7 @@ public class MatchSelectionPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.searchTheMatch();
+				update();
 			}
 			
 		});
@@ -181,6 +190,48 @@ public class MatchSelectionPanel extends JPanel {
 			}
 			
 		});
+	}
+	
+	public void update(){
+		compute = BLController.getInstance();
+		ArrayList<MatchPO> matchList = compute.getAllMatch();
+		
+		ArrayList<MatchPO> selectedMatchs = new ArrayList<MatchPO>();
+		for(int i=0;i<matchList.size();i++){
+			if(matchList.get(i).getSeason().equals(MainFrame.season) && 
+					matchList.get(i).getDate().get(Calendar.MONTH)==MainFrame.date){
+				selectedMatchs.add(matchList.get(i));
+			}
+		}
+		mpoList = selectedMatchs;
+		Vector rowDatas1 = new Vector();
+		for(int i=0;i<selectedMatchs.size();i++){
+			Vector rowData1 = new Vector();
+			rowData1.add(selectedMatchs.get(i).getSeason());
+			rowData1.add((selectedMatchs.get(i).getDate().get(Calendar.MONTH)+1)+"-"+
+					selectedMatchs.get(i).getDate().get(Calendar.DAY_OF_MONTH));
+			rowData1.add(selectedMatchs.get(i).getTeam1().getAbbreviation()+"-"+
+					selectedMatchs.get(i).getTeam2().getAbbreviation());
+			rowData1.add(selectedMatchs.get(i).getFinalScore().getTeam1()+"-"+
+					selectedMatchs.get(i).getFinalScore().getTeam2());
+			rowData1.add(selectedMatchs.get(i).getScores().get(0).getTeam1()+"-"+
+					selectedMatchs.get(i).getScores().get(0).getTeam2());
+			rowData1.add(matchList.get(i).getScores().get(1).getTeam1()+"-"+
+					selectedMatchs.get(i).getScores().get(1).getTeam2());
+			rowData1.add(selectedMatchs.get(i).getScores().get(2).getTeam1()+"-"+
+					selectedMatchs.get(i).getScores().get(2).getTeam2());
+			rowData1.add(selectedMatchs.get(i).getScores().get(3).getTeam1()+"-"+
+					selectedMatchs.get(i).getScores().get(3).getTeam2());
+			rowData1.add("详情");
+			rowDatas1.add(rowData1);
+		}
+		
+		model_1.setDataVector(rowDatas1, columnName1);
+		model_1.setColumnCount(table.getColumnCount());
+		model_1.setRowCount(rowDatas1.size());
+		table.setModel(model_1);
+		table.updateUI();
+		
 	}
 	
 	public class MouseListen extends MouseAdapter {

@@ -128,7 +128,7 @@ public class TeamsInfoFrame extends JPanel{
 		scrollPane_5.setViewportView(table);
 		
 		ImageIcon picture = ImageHandle.loadTeam(twpvo.getTeam().getAbbreviation());
-		picture.setImage(picture.getImage().getScaledInstance(100, 80,
+		picture.setImage(picture.getImage().getScaledInstance(250, 150,
 				Image.SCALE_DEFAULT));
 		teamPicture = new JLabel("");
 		teamPicture.setBounds(50, 50, 250, 150);

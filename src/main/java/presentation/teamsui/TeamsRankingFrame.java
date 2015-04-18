@@ -472,10 +472,11 @@ public class TeamsRankingFrame {
 				MainFrame.frame.getContentPane().remove(TeamsRankingFrame.scrollPane);
 				TeamsRankingFrame.scrollPane=null;
 				TeamWithPlayersVO twpvo = getTeam(table.getValueAt(r,1).toString());
-				TeamsInfoFrame tif = new TeamsInfoFrame(twpvo);
-				tif.updateTeam(twpvo, "投篮命中数");
-				MainFrame.frame.getContentPane().add(tif.scrollPane);
-				tif.scrollPane.setVisible(true);
+				TeamsInfoFrame tip = new TeamsInfoFrame(twpvo);
+				tip.updateTeam(twpvo, "投篮命中数");
+				tip.latestMatchs(twpvo.getTeam().getAbbreviation());
+				MainFrame.frame.getContentPane().add(tip.scrollPane);
+				tip.scrollPane.setVisible(true);
 				MainFrame.frame.setTitle(twpvo.getTeam().getAbbreviation());
 				MainFrame.frame.repaint();//刷新重画 
 				MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 

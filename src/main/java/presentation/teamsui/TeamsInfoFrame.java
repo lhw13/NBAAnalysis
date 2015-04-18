@@ -233,7 +233,7 @@ public class TeamsInfoFrame extends JPanel{
 		});
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setPreferredSize(new Dimension(1100, 1200));
+		panel_1.setPreferredSize(new Dimension(900, 1200));
 		panel_1.setLayout(null);
 		panel_1.add(scrollPane_5);
 		panel_1.add(panel);

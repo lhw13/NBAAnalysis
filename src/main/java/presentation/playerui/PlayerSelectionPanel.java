@@ -229,6 +229,10 @@ public class PlayerSelectionPanel extends JPanel {
 	public final static int START = 50;
 	public final static int STARTOFLABEL = 30;
 	public final static int GAP = 120;
+	public final static int WIDTHOFLABEL = 120;
+	public final static int HEIGHTOFLABEL = 120;
+	
+	
 	private JLabel labelOf1;
 	private JLabel labelOf2;
 	private JLabel labelOf3;
@@ -459,16 +463,16 @@ public class PlayerSelectionPanel extends JPanel {
 			if(index<size) {
 				vo= teamWithPlayer.get(index);
 				index++;
-				label1 = new JLabel(vo.getTeam().getFullName());
-				label1.setBounds(5, STARTOFLABEL, 54, 20);
+				label1 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label1.setBounds(5, STARTOFLABEL, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label1);
 				initialName(modelOf1, tableOf1, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label2 = new JLabel(vo.getTeam().getFullName());
-				label2.setBounds(5, STARTOFLABEL+GAP, 54, 20);
+				label2 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label2.setBounds(5, STARTOFLABEL+GAP, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label2);
 				initialName(modelOf2, tableOf2, vo);
 			}
@@ -476,224 +480,224 @@ public class PlayerSelectionPanel extends JPanel {
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label3 = new JLabel(vo.getTeam().getFullName());
-				label3.setBounds(5, STARTOFLABEL+GAP*2, 54, 20);
+				label3 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label3.setBounds(5, STARTOFLABEL+GAP*2, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label3);
 				initialName(modelOf3, tableOf3, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label4 = new JLabel(vo.getTeam().getFullName());
-				label4.setBounds(5, STARTOFLABEL+GAP*3, 54, 20);
+				 label4 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label4.setBounds(5, STARTOFLABEL+GAP*3, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label4);
 				initialName(modelOf4, tableOf4, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label5 = new JLabel(vo.getTeam().getFullName());
-				label5.setBounds(5, STARTOFLABEL+GAP*4, 54, 20);
+				 label5 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label5.setBounds(5, STARTOFLABEL+GAP*4, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label5);
 				initialName(modelOf5, tableOf5, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label6 = new JLabel(vo.getTeam().getFullName());
-				 label6.setBounds(5, STARTOFLABEL+GAP*5, 54, 20);
+				 label6 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				 label6.setBounds(5, STARTOFLABEL+GAP*5, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label6);
 				initialName(modelOf6, tableOf6, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label7 = new JLabel(vo.getTeam().getFullName());
-				label7.setBounds(5, STARTOFLABEL+GAP*6, 54, 20);
+				label7 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label7.setBounds(5, STARTOFLABEL+GAP*6, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label7);
 				initialName(modelOf7, tableOf7, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label8 = new JLabel(vo.getTeam().getFullName());
-				label8.setBounds(5, STARTOFLABEL+GAP*7, 54, 20);
+				label8 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label8.setBounds(5, STARTOFLABEL+GAP*7, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label8);
 				initialName(modelOf8, tableOf8, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label9 = new JLabel(vo.getTeam().getFullName());
-				label9.setBounds(5, STARTOFLABEL+GAP*8, 54, 20);
+				label9 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label9.setBounds(5, STARTOFLABEL+GAP*8, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label9);
 				initialName(modelOf9, tableOf9, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label10 = new JLabel(vo.getTeam().getFullName());
-				 label10.setBounds(5, STARTOFLABEL+GAP*9, 54, 20);
+				 label10 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				 label10.setBounds(5, STARTOFLABEL+GAP*9, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label10);
 				initialName(modelOf10, tableOf10, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label11 = new JLabel(vo.getTeam().getFullName());
-				label11.setBounds(5, STARTOFLABEL+GAP*10, 54, 20);
+				label11 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label11.setBounds(5, STARTOFLABEL+GAP*10, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label11);
 				initialName(modelOf11, tableOf11, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label12 = new JLabel(vo.getTeam().getFullName());
-				label12.setBounds(5, STARTOFLABEL+GAP*11, 54, 20);
+				 label12 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label12.setBounds(5, STARTOFLABEL+GAP*11, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label12);
 				initialName(modelOf12, tableOf12, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label13 = new JLabel(vo.getTeam().getFullName());
-				label13.setBounds(5, STARTOFLABEL+GAP*12, 54, 20);
+				 label13 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label13.setBounds(5, STARTOFLABEL+GAP*12, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label13);
 				initialName(modelOf13, tableOf13, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label14 = new JLabel(vo.getTeam().getFullName());
-				label14.setBounds(5, STARTOFLABEL+GAP*13, 54, 20);
+				 label14 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label14.setBounds(5, STARTOFLABEL+GAP*13, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label14);
 				initialName(modelOf14, tableOf14, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label15 = new JLabel(vo.getTeam().getFullName());
-				label15.setBounds(5, STARTOFLABEL+GAP*14, 54, 20);
+				 label15 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label15.setBounds(5, STARTOFLABEL+GAP*14, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label15);
 				initialName(modelOf15, tableOf15, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label16 = new JLabel(vo.getTeam().getFullName());
-				label16.setBounds(5, STARTOFLABEL+GAP*15, 54, 20);
+				 label16 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label16.setBounds(5, STARTOFLABEL+GAP*15, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label16);
 				initialName(modelOf16, tableOf16, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label17 = new JLabel(vo.getTeam().getFullName());
-				label17.setBounds(5, STARTOFLABEL+GAP*16, 54, 20);
+				 label17 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label17.setBounds(5, STARTOFLABEL+GAP*16, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label17);
 				initialName(modelOf17, tableOf17, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label18 = new JLabel(vo.getTeam().getFullName());
-				label18.setBounds(5, STARTOFLABEL+GAP*17, 54, 20);
+				 label18 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label18.setBounds(5, STARTOFLABEL+GAP*17, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label18);
 				initialName(modelOf18, tableOf18, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label19 = new JLabel(vo.getTeam().getFullName());
-				label19.setBounds(5, STARTOFLABEL+GAP*18, 54, 20);
+				 label19 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label19.setBounds(5, STARTOFLABEL+GAP*18, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label19);
 				initialName(modelOf19, tableOf19, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label20 = new JLabel(vo.getTeam().getFullName());
-				label20.setBounds(5, STARTOFLABEL+GAP*19, 54, 20);
+				 label20 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label20.setBounds(5, STARTOFLABEL+GAP*19, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label20);
 				initialName(modelOf20, tableOf20, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label21 = new JLabel(vo.getTeam().getFullName());
-				label21.setBounds(5, STARTOFLABEL+GAP*20, 54, 20);
+				 label21 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label21.setBounds(5, STARTOFLABEL+GAP*20, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label21);
 				initialName(modelOf21, tableOf21, vo);
 			}
 			if(index<size) {	
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label22 = new JLabel(vo.getTeam().getFullName());
-				label22.setBounds(5, STARTOFLABEL+GAP*21, 54, 20);
+				 label22 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label22.setBounds(5, STARTOFLABEL+GAP*21, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label22);
 				initialName(modelOf22, tableOf22, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label23 = new JLabel(vo.getTeam().getFullName());
-				label23.setBounds(5, STARTOFLABEL+GAP*22, 54, 20);
+				 label23 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label23.setBounds(5, STARTOFLABEL+GAP*22, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label23);
 				initialName(modelOf23, tableOf23, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label24 = new JLabel(vo.getTeam().getFullName());
-				label24.setBounds(5, STARTOFLABEL+GAP*23, 54, 20);
+				 label24 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label24.setBounds(5, STARTOFLABEL+GAP*23, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label24);
 				initialName(modelOf24, tableOf24, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label25 = new JLabel(vo.getTeam().getFullName());
-				label25.setBounds(5, STARTOFLABEL+GAP*24, 54, 20);
+				 label25 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label25.setBounds(5, STARTOFLABEL+GAP*24, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label25);
 				initialName(modelOf25, tableOf25, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label26 = new JLabel(vo.getTeam().getFullName());
-				label26.setBounds(5, STARTOFLABEL+GAP*25, 54, 20);
+				 label26 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label26.setBounds(5, STARTOFLABEL+GAP*25, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label26);
 				initialName(modelOf26, tableOf26, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label27 = new JLabel(vo.getTeam().getFullName());
-				label27.setBounds(5, STARTOFLABEL+GAP*26, 54, 20);
+				 label27 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label27.setBounds(5, STARTOFLABEL+GAP*26, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label27);
 				initialName(modelOf27, tableOf27, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label28 = new JLabel(vo.getTeam().getFullName());
-				label28.setBounds(5, STARTOFLABEL+GAP*27, 54, 20);
+				 label28 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label28.setBounds(5, STARTOFLABEL+GAP*27, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label28);
 				initialName(modelOf28, tableOf28, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label29 = new JLabel(vo.getTeam().getFullName());
-				label29.setBounds(5, STARTOFLABEL+GAP*28, 54, 20);
+				 label29 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label29.setBounds(5, STARTOFLABEL+GAP*28, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label29);
 				initialName(modelOf29, tableOf29, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				 label30 = new JLabel(vo.getTeam().getFullName());
-				label30.setBounds(5, STARTOFLABEL+GAP*29, 54, 20);
+				 label30 = new JLabel(translate(vo.getTeam().getAbbreviation()));
+				label30.setBounds(5, STARTOFLABEL+GAP*29, WIDTHOFLABEL, 20);
 				panelOfBottom.add(label30);
 				initialName(modelOf30, tableOf30, vo);
 			}
@@ -709,181 +713,181 @@ public class PlayerSelectionPanel extends JPanel {
 			TeamWithPlayersVO vo= teamWithPlayer.get(index);			
 			if(index<size) {
 				index++;
-				label1.setText(vo.getTeam().getFullName());
+				label1.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf1, tableOf1, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label2.setText(vo.getTeam().getFullName());
+				label2.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf2, tableOf2, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label3.setText(vo.getTeam().getFullName());
+				label3.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf3, tableOf3, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label4.setText(vo.getTeam().getFullName());
+				label4.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf4, tableOf4, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label5.setText(vo.getTeam().getFullName());
+				label5.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf5, tableOf5, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label6.setText(vo.getTeam().getFullName());
+				label6.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf6, tableOf6, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label7.setText(vo.getTeam().getFullName());
+				label7.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf7, tableOf7, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label8.setText(vo.getTeam().getFullName());
+				label8.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf8, tableOf8, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label9.setText(vo.getTeam().getFullName());
+				label9.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf9, tableOf9, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label10.setText(vo.getTeam().getFullName());
+				label10.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf10, tableOf10, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label11.setText(vo.getTeam().getFullName());
+				label11.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf11, tableOf11, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label12.setText(vo.getTeam().getFullName());
+				label12.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf12, tableOf12, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label13.setText(vo.getTeam().getFullName());
+				label13.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf13, tableOf13, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label14.setText(vo.getTeam().getFullName());
+				label14.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf14, tableOf14, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label15.setText(vo.getTeam().getFullName());
+				label15.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf15, tableOf15, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label16.setText(vo.getTeam().getFullName());
+				label16.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf16, tableOf16, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label17.setText(vo.getTeam().getFullName());
+				label17.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf17, tableOf17, vo);
 			}
 			if(index<size) {	
 				vo = teamWithPlayer.get(index);
 				index++;
-				label18.setText(vo.getTeam().getFullName());
+				label18.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf18, tableOf18, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label19.setText(vo.getTeam().getFullName());
+				label19.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf19, tableOf19, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label20.setText(vo.getTeam().getFullName());
+				label20.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf20, tableOf20, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label21.setText(vo.getTeam().getFullName());
+				label21.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf21, tableOf21, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label22.setText(vo.getTeam().getFullName());
+				label22.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf22, tableOf22, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label23.setText(vo.getTeam().getFullName());
+				label23.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf23, tableOf23, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label24.setText(vo.getTeam().getFullName());
+				label24.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf24, tableOf24, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label25.setText(vo.getTeam().getFullName());
+				label25.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf25, tableOf25, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label26.setText(vo.getTeam().getFullName());
+				label26.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf26, tableOf26, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label27.setText(vo.getTeam().getFullName());
+				label27.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf27, tableOf27, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label28.setText(vo.getTeam().getFullName());
+				label28.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf28, tableOf28, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 				index++;
-				label29.setText(vo.getTeam().getFullName());
+				label29.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf29, tableOf29, vo);
 			}
 			if(index<size) {
 				vo = teamWithPlayer.get(index);
 			
-				label30.setText(vo.getTeam().getFullName());
+				label30.setText(translate(vo.getTeam().getAbbreviation()));
 				initialName(modelOf30, tableOf30, vo);
 			}
 			
@@ -962,6 +966,74 @@ public class PlayerSelectionPanel extends JPanel {
 		
 	}
 	
+	public static String translate(String team){
+		String result = "夏洛特山猫";
+        if(team.equals("SAS"))
+        	result = "圣安东尼马刺";
+        else if(team.equals("MEM"))
+        	result = "孟菲斯灰熊";
+        else if(team.equals("DAL"))
+        	result = "达拉斯小牛";
+        else if(team.equals("HOU"))
+        	result = "休斯顿火箭";
+        else if(team.equals("NOP"))
+        	result = "新尔良鹈鹕";
+        else if(team.equals("NOH"))
+        	result = "新尔良鹈鹕";        
+        else if(team.equals("MIN"))
+        	result = "明尼苏达森林狼";
+        else if(team.equals("DEN"))
+        	result = "丹佛掘金";
+        else if(team.equals("UTA"))
+        	result = "尤他爵士";
+        else if(team.equals("POR"))
+        	result = "波特兰开拓者";
+        else if(team.equals("OKC"))
+        	result = "俄克拉荷马雷霆";
+        else if(team.equals("SAC"))
+        	result = "萨克拉门托国王";
+        else if(team.equals("PHX"))
+        	result = "菲尼克斯太阳";
+        else if(team.equals("LAL"))
+        	result = "洛杉矶湖人";
+        else if(team.equals("LAC"))
+        	result = "洛杉矶快船";
+        else if(team.equals("GSW"))
+        	result = "金州勇士";
+        else if(team.equals("MIA"))
+        	result = "迈密热";
+        else if(team.equals("ORL"))
+        	result = "兰多魔术";
+        else if(team.equals("ATL"))
+        	result = "亚特兰大老鹰";
+        else if(team.equals("WAS"))
+        	result = "华盛顿奇才";
+        else if(team.equals("CHA"))
+        	result = "夏洛特黄蜂";
+        else if(team.equals("DET"))
+        	result = "底特律活塞";
+        else if(team.equals("IND"))
+        	result = "印第安纳步行者";
+        else if(team.equals("CLE"))
+        	result = "克里夫兰骑士";
+        else if(team.equals("CHI"))
+        	result = "芝加哥公牛";
+        else if(team.equals("MIL"))
+        	result = "密尔沃基雄鹿";
+        else if(team.equals("BOS"))
+        	result = "波士顿凯尔特人";
+        else if(team.equals("PHI"))
+        	result = "费城76人";
+        else if(team.equals("NYK"))
+        	result = "纽约尼克斯";
+        else if(team.equals("BKN"))
+        	result = "布鲁克林篮网";
+        else if(team.equals("TOR"))
+        	result = "多伦多猛龙";
+        
+        return result;
+	}
+
 public class ChangeMouseListen extends MouseAdapter {
 		
 		public void mouseClicked(MouseEvent e) {

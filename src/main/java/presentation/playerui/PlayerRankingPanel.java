@@ -1,13 +1,17 @@
 package presentation.playerui;
 
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
@@ -15,9 +19,11 @@ import javax.swing.JButton;
 import javax.swing.RowFilter;
 
 import presentation.mainui.MainFrame;
+import presentation.matchui.MatchSelectionPanel.MouseListen;
 import presentation.teamsui.TeamsRankingFrame;
 
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -44,6 +50,7 @@ public class PlayerRankingPanel extends JPanel {
 	public static JCheckBox chckbxNewCheckBox_9;
 	public static JCheckBox chckbxNewCheckBox_10;
 	
+	MouseListen listener = new MouseListen();
 
 	public PlayerRankingPanel(DefaultTableModel model) {
 		setLayout(null);
@@ -80,26 +87,6 @@ public class PlayerRankingPanel extends JPanel {
 			}
 
 		});
-
-		String table_0_columns[] = {"行号"};
-		Object table_0_rows[][]=
-			{
-				{"1"}, {"2"}, {"3"}, {"4"}, {"5"},
-				{"6"}, {"7"}, {"8"}, {"9"}, {"10"},
-				{"11"}, {"12"}, {"13"}, {"14"}, {"15"},
-				{"16"}, {"17"}, {"18"}, {"19"}, {"20"},
-				{"21"}, {"22"}, {"23"}, {"24"}, {"25"},
-				{"26"}, {"27"}, {"28"}, {"29"}, {"30"},
-				{"31"}, {"32"}, {"33"}, {"34"}, {"35"},
-				{"36"}, {"37"}, {"38"}, {"39"}, {"40"},
-				{"41"}, {"42"}, {"43"}, {"44"}, {"45"},
-				{"46"}, {"47"}, {"48"}, {"49"}, {"50"},
-			};
-		
-		JTable table0 = new JTable();
-		DefaultTableModel model0 = new DefaultTableModel(table_0_rows,table_0_columns);
-		table0.setModel(model0);
-		table0.setPreferredScrollableViewportSize(new Dimension(50, 1000));
 		
 		table = new JTable();
 		table.setModel(model);
@@ -107,14 +94,19 @@ public class PlayerRankingPanel extends JPanel {
 				model);
 		table.setRowSorter(sorter);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		table.setRowHeight(80);
 		
-
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(JLabel.CENTER);
+		table.setDefaultRenderer(Object.class, tcr);
+		
+		table.addMouseListener(listener);
+		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(50, 175, 800, 1167);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setViewportView(table);
-		scrollPane_1.setRowHeaderView(table0);
 		tabbedPane.addTab("球员排名", null, scrollPane_1, null);
 
 		panel.setPreferredSize(new Dimension(900, 1400));
@@ -153,86 +145,86 @@ public class PlayerRankingPanel extends JPanel {
 				switch(index){
 				case 0: 
 					MainFrame.selection1="得分";
-					MainFrame.table_2_columns[4]="得分(场均)";
-					MainFrame.table_2_columns[5]="得分(总计)";
+					MainFrame.table_2_columns[5]="得分(场均)";
+					MainFrame.table_2_columns[6]="得分(总计)";
 					MainFrame.setPlayersRanking();
 					break;
 				case 1: 
 					MainFrame.selection1="篮板";
-					MainFrame.table_2_columns[4]="篮板(场均)";
-					MainFrame.table_2_columns[5]="篮板(总计)";
+					MainFrame.table_2_columns[5]="篮板(场均)";
+					MainFrame.table_2_columns[6]="篮板(总计)";
 					MainFrame.setPlayersRanking();
 					break;
 				case 2: 
 					MainFrame.selection1="助攻";
-					MainFrame.table_2_columns[4]="助攻(场均)";
-					MainFrame.table_2_columns[5]="助攻(总计)";
+					MainFrame.table_2_columns[5]="助攻(场均)";
+					MainFrame.table_2_columns[6]="助攻(总计)";
 					MainFrame.setPlayersRanking();
 					break;
 				case 3: 
 					MainFrame.selection1="得分/篮板/助攻";
-					MainFrame.table_2_columns[4]="得分/篮板/助攻(场均)";
-					MainFrame.table_2_columns[5]="得分/篮板/助攻(总计)";
+					MainFrame.table_2_columns[5]="得分/篮板/助攻(场均)";
+					MainFrame.table_2_columns[6]="得分/篮板/助攻(总计)";
 					MainFrame.setPlayersRanking();
 					break;
 				case 4: 
 					MainFrame.selection1="盖帽";
-					MainFrame.table_2_columns[4]="盖帽(场均)";
-					MainFrame.table_2_columns[5]="盖帽(总计)";
+					MainFrame.table_2_columns[5]="盖帽(场均)";
+					MainFrame.table_2_columns[6]="盖帽(总计)";
 					MainFrame.setPlayersRanking();
 					break;
 				case 5: 
 					MainFrame.selection1="抢断";
-					MainFrame.table_2_columns[4]="抢断(场均)";
-					MainFrame.table_2_columns[5]="抢断(总计)";
+					MainFrame.table_2_columns[5]="抢断(场均)";
+					MainFrame.table_2_columns[6]="抢断(总计)";
 					MainFrame.setPlayersRanking();
 					break;
 				case 6: 
 					MainFrame.selection1="犯规";
-					MainFrame.table_2_columns[4]="犯规(场均)";
-					MainFrame.table_2_columns[5]="犯规(总计)";
+					MainFrame.table_2_columns[5]="犯规(场均)";
+					MainFrame.table_2_columns[6]="犯规(总计)";
 					MainFrame.setPlayersRanking();
 					break;
 				case 7: 
 					MainFrame.selection1="失误";
-					MainFrame.table_2_columns[4]="失误(场均)";
-					MainFrame.table_2_columns[5]="失误(总计)";
+					MainFrame.table_2_columns[5]="失误(场均)";
+					MainFrame.table_2_columns[6]="失误(总计)";
 					MainFrame.setPlayersRanking();
 					break;
 				case 8: 
 					MainFrame.selection1="分钟";
-					MainFrame.table_2_columns[4]="分钟(场均)";
-					MainFrame.table_2_columns[5]="分钟(总计)";
+					MainFrame.table_2_columns[5]="分钟(场均)";
+					MainFrame.table_2_columns[6]="分钟(总计)";
 					MainFrame.setPlayersRanking();
 					break;
 				case 9: 
 					MainFrame.selection1="效率";
-					MainFrame.table_2_columns[4]="效率(场均)";
-					MainFrame.table_2_columns[5]="效率(总计)";
+					MainFrame.table_2_columns[5]="效率(场均)";
+					MainFrame.table_2_columns[6]="效率(总计)";
 					MainFrame.setPlayersRanking();
 					break;
 				case 10: 
 					MainFrame.selection1="投篮";
-					MainFrame.table_2_columns[4]="投篮(场均)";
-					MainFrame.table_2_columns[5]="投篮(总计)";
+					MainFrame.table_2_columns[5]="投篮(场均)";
+					MainFrame.table_2_columns[6]="投篮(总计)";
 					MainFrame.setPlayersRanking();
 					break;
 				case 11: 
 					MainFrame.selection1="三分";
-					MainFrame.table_2_columns[4]="三分(场均)";
-					MainFrame.table_2_columns[5]="三分(总计)";
+					MainFrame.table_2_columns[5]="三分(场均)";
+					MainFrame.table_2_columns[6]="三分(总计)";
 					MainFrame.setPlayersRanking();
 					break;
 				case 12: 
 					MainFrame.selection1="罚球";
-					MainFrame.table_2_columns[4]="罚球(场均)";
-					MainFrame.table_2_columns[5]="罚球(总计)";
+					MainFrame.table_2_columns[5]="罚球(场均)";
+					MainFrame.table_2_columns[6]="罚球(总计)";
 					MainFrame.setPlayersRanking();
 					break;
 				case 13: 
 					MainFrame.selection1="两双";
-					MainFrame.table_2_columns[4]="两双(场均)";
-					MainFrame.table_2_columns[5]="两双(总计)";
+					MainFrame.table_2_columns[5]="两双(场均)";
+					MainFrame.table_2_columns[6]="两双(总计)";
 					MainFrame.setPlayersRanking();
 					break;
 				}
@@ -1420,5 +1412,34 @@ public class PlayerRankingPanel extends JPanel {
 
 		});
 
+	}
+	
+	public class MouseListen extends MouseAdapter {
+		public void mouseClicked(MouseEvent e) {
+
+			JTable table = (JTable) e.getSource();
+			int r = table.getSelectedRow();
+			int c = table.getSelectedColumn();
+			try {
+				PlayerRankingPanel.scrollPane.setVisible(false);
+				MainFrame.frame.getContentPane().remove(PlayerRankingPanel.scrollPane);
+				PlayerRankingPanel.scrollPane=null;
+				MainFrame.pip = new PlayerInfoPanel();
+				MainFrame.pip.update(table.getValueAt(r,1).toString());
+				MainFrame.frame.getContentPane().add(PlayerInfoPanel.scrollPane);
+				PlayerInfoPanel.scrollPane.setVisible(true);
+				MainFrame.frame.setTitle("NBA球员信息");
+				MainFrame.frame.repaint();//刷新重画 
+				MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
+		public void mouseEntered(MouseEvent e) {
+			table.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		}
+		public void mouseExited(MouseEvent e) {
+			table.setCursor(Cursor.getDefaultCursor());
+		}
 	}
 }

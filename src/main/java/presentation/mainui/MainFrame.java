@@ -338,12 +338,7 @@ public class MainFrame {
 		lblNewLabel.addMouseListener(new MouseListener() {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				flag = true;
-				flag0 = false;
-				flag1 = false;
-				flag2 = false;
-				flag3 = false;
-				flag4 = false;
+				
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -353,7 +348,12 @@ public class MainFrame {
 			}
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
-
+				flag = true;
+				flag0 = false;
+				flag1 = false;
+				flag2 = false;
+				flag3 = false;
+				flag4 = false;
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
@@ -418,12 +418,7 @@ public class MainFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				flag0 = true;
-				flag = false;
-				flag1 = false;
-				flag2 = false;
-				flag3 = false;
-				flag4 = false;
+				
 			}
 
 			@Override
@@ -436,7 +431,12 @@ public class MainFrame {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-
+				flag0 = true;
+				flag = false;
+				flag1 = false;
+				flag2 = false;
+				flag3 = false;
+				flag4 = false;
 			}
 
 			@Override
@@ -497,12 +497,7 @@ public class MainFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				flag1 = true;
-				flag0 = false;
-				flag = false;
-				flag2 = false;
-				flag3 = false;
-				flag4 = false;
+				
 			}
 
 			@Override
@@ -515,6 +510,12 @@ public class MainFrame {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				flag1 = true;
+				flag0 = false;
+				flag = false;
+				flag2 = false;
+				flag3 = false;
+				flag4 = false;
 
 			}
 
@@ -576,12 +577,7 @@ public class MainFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				flag2 = true;
-				flag1 = false;
-				flag0 = false;
-				flag = false;
-				flag3 = false;
-				flag4 = false;
+				
 			}
 
 			@Override
@@ -594,6 +590,12 @@ public class MainFrame {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				flag2 = true;
+				flag1 = false;
+				flag0 = false;
+				flag = false;
+				flag3 = false;
+				flag4 = false;
 
 			}
 
@@ -652,12 +654,7 @@ public class MainFrame {
 		lblNewLabel_4.addMouseListener(new MouseListener() {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				flag3 = true;
-				flag1 = false;
-				flag0 = false;
-				flag = false;
-				flag2 = false;
-				flag4 = false;
+				
 			}
 
 			public void mousePressed(java.awt.event.MouseEvent e) {
@@ -667,6 +664,12 @@ public class MainFrame {
 			}
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
+				flag3 = true;
+				flag1 = false;
+				flag0 = false;
+				flag = false;
+				flag2 = false;
+				flag4 = false;
 
 			}
 
@@ -720,12 +723,7 @@ public class MainFrame {
 		lblNewLabel_5.addMouseListener(new MouseListener() {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
-				flag4=true;
-				flag3 = false;
-				flag1 = false;
-				flag0 = false;
-				flag = false;
-				flag2 = false;
+				
 				
 			}
 
@@ -736,6 +734,12 @@ public class MainFrame {
 			}
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
+				flag4=true;
+				flag3 = false;
+				flag1 = false;
+				flag0 = false;
+				flag = false;
+				flag2 = false;
 
 			}
 

@@ -40,7 +40,7 @@ import vo.TeamWithPlayersVO;
 public class MainFrame {
 
 	public static JFrame frame;
-	public static Panels currentPane;
+	public static Panels currentPanel;
 	public static JPanel panel;
 
 	public static PlayerInfoPanel pip;
@@ -154,7 +154,7 @@ public class MainFrame {
 	private void initPanels() {
 
 		//初始化球员选择面板
-		currentPane = Panels.MainFrame;
+		currentPanel = Panels.MainFrame;
 		psp = new PlayerSelectionPanel();
 		frame.getContentPane().add(PlayerSelectionPanel.scrollPane);
 		PlayerSelectionPanel.scrollPane.setVisible(false);
@@ -368,6 +368,7 @@ public class MainFrame {
 					tsp.scrollPane.setVisible(true);
 					tsp.flag = true;
 					MainFrame.frame.setTitle("NBA球队选择");
+					currentPanel = Panels.TeamsSelectionFrame;
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -445,6 +446,7 @@ public class MainFrame {
 			public void mouseClicked(MouseEvent e) {
 				try {
 					setTeamsRanking();
+					currentPanel = Panels.TeamsRankingFrame;
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -528,6 +530,7 @@ public class MainFrame {
 					psp.update();
 					PlayerSelectionPanel.scrollPane.setVisible(true);
 					MainFrame.frame.setTitle("NBA球员选择");
+					currentPanel = Panels.PlayerSelectionPanel;
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -605,7 +608,7 @@ public class MainFrame {
 			public void mouseClicked(MouseEvent e) {
 				try {
 					setPlayersRanking();
-
+					currentPanel = Panels.PlayerRankingPanel;
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -678,6 +681,7 @@ public class MainFrame {
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
 					searchTheMatch();
+					currentPanel = Panels.MatchSelectionInfoPanel;
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

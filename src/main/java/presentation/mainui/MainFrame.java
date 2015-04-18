@@ -20,15 +20,9 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 
 import org.jvnet.substance.SubstanceLookAndFeel;
-import org.jvnet.substance.border.FlatInnerBorderPainter;
-import org.jvnet.substance.button.StandardButtonShaper;
-import org.jvnet.substance.theme.SubstanceEbonyTheme;
-import org.jvnet.substance.title.Glass3DTitlePainter;
-import org.jvnet.substance.watermark.SubstanceWoodWatermark;
+import org.jvnet.substance.skin.MagmaSkin;
 
 import blservice.BLService;
 import presentation.matchui.MatchSelectionPanel;
@@ -125,16 +119,8 @@ public class MainFrame {
 				 */
 			}
 
-			// 设置当前的主题风格，同样我 们还可以设置当前的按钮形状，水印风格等等
-			SubstanceLookAndFeel.setCurrentTheme(new SubstanceEbonyTheme());
-			SubstanceLookAndFeel
-					.setCurrentWatermark(new SubstanceWoodWatermark());
-			SubstanceLookAndFeel
-					.setCurrentButtonShaper(new StandardButtonShaper());
-			SubstanceLookAndFeel
-					.setCurrentTitlePainter(new Glass3DTitlePainter());
-			SubstanceLookAndFeel
-					.setCurrentBorderPainter(new FlatInnerBorderPainter());
+			// 设置当前的主题风格
+			SubstanceLookAndFeel.setSkin(new MagmaSkin());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

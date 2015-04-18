@@ -105,7 +105,7 @@ public class PlayerInfoPanel extends JPanel {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
 
-		panelOfBottom.setPreferredSize(new Dimension(1300, 600));
+		//panelOfBottom.setPreferredSize(new Dimension(1000, 590));
 		panelOfBottom.setLayout(null);
 		scrollPane = new JScrollPane(panelOfBottom);
 
@@ -118,7 +118,7 @@ public class PlayerInfoPanel extends JPanel {
 		panelOfBottom.add(labelOfAct);
 
 		scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(5, 43, 686, 43);
+		scrollPane_1.setBounds(5, 35, 686, 43);
 		panelOfBottom.add(scrollPane_1);
 
 		table = new JTable(model);
@@ -126,7 +126,7 @@ public class PlayerInfoPanel extends JPanel {
 		scrollPane_1.setViewportView(table);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(5, 257, 686, 77);
+		tabbedPane.setBounds(5, 249, 686, 77);
 		panelOfBottom.add(tabbedPane);
 
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -142,7 +142,7 @@ public class PlayerInfoPanel extends JPanel {
 		scrollPane_3.setViewportView(table_2);
 
 		button = new JButton("返回");
-		button.setBounds(5, 10, 93, 23);
+		button.setBounds(5, 6, 93, 23);
 		button.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -161,14 +161,14 @@ public class PlayerInfoPanel extends JPanel {
 
 		JScrollPane scrollPane_4 = new JScrollPane();
 
-		scrollPane_4.setBounds(5, 149, 686, 43);
+		scrollPane_4.setBounds(5, 141, 686, 43);
 		panelOfBottom.add(scrollPane_4);
 
 		table_3 = new JTable(model_3);
 		scrollPane_4.setViewportView(table_3);
 
 		scrollPane_5 = new JScrollPane();
-		scrollPane_5.setBounds(5, 202, 686, 43);
+		scrollPane_5.setBounds(5, 194, 686, 43);
 		panelOfBottom.add(scrollPane_5);
 
 		table_4 = new JTable(model_4);
@@ -176,7 +176,7 @@ public class PlayerInfoPanel extends JPanel {
 		scrollPane_5.setViewportView(table_4);
 
 		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_1.setBounds(5, 343, 686, 77);
+		tabbedPane_1.setBounds(5, 335, 686, 77);
 		panelOfBottom.add(tabbedPane_1);
 
 		JScrollPane scrollPane_6 = new JScrollPane();
@@ -193,7 +193,7 @@ public class PlayerInfoPanel extends JPanel {
 		scrollPane_7.setViewportView(table_6);
 		
 		JScrollPane scrollPane_8 = new JScrollPane();
-		scrollPane_8.setBounds(5, 96, 686, 43);
+		scrollPane_8.setBounds(5, 88, 686, 43);
 		panelOfBottom.add(scrollPane_8);
 		
 		table_7 = new JTable();
@@ -201,7 +201,7 @@ public class PlayerInfoPanel extends JPanel {
 		scrollPane_8.setViewportView(table_7);
 		
 		JScrollPane scrollPane_9 = new JScrollPane();
-		scrollPane_9.setBounds(5, 456, 686, 123);
+		scrollPane_9.setBounds(5, 448, 686, 123);
 		panelOfBottom.add(scrollPane_9);
 		
 		String[] cname8 = new String[] {
@@ -218,11 +218,11 @@ public class PlayerInfoPanel extends JPanel {
 		scrollPane_9.setViewportView(table_8);
 		
 		JLabel label = new JLabel("最近五场统计");
-		label.setBounds(5, 425, 110, 29);
+		label.setBounds(5, 417, 110, 29);
 		panelOfBottom.add(label);	
 		
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"选择赛季","14-15", "13-14","12-13"}));
-		comboBox.setBounds(246, 425, 110, 29);
+		comboBox.setBounds(246, 417, 110, 29);
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				showPass();
@@ -232,7 +232,7 @@ public class PlayerInfoPanel extends JPanel {
 		
 		comboBox_1 = new JComboBox();
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"选择月份", "01", "02", "03", "04", "10", "11", "12"}));
-		comboBox_1.setBounds(366, 425, 110, 29);
+		comboBox_1.setBounds(366, 417, 110, 29);
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				showPass();
@@ -246,11 +246,11 @@ public class PlayerInfoPanel extends JPanel {
 				backToLatest();
 			}
 		});
-		btnNewButton.setBounds(592, 424, 93, 30);
+		btnNewButton.setBounds(592, 416, 93, 30);
 		panelOfBottom.add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("过往查询");
-		lblNewLabel.setBounds(174, 425, 64, 29);
+		lblNewLabel.setBounds(174, 417, 64, 29);
 		panelOfBottom.add(lblNewLabel);
 		//scrollPane.setBounds(0, 0, 990, 600);
 

@@ -75,6 +75,10 @@ public class PlayerInMatchesPO {
 	public int getPlayTime() {
 		return playTime;
 	}
+	
+	public int getPlayTimeMinute() {
+		return playTime/60;
+	}
 
 	public void setPlayTime(int playTime) {
 		this.playTime = playTime;

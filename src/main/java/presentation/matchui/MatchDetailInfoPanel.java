@@ -52,11 +52,11 @@ public class MatchDetailInfoPanel extends JPanel {
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		add(scrollPane);
 		
-		panelOfBottom.setPreferredSize(new Dimension(1000, 1000));
+		panelOfBottom.setPreferredSize(new Dimension(1000, 800));
 		panelOfBottom.setLayout(null);
 		
 		scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(100, 300, 800, 300);
+		scrollPane_1.setBounds(100, 175, 800, 250);
 		panelOfBottom.add(scrollPane_1);
 		
 		table = new JTable();
@@ -64,7 +64,7 @@ public class MatchDetailInfoPanel extends JPanel {
 		scrollPane_1.setViewportView(table);
 		
 		scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(100, 650, 800, 300);
+		scrollPane_2.setBounds(100, 450, 800, 250);
 		panelOfBottom.add(scrollPane_2);
 		
 		table_1 = new JTable();
@@ -78,21 +78,21 @@ public class MatchDetailInfoPanel extends JPanel {
 		
 		
 		scrollPane_3 = new JScrollPane();
-		scrollPane_3.setBounds(250, 100, 500, 100);
+		scrollPane_3.setBounds(250, 50, 500, 50);
 		scrollPane_3.setViewportView(table_2);
 		panelOfBottom.add(scrollPane_3);
 		
 		btnNewButton = new JButton("返回");
-		btnNewButton.setBounds(450, 250, 120, 25);
+		btnNewButton.setBounds(450, 140, 120, 25);
 		panelOfBottom.add(btnNewButton);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(50, 50, 200, 150);
+		lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(50, 10, 200, 150);
 		lblNewLabel.setIcon(ii[0]);
 		panelOfBottom.add(lblNewLabel);
 		
 		lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBounds(750, 50, 200, 150);
+		lblNewLabel_1.setBounds(750, 10, 200, 150);
 		lblNewLabel_1.setIcon(ii[1]);
 		panelOfBottom.add(lblNewLabel_1);
 		

@@ -589,10 +589,13 @@ public class TeamsSelectionFrame {
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				lblNewLabel_16.setIcon(new ImageIcon("pictures\\DEN2.jpg"));
+				lblNewLabel_16.setCursor(Cursor
+						.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				lblNewLabel_16.setIcon(new ImageIcon("pictures\\DEN.jpg"));
+				lblNewLabel_16.setCursor(Cursor.getDefaultCursor());
 			}
 		});
 
@@ -616,10 +619,13 @@ public class TeamsSelectionFrame {
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				lblNewLabel_17.setIcon(new ImageIcon("pictures\\MIN2.jpg"));
+				lblNewLabel_17.setCursor(Cursor
+						.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				lblNewLabel_17.setIcon(new ImageIcon("pictures\\MIN.jpg"));
+				lblNewLabel_17.setCursor(Cursor.getDefaultCursor());
 			}
 		});
 
@@ -642,10 +648,13 @@ public class TeamsSelectionFrame {
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				lblNewLabel_18.setIcon(new ImageIcon("pictures\\OKC2.jpg"));
+				lblNewLabel_18.setCursor(Cursor
+						.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				lblNewLabel_18.setIcon(new ImageIcon("pictures\\OKC.jpg"));
+				lblNewLabel_18.setCursor(Cursor.getDefaultCursor());
 			}
 		});
 
@@ -668,10 +677,13 @@ public class TeamsSelectionFrame {
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				lblNewLabel_19.setIcon(new ImageIcon("pictures\\POR2.jpg"));
+				lblNewLabel_19.setCursor(Cursor
+						.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				lblNewLabel_19.setIcon(new ImageIcon("pictures\\POR.jpg"));
+				lblNewLabel_19.setCursor(Cursor.getDefaultCursor());
 			}
 		});
 
@@ -694,10 +706,13 @@ public class TeamsSelectionFrame {
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				lblNewLabel_20.setIcon(new ImageIcon("pictures\\UTA2.jpg"));
+				lblNewLabel_20.setCursor(Cursor
+						.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				lblNewLabel_20.setIcon(new ImageIcon("pictures\\UTA.jpg"));
+				lblNewLabel_20.setCursor(Cursor.getDefaultCursor());
 			}
 		});
 
@@ -720,10 +735,13 @@ public class TeamsSelectionFrame {
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				lblNewLabel_21.setIcon(new ImageIcon("pictures\\GSW2.jpg"));
+				lblNewLabel_21.setCursor(Cursor
+						.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				lblNewLabel_21.setIcon(new ImageIcon("pictures\\GSW.jpg"));
+				lblNewLabel_21.setCursor(Cursor.getDefaultCursor());
 			}
 		});
 
@@ -746,10 +764,13 @@ public class TeamsSelectionFrame {
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				lblNewLabel_22.setIcon(new ImageIcon("pictures\\LAC2.jpg"));
+				lblNewLabel_22.setCursor(Cursor
+						.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				lblNewLabel_22.setIcon(new ImageIcon("pictures\\LAC.jpg"));
+				lblNewLabel_22.setCursor(Cursor.getDefaultCursor());
 			}
 		});
 
@@ -772,10 +793,13 @@ public class TeamsSelectionFrame {
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				lblNewLabel_23.setIcon(new ImageIcon("pictures\\LAL2.jpg"));
+				lblNewLabel_23.setCursor(Cursor
+						.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				lblNewLabel_23.setIcon(new ImageIcon("pictures\\LAL.jpg"));
+				lblNewLabel_23.setCursor(Cursor.getDefaultCursor());
 			}
 		});
 
@@ -798,10 +822,13 @@ public class TeamsSelectionFrame {
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				lblNewLabel_24.setIcon(new ImageIcon("pictures\\PHX2.jpg"));
+				lblNewLabel_24.setCursor(Cursor
+						.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				lblNewLabel_24.setIcon(new ImageIcon("pictures\\PHX.jpg"));
+				lblNewLabel_24.setCursor(Cursor.getDefaultCursor());
 			}
 		});
 
@@ -824,10 +851,13 @@ public class TeamsSelectionFrame {
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				lblNewLabel_25.setIcon(new ImageIcon("pictures\\SAC2.jpg"));
+				lblNewLabel_25.setCursor(Cursor
+						.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				lblNewLabel_25.setIcon(new ImageIcon("pictures\\SAC.jpg"));
+				lblNewLabel_25.setCursor(Cursor.getDefaultCursor());
 			}
 		});
 
@@ -850,10 +880,13 @@ public class TeamsSelectionFrame {
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				lblNewLabel_26.setIcon(new ImageIcon("pictures\\DAL2.jpg"));
+				lblNewLabel_26.setCursor(Cursor
+						.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				lblNewLabel_26.setIcon(new ImageIcon("pictures\\DAL.jpg"));
+				lblNewLabel_26.setCursor(Cursor.getDefaultCursor());
 			}
 		});
 
@@ -876,10 +909,13 @@ public class TeamsSelectionFrame {
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				lblNewLabel_27.setIcon(new ImageIcon("pictures\\HOU2.jpg"));
+				lblNewLabel_27.setCursor(Cursor
+						.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				lblNewLabel_27.setIcon(new ImageIcon("pictures\\HOU.jpg"));
+				lblNewLabel_27.setCursor(Cursor.getDefaultCursor());
 			}
 		});
 
@@ -902,10 +938,13 @@ public class TeamsSelectionFrame {
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				lblNewLabel_28.setIcon(new ImageIcon("pictures\\MEM2.jpg"));
+				lblNewLabel_28.setCursor(Cursor
+						.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				lblNewLabel_28.setIcon(new ImageIcon("pictures\\MEM.jpg"));
+				lblNewLabel_28.setCursor(Cursor.getDefaultCursor());
 			}
 		});
 
@@ -928,10 +967,13 @@ public class TeamsSelectionFrame {
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				lblNewLabel_29.setIcon(new ImageIcon("pictures\\NOP2.jpg"));
+				lblNewLabel_29.setCursor(Cursor
+						.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				lblNewLabel_29.setIcon(new ImageIcon("pictures\\NOP.jpg"));
+				lblNewLabel_29.setCursor(Cursor.getDefaultCursor());
 			}
 		});
 
@@ -954,10 +996,13 @@ public class TeamsSelectionFrame {
 
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				lblNewLabel_30.setIcon(new ImageIcon("pictures\\SAS2.jpg"));
+				lblNewLabel_30.setCursor(Cursor
+						.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 
 			public void mouseExited(java.awt.event.MouseEvent e) {
 				lblNewLabel_30.setIcon(new ImageIcon("pictures\\SAS.jpg"));
+				lblNewLabel_30.setCursor(Cursor.getDefaultCursor());
 			}
 		});
 
@@ -1059,12 +1104,6 @@ public class TeamsSelectionFrame {
 
 		compute = BLController.getInstance();
 		TeamWithPlayersVO twpvo = compute.getTeamAnalysis(teamName);
-		
-		int width = 250;
-		int height = 150;
-		ImageIcon ii = compute.getTeamPic(teamName);
-		ii.setImage(ii.getImage().getScaledInstance(width, height,
-				Image.SCALE_DEFAULT));
 		
 		if(twpvo!=null&&twpvo.getTeam()!=null) {
 			TeamsInfoFrame tip = new TeamsInfoFrame(twpvo);

@@ -1,5 +1,6 @@
 package presentation.teamsui;
 
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Image;
 
@@ -65,11 +66,17 @@ public class TeamsInfoFrame extends JPanel{
 	private static BLController compute;
 	
 	Vector columnName1;
-	DefaultTableModel model_1=new DefaultTableModel();
+	DefaultTableModel model_1=new DefaultTableModel() {
+		private static final long serialVersionUID = 1L;
+
+		public Class<?> getColumnClass(int columnIndex) {
+			return getValueAt(0, columnIndex).getClass();
+		}
+	};
 	private static String selection="投篮命中数";
 	
 	Vector columnName;
-	DefaultTableModel model = new DefaultTableModel();;
+	DefaultTableModel model = new DefaultTableModel();
 
 	public TeamsInfoFrame(final TeamWithPlayersVO twpvo) {// 构造函数
 
@@ -325,6 +332,9 @@ public class TeamsInfoFrame extends JPanel{
 		scrollPane_1.setBounds(60, 231, 795, 471);
 		
 		table_1 = new JTable(model_1);
+		final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(
+				model_1);
+		table_1.setRowSorter(sorter);
 		
 		scrollPane_1.setViewportView(table_1);
 		tabbedPane.addTab("球队信息", null, scrollPane_1, null);
@@ -337,158 +347,158 @@ public class TeamsInfoFrame extends JPanel{
 				switch(index){
 				case 0: 
 					selection="投篮命中数";
-					columnName1.setElementAt("投篮命中数(场均)", 3);
-					columnName1.setElementAt("投篮命中数(总计)", 4);
+					columnName1.setElementAt("投篮命中数(场均)", 4);
+					columnName1.setElementAt("投篮命中数(总计)", 5);
 					updateTeam(twpvo, "投篮命中数");
 					break;
 				case 1:
 					selection="投篮出手数";
-					columnName1.setElementAt("投篮出手数(场均)", 3);
-					columnName1.setElementAt("投篮出手数(总计)", 4);
+					columnName1.setElementAt("投篮出手数(场均)", 4);
+					columnName1.setElementAt("投篮出手数(总计)", 5);
 					updateTeam(twpvo, "投篮出手数");
 					break;
 				case 2: 
 					selection="三分命中数";
-					columnName1.setElementAt("三分命中数(场均)", 3);
-					columnName1.setElementAt("三分命中数(总计)", 4);
+					columnName1.setElementAt("三分命中数(场均)", 4);
+					columnName1.setElementAt("三分命中数(总计)", 5);
 					updateTeam(twpvo, "三分命中数");
 					break;
 				case 3: 
 					selection="三分出手数";
-					columnName1.setElementAt("三分出手数(场均)", 3);
-					columnName1.setElementAt("三分出手数(总计)", 4);
+					columnName1.setElementAt("三分出手数(场均)", 4);
+					columnName1.setElementAt("三分出手数(总计)", 5);
 					updateTeam(twpvo, "三分出手数");
 					break;
 				case 4: 
 					selection="罚球命中数";
-					columnName1.setElementAt("罚球命中数(场均)", 3);
-					columnName1.setElementAt("罚球命中数(总计)", 4);
+					columnName1.setElementAt("罚球命中数(场均)", 4);
+					columnName1.setElementAt("罚球命中数(总计)", 5);
 					updateTeam(twpvo, "罚球命中数");
 					break;
 				case 5: 
 					selection="罚球出手数";
-					columnName1.setElementAt("罚球出手数(场均)", 3);
-					columnName1.setElementAt("罚球出手数(总计)", 4);
+					columnName1.setElementAt("罚球出手数(场均)", 4);
+					columnName1.setElementAt("罚球出手数(总计)", 5);
 					updateTeam(twpvo, "罚球出手数");
 					break;
 				case 6: 
 					selection="进攻篮板";
-					columnName1.setElementAt("进攻篮板(场均)", 3);
-					columnName1.setElementAt("进攻篮板(总计)", 4);
+					columnName1.setElementAt("进攻篮板(场均)", 4);
+					columnName1.setElementAt("进攻篮板(总计)", 5);
 					updateTeam(twpvo, "进攻篮板");
 					break;
 				case 7: 
 					selection="防守篮板";
-					columnName1.setElementAt("防守篮板(场均)", 3);
-					columnName1.setElementAt("防守篮板(总计)", 4);
+					columnName1.setElementAt("防守篮板(场均)", 4);
+					columnName1.setElementAt("防守篮板(总计)", 5);
 					updateTeam(twpvo, "防守篮板");
 					break;
 				case 8: 
 					selection="总篮板";
-					columnName1.setElementAt("总篮板(场均)", 3);
-					columnName1.setElementAt("总篮板(总计)", 4);
+					columnName1.setElementAt("总篮板(场均)", 4);
+					columnName1.setElementAt("总篮板(总计)", 5);
 					updateTeam(twpvo, "总篮板");
 					break;
 				case 9: 
 					selection="助攻";
-					columnName1.setElementAt("助攻(场均)", 3);
-					columnName1.setElementAt("助攻(总计)", 4);
+					columnName1.setElementAt("助攻(场均)", 4);
+					columnName1.setElementAt("助攻(总计)", 5);
 					updateTeam(twpvo, "助攻");
 					break;
 				case 10: 
 					selection="抢断";
-					columnName1.setElementAt("抢断(场均)", 3);
-					columnName1.setElementAt("抢断(总计)", 4);
+					columnName1.setElementAt("抢断(场均)", 4);
+					columnName1.setElementAt("抢断(总计)", 5);
 					updateTeam(twpvo, "抢断");
 					break;
 				case 11: 
 					selection="盖帽";
-					columnName1.setElementAt("盖帽(场均)", 3);
-					columnName1.setElementAt("盖帽(总计)", 4);
+					columnName1.setElementAt("盖帽(场均)", 4);
+					columnName1.setElementAt("盖帽(总计)", 5);
 					updateTeam(twpvo, "盖帽");
 					break;
 				case 12: 
 					selection="失误";
-					columnName1.setElementAt("失误(场均)", 3);
-					columnName1.setElementAt("失误(总计)", 4);
+					columnName1.setElementAt("失误(场均)", 4);
+					columnName1.setElementAt("失误(总计)", 5);
 					updateTeam(twpvo, "失误");
 					break;
 				case 13: 
 					selection="犯规";
-					columnName1.setElementAt("犯规(场均)", 3);
-					columnName1.setElementAt("犯规(总计)", 4);
+					columnName1.setElementAt("犯规(场均)", 4);
+					columnName1.setElementAt("犯规(总计)", 5);
 					updateTeam(twpvo, "犯规");
 					break;
 				case 14: 
 					selection="得分";
-					columnName1.setElementAt("得分(场均)", 3);
-					columnName1.setElementAt("得分(总计)", 4);
+					columnName1.setElementAt("得分(场均)", 4);
+					columnName1.setElementAt("得分(总计)", 5);
 					updateTeam(twpvo, "得分");
 					break;
 				case 15: 
 					selection="投篮命中率";
-					columnName1.setElementAt("投篮命中率(场均)", 3);
-					columnName1.setElementAt("投篮命中率(总计)", 4);
+					columnName1.setElementAt("投篮命中率(场均)", 4);
+					columnName1.setElementAt("投篮命中率(总计)", 5);
 					updateTeam(twpvo, "投篮命中率");
 					break;
 				case 16: 
 					selection="三分命中率";
-					columnName1.setElementAt("三分命中率(场均)", 3);
-					columnName1.setElementAt("三分命中率(总计)", 4);
+					columnName1.setElementAt("三分命中率(场均)", 4);
+					columnName1.setElementAt("三分命中率(总计)", 5);
 					updateTeam(twpvo, "三分命中率");
 					break;
 				case 17: 
 					selection="罚球命中率";
-					columnName1.setElementAt("罚球命中率(场均)", 3);
-					columnName1.setElementAt("罚球命中率(总计)", 4);
+					columnName1.setElementAt("罚球命中率(场均)", 4);
+					columnName1.setElementAt("罚球命中率(总计)", 5);
 					updateTeam(twpvo, "罚球命中率");
 					break;
 				case 18: 
 					selection="胜率";
-					columnName1.setElementAt("胜率(场均)", 3);
-					columnName1.setElementAt("胜率(总计)", 4);
+					columnName1.setElementAt("胜率(场均)", 4);
+					columnName1.setElementAt("胜率(总计)", 5);
 					updateTeam(twpvo, "胜率");
 					break;
 				case 19: 
 					selection="进攻回合";
-					columnName1.setElementAt("进攻回合(场均)", 3);
-					columnName1.setElementAt("进攻回合(总计)", 4);
+					columnName1.setElementAt("进攻回合(场均)", 4);
+					columnName1.setElementAt("进攻回合(总计)", 5);
 					updateTeam(twpvo, "进攻回合");
 					break;
 				case 20: 
 					selection="进攻效率";
-					columnName1.setElementAt("进攻效率(场均)", 3);
-					columnName1.setElementAt("进攻效率(总计)", 4);
+					columnName1.setElementAt("进攻效率(场均)", 4);
+					columnName1.setElementAt("进攻效率(总计)", 5);
 					updateTeam(twpvo, "进攻效率");
 					break;
 				case 21: 
 				    selection="防守效率";
-					columnName1.setElementAt("防守效率(场均)", 3);
-					columnName1.setElementAt("防守效率(总计)", 4);
+					columnName1.setElementAt("防守效率(场均)", 4);
+					columnName1.setElementAt("防守效率(总计)", 5);
 					updateTeam(twpvo, "防守效率");
 					break;
 				case 22: 
 					selection="进攻篮板效率";
-					columnName1.setElementAt("进攻篮板效率(场均)", 3);
-					columnName1.setElementAt("进攻篮板效率(总计)", 4);
+					columnName1.setElementAt("进攻篮板效率(场均)", 4);
+					columnName1.setElementAt("进攻篮板效率(总计)", 5);
 					updateTeam(twpvo, "进攻篮板效率");
 					break;
 				case 23: 
 					selection="防守篮板效率";
-					columnName1.setElementAt("防守篮板效率(场均)", 3);
-					columnName1.setElementAt("防守篮板效率(总计)", 4);
+					columnName1.setElementAt("防守篮板效率(场均)", 4);
+					columnName1.setElementAt("防守篮板效率(总计)", 5);
 					updateTeam(twpvo, "防守篮板效率");
 					break;
 				case 24: 
 					selection="抢断效率";
-					columnName1.setElementAt("抢断效率(场均)", 3);
-					columnName1.setElementAt("抢断效率(总计)", 4);
+					columnName1.setElementAt("抢断效率(场均)", 4);
+					columnName1.setElementAt("抢断效率(总计)", 5);
 					updateTeam(twpvo, "抢断效率");
 					break;
 				case 25: 
 					selection="助攻率";
-					columnName1.setElementAt("助攻率(场均)", 3);
-					columnName1.setElementAt("助攻率(总计)", 4);
+					columnName1.setElementAt("助攻率(场均)", 4);
+					columnName1.setElementAt("助攻率(总计)", 5);
 					updateTeam(twpvo, "助攻率");
 					break;
 				}
@@ -534,27 +544,29 @@ public class TeamsInfoFrame extends JPanel{
 	public void updateTeam(TeamWithPlayersVO twpvo, String con) {
 		
 		ArrayList<PlayerVO> players = twpvo.getPlayers();
+		TeamVO tvo = twpvo.getTeam();
 		Vector rowDatas1 = new Vector();
 		Vector rowData2;
 		ImageIcon picture;
 		int appearance;
-		TeamVO tvo = twpvo.getTeam();
 		switch(con) {
 		case "投篮命中数":
 			for(int i=0;i<players.size();i++) {
 				Vector rowData1 = new Vector();
-				PlayerVO pvo = players.get(i);	
-				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
-				picture.setImage(picture.getImage().getScaledInstance(70, 56,
-						Image.SCALE_DEFAULT));
-				rowData1.add(picture);
-				rowData1.add(pvo.getName());
-				rowData1.add(pvo.getAppearance());			
-				rowData1.add(pvo.getPlayTime());
-				rowData1.add(handle((double) pvo.getHit(), appearance));
-				rowData1.add(pvo.getHit());
-				rowDatas1.add(rowData1);
+				if(players.get(i)!=null){
+					PlayerVO pvo = players.get(i);
+					appearance = pvo.getAppearance();
+					picture = ImageHandle.loadPlayer(pvo.getName());
+					picture.setImage(picture.getImage().getScaledInstance(70, 56,
+							Image.SCALE_DEFAULT));
+					rowData1.add(picture);
+					rowData1.add(pvo.getName());
+					rowData1.add(pvo.getAppearance());			
+					rowData1.add(pvo.getPlayTime());
+					rowData1.add(handle((double) pvo.getHit(), appearance));
+					rowData1.add(pvo.getHit());
+					rowDatas1.add(rowData1);
+				}
 			}
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
@@ -1300,7 +1312,6 @@ public class TeamsInfoFrame extends JPanel{
 		model_1.setColumnCount(table_1.getColumnCount());
 		model_1.setRowCount(rowDatas1.size());
 		table_1.setModel(model_1);
-		table_1.setRowSorter(new TableRowSorter<TableModel>(model_1));
 //		int[] width={50,55,5,3,3,3,3,3,3,3,3,3,3,3};
 //		table_3.setColumnModel(getColumn(table_3, width));
 		table_1.updateUI();
@@ -1443,12 +1454,16 @@ public class TeamsInfoFrame extends JPanel{
 			int r = table.getSelectedRow();
 			int c = table.getSelectedColumn();
 			try {
-				if(c==8){
-					setMatchInfo(r);
-				}
+				setMatchInfo(r);
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
+		}
+		public void mouseEntered(MouseEvent e) {
+			table_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		}
+		public void mouseExited(MouseEvent e) {
+			table_2.setCursor(Cursor.getDefaultCursor());
 		}
 	}
 	

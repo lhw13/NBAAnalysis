@@ -44,7 +44,6 @@ public class TeamsRankingFrame {
 
 	public static JScrollPane scrollPane;
 	private JButton btnNewButton;
-	private JButton refreshButton;
 	private JComboBox<String> comboBox;
 
 	Vector columnName1;
@@ -84,7 +83,7 @@ public class TeamsRankingFrame {
 		table.setModel(model_1);
 		table.setRowSorter(new TableRowSorter<TableModel>(model_1));
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-		table.setRowHeight(100);
+		table.setRowHeight(70);
 		table.addMouseListener(listener);
 		
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
@@ -95,18 +94,14 @@ public class TeamsRankingFrame {
 		scrollPane_1.setViewportView(table);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(50, 50, 800, 500);
+		tabbedPane.setBounds(100, 60, 800, 470);
 		tabbedPane.addTab("球队排名", null, scrollPane_1, null);
 
 		panel.add(tabbedPane);
 
 		btnNewButton = new JButton("返回");
-		btnNewButton.setBounds(200, 10, 120, 30);
+		btnNewButton.setBounds(100, 10, 120, 30);
 		panel.add(btnNewButton);
-		
-		refreshButton = new JButton("最新");
-		refreshButton.setBounds(350, 10, 120, 30);
-		panel.add(refreshButton);
 		
 		String[] names1 = new String[]{"","球队", "场数", "投篮命中数(场均)", "投篮命中数(总计)"};
 		columnName1 = new Vector();
@@ -142,7 +137,7 @@ public class TeamsRankingFrame {
 		comboBox.addItem("抢断效率");
 		comboBox.addItem("助攻率");
 		comboBox.setSelectedItem(MainFrame.selection2);
-		comboBox.setBounds(500, 15, 150, 30);
+		comboBox.setBounds(750, 15, 150, 30);
 		panel.add(comboBox);
 		
 		comboBox.addActionListener(new ActionListener(){
@@ -322,12 +317,6 @@ public class TeamsRankingFrame {
 			}
 		});
 		
-		refreshButton.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				updataTeamsRanking();
-			}
-		});
 	}
 	
 	public void updataTeamsRanking(){
@@ -340,7 +329,7 @@ public class TeamsRankingFrame {
 			TeamVO tvo = tvoList.get(i);
 			int appearance = tvo.getAppearance();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(100, 100,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData1.add(picture);
 			rowData1.add(tvo.getFullName());

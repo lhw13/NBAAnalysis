@@ -41,7 +41,6 @@ public class PlayerRankingPanel extends JPanel {
 	
 	public static JScrollPane scrollPane;
 	private JButton btnNewButton;
-	private JButton refreshButton;
 	private JComboBox<String> comboBox;
 	public static JTable table;
 
@@ -74,13 +73,13 @@ public class PlayerRankingPanel extends JPanel {
 		setLayout(null);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 0, 990, 560);
+		scrollPane.setBounds(0, 0, 990, 600);
 
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 
 		btnNewButton = new JButton("返回");
-		btnNewButton.setBounds(50, 28, 100, 40);
+		btnNewButton.setBounds(50, 10, 100, 40);
 
 		btnNewButton.addActionListener(new ActionListener() {
 
@@ -100,25 +99,13 @@ public class PlayerRankingPanel extends JPanel {
 			columnName1.add(names1[i]);
 		}
 		
-		refreshButton = new JButton("最新");
-		refreshButton.setBounds(50, 130, 100, 30);
-		panel.add(refreshButton);
-
-		refreshButton.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				updatePlayerRanking();
-			}
-
-		});
-		
 		table = new JTable();
 		table.setModel(model_1);
 		final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(
 				model_1);
 		table.setRowSorter(sorter);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-		table.setRowHeight(80);
+		table.setRowHeight(56);
 		
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(JLabel.CENTER);
@@ -127,19 +114,18 @@ public class PlayerRankingPanel extends JPanel {
 		table.addMouseListener(listener);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(50, 175, 800, 1167);
+		tabbedPane.setBounds(50, 150, 800, 400);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setViewportView(table);
 		tabbedPane.addTab("球员排名", null, scrollPane_1, null);
 
-		panel.setPreferredSize(new Dimension(900, 1400));
 		panel.add(btnNewButton);
 		panel.add(tabbedPane);
 		scrollPane.setViewportView(panel);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		chckbxNewCheckBox = new JCheckBox("前锋");
-		chckbxNewCheckBox.setBounds(200, 30, 150, 30);
+		chckbxNewCheckBox.setBounds(200, 10, 150, 30);
 		panel.add(chckbxNewCheckBox);
 		
 		comboBox = new JComboBox<String>();
@@ -158,7 +144,7 @@ public class PlayerRankingPanel extends JPanel {
 		comboBox.addItem("罚球");
 		comboBox.addItem("两双");
 		comboBox.setSelectedItem(MainFrame.selection1);
-		comboBox.setBounds(700, 160, 150, 30);
+		comboBox.setBounds(700, 130, 150, 30);
 		panel.add(comboBox);
 		
 		comboBox.addActionListener(new ActionListener(){
@@ -378,7 +364,7 @@ public class PlayerRankingPanel extends JPanel {
 		});
 
 		chckbxNewCheckBox_1 = new JCheckBox("中锋");
-		chckbxNewCheckBox_1.setBounds(200, 70, 150, 30);
+		chckbxNewCheckBox_1.setBounds(200, 40, 150, 30);
 		panel.add(chckbxNewCheckBox_1);
 
 		chckbxNewCheckBox_1.addItemListener(new ItemListener() {
@@ -503,7 +489,7 @@ public class PlayerRankingPanel extends JPanel {
 		});
 
 		chckbxNewCheckBox_2 = new JCheckBox("后卫");
-		chckbxNewCheckBox_2.setBounds(200, 110, 150, 30);
+		chckbxNewCheckBox_2.setBounds(200, 70, 150, 30);
 		panel.add(chckbxNewCheckBox_2);
 
 		chckbxNewCheckBox_2.addItemListener(new ItemListener() {
@@ -628,7 +614,7 @@ public class PlayerRankingPanel extends JPanel {
 		});
 
 		chckbxNewCheckBox_3 = new JCheckBox("东部");
-		chckbxNewCheckBox_3.setBounds(380, 30, 150, 30);
+		chckbxNewCheckBox_3.setBounds(380, 10, 150, 30);
 		panel.add(chckbxNewCheckBox_3);
 
 		chckbxNewCheckBox_3.addItemListener(new ItemListener() {
@@ -737,7 +723,7 @@ public class PlayerRankingPanel extends JPanel {
 		});
 
 		chckbxNewCheckBox_4 = new JCheckBox("西部");
-		chckbxNewCheckBox_4.setBounds(380, 70, 150, 30);
+		chckbxNewCheckBox_4.setBounds(380, 40, 150, 30);
 		panel.add(chckbxNewCheckBox_4);
 
 		chckbxNewCheckBox_4.addItemListener(new ItemListener() {
@@ -846,7 +832,7 @@ public class PlayerRankingPanel extends JPanel {
 		});
 
 		chckbxNewCheckBox_5 = new JCheckBox("中区");
-		chckbxNewCheckBox_5.setBounds(540, 30, 150, 30);
+		chckbxNewCheckBox_5.setBounds(540, 10, 150, 30);
 		panel.add(chckbxNewCheckBox_5);
 
 		chckbxNewCheckBox_5.addItemListener(new ItemListener() {
@@ -940,7 +926,7 @@ public class PlayerRankingPanel extends JPanel {
 		});
 
 		chckbxNewCheckBox_6 = new JCheckBox("大西洋区");
-		chckbxNewCheckBox_6.setBounds(540, 70, 150, 30);
+		chckbxNewCheckBox_6.setBounds(540, 40, 150, 30);
 		panel.add(chckbxNewCheckBox_6);
 
 		chckbxNewCheckBox_6.addItemListener(new ItemListener() {
@@ -1034,7 +1020,7 @@ public class PlayerRankingPanel extends JPanel {
 		});
 
 		chckbxNewCheckBox_7 = new JCheckBox("东南区");
-		chckbxNewCheckBox_7.setBounds(540, 110, 150, 30);
+		chckbxNewCheckBox_7.setBounds(540, 70, 150, 30);
 		panel.add(chckbxNewCheckBox_7);
 
 		chckbxNewCheckBox_7.addItemListener(new ItemListener() {
@@ -1128,7 +1114,7 @@ public class PlayerRankingPanel extends JPanel {
 		});
 
 		chckbxNewCheckBox_8 = new JCheckBox("西北区");
-		chckbxNewCheckBox_8.setBounds(690, 30, 150, 30);
+		chckbxNewCheckBox_8.setBounds(690, 10, 150, 30);
 		panel.add(chckbxNewCheckBox_8);
 
 		chckbxNewCheckBox_8.addItemListener(new ItemListener() {
@@ -1222,7 +1208,7 @@ public class PlayerRankingPanel extends JPanel {
 		});
 
 		chckbxNewCheckBox_9 = new JCheckBox("太平洋区");
-		chckbxNewCheckBox_9.setBounds(690, 70, 150, 30);
+		chckbxNewCheckBox_9.setBounds(690, 40, 150, 30);
 		panel.add(chckbxNewCheckBox_9);
 
 		chckbxNewCheckBox_9.addItemListener(new ItemListener() {
@@ -1316,7 +1302,7 @@ public class PlayerRankingPanel extends JPanel {
 		});
 
 		chckbxNewCheckBox_10 = new JCheckBox("西南区");
-		chckbxNewCheckBox_10.setBounds(690, 116, 150, 30);
+		chckbxNewCheckBox_10.setBounds(690, 70, 150, 30);
 		panel.add(chckbxNewCheckBox_10);
 
 		chckbxNewCheckBox_10.addItemListener(new ItemListener() {
@@ -1410,7 +1396,7 @@ public class PlayerRankingPanel extends JPanel {
 		});
 
 		JButton btnNewButton_1 = new JButton("显示全部");
-		btnNewButton_1.setBounds(50, 90, 100, 30);
+		btnNewButton_1.setBounds(50, 60, 100, 30);
 		panel.add(btnNewButton_1);
 		
 		add(scrollPane);
@@ -1453,7 +1439,7 @@ public class PlayerRankingPanel extends JPanel {
 				pvo = pvoList.get(i);
 				int appearance = pvo.getAppearance();
 				picture = ImageHandle.loadPlayer(pvo.getName());
-				picture.setImage(picture.getImage().getScaledInstance(100, 80,
+				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
 				rowData1.add(pvo.getName());

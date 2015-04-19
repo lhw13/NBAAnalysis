@@ -50,6 +50,8 @@ public class Player implements Cloneable{
 	ArrayList<TeamInMatches> thisTeamPast = new ArrayList<TeamInMatches>();
 	ArrayList<TeamInMatches> opponentTeamPast = new ArrayList<TeamInMatches>();
 
+	int highestScore=0;
+	
 	int appearance = 0;// 比赛场数
 	int starting = 0;// 先发场数
 	int playTime = 0;// 在场时间
@@ -245,6 +247,8 @@ public class Player implements Cloneable{
 		fault += player.getMiss();
 		foul += player.getFoul();
 		score += scoretemp;
+		if(scoretemp>highestScore)
+			highestScore=scoretemp;
 		char p = player.getPosition();
 		if (p == 'F' || p == 'G' || p == 'C')
 			starting++;
@@ -279,7 +283,7 @@ public class Player implements Cloneable{
 				getReboundEfficient(), getOffendReboundEfficient(),
 				getDefendReboundEfficient(), getAssistEfficient(), getStealEfficient(),
 				getBlockShotEfficient(), getFaultEfficient(), getFrequency(), doubleTwo, matches,
-				scorePromotion, reboundPromotion, assistPromotion);
+				scorePromotion, reboundPromotion, assistPromotion, highestScore);
 	}
 	
 	public PlayerHighInfo toHighInfo(){

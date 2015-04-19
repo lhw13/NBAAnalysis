@@ -20,7 +20,7 @@ public class PlayerVO {
 			double reboundRate, double offensiveReboundRate,
 			double defensiveReboundRate, double assistRate, double stealRate,
 			double blockRate, double missRate, double useRate, double towPairs, ArrayList<MatchPO> matches, 
-			double scorePromotion, double reboundPromotion, double assistPromotion) {
+			double scorePromotion, double reboundPromotion, double assistPromotion, int highestScore) {
 		super();
 		this.teamFullName = teamFullName;
 		this.teamAbbreviation = teamAbbreviation;
@@ -73,6 +73,7 @@ public class PlayerVO {
 		this.scorePromotion = scorePromotion;
 		this.reboundPromotion = reboundPromotion;
 		this.assistPromotion = assistPromotion;
+		this.highestScore = highestScore;
 	}
 
 	public PlayerVO() {
@@ -136,6 +137,8 @@ public class PlayerVO {
 	double scorePromotion;
 	double reboundPromotion;
 	double assistPromotion;
+	
+	int highestScore;
 
 	public String getTeamFullName() {
 		return teamFullName;
@@ -391,5 +394,9 @@ public class PlayerVO {
 		case "assist": return assistPromotion;
 		default: return 0;
 		}
+	}
+
+	public int getHighestScore() {
+		return highestScore;
 	}
 }

@@ -84,7 +84,7 @@
 <include>**/*Test.java</include> <!-- 两个星号**用来匹配任意路径，一个星号*用来获取除路径风格符外的0个或多个字符 -->
 </includes>
 <excludes>
-<!-- 可以去除符合要求但不想测试的类 -->
+<exclude>**/*TestF.java</exclude>
 </excludes>
 </configuration>
 </plugin>

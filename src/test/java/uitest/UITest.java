@@ -11,7 +11,7 @@ import console.Console;
 
 public class UITest {
 	@Test
-	public void uiTest()
+	public void uiTestF()
 	{
 		MainFrame fm = new MainFrame();
 		fm.setPlayersRanking();

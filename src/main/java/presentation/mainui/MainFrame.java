@@ -42,7 +42,7 @@ import vo.TeamWithPlayersVO;
 public class MainFrame {
 
 	public static JFrame frame;
-	public static Panels currentPanel;
+	public static Panels currentPanel=Panels.MainFrame;
 	public static JPanel panel;
 
 	public static PlayerInfoPanel pip;
@@ -150,7 +150,6 @@ public class MainFrame {
 	private void initPanels() {
 
 		//初始化球员选择面板
-		currentPanel = Panels.MainFrame;
 		psp = new PlayerSelectionPanel();
 		frame.getContentPane().add(PlayerSelectionPanel.scrollPane);
 		PlayerSelectionPanel.scrollPane.setVisible(false);

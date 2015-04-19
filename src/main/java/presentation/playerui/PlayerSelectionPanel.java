@@ -8,6 +8,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -963,73 +964,87 @@ public class PlayerSelectionPanel extends JPanel {
 				e1.printStackTrace();
 			}
 		}
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			JTable table = (JTable) e.getSource();
+			table.setCursor(Cursor
+					.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			JTable table = (JTable) e.getSource();
+			table.setCursor(Cursor.getDefaultCursor());
+
+		}
 		
 	}
 	
 	public static String translate(String team){
 		String result = "夏洛特山猫";
         if(team.equals("SAS"))
-        	result = "圣安东尼马刺";
+        	result = "马刺";
         else if(team.equals("MEM"))
-        	result = "孟菲斯灰熊";
+        	result = "灰熊";
         else if(team.equals("DAL"))
-        	result = "达拉斯小牛";
+        	result = "小牛";
         else if(team.equals("HOU"))
-        	result = "休斯顿火箭";
+        	result = "火箭";
         else if(team.equals("NOP"))
-        	result = "新尔良鹈鹕";
+        	result = "鹈鹕";
         else if(team.equals("NOH"))
-        	result = "新尔良鹈鹕";        
+        	result = "鹈鹕";        
         else if(team.equals("MIN"))
-        	result = "明尼苏达森林狼";
+        	result = "森林狼";
         else if(team.equals("DEN"))
-        	result = "丹佛掘金";
+        	result = "掘金";
         else if(team.equals("UTA"))
-        	result = "尤他爵士";
+        	result = "爵士";
         else if(team.equals("POR"))
-        	result = "波特兰开拓者";
+        	result = "开拓者";
         else if(team.equals("OKC"))
-        	result = "俄克拉荷马雷霆";
+        	result = "雷霆";
         else if(team.equals("SAC"))
-        	result = "萨克拉门托国王";
+        	result = "国王";
         else if(team.equals("PHX"))
-        	result = "菲尼克斯太阳";
+        	result = "太阳";
         else if(team.equals("LAL"))
-        	result = "洛杉矶湖人";
+        	result = "湖人";
         else if(team.equals("LAC"))
-        	result = "洛杉矶快船";
+        	result = "快船";
         else if(team.equals("GSW"))
-        	result = "金州勇士";
+        	result = "勇士";
         else if(team.equals("MIA"))
-        	result = "迈密热";
+        	result = "热火";
         else if(team.equals("ORL"))
-        	result = "兰多魔术";
+        	result = "魔术";
         else if(team.equals("ATL"))
-        	result = "亚特兰大老鹰";
+        	result = "老鹰";
         else if(team.equals("WAS"))
-        	result = "华盛顿奇才";
+        	result = "奇才";
         else if(team.equals("CHA"))
-        	result = "夏洛特黄蜂";
+        	result = "黄蜂";
         else if(team.equals("DET"))
-        	result = "底特律活塞";
+        	result = "活塞";
         else if(team.equals("IND"))
-        	result = "印第安纳步行者";
+        	result = "步行者";
         else if(team.equals("CLE"))
-        	result = "克里夫兰骑士";
+        	result = "骑士";
         else if(team.equals("CHI"))
-        	result = "芝加哥公牛";
+        	result = "公牛";
         else if(team.equals("MIL"))
-        	result = "密尔沃基雄鹿";
+        	result = "雄鹿";
         else if(team.equals("BOS"))
-        	result = "波士顿凯尔特人";
+        	result = "凯尔特人";
         else if(team.equals("PHI"))
-        	result = "费城76人";
+        	result = "76人";
         else if(team.equals("NYK"))
-        	result = "纽约尼克斯";
+        	result = "尼克斯";
         else if(team.equals("BKN"))
-        	result = "布鲁克林篮网";
+        	result = "篮网";
         else if(team.equals("TOR"))
-        	result = "多伦多猛龙";
+        	result = "猛龙";
         
         return result;
 	}

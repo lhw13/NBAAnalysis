@@ -55,39 +55,18 @@ public class PlayerInfoPanel extends JPanel {
 	private JTable table_3;
 	private JScrollPane scrollPane_5;
 	private JTable table_4;
-//	DefaultTableModel model = new DefaultTableModel(
-//			new Object[][] { { null, null, null, null, null, null, null, null,
-//					null, null, null, null }, }, new String[] { "姓名", "联盟",
-//					"分区", "球队", "号码", "位置"  });
 
-	DefaultTableModel model_1 = new DefaultTableModel(new Object[][] { { null,
-			null, null, null, null, null, null, null, null, null }, },
-			new String[] { "参赛场数", "先发场数", "篮板数", "助攻数", "进攻数", "防守数", "抢断数",
-					"盖帽数", "失误数", "犯规数" });
+	DefaultTableModel model_1 = new DefaultTableModel();
 
-	DefaultTableModel model_2 = new DefaultTableModel(new Object[][] { { null,
-			null, null, null, null, null, null, null, null, null }, },
-			new String[] { "参赛场数", "先发场数", "篮板数", "助攻数", "进攻数", "防守数", "抢断数",
-					"盖帽数", "失误数", "犯规数" });
+	DefaultTableModel model_2 = new DefaultTableModel();
 
-	DefaultTableModel model_3 = new DefaultTableModel(new Object[][] { { null,
-			null, null, null, null, null, null }, }, new String[] { "投篮命中率",
-			"三分命中率", "罚球命中率", "真实命中率", "效率", "GmSc效率", "投篮效率", });
+	DefaultTableModel model_3 = new DefaultTableModel();
 
-	DefaultTableModel model_4 = new DefaultTableModel(new Object[][] { { null,
-			null, null, null, null, null, null }, }, new String[] { "篮板率",
-			"进攻篮板率", "防守篮板率", "盖帽率", "失误率", "使用率", "助攻率", "抢断率" });
-	DefaultTableModel model_5 = new DefaultTableModel(new Object[][] { { null,
-			null, null, null, null, null, null, null, null }, }, new String[] {
-			"得分", "在场时间", "命中", "出手", "三分命中", "三分出手", "罚球命中", "罚球出手", "两双" });
-
-	DefaultTableModel model_6 = new DefaultTableModel(new Object[][] { { null,
-			null, null, null, null, null, null, null, null }, }, new String[] {
-			"得分", "在场时间", "命中", "出手", "三分命中", "三分出手", "罚球命中", "罚球出手", "两双" });
-	
-	
-	
 	DefaultTableModel model_8 = new DefaultTableModel();
+	Vector columnName1 = new Vector();
+	Vector columnName2 = new Vector();
+	Vector columnName3 = new Vector();
+	
 	Vector columnName8 = new Vector();
 	Vector columnName9 = new Vector();
 	
@@ -111,18 +90,11 @@ public class PlayerInfoPanel extends JPanel {
 		scrollPane = new JScrollPane(panelOfBottom);
 
 		labelOfPhoto = new JLabel("photo");
-		labelOfPhoto.setBounds(726, 23, 230, 185);
+		labelOfPhoto.setBounds(126, 37, 230, 185);
 		panelOfBottom.add(labelOfPhoto);
 
-
-//		scrollPane_1 = new JScrollPane();
-//		scrollPane_1.setBounds(5, 35, 686, 43);
-//		panelOfBottom.add(scrollPane_1);
-
-		//table = new JTable(model);
-
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(5, 184, 686, 77);
+		tabbedPane.setBounds(5, 226, 770, 88);
 		panelOfBottom.add(tabbedPane);
 
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -158,41 +130,30 @@ public class PlayerInfoPanel extends JPanel {
 
 		JScrollPane scrollPane_4 = new JScrollPane();
 
-		scrollPane_4.setBounds(5, 291, 686, 43);
+		scrollPane_4.setBounds(5, 350, 770, 58);
 		panelOfBottom.add(scrollPane_4);
 
 		table_3 = new JTable(model_3);
 		scrollPane_4.setViewportView(table_3);
-
-		scrollPane_5 = new JScrollPane();
-		scrollPane_5.setBounds(5, 344, 686, 43);
-		panelOfBottom.add(scrollPane_5);
-
-		table_4 = new JTable(model_4);
-
-		scrollPane_5.setViewportView(table_4);
-
-		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane_1.setBounds(5, 85, 686, 77);
-		panelOfBottom.add(tabbedPane_1);
-
-		JScrollPane scrollPane_6 = new JScrollPane();
-		tabbedPane_1.addTab("场均", null, scrollPane_6, null);
-
-		table_5 = new JTable(model_5);
-		scrollPane_6.setViewportView(table_5);
-
-		JScrollPane scrollPane_7 = new JScrollPane();
-		tabbedPane_1.addTab("总计", null, scrollPane_7, null);
-
-		table_6 = new JTable(model_6);
-
-		scrollPane_7.setViewportView(table_6);
 		
 		JScrollPane scrollPane_9 = new JScrollPane();
-		scrollPane_9.setBounds(5, 448, 686, 123);
+		scrollPane_9.setBounds(5, 448, 703, 129);
 		panelOfBottom.add(scrollPane_9);
-		
+		String[] cname1 = new String[] {"赛季","球队","出场","首发","时间","投篮","三分",
+				"罚球","前篮板","后篮板","总篮板","助攻","抢断","盖帽","失误","犯规","得分"};
+		for(int i=0;i<cname1.length;i++) {
+			columnName1.add(cname1[i]);
+		}	
+		String[] cname2 = new String[] {"赛季","球队","出场","首发","时间","投篮","三分",
+				"罚球","前篮板","后篮板","总篮板","助攻","抢断","盖帽","失误","犯规","得分"};
+		for(int i=0;i<cname2.length;i++) {
+			columnName2.add(cname2[i]);
+		}	
+		String[] cname3 = new String[] {"赛季","真实命中率", "效率", "GmSc效率", "投篮效率","篮板率",
+				"进攻篮板率", "防守篮板率", "盖帽率", "失误率", "使用率", "助攻率", "抢断率"};
+		for(int i=0;i<cname3.length;i++) {
+			columnName3.add(cname3[i]);
+		}	
 		String[] cname8 = new String[] {
 				"日期", "比赛", "时间", "投篮", "三分", "罚球","前篮板","后篮板","篮板",
 				"助攻","抢断","盖帽","失误","犯规"
@@ -248,8 +209,12 @@ public class PlayerInfoPanel extends JPanel {
 		panelOfBottom.add(lblNewLabel);
 		
 		table_9 = new JTable(model_9);
-		table_9.setBounds(726, 249, 230, 249);
+		table_9.setBounds(387, 10, 230, 228);
 		panelOfBottom.add(table_9);
+		
+		JLabel label_1 = new JLabel("高阶数据查询");
+		label_1.setBounds(5, 324, 83, 15);
+		panelOfBottom.add(label_1);
 		
 		
 		//scrollPane.setBounds(0, 0, 990, 600);
@@ -276,66 +241,49 @@ public class PlayerInfoPanel extends JPanel {
 		vo = blservice.getPlayerAnalysis(name);
 		if (vo == null)
 			return;
-//		Vector rowData = new Vector();
-//		Vector rowDatas = new Vector();
-//		rowData.add(vo.getName());
-//		rowData.add(vo.getDivision());
-//		rowData.add(vo.getZone());
-//		rowData.add(vo.getTeamFullName());
-//		rowData.add(vo.getNumber());
-//		rowData.add(vo.getPosition());
-//		rowData.add(vo.getHeight().toString());
-//		rowData.add(vo.getWeight());
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//		String dateStr = sdf.format(vo.getBirth().getTime());
-//		rowData.add(dateStr);
-//		rowData.add(vo.getAge());
-//		if (vo.getExp() != -1)
-//			rowData.add(vo.getExp());
-//		else
-//			rowData.add("未知");
-//		rowData.add(vo.getSchool());
-//		rowDatas.add(rowData);
-//
-//		for (int i = 0; i < rowDatas.size(); i++) {
-//			for (int j = 0; j < table.getColumnCount(); j++) {
-//				model.setValueAt(((Vector) rowDatas.get(i)).get(j), i, j);
-//			}
-//		}
-//		model.setColumnCount(table.getColumnCount());
-//		model.setRowCount(rowDatas.size());
-//		table.setModel(model);
-//		table.updateUI();
 
-		Vector rowData_1 = new Vector();
+		Vector rowData_1 = new Vector();//场均
 		Vector rowDatas_1 = new Vector();
 		double num = vo.getAppearance();
+		rowData_1.add(vo.getMatches().get(0).getSeason());
+		rowData_1.add(MainFrame.psp.translate(vo.getTeamAbbreviation()));		
 		rowData_1.add(vo.getAppearance());
 		rowData_1.add(vo.getStarting());
+		rowData_1.add(handleDecimal((vo.getPlayTime()/60.0)/num));
+		rowData_1.add(handleDecimal(vo.getHitRate()*100)+"%");//投篮命中率
+		rowData_1.add(handleDecimal(vo.getThirdHitRate()*100)+"%");//三分命中率
+		rowData_1.add(handleDecimal(vo.getFreeHitRate()*100)+"%");//罚球命中率
+		rowData_1.add(handleDecimal(vo.getOffensiveRebound() / num));//前篮板
+		rowData_1.add(handleDecimal(vo.getDefensiveRebound() / num));//后篮板
 		rowData_1.add(handleDecimal(vo.getTotalRebound() / num));
-		rowData_1.add(handleDecimal(vo.getAssist() / num));
-		rowData_1.add(handleDecimal(vo.getOffensiveRebound() / num));
-		rowData_1.add(handleDecimal(vo.getDefensiveRebound() / num));
+		rowData_1.add(handleDecimal(vo.getAssist() / num));		
 		rowData_1.add(handleDecimal(vo.getSteal() / num));
 		rowData_1.add(handleDecimal(vo.getBlock() / num));
 		rowData_1.add(handleDecimal(vo.getMiss() / num));
 		rowData_1.add(handleDecimal(vo.getFoul() / num));
+		rowData_1.add(handleDecimal(vo.getScore() / num));		
 		rowDatas_1.add(rowData_1);
 
-		for (int i = 0; i < rowDatas_1.size(); i++) {
-			for (int j = 0; j < table_1.getColumnCount(); j++) {
-				model_1.setValueAt(((Vector) rowDatas_1.get(i)).get(j), i, j);
-			}
-		}
+		model_1.setDataVector(rowDatas_1, columnName1);
 		model_1.setColumnCount(table_1.getColumnCount());
 		model_1.setRowCount(rowDatas_1.size());
 		table_1.setModel(model_1);
+		int[] width_1={10,8,5,5,3,15,18,15,3,3,3,3,3,3,3,3,3};
+		table_1.setColumnModel(getColumn(table_1, width_1));
 		table_1.updateUI();
 
-		Vector rowData_2 = new Vector();
+		Vector rowData_2 = new Vector();//总计
 		Vector rowDatas_2 = new Vector();
+		rowData_2.add(vo.getMatches().get(0).getSeason());
+		rowData_2.add(MainFrame.psp.translate(vo.getTeamAbbreviation()));		
 		rowData_2.add(vo.getAppearance());
 		rowData_2.add(vo.getStarting());
+		rowData_2.add(vo.getPlayTime()/60);
+		rowData_2.add(vo.getHit()+"-"+vo.getShot());//投篮
+		rowData_2.add(vo.getThirdHit()+"-"+vo.getThirdshot());//三分
+		rowData_2.add(vo.getFreeHit()+"-"+vo.getFreeshot());//罚球
+		rowData_2.add(vo.getOffensiveRebound());//前篮板
+		rowData_2.add(vo.getDefensiveRebound());//后篮板
 		rowData_2.add(vo.getTotalRebound());
 		rowData_2.add(vo.getAssist());
 		rowData_2.add(vo.getOffensiveRebound());
@@ -346,104 +294,41 @@ public class PlayerInfoPanel extends JPanel {
 		rowData_2.add(vo.getFoul());
 		rowDatas_2.add(rowData_2);
 
-		for (int i = 0; i < rowDatas_2.size(); i++) {
-			for (int j = 0; j < table_2.getColumnCount(); j++) {
-				model_2.setValueAt(((Vector) rowDatas_2.get(i)).get(j), i, j);
-			}
-		}
+		model_2.setDataVector(rowDatas_2, columnName2);
 		model_2.setColumnCount(table_2.getColumnCount());
 		model_2.setRowCount(rowDatas_2.size());
 		table_2.setModel(model_2);
+		int[] width_2={8,5,3,3,8,15,18,15,5,5,5,5,5,3,3,3,3};
+		table_2.setColumnModel(getColumn(table_2, width_2));
 		table_2.updateUI();
 
 		Vector rowData_3 = new Vector();
 		Vector rowDatas_3 = new Vector();
-		rowData_3.add(handleDecimal(vo.getHitRate()));
-		rowData_3.add(handleDecimal(vo.getThirdHitRate()));
-		rowData_3.add(handleDecimal(vo.getFreeHitRate()));
-		rowData_3.add(handleDecimal(vo.getRealHitRate()));
-		rowData_3.add(handleDecimal(vo.getEfficiency()));
+		rowData_3.add(vo.getMatches().get(0).getSeason());
+		rowData_3.add(handleDecimal(vo.getRealHitRate()*100)+"%");
+		rowData_3.add(vo.getEfficiency());
 		rowData_3.add(handleDecimal(vo.getGmScEfficiency()));
 		rowData_3.add(handleDecimal(vo.getShotEfficiency()));
+		rowData_3.add(handleDecimal(vo.getReboundRate()*100)+"%");
+		rowData_3.add(handleDecimal(vo.getOffensiveReboundRate()*100)+"%");
+		rowData_3.add(handleDecimal(vo.getDefensiveReboundRate()*100)+"%");
+		rowData_3.add(handleDecimal(vo.getBlockRate()*100)+"%");
+		rowData_3.add(handleDecimal(vo.getAssistRate()*100)+"%");
+		rowData_3.add(handleDecimal(vo.getStealRate()*100)+"%");		
+		rowData_3.add(handleDecimal(vo.getMissRate()*100)+"%");
+		rowData_3.add(handleDecimal(vo.getUseRate()*100)+"%");
+		
+		
 		rowDatas_3.add(rowData_3);
 
-		for (int i = 0; i < rowDatas_3.size(); i++) {
-			for (int j = 0; j < table_3.getColumnCount(); j++) {
-				model_3.setValueAt(((Vector) rowDatas_3.get(i)).get(j), i, j);
-			}
-		}
+		model_3.setDataVector(rowDatas_3, columnName3);
 		model_3.setColumnCount(table_3.getColumnCount());
 		model_3.setRowCount(rowDatas_3.size());
 		table_3.setModel(model_3);
+     	int[] width_3={50,70,50,70,60,70,70,70,50,50,50,50};
+		table_3.setColumnModel(getColumn(table_3, width_3));
 		table_3.updateUI();
 
-		Vector rowData_4 = new Vector();
-		Vector rowDatas_4 = new Vector();
-		rowData_4.add(handleDecimal(vo.getReboundRate()));
-		rowData_4.add(handleDecimal(vo.getOffensiveReboundRate()));
-		rowData_4.add(handleDecimal(vo.getDefensiveReboundRate()));
-		rowData_4.add(handleDecimal(vo.getBlockRate()));
-		rowData_4.add(handleDecimal(vo.getMissRate()));
-		rowData_4.add(handleDecimal(vo.getUseRate()));
-		rowData_4.add(handleDecimal(vo.getAssistRate()));
-		rowData_4.add(handleDecimal(vo.getStealRate()));
-		rowDatas_4.add(rowData_4);
-
-		for (int i = 0; i < rowDatas_4.size(); i++) {
-			for (int j = 0; j < table_4.getColumnCount(); j++) {
-				model_4.setValueAt(((Vector) rowDatas_4.get(i)).get(j), i, j);
-			}
-		}
-		model_4.setColumnCount(table_4.getColumnCount());
-		model_4.setRowCount(rowDatas_4.size());
-		table_4.setModel(model_4);
-		table_4.updateUI();
-
-		Vector rowData_5 = new Vector();
-		Vector rowDatas_5 = new Vector();
-		rowData_5.add(handleDecimal(vo.getScore() / num));
-		rowData_5.add(handleDecimal(vo.getPlayTime() / num));
-		rowData_5.add(handleDecimal(vo.getHit() / num));
-		rowData_5.add(handleDecimal(vo.getShot() / num));
-		rowData_5.add(handleDecimal(vo.getThirdHit() / num));
-		rowData_5.add(handleDecimal(vo.getThirdshot() / num));
-		rowData_5.add(handleDecimal(vo.getFreeHit() / num));
-		rowData_5.add(handleDecimal(vo.getFreeshot() / num));
-		rowData_5.add(handleDecimal(vo.getTowPairs() / num));
-		rowDatas_5.add(rowData_5);
-		model_5.setColumnCount(table_5.getColumnCount());
-		model_5.setRowCount(rowDatas_5.size());
-		for (int i = 0; i < rowDatas_5.size(); i++) {
-			for (int j = 0; j < table_5.getColumnCount(); j++) {
-				model_5.setValueAt(((Vector) rowDatas_5.get(i)).get(j), i, j);
-			}
-		}
-		
-		table_5.setModel(model_5);
-		table_5.updateUI();
-
-		Vector rowData_6 = new Vector();
-		Vector rowDatas_6 = new Vector();
-		rowData_6.add(vo.getScore());
-		rowData_6.add(vo.getPlayTime());
-		rowData_6.add(vo.getHit());
-		rowData_6.add(vo.getShot());
-		rowData_6.add(vo.getThirdHit());
-		rowData_6.add(vo.getThirdshot());
-		rowData_6.add(vo.getFreeHit());
-		rowData_6.add(vo.getFreeshot());
-		rowData_6.add(vo.getTowPairs());
-		rowDatas_6.add(rowData_6);
-
-		for (int i = 0; i < rowDatas_6.size(); i++) {
-			for (int j = 0; j < table_6.getColumnCount(); j++) {
-				model_6.setValueAt(((Vector) rowDatas_6.get(i)).get(j), i, j);
-			}
-		}
-		model_6.setColumnCount(table_6.getColumnCount());
-		model_6.setRowCount(rowDatas_6.size());
-		table_6.setModel(model_6);
-		table_6.updateUI();				
 		
 		Vector rowDatas8 = new Vector();
 		ArrayList<MatchPO> matches = vo.getMatches();
@@ -490,8 +375,8 @@ public class PlayerInfoPanel extends JPanel {
 		model_8.setColumnCount(table_8.getColumnCount());
 		model_8.setRowCount(rowDatas8.size());
 		table_8.setModel(model_8);
-		int[] width={50,60,5,3,3,3,3,3,3,3,3,3,3,3};
-		table_8.setColumnModel(getColumn(table_8, width));
+		int[] width_8={50,60,5,3,3,3,3,3,3,3,3,3,3,3};
+		table_8.setColumnModel(getColumn(table_8, width_8));
 		table_8.updateUI();
 		
 		Vector rowDatas9 = new Vector();
@@ -603,66 +488,49 @@ public class PlayerInfoPanel extends JPanel {
 		vo = blservice.getPlayerAnalysis(name);
 		if (vo == null)
 			return;
-//		Vector rowData = new Vector();
-//		Vector rowDatas = new Vector();
-//		rowData.add(vo.getName());
-//		rowData.add(vo.getDivision());
-//		rowData.add(vo.getZone());
-//		rowData.add(vo.getTeamFullName());
-//		rowData.add(vo.getNumber());
-//		rowData.add(vo.getPosition());
-//		rowData.add(vo.getHeight().toString());
-//		rowData.add(vo.getWeight());
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//		String dateStr = sdf.format(vo.getBirth().getTime());
-//		rowData.add(dateStr);
-//		rowData.add(vo.getAge());
-//		if (vo.getExp() != -1)
-//			rowData.add(vo.getExp());
-//		else
-//			rowData.add("未知");
-//		rowData.add(vo.getSchool());
-//		rowDatas.add(rowData);
-//
-//		for (int i = 0; i < rowDatas.size(); i++) {
-//			for (int j = 0; j < table.getColumnCount(); j++) {
-//				model.setValueAt(((Vector) rowDatas.get(i)).get(j), i, j);
-//			}
-//		}
-//		model.setColumnCount(table.getColumnCount());
-//		model.setRowCount(rowDatas.size());
-//		table.setModel(model);
-//		table.updateUI();
 
-		Vector rowData_1 = new Vector();
+		Vector rowData_1 = new Vector();//场均
 		Vector rowDatas_1 = new Vector();
 		double num = vo.getAppearance();
+		rowData_1.add(vo.getMatches().get(0).getSeason());
+		rowData_1.add(MainFrame.psp.translate(vo.getTeamAbbreviation()));		
 		rowData_1.add(vo.getAppearance());
 		rowData_1.add(vo.getStarting());
+		rowData_1.add(handleDecimal((vo.getPlayTime()/60.0)/num));
+		rowData_1.add(handleDecimal(vo.getHitRate()*100)+"%");//投篮命中率
+		rowData_1.add(handleDecimal(vo.getThirdHitRate()*100)+"%");//三分命中率
+		rowData_1.add(handleDecimal(vo.getFreeHitRate()*100)+"%");//罚球命中率
+		rowData_1.add(handleDecimal(vo.getOffensiveRebound() / num));//前篮板
+		rowData_1.add(handleDecimal(vo.getDefensiveRebound() / num));//后篮板
 		rowData_1.add(handleDecimal(vo.getTotalRebound() / num));
-		rowData_1.add(handleDecimal(vo.getAssist() / num));
-		rowData_1.add(handleDecimal(vo.getOffensiveRebound() / num));
-		rowData_1.add(handleDecimal(vo.getDefensiveRebound() / num));
+		rowData_1.add(handleDecimal(vo.getAssist() / num));		
 		rowData_1.add(handleDecimal(vo.getSteal() / num));
 		rowData_1.add(handleDecimal(vo.getBlock() / num));
 		rowData_1.add(handleDecimal(vo.getMiss() / num));
 		rowData_1.add(handleDecimal(vo.getFoul() / num));
+		rowData_1.add(handleDecimal(vo.getScore() / num));		
 		rowDatas_1.add(rowData_1);
 
-		for (int i = 0; i < rowDatas_1.size(); i++) {
-			for (int j = 0; j < table_1.getColumnCount(); j++) {
-				model_1.setValueAt(((Vector) rowDatas_1.get(i)).get(j), i, j);
-			}
-		}
+		model_1.setDataVector(rowDatas_1, columnName1);
 		model_1.setColumnCount(table_1.getColumnCount());
 		model_1.setRowCount(rowDatas_1.size());
 		table_1.setModel(model_1);
+		int[] width_1={10,8,5,5,3,15,18,15,3,3,3,3,3,3,3,3,3};
+		table_1.setColumnModel(getColumn(table_1, width_1));
 		table_1.updateUI();
 
-		Vector rowData_2 = new Vector();
+		Vector rowData_2 = new Vector();//总计
 		Vector rowDatas_2 = new Vector();
+		rowData_2.add(vo.getMatches().get(0).getSeason());
+		rowData_2.add(MainFrame.psp.translate(vo.getTeamAbbreviation()));		
 		rowData_2.add(vo.getAppearance());
 		rowData_2.add(vo.getStarting());
+		rowData_2.add(vo.getPlayTime()/60);
+		rowData_2.add(vo.getHit()+"-"+vo.getShot());//投篮
+		rowData_2.add(vo.getThirdHit()+"-"+vo.getThirdshot());//三分
+		rowData_2.add(vo.getFreeHit()+"-"+vo.getFreeshot());//罚球
+		rowData_2.add(vo.getOffensiveRebound());//前篮板
+		rowData_2.add(vo.getDefensiveRebound());//后篮板
 		rowData_2.add(vo.getTotalRebound());
 		rowData_2.add(vo.getAssist());
 		rowData_2.add(vo.getOffensiveRebound());
@@ -673,104 +541,40 @@ public class PlayerInfoPanel extends JPanel {
 		rowData_2.add(vo.getFoul());
 		rowDatas_2.add(rowData_2);
 
-		for (int i = 0; i < rowDatas_2.size(); i++) {
-			for (int j = 0; j < table_2.getColumnCount(); j++) {
-				model_2.setValueAt(((Vector) rowDatas_2.get(i)).get(j), i, j);
-			}
-		}
+		model_2.setDataVector(rowDatas_2, columnName2);
 		model_2.setColumnCount(table_2.getColumnCount());
 		model_2.setRowCount(rowDatas_2.size());
 		table_2.setModel(model_2);
+		int[] width_2={8,5,3,3,8,20,20,20,5,5,5,5,5,3,3,3,3};
+		table_2.setColumnModel(getColumn(table_2, width_2));
 		table_2.updateUI();
 
 		Vector rowData_3 = new Vector();
 		Vector rowDatas_3 = new Vector();
-		rowData_3.add(handleDecimal(vo.getHitRate()));
-		rowData_3.add(handleDecimal(vo.getThirdHitRate()));
-		rowData_3.add(handleDecimal(vo.getFreeHitRate()));
-		rowData_3.add(handleDecimal(vo.getRealHitRate()));
-		rowData_3.add(handleDecimal(vo.getEfficiency()));
+		rowData_3.add(vo.getMatches().get(0).getSeason());
+		rowData_3.add(handleDecimal(vo.getRealHitRate()*100)+"%");
+		rowData_3.add(vo.getEfficiency());
 		rowData_3.add(handleDecimal(vo.getGmScEfficiency()));
 		rowData_3.add(handleDecimal(vo.getShotEfficiency()));
+		rowData_3.add(handleDecimal(vo.getReboundRate()*100)+"%");
+		rowData_3.add(handleDecimal(vo.getOffensiveReboundRate()*100)+"%");
+		rowData_3.add(handleDecimal(vo.getDefensiveReboundRate()*100)+"%");
+		rowData_3.add(handleDecimal(vo.getBlockRate()*100)+"%");
+		rowData_3.add(handleDecimal(vo.getAssistRate()*100)+"%");
+		rowData_3.add(handleDecimal(vo.getStealRate()*100)+"%");		
+		rowData_3.add(handleDecimal(vo.getMissRate()*100)+"%");
+		rowData_3.add(handleDecimal(vo.getUseRate()*100)+"%");
+		
+		
 		rowDatas_3.add(rowData_3);
 
-		for (int i = 0; i < rowDatas_3.size(); i++) {
-			for (int j = 0; j < table_3.getColumnCount(); j++) {
-				model_3.setValueAt(((Vector) rowDatas_3.get(i)).get(j), i, j);
-			}
-		}
+		model_3.setDataVector(rowDatas_3, columnName3);
 		model_3.setColumnCount(table_3.getColumnCount());
 		model_3.setRowCount(rowDatas_3.size());
 		table_3.setModel(model_3);
+     	int[] width_3={50,70,50,70,60,70,70,70,50,50,50,50};
+		table_3.setColumnModel(getColumn(table_3, width_3));
 		table_3.updateUI();
-
-		Vector rowData_4 = new Vector();
-		Vector rowDatas_4 = new Vector();
-		rowData_4.add(handleDecimal(vo.getReboundRate()));
-		rowData_4.add(handleDecimal(vo.getOffensiveReboundRate()));
-		rowData_4.add(handleDecimal(vo.getDefensiveReboundRate()));
-		rowData_4.add(handleDecimal(vo.getBlockRate()));
-		rowData_4.add(handleDecimal(vo.getMissRate()));
-		rowData_4.add(handleDecimal(vo.getUseRate()));
-		rowData_4.add(handleDecimal(vo.getAssistRate()));
-		rowData_4.add(handleDecimal(vo.getStealRate()));
-		rowDatas_4.add(rowData_4);
-
-		for (int i = 0; i < rowDatas_4.size(); i++) {
-			for (int j = 0; j < table_4.getColumnCount(); j++) {
-				model_4.setValueAt(((Vector) rowDatas_4.get(i)).get(j), i, j);
-			}
-		}
-		model_4.setColumnCount(table_4.getColumnCount());
-		model_4.setRowCount(rowDatas_4.size());
-		table_4.setModel(model_4);
-		table_4.updateUI();
-
-		Vector rowData_5 = new Vector();
-		Vector rowDatas_5 = new Vector();
-		rowData_5.add(handleDecimal(vo.getScore() / num));
-		rowData_5.add(handleDecimal(vo.getPlayTime() / num));
-		rowData_5.add(handleDecimal(vo.getHit() / num));
-		rowData_5.add(handleDecimal(vo.getShot() / num));
-		rowData_5.add(handleDecimal(vo.getThirdHit() / num));
-		rowData_5.add(handleDecimal(vo.getThirdshot() / num));
-		rowData_5.add(handleDecimal(vo.getFreeHit() / num));
-		rowData_5.add(handleDecimal(vo.getFreeshot() / num));
-		rowData_5.add(handleDecimal(vo.getTowPairs() / num));
-		rowDatas_5.add(rowData_5);
-		model_5.setColumnCount(table_5.getColumnCount());
-		model_5.setRowCount(rowDatas_5.size());
-		for (int i = 0; i < rowDatas_5.size(); i++) {
-			for (int j = 0; j < table_5.getColumnCount(); j++) {
-				model_5.setValueAt(((Vector) rowDatas_5.get(i)).get(j), i, j);
-			}
-		}
-		
-		table_5.setModel(model_5);
-		table_5.updateUI();
-
-		Vector rowData_6 = new Vector();
-		Vector rowDatas_6 = new Vector();
-		rowData_6.add(vo.getScore());
-		rowData_6.add(vo.getPlayTime());
-		rowData_6.add(vo.getHit());
-		rowData_6.add(vo.getShot());
-		rowData_6.add(vo.getThirdHit());
-		rowData_6.add(vo.getThirdshot());
-		rowData_6.add(vo.getFreeHit());
-		rowData_6.add(vo.getFreeshot());
-		rowData_6.add(vo.getTowPairs());
-		rowDatas_6.add(rowData_6);
-
-		for (int i = 0; i < rowDatas_6.size(); i++) {
-			for (int j = 0; j < table_6.getColumnCount(); j++) {
-				model_6.setValueAt(((Vector) rowDatas_6.get(i)).get(j), i, j);
-			}
-		}
-		model_6.setColumnCount(table_6.getColumnCount());
-		model_6.setRowCount(rowDatas_6.size());
-		table_6.setModel(model_6);
-		table_6.updateUI();
 		
 	}
 	public void showPass() {
@@ -831,7 +635,7 @@ public class PlayerInfoPanel extends JPanel {
 	}
 	// 保留小数点
 	public String handleDecimal(double f) {
-		return String.format("%.2f", f);
+		return String.format("%.1f", f);
 	}
 
 	public class MouseListen extends MouseAdapter {

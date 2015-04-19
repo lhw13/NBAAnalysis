@@ -32,6 +32,11 @@ public class MatchPO {
 	TeamInMatchesPO team1;
 	TeamInMatchesPO team2;
 
+	public void sortPlayersByScore() {
+		team1.sortPlayersByScore();
+		team2.sortPlayersByScore();
+	}
+	
 	public String getFileName() {
 		return fileName;
 	}

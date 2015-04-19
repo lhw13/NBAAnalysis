@@ -142,7 +142,12 @@ public class BLController implements BLService {
 	}
 	
 	public ArrayList<MatchPO> getAllMatch() {
-		return data.getAllMatch();
+		isBegin=true;//get all matches(), to improve reliabilty of the program
+		//because we don't care about the efficiency of this method;
+		analyse();
+		for(int i=0;i<matches.size();i++)
+			matches.get(i).sortPlayersByScore();
+		return matches;
 	}
 
 	// 4 key methods to implement the interface

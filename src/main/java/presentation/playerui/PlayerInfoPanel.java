@@ -145,7 +145,7 @@ public class PlayerInfoPanel extends JPanel {
 			columnName1.add(cname1[i]);
 		}	
 		String[] cname2 = new String[] {"赛季","球队","出场","首发","时间","投篮","三分",
-				"罚球","前篮板","后篮板","总篮板","助攻","抢断","盖帽","失误","犯规","得分"};
+				"罚球","前篮板","后篮板","总篮板","助攻","抢断","盖帽","失误","犯规","得分","最高分"};
 		for(int i=0;i<cname2.length;i++) {
 			columnName2.add(cname2[i]);
 		}	
@@ -249,7 +249,7 @@ public class PlayerInfoPanel extends JPanel {
 		rowData_1.add(MainFrame.psp.translate(vo.getTeamAbbreviation()));		
 		rowData_1.add(vo.getAppearance());
 		rowData_1.add(vo.getStarting());
-		rowData_1.add(handleDecimal((vo.getPlayTime()/60.0)/num));
+		rowData_1.add(handleDecimal((vo.getPlayTime())/num));
 		rowData_1.add(handleDecimal(vo.getHitRate()*100)+"%");//投篮命中率
 		rowData_1.add(handleDecimal(vo.getThirdHitRate()*100)+"%");//三分命中率
 		rowData_1.add(handleDecimal(vo.getFreeHitRate()*100)+"%");//罚球命中率
@@ -278,27 +278,27 @@ public class PlayerInfoPanel extends JPanel {
 		rowData_2.add(MainFrame.psp.translate(vo.getTeamAbbreviation()));		
 		rowData_2.add(vo.getAppearance());
 		rowData_2.add(vo.getStarting());
-		rowData_2.add(vo.getPlayTime()/60);
+		rowData_2.add(vo.getPlayTime());
 		rowData_2.add(vo.getHit()+"-"+vo.getShot());//投篮
 		rowData_2.add(vo.getThirdHit()+"-"+vo.getThirdshot());//三分
 		rowData_2.add(vo.getFreeHit()+"-"+vo.getFreeshot());//罚球
 		rowData_2.add(vo.getOffensiveRebound());//前篮板
 		rowData_2.add(vo.getDefensiveRebound());//后篮板
 		rowData_2.add(vo.getTotalRebound());
-		rowData_2.add(vo.getAssist());
-		rowData_2.add(vo.getOffensiveRebound());
-		rowData_2.add(vo.getDefensiveRebound());
+		rowData_2.add(vo.getAssist());		
 		rowData_2.add(vo.getSteal());
 		rowData_2.add(vo.getBlock());
 		rowData_2.add(vo.getMiss());
 		rowData_2.add(vo.getFoul());
+		rowData_2.add(vo.getScore());		
+		rowData_2.add(vo.getHighestScore());
 		rowDatas_2.add(rowData_2);
 
 		model_2.setDataVector(rowDatas_2, columnName2);
 		model_2.setColumnCount(table_2.getColumnCount());
 		model_2.setRowCount(rowDatas_2.size());
 		table_2.setModel(model_2);
-		int[] width_2={8,5,3,3,8,15,18,15,5,5,5,5,5,3,3,3,3};
+		int[] width_2={40,30,30,30,40,55,55,55,40,40,40,40,40,40,40,40,40,40};
 		table_2.setColumnModel(getColumn(table_2, width_2));
 		table_2.updateUI();
 
@@ -496,7 +496,7 @@ public class PlayerInfoPanel extends JPanel {
 		rowData_1.add(MainFrame.psp.translate(vo.getTeamAbbreviation()));		
 		rowData_1.add(vo.getAppearance());
 		rowData_1.add(vo.getStarting());
-		rowData_1.add(handleDecimal((vo.getPlayTime()/60.0)/num));
+		rowData_1.add(handleDecimal((vo.getPlayTime())/num));
 		rowData_1.add(handleDecimal(vo.getHitRate()*100)+"%");//投篮命中率
 		rowData_1.add(handleDecimal(vo.getThirdHitRate()*100)+"%");//三分命中率
 		rowData_1.add(handleDecimal(vo.getFreeHitRate()*100)+"%");//罚球命中率
@@ -525,7 +525,7 @@ public class PlayerInfoPanel extends JPanel {
 		rowData_2.add(MainFrame.psp.translate(vo.getTeamAbbreviation()));		
 		rowData_2.add(vo.getAppearance());
 		rowData_2.add(vo.getStarting());
-		rowData_2.add(vo.getPlayTime()/60);
+		rowData_2.add(vo.getPlayTime());
 		rowData_2.add(vo.getHit()+"-"+vo.getShot());//投篮
 		rowData_2.add(vo.getThirdHit()+"-"+vo.getThirdshot());//三分
 		rowData_2.add(vo.getFreeHit()+"-"+vo.getFreeshot());//罚球
@@ -533,19 +533,19 @@ public class PlayerInfoPanel extends JPanel {
 		rowData_2.add(vo.getDefensiveRebound());//后篮板
 		rowData_2.add(vo.getTotalRebound());
 		rowData_2.add(vo.getAssist());
-		rowData_2.add(vo.getOffensiveRebound());
-		rowData_2.add(vo.getDefensiveRebound());
 		rowData_2.add(vo.getSteal());
 		rowData_2.add(vo.getBlock());
 		rowData_2.add(vo.getMiss());
 		rowData_2.add(vo.getFoul());
+		rowData_2.add(vo.getScore());
+		rowData_2.add(vo.getHighestScore());
 		rowDatas_2.add(rowData_2);
 
 		model_2.setDataVector(rowDatas_2, columnName2);
 		model_2.setColumnCount(table_2.getColumnCount());
 		model_2.setRowCount(rowDatas_2.size());
 		table_2.setModel(model_2);
-		int[] width_2={8,5,3,3,8,20,20,20,5,5,5,5,5,3,3,3,3};
+		int[] width_2={40,30,30,30,40,55,55,55,40,40,40,40,40,40,40,40,40,40};
 		table_2.setColumnModel(getColumn(table_2, width_2));
 		table_2.updateUI();
 

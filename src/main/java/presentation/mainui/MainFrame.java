@@ -109,22 +109,22 @@ public class MainFrame {
 
 	BLService blservice = BLController.getInstance();
 	public static void main(String[] args) {
-		try {
-			UIManager.setLookAndFeel(new SubstanceLookAndFeel());
-			if (System.getProperty("substancelaf.useDecorations") == null) {
-				JFrame.setDefaultLookAndFeelDecorated(true);
-				JDialog.setDefaultLookAndFeelDecorated(true);
-				/**
-				 * setDefaultLookAndFeelDecorated设置为true或者false
-				 * JDialog也可以使用setDefaultLookAndFeelDecorated
-				 */
-			}
-
-			// 设置当前的主题风格
-//			SubstanceLookAndFeel.setSkin(new MagmaSkin());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		try {
+//			UIManager.setLookAndFeel(new SubstanceLookAndFeel());
+//			if (System.getProperty("substancelaf.useDecorations") == null) {
+//				JFrame.setDefaultLookAndFeelDecorated(true);
+//				JDialog.setDefaultLookAndFeelDecorated(true);
+//				/**
+//				 * setDefaultLookAndFeelDecorated设置为true或者false
+//				 * JDialog也可以使用setDefaultLookAndFeelDecorated
+//				 */
+//			}
+//
+//			// 设置当前的主题风格
+////			SubstanceLookAndFeel.setSkin(new MagmaSkin());
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

@@ -52,7 +52,8 @@ public class MainFrame {
 
 	public static PlayerInfoPanel pip;
 	public static PlayerSelectionPanel psp;
-
+	public static HotRankingPanel hrp;
+	
 	public static boolean flag = false;
 	public static boolean flag0 = false;
 	public static boolean flag1 = false;
@@ -163,6 +164,10 @@ public class MainFrame {
 		pip = new PlayerInfoPanel();
 		frame.getContentPane().add(PlayerInfoPanel.scrollPane);
 		PlayerInfoPanel.scrollPane.setVisible(false);
+		
+		hrp = new HotRankingPanel();
+		frame.getContentPane().add(HotRankingPanel.scrollPane);
+		HotRankingPanel.scrollPane.setVisible(false);
 	}
 
 	private class ScheduleTask extends TimerTask {
@@ -751,11 +756,13 @@ public class MainFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
-					HotRankingPanel hrp = new HotRankingPanel();
+					
 					MainFrame.panel.setVisible(false);
 					frame.getContentPane().add(hrp.scrollPane);
-				
-										
+					currentPanel = Panels.HotRankingPanel;
+					hrp.update1();	
+					hrp.scrollPane.setVisible(true);
+					MainFrame.frame.setTitle("比分");
 					frame.repaint();//刷新重画 
 					frame.validate();//保证重画后的窗口能正常立即显示 
 				} catch (Exception e1) {

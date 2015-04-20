@@ -111,7 +111,8 @@ public class HotRankingPanel extends JPanel {
 		 lblNewLabel = new JLabel("赛季热点球队");
 		lblNewLabel.setFont(new Font("微软雅黑", Font.PLAIN, 15));
 		lblNewLabel.setForeground(Color.gray);
-		lblNewLabel.setBounds(38, 286, 101, 31);
+		lblNewLabel.setBounds(770, 40, 101, 31);
+		lblNewLabel.addMouseListener(new Listener1());
 		panelOfBottom.add(lblNewLabel);
 		
 		
@@ -285,7 +286,8 @@ public class HotRankingPanel extends JPanel {
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
 					rowData1.add(playerTemp.getName());
-					rowData1.add(playerTemp.getScore());			
+					rowData1.add(handleDecimal((double)playerTemp.getScore()
+							/playerTemp.getAppearance()));
 					rowDatas1.add(rowData1);
 				}
 				break;
@@ -300,7 +302,9 @@ public class HotRankingPanel extends JPanel {
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
 					rowData1.add(playerTemp.getName());
-					rowData1.add(playerTemp.getTotalRebound());					
+					rowData1.add(handleDecimal((double)playerTemp.getTotalRebound()
+							/playerTemp.getAppearance()));
+
 					rowDatas1.add(rowData1);
 				}
 				break;
@@ -316,7 +320,9 @@ public class HotRankingPanel extends JPanel {
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
 					rowData1.add(playerTemp.getName());
-					rowData1.add(playerTemp.getAssist());									
+					rowData1.add(handleDecimal((double)playerTemp.getAssist()
+							/playerTemp.getAppearance()));	
+					
 					rowDatas1.add(rowData1);
 				}
 				break;
@@ -332,7 +338,9 @@ public class HotRankingPanel extends JPanel {
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
 					rowData1.add(playerTemp.getName());
-					rowData1.add(playerTemp.getSteal());									
+					rowData1.add(handleDecimal((double)playerTemp.getSteal()
+							/playerTemp.getAppearance()));	
+					
 					rowDatas1.add(rowData1);
 				}
 				break;
@@ -348,7 +356,7 @@ public class HotRankingPanel extends JPanel {
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
 					rowData1.add(playerTemp.getName());
-					rowData1.add(playerTemp.getBlock());									
+					rowData1.add(handleDecimal((double)playerTemp.getBlock()/playerTemp.getAppearance()));									
 					rowDatas1.add(rowData1);
 				}
 				break;
@@ -369,7 +377,8 @@ public class HotRankingPanel extends JPanel {
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
 					rowData1.add(playerTemp.getName());
-					rowData1.add(playerTemp.getScore());		
+					rowData1.add(handleDecimal((double)playerTemp.getScore()
+							/playerTemp.getAppearance()));		
 					rowData1.add(" "+handleDecimal(playerTemp.getScorePromotion())+" 提升率");
 					rowDatas1.add(rowData1);
 				}
@@ -385,7 +394,8 @@ public class HotRankingPanel extends JPanel {
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
 					rowData1.add(playerTemp.getName());
-					rowData1.add(playerTemp.getTotalRebound());					
+					rowData1.add(handleDecimal((double)playerTemp.getTotalRebound()
+							/playerTemp.getAppearance()));	
 					rowData1.add(" "+handleDecimal(playerTemp.getReboundPromotion())+" 提升率");						
 
 					rowDatas1.add(rowData1);
@@ -403,14 +413,105 @@ public class HotRankingPanel extends JPanel {
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
 					rowData1.add(playerTemp.getName());
-					rowData1.add(playerTemp.getAssist());	
+					rowData1.add(handleDecimal((double)playerTemp.getTotalRebound()
+							/playerTemp.getAppearance()));	
 					rowData1.add(" "+handleDecimal(playerTemp.getAssistPromotion())+" 提升率");						
 					rowDatas1.add(rowData1);
 				}
 				break;
 			}
 			break;
-		
+			
+		case "赛季热点球队":
+			if(columnName1.size()>4)
+				columnName1.remove(4);
+			switch (leaf) {
+			case "得分榜":
+				ArrayList<TeamVO> teams1 = blservice.getHotTeamVO("point", 5);
+				for(int i=0;i<teams1.size()&&i<5;i++) {
+					Vector rowData1 = new Vector();
+					TeamVO teamTemp = teams1.get(i);			
+					rowData1.add(i+1);
+					picture = ImageHandle.loadTeam(teamTemp.getAbbreviation());
+					picture.setImage(picture.getImage().getScaledInstance(50, 50,
+							Image.SCALE_DEFAULT));
+					rowData1.add(picture);
+					rowData1.add(MainFrame.psp.translate(teamTemp.getAbbreviation()));
+					rowData1.add(handleDecimal((double)teamTemp.getScore()
+							/teamTemp.getAppearance()));
+					rowDatas1.add(rowData1);
+				}
+				break;
+			case "篮板榜":
+				ArrayList<TeamVO> teams2 = blservice.getHotTeamVO("rebound", 5);
+				for(int i=0;i<teams2.size()&&i<5;i++) {
+					Vector rowData1 = new Vector();
+					TeamVO teamTemp = teams2.get(i);	
+					rowData1.add(i+1);
+					picture = ImageHandle.loadTeam(teamTemp.getAbbreviation());
+					picture.setImage(picture.getImage().getScaledInstance(50, 50,
+							Image.SCALE_DEFAULT));
+					rowData1.add(picture);
+					
+					rowData1.add(MainFrame.psp.translate(teamTemp.getAbbreviation()));
+					rowData1.add(handleDecimal((double)teamTemp.getTotalRebound()
+							/teamTemp.getAppearance()));
+					rowDatas1.add(rowData1);
+				}
+				break;
+			case "助攻榜":
+				ArrayList<TeamVO> teams3 = blservice.getHotTeamVO("assist", 5);
+				for(int i=0;i<teams3.size()&&i<5;i++) {
+					Vector rowData1 = new Vector();
+					TeamVO teamTemp = teams3.get(i);	
+					rowData1.add(i+1);
+					picture = ImageHandle.loadTeam(teamTemp.getAbbreviation());
+					picture.setImage(picture.getImage().getScaledInstance(50, 50,
+							Image.SCALE_DEFAULT));
+					rowData1.add(picture);
+					
+					rowData1.add(MainFrame.psp.translate(teamTemp.getAbbreviation()));
+					rowData1.add(handleDecimal((double)teamTemp.getAssist()
+							/teamTemp.getAppearance()));
+					rowDatas1.add(rowData1);
+				}
+				break;
+			case "抢断榜":
+				ArrayList<TeamVO> teams4 = blservice.getHotTeamVO("steal", 5);
+				for(int i=0;i<teams4.size()&&i<5;i++) {
+					Vector rowData1 = new Vector();
+					TeamVO teamTemp = teams4.get(i);	
+					rowData1.add(i+1);
+					picture = ImageHandle.loadTeam(teamTemp.getAbbreviation());
+					picture.setImage(picture.getImage().getScaledInstance(50, 50,
+							Image.SCALE_DEFAULT));
+					rowData1.add(picture);
+					
+					rowData1.add(MainFrame.psp.translate(teamTemp.getAbbreviation()));
+					rowData1.add(handleDecimal((double)teamTemp.getSteal()
+							/teamTemp.getAppearance()));
+					rowDatas1.add(rowData1);
+				}
+				break;
+			case "盖帽榜":
+				ArrayList<TeamVO> teams5 = blservice.getHotTeamVO("blockShot", 5);
+				for(int i=0;i<teams5.size()&&i<5;i++) {
+					Vector rowData1 = new Vector();
+					TeamVO teamTemp = teams5.get(i);	
+					rowData1.add(i+1);
+					picture = ImageHandle.loadTeam(teamTemp.getAbbreviation());
+					picture.setImage(picture.getImage().getScaledInstance(50, 50,
+							Image.SCALE_DEFAULT));
+					rowData1.add(picture);
+					
+					rowData1.add(MainFrame.psp.translate(teamTemp.getAbbreviation()));
+					rowData1.add(handleDecimal((double)teamTemp.getBlock()
+							/teamTemp.getAppearance()));
+					rowDatas1.add(rowData1);
+				}
+				break;
+			}	
+			break;
 		}
 			model_1.setDataVector(rowDatas1, columnName1);		
 			model_1.setColumnCount(table_1.getColumnCount());
@@ -446,7 +547,7 @@ public class HotRankingPanel extends JPanel {
 				label_1.setForeground(Color.gray);
 				lblNewLabel.setForeground(Color.gray);
 				
-			} else if(label1.getText().startsWith("赛季")) {
+			} else if(label1.getText().startsWith("赛季统计")) {
 				root = "赛季";
 				labelsteal.setVisible(true);
 				labelblock.setVisible(true);
@@ -466,6 +567,15 @@ public class HotRankingPanel extends JPanel {
 				label_1.setForeground(Color.WHITE);
 				lblNewLabel.setForeground(Color.gray);								
 				
+			} else if (label1.getText().equals("赛季热点球队")) {
+				root = "赛季热点球队";
+				labelsteal.setVisible(true);
+				labelblock.setVisible(true);
+				
+				label.setForeground(Color.gray);				
+				lblNewLabel_1.setForeground(Color.gray);
+				label_1.setForeground(Color.gray);
+				lblNewLabel.setForeground(Color.WHITE);
 			}
 			label1.setCursor(Cursor
 					.getPredefinedCursor(Cursor.HAND_CURSOR));

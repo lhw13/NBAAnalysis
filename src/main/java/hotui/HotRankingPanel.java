@@ -1,5 +1,6 @@
 package hotui;
 
+import java.awt.Cursor;
 import java.awt.Dimension;
 
 import javax.swing.JButton;
@@ -127,7 +128,7 @@ public class HotRankingPanel extends JPanel {
 		labelblock.addMouseListener(new Listener2());
 		panelOfBottom.add(labelblock);
 		
-		table_1 = new JTable();
+		table_1 = new JTable(model_1);
 		table_1.setBounds(545, 116, 385, 121);
 		panelOfBottom.add(table_1);
 		
@@ -166,10 +167,10 @@ public class HotRankingPanel extends JPanel {
 		case "每日":			
 			switch (leaf) {
 			case "得分榜":
-				ArrayList<PlayerVO> players = blservice.getDailyHotPlayerVO("point", 5);
-				for(int i=0;i<players.size()&&i<5;i++) {
+				ArrayList<PlayerVO> players1 = blservice.getDailyHotPlayerVO("point", 5);
+				for(int i=0;i<players1.size()&&i<5;i++) {
 					Vector rowData1 = new Vector();
-					PlayerVO playerTemp = players.get(i);			
+					PlayerVO playerTemp = players1.get(i);			
 					rowData1.add(i+1);
 					rowData1.add(ImageHandle.loadPlayer(playerTemp.getName()));
 					rowData1.add(playerTemp.getName());
@@ -178,71 +179,73 @@ public class HotRankingPanel extends JPanel {
 				}
 				break;
 			case "篮板榜":
-				
+				ArrayList<PlayerVO> players2 = blservice.getDailyHotPlayerVO("rebound", 5);
+				for(int i=0;i<players2.size()&&i<5;i++) {
+					Vector rowData1 = new Vector();
+					PlayerVO playerTemp = players2.get(i);
+					rowData1.add(i+1);
+					rowData1.add(ImageHandle.loadPlayer(playerTemp.getName()));
+					rowData1.add(playerTemp.getName());
+					rowData1.add(playerTemp.getTotalRebound());					
+					rowDatas1.add(rowData1);
+				}
 				break;
 			case "助攻榜":
-				
+				ArrayList<PlayerVO> players3 = blservice.getDailyHotPlayerVO("assist", 5);
+
+				for(int i=0;i<players3.size()&&i<5;i++) {
+					Vector rowData1 = new Vector();
+					PlayerVO playerTemp = players3.get(i);
+					rowData1.add(i+1);
+					rowData1.add(ImageHandle.loadPlayer(playerTemp.getName()));
+					rowData1.add(playerTemp.getName());
+					rowData1.add(playerTemp.getAssist());									
+					rowDatas1.add(rowData1);
+				}
 				break;
 			case "抢断榜":
-	
+				ArrayList<PlayerVO> players4 = blservice.getDailyHotPlayerVO("steal", 5);
+
+				for(int i=0;i<players4.size()&&i<5;i++) {
+					Vector rowData1 = new Vector();
+					PlayerVO playerTemp = players4.get(i);
+					rowData1.add(i+1);
+					rowData1.add(ImageHandle.loadPlayer(playerTemp.getName()));
+					rowData1.add(playerTemp.getName());
+					rowData1.add(playerTemp.getSteal());									
+					rowDatas1.add(rowData1);
+				}
 				break;
 			case "盖帽榜":
-	
+				ArrayList<PlayerVO> players5 = blservice.getDailyHotPlayerVO("blockShot", 5);
+
+				for(int i=0;i<players5.size()&&i<5;i++) {
+					Vector rowData1 = new Vector();
+					PlayerVO playerTemp = players5.get(i);
+					rowData1.add(i+1);
+					rowData1.add(ImageHandle.loadPlayer(playerTemp.getName()));
+					rowData1.add(playerTemp.getName());
+					rowData1.add(playerTemp.getBlock());									
+					rowDatas1.add(rowData1);
+				}
 				break;
 			}	
 				
 			break;
-//		case "rebound":
-//			for(int i=0;i<players.size()&&i<5;i++) {
-//				Vector rowData1 = new Vector();
-//				PlayerVO playerTemp = players.get(i);
-//				rowData1.add(i+1);
-//				rowData1.add(ImageHandle.loadPlayer(playerTemp.getName()));
-//				rowData1.add(playerTemp.getName());
-//				rowData1.add(playerTemp.getTotalRebound());					
-//				rowDatas1.add(rowData1);
-//			}
-//			break;
-//		case "assist":
-//			for(int i=0;i<players.size()&&i<5;i++) {
-//				Vector rowData1 = new Vector();
-//				PlayerVO playerTemp = players.get(i);
-//				rowData1.add(i+1);
-//				rowData1.add(ImageHandle.loadPlayer(playerTemp.getName()));
-//				rowData1.add(playerTemp.getName());
-//				rowData1.add(playerTemp.getAssist());									
-//				rowDatas1.add(rowData1);
-//			}
-//			break;
-//		case "blockShot":
-//			for(int i=0;i<players.size()&&i<5;i++) {
-//				Vector rowData1 = new Vector();
-//				PlayerVO playerTemp = players.get(i);
-//				rowData1.add(i+1);
-//				rowData1.add(ImageHandle.loadPlayer(playerTemp.getName()));
-//				rowData1.add(playerTemp.getName());
-//				rowData1.add(playerTemp.getBlock());									
-//				rowDatas1.add(rowData1);
-//			}
-//			break;
-//		case "steal":
-//			for(int i=0;i<players.size()&&i<5;i++) {
-//				Vector rowData1 = new Vector();
-//				PlayerVO playerTemp = players.get(i);	
-//				rowData1.add(i+1);
-//				rowData1.add(ImageHandle.loadPlayer(playerTemp.getName()));
-//				rowData1.add(playerTemp.getName());
-//				rowData1.add(playerTemp.getSteal());									
-//				rowDatas1.add(rowData1);
-//			}
-//			break;
+		case "赛季":
+			
+			break;
+		case "进步":
+			
+			break;
+		
 		}
 			model_1.setDataVector(rowDatas1, columnName1);		
 			model_1.setColumnCount(table_1.getColumnCount());
 			model_1.setRowCount(rowDatas1.size());
 			table_1.setModel(model_1);
-//			int[] width={50,55,5,3,3,3,3,3,3,3,3,3,3,3};
-//			table_1.setColumnModel(getColumn(table_1, width));
+			int[] width_1={10,120,170,80};
+			table_1.setColumnModel(getColumn(table_1, width_1));
 			table_1.updateUI();
 	}
 
@@ -263,8 +266,15 @@ public class HotRankingPanel extends JPanel {
 			} else if(label1.getText().startsWith("进步")) {
 				root = "进步";
 			}
+			label1.setCursor(Cursor
+					.getPredefinedCursor(Cursor.HAND_CURSOR));
 			update1();
 		}		
+		public void mouseExited(MouseEvent e) {
+			JLabel label1 =(JLabel) e.getSource();
+			label1.setCursor(Cursor.getDefaultCursor());
+
+		}
 	}
 	public class Listener2 extends MouseAdapter{
 
@@ -281,7 +291,14 @@ public class HotRankingPanel extends JPanel {
 			case "抢断榜":leaf = "抢断榜";break;
 			case "盖帽榜":leaf = "盖帽榜";break;
 			}
+			label1.setCursor(Cursor
+					.getPredefinedCursor(Cursor.HAND_CURSOR));
 			update1();
+		}
+		public void mouseExited(MouseEvent e) {
+			JLabel label1 =(JLabel) e.getSource();
+			label1.setCursor(Cursor.getDefaultCursor());
+
 		}
 	}
 }

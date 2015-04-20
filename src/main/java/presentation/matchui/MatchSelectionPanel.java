@@ -315,7 +315,7 @@ public class MatchSelectionPanel extends JPanel {
 			rowDatas2.add(rowData2);
 		}
 		model2.setDataVector(rowDatas2, columnName1);		
-		model2.setColumnCount(mpo.getTeam2().getPlayers().size());
+		model2.setColumnCount(columnName1.size());
 		model2.setRowCount(rowDatas2.size());
 		
 		String[] cname2 = new String[] {
@@ -423,7 +423,7 @@ public class MatchSelectionPanel extends JPanel {
 			rowDatas2.add(rowData2);
 		}
 		model2.setDataVector(rowDatas2, columnName1);		
-		model2.setColumnCount(mpo.getTeam2().getPlayers().size());
+		model2.setColumnCount(columnName1.size());
 		model2.setRowCount(rowDatas2.size());
 		
 		String[] cname2 = new String[] {

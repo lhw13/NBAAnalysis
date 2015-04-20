@@ -262,7 +262,7 @@ public class Console {
 				if(high){//如果是高阶数据，用高阶数据的默认，否则用基本数据
 					sortConsList.add(Comparators.compareRealShotDesc);
 				}else{ 
-					sortConsList.add(Comparators.comparePointDesc);
+					sortConsList.add(Comparators.comparePointAvgDesc);
 				} 
 			}
 			if(!timeCon.equals("daily")&&!hot) {

@@ -217,4 +217,19 @@ public class ConsoleTest {
 		}
 			c.execute(p, ss);
 	}
+	@Test
+	public void test8()
+	{
+		String ss[] = {"-player","-high","-n","20"};
+		Console c = new Console();
+		PrintStream p = null;
+		try {
+			p = new PrintStream(new File("test18.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			c.execute(System.out, ss);
+		
+	}
 }

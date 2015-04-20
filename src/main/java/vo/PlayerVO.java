@@ -378,10 +378,10 @@ public class PlayerVO {
 	}
 	public double getValue(String value) {
 		switch(value) {
-		case "point": return score/(double)appearance;
-		case "score": return score/(double)appearance;
-		case "rebound": return totalRebound/(double)appearance;		
-		case "assist": return assist/(double)appearance;
+		case "point": return (double)score/(double)appearance;
+		case "score": return (double)score/(double)appearance;
+		case "rebound": return (double)totalRebound/(double)appearance;		
+		case "assist": return (double)assist/(double)appearance;
 		
 		default: return 0;
 		}

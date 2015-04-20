@@ -1494,16 +1494,16 @@ public class PlayerRankingPanel extends JPanel {
 					rowData1.add(pvo.getEfficiency());
 					break;
 				case "投篮":
-					rowData1.add(pvo.getHitRate());
-					rowData1.add(pvo.getHitRate());
+					rowData1.add(handleDecimal(pvo.getHitRate()*100)+"%");
+					rowData1.add(handleDecimal(pvo.getHitRate()*100)+"%");
 					break;
 				case "三分":
-					rowData1.add(pvo.getThirdHitRate());
-					rowData1.add(pvo.getThirdHitRate());
+					rowData1.add(handleDecimal(pvo.getThirdHitRate()*100)+"%");
+					rowData1.add(handleDecimal(pvo.getThirdHitRate()*100)+"%");
 					break;
 				case "罚球":
-					rowData1.add(pvo.getFreeHitRate());
-					rowData1.add(pvo.getFreeHitRate());
+					rowData1.add(handleDecimal(pvo.getFreeHitRate()*100)+"%");
+					rowData1.add(handleDecimal(pvo.getFreeHitRate()*100)+"%");
 					break;
 				case "两双":
 					rowData1.add(handle((double) pvo.getTowPairs(),appearance));
@@ -1595,6 +1595,11 @@ public class PlayerRankingPanel extends JPanel {
 			s[2] = "太平洋区";
 		}
 		return s;
+	}
+	
+	// 保留小数点
+	public String handleDecimal(double f) {
+		return String.format("%.1f", f);
 	}
 	
 	public static double handle(double a, int b) {

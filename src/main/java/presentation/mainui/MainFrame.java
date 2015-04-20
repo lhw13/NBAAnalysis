@@ -749,10 +749,8 @@ public class MainFrame {
 					HotRankingPanel hrp = new HotRankingPanel();
 					MainFrame.panel.setVisible(false);
 					frame.getContentPane().add(hrp.scrollPane);
-					hrp.update1(blservice.getDailyHotPlayerVO("point", 5), "point");
-					hrp.update2(blservice.getBestPromotion("point", 5), "point");
-					hrp.updateTeam(blservice.getHotTeamVO("point", 5), "point");
-					hrp.update4(blservice.getHotPlayerVO("point", 5), "point");					
+				
+										
 					frame.repaint();//刷新重画 
 					frame.validate();//保证重画后的窗口能正常立即显示 
 				} catch (Exception e1) {

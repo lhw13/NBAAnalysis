@@ -138,7 +138,7 @@ public class ConsoleTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			c.execute(p, ss);
+			c.execute(System.out, ss);
 		
 	}
 	
@@ -154,7 +154,7 @@ public class ConsoleTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			c.execute(p, ss);
+			c.execute(System.out, ss);
 		
 	}
 	

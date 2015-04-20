@@ -24,6 +24,7 @@ import javax.swing.RowFilter;
 
 import presentation.ImageHandle;
 import presentation.mainui.MainFrame;
+import presentation.mainui.Panels;
 import presentation.matchui.MatchSelectionPanel.MouseListen;
 import presentation.teamsui.TeamsRankingFrame;
 import server.businesslogic.BLController;
@@ -89,6 +90,7 @@ public class PlayerRankingPanel extends JPanel {
 				PlayerRankingPanel.scrollPane=null;
 				MainFrame.panel.setVisible(true);
 				MainFrame.frame.setTitle("NBA");
+				MainFrame.currentPanel = Panels.MainFrame;
 			}
 
 		});

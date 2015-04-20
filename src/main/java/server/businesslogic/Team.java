@@ -9,7 +9,7 @@ import server.po.TeamPO;
 import test.data.*;
 import vo.TeamVO;
 
-public class Team {
+public  final class Team {
 	public Team(TeamPO teamPO) {
 		super();
 		this.teamPO = teamPO;
@@ -115,18 +115,18 @@ public class Team {
 	
 	public TeamNormalInfo toNormalInfoAvg() {
 		TeamNormalInfo tni = new TeamNormalInfo();
-		tni.setAssist(assist/appearance);
-		tni.setBlockShot(blockShot/appearance);
-		tni.setDefendRebound(defendRebound/appearance);
-		tni.setFault(fault/appearance);
-		tni.setFoul(foul/appearance);
+		tni.setAssist((double)assist/appearance);
+		tni.setBlockShot((double)blockShot/appearance);
+		tni.setDefendRebound((double)defendRebound/appearance);
+		tni.setFault((double)fault/appearance);
+		tni.setFoul((double)foul/appearance);
 		tni.setNumOfGame(appearance);
-		tni.setOffendRebound(offendRebound/appearance);
+		tni.setOffendRebound((double)offendRebound/appearance);
 		tni.setPenalty(getPenalty());
-		tni.setPoint(score/appearance);
-		tni.setRebound(rebound/appearance);
+		tni.setPoint((double)score/appearance);
+		tni.setRebound((double)rebound/appearance);
 		tni.setShot(getHitRate());
-		tni.setSteal(steal/appearance);
+		tni.setSteal((double)steal/appearance);
 		tni.setTeamName(teamPO.getAbbreviation());
 		tni.setThree(getThree());
 		return tni;

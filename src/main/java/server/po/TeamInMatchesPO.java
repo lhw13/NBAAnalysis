@@ -6,7 +6,7 @@ import java.util.Comparator;
 
 import server.businesslogic.Player;
 
-public class TeamInMatchesPO {
+public final  class TeamInMatchesPO {
 	public TeamInMatchesPO() {
 	}
 

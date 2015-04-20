@@ -2,6 +2,7 @@ package uitest;
 
 import static org.junit.Assert.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import presentation.mainui.MainFrame;
@@ -10,7 +11,7 @@ import presentation.teamsui.TeamsSelectionFrame;
 import console.Console;
 
 public class UITest {
-	@Test
+	@Ignore
 	public void uiTestF()
 	{
 		MainFrame fm = new MainFrame();

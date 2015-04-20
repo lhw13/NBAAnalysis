@@ -294,7 +294,10 @@ public  final class Player implements Cloneable{
 		phi.setFaultEfficient(getFaultEfficient());
 		phi.setFrequency(getFrequency());
 		phi.setGmSc(getGmSc());
-		//phi.setLeague(team.);
+		if(team.getDivision()=='E')
+			phi.setLeague("East");
+		else
+			phi.setLeague("West");
 		phi.setName(player.getName());
 		phi.setOffendReboundEfficient(getOffendReboundEfficient());
 		phi.setPosition(player.getPosition());

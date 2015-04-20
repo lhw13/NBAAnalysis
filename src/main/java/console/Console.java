@@ -273,7 +273,7 @@ public class Console {
 				for(int i=0;i<n && i<playerList.size();i++)
 				{
 					out.println(playerList.get(i).toHighInfo());//to use which function
-					out.println(playerList.get(i).toVO());
+					//out.println(playerList.get(i).toVO());
 				}
 			} else if(hot) {
 				ArrayList<PlayerVO> list = bl.getBestPromotion(condition, n);

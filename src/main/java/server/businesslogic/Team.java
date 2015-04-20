@@ -237,6 +237,7 @@ public  final class Team {
 		blockShot += tim.getBlock();
 		fault += tim.getMiss();
 		foul += tim.getFoul();
+		playTime += tim.getPlayTime();
 		// score will be dealt in other place
 	}
 

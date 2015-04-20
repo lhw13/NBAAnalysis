@@ -47,7 +47,7 @@ public class MatchSelectionPanel extends JPanel {
 	
 	ArrayList<MatchPO> mpoList;
 	
-	BLController compute;
+	private static BLController compute;
 	
 	public MatchSelectionPanel() {
 		this.setBounds(0, 100, 1000, 600);
@@ -59,7 +59,7 @@ public class MatchSelectionPanel extends JPanel {
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		add(scrollPane);
 		
-		panelOfBottom.setPreferredSize(new Dimension(1000, 600));
+		panelOfBottom.setPreferredSize(new Dimension(1000, 500));
 		panelOfBottom.setLayout(null);
 		
 		String[] names1 = new String[]{"赛季", "日期", "球队", "总比分", "第一节", "第二节", "第三节", "第四节", "详情"};
@@ -364,8 +364,115 @@ public class MatchSelectionPanel extends JPanel {
 			MainFrame.frame.repaint();//刷新重画 
 			MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
 		}
+	}
+	
+	public static void goToMatchFromPlayer(MatchPO mpo){
+		String[] cname1 = new String[] {
+				"球员", "位置", "在场时间", "投篮命中", "出手", "三分命中", "出手", "罚球命中", "出手",
+				"前篮板","后篮板","篮板","助攻","抢断","盖帽","失误","犯规", "得分" };
 		
+		DefaultTableModel model1 = new DefaultTableModel();
+		Vector<String> columnName1 = new Vector<String>();
+		Vector rowDatas1 = new Vector();
+		for(int i=0;i<cname1.length;i++) {
+			columnName1.add(cname1[i]);
+		}
+		for(int i=0;i<mpo.getTeam1().getPlayers().size();i++){
+			Vector rowData1 = new Vector();
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getName());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPosition()+"");
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPlayTime());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getHit());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getShot());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getThirdHit());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getThirdshot());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getFreeHit());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getThirdshot());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getOffensiveRebound());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getDefensiveRebound());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getTotalRebound());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getAssist());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getSteal());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getBlock());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getMiss());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getFoul());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getScore());
+			rowDatas1.add(rowData1);
+		}
+		model1.setDataVector(rowDatas1, columnName1);		
+		model1.setColumnCount(columnName1.size());
+		model1.setRowCount(rowDatas1.size());
 		
+		DefaultTableModel model2 = new DefaultTableModel();
+		Vector rowDatas2 = new Vector();
+		for(int i=0;i<mpo.getTeam2().getPlayers().size();i++){
+			Vector rowData2 = new Vector();
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getName());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPosition()+"");
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPlayTime());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getHit());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getShot());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getThirdHit());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getThirdshot());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getFreeHit());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getThirdshot());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getOffensiveRebound());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getDefensiveRebound());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getTotalRebound());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getAssist());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getSteal());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getBlock());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getMiss());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getFoul());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getScore());
+			rowDatas2.add(rowData2);
+		}
+		model2.setDataVector(rowDatas2, columnName1);		
+		model2.setColumnCount(mpo.getTeam2().getPlayers().size());
+		model2.setRowCount(rowDatas2.size());
+		
+		String[] cname2 = new String[] {
+				"赛季", "日期", "球队", "总比分", "第一节", "第二节", "第三节", "第四节"};
+		DefaultTableModel model3 = new DefaultTableModel();
+		Vector<String> columnName3 = new Vector<String>();
+		for(int i=0;i<cname2.length;i++) {
+			columnName3.add(cname2[i]);
+		}
+		Vector rowDatas3 = new Vector();
+		Vector rowData3 = new Vector();
+		rowData3.add(mpo.getSeason());
+		rowData3.add((mpo.getDate().get(Calendar.MONTH)+1)+"-"+
+	                 mpo.getDate().get(Calendar.DAY_OF_MONTH));
+		rowData3.add(mpo.getTeam1().getAbbreviation()+"-"+mpo.getTeam2().getAbbreviation());
+		rowData3.add(mpo.getFinalScore().getTeam1()+"-"+mpo.getFinalScore().getTeam2());
+		rowData3.add(mpo.getScores().get(0).getTeam1()+"-"+mpo.getScores().get(0).getTeam2());
+		rowData3.add(mpo.getScores().get(1).getTeam1()+"-"+mpo.getScores().get(1).getTeam2());
+		rowData3.add(mpo.getScores().get(2).getTeam1()+"-"+mpo.getScores().get(2).getTeam2());
+		rowData3.add(mpo.getScores().get(3).getTeam1()+"-"+mpo.getScores().get(3).getTeam2());
+		rowDatas3.add(rowData3);
+		model3.setDataVector(rowDatas3, columnName3);		
+		model3.setColumnCount(columnName3.size());
+		model3.setRowCount(rowDatas3.size());
+		
+		int width = 200;
+		int height = 150;
+		compute = BLController.getInstance();
+		ImageIcon[] ii=new ImageIcon[2];
+		ii[0] = compute.getTeamPic(mpo.getTeam1().getAbbreviation());
+		ii[0].setImage(ii[0].getImage().getScaledInstance(width, height,
+				Image.SCALE_DEFAULT));
+		ii[1] = compute.getTeamPic(mpo.getTeam2().getAbbreviation());
+		ii[1].setImage(ii[1].getImage().getScaledInstance(width, height,
+				Image.SCALE_DEFAULT));
+		
+		if(PlayerInfoPanel.scrollPane!=null){
+			PlayerInfoPanel.scrollPane.setVisible(false);
+			MatchDetailInfoPanel mdip = new MatchDetailInfoPanel(ii,model1,model2,model3);
+			MainFrame.frame.getContentPane().add(mdip.scrollPane);
+			MainFrame.frame.repaint();//刷新重画 
+			MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+		}
 		
 	}
+	
 }

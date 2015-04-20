@@ -335,6 +335,7 @@ public class TeamsInfoFrame extends JPanel{
 		final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(
 				model_1);
 		table_1.setRowSorter(sorter);
+		table_1.setRowHeight(56);
 		
 		scrollPane_1.setViewportView(table_1);
 		tabbedPane.addTab("球队信息", null, scrollPane_1, null);
@@ -571,7 +572,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -600,7 +601,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -629,7 +630,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -658,7 +659,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -687,7 +688,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -716,7 +717,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -745,7 +746,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -774,7 +775,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -803,7 +804,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -832,7 +833,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -861,7 +862,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -890,7 +891,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -919,7 +920,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -948,7 +949,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -977,7 +978,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -1006,7 +1007,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -1035,7 +1036,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -1064,7 +1065,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -1093,7 +1094,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -1122,7 +1123,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -1151,7 +1152,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -1180,7 +1181,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -1209,7 +1210,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -1238,7 +1239,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -1267,7 +1268,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());
@@ -1296,7 +1297,7 @@ public class TeamsInfoFrame extends JPanel{
 			appearance = tvo.getAppearance();
 			rowData2 = new Vector();
 			picture = ImageHandle.loadTeam(tvo.getAbbreviation());
-			picture.setImage(picture.getImage().getScaledInstance(70, 56,
+			picture.setImage(picture.getImage().getScaledInstance(70, 70,
 					Image.SCALE_DEFAULT));
 			rowData2.add(picture);
 			rowData2.add(tvo.getFullName());

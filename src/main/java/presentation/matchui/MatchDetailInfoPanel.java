@@ -15,6 +15,7 @@ import javax.swing.JButton;
 
 import presentation.mainui.MainFrame;
 import presentation.mainui.Panels;
+import presentation.playerui.PlayerInfoPanel;
 import presentation.teamsui.TeamsInfoFrame;
 import presentation.teamsui.TeamsSelectionFrame;
 
@@ -83,7 +84,7 @@ public class MatchDetailInfoPanel extends JPanel {
 		panelOfBottom.add(scrollPane_3);
 		
 		btnNewButton = new JButton("返回");
-		btnNewButton.setBounds(450, 140, 120, 25);
+		btnNewButton.setBounds(10, 10, 120, 25);
 		panelOfBottom.add(btnNewButton);
 		
 		lblNewLabel = new JLabel("");
@@ -106,9 +107,13 @@ public class MatchDetailInfoPanel extends JPanel {
 					if(MatchSelectionPanel.scrollPane!=null){
 						MatchSelectionPanel.scrollPane.setVisible(true);
 						MainFrame.currentPanel = Panels.MatchSelectionInfoPanel;
-					}else{
+					}else if(TeamsInfoFrame.scrollPane!=null){
 						TeamsInfoFrame.scrollPane.setVisible(true);
 						MainFrame.currentPanel = Panels.TeamsInfoFrame;
+					}
+					else if(PlayerInfoPanel.scrollPane!=null){
+						PlayerInfoPanel.scrollPane.setVisible(true);
+						MainFrame.currentPanel = Panels.PlayerInfoPanel;
 					}
 					
 				} catch (Exception e1) {

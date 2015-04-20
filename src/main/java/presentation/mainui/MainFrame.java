@@ -23,7 +23,12 @@ import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 import org.jvnet.substance.SubstanceLookAndFeel;
+import org.jvnet.substance.border.FlatInnerBorderPainter;
+import org.jvnet.substance.button.StandardButtonShaper;
 import org.jvnet.substance.skin.MagmaSkin;
+import org.jvnet.substance.theme.SubstanceEbonyTheme;
+import org.jvnet.substance.title.Glass3DTitlePainter;
+import org.jvnet.substance.watermark.SubstanceWoodWatermark;
 
 import blservice.BLService;
 import presentation.ImageHandle;
@@ -116,7 +121,7 @@ public class MainFrame {
 			}
 
 			// 设置当前的主题风格
-			SubstanceLookAndFeel.setSkin(new MagmaSkin());
+//			SubstanceLookAndFeel.setSkin(new MagmaSkin());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

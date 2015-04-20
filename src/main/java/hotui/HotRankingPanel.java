@@ -2,7 +2,9 @@ package hotui;
 
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -39,7 +41,13 @@ public class HotRankingPanel extends JPanel {
 	public static JScrollPane scrollPane;
 	JPanel panelOfBottom = new JPanel();
 	Vector columnName1;
-	DefaultTableModel model_1 = new DefaultTableModel();
+	DefaultTableModel model_1 = new DefaultTableModel(){
+		private static final long serialVersionUID = 1L;
+
+		public Class<?> getColumnClass(int columnIndex) {
+			return getValueAt(0, columnIndex).getClass();
+		}
+	};
 	BLService blservice = BLController.getInstance();
 	JLabel labelsocre;
 	JLabel labelrebound;
@@ -132,8 +140,6 @@ public class HotRankingPanel extends JPanel {
 		table_1.setBounds(545, 116, 385, 121);
 		panelOfBottom.add(table_1);
 		
-		
-		
 		scrollPane.setBounds(0, 0, 1000, 600);
 		add(scrollPane);
 		
@@ -163,6 +169,7 @@ public class HotRankingPanel extends JPanel {
 	
 	public void update1() {
 		Vector rowDatas1 = new Vector();
+		ImageIcon picture;
 		switch(root) {
 		case "每日":			
 			switch (leaf) {
@@ -172,7 +179,10 @@ public class HotRankingPanel extends JPanel {
 					Vector rowData1 = new Vector();
 					PlayerVO playerTemp = players1.get(i);			
 					rowData1.add(i+1);
-					rowData1.add(ImageHandle.loadPlayer(playerTemp.getName()));
+					picture = ImageHandle.loadPlayer(playerTemp.getName());
+					picture.setImage(picture.getImage().getScaledInstance(35, 28,
+							Image.SCALE_DEFAULT));
+					rowData1.add(picture);
 					rowData1.add(playerTemp.getName());
 					rowData1.add(playerTemp.getScore());			
 					rowDatas1.add(rowData1);
@@ -184,7 +194,10 @@ public class HotRankingPanel extends JPanel {
 					Vector rowData1 = new Vector();
 					PlayerVO playerTemp = players2.get(i);
 					rowData1.add(i+1);
-					rowData1.add(ImageHandle.loadPlayer(playerTemp.getName()));
+					picture = ImageHandle.loadPlayer(playerTemp.getName());
+					picture.setImage(picture.getImage().getScaledInstance(35, 28,
+							Image.SCALE_DEFAULT));
+					rowData1.add(picture);
 					rowData1.add(playerTemp.getName());
 					rowData1.add(playerTemp.getTotalRebound());					
 					rowDatas1.add(rowData1);
@@ -197,7 +210,10 @@ public class HotRankingPanel extends JPanel {
 					Vector rowData1 = new Vector();
 					PlayerVO playerTemp = players3.get(i);
 					rowData1.add(i+1);
-					rowData1.add(ImageHandle.loadPlayer(playerTemp.getName()));
+					picture = ImageHandle.loadPlayer(playerTemp.getName());
+					picture.setImage(picture.getImage().getScaledInstance(35, 28,
+							Image.SCALE_DEFAULT));
+					rowData1.add(picture);
 					rowData1.add(playerTemp.getName());
 					rowData1.add(playerTemp.getAssist());									
 					rowDatas1.add(rowData1);
@@ -210,7 +226,10 @@ public class HotRankingPanel extends JPanel {
 					Vector rowData1 = new Vector();
 					PlayerVO playerTemp = players4.get(i);
 					rowData1.add(i+1);
-					rowData1.add(ImageHandle.loadPlayer(playerTemp.getName()));
+					picture = ImageHandle.loadPlayer(playerTemp.getName());
+					picture.setImage(picture.getImage().getScaledInstance(35, 28,
+							Image.SCALE_DEFAULT));
+					rowData1.add(picture);
 					rowData1.add(playerTemp.getName());
 					rowData1.add(playerTemp.getSteal());									
 					rowDatas1.add(rowData1);
@@ -223,7 +242,10 @@ public class HotRankingPanel extends JPanel {
 					Vector rowData1 = new Vector();
 					PlayerVO playerTemp = players5.get(i);
 					rowData1.add(i+1);
-					rowData1.add(ImageHandle.loadPlayer(playerTemp.getName()));
+					picture = ImageHandle.loadPlayer(playerTemp.getName());
+					picture.setImage(picture.getImage().getScaledInstance(35, 28,
+							Image.SCALE_DEFAULT));
+					rowData1.add(picture);
 					rowData1.add(playerTemp.getName());
 					rowData1.add(playerTemp.getBlock());									
 					rowDatas1.add(rowData1);

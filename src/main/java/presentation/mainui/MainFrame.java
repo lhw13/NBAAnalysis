@@ -120,8 +120,8 @@ public class MainFrame {
 //				 */
 //			}
 //
-//			// 设置当前的主题风格
-////			SubstanceLookAndFeel.setSkin(new MagmaSkin());
+//			 //设置当前的主题风格
+//			SubstanceLookAndFeel.setSkin(new MagmaSkin());
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}

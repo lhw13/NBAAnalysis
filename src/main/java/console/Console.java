@@ -22,7 +22,7 @@ import org.apache.commons.collections.Predicate;
 import org.apache.commons.collections.Transformer;
 
 public class Console {
-	public static String path="./nba";
+	public static String path="./conf/nba";
 	BLController bl = BLController.getInstance();
 	public void execute(PrintStream out, String[] args){
 		//for detailed information, see http://dongwei.iteye.com/blog/230458

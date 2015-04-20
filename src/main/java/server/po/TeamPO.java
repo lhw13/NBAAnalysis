@@ -1,6 +1,6 @@
 package server.po;
 
-public class TeamPO {
+public  final class TeamPO {
 	public TeamPO() {
 	}
 

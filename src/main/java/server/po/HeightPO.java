@@ -1,6 +1,6 @@
 package server.po;
 
-public class HeightPO {
+public  final class HeightPO {
 	public HeightPO() {
 	}
 

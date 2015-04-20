@@ -1,6 +1,6 @@
 package server.po;
 
-public class ScorePO {
+public  final class ScorePO {
 	public ScorePO() {
 	}
 

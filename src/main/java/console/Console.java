@@ -22,7 +22,7 @@ import org.apache.commons.collections.Predicate;
 import org.apache.commons.collections.Transformer;
 
 public class Console {
-	public static String path="./nba";
+	public static String path="./conf/nba";
 	BLController bl = BLController.getInstance();
 	public void execute(PrintStream out, String[] args){
 		//for detailed information, see http://dongwei.iteye.com/blog/230458
@@ -194,7 +194,7 @@ public class Console {
 				for(int i=0;i<n && i<playerList.size();i++)//这是模仿刘瀚文，不知道干嘛
 				{
 					out.println(playerList.get(i).toNormalInfo());//to use which function
-					out.println(playerList.get(i).toVO());
+					//out.println(playerList.get(i).toVO());
 				}
 		} else {//返回的数据是场均数据
 			if(sort) {//如果有sort命令			                
@@ -262,7 +262,7 @@ public class Console {
 				if(high){//如果是高阶数据，用高阶数据的默认，否则用基本数据
 					sortConsList.add(Comparators.compareRealShotDesc);
 				}else{ 
-					sortConsList.add(Comparators.comparePointDesc);
+					sortConsList.add(Comparators.comparePointAvgDesc);
 				} 
 			}
 			if(!timeCon.equals("daily")&&!hot) {
@@ -305,7 +305,7 @@ public class Console {
 				for(int i=0;i<n && i<playerList.size();i++)
 				{
 					out.println(playerList.get(i).toNormalInfoAvg());//to use which function
-					out.println(playerList.get(i).toVO());
+					//out.println(playerList.get(i).toVO());
 				}
 			}
 		}

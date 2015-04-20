@@ -8,18 +8,18 @@ public class ImageHandle {
 	}
 
 	public static ImageIcon loadPlayer(String name) {
-		ImageIcon PLAYER = new ImageIcon("nba/players/portrait/" + name
+		ImageIcon PLAYER = new ImageIcon("conf/nba/players/portrait/" + name
 				+ ".png");
 		return PLAYER;
 	}
 
 	public static ImageIcon loadPlayerAct(String name) {
-		ImageIcon PLAYER = new ImageIcon("nba/players/action/" + name + ".png");
+		ImageIcon PLAYER = new ImageIcon("conf/nba/players/action/" + name + ".png");
 		return PLAYER;
 	}
 	
 	public static ImageIcon loadTeam(String name) {
-		ImageIcon TEAM = new ImageIcon("pictures/" + name + ".png");
+		ImageIcon TEAM = new ImageIcon("conf/pictures/" + name + ".png");
 		return TEAM;
 	}
 }

@@ -25,7 +25,7 @@ import vo.TeamVO;
 import vo.TeamWithPlayersVO;
 import blservice.BLService;
 
-public class BLController implements BLService {
+public final class BLController implements BLService {
 	private BLController() {
 		data.startWatchMatches();
 	}

@@ -1,6 +1,6 @@
 package server.po;
 
-public class PlayerInMatchesPO {
+public  final class PlayerInMatchesPO {
 	public PlayerInMatchesPO() {
 	}
 

@@ -6,7 +6,7 @@ import server.po.MatchPO;
 import server.po.PlayerInMatchesPO;
 import server.po.TeamInMatchesPO;
 
-public class TeamInMatches {
+public final  class TeamInMatches {
 	// team data in matches
 	public TeamInMatches(TeamInMatchesPO teamInMatchespo, int finalScore,
 			ArrayList<Integer> scores, int win) {

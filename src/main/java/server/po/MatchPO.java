@@ -3,7 +3,7 @@ package server.po;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MatchPO {
+public final  class MatchPO {
 	public MatchPO() {
 	}
 

@@ -2,9 +2,9 @@ package server.businesslogic;
 
 import java.util.Comparator;
 
-public class Comparators {
+public final  class Comparators {
 
-	public static Comparator<Player> compareAssistAvgDesc = new Comparator<Player>(){  
+	public static final Comparator<Player> compareAssistAvgDesc = new Comparator<Player>(){  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -14,7 +14,7 @@ public class Comparators {
 	       // return (double)o2.getAssist()/(double)o2.appearance > (double)o1.getAssist()/(double)o1.appearance? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareAssistDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareAssistDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -24,7 +24,7 @@ public class Comparators {
 	    	//return o2.getAssist() > o1.getAssist() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareAssistEfficientDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareAssistEfficientDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -35,7 +35,7 @@ public class Comparators {
 	    }
 	};
 	//Promotion
-	public static Comparator<Player> compareAssistPromotionDesc = new Comparator<Player>(){  
+	public static final Comparator<Player> compareAssistPromotionDesc = new Comparator<Player>(){  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -44,7 +44,7 @@ public class Comparators {
 	    	return d2.compareTo(d1);  
 	    }
 	};
-	public static Comparator<Player> compareBlockShotAvgDesc = new Comparator<Player>(){  
+	public static final Comparator<Player> compareBlockShotAvgDesc = new Comparator<Player>(){  
 			  
 	        @Override  
 	        public int compare(Player o1, Player o2) {  
@@ -54,7 +54,7 @@ public class Comparators {
 	            return d2.compareTo(d1);
 	        }
 	    };
-	public static Comparator<Player> compareBlockShotDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareBlockShotDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -63,7 +63,7 @@ public class Comparators {
 	        return i2.compareTo(i1);
 	    }
 	};
-	public static Comparator<Player> compareBlockShotEfficientDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareBlockShotEfficientDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -73,7 +73,7 @@ public class Comparators {
 	    	//return o2.getBlockShotEfficient() > o1.getBlockShotEfficient() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareDefendReboundEfficientDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareDefendReboundEfficientDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -83,7 +83,7 @@ public class Comparators {
 	    	//return o2.getDefendReboundEfficient() > o1.getDefendReboundEfficient() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareDoubleTwoDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareDoubleTwoDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -93,7 +93,7 @@ public class Comparators {
 	    	//return o2.getDoubleTwo() > o1.getDoubleTwo() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareEfficientDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareEfficientDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -103,7 +103,7 @@ public class Comparators {
 	    	//return o2.getEfficient() > o1.getEfficient() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareFaultAvgDesc = new Comparator<Player>(){  
+	public static final Comparator<Player> compareFaultAvgDesc = new Comparator<Player>(){  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -112,7 +112,7 @@ public class Comparators {
 	    	return d2.compareTo(d1);  
 	    }
 	};
-	public static Comparator<Player> compareFaultDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareFaultDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -122,7 +122,7 @@ public class Comparators {
 	    	//return o2.getFault() > o1.getFault() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareFaultEfficientDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareFaultEfficientDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -132,7 +132,7 @@ public class Comparators {
 	    	// return o2.getFaultEfficient() > o1.getFaultEfficient() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareFoulAvgDesc = new Comparator<Player>(){  
+	public static final Comparator<Player> compareFoulAvgDesc = new Comparator<Player>(){  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -141,7 +141,7 @@ public class Comparators {
 	    	return d2.compareTo(d1);            	
 	    }
 	};
-	public static Comparator<Player> compareFoulDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareFoulDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -151,7 +151,7 @@ public class Comparators {
 	    	//return o2.getFoul() > o1.getFoul() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareFrequencyDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareFrequencyDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -161,7 +161,7 @@ public class Comparators {
 	    	//return o2.getFrequency() > o1.getFrequency() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareGmScDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareGmScDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -171,7 +171,7 @@ public class Comparators {
 	    	//return o2.getGmSc() > o1.getGmSc() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareMinuteAvgDesc = new Comparator<Player>(){  
+	public static final Comparator<Player> compareMinuteAvgDesc = new Comparator<Player>(){  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -180,7 +180,7 @@ public class Comparators {
 	    	return d2.compareTo(d1);  
 	    }
 	};
-	public static Comparator<Player> compareMinuteDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareMinuteDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -190,7 +190,7 @@ public class Comparators {
 	    	//return o2.getMinute() > o1.getMinute() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareOffendReboundEfficientDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareOffendReboundEfficientDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -200,7 +200,7 @@ public class Comparators {
 	    	// return o2.getOffendReboundEfficient() > o1.getOffendReboundEfficient() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> comparePenaltyDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> comparePenaltyDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -211,7 +211,7 @@ public class Comparators {
 	    }
 	};
 	//球员姓名应该是按升序排
-	public static Comparator<Player> comparePlayerNameAsc = new Comparator<Player>() {  
+	public static final Comparator<Player> comparePlayerNameAsc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -219,7 +219,7 @@ public class Comparators {
 	    }
 	};
 	//avg player descent comparator
-	public static Comparator<Player> comparePointAvgDesc = new Comparator<Player>(){  
+	public static final Comparator<Player> comparePointAvgDesc = new Comparator<Player>(){  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -229,7 +229,7 @@ public class Comparators {
 	    //	return (double)o2.getPoint()/(double)o2.appearance > (double)o1.getPoint()/(double)o1.appearance? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> comparePointDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> comparePointDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -239,7 +239,7 @@ public class Comparators {
 	    	//return o2.getPoint() > o1.getPoint() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareRealShotDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareRealShotDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -249,7 +249,7 @@ public class Comparators {
 	    	//return o2.getRealShot() > o1.getRealShot() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareReboundAvgDesc = new Comparator<Player>(){  
+	public static final Comparator<Player> compareReboundAvgDesc = new Comparator<Player>(){  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -259,7 +259,7 @@ public class Comparators {
 	    	//return (double)o2.getRebound()/(double)o2.appearance > (double)o1.getRebound()/(double)o1.appearance? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareReboundDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareReboundDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {
@@ -269,7 +269,7 @@ public class Comparators {
 	       // return o2.getRebound() > o1.getRebound() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareReboundEfficientDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareReboundEfficientDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -279,7 +279,7 @@ public class Comparators {
 	    	// return o2.getReboundEfficient() > o1.getReboundEfficient() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareReboundPromotionDesc = new Comparator<Player>(){  
+	public static final Comparator<Player> compareReboundPromotionDesc = new Comparator<Player>(){  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -289,7 +289,7 @@ public class Comparators {
 	    	//return o2.reboundPromotion > o1.reboundPromotion? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareScorePromotionDesc = new Comparator<Player>(){  
+	public static final Comparator<Player> compareScorePromotionDesc = new Comparator<Player>(){  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -299,7 +299,7 @@ public class Comparators {
 	    	//return o2.scorePromotion > o1.scorePromotion? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareShotDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareShotDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -309,7 +309,7 @@ public class Comparators {
 	    	// return o2.getShot() > o1.getShot() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareShotEfficientDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareShotEfficientDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -319,7 +319,7 @@ public class Comparators {
 	    	//return o2.getShotEfficient() > o1.getShotEfficient() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareStealAvgDesc = new Comparator<Player>(){  
+	public static final Comparator<Player> compareStealAvgDesc = new Comparator<Player>(){  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -328,7 +328,7 @@ public class Comparators {
 	    	return d2.compareTo(d1);      
 	    }
 	};
-	public static Comparator<Player> compareStealDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareStealDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -338,7 +338,7 @@ public class Comparators {
 	    	//return o2.getSteal() > o1.getSteal() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareStealEfficientDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareStealEfficientDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -348,7 +348,7 @@ public class Comparators {
 	    	//return o2.getStealEfficient() > o1.getStealEfficient() ? 1 : -1;
 	    }
 	};
-	public static Comparator<Player> compareThreeDesc = new Comparator<Player>() {  
+	public static final Comparator<Player> compareThreeDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
@@ -814,7 +814,7 @@ public class Comparators {
 		}
 	};
 
-	public static Comparator<Team> getTeamComparator(String sort) {
+	public static final Comparator<Team> getTeamComparator(String sort) {
 		switch(sort) {
 		case "point": return TeamByPoint;
 		case "score": return TeamByPoint;
@@ -841,7 +841,7 @@ public class Comparators {
 		}
 	}
 
-	public static Comparator<Team> getTeamComparatorAsc(String sort) {
+	public static final Comparator<Team> getTeamComparatorAsc(String sort) {
 		switch(sort) {
 		case "point": return TeamByPointAsc;
 		case "score": return TeamByPointAsc;
@@ -868,7 +868,7 @@ public class Comparators {
 		}
 	}
 
-	public static Comparator<Team> getTeamComparatorAvg(String sort) {
+	public static final Comparator<Team> getTeamComparatorAvg(String sort) {
 		switch(sort) {
 		case "point": return TeamByPointAvg;
 		case "score": return TeamByPointAvg;
@@ -895,7 +895,7 @@ public class Comparators {
 		}
 	}
 
-	public static Comparator<Team> getTeamComparatorAvgAsc(String sort) {
+	public static final Comparator<Team> getTeamComparatorAvgAsc(String sort) {
 		switch(sort) {
 		case "point": return TeamByPointAvgAsc;
 		case "score": return TeamByPointAvgAsc;
@@ -922,7 +922,7 @@ public class Comparators {
 		}
 	}
 
-	public static Comparator<Player> getPlayerAvgComparator(String sort) {
+	public static final Comparator<Player> getPlayerAvgComparator(String sort) {
 		switch(sort) {
 		case "score": return comparePointAvgDesc;
 		case "point": return comparePointAvgDesc;
@@ -937,7 +937,7 @@ public class Comparators {
 		}
 	}
 
-	public static Comparator<Player> getPlayerComparator(String sort) {
+	public static final Comparator<Player> getPlayerComparator(String sort) {
 		switch(sort) {
 		case "score": return comparePointDesc;
 		case "point": return comparePointDesc;

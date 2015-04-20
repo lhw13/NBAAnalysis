@@ -9,7 +9,7 @@ import server.po.TeamPO;
 import test.data.*;
 import vo.TeamVO;
 
-public class Team {
+public  final class Team {
 	public Team(TeamPO teamPO) {
 		super();
 		this.teamPO = teamPO;

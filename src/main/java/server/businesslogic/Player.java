@@ -8,7 +8,7 @@ import server.po.*;
 import test.data.*;
 import vo.*;
 
-public class Player implements Cloneable{
+public  final class Player implements Cloneable{
 	public Player(TeamPO team, PlayerPO player) {
 		super();
 		// this.teamFullName = teamFullName;

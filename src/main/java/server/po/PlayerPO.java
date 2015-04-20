@@ -2,7 +2,7 @@ package server.po;
 
 import java.util.Calendar;
 
-public class PlayerPO {
+public  final class PlayerPO {
 	public PlayerPO(String name) {
 		this.name = name;
 		birth = Calendar.getInstance();

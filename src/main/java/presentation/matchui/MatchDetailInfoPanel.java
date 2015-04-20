@@ -62,7 +62,7 @@ public class MatchDetailInfoPanel extends JPanel {
 		
 		table = new JTable();
 		table.setModel(model1);
-		int[] width={100,50,50,50,50,50,50,50,50,50};
+		int[] width={100,20,50,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30};
 		table.setColumnModel(getColumn(table, width));
 		scrollPane_1.setViewportView(table);
 		
@@ -72,7 +72,7 @@ public class MatchDetailInfoPanel extends JPanel {
 		
 		table_1 = new JTable();
 		table_1.setModel(model2);
-		int[] width1={100,50,50,50,50,50,50,50,50,50};
+		int[] width1={100,20,50,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30};
 		table_1.setColumnModel(getColumn(table_1, width1));
 		scrollPane_2.setViewportView(table_1);
 		

@@ -1689,7 +1689,7 @@ public class PlayerRankingPanel extends JPanel {
 	
 	public void updatePlayerRanking(){
 		
-		
+		 
 		compute = BLController.getInstance();
 		ArrayList<PlayerVO> pvoList = compute.getPlayerAnalysis();
 		PlayerVO pvo = new PlayerVO();

@@ -57,28 +57,28 @@ public class MatchDetailInfoPanel extends JPanel {
 		panelOfBottom.setLayout(null);
 		
 		scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(100, 175, 800, 250);
+		scrollPane_1.setBounds(50, 200, 900, 250);
 		panelOfBottom.add(scrollPane_1);
 		
 		table = new JTable();
 		table.setModel(model1);
-		int[] width={100,20,50,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30};
+		int[] width={120,30,50,30,30,30,30,30,30,30,30,30,30,30,30};
 		table.setColumnModel(getColumn(table, width));
 		scrollPane_1.setViewportView(table);
 		
 		scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(100, 450, 800, 250);
+		scrollPane_2.setBounds(50, 475, 900, 250);
 		panelOfBottom.add(scrollPane_2);
 		
 		table_1 = new JTable();
 		table_1.setModel(model2);
-		int[] width1={100,20,50,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30};
+		int[] width1={120,30,50,30,30,30,30,30,30,30,30,30,30,30,30};
 		table_1.setColumnModel(getColumn(table_1, width1));
 		scrollPane_2.setViewportView(table_1);
 		
 		table_2 = new JTable();
 		table_2.setModel(model3);
-		int[] width2={50,25,60,50,30,30,30,30};
+		int[] width2={40,25,80,50,30,30,30,30};
 		table_2.setColumnModel(getColumn(table_2, width2));
 		
 		
@@ -92,12 +92,12 @@ public class MatchDetailInfoPanel extends JPanel {
 		panelOfBottom.add(btnNewButton);
 		
 		lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(50, 10, 200, 150);
+		lblNewLabel.setBounds(50, 35, 200, 150);
 		lblNewLabel.setIcon(ii[0]);
 		panelOfBottom.add(lblNewLabel);
 		
 		lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBounds(750, 10, 200, 150);
+		lblNewLabel_1.setBounds(750, 35, 200, 150);
 		lblNewLabel_1.setIcon(ii[1]);
 		panelOfBottom.add(lblNewLabel_1);
 		

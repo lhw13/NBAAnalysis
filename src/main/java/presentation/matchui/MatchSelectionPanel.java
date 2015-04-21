@@ -17,6 +17,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -70,7 +72,7 @@ public class MatchSelectionPanel extends JPanel {
 		}
 		
 		comboBox = new JComboBox<String>();
-		comboBox.setBounds(200, 50, 100, 30);
+		comboBox.setBounds(250, 50, 100, 30);
 		comboBox.addItem("选择赛季");
 		comboBox.addItem("12-13");
 		comboBox.addItem("13-14");
@@ -111,7 +113,7 @@ public class MatchSelectionPanel extends JPanel {
 		comboBox_1.addItem(11);
 		comboBox_1.addItem(12);
 		comboBox_1.setSelectedItem(MainFrame.date+1);
-		comboBox_1.setBounds(350, 50, 100, 30);
+		comboBox_1.setBounds(400, 50, 100, 30);
 		panelOfBottom.add(comboBox_1);
 		
 		comboBox_1.addActionListener(new ActionListener(){
@@ -158,26 +160,13 @@ public class MatchSelectionPanel extends JPanel {
 		table.addMouseListener(listener);
 		
 		scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(50, 100, 800, 400);
+		scrollPane_1.setBounds(100, 100, 800, 400);
 		panelOfBottom.add(scrollPane_1);
 		
 		scrollPane_1.setViewportView(table);
 		
-		JButton refreshButton = new JButton("最新");
-		refreshButton.setBounds(500, 50, 100, 30);
-		panelOfBottom.add(refreshButton);
-		
-		refreshButton.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				update();
-			}
-			
-		});
-		
 		JButton btnNewButton = new JButton("返回");
-		btnNewButton.setBounds(50, 50, 100, 30);
+		btnNewButton.setBounds(100, 50, 100, 30);
 		panelOfBottom.add(btnNewButton);
 		
 		btnNewButton.addActionListener(new ActionListener(){
@@ -216,8 +205,10 @@ public class MatchSelectionPanel extends JPanel {
 			rowData1.add(selectedMatchs.get(i).getFinalScore().getTeam1()+"-"+
 					selectedMatchs.get(i).getFinalScore().getTeam2());
 			rowData1.add(PlayerSelectionPanel.translate(selectedMatchs.get(i).getTeam2().getAbbreviation()));
-			rowData1.add("主队最高分");
-			rowData1.add("客队最高分");
+			rowData1.add(selectedMatchs.get(i).getTeam1().getHighestScore().getName()+" "+
+					selectedMatchs.get(i).getTeam1().getHighestScore().getScore());
+			rowData1.add(selectedMatchs.get(i).getTeam2().getHighestScore().getName()+" "+
+					selectedMatchs.get(i).getTeam2().getHighestScore().getScore());
 			rowData1.add("详情");
 			rowDatas1.add(rowData1);
 		}
@@ -225,6 +216,8 @@ public class MatchSelectionPanel extends JPanel {
 		model_1.setDataVector(rowDatas1, columnName1);
 		model_1.setColumnCount(table.getColumnCount());
 		model_1.setRowCount(rowDatas1.size());
+		int[] width={50,50,50,60,50,150,150,50};
+		table.setColumnModel(getColumn(table, width));
 		table.setModel(model_1);
 		table.updateUI();
 		
@@ -255,7 +248,7 @@ public class MatchSelectionPanel extends JPanel {
 	private void setMatchInfo(int rowNum){
 		MatchPO mpo = mpoList.get(rowNum);
 		String[] cname1 = new String[] {
-				"球员", "位置", "在场时间", "投篮命中", "出手", "三分命中", "出手", "罚球命中", "出手",
+				"球员", "位置", "在场时间", "投篮", "三分", "罚球",
 				"前篮板","后篮板","篮板","助攻","抢断","盖帽","失误","犯规", "得分" };
 		
 		DefaultTableModel model1 = new DefaultTableModel();
@@ -268,13 +261,13 @@ public class MatchSelectionPanel extends JPanel {
 			Vector rowData1 = new Vector();
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getName());
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPosition()+"");
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPlayTime());
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getHit());
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getShot());
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getThirdHit());
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getThirdshot());
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getFreeHit());
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getThirdshot());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPlayTime()/60+" min");
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getHit()+"/"+
+			               mpo.getTeam1().getPlayers().get(i).getShot());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getThirdHit()+"/"+
+					       mpo.getTeam1().getPlayers().get(i).getThirdshot());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getFreeHit()+"/"+
+					       mpo.getTeam1().getPlayers().get(i).getFreeshot());
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getOffensiveRebound());
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getDefensiveRebound());
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getTotalRebound());
@@ -296,13 +289,13 @@ public class MatchSelectionPanel extends JPanel {
 			Vector rowData2 = new Vector();
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getName());
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPosition()+"");
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPlayTime());
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getHit());
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getShot());
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getThirdHit());
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getThirdshot());
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getFreeHit());
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getThirdshot());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPlayTime()/60+" min");
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getHit()+"/"+
+	                       mpo.getTeam2().getPlayers().get(i).getShot());
+	        rowData2.add(mpo.getTeam2().getPlayers().get(i).getThirdHit()+"/"+
+			               mpo.getTeam2().getPlayers().get(i).getThirdshot());
+	        rowData2.add(mpo.getTeam2().getPlayers().get(i).getFreeHit()+"/"+
+			               mpo.getTeam2().getPlayers().get(i).getFreeshot());
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getOffensiveRebound());
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getDefensiveRebound());
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getTotalRebound());
@@ -376,13 +369,13 @@ public class MatchSelectionPanel extends JPanel {
 			Vector rowData1 = new Vector();
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getName());
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPosition()+"");
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPlayTime());
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getHit());
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getShot());
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getThirdHit());
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getThirdshot());
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getFreeHit());
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getThirdshot());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPlayTime()/60+" min");
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getHit()+"/"+
+			               mpo.getTeam1().getPlayers().get(i).getShot());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getThirdHit()+"/"+
+					       mpo.getTeam1().getPlayers().get(i).getThirdshot());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getFreeHit()+"/"+
+					       mpo.getTeam1().getPlayers().get(i).getFreeshot());
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getOffensiveRebound());
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getDefensiveRebound());
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getTotalRebound());
@@ -404,13 +397,13 @@ public class MatchSelectionPanel extends JPanel {
 			Vector rowData2 = new Vector();
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getName());
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPosition()+"");
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPlayTime());
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getHit());
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getShot());
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getThirdHit());
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getThirdshot());
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getFreeHit());
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getThirdshot());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPlayTime()/60+" min");
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getHit()+"/"+
+	                       mpo.getTeam2().getPlayers().get(i).getShot());
+	        rowData2.add(mpo.getTeam2().getPlayers().get(i).getThirdHit()+"/"+
+			               mpo.getTeam2().getPlayers().get(i).getThirdshot());
+	        rowData2.add(mpo.getTeam2().getPlayers().get(i).getFreeHit()+"/"+
+			               mpo.getTeam2().getPlayers().get(i).getFreeshot());
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getOffensiveRebound());
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getDefensiveRebound());
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getTotalRebound());
@@ -468,6 +461,15 @@ public class MatchSelectionPanel extends JPanel {
 			MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
 		}
 		
+	}
+	
+	public TableColumnModel getColumn(JTable table, int[] width) {  
+	    TableColumnModel columns = table.getColumnModel();  
+	    for (int i = 0; i < width.length; i++) {  
+	        TableColumn column = columns.getColumn(i);  
+	        column.setPreferredWidth(width[i]);  
+	    }  
+	    return columns;  
 	}
 	
 }

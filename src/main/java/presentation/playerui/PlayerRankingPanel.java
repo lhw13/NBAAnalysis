@@ -33,6 +33,8 @@ import vo.PlayerVO;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.JTabbedPane;
@@ -1543,6 +1545,8 @@ public class PlayerRankingPanel extends JPanel {
 		model_1.setDataVector(rowDatas1, columnName1);
 		model_1.setColumnCount(table.getColumnCount());
 		model_1.setRowCount(rowDatas1.size());
+		int[] width={80,150,80,80,80,80,80};
+		table.setColumnModel(getColumn(table, width));
 		table.setModel(model_1);
 		table.updateUI();
 		
@@ -1631,6 +1635,15 @@ public class PlayerRankingPanel extends JPanel {
 			result = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 		}
 		return result;
+	}
+	
+	public TableColumnModel getColumn(JTable table, int[] width) {  
+	    TableColumnModel columns = table.getColumnModel();  
+	    for (int i = 0; i < width.length; i++) {  
+	        TableColumn column = columns.getColumn(i);  
+	        column.setPreferredWidth(width[i]);  
+	    }  
+	    return columns;  
 	}
 	
 }

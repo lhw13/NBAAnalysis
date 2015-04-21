@@ -409,7 +409,40 @@ public class MatchSelectionPanel extends JPanel {
 		}
 	}
 	
-	public static void goToMatchFromPlayer(MatchPO mpo){
+	public static void goToMatchFromPlayer(String date, String teamName){
+		compute = BLController.getInstance();
+		MatchPO mpo = null;
+		String[] strArray = new String[3];
+		strArray = date.split("-");
+		int year = Integer.parseInt(strArray[0]);
+		int month = Integer.parseInt(strArray[1]);
+		String season = "";
+		if(1<=month && month<=4){
+			int a=year%10; 
+			int b=(year/10)%10;
+			int c = 10*b+a;
+			season = (c-1)+"-"+c;
+		}
+		else if(10<=month && month<=12){
+			int a=year%10; 
+			int b=(year/10)%10;
+			int c = 10*b+a;
+			season = c+"-"+(c+1);
+		}
+		ArrayList<MatchPO> matchList = compute.getAllMatch();
+		for(int i=0;i<matchList.size();i++){
+			if(matchList.get(i).getSeason().equals(season) &&
+				(matchList.get(i).getDate().get(Calendar.MONTH)+1)==month &&
+				   (matchList.get(i).getTeam1().getAbbreviation().equals(teamName) || matchList.get(i).getTeam2().getAbbreviation().equals(teamName))){
+				mpo = matchList.get(i);
+			}
+		}
+		if(mpo!=null){
+			done(mpo);
+		}
+	}
+	
+	public static void done(MatchPO mpo){
 		String[] cname1 = new String[] {
 				"球员", "位置", "在场时间", "投篮", "三分", "罚球",
 				"前篮板","后篮板","篮板","助攻","抢断","盖帽","失误","犯规", "得分" };

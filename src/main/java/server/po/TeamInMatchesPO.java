@@ -51,4 +51,43 @@ public final  class TeamInMatchesPO {
 	public void setPlayers(ArrayList<PlayerInMatchesPO> players) {
 		this.players = players;
 	}
+	
+	public PlayerInMatchesPO getHighestScore()
+	{
+		int high =0;
+		PlayerInMatchesPO result=null;
+		for(int i=0;i<players.size();i++)
+			if(high<players.get(i).getScore())
+			{
+				result = players.get(i);
+				high = result.getScore();
+			}
+		return result;
+	}
+	
+	public PlayerInMatchesPO getHighestRebound()
+	{
+		int high =0;
+		PlayerInMatchesPO result=null;
+		for(int i=0;i<players.size();i++)
+			if(high<players.get(i).getTotalRebound())
+			{
+				result = players.get(i);
+				high = result.getTotalRebound();
+			}
+		return result;
+	}
+	
+	public PlayerInMatchesPO getHighestAssist()
+	{
+		int high =0;
+		PlayerInMatchesPO result=null;
+		for(int i=0;i<players.size();i++)
+			if(high<players.get(i).getAssist())
+			{
+				result = players.get(i);
+				high = result.getAssist();
+			}
+		return result;
+	}
 }

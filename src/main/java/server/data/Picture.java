@@ -16,7 +16,7 @@ import org.apache.batik.transcoder.image.PNGTranscoder;
 
 public class Picture {
 	public static  ImageIcon getTeamPic(String abbreviation) {
-		File file = new File("./transferStation/transferPic.png");
+		File file = new File("./conf/transferStation/transferPic.png");
 		FileOutputStream outputStream = null;
 		try {
 			outputStream = new FileOutputStream(file);
@@ -25,7 +25,7 @@ public class Picture {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		ImageIcon image = new ImageIcon("./transferStation/transferPic.png");
+		ImageIcon image = new ImageIcon("./conf/transferStation/transferPic.png");
 		return image;
 	}
 

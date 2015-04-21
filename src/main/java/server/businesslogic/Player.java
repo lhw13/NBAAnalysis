@@ -294,7 +294,10 @@ public  final class Player implements Cloneable{
 		phi.setFaultEfficient(getFaultEfficient());
 		phi.setFrequency(getFrequency());
 		phi.setGmSc(getGmSc());
-		//phi.setLeague(team.);
+		if(team.getDivision()=='E')
+			phi.setLeague("East");
+		else
+			phi.setLeague("West");
 		phi.setName(player.getName());
 		phi.setOffendReboundEfficient(getOffendReboundEfficient());
 		phi.setPosition(player.getPosition());
@@ -434,29 +437,43 @@ public  final class Player implements Cloneable{
 	}
 
 	public double getRealShot() {
-		return (double) score / (2 * (chuShou + 0.44 * (double) freeshot));
+		double divisor = (2 * (chuShou + 0.44 * (double) freeshot));
+		if(divisor==0)
+			return 0;
+		return (double) score / divisor;
 	}
 
 	public double getShotEfficient() {
+		if(chuShou==0)
+			return 0;
 		return (double) (hit + 0.5 * (double) thirdHit) / chuShou;
 	}
 
 	public double getReboundEfficient() {
+		double divisor = (double) (teamTotalRebound + teamTotalRebound2);
+		if(divisor==0 || playTime==0)
+			return 0;
 		return (double) rebound * ((double) teamPlayTime / 5)
 				/ (double) playTime
-				/ (double) (teamTotalRebound + teamTotalRebound2);
+				/ divisor;
 	}
 
 	public double getOffendReboundEfficient() {
+		double divisor = (double) (teamOffensiveRebound + teamOffensiveRebound2);
+		if(divisor==0 || playTime==0)
+			return 0;
 		return (double) offensiveRebound * ((double) teamPlayTime / 5)
 				/ (double) playTime
-				/ (double) (teamOffensiveRebound + teamOffensiveRebound2);
+				/ divisor;
 	}
 
 	public double getDefendReboundEfficient() {
+		double divisor = (double) (teamDefensiveRebound + teamDefensiveRebound2);
+		if(divisor==0 || playTime==0)
+			return 0;
 		return (double) defensiveRebound * ((double) teamPlayTime / 5)
 				/ (double) playTime
-				/ (double) (teamDefensiveRebound + teamDefensiveRebound2);
+				/ divisor;
 	}
 
 	public double getAssistEfficient() {
@@ -479,24 +496,36 @@ public  final class Player implements Cloneable{
 	}
 
 	public double getStealEfficient() {
+		double divisor = getOffensiveRound2();
+		if(divisor==0 || playTime==0)
+			return 0;
 		return (double) steal * ((double) teamPlayTime / 5) / (double) playTime
-				/ getOffensiveRound2();
+				/ divisor;
 	}
 
 	public double getBlockShotEfficient() {
+		double divisor = (double) (teamshot2 - teamThirdshot2);
+		if(divisor==0 || playTime==0)
+			return 0;
 		return (double) blockShot * ((double) teamPlayTime / 5) / (double) playTime
-				/ (double) (teamshot2 - teamThirdshot2);
+				/ divisor;
 	}
 
 	public double getFaultEfficient() {
+		double divisor = (double) (chuShou - thirdshot + 0.44 * (double) freeshot + fault);
+		if(divisor==0)
+			return 0;
 		return (double) fault
-				/ (double) (chuShou - thirdshot + 0.44 * (double) freeshot + fault);
+				/ divisor;
 	}
 
 	public double getFrequency() {
+		double divisor =  (teamshot + 0.44 * teamFreeshot + teamMiss);
+		if(divisor==0 || playTime==0)
+			return 0;
 		return (double) (chuShou + 0.44 * freeshot + fault)
 				* ((double) teamPlayTime / 5) / playTime
-				/ (teamshot + 0.44 * teamFreeshot + teamMiss);
+				/ divisor;
 	}
 
 	public boolean isAnalysed() {

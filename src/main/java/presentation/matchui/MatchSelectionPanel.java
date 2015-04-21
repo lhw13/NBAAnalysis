@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import presentation.ImageHandle;
 import presentation.mainui.MainFrame;
 import presentation.mainui.Panels;
 import presentation.playerui.PlayerInfoPanel;
@@ -62,7 +63,7 @@ public class MatchSelectionPanel extends JPanel {
 		panelOfBottom.setPreferredSize(new Dimension(1000, 500));
 		panelOfBottom.setLayout(null);
 		
-		String[] names1 = new String[]{"赛季", "日期", "球队", "总比分", "第一节", "第二节", "第三节", "第四节", "详情"};
+		String[] names1 = new String[]{"赛季", "日期", "主队", "比分", "客队", "主队最高分", "客队最高分", "详情"};
 		columnName1 = new Vector();
 		for(int i=0;i<names1.length;i++) {
 			columnName1.add(names1[i]);
@@ -211,18 +212,12 @@ public class MatchSelectionPanel extends JPanel {
 			rowData1.add(selectedMatchs.get(i).getSeason());
 			rowData1.add((selectedMatchs.get(i).getDate().get(Calendar.MONTH)+1)+"-"+
 					selectedMatchs.get(i).getDate().get(Calendar.DAY_OF_MONTH));
-			rowData1.add(selectedMatchs.get(i).getTeam1().getAbbreviation()+"-"+
-					selectedMatchs.get(i).getTeam2().getAbbreviation());
+			rowData1.add(PlayerSelectionPanel.translate(selectedMatchs.get(i).getTeam1().getAbbreviation()));
 			rowData1.add(selectedMatchs.get(i).getFinalScore().getTeam1()+"-"+
 					selectedMatchs.get(i).getFinalScore().getTeam2());
-			rowData1.add(selectedMatchs.get(i).getScores().get(0).getTeam1()+"-"+
-					selectedMatchs.get(i).getScores().get(0).getTeam2());
-			rowData1.add(matchList.get(i).getScores().get(1).getTeam1()+"-"+
-					selectedMatchs.get(i).getScores().get(1).getTeam2());
-			rowData1.add(selectedMatchs.get(i).getScores().get(2).getTeam1()+"-"+
-					selectedMatchs.get(i).getScores().get(2).getTeam2());
-			rowData1.add(selectedMatchs.get(i).getScores().get(3).getTeam1()+"-"+
-					selectedMatchs.get(i).getScores().get(3).getTeam2());
+			rowData1.add(PlayerSelectionPanel.translate(selectedMatchs.get(i).getTeam2().getAbbreviation()));
+			rowData1.add("主队最高分");
+			rowData1.add("客队最高分");
 			rowData1.add("详情");
 			rowDatas1.add(rowData1);
 		}
@@ -320,7 +315,7 @@ public class MatchSelectionPanel extends JPanel {
 			rowDatas2.add(rowData2);
 		}
 		model2.setDataVector(rowDatas2, columnName1);		
-		model2.setColumnCount(mpo.getTeam2().getPlayers().size());
+		model2.setColumnCount(columnName1.size());
 		model2.setRowCount(rowDatas2.size());
 		
 		String[] cname2 = new String[] {
@@ -335,7 +330,8 @@ public class MatchSelectionPanel extends JPanel {
 		rowData3.add(mpo.getSeason());
 		rowData3.add((mpo.getDate().get(Calendar.MONTH)+1)+"-"+
 	                 mpo.getDate().get(Calendar.DAY_OF_MONTH));
-		rowData3.add(mpo.getTeam1().getAbbreviation()+"-"+mpo.getTeam2().getAbbreviation());
+		rowData3.add(PlayerSelectionPanel.translate(mpo.getTeam1().getAbbreviation())+"VS"+
+				PlayerSelectionPanel.translate(mpo.getTeam2().getAbbreviation()));
 		rowData3.add(mpo.getFinalScore().getTeam1()+"-"+mpo.getFinalScore().getTeam2());
 		rowData3.add(mpo.getScores().get(0).getTeam1()+"-"+mpo.getScores().get(0).getTeam2());
 		rowData3.add(mpo.getScores().get(1).getTeam1()+"-"+mpo.getScores().get(1).getTeam2());
@@ -348,12 +344,11 @@ public class MatchSelectionPanel extends JPanel {
 		
 		int width = 200;
 		int height = 150;
-		compute = BLController.getInstance();
 		ImageIcon[] ii=new ImageIcon[2];
-		ii[0] = compute.getTeamPic(mpo.getTeam1().getAbbreviation());
+		ii[0] = ImageHandle.loadTeam(mpo.getTeam1().getAbbreviation());
 		ii[0].setImage(ii[0].getImage().getScaledInstance(width, height,
 				Image.SCALE_DEFAULT));
-		ii[1] = compute.getTeamPic(mpo.getTeam2().getAbbreviation());
+		ii[1] = ImageHandle.loadTeam(mpo.getTeam2().getAbbreviation());
 		ii[1].setImage(ii[1].getImage().getScaledInstance(width, height,
 				Image.SCALE_DEFAULT));
 		
@@ -428,7 +423,7 @@ public class MatchSelectionPanel extends JPanel {
 			rowDatas2.add(rowData2);
 		}
 		model2.setDataVector(rowDatas2, columnName1);		
-		model2.setColumnCount(mpo.getTeam2().getPlayers().size());
+		model2.setColumnCount(columnName1.size());
 		model2.setRowCount(rowDatas2.size());
 		
 		String[] cname2 = new String[] {
@@ -443,7 +438,8 @@ public class MatchSelectionPanel extends JPanel {
 		rowData3.add(mpo.getSeason());
 		rowData3.add((mpo.getDate().get(Calendar.MONTH)+1)+"-"+
 	                 mpo.getDate().get(Calendar.DAY_OF_MONTH));
-		rowData3.add(mpo.getTeam1().getAbbreviation()+"-"+mpo.getTeam2().getAbbreviation());
+		rowData3.add(PlayerSelectionPanel.translate(mpo.getTeam1().getAbbreviation())+"VS"+
+				PlayerSelectionPanel.translate(mpo.getTeam2().getAbbreviation()));
 		rowData3.add(mpo.getFinalScore().getTeam1()+"-"+mpo.getFinalScore().getTeam2());
 		rowData3.add(mpo.getScores().get(0).getTeam1()+"-"+mpo.getScores().get(0).getTeam2());
 		rowData3.add(mpo.getScores().get(1).getTeam1()+"-"+mpo.getScores().get(1).getTeam2());
@@ -456,12 +452,11 @@ public class MatchSelectionPanel extends JPanel {
 		
 		int width = 200;
 		int height = 150;
-		compute = BLController.getInstance();
 		ImageIcon[] ii=new ImageIcon[2];
-		ii[0] = compute.getTeamPic(mpo.getTeam1().getAbbreviation());
+		ii[0] = ImageHandle.loadTeam(mpo.getTeam1().getAbbreviation());
 		ii[0].setImage(ii[0].getImage().getScaledInstance(width, height,
 				Image.SCALE_DEFAULT));
-		ii[1] = compute.getTeamPic(mpo.getTeam2().getAbbreviation());
+		ii[1] = ImageHandle.loadTeam(mpo.getTeam2().getAbbreviation());
 		ii[1].setImage(ii[1].getImage().getScaledInstance(width, height,
 				Image.SCALE_DEFAULT));
 		

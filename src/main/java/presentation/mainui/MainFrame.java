@@ -23,7 +23,12 @@ import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 import org.jvnet.substance.SubstanceLookAndFeel;
+import org.jvnet.substance.border.FlatInnerBorderPainter;
+import org.jvnet.substance.button.StandardButtonShaper;
 import org.jvnet.substance.skin.MagmaSkin;
+import org.jvnet.substance.theme.SubstanceEbonyTheme;
+import org.jvnet.substance.title.Glass3DTitlePainter;
+import org.jvnet.substance.watermark.SubstanceWoodWatermark;
 
 import blservice.BLService;
 import presentation.ImageHandle;
@@ -38,7 +43,7 @@ import server.po.MatchPO;
 import vo.PlayerVO;
 import vo.TeamVO;
 import vo.TeamWithPlayersVO;
-
+ 
 public class MainFrame {
 
 	public static JFrame frame;
@@ -47,7 +52,8 @@ public class MainFrame {
 
 	public static PlayerInfoPanel pip;
 	public static PlayerSelectionPanel psp;
-
+	public static HotRankingPanel hrp;
+	
 	public static boolean flag = false;
 	public static boolean flag0 = false;
 	public static boolean flag1 = false;
@@ -104,22 +110,22 @@ public class MainFrame {
 
 	BLService blservice = BLController.getInstance();
 	public static void main(String[] args) {
-		try {
-			UIManager.setLookAndFeel(new SubstanceLookAndFeel());
-			if (System.getProperty("substancelaf.useDecorations") == null) {
-				JFrame.setDefaultLookAndFeelDecorated(true);
-				JDialog.setDefaultLookAndFeelDecorated(true);
-				/**
-				 * setDefaultLookAndFeelDecorated设置为true或者false
-				 * JDialog也可以使用setDefaultLookAndFeelDecorated
-				 */
-			}
-
-			// 设置当前的主题风格
-			SubstanceLookAndFeel.setSkin(new MagmaSkin());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		try {
+//			UIManager.setLookAndFeel(new SubstanceLookAndFeel());
+//			if (System.getProperty("substancelaf.useDecorations") == null) {
+//				JFrame.setDefaultLookAndFeelDecorated(true);
+//				JDialog.setDefaultLookAndFeelDecorated(true);
+//				/**
+//				 * setDefaultLookAndFeelDecorated设置为true或者false
+//				 * JDialog也可以使用setDefaultLookAndFeelDecorated
+//				 */
+//			}
+//
+//			 //设置当前的主题风格
+//			SubstanceLookAndFeel.setSkin(new MagmaSkin());
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -158,6 +164,10 @@ public class MainFrame {
 		pip = new PlayerInfoPanel();
 		frame.getContentPane().add(PlayerInfoPanel.scrollPane);
 		PlayerInfoPanel.scrollPane.setVisible(false);
+		
+		hrp = new HotRankingPanel();
+		frame.getContentPane().add(HotRankingPanel.scrollPane);
+		HotRankingPanel.scrollPane.setVisible(false);
 	}
 
 	private class ScheduleTask extends TimerTask {
@@ -300,7 +310,7 @@ public class MainFrame {
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 1000, 600);
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(
-				"pictures\\NBA.jpg"));
+				"conf\\pictures\\NBA.jpg"));
 		frame.setTitle("NBA");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -313,7 +323,7 @@ public class MainFrame {
 		lblNewLabel.setLocation(0, 0);
 		lblNewLabel.setSize(400, 300);
 
-		ImageIcon ii = new ImageIcon("pictures\\P1.png");
+		ImageIcon ii = new ImageIcon("conf\\pictures\\P1.png");
 		lblNewLabel.setIcon(ii);
 		panel.add(lblNewLabel);
 
@@ -347,7 +357,7 @@ public class MainFrame {
 		lblNewLabelBack = new JLabel("");
 		lblNewLabelBack.setLocation(-400, 0);
 		lblNewLabelBack.setSize(400, 300);
-		ImageIcon ii0 = new ImageIcon("pictures\\P1_1.png");
+		ImageIcon ii0 = new ImageIcon("conf\\pictures\\P1_1.png");
 		lblNewLabelBack.setIcon(ii0);
 		panel.add(lblNewLabelBack);
 
@@ -393,7 +403,7 @@ public class MainFrame {
 		});
 
 		lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("pictures\\P2.PNG"));
+		lblNewLabel_1.setIcon(new ImageIcon("conf\\pictures\\P2.PNG"));
 		lblNewLabel_1.setBounds(0, 300, 400, 300);
 		panel.add(lblNewLabel_1);
 
@@ -431,7 +441,7 @@ public class MainFrame {
 		lblNewLabel_1Back = new JLabel("");
 		lblNewLabel_1Back.setLocation(-400, 300);
 		lblNewLabel_1Back.setSize(400, 300);
-		ImageIcon ii1 = new ImageIcon("pictures\\P2_1.png");
+		ImageIcon ii1 = new ImageIcon("conf\\pictures\\P2_1.png");
 		lblNewLabel_1Back.setIcon(ii1);
 		panel.add(lblNewLabel_1Back);
 
@@ -473,7 +483,7 @@ public class MainFrame {
 		lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setLocation(600, 0);
 		lblNewLabel_2.setSize(400, 300);
-		ImageIcon ii2 = new ImageIcon("pictures\\P3.png");
+		ImageIcon ii2 = new ImageIcon("conf\\pictures\\P3.png");
 		lblNewLabel_2.setIcon(ii2);
 		panel.add(lblNewLabel_2);
 
@@ -512,7 +522,7 @@ public class MainFrame {
 		lblNewLabel_2Back = new JLabel("");
 		lblNewLabel_2Back.setLocation(1000, 0);
 		lblNewLabel_2Back.setSize(400, 300);
-		ImageIcon ii3 = new ImageIcon("pictures\\P3_1.png");
+		ImageIcon ii3 = new ImageIcon("conf\\pictures\\P3_1.png");
 		lblNewLabel_2Back.setIcon(ii3);
 		panel.add(lblNewLabel_2Back);
 
@@ -554,7 +564,7 @@ public class MainFrame {
 		lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setLocation(600, 300);
 		lblNewLabel_3.setSize(400, 300);
-		ImageIcon ii4 = new ImageIcon("pictures\\P4.png");
+		ImageIcon ii4 = new ImageIcon("conf\\pictures\\P4.png");
 		lblNewLabel_3.setIcon(ii4);
 		panel.add(lblNewLabel_3);
 
@@ -593,7 +603,7 @@ public class MainFrame {
 		lblNewLabel_3Back = new JLabel("");
 		lblNewLabel_3Back.setLocation(1000, 500);
 		lblNewLabel_3Back.setSize(400, 300);
-		ImageIcon ii5 = new ImageIcon("pictures\\P4_1.png");
+		ImageIcon ii5 = new ImageIcon("conf\\pictures\\P4_1.png");
 		lblNewLabel_3Back.setIcon(ii5);
 		panel.add(lblNewLabel_3Back);
 
@@ -632,7 +642,7 @@ public class MainFrame {
 		lblNewLabel_4 = new JLabel("");
 		lblNewLabel_4.setLocation(400, 0);
 		lblNewLabel_4.setSize(200, 300);
-		ImageIcon ii6 = new ImageIcon("pictures\\P5.png");
+		ImageIcon ii6 = new ImageIcon("conf\\pictures\\P5.png");
 		lblNewLabel_4.setIcon(ii6);
 		panel.add(lblNewLabel_4);
 		 
@@ -667,7 +677,7 @@ public class MainFrame {
 		lblNewLabel_4Back = new JLabel("");
 		lblNewLabel_4Back.setLocation(400, -300);
 		lblNewLabel_4Back.setSize(200, 300);
-		ImageIcon ii7 = new ImageIcon("pictures\\P5_1.png");
+		ImageIcon ii7 = new ImageIcon("conf\\pictures\\P5_1.png");
 		lblNewLabel_4Back.setIcon(ii7);
 		panel.add(lblNewLabel_4Back);
 		
@@ -702,7 +712,7 @@ public class MainFrame {
 		lblNewLabel_5 = new JLabel("");
 		lblNewLabel_5.setLocation(400, 300);
 		lblNewLabel_5.setSize(200, 300);
-		ImageIcon ii8 = new ImageIcon("pictures\\P6.png");
+		ImageIcon ii8 = new ImageIcon("conf\\pictures\\P6.png");
 		lblNewLabel_5.setIcon(ii8);
 		panel.add(lblNewLabel_5);
 		 
@@ -738,7 +748,7 @@ public class MainFrame {
 		lblNewLabel_5Back = new JLabel("");
 		lblNewLabel_5Back.setLocation(400, 600);
 		lblNewLabel_5Back.setSize(200, 300);
-		ImageIcon ii9 = new ImageIcon("pictures\\P6_1.png");
+		ImageIcon ii9 = new ImageIcon("conf\\pictures\\P6_1.png");
 		lblNewLabel_5Back.setIcon(ii9);
 		panel.add(lblNewLabel_5Back);
 		
@@ -746,13 +756,13 @@ public class MainFrame {
 
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
-					HotRankingPanel hrp = new HotRankingPanel();
+					
 					MainFrame.panel.setVisible(false);
 					frame.getContentPane().add(hrp.scrollPane);
-					hrp.update1(blservice.getDailyHotPlayerVO("point", 5), "point");
-					hrp.update2(blservice.getBestPromotion("point", 5), "point");
-					hrp.updateTeam(blservice.getHotTeamVO("point", 5), "point");
-					hrp.update4(blservice.getHotPlayerVO("point", 5), "point");					
+					currentPanel = Panels.HotRankingPanel;
+					hrp.update1();	
+					hrp.scrollPane.setVisible(true);
+					MainFrame.frame.setTitle("比分");
 					frame.repaint();//刷新重画 
 					frame.validate();//保证重画后的窗口能正常立即显示 
 				} catch (Exception e1) {

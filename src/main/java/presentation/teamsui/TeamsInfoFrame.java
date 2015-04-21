@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -56,7 +57,7 @@ public class TeamsInfoFrame extends JPanel{
 	private JScrollPane scrollPane_search;
 	private JComboBox<String> comboBox_1;
 	private JComboBox comboBox_2;
-	private static String season="12-13";
+	private static String season="13-14";
 	private static int date=0;
 	Vector columnName3;
 	DefaultTableModel model_3=new DefaultTableModel();
@@ -324,7 +325,6 @@ public class TeamsInfoFrame extends JPanel{
 		comboBox.addItem("防守篮板效率");
 		comboBox.addItem("抢断效率");
 		comboBox.addItem("助攻率");
-		comboBox.setSelectedItem(selection);
 		comboBox.setBounds(750, 140, 150, 30);
 		panel_1.add(comboBox);
 		
@@ -336,6 +336,10 @@ public class TeamsInfoFrame extends JPanel{
 				model_1);
 		table_1.setRowSorter(sorter);
 		table_1.setRowHeight(56);
+		
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(JLabel.CENTER);
+		table_1.setDefaultRenderer(Object.class, tcr);
 		
 		scrollPane_1.setViewportView(table_1);
 		tabbedPane.addTab("球队信息", null, scrollPane_1, null);
@@ -1000,8 +1004,8 @@ public class TeamsInfoFrame extends JPanel{
 				rowData1.add(pvo.getName());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
-				rowData1.add(pvo.getHitRate());
-				rowData1.add(pvo.getHitRate());
+				rowData1.add(handleDecimal(pvo.getHitRate()*100)+"%");
+				rowData1.add(handleDecimal(pvo.getHitRate()*100)+"%");
 				rowDatas1.add(rowData1);
 			}
 			appearance = tvo.getAppearance();
@@ -1013,8 +1017,8 @@ public class TeamsInfoFrame extends JPanel{
 			rowData2.add(tvo.getFullName());
 			rowData2.add(tvo.getAppearance());			
 			rowData2.add(0);
-			rowData2.add(tvo.getHitRate());
-			rowData2.add(tvo.getHitRate());
+			rowData2.add(handleDecimal(tvo.getHitRate()*100)+"%");
+			rowData2.add(handleDecimal(tvo.getHitRate()*100)+"%");
 			rowDatas1.add(rowData2);
 			break;
 		case "三分命中率":
@@ -1029,8 +1033,8 @@ public class TeamsInfoFrame extends JPanel{
 				rowData1.add(pvo.getName());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
-				rowData1.add(pvo.getThirdHitRate());
-				rowData1.add(pvo.getThirdHitRate());
+				rowData1.add(handleDecimal(pvo.getThirdHitRate()*100)+"%");
+				rowData1.add(handleDecimal(pvo.getThirdHitRate()*100)+"%");
 				rowDatas1.add(rowData1);
 			}
 			appearance = tvo.getAppearance();
@@ -1042,8 +1046,8 @@ public class TeamsInfoFrame extends JPanel{
 			rowData2.add(tvo.getFullName());
 			rowData2.add(tvo.getAppearance());			
 			rowData2.add(0);
-			rowData2.add(tvo.getThirdHitRate());
-			rowData2.add(tvo.getThirdHitRate());
+			rowData2.add(handleDecimal(tvo.getThirdHitRate()*100)+"%");
+			rowData2.add(handleDecimal(tvo.getThirdHitRate()*100)+"%");
 			rowDatas1.add(rowData2);
 			break;
 		case "罚球命中率":
@@ -1058,8 +1062,8 @@ public class TeamsInfoFrame extends JPanel{
 				rowData1.add(pvo.getName());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
-				rowData1.add(pvo.getFreeHitRate());
-				rowData1.add(pvo.getFreeHitRate());
+				rowData1.add(handleDecimal(pvo.getFreeHitRate()*100)+"%");
+				rowData1.add(handleDecimal(pvo.getFreeHitRate()*100)+"%");
 				rowDatas1.add(rowData1);
 			}
 			appearance = tvo.getAppearance();
@@ -1071,8 +1075,8 @@ public class TeamsInfoFrame extends JPanel{
 			rowData2.add(tvo.getFullName());
 			rowData2.add(tvo.getAppearance());			
 			rowData2.add(0);
-			rowData2.add(tvo.getFreeHitRate());
-			rowData2.add(tvo.getFreeHitRate());
+			rowData2.add(handleDecimal(tvo.getFreeHitRate()*100)+"%");
+			rowData2.add(handleDecimal(tvo.getFreeHitRate()*100)+"%");
 			rowDatas1.add(rowData2);
 			break;
 		case "胜率":
@@ -1087,8 +1091,8 @@ public class TeamsInfoFrame extends JPanel{
 				rowData1.add(pvo.getName());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
-				rowData1.add(0);
-				rowData1.add(0);
+				rowData1.add("0");
+				rowData1.add("0");
 				rowDatas1.add(rowData1);
 			}
 			appearance = tvo.getAppearance();
@@ -1100,8 +1104,8 @@ public class TeamsInfoFrame extends JPanel{
 			rowData2.add(tvo.getFullName());
 			rowData2.add(tvo.getAppearance());			
 			rowData2.add(0);
-			rowData2.add(tvo.getWinRate());
-			rowData2.add(tvo.getWinRate());
+			rowData2.add(handleDecimal(tvo.getWinRate()*100)+"%");
+			rowData2.add(handleDecimal(tvo.getWinRate()*100)+"%");
 			rowDatas1.add(rowData2);
 			break;
 		case "进攻回合":
@@ -1116,8 +1120,8 @@ public class TeamsInfoFrame extends JPanel{
 				rowData1.add(pvo.getName());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
-				rowData1.add(0);
-				rowData1.add(0);
+				rowData1.add("0");
+				rowData1.add("0");
 				rowDatas1.add(rowData1);
 			}
 			appearance = tvo.getAppearance();
@@ -1129,8 +1133,8 @@ public class TeamsInfoFrame extends JPanel{
 			rowData2.add(tvo.getFullName());
 			rowData2.add(tvo.getAppearance());			
 			rowData2.add(0);
-			rowData2.add(tvo.getOffensiveRound());
-			rowData2.add(tvo.getOffensiveRound());
+			rowData2.add(handleDecimal(tvo.getOffensiveRound()));
+			rowData2.add(handleDecimal(tvo.getOffensiveRound()));
 			rowDatas1.add(rowData2);
 			break;
 		case "进攻效率":
@@ -1145,8 +1149,8 @@ public class TeamsInfoFrame extends JPanel{
 				rowData1.add(pvo.getName());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
-				rowData1.add(0);
-				rowData1.add(0);
+				rowData1.add("0");
+				rowData1.add("0");
 				rowDatas1.add(rowData1);
 			}
 			appearance = tvo.getAppearance();
@@ -1158,8 +1162,8 @@ public class TeamsInfoFrame extends JPanel{
 			rowData2.add(tvo.getFullName());
 			rowData2.add(tvo.getAppearance());			
 			rowData2.add(0);
-			rowData2.add(tvo.getOffensiveEfficiency());
-			rowData2.add(tvo.getOffensiveEfficiency());
+			rowData2.add(handleDecimal(tvo.getOffensiveEfficiency()));
+			rowData2.add(handleDecimal(tvo.getOffensiveEfficiency()));
 			rowDatas1.add(rowData2);
 			break;
 		case "防守效率":
@@ -1174,8 +1178,8 @@ public class TeamsInfoFrame extends JPanel{
 				rowData1.add(pvo.getName());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
-				rowData1.add(0);
-				rowData1.add(0);
+				rowData1.add("0");
+				rowData1.add("0");
 				rowDatas1.add(rowData1);
 			}
 			appearance = tvo.getAppearance();
@@ -1187,8 +1191,8 @@ public class TeamsInfoFrame extends JPanel{
 			rowData2.add(tvo.getFullName());
 			rowData2.add(tvo.getAppearance());			
 			rowData2.add(0);
-			rowData2.add(tvo.getDefensiveEfficiency());
-			rowData2.add(tvo.getDefensiveEfficiency());
+			rowData2.add(handleDecimal(tvo.getDefensiveEfficiency()));
+			rowData2.add(handleDecimal(tvo.getDefensiveEfficiency()));
 			rowDatas1.add(rowData2);
 			break;
 		case "进攻篮板效率":
@@ -1437,7 +1441,6 @@ public class TeamsInfoFrame extends JPanel{
 			rowDatas1.add(rowData1);
 		}
 		
-		
 		model_3.setDataVector(rowDatas1, columnName3);
 		model_3.setColumnCount(table_2.getColumnCount());
 		model_3.setRowCount(rowDatas1.size());
@@ -1531,7 +1534,7 @@ public class TeamsInfoFrame extends JPanel{
 			rowDatas2.add(rowData2);
 		}
 		model2.setDataVector(rowDatas2, columnName1);		
-		model2.setColumnCount(mpo.getTeam2().getPlayers().size());
+		model2.setColumnCount(columnName1.size());
 		model2.setRowCount(rowDatas2.size());
 		
 		String[] cname2 = new String[] {
@@ -1559,12 +1562,11 @@ public class TeamsInfoFrame extends JPanel{
 		
 		int width = 200;
 		int height = 150;
-		compute = BLController.getInstance();
 		ImageIcon[] ii=new ImageIcon[2];
-		ii[0] = compute.getTeamPic(mpo.getTeam1().getAbbreviation());
+		ii[0] = ImageHandle.loadTeam(mpo.getTeam1().getAbbreviation());
 		ii[0].setImage(ii[0].getImage().getScaledInstance(width, height,
 				Image.SCALE_DEFAULT));
-		ii[1] = compute.getTeamPic(mpo.getTeam2().getAbbreviation());
+		ii[1] = ImageHandle.loadTeam(mpo.getTeam2().getAbbreviation());
 		ii[1].setImage(ii[1].getImage().getScaledInstance(width, height,
 				Image.SCALE_DEFAULT));
 		
@@ -1585,7 +1587,11 @@ public class TeamsInfoFrame extends JPanel{
 	        column.setPreferredWidth(width[i]);  
 	    }  
 	    return columns;  
-	}  
+	}
+	
+	public String handleDecimal(double f) {
+		return String.format("%.1f", f);
+	}
 	
 	public static double handle(double a, int b) {
 		double result = a / (double) b;

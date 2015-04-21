@@ -138,14 +138,14 @@ public class ConsoleTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			c.execute(System.out, ss);
+			c.execute(p, ss);
 		
 	}
 	
 	@Test
 	public void test3()
 	{
-		String ss[] = {"-player","-high","-n","10","-sort","frequency.desc"};
+		String ss[] = {"-player","-high","-n","20","-sort","frequency.desc"};
 		Console c = new Console();
 		PrintStream p = null;
 		try {
@@ -216,5 +216,20 @@ public class ConsoleTest {
 			e.printStackTrace();
 		}
 			c.execute(p, ss);
+	}
+	@Test
+	public void test8()
+	{
+		String ss[] = {"-player","-high","-n","20"};
+		Console c = new Console();
+		PrintStream p = null;
+		try {
+			p = new PrintStream(new File("test18.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			c.execute(System.out, ss);
+		
 	}
 }

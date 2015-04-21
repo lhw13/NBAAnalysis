@@ -44,6 +44,12 @@ public class PlayerRankingPanel extends JPanel {
 	private JButton btnNewButton;
 	private JComboBox<String> comboBox;
 	public static JTable table;
+	
+	private static JLabel kingOfScore;
+	private static JLabel kingOfRebound;
+	private static JLabel kingOfAssist;
+	private static JLabel kingOfSteal;
+	private static JLabel kingOfBlock;
 
 	public static JCheckBox chckbxNewCheckBox;
 	public static JCheckBox chckbxNewCheckBox_1;
@@ -94,6 +100,26 @@ public class PlayerRankingPanel extends JPanel {
 			}
 
 		});
+		
+		kingOfScore = new JLabel("得分榜");
+		kingOfScore.setBounds(200, 100, 100, 50);
+		panel.add(kingOfScore);
+		
+		kingOfRebound = new JLabel("篮板榜");
+		kingOfRebound.setBounds(300, 100, 100, 50);
+		panel.add(kingOfRebound);
+		
+		kingOfAssist = new JLabel("助攻榜");
+		kingOfAssist.setBounds(400, 100, 100, 50);
+		panel.add(kingOfAssist);
+		
+		kingOfSteal = new JLabel("抢断榜");
+		kingOfSteal.setBounds(500, 100, 100, 50);
+		panel.add(kingOfSteal);
+		
+		kingOfBlock = new JLabel("盖帽榜");
+		kingOfBlock.setBounds(600, 100, 100, 50);
+		panel.add(kingOfBlock);
 		
 		String[] names1 = new String[]{"", "球员", "位置", "赛区", "分区", "得分(场均)", "得分(总计)"};
 		columnName1 = new Vector();

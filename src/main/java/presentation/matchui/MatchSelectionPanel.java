@@ -2,6 +2,7 @@ package presentation.matchui;
 
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -335,6 +336,60 @@ public class MatchSelectionPanel extends JPanel {
 		model3.setColumnCount(columnName3.size());
 		model3.setRowCount(rowDatas3.size());
 		
+		String[] cname3 = new String[] {
+				"","","" };
+		DefaultTableModel model4 = new DefaultTableModel();
+		Vector<String> columnName4 = new Vector<String>();
+		for(int i=0;i<cname3.length;i++) {
+			columnName4.add(cname3[i]);
+		}
+		
+		Vector rowDatas4 = new Vector();
+		Vector rowData4 = new Vector();
+		rowData4.add(PlayerSelectionPanel.translate(mpo.getTeam1().getAbbreviation()));
+		rowData4.add("各项最高");
+		rowData4.add(PlayerSelectionPanel.translate(mpo.getTeam2().getAbbreviation()));
+		rowDatas4.add(rowData4);
+		rowData4 = new Vector();
+		rowData4.add(mpo.getTeam1().getHighestScore().getName()+" "+
+		               mpo.getTeam1().getHighestScore().getScore());
+		rowData4.add("得分");
+		rowData4.add(mpo.getTeam2().getHighestScore().getName()+" "+
+	               mpo.getTeam2().getHighestScore().getScore());
+		rowDatas4.add(rowData4);
+		rowData4 = new Vector();
+		rowData4.add(mpo.getTeam1().getHighestRebound().getName()+" "+
+                mpo.getTeam1().getHighestRebound().getTotalRebound());
+	    rowData4.add("篮板");
+	    rowData4.add(mpo.getTeam2().getHighestRebound().getName()+" "+
+                       mpo.getTeam2().getHighestRebound().getTotalRebound());
+		rowDatas4.add(rowData4);
+		rowData4 = new Vector();
+		rowData4.add(mpo.getTeam1().getHighestAssist().getName()+" "+
+                       mpo.getTeam1().getHighestAssist().getAssist());
+        rowData4.add("助攻");
+        rowData4.add(mpo.getTeam2().getHighestAssist().getName()+" "+
+                       mpo.getTeam2().getHighestAssist().getAssist());
+		rowDatas4.add(rowData4);
+		rowData4 = new Vector();
+		rowData4.add(mpo.getTeam1().getHighestSteal().getName()+" "+
+                       mpo.getTeam1().getHighestSteal().getSteal());
+        rowData4.add("抢断");
+        rowData4.add(mpo.getTeam2().getHighestSteal().getName()+" "+
+                       mpo.getTeam2().getHighestSteal().getSteal());
+		rowDatas4.add(rowData4);
+		rowData4 = new Vector();
+		rowData4.add(mpo.getTeam1().getHighestBlock().getName()+" "+
+                       mpo.getTeam1().getHighestBlock().getBlock());
+        rowData4.add("盖帽");
+        rowData4.add(mpo.getTeam1().getHighestBlock().getName()+" "+
+                       mpo.getTeam1().getHighestBlock().getBlock());
+		rowDatas4.add(rowData4);
+		
+		model4.setDataVector(rowDatas4, columnName4);		
+		model4.setColumnCount(columnName4.size());
+		model4.setRowCount(rowDatas4.size());
+		
 		int width = 200;
 		int height = 150;
 		ImageIcon[] ii=new ImageIcon[2];
@@ -347,7 +402,7 @@ public class MatchSelectionPanel extends JPanel {
 		
 		if(MatchSelectionPanel.scrollPane!=null){
 			MatchSelectionPanel.scrollPane.setVisible(false);
-			MatchDetailInfoPanel mdip = new MatchDetailInfoPanel(ii,model1,model2,model3);
+			MatchDetailInfoPanel mdip = new MatchDetailInfoPanel(ii,model1,model2,model3,model4);
 			MainFrame.frame.getContentPane().add(mdip.scrollPane);
 			MainFrame.frame.repaint();//刷新重画 
 			MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
@@ -443,6 +498,60 @@ public class MatchSelectionPanel extends JPanel {
 		model3.setColumnCount(columnName3.size());
 		model3.setRowCount(rowDatas3.size());
 		
+		String[] cname3 = new String[] {
+				"","","" };
+		DefaultTableModel model4 = new DefaultTableModel();
+		Vector<String> columnName4 = new Vector<String>();
+		for(int i=0;i<cname3.length;i++) {
+			columnName4.add(cname3[i]);
+		}
+		
+		Vector rowDatas4 = new Vector();
+		Vector rowData4 = new Vector();
+		rowData4.add(PlayerSelectionPanel.translate(mpo.getTeam1().getAbbreviation()));
+		rowData4.add("各项最高");
+		rowData4.add(PlayerSelectionPanel.translate(mpo.getTeam2().getAbbreviation()));
+		rowDatas4.add(rowData4);
+		rowData4 = new Vector();
+		rowData4.add(mpo.getTeam1().getHighestScore().getName()+" "+
+		               mpo.getTeam1().getHighestScore().getScore());
+		rowData4.add("得分");
+		rowData4.add(mpo.getTeam2().getHighestScore().getName()+" "+
+	               mpo.getTeam2().getHighestScore().getScore());
+		rowDatas4.add(rowData4);
+		rowData4 = new Vector();
+		rowData4.add(mpo.getTeam1().getHighestRebound().getName()+" "+
+                mpo.getTeam1().getHighestRebound().getTotalRebound());
+	    rowData4.add("篮板");
+	    rowData4.add(mpo.getTeam2().getHighestRebound().getName()+" "+
+                       mpo.getTeam2().getHighestRebound().getTotalRebound());
+		rowDatas4.add(rowData4);
+		rowData4 = new Vector();
+		rowData4.add(mpo.getTeam1().getHighestAssist().getName()+" "+
+                       mpo.getTeam1().getHighestAssist().getAssist());
+        rowData4.add("助攻");
+        rowData4.add(mpo.getTeam2().getHighestAssist().getName()+" "+
+                       mpo.getTeam2().getHighestAssist().getAssist());
+		rowDatas4.add(rowData4);
+		rowData4 = new Vector();
+		rowData4.add(mpo.getTeam1().getHighestSteal().getName()+" "+
+                       mpo.getTeam1().getHighestSteal().getSteal());
+        rowData4.add("抢断");
+        rowData4.add(mpo.getTeam2().getHighestSteal().getName()+" "+
+                       mpo.getTeam2().getHighestSteal().getSteal());
+		rowDatas4.add(rowData4);
+		rowData4 = new Vector();
+		rowData4.add(mpo.getTeam1().getHighestBlock().getName()+" "+
+                       mpo.getTeam1().getHighestBlock().getBlock());
+        rowData4.add("盖帽");
+        rowData4.add(mpo.getTeam1().getHighestBlock().getName()+" "+
+                       mpo.getTeam1().getHighestBlock().getBlock());
+		rowDatas4.add(rowData4);
+		
+		model4.setDataVector(rowDatas4, columnName4);		
+		model4.setColumnCount(columnName4.size());
+		model4.setRowCount(rowDatas4.size());
+		
 		int width = 200;
 		int height = 150;
 		ImageIcon[] ii=new ImageIcon[2];
@@ -455,7 +564,7 @@ public class MatchSelectionPanel extends JPanel {
 		
 		if(PlayerInfoPanel.scrollPane!=null){
 			PlayerInfoPanel.scrollPane.setVisible(false);
-			MatchDetailInfoPanel mdip = new MatchDetailInfoPanel(ii,model1,model2,model3);
+			MatchDetailInfoPanel mdip = new MatchDetailInfoPanel(ii,model1,model2,model3,model4);
 			MainFrame.frame.getContentPane().add(mdip.scrollPane);
 			MainFrame.frame.repaint();//刷新重画 
 			MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 

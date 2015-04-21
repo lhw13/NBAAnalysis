@@ -1,6 +1,7 @@
 package presentation.matchui;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,12 +25,13 @@ import javax.swing.JLabel;
 public class MatchDetailInfoPanel extends JPanel {
 	public static JScrollPane scrollPane;
 	JPanel panelOfBottom = new JPanel();
-	private JTable table;
 	private JScrollPane scrollPane_1;
 	private JScrollPane scrollPane_2;
 	private JScrollPane scrollPane_3;
+	private JTable table;
 	private JTable table_1;
 	private JTable table_2;
+	private JTable table_3;
 	private JButton btnNewButton;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
@@ -43,7 +45,8 @@ public class MatchDetailInfoPanel extends JPanel {
 	    return columns;  
 	}  
 	
-	public MatchDetailInfoPanel(ImageIcon ii[], DefaultTableModel model1, DefaultTableModel model2, DefaultTableModel model3) {
+	public MatchDetailInfoPanel(ImageIcon ii[], DefaultTableModel model1, DefaultTableModel model2, 
+			DefaultTableModel model3, DefaultTableModel model4) {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
 		
@@ -81,11 +84,18 @@ public class MatchDetailInfoPanel extends JPanel {
 		int[] width2={40,30,80,50,30,30,30,30};
 		table_2.setColumnModel(getColumn(table_2, width2));
 		
-		
 		scrollPane_3 = new JScrollPane();
-		scrollPane_3.setBounds(250, 50, 500, 50);
+		scrollPane_3.setBounds(250, 10, 500, 50);
 		scrollPane_3.setViewportView(table_2);
 		panelOfBottom.add(scrollPane_3);
+		
+		table_3 = new JTable();
+		table_3.setModel(model4);
+		int[] width3={150,100,150};
+		table_3.setColumnModel(getColumn(table_3, width3));
+		table_3.setBounds(250, 70, 500, 300);
+		table_3.setFont(new Font("微软雅黑", Font.BOLD, 13));
+		panelOfBottom.add(table_3);
 		
 		btnNewButton = new JButton("返回");
 		btnNewButton.setBounds(10, 10, 120, 25);

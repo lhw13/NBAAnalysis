@@ -111,24 +111,18 @@ public class TeamsRankingFrame {
 		}
 		
 		comboBox = new JComboBox<String>();
-		comboBox.addItem("投篮命中数");
-		comboBox.addItem("投篮出手数");
-		comboBox.addItem("三分命中");
-		comboBox.addItem("三分出手数");
-		comboBox.addItem("罚球命中数");
-		comboBox.addItem("罚球出手数");
-		comboBox.addItem("进攻篮板");
-		comboBox.addItem("防守篮板");
+		comboBox.addItem("得分");
 		comboBox.addItem("总篮板");
 		comboBox.addItem("助攻");
 		comboBox.addItem("抢断");
 		comboBox.addItem("盖帽");
-		comboBox.addItem("失误");
-		comboBox.addItem("犯规");
-		comboBox.addItem("得分");
+		comboBox.addItem("进攻篮板");
+		comboBox.addItem("防守篮板");
 		comboBox.addItem("投篮命中率");
 		comboBox.addItem("三分命中率");
 		comboBox.addItem("罚球命中率");
+		comboBox.addItem("失误");
+		comboBox.addItem("犯规");
 		comboBox.addItem("胜率");
 		comboBox.addItem("进攻回合");
 		comboBox.addItem("进攻效率");
@@ -137,6 +131,16 @@ public class TeamsRankingFrame {
 		comboBox.addItem("防守篮板效率");
 		comboBox.addItem("抢断效率");
 		comboBox.addItem("助攻率");
+		comboBox.addItem("投篮命中数");
+		comboBox.addItem("投篮出手数");
+		comboBox.addItem("三分命中");
+		comboBox.addItem("三分出手数");
+		comboBox.addItem("罚球命中数");
+		comboBox.addItem("罚球出手数");
+		
+		
+		
+		
 		comboBox.setBounds(750, 15, 150, 30);
 		panel.add(comboBox);
 		

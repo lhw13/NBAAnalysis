@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -32,6 +33,8 @@ import presentation.mainui.MainFrame;
 import presentation.mainui.Panels;
 import presentation.teamsui.TeamsRankingFrame;
 import server.businesslogic.BLController;
+import server.businesslogic.Comparators;
+import server.businesslogic.Player;
 import server.po.MatchPO;
 import server.po.PlayerInMatchesPO;
 import server.po.TeamInMatchesPO;
@@ -63,6 +66,10 @@ public class PlayerInfoPanel extends JPanel {
 	DefaultTableModel model_3 = new DefaultTableModel();
 
 	DefaultTableModel model_8 = new DefaultTableModel();
+	
+	DefaultTableModel model_avgScore = new DefaultTableModel();
+	DefaultTableModel model_avgRebound = new DefaultTableModel();
+	DefaultTableModel model_avgAssist = new DefaultTableModel();
 	Vector columnName1 = new Vector();
 	Vector columnName2 = new Vector();
 	Vector columnName3 = new Vector();
@@ -70,6 +77,9 @@ public class PlayerInfoPanel extends JPanel {
 	Vector columnName8 = new Vector();
 	Vector columnName9 = new Vector();
 	
+	Vector columnName_avgScore = new Vector();
+	Vector columnName_avgRebound = new Vector();
+	Vector columnName_avgAssist = new Vector();
 	DefaultTableModel model_9 = new DefaultTableModel();
 	BLService blservice = BLController.getInstance();
 	PlayerVO vo;
@@ -81,6 +91,12 @@ public class PlayerInfoPanel extends JPanel {
 	JComboBox comboBox = new JComboBox();
 	private JButton btnNewButton;
 	private JTable table_9;
+	private JLabel label_2;
+	private JTable table_avgScore;
+	private JTable table_avgRebound;
+	private JTable table_avgAssist;
+	private JLabel label_4;
+	
 	public PlayerInfoPanel() {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
@@ -161,11 +177,23 @@ public class PlayerInfoPanel extends JPanel {
 		for(int i=0;i<cname8.length;i++) {
 			columnName8.add(cname8[i]);
 		}	
-		String[] cname9 = new String[] {
-				"",""
-			};
+		String[] cname9 = new String[] {"",""};
 		for(int i=0;i<cname9.length;i++) {
 			columnName9.add(cname9[i]);
+		}	
+		String[] cname_avgScore = new String[] {"",""};
+		for(int i=0;i<cname_avgScore.length;i++) {
+			columnName_avgScore.add(cname_avgScore[i]);
+		}	
+		
+		String[] cname_avgRebound = new String[] {"",""};
+		for(int i=0;i<cname_avgRebound.length;i++) {
+			columnName_avgRebound.add(cname_avgRebound[i]);
+		}	
+		
+		String[] cname_avgAssist = new String[] {"",""};
+		for(int i=0;i<cname_avgAssist.length;i++) {
+			columnName_avgAssist.add(cname_avgAssist[i]);
 		}	
 		table_8 = new JTable(model_8);
 		
@@ -216,6 +244,29 @@ public class PlayerInfoPanel extends JPanel {
 		label_1.setBounds(5, 324, 83, 15);
 		panelOfBottom.add(label_1);
 		
+		label_2 = new JLabel("场均得分排名");
+		label_2.setBounds(848, 23, 83, 15);
+		panelOfBottom.add(label_2);
+		
+		table_avgScore = new JTable(model_avgScore);
+		table_avgScore.setBounds(787, 48, 190, 130);
+		panelOfBottom.add(table_avgScore);
+		
+		table_avgRebound = new JTable(model_avgRebound);
+		table_avgRebound.setBounds(787, 213, 190, 130);
+		panelOfBottom.add(table_avgRebound);
+		
+		table_avgAssist = new JTable(model_avgAssist);
+		table_avgAssist.setBounds(787, 385, 190, 130);
+		panelOfBottom.add(table_avgAssist);
+		
+		JLabel label_3 = new JLabel("场均篮板排名");
+		label_3.setBounds(848, 188, 83, 15);
+		panelOfBottom.add(label_3);
+		
+		label_4 = new JLabel("场均助攻排名");
+		label_4.setBounds(848, 357, 83, 15);
+		panelOfBottom.add(label_4);
 		
 		//scrollPane.setBounds(0, 0, 990, 600);
 
@@ -433,6 +484,165 @@ public class PlayerInfoPanel extends JPanel {
 		int[] width_9={30,60};
 		table_9.setColumnModel(getColumn(table_9, width_9));
 		table_9.updateUI();
+		
+		Vector rowDatas_avgScore = new Vector();
+		ArrayList<Player> players =  BLController.getInstance().getPlayers();
+		Collections.sort(players,Comparators.getPlayerAvgComparator("point"));
+		for(int i=0;i<players.size();i++) {
+			
+			Player temp = players.get(i);
+			if(vo.getName().equals(temp.getName())) {
+				Vector rowData_avgScore = new Vector();
+				if(i-2>=0){	
+					temp = players.get(i-2);
+					rowData_avgScore.add((i+1-2)+"."+temp.getName());
+					rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
+					rowDatas_avgScore.add(rowData_avgScore);
+				}
+				if(i-1>=0){
+					rowData_avgScore = new Vector();
+					temp = players.get(i-1);
+					rowData_avgScore.add((i+1-1)+"."+temp.getName());
+					rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
+					rowDatas_avgScore.add(rowData_avgScore);
+				}
+				rowData_avgScore = new Vector();
+				temp = players.get(i);
+				rowData_avgScore.add((i+1)+"."+temp.getName());
+				rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
+				rowDatas_avgScore.add(rowData_avgScore);
+				
+				rowData_avgScore = new Vector();
+				temp = players.get(i+1);
+				rowData_avgScore.add((i+2)+"."+temp.getName());
+				rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
+				rowDatas_avgScore.add(rowData_avgScore);
+				
+				rowData_avgScore = new Vector();
+				temp = players.get(i+2);
+				rowData_avgScore.add((i+3)+"."+temp.getName());
+				rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
+				rowDatas_avgScore.add(rowData_avgScore);
+				
+				break;
+			}
+			
+			
+		}
+		
+		model_avgScore.setDataVector(rowDatas_avgScore, columnName_avgScore);		
+		model_avgScore.setColumnCount(table_avgScore.getColumnCount());
+		model_avgScore.setRowCount(rowDatas_avgScore.size());
+		table_avgScore.setModel(model_avgScore);
+		table_avgScore.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+		int[] width_avgScore={150,40};
+		table_avgScore.setColumnModel(getColumn(table_avgScore, width_avgScore));
+		table_avgScore.updateUI();
+		
+		Vector rowDatas_avgRebound = new Vector();
+		
+		Collections.sort(players,Comparators.getPlayerAvgComparator("rebound"));
+		for(int i=0;i<players.size();i++) {
+			
+			Player temp = players.get(i);
+			if(vo.getName().equals(temp.getName())) {
+				Vector rowData_avgRebound = new Vector();
+				if(i-2>=0){	
+					temp = players.get(i-2);
+					rowData_avgRebound.add((i+1-2)+"."+temp.getName());
+					rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
+					rowDatas_avgRebound.add(rowData_avgRebound);
+				}
+				if(i-1>=0){
+					rowData_avgRebound = new Vector();
+					temp = players.get(i-1);
+					rowData_avgRebound.add((i+1-1)+"."+temp.getName());
+					rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
+					rowDatas_avgRebound.add(rowData_avgRebound);
+				}
+				rowData_avgRebound = new Vector();
+				temp = players.get(i);
+				rowData_avgRebound.add((i+1)+"."+temp.getName());
+				rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
+				rowDatas_avgRebound.add(rowData_avgRebound);
+				
+				rowData_avgRebound = new Vector();
+				temp = players.get(i+1);
+				rowData_avgRebound.add((i+2)+"."+temp.getName());
+				rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
+				rowDatas_avgRebound.add(rowData_avgRebound);
+				
+				rowData_avgRebound = new Vector();
+				temp = players.get(i+2);
+				rowData_avgRebound.add((i+3)+"."+temp.getName());
+				rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
+				rowDatas_avgRebound.add(rowData_avgRebound);
+				
+				break;
+			}
+			
+			
+		}
+		
+		model_avgRebound.setDataVector(rowDatas_avgRebound, columnName_avgRebound);		
+		model_avgRebound.setColumnCount(table_avgRebound.getColumnCount());
+		model_avgRebound.setRowCount(rowDatas_avgRebound.size());
+		table_avgRebound.setModel(model_avgRebound);
+		table_avgRebound.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+		int[] width_avgRebound={150,40};
+		table_avgRebound.setColumnModel(getColumn(table_avgRebound, width_avgRebound));
+		table_avgRebound.updateUI();
+		
+		Vector rowDatas_avgAssist = new Vector();
+		Collections.sort(players,Comparators.getPlayerAvgComparator("assist"));
+		for(int i=0;i<players.size();i++) {
+			
+			Player temp = players.get(i);
+			if(vo.getName().equals(temp.getName())) {
+				Vector rowData_avgAssist = new Vector();
+				if(i-2>=0){	
+					temp = players.get(i-2);
+					rowData_avgAssist.add((i+1-2)+"."+temp.getName());
+					rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
+					rowDatas_avgAssist.add(rowData_avgAssist);
+				}
+				if(i-1>=0){
+					rowData_avgAssist = new Vector();
+					temp = players.get(i-1);
+					rowData_avgAssist.add((i+1-1)+"."+temp.getName());
+					rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
+					rowDatas_avgAssist.add(rowData_avgAssist);
+				}
+				rowData_avgAssist = new Vector();
+				temp = players.get(i);
+				rowData_avgAssist.add((i+1)+"."+temp.getName());
+				rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
+				rowDatas_avgAssist.add(rowData_avgAssist);
+				
+				rowData_avgAssist = new Vector();
+				temp = players.get(i+1);
+				rowData_avgAssist.add((i+2)+"."+temp.getName());
+				rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
+				rowDatas_avgAssist.add(rowData_avgAssist);
+				
+				rowData_avgAssist = new Vector();
+				temp = players.get(i+2);
+				rowData_avgAssist.add((i+3)+"."+temp.getName());
+				rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
+				rowDatas_avgAssist.add(rowData_avgAssist);
+				
+				break;
+			}
+		}
+		
+		model_avgAssist.setDataVector(rowDatas_avgAssist, columnName_avgAssist);		
+		model_avgAssist.setColumnCount(table_avgAssist.getColumnCount());
+		model_avgAssist.setRowCount(rowDatas_avgAssist.size());
+		table_avgAssist.setModel(model_avgAssist);
+		table_avgAssist.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+		int[] width_avgAssist={150,40};
+		table_avgAssist.setColumnModel(getColumn(table_avgAssist, width_avgAssist));
+		table_avgAssist.updateUI();
 	}
 	public void backToLatest(){
 		Vector rowDatas8 = new Vector();
@@ -575,7 +785,158 @@ public class PlayerInfoPanel extends JPanel {
      	int[] width_3={50,70,50,70,60,70,70,70,50,50,50,50};
 		table_3.setColumnModel(getColumn(table_3, width_3));
 		table_3.updateUI();
+		Vector rowDatas_avgScore = new Vector();
+		ArrayList<Player> players =  BLController.getInstance().getPlayers();
+		Collections.sort(players,Comparators.getPlayerAvgComparator("point"));
+		for(int i=0;i<players.size();i++) {
+			
+			Player temp = players.get(i);
+			if(vo.getName().equals(temp.getName())) {
+				Vector rowData_avgScore = new Vector();
+				temp = players.get(i-2);
+				rowData_avgScore.add((i+1-2)+"."+temp.getName());
+				rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
+				rowDatas_avgScore.add(rowData_avgScore);
+				
+				rowData_avgScore = new Vector();
+				temp = players.get(i-1);
+				rowData_avgScore.add((i+1-1)+"."+temp.getName());
+				rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
+				rowDatas_avgScore.add(rowData_avgScore);
+				
+				rowData_avgScore = new Vector();
+				temp = players.get(i);
+				rowData_avgScore.add((i+1)+"."+temp.getName());
+				rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
+				rowDatas_avgScore.add(rowData_avgScore);
+				
+				rowData_avgScore = new Vector();
+				temp = players.get(i+1);
+				rowData_avgScore.add((i+2)+"."+temp.getName());
+				rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
+				rowDatas_avgScore.add(rowData_avgScore);
+				
+				rowData_avgScore = new Vector();
+				temp = players.get(i+2);
+				rowData_avgScore.add((i+3)+"."+temp.getName());
+				rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
+				rowDatas_avgScore.add(rowData_avgScore);
+				
+				break;
+			}
+			
+		}
 		
+		model_avgScore.setDataVector(rowDatas_avgScore, columnName_avgScore);		
+		model_avgScore.setColumnCount(table_avgScore.getColumnCount());
+		model_avgScore.setRowCount(rowDatas_avgScore.size());
+		table_avgScore.setModel(model_avgScore);
+		table_avgScore.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+		int[] width_avgScore={150,40};
+		table_avgScore.setColumnModel(getColumn(table_avgScore, width_avgScore));
+		table_avgScore.updateUI();
+		
+		Vector rowDatas_avgRebound = new Vector();
+		Collections.sort(players,Comparators.getPlayerAvgComparator("rebound"));
+		for(int i=0;i<players.size();i++) {
+			
+			Player temp = players.get(i);
+			if(vo.getName().equals(temp.getName())) {
+				Vector rowData_avgRebound = new Vector();
+				if(i-2>=0){	
+					temp = players.get(i-2);
+					rowData_avgRebound.add((i+1-2)+"."+temp.getName());
+					rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
+					rowDatas_avgRebound.add(rowData_avgRebound);
+				}
+				if(i-1>=0){
+					rowData_avgRebound = new Vector();
+					temp = players.get(i-1);
+					rowData_avgRebound.add((i+1-1)+"."+temp.getName());
+					rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
+					rowDatas_avgRebound.add(rowData_avgRebound);
+				}
+				rowData_avgRebound = new Vector();
+				temp = players.get(i);
+				rowData_avgRebound.add((i+1)+"."+temp.getName());
+				rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
+				rowDatas_avgRebound.add(rowData_avgRebound);
+				
+				rowData_avgRebound = new Vector();
+				temp = players.get(i+1);
+				rowData_avgRebound.add((i+2)+"."+temp.getName());
+				rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
+				rowDatas_avgRebound.add(rowData_avgRebound);
+				
+				rowData_avgRebound = new Vector();
+				temp = players.get(i+2);
+				rowData_avgRebound.add((i+3)+"."+temp.getName());
+				rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
+				rowDatas_avgRebound.add(rowData_avgRebound);
+				
+				break;
+			}
+		}
+		
+		model_avgRebound.setDataVector(rowDatas_avgRebound, columnName_avgRebound);		
+		model_avgRebound.setColumnCount(table_avgRebound.getColumnCount());
+		model_avgRebound.setRowCount(rowDatas_avgRebound.size());
+		table_avgRebound.setModel(model_avgRebound);
+		table_avgRebound.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+		int[] width_avgRebound={150,40};
+		table_avgRebound.setColumnModel(getColumn(table_avgRebound, width_avgRebound));
+		table_avgRebound.updateUI();
+		
+		Vector rowDatas_avgAssist = new Vector();
+		Collections.sort(players,Comparators.getPlayerAvgComparator("assist"));
+		for(int i=0;i<players.size();i++) {
+			
+			Player temp = players.get(i);
+			if(vo.getName().equals(temp.getName())) {
+				Vector rowData_avgAssist = new Vector();
+				if(i-2>=0){	
+					temp = players.get(i-2);
+					rowData_avgAssist.add((i+1-2)+"."+temp.getName());
+					rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
+					rowDatas_avgAssist.add(rowData_avgAssist);
+				}
+				if(i-1>=0){
+					rowData_avgAssist = new Vector();
+					temp = players.get(i-1);
+					rowData_avgAssist.add((i+1-1)+"."+temp.getName());
+					rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
+					rowDatas_avgAssist.add(rowData_avgAssist);
+				}
+				rowData_avgAssist = new Vector();
+				temp = players.get(i);
+				rowData_avgAssist.add((i+1)+"."+temp.getName());
+				rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
+				rowDatas_avgAssist.add(rowData_avgAssist);
+				
+				rowData_avgAssist = new Vector();
+				temp = players.get(i+1);
+				rowData_avgAssist.add((i+2)+"."+temp.getName());
+				rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
+				rowDatas_avgAssist.add(rowData_avgAssist);
+				
+				rowData_avgAssist = new Vector();
+				temp = players.get(i+2);
+				rowData_avgAssist.add((i+3)+"."+temp.getName());
+				rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
+				rowDatas_avgAssist.add(rowData_avgAssist);
+				
+				break;
+			}
+		}
+		
+		model_avgAssist.setDataVector(rowDatas_avgAssist, columnName_avgAssist);		
+		model_avgAssist.setColumnCount(table_avgAssist.getColumnCount());
+		model_avgAssist.setRowCount(rowDatas_avgAssist.size());
+		table_avgAssist.setModel(model_avgAssist);
+		table_avgAssist.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+		int[] width_avgAssist={150,40};
+		table_avgAssist.setColumnModel(getColumn(table_avgAssist, width_avgAssist));
+		table_avgAssist.updateUI();
 	}
 	public void showPass() {
 		Vector rowDatas8 = new Vector();
@@ -632,6 +993,8 @@ public class PlayerInfoPanel extends JPanel {
 		int[] width={50,60,5,3,3,3,3,3,3,3,3,3,3,3};
 		table_8.setColumnModel(getColumn(table_8, width));
 		table_8.updateUI();
+		
+		
 	}
 	// 保留小数点
 	public String handleDecimal(double f) {

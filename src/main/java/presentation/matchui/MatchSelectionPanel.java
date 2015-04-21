@@ -356,7 +356,7 @@ public class MatchSelectionPanel extends JPanel {
 	
 	public static void goToMatchFromPlayer(MatchPO mpo){
 		String[] cname1 = new String[] {
-				"球员", "位置", "在场时间", "投篮命中", "出手", "三分命中", "出手", "罚球命中", "出手",
+				"球员", "位置", "在场时间", "投篮", "三分", "罚球",
 				"前篮板","后篮板","篮板","助攻","抢断","盖帽","失误","犯规", "得分" };
 		
 		DefaultTableModel model1 = new DefaultTableModel();

@@ -1474,7 +1474,7 @@ public class TeamsInfoFrame extends JPanel{
 	private void setMatchInfo(int rowNum){
 		MatchPO mpo = mpoList.get(rowNum);
 		String[] cname1 = new String[] {
-				"球员", "位置", "在场时间", "投篮命中", "出手", "三分命中", "出手", "罚球命中", "出手",
+				"球员", "位置", "在场时间", "投篮", "三分", "罚球",
 				"前篮板","后篮板","篮板","助攻","抢断","盖帽","失误","犯规", "得分" };
 		
 		DefaultTableModel model1 = new DefaultTableModel();
@@ -1487,13 +1487,13 @@ public class TeamsInfoFrame extends JPanel{
 			Vector rowData1 = new Vector();
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getName());
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPosition()+"");
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPlayTime());
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getHit());
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getShot());
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getThirdHit());
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getThirdshot());
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getFreeHit());
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getThirdshot());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPlayTime()/60+" min");
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getHit()+"/"+
+			               mpo.getTeam1().getPlayers().get(i).getShot());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getThirdHit()+"/"+
+					       mpo.getTeam1().getPlayers().get(i).getThirdshot());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getFreeHit()+"/"+
+					       mpo.getTeam1().getPlayers().get(i).getFreeshot());
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getOffensiveRebound());
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getDefensiveRebound());
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getTotalRebound());
@@ -1515,13 +1515,13 @@ public class TeamsInfoFrame extends JPanel{
 			Vector rowData2 = new Vector();
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getName());
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPosition()+"");
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPlayTime());
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getHit());
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getShot());
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getThirdHit());
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getThirdshot());
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getFreeHit());
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getThirdshot());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPlayTime()/60+" min");
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getHit()+"/"+
+	                       mpo.getTeam2().getPlayers().get(i).getShot());
+	        rowData2.add(mpo.getTeam2().getPlayers().get(i).getThirdHit()+"/"+
+			               mpo.getTeam2().getPlayers().get(i).getThirdshot());
+	        rowData2.add(mpo.getTeam2().getPlayers().get(i).getFreeHit()+"/"+
+			               mpo.getTeam2().getPlayers().get(i).getFreeshot());
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getOffensiveRebound());
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getDefensiveRebound());
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getTotalRebound());

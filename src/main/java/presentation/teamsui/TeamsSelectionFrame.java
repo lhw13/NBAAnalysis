@@ -34,7 +34,7 @@ import javax.swing.table.TableRowSorter;
  * 球队选择面板
  */
 public class TeamsSelectionFrame {
-	private Timer timer;
+	public static Timer timer;
 	private final int INITIAL_DELAY = 100;
 	private final int PERIOD_INTERVAL = 10;
 	private static JLabel changeLabel;
@@ -1099,9 +1099,11 @@ public class TeamsSelectionFrame {
 	//传递制定球队信息
 	public void setTeamsInfo(String teamName) {
 		TeamsSelectionFrame.scrollPane.setVisible(false);
-		TeamsSelectionFrame.flag = false;
+		TeamsSelectionFrame.timer.cancel();
+		MainFrame.frame.getContentPane().remove(TeamsSelectionFrame.scrollPane);
+		TeamsSelectionFrame.scrollPane=null;
 		MainFrame.frame.setTitle(teamName);
-
+        
 		compute = BLController.getInstance();
 		TeamWithPlayersVO twpvo = compute.getTeamAnalysis(teamName);
 		

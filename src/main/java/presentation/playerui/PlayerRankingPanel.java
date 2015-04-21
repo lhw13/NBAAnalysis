@@ -9,8 +9,10 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
@@ -28,6 +30,8 @@ import presentation.mainui.Panels;
 import presentation.matchui.MatchSelectionPanel.MouseListen;
 import presentation.teamsui.TeamsRankingFrame;
 import server.businesslogic.BLController;
+import server.businesslogic.Comparators;
+import server.businesslogic.Player;
 import vo.PlayerVO;
 
 import javax.swing.JTable;
@@ -52,6 +56,12 @@ public class PlayerRankingPanel extends JPanel {
 	private static JLabel kingOfAssist;
 	private static JLabel kingOfSteal;
 	private static JLabel kingOfBlock;
+	
+	private static JLabel crownOfScore;
+	private static JLabel crownOfRebound;
+	private static JLabel crownOfAssist;
+	private static JLabel crownOfSteal;
+	private static JLabel crownOfBlock;
 
 	public static JCheckBox chckbxNewCheckBox;
 	public static JCheckBox chckbxNewCheckBox_1;
@@ -104,24 +114,171 @@ public class PlayerRankingPanel extends JPanel {
 		});
 		
 		kingOfScore = new JLabel("得分榜");
-		kingOfScore.setBounds(200, 100, 100, 50);
+		kingOfScore.setBounds(200, 120, 100, 50);
 		panel.add(kingOfScore);
+		kingOfScore.addMouseListener(new MouseListener(){
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				updatePlayerWithCondition("point");
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+			}
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				crownOfScore.setVisible(true);
+				kingOfScore.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				crownOfScore.setVisible(false);
+				kingOfScore.setCursor(Cursor.getDefaultCursor());
+			}});
+		
 		
 		kingOfRebound = new JLabel("篮板榜");
-		kingOfRebound.setBounds(300, 100, 100, 50);
+		kingOfRebound.setBounds(300, 120, 100, 50);
 		panel.add(kingOfRebound);
+		kingOfRebound.addMouseListener(new MouseListener(){
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				updatePlayerWithCondition("rebound");
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+			}
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				crownOfRebound.setVisible(true);
+				kingOfRebound.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				crownOfRebound.setVisible(false);
+				kingOfRebound.setCursor(Cursor.getDefaultCursor());
+			}});
 		
 		kingOfAssist = new JLabel("助攻榜");
-		kingOfAssist.setBounds(400, 100, 100, 50);
+		kingOfAssist.setBounds(400, 120, 100, 50);
 		panel.add(kingOfAssist);
+		kingOfAssist.addMouseListener(new MouseListener(){
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				updatePlayerWithCondition("assist");
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+			}
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				crownOfAssist.setVisible(true);
+				kingOfAssist.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				crownOfAssist.setVisible(false);
+				kingOfAssist.setCursor(Cursor.getDefaultCursor());
+			}});
 		
 		kingOfSteal = new JLabel("抢断榜");
-		kingOfSteal.setBounds(500, 100, 100, 50);
+		kingOfSteal.setBounds(500, 120, 100, 50);
 		panel.add(kingOfSteal);
+		kingOfSteal.addMouseListener(new MouseListener(){
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				updatePlayerWithCondition("steal");
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+			}
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				crownOfSteal.setVisible(true);
+				kingOfSteal.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				crownOfSteal.setVisible(false);
+				kingOfSteal.setCursor(Cursor.getDefaultCursor());
+			}});
 		
 		kingOfBlock = new JLabel("盖帽榜");
-		kingOfBlock.setBounds(600, 100, 100, 50);
+		kingOfBlock.setBounds(600, 120, 100, 50);
 		panel.add(kingOfBlock);
+		kingOfBlock.addMouseListener(new MouseListener(){
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				updatePlayerWithCondition("blockShot");
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+			}
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				crownOfBlock.setVisible(true);
+				kingOfBlock.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				crownOfBlock.setVisible(false);
+				kingOfBlock.setCursor(Cursor.getDefaultCursor());
+			}});
+		
+		crownOfScore = new JLabel();
+		crownOfScore.setBounds(175, 100, 100, 30);
+		panel.add(crownOfScore);
+		crownOfScore.setIcon(new ImageIcon("conf\\pictures\\crown.png"));
+		crownOfScore.setVisible(false);
+		
+		crownOfRebound = new JLabel();
+		crownOfRebound.setBounds(275, 100, 100, 30);
+		panel.add(crownOfRebound);
+		crownOfRebound.setIcon(new ImageIcon("conf\\pictures\\crown.png"));
+		crownOfRebound.setVisible(false);
+		
+		crownOfAssist = new JLabel();
+		crownOfAssist.setBounds(375, 100, 100, 30);
+		panel.add(crownOfAssist);
+		crownOfAssist.setIcon(new ImageIcon("conf\\pictures\\crown.png"));
+		crownOfAssist.setVisible(false);
+		
+		crownOfSteal = new JLabel();
+		crownOfSteal.setBounds(475, 100, 100, 30);
+		panel.add(crownOfSteal);
+		crownOfSteal.setIcon(new ImageIcon("conf\\pictures\\crown.png"));
+		crownOfSteal.setVisible(false);
+		
+		crownOfBlock = new JLabel();
+		crownOfBlock.setBounds(575, 100, 100, 30);
+		panel.add(crownOfBlock);
+		crownOfBlock.setIcon(new ImageIcon("conf\\pictures\\crown.png"));
+		crownOfBlock.setVisible(false);
 		
 		String[] names1 = new String[]{"", "球员", "位置", "赛区", "分区", "得分(场均)", "得分(总计)"};
 		columnName1 = new Vector();
@@ -1454,6 +1611,82 @@ public class PlayerRankingPanel extends JPanel {
 
 	}
 	
+	public void updatePlayerWithCondition(String condition){
+		ArrayList<Player> players = compute.getPlayers();
+		List<Player> playerList = players;
+		Collections.sort(playerList, Comparators.getPlayerComparator(condition));
+		PlayerVO pvo = new PlayerVO();
+		String[] s = new String[3];
+		Vector rowDatas1 = new Vector();
+		ImageIcon picture;
+		for (int i = 0; i < playerList.size(); i++) {
+			Vector rowData1 = new Vector();
+			if (playerList.get(i) != null) {
+				pvo = playerList.get(i).toVO();
+				int appearance = pvo.getAppearance();
+				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture.setImage(picture.getImage().getScaledInstance(70, 56,
+						Image.SCALE_DEFAULT));
+				rowData1.add(picture);
+				rowData1.add(pvo.getName());
+				if (pvo.getPosition() != null) {
+					s = JudeTheFilter(pvo.getPosition(), pvo.getDivision(),
+							pvo.getZone());
+				}
+				rowData1.add(s[0]);
+				rowData1.add(s[1]);
+				rowData1.add(s[2]);
+				switch(condition){
+				case "point":
+					MainFrame.selection1="得分";
+					columnName1.setElementAt("得分(场均)", 5);
+					columnName1.setElementAt("得分(总计)", 6);
+					rowData1.add(handle((double) pvo.getScore(), appearance));
+					rowData1.add(pvo.getScore());
+					break;
+				case "rebound":
+					MainFrame.selection1="篮板";
+					columnName1.setElementAt("篮板(场均)", 5);
+					columnName1.setElementAt("篮板(总计)", 6);
+					rowData1.add(handle((double) pvo.getTotalRebound(),appearance));
+					rowData1.add(pvo.getTotalRebound());
+					break;
+				case "assist":
+					MainFrame.selection1="助攻";
+					columnName1.setElementAt("助攻(场均)", 5);
+					columnName1.setElementAt("助攻(总计)", 6);
+					rowData1.add(handle((double) pvo.getAssist(), appearance));
+					rowData1.add(pvo.getAssist());
+					break;
+				case "blockShot":
+					MainFrame.selection1="盖帽";
+					columnName1.setElementAt("盖帽(场均)", 5);
+					columnName1.setElementAt("盖帽(总计)", 6);
+					rowData1.add(handle((double) pvo.getBlock(), appearance));
+					rowData1.add(pvo.getBlock());
+					break;
+				case "steal":
+					MainFrame.selection1="抢断";
+					columnName1.setElementAt("抢断(场均)", 5);
+					columnName1.setElementAt("抢断(总计)", 6);
+					rowData1.add(handle((double) pvo.getSteal(), appearance));
+					rowData1.add(pvo.getSteal());
+					break;
+				}
+				rowDatas1.add(rowData1);
+			}
+		}
+		
+		comboBox.setSelectedItem(MainFrame.selection1);
+		model_1.setDataVector(rowDatas1, columnName1);
+		model_1.setColumnCount(table.getColumnCount());
+		model_1.setRowCount(rowDatas1.size());
+		int[] width={80,150,80,80,80,80,80};
+		table.setColumnModel(getColumn(table, width));
+		table.setModel(model_1);
+		table.updateUI();
+	}
+	
 	public void updatePlayerRanking(){
 		
 		
@@ -1510,8 +1743,8 @@ public class PlayerRankingPanel extends JPanel {
 					rowData1.add(pvo.getFoul());
 					break;
 				case "失误":
-					rowData1.add(pvo.getMiss());
 					rowData1.add(handle((double) pvo.getMiss(), appearance));
+					rowData1.add(pvo.getMiss());
 					break;
 				case "分钟":
 					rowData1.add(handle((double) pvo.getPlayTime(),appearance));
@@ -1541,7 +1774,6 @@ public class PlayerRankingPanel extends JPanel {
 				rowDatas1.add(rowData1);
 			}
 		}
-		
 		model_1.setDataVector(rowDatas1, columnName1);
 		model_1.setColumnCount(table.getColumnCount());
 		model_1.setRowCount(rowDatas1.size());
@@ -1565,6 +1797,7 @@ public class PlayerRankingPanel extends JPanel {
 				MainFrame.pip.update(table.getValueAt(r,1).toString());
 				MainFrame.frame.getContentPane().add(PlayerInfoPanel.scrollPane);
 				PlayerInfoPanel.scrollPane.setVisible(true);
+				MainFrame.currentPanel = Panels.PlayerInfoPanel;
 				MainFrame.frame.setTitle("NBA球员信息");
 				MainFrame.frame.repaint();//刷新重画 
 				MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 

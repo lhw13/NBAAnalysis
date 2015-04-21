@@ -90,4 +90,30 @@ public final  class TeamInMatchesPO {
 			}
 		return result;
 	}
+	
+	public PlayerInMatchesPO getHighestSteal()
+	{
+		int high =0;
+		PlayerInMatchesPO result=null;
+		for(int i=0;i<players.size();i++)
+			if(high<players.get(i).getSteal())
+			{
+				result = players.get(i);
+				high = result.getSteal();
+			}
+		return result;
+	}
+	
+	public PlayerInMatchesPO getHighestBlock()
+	{
+		int high =0;
+		PlayerInMatchesPO result=null;
+		for(int i=0;i<players.size();i++)
+			if(high<players.get(i).getBlock())
+			{
+				result = players.get(i);
+				high = result.getBlock();
+			}
+		return result;
+	}
 }

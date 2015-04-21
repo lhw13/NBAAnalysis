@@ -78,7 +78,7 @@ public class MatchDetailInfoPanel extends JPanel {
 		
 		table_2 = new JTable();
 		table_2.setModel(model3);
-		int[] width2={40,25,80,50,30,30,30,30};
+		int[] width2={40,30,80,50,30,30,30,30};
 		table_2.setColumnModel(getColumn(table_2, width2));
 		
 		

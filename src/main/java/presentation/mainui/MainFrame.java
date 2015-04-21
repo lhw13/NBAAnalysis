@@ -70,7 +70,7 @@ public class MainFrame {
 	public int x3 = 0;
 	public int x4 = -500;
 
-	public int x5 = 500;
+	public int x5 = 600;
 	public int x6 = 1000;
 
 	public int x7 = 600;

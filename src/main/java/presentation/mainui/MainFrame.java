@@ -761,8 +761,9 @@ public class MainFrame {
 					frame.getContentPane().add(hrp.scrollPane);
 					currentPanel = Panels.HotRankingPanel;
 					hrp.update1();	
+					hrp.update2();
 					hrp.scrollPane.setVisible(true);
-					MainFrame.frame.setTitle("比分");
+					MainFrame.frame.setTitle("今日快讯");
 					frame.repaint();//刷新重画 
 					frame.validate();//保证重画后的窗口能正常立即显示 
 				} catch (Exception e1) {

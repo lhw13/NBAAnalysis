@@ -28,6 +28,7 @@ import server.po.PlayerInMatchesPO;
 import server.po.TeamInMatchesPO;
 import vo.PlayerVO;
 import vo.TeamVO;
+import vo.TeamWithPlayersVO;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -35,14 +36,24 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Vector;
 
 public class HotRankingPanel extends JPanel {
 	public static JScrollPane scrollPane;
 	JPanel panelOfBottom = new JPanel();
 	Vector columnName1;
+	Vector columnName2;
 	DefaultTableModel model_1 = new DefaultTableModel(){
+		private static final long serialVersionUID = 1L;
+
+		public Class<?> getColumnClass(int columnIndex) {
+			return getValueAt(0, columnIndex).getClass();
+		}
+	};
+	DefaultTableModel model_2 = new DefaultTableModel(){
 		private static final long serialVersionUID = 1L;
 
 		public Class<?> getColumnClass(int columnIndex) {
@@ -62,11 +73,12 @@ public class HotRankingPanel extends JPanel {
 	private JTable table_1;
 	String root="每日";
 	String leaf="得分榜";
+	private JTable table_2;
 	public HotRankingPanel() {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
 		
-		panelOfBottom.setPreferredSize(new Dimension(1000, 600));
+		//panelOfBottom.setPreferredSize(new Dimension(1000, 600));
 		panelOfBottom.setLayout(null);
 		
 		scrollPane = new JScrollPane(panelOfBottom);
@@ -155,6 +167,13 @@ public class HotRankingPanel extends JPanel {
 		table_1.setBounds(545, 116, 385, 200);
 		panelOfBottom.add(table_1);
 		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(35, 341, 925, 223);
+		panelOfBottom.add(scrollPane_2);
+		
+		table_2 = new JTable(model_2);
+		scrollPane_2.setViewportView(table_2);
+		
 		scrollPane.setBounds(0, 0, 1000, 600);
 		add(scrollPane);
 		
@@ -162,6 +181,12 @@ public class HotRankingPanel extends JPanel {
 		columnName1 = new Vector();
 		for(int i=0;i<names1.length;i++) {
 			columnName1.add(names1[i]);
+		}		
+		
+		String[] names2 = {"主队","胜","负","得分","篮板","助攻","比分","助攻","篮板","得分","负","胜","客队"};
+		columnName2 = new Vector();
+		for(int i=0;i<names2.length;i++) {
+			columnName2.add(names2[i]);
 		}		
 	}
 	
@@ -527,6 +552,57 @@ public class HotRankingPanel extends JPanel {
 			table_1.updateUI();
 	}
 
+	public void update2() {
+		Vector rowDatas2 = new Vector();
+		ImageIcon picture;
+		ArrayList<MatchPO> matches = blservice.getAllMatch();
+		int size = matches.size();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");		
+		String dateLatest = sdf.format(matches.get(size-1).getDate().getTime());
+		for(int i=size-1;i>=0;i--) {
+			MatchPO matchTemp = matches.get(i);
+			String dateTemp = sdf.format(matchTemp.getDate().getTime());
+			if(!dateTemp.equals(dateLatest)  )  break;
+			Vector rowData2 = new Vector();
+			TeamInMatchesPO team1 = matchTemp.getTeam1();
+			TeamInMatchesPO team2 = matchTemp.getTeam2();
+			TeamWithPlayersVO team11= blservice.getTeamAnalysis(team1.getAbbreviation());
+			TeamWithPlayersVO team22= blservice.getTeamAnalysis(team2.getAbbreviation());
+			
+			rowData2.add(MainFrame.psp.translate(team1.getAbbreviation()));
+			rowData2.add((int)(team11.getTeam().getWinRate()*team11.getTeam().getAppearance()));
+			rowData2.add(team11.getTeam().getAppearance()-
+					(int)(team11.getTeam().getWinRate()*team11.getTeam().getAppearance()));
+			rowData2.add(team1.getHighestScore().getName()+
+					" "+team1.getHighestScore().getScore());//得分
+			rowData2.add(team1.getHighestRebound().getName()+
+					" "+team1.getHighestRebound().getTotalRebound());//篮板
+			rowData2.add(team1.getHighestAssist().getName()+
+					" "+team1.getHighestAssist().getAssist());//助攻
+			
+			rowData2.add(matchTemp.getFinalScore());//比分
+			
+			rowData2.add(team2.getHighestAssist().getName()+
+					" "+team2.getHighestAssist().getAssist());//助攻
+			rowData2.add(team2.getHighestRebound().getName()+
+					" "+team2.getHighestRebound().getTotalRebound());//篮板
+			rowData2.add(team2.getHighestScore().getName()+//得分
+					" "+team2.getHighestScore().getScore());
+			rowData2.add(team22.getTeam().getAppearance()-
+					(int)(team22.getTeam().getWinRate()*team22.getTeam().getAppearance()));
+			rowData2.add((int)(team22.getTeam().getWinRate()*team22.getTeam().getAppearance()));
+			rowData2.add(MainFrame.psp.translate(team2.getAbbreviation()));
+			rowDatas2.add(rowData2);
+		}
+		model_2.setDataVector(rowDatas2, columnName2);		
+		model_2.setColumnCount(table_2.getColumnCount());
+		model_2.setRowCount(rowDatas2.size());
+		table_2.setModel(model_2);
+		table_2.setRowHeight(40);
+		int[] width_2={60,20,20,110,110,110,60,110,110,110,20,20,60};
+		table_2.setColumnModel(getColumn(table_2, width_2));
+		table_2.updateUI();
+	}
 	public class Listener1 extends MouseAdapter{
 
 		@Override

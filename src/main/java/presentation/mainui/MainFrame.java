@@ -762,6 +762,7 @@ public class MainFrame {
 					currentPanel = Panels.HotRankingPanel;
 					hrp.update1();	
 					hrp.update2();
+					hrp.update3();
 					hrp.scrollPane.setVisible(true);
 					MainFrame.frame.setTitle("今日快讯");
 					frame.repaint();//刷新重画 

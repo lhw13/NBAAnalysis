@@ -23,6 +23,8 @@ import presentation.mainui.MainFrame;
 import presentation.playerui.PlayerInfoPanel;
 import presentation.playerui.PlayerSelectionPanel;
 import server.businesslogic.BLController;
+import server.businesslogic.Comparators;
+import server.businesslogic.Team;
 import server.po.MatchPO;
 import server.po.PlayerInMatchesPO;
 import server.po.TeamInMatchesPO;
@@ -39,6 +41,7 @@ import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Vector;
 
 public class HotRankingPanel extends JPanel {
@@ -46,6 +49,7 @@ public class HotRankingPanel extends JPanel {
 	JPanel panelOfBottom = new JPanel();
 	Vector columnName1;
 	Vector columnName2;
+	Vector columnName3;
 	DefaultTableModel model_1 = new DefaultTableModel(){
 		private static final long serialVersionUID = 1L;
 
@@ -60,6 +64,13 @@ public class HotRankingPanel extends JPanel {
 			return getValueAt(0, columnIndex).getClass();
 		}
 	};
+	DefaultTableModel model_3 = new DefaultTableModel(){
+		private static final long serialVersionUID = 1L;
+
+		public Class<?> getColumnClass(int columnIndex) {
+			return getValueAt(0, columnIndex).getClass();
+		}
+	};
 	BLService blservice = BLController.getInstance();
 	JLabel label;
 	JLabel label_1;
@@ -67,13 +78,20 @@ public class HotRankingPanel extends JPanel {
 	JLabel lblNewLabel_1;
 	JLabel labelscore;
 	JLabel labelrebound;
+	
+	JLabel labelwest;
+	JLabel labeleast;
+	
 	private JLabel labelassist;
 	private JLabel labelsteal;
 	private JLabel labelblock;
 	private JTable table_1;
 	String root="每日";
 	String leaf="得分榜";
+	String root3 = "西";
 	private JTable table_2;
+	private JScrollPane scrollPane_3;
+	private JTable table_3;
 	public HotRankingPanel() {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
@@ -102,69 +120,81 @@ public class HotRankingPanel extends JPanel {
 		panelOfBottom.add(button);
 		label = new JLabel("每日统计");
 		label.setFont(new Font("微软雅黑", Font.PLAIN, 15));
-		label.setBounds(545, 40, 65, 31);
+		label.setBounds(545, 35, 65, 31);
 		label.addMouseListener(new Listener1());
 		panelOfBottom.add(label);
 		
 		lblNewLabel_1 = new JLabel("赛季统计");
 		lblNewLabel_1.setFont(new Font("微软雅黑", Font.PLAIN, 15));
 		lblNewLabel_1.setForeground(Color.gray);
-		lblNewLabel_1.setBounds(620, 40, 65, 31);
+		lblNewLabel_1.setBounds(620, 35, 65, 31);
 		lblNewLabel_1.addMouseListener(new Listener1());
 		panelOfBottom.add(lblNewLabel_1);
 		
 		label_1 = new JLabel("进步最快");
 		label_1.setFont(new Font("微软雅黑", Font.PLAIN, 15));
 		label_1.setForeground(Color.gray);
-		label_1.setBounds(695, 40, 65, 31);
+		label_1.setBounds(695, 35, 65, 31);
 		label_1.addMouseListener(new Listener1());
 		panelOfBottom.add(label_1);
 		
 		 lblNewLabel = new JLabel("赛季热点球队");
 		lblNewLabel.setFont(new Font("微软雅黑", Font.PLAIN, 15));
 		lblNewLabel.setForeground(Color.gray);
-		lblNewLabel.setBounds(770, 40, 101, 31);
+		lblNewLabel.setBounds(770, 35, 101, 31);
 		lblNewLabel.addMouseListener(new Listener1());
 		panelOfBottom.add(lblNewLabel);
 		
-		
-		
 		labelscore = new JLabel("得分榜");
 		labelscore.setFont(new Font("微软雅黑", Font.PLAIN, 12));
-		labelscore.setBounds(545, 81, 54, 15);
+		labelscore.setBounds(545, 73, 54, 15);
 		labelscore.addMouseListener(new Listener2());
 		panelOfBottom.add(labelscore);
 		
 		labelrebound = new JLabel("篮板榜");
 		labelrebound.setFont(new Font("微软雅黑", Font.PLAIN, 12));
 		labelrebound.setForeground(Color.gray);
-		labelrebound.setBounds(607, 81, 54, 15);
+		labelrebound.setBounds(607, 73, 54, 15);
 		labelrebound.addMouseListener(new Listener2());
 		panelOfBottom.add(labelrebound);
 		
 		labelassist = new JLabel("助攻榜");
 		labelassist.setFont(new Font("微软雅黑", Font.PLAIN, 12));
 		labelassist.setForeground(Color.gray);
-		labelassist.setBounds(671, 81, 54, 15);
+		labelassist.setBounds(671, 73, 54, 15);
 		labelassist.addMouseListener(new Listener2());
 		panelOfBottom.add(labelassist);
 		
 		labelsteal = new JLabel("抢断榜");
 		labelsteal.setFont(new Font("微软雅黑", Font.PLAIN, 12));
 		labelsteal.setForeground(Color.gray);
-		labelsteal.setBounds(735, 81, 54, 15);
+		labelsteal.setBounds(735, 73, 54, 15);
 		labelsteal.addMouseListener(new Listener2());
 		panelOfBottom.add(labelsteal);
 		
 		labelblock = new JLabel("盖帽榜");
 		labelblock.setFont(new Font("微软雅黑", Font.PLAIN, 12));
 		labelblock.setForeground(Color.gray);
-		labelblock.setBounds(799, 81, 54, 15);
+		labelblock.setBounds(799, 73, 54, 15);
 		labelblock.addMouseListener(new Listener2());
 		panelOfBottom.add(labelblock);
 		
+		labelwest = new JLabel("西部排名");
+		labelwest.setFont(new Font("微软雅黑", Font.PLAIN, 15));
+		labelwest.setForeground(Color.white);
+		labelwest.setBounds(54, 49, 79, 23);
+		labelwest.addMouseListener(new Listener3());
+		panelOfBottom.add(labelwest);
+		
+		labeleast = new JLabel("东部排名");
+		labeleast.setFont(new Font("微软雅黑", Font.PLAIN, 15));
+		labeleast.setForeground(Color.gray);
+		labeleast.setBounds(143, 49, 79, 23);
+		labeleast.addMouseListener(new Listener3());
+		panelOfBottom.add(labeleast);
+		
 		table_1 = new JTable(model_1);
-		table_1.setBounds(545, 116, 385, 200);
+		table_1.setBounds(545, 100, 385, 216);
 		panelOfBottom.add(table_1);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -173,6 +203,18 @@ public class HotRankingPanel extends JPanel {
 		
 		table_2 = new JTable(model_2);
 		scrollPane_2.setViewportView(table_2);
+		
+		scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(35, 85, 420, 231);
+		panelOfBottom.add(scrollPane_3);
+		
+		table_3 = new JTable(model_3);
+		scrollPane_3.setViewportView(table_3);
+		
+		JLabel lblNewLabel_2 = new JLabel("今日比赛");
+		lblNewLabel_2.setFont(new Font("微软雅黑", Font.PLAIN, 12));
+		lblNewLabel_2.setBounds(35, 316, 63, 23);
+		panelOfBottom.add(lblNewLabel_2);
 		
 		scrollPane.setBounds(0, 0, 1000, 600);
 		add(scrollPane);
@@ -187,6 +229,11 @@ public class HotRankingPanel extends JPanel {
 		columnName2 = new Vector();
 		for(int i=0;i<names2.length;i++) {
 			columnName2.add(names2[i]);
+		}		
+		String[] names3 = {"","","西部球队","胜场","负场","胜率","胜差"};
+		columnName3 = new Vector();
+		for(int i=0;i<names3.length;i++) {
+			columnName3.add(names3[i]);
 		}		
 	}
 	
@@ -458,7 +505,7 @@ public class HotRankingPanel extends JPanel {
 					TeamVO teamTemp = teams1.get(i);			
 					rowData1.add(i+1);
 					picture = ImageHandle.loadTeam(teamTemp.getAbbreviation());
-					picture.setImage(picture.getImage().getScaledInstance(50, 50,
+					picture.setImage(picture.getImage().getScaledInstance(40, 40,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
 					rowData1.add(MainFrame.psp.translate(teamTemp.getAbbreviation()));
@@ -474,7 +521,7 @@ public class HotRankingPanel extends JPanel {
 					TeamVO teamTemp = teams2.get(i);	
 					rowData1.add(i+1);
 					picture = ImageHandle.loadTeam(teamTemp.getAbbreviation());
-					picture.setImage(picture.getImage().getScaledInstance(50, 50,
+					picture.setImage(picture.getImage().getScaledInstance(40, 40,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
 					
@@ -491,7 +538,7 @@ public class HotRankingPanel extends JPanel {
 					TeamVO teamTemp = teams3.get(i);	
 					rowData1.add(i+1);
 					picture = ImageHandle.loadTeam(teamTemp.getAbbreviation());
-					picture.setImage(picture.getImage().getScaledInstance(50, 50,
+					picture.setImage(picture.getImage().getScaledInstance(40, 40,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
 					
@@ -508,7 +555,7 @@ public class HotRankingPanel extends JPanel {
 					TeamVO teamTemp = teams4.get(i);	
 					rowData1.add(i+1);
 					picture = ImageHandle.loadTeam(teamTemp.getAbbreviation());
-					picture.setImage(picture.getImage().getScaledInstance(50, 50,
+					picture.setImage(picture.getImage().getScaledInstance(40, 40,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
 					
@@ -525,7 +572,7 @@ public class HotRankingPanel extends JPanel {
 					TeamVO teamTemp = teams5.get(i);	
 					rowData1.add(i+1);
 					picture = ImageHandle.loadTeam(teamTemp.getAbbreviation());
-					picture.setImage(picture.getImage().getScaledInstance(50, 50,
+					picture.setImage(picture.getImage().getScaledInstance(40, 40,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
 					
@@ -554,7 +601,7 @@ public class HotRankingPanel extends JPanel {
 
 	public void update2() {
 		Vector rowDatas2 = new Vector();
-		ImageIcon picture;
+		
 		ArrayList<MatchPO> matches = blservice.getAllMatch();
 		int size = matches.size();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");		
@@ -573,20 +620,20 @@ public class HotRankingPanel extends JPanel {
 			rowData2.add((int)(team11.getTeam().getWinRate()*team11.getTeam().getAppearance()));
 			rowData2.add(team11.getTeam().getAppearance()-
 					(int)(team11.getTeam().getWinRate()*team11.getTeam().getAppearance()));
-			rowData2.add(team1.getHighestScore().getName()+
+			rowData2.add(team1.getHighestScore().getName().split(" ")[0]+
 					" "+team1.getHighestScore().getScore());//得分
-			rowData2.add(team1.getHighestRebound().getName()+
+			rowData2.add(team1.getHighestRebound().getName().split(" ")[0]+
 					" "+team1.getHighestRebound().getTotalRebound());//篮板
-			rowData2.add(team1.getHighestAssist().getName()+
+			rowData2.add(team1.getHighestAssist().getName().split(" ")[0]+
 					" "+team1.getHighestAssist().getAssist());//助攻
 			
 			rowData2.add(matchTemp.getFinalScore());//比分
 			
-			rowData2.add(team2.getHighestAssist().getName()+
+			rowData2.add(team2.getHighestAssist().getName().split(" ")[0]+
 					" "+team2.getHighestAssist().getAssist());//助攻
-			rowData2.add(team2.getHighestRebound().getName()+
+			rowData2.add(team2.getHighestRebound().getName().split(" ")[0]+
 					" "+team2.getHighestRebound().getTotalRebound());//篮板
-			rowData2.add(team2.getHighestScore().getName()+//得分
+			rowData2.add(team2.getHighestScore().getName().split(" ")[0]+//得分
 					" "+team2.getHighestScore().getScore());
 			rowData2.add(team22.getTeam().getAppearance()-
 					(int)(team22.getTeam().getWinRate()*team22.getTeam().getAppearance()));
@@ -602,6 +649,78 @@ public class HotRankingPanel extends JPanel {
 		int[] width_2={60,20,20,110,110,110,60,110,110,110,20,20,60};
 		table_2.setColumnModel(getColumn(table_2, width_2));
 		table_2.updateUI();
+	}
+	
+	public void update3() {
+		ImageIcon picture;
+		Vector rowDatas3 = new Vector();
+		ArrayList<Team> teams = BLController.getInstance().getTeams();		
+		Collections.sort(teams,Comparators.getTeamComparator("winRate"));
+		ArrayList<Team> teamWest = new ArrayList<Team>();
+		ArrayList<Team> teamEast = new ArrayList<Team>();
+		for(int i=0;i<teams.size();i++) {
+			Team temp = teams.get(i);
+			if(temp.getTeamPO().getDivision() == 'E') teamEast.add(temp);
+			else teamWest.add(temp);
+		}
+		switch(root3) {
+		case "西":
+			int size =teamWest.size();
+			int winFirst = teamWest.get(0).getWin();
+			for(int i=0;i<size;i++) {
+				Team tempWest = teamWest.get(i);
+				Vector rowData3 = new Vector();
+				rowData3.add(i+1);
+				picture = ImageHandle.loadTeam(tempWest.getTeamPO().
+						getAbbreviation());
+				picture.setImage(picture.getImage().getScaledInstance(50, 50,
+						Image.SCALE_DEFAULT));
+				rowData3.add(picture);
+				rowData3.add(MainFrame.psp.translate(tempWest.getTeamPO().
+						getAbbreviation()));
+				
+				rowData3.add(tempWest.getWin());
+				rowData3.add(tempWest.getAppearance()-tempWest.getWin());
+				rowData3.add(handleDecimal(tempWest.getWinRate()*100)+"%");
+				rowData3.add(winFirst-tempWest.getWin());
+				
+				rowDatas3.add(rowData3);
+			}
+			break;
+		
+		case "东":
+			int sizeE =teamEast.size();
+			int winFirstE = teamEast.get(0).getWin();
+			for(int i=0;i<sizeE;i++) {
+				Team tempEast = teamEast.get(i);
+				Vector rowData3 = new Vector();
+				rowData3.add(i+1);
+				picture = ImageHandle.loadTeam(tempEast.getTeamPO().
+						getAbbreviation());
+				picture.setImage(picture.getImage().getScaledInstance(50, 50,
+						Image.SCALE_DEFAULT));
+				
+				rowData3.add(picture);
+				rowData3.add(MainFrame.psp.translate(tempEast.getTeamPO().
+						getAbbreviation()));
+				
+				rowData3.add(tempEast.getWin());
+				rowData3.add(tempEast.getAppearance()-tempEast.getWin());
+				rowData3.add(handleDecimal(tempEast.getWinRate()*100)+"%");
+				rowData3.add(winFirstE-tempEast.getWin());
+				
+				rowDatas3.add(rowData3);
+			}
+			break;			
+		}
+		model_3.setDataVector(rowDatas3, columnName3);		
+		model_3.setColumnCount(table_3.getColumnCount());
+		model_3.setRowCount(rowDatas3.size());
+		table_3.setModel(model_3);
+		table_3.setRowHeight(50);
+		int[] width_3={30,70,80,60,60,60,60};
+		table_3.setColumnModel(getColumn(table_3, width_3));
+		table_3.updateUI();
 	}
 	public class Listener1 extends MouseAdapter{
 
@@ -717,6 +836,36 @@ public class HotRankingPanel extends JPanel {
 			label1.setCursor(Cursor
 					.getPredefinedCursor(Cursor.HAND_CURSOR));
 			update1();
+		}
+		public void mouseExited(MouseEvent e) {
+			JLabel label1 =(JLabel) e.getSource();
+			label1.setCursor(Cursor.getDefaultCursor());
+
+		}
+	}
+	public class Listener3 extends MouseAdapter{
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {			
+			JLabel label1 =(JLabel) e.getSource();
+			switch(label1.getText()) {
+			case "西部排名":
+				root3 = "西";
+				labelwest.setForeground(Color.white);
+				labeleast.setForeground(Color.gray);
+				break;
+			case "东部排名":
+				root3 = "东";
+				labelwest.setForeground(Color.gray);
+				labeleast.setForeground(Color.white);
+				break;
+			}
+			label1.setCursor(Cursor
+					.getPredefinedCursor(Cursor.HAND_CURSOR));
+			update3();
 		}
 		public void mouseExited(MouseEvent e) {
 			JLabel label1 =(JLabel) e.getSource();

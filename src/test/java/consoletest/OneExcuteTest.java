@@ -13,9 +13,15 @@ public class OneExcuteTest {
 	@Test
 	public void executableTest()
 	{
-		
+		PrintStream p = null;
+		try {
+			p = new PrintStream(new File("test0.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String ss[] = {"-player","-hot","assist","-n","5"};
-		c.execute(System.out, ss);
+		c.execute(p, ss);
 	}
 	
 	@Test

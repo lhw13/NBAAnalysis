@@ -9,11 +9,18 @@ import org.junit.Test;
 
 import console.Console;
 
-public class ConsoleTest {
+public class NewConsoleTest {
 	@Test
-	public void executableTest()
+	public void testExecutable()
 	{
 		Console c = new Console();
+		PrintStream p = null;
+		try {
+			p = new PrintStream(new File("test0.txt"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String ss[] = {"-player","-hot","assist","-n","5"};
 		c.execute(System.out, ss);
 	}
@@ -154,7 +161,7 @@ public class ConsoleTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			c.execute(System.out, ss);
+			c.execute(p, ss);
 		
 	}
 	
@@ -229,7 +236,7 @@ public class ConsoleTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			c.execute(System.out, ss);
+			c.execute(p, ss);
 		
 	}
 }

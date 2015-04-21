@@ -523,6 +523,14 @@ public  final class Player implements Cloneable{
 		double divisor =  (teamshot + 0.44 * teamFreeshot + teamMiss);
 		if(divisor==0 || playTime==0)
 			return 0;
+/*		if(player.getName().equals("Kevin Durant") || player.getName().equals("DeAndre Liggins"))
+		{
+			System.out.println(player.getName());
+			System.out.println((double) (chuShou + 0.44 * freeshot + fault)
+					* ((double) teamPlayTime / 5) / playTime
+					/ divisor);
+			//System.out.println(toVO().getUseRate());x
+		}*/
 		return (double) (chuShou + 0.44 * freeshot + fault)
 				* ((double) teamPlayTime / 5) / playTime
 				/ divisor;

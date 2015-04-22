@@ -54,7 +54,7 @@ public class PlayerRankingPanel extends JPanel {
 	private JButton btnNewButton;
 	private JComboBox<String> comboBox;
 	public static JTable table;
-	
+	 
 	private static JLabel kingOfScore;
 	private static JLabel kingOfRebound;
 	private static JLabel kingOfAssist;

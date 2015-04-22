@@ -1096,6 +1096,22 @@ public class TeamsSelectionFrame {
 
 	}
 
+	public static void goToTeam(String teamName){
+		compute = BLController.getInstance();
+		TeamWithPlayersVO twpvo = compute.getTeamAnalysis(teamName);
+		
+		if(twpvo!=null&&twpvo.getTeam()!=null) {
+			TeamsInfoFrame tip = new TeamsInfoFrame(twpvo);
+			MainFrame.frame.getContentPane().add(tip.scrollPane);
+			tip.updateTeam(twpvo, "投篮命中数");
+			tip.latestMatchs(teamName);
+			MainFrame.currentPanel = Panels.TeamsInfoFrame;
+			MainFrame.frame.repaint();//刷新重画 
+			MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+		}
+		
+	}
+	
 	//传递制定球队信息
 	public static void setTeamsInfo(String teamName) {
 		TeamsSelectionFrame.scrollPane.setVisible(false);
@@ -1112,6 +1128,7 @@ public class TeamsSelectionFrame {
 			MainFrame.frame.getContentPane().add(tip.scrollPane);
 			tip.updateTeam(twpvo, "投篮命中数");
 			tip.latestMatchs(teamName);
+			MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			MainFrame.frame.repaint();//刷新重画 
 			MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
 		}

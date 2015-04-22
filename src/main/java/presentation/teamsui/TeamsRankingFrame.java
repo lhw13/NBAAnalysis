@@ -104,7 +104,7 @@ public class TeamsRankingFrame {
 		btnNewButton.setBounds(100, 10, 120, 30);
 		panel.add(btnNewButton);
 		
-		String[] names1 = new String[]{"","球队", "场数", "投篮命中数(场均)", "投篮命中数(总计)"};
+		String[] names1 = new String[]{"","球队", "场数", "得分(场均)", "得分(总计)"};
 		columnName1 = new Vector();
 		for(int i=0;i<names1.length;i++) {
 			columnName1.add(names1[i]);
@@ -138,9 +138,6 @@ public class TeamsRankingFrame {
 		comboBox.addItem("罚球命中数");
 		comboBox.addItem("罚球出手数");
 		
-		
-		
-		
 		comboBox.setBounds(750, 15, 150, 30);
 		panel.add(comboBox);
 		
@@ -151,159 +148,159 @@ public class TeamsRankingFrame {
 				int index = comboBox.getSelectedIndex();
 				switch(index){
 				case 0: 
-					MainFrame.selection2 = "投篮命中数";
-					columnName1.setElementAt("投篮命中数(场均)", 3);
-					columnName1.setElementAt("投篮命中数(总计)", 4);
-					updataTeamsRanking();
-					break;
-				case 1: 
-					MainFrame.selection2="投篮出手数";
-					columnName1.setElementAt("投篮出手数(场均)", 3);
-					columnName1.setElementAt("投篮出手数(总计)", 4);
-					updataTeamsRanking();
-					break;
-				case 2: 
-					MainFrame.selection2="三分命中数";
-					columnName1.setElementAt("三分命中数(场均)", 3);
-					columnName1.setElementAt("三分命中数(总计)", 4);
-					updataTeamsRanking();
-					break;
-				case 3: 
-					MainFrame.selection2="三分出手数";
-					columnName1.setElementAt("三分出手数(场均)", 3);
-					columnName1.setElementAt("三分出手数(总计)", 4);
-					updataTeamsRanking();
-					break;
-				case 4: 
-					MainFrame.selection2="罚球命中数";
-					columnName1.setElementAt("罚球命中数(场均)", 3);
-					columnName1.setElementAt("罚球命中数(总计)", 4);
-					updataTeamsRanking();
-					break;
-				case 5: 
-					MainFrame.selection2="罚球出手数";
-					columnName1.setElementAt("罚球出手数(场均)", 3);
-					columnName1.setElementAt("罚球出手数(总计)", 4);
-					updataTeamsRanking();
-					break;
-				case 6: 
-					MainFrame.selection2="进攻篮板";
-					columnName1.setElementAt("进攻篮板(场均)", 3);
-					columnName1.setElementAt("进攻篮板(总计)", 4);
-					updataTeamsRanking();
-					break;
-				case 7: 
-					MainFrame.selection2="防守篮板";
-					columnName1.setElementAt("防守篮板(场均)", 3);
-					columnName1.setElementAt("防守篮板(总计)", 4);
-					updataTeamsRanking();
-					break;
-				case 8: 
-					MainFrame.selection2="总篮板";
-					columnName1.setElementAt("总篮板(场均)", 3);
-					columnName1.setElementAt("总篮板(总计)", 4);
-					updataTeamsRanking();
-					break;
-				case 9: 
-					MainFrame.selection2="助攻";
-					columnName1.setElementAt("助攻(场均)", 3);
-					columnName1.setElementAt("助攻(总计)", 4);
-					updataTeamsRanking();
-					break;
-				case 10: 
-					MainFrame.selection2="抢断";
-					columnName1.setElementAt("抢断(场均)", 3);
-					columnName1.setElementAt("抢断(总计)", 4);
-					updataTeamsRanking();
-					break;
-				case 11: 
-					MainFrame.selection2="盖帽";
-					columnName1.setElementAt("盖帽(场均)", 3);
-					columnName1.setElementAt("盖帽(总计)", 4);
-					updataTeamsRanking();
-					break;
-				case 12: 
-					MainFrame.selection2="失误";
-					columnName1.setElementAt("失误(场均)", 3);
-					columnName1.setElementAt("失误(总计)", 4);
-					updataTeamsRanking();
-					break;
-				case 13: 
-					MainFrame.selection2="犯规";
-					columnName1.setElementAt("犯规(场均)", 3);
-					columnName1.setElementAt("犯规(总计)", 4);
-					updataTeamsRanking();
-					break;
-				case 14: 
 					MainFrame.selection2="得分";
 					columnName1.setElementAt("得分(场均)", 3);
 					columnName1.setElementAt("得分(总计)", 4);
 					updataTeamsRanking();
 					break;
-				case 15: 
+				case 1: 
+					MainFrame.selection2="总篮板";
+					columnName1.setElementAt("总篮板(场均)", 3);
+					columnName1.setElementAt("总篮板(总计)", 4);
+					updataTeamsRanking();
+					break;
+				case 2: 
+					MainFrame.selection2="助攻";
+					columnName1.setElementAt("助攻(场均)", 3);
+					columnName1.setElementAt("助攻(总计)", 4);
+					updataTeamsRanking();
+					break;
+				case 3: 
+					MainFrame.selection2="抢断";
+					columnName1.setElementAt("抢断(场均)", 3);
+					columnName1.setElementAt("抢断(总计)", 4);
+					updataTeamsRanking();
+					break;
+				case 4: 
+					MainFrame.selection2="盖帽";
+					columnName1.setElementAt("盖帽(场均)", 3);
+					columnName1.setElementAt("盖帽(总计)", 4);
+					updataTeamsRanking();
+					break;
+				case 5: 
+					MainFrame.selection2="进攻篮板";
+					columnName1.setElementAt("进攻篮板(场均)", 3);
+					columnName1.setElementAt("进攻篮板(总计)", 4);
+					updataTeamsRanking();
+					break;
+				case 6: 
+					MainFrame.selection2="防守篮板";
+					columnName1.setElementAt("防守篮板(场均)", 3);
+					columnName1.setElementAt("防守篮板(总计)", 4);
+					updataTeamsRanking();
+					break;
+				case 7: 
 					MainFrame.selection2="投篮命中率";
 					columnName1.setElementAt("投篮命中率(场均)", 3);
 					columnName1.setElementAt("投篮命中率(总计)", 4);
 					updataTeamsRanking();
 					break;
-				case 16: 
+				case 8: 
 					MainFrame.selection2="三分命中率";
 					columnName1.setElementAt("三分命中率(场均)", 3);
 					columnName1.setElementAt("三分命中率(总计)", 4);
 					updataTeamsRanking();
 					break;
-				case 17: 
+				case 9: 
 					MainFrame.selection2="罚球命中率";
 					columnName1.setElementAt("罚球命中率(场均)", 3);
 					columnName1.setElementAt("罚球命中率(总计)", 4);
 					updataTeamsRanking();
 					break;
-				case 18: 
+				case 10: 
+					MainFrame.selection2="失误";
+					columnName1.setElementAt("失误(场均)", 3);
+					columnName1.setElementAt("失误(总计)", 4);
+					updataTeamsRanking();
+					break;
+				case 11: 
+					MainFrame.selection2="犯规";
+					columnName1.setElementAt("犯规(场均)", 3);
+					columnName1.setElementAt("犯规(总计)", 4);
+					updataTeamsRanking();
+					break;
+				case 12: 
 					MainFrame.selection2="胜率";
 					columnName1.setElementAt("胜率(场均)", 3);
 					columnName1.setElementAt("胜率(总计)", 4);
 					updataTeamsRanking();
 					break;
-				case 19: 
+				case 13: 
 					MainFrame.selection2="进攻回合";
 					columnName1.setElementAt("进攻回合(场均)", 3);
 					columnName1.setElementAt("进攻回合(总计)", 4);
 					updataTeamsRanking();
 					break;
-				case 20: 
+				case 14: 
 					MainFrame.selection2="进攻效率";
 					columnName1.setElementAt("进攻效率(场均)", 3);
 					columnName1.setElementAt("进攻效率(总计)", 4);
 					updataTeamsRanking();
 					break;
-				case 21: 
+				case 15: 
 					MainFrame.selection2="防守效率";
 					columnName1.setElementAt("防守效率(场均)", 3);
 					columnName1.setElementAt("防守效率(总计)", 4);
 					updataTeamsRanking();
 					break;
-				case 22: 
+				case 16: 
 					MainFrame.selection2="进攻篮板效率";
 					columnName1.setElementAt("进攻篮板效率(场均)", 3);
 					columnName1.setElementAt("进攻篮板效率(总计)", 4);
 					updataTeamsRanking();
 					break;
-				case 23: 
+				case 17: 
 					MainFrame.selection2="防守篮板效率";
 					columnName1.setElementAt("防守篮板效率(场均)", 3);
 					columnName1.setElementAt("防守篮板效率(总计)", 4);
 					updataTeamsRanking();
 					break;
-				case 24: 
+				case 18: 
 					MainFrame.selection2="抢断效率";
 					columnName1.setElementAt("抢断效率(场均)", 3);
 					columnName1.setElementAt("抢断效率(总计)", 4);
 					updataTeamsRanking();
 					break;
-				case 25: 
+				case 19: 
 					MainFrame.selection2="助攻率";
 					columnName1.setElementAt("助攻率(场均)", 3);
 					columnName1.setElementAt("助攻率(总计)", 4);
+					updataTeamsRanking();
+					break;
+				case 20: 
+					MainFrame.selection2 = "投篮命中数";
+					columnName1.setElementAt("投篮命中数(场均)", 3);
+					columnName1.setElementAt("投篮命中数(总计)", 4);
+					updataTeamsRanking();
+					break;
+				case 21: 
+					MainFrame.selection2="投篮出手数";
+					columnName1.setElementAt("投篮出手数(场均)", 3);
+					columnName1.setElementAt("投篮出手数(总计)", 4);
+					updataTeamsRanking();
+					break;
+				case 22: 
+					MainFrame.selection2="三分命中数";
+					columnName1.setElementAt("三分命中数(场均)", 3);
+					columnName1.setElementAt("三分命中数(总计)", 4);
+					updataTeamsRanking();
+					break;
+				case 23: 
+					MainFrame.selection2="三分出手数";
+					columnName1.setElementAt("三分出手数(场均)", 3);
+					columnName1.setElementAt("三分出手数(总计)", 4);
+					updataTeamsRanking();
+					break;
+				case 24: 
+					MainFrame.selection2="罚球命中数";
+					columnName1.setElementAt("罚球命中数(场均)", 3);
+					columnName1.setElementAt("罚球命中数(总计)", 4);
+					updataTeamsRanking();
+					break;
+				case 25: 
+					MainFrame.selection2="罚球出手数";
+					columnName1.setElementAt("罚球出手数(场均)", 3);
+					columnName1.setElementAt("罚球出手数(总计)", 4);
 					updataTeamsRanking();
 					break;
 				}

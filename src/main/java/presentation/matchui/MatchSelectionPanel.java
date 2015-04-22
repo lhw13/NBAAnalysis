@@ -406,6 +406,7 @@ public class MatchSelectionPanel extends JPanel {
 			MainFrame.frame.getContentPane().add(mdip.scrollPane);
 			MainFrame.frame.repaint();//刷新重画 
 			MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+			MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
 		}
 	}
 	
@@ -433,7 +434,8 @@ public class MatchSelectionPanel extends JPanel {
 		for(int i=0;i<matchList.size();i++){
 			if(matchList.get(i).getSeason().equals(season) &&
 				(matchList.get(i).getDate().get(Calendar.MONTH)+1)==month &&
-				   (matchList.get(i).getTeam1().getAbbreviation().equals(teamName) || matchList.get(i).getTeam2().getAbbreviation().equals(teamName))){
+				   (matchList.get(i).getTeam1().getAbbreviation().equals(teamName) || matchList.get(i).getTeam2().getAbbreviation().equals(teamName))
+				   ){
 				mpo = matchList.get(i);
 			}
 		}
@@ -601,6 +603,7 @@ public class MatchSelectionPanel extends JPanel {
 			MainFrame.frame.getContentPane().add(mdip.scrollPane);
 			MainFrame.frame.repaint();//刷新重画 
 			MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+			MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
 		}
 		
 	}

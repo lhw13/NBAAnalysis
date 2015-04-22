@@ -104,7 +104,7 @@ public class MainFrame {
 	private static BLController compute;
 	
 	public static String selection1="得分";
-	public static String selection2="投篮命中数";
+	public static String selection2="得分";
 	
 	public static String season="13-14";
 	public static int date=3;

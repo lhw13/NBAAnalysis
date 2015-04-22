@@ -25,19 +25,19 @@ public  final class PlayersDataAnalyse {
 			playerData.add(playerForm.get(i).split("\\│")[1].replace("║", ""));
 		}
 		name = playerData.get(0).trim();
-		number = stringToInt(playerData.get(1).replaceAll("\t", ""));
-		position = (playerData.get(2).replaceAll("\t", ""));
-		height = stringToHeightPO(playerData.get(3).replaceAll("\t", ""));
-		weight = stringToInt(playerData.get(4).replaceAll("\t", ""));
-		birth = stringToCalendar(playerData.get(5).replaceAll("\t", ""));
-		age = stringToInt(playerData.get(6).replaceAll("\t", ""));
-		exp = stringToInt(playerData.get(7).replaceAll("\t", ""));
+		number = stringToInt(playerData.get(1).replace("\t", ""));
+		position = (playerData.get(2).replace("\t", ""));
+		height = stringToHeightPO(playerData.get(3).replace("\t", ""));
+		weight = stringToInt(playerData.get(4).replace("\t", ""));
+		birth = stringToCalendar(playerData.get(5).replace("\t", ""));
+		age = stringToInt(playerData.get(6).replace("\t", ""));
+		exp = stringToInt(playerData.get(7).replace("\t", ""));
 		school = playerData.get(8).trim();
 		return new PlayerPO(name, number, position, height, weight, birth, age,
 				exp, school);
 	}
 
-	private static int stringToInt(String str) {
+	private static final int stringToInt(String str) {
 		int result;
 		try {
 			result = Integer.parseInt(str);
@@ -57,7 +57,7 @@ public  final class PlayersDataAnalyse {
 
 	private static Calendar stringToCalendar(String str) {
 		Calendar result = Calendar.getInstance();
-		int year = stringToInt(str.split(",")[1].replaceAll(" ", ""));
+		int year = stringToInt(str.split(",")[1].replace(" ", ""));
 		int month = getMonth(str.split(",")[0].split(" ")[0]);
 		int day = stringToInt(str.split(",")[0].split(" ")[1]);
 		result.set(year, month, day, 0, 0, 0);

@@ -64,7 +64,7 @@ public  final class MatchesDataAnalyse {
 		return matchPO;
 	}
 
-	private static int stringToInt(String str) {
+	private static final int stringToInt(String str) {
 		int result;
 		try {
 			result = Integer.parseInt(str);

@@ -8,9 +8,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = (double)o2.getAssist()/(double)o2.appearance;
-	    	Double d1 = (double)o1.getAssist()/(double)o1.appearance;
-	        return d2.compareTo(d1);
+	    	double d2 = (double)o2.getAssist()/(double)o2.appearance;
+	    	double d1 = (double)o1.getAssist()/(double)o1.appearance;
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	       // return (double)o2.getAssist()/(double)o2.appearance > (double)o1.getAssist()/(double)o1.appearance? 1 : -1;
 	    }
 	};
@@ -18,9 +18,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Integer i2=o2.getAssist();
-	    	Integer i1=o1.getAssist();
-	        return i2.compareTo(i1);
+	    	int i2=o2.getAssist();
+	    	int i1=o1.getAssist();
+	        if(i2>i1)return 1;else if(i2<i1)return -1;else return 0;
 	    	//return o2.getAssist() > o1.getAssist() ? 1 : -1;
 	    }
 	};
@@ -28,9 +28,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = o2.getAssistEfficient();
-	    	Double d1 = o1.getAssistEfficient();
-	        return d2.compareTo(d1);
+	    	double d2 = o2.getAssistEfficient();
+	    	double d1 = o1.getAssistEfficient();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return o2.getAssistEfficient() > o1.getAssistEfficient() ? 1 : -1;
 	    }
 	};
@@ -39,9 +39,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 =o2.assistPromotion;
-	    	Double d1 =o1.assistPromotion ;
-	    	return d2.compareTo(d1);  
+	    	double d2 =o2.assistPromotion;
+	    	double d1 =o1.assistPromotion ;
+	    	if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;  
 	    }
 	};
 	public static final Comparator<Player> compareBlockShotAvgDesc = new Comparator<Player>(){  
@@ -49,27 +49,27 @@ public final  class Comparators {
 	        @Override  
 	        public int compare(Player o1, Player o2) {  
 	//  	return (double)o2.getBlockShot()/(double)o2.appearance > (double)o1.getBlockShot()/(double)o1.appearance? 1 : -1;
-	        	Double d2 = (double)o2.getBlockShot()/(double)o2.appearance;
-	        	Double d1 = (double)o1.getBlockShot()/(double)o1.appearance;
-	            return d2.compareTo(d1);
+	        	double d2 = (double)o2.getBlockShot()/(double)o2.appearance;
+	        	double d1 = (double)o1.getBlockShot()/(double)o1.appearance;
+	            if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	        }
 	    };
 	public static final Comparator<Player> compareBlockShotDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Integer i2=o2.getBlockShot();
-	    	Integer i1=o1.getBlockShot();
-	        return i2.compareTo(i1);
+	    	int i2=o2.getBlockShot();
+	    	int i1=o1.getBlockShot();
+	        if(i2>i1)return 1;else if(i2<i1)return -1;else return 0;
 	    }
 	};
 	public static final Comparator<Player> compareBlockShotEfficientDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = o2.getBlockShotEfficient();
-	    	Double d1 = o1.getBlockShotEfficient();
-	        return d2.compareTo(d1);
+	    	double d2 = o2.getBlockShotEfficient();
+	    	double d1 = o1.getBlockShotEfficient();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return o2.getBlockShotEfficient() > o1.getBlockShotEfficient() ? 1 : -1;
 	    }
 	};
@@ -77,9 +77,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = o2.getDefendReboundEfficient();
-	    	Double d1 = o1.getDefendReboundEfficient();
-	        return d2.compareTo(d1);
+	    	double d2 = o2.getDefendReboundEfficient();
+	    	double d1 = o1.getDefendReboundEfficient();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return o2.getDefendReboundEfficient() > o1.getDefendReboundEfficient() ? 1 : -1;
 	    }
 	};
@@ -87,9 +87,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = o2.getDoubleTwo();
-	    	Double d1 = o1.getDoubleTwo();
-	        return d2.compareTo(d1);
+	    	double d2 = o2.getDoubleTwo();
+	    	double d1 = o1.getDoubleTwo();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return o2.getDoubleTwo() > o1.getDoubleTwo() ? 1 : -1;
 	    }
 	};
@@ -97,9 +97,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = o2.getEfficient();
-	    	Double d1 = o1.getEfficient();
-	        return d2.compareTo(d1);
+	    	double d2 = o2.getEfficient();
+	    	double d1 = o1.getEfficient();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return o2.getEfficient() > o1.getEfficient() ? 1 : -1;
 	    }
 	};
@@ -107,18 +107,18 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 =(double)o2.getFault()/(double)o2.appearance ;
-	    	Double d1 =(double)o1.getFault()/(double)o1.appearance ;
-	    	return d2.compareTo(d1);  
+	    	double d2 =(double)o2.getFault()/(double)o2.appearance ;
+	    	double d1 =(double)o1.getFault()/(double)o1.appearance ;
+	    	if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;  
 	    }
 	};
 	public static final Comparator<Player> compareFaultDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Integer d2 = o2.getFault();
-	    	Integer d1 = o1.getFault();
-	        return d2.compareTo(d1);
+	    	int d2 = o2.getFault();
+	    	int d1 = o1.getFault();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return o2.getFault() > o1.getFault() ? 1 : -1;
 	    }
 	};
@@ -126,9 +126,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = o2.getFaultEfficient();
-	    	Double d1 = o1.getFaultEfficient();
-	        return d2.compareTo(d1);
+	    	double d2 = o2.getFaultEfficient();
+	    	double d1 = o1.getFaultEfficient();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	// return o2.getFaultEfficient() > o1.getFaultEfficient() ? 1 : -1;
 	    }
 	};
@@ -136,18 +136,18 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 =(double)o2.getFoul()/(double)o2.appearance ;
-	    	Double d1 =(double)o1.getFoul()/(double)o1.appearance ;
-	    	return d2.compareTo(d1);            	
+	    	double d2 =(double)o2.getFoul()/(double)o2.appearance ;
+	    	double d1 =(double)o1.getFoul()/(double)o1.appearance ;
+	    	if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;            	
 	    }
 	};
 	public static final Comparator<Player> compareFoulDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Integer d2 = o2.getFoul();
-	    	Integer d1 = o1.getFoul();
-	        return d2.compareTo(d1);
+	    	int d2 = o2.getFoul();
+	    	int d1 = o1.getFoul();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return o2.getFoul() > o1.getFoul() ? 1 : -1;
 	    }
 	};
@@ -155,9 +155,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = o2.getFrequency();
-	    	Double d1 = o1.getFrequency();
-	        return d2.compareTo(d1);
+	    	double d2 = o2.getFrequency();
+	    	double d1 = o1.getFrequency();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return o2.getFrequency() > o1.getFrequency() ? 1 : -1;
 	    }
 	};
@@ -165,9 +165,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = o2.getGmSc();
-	    	Double d1 = o1.getGmSc();
-	        return d2.compareTo(d1);
+	    	double d2 = o2.getGmSc();
+	    	double d1 = o1.getGmSc();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return o2.getGmSc() > o1.getGmSc() ? 1 : -1;
 	    }
 	};
@@ -175,18 +175,18 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 =(double)o2.getMinute()/(double)o2.appearance ;
-	    	Double d1 =(double)o1.getMinute()/(double)o1.appearance ;
-	    	return d2.compareTo(d1);  
+	    	double d2 =(double)o2.getMinute()/(double)o2.appearance ;
+	    	double d1 =(double)o1.getMinute()/(double)o1.appearance ;
+	    	if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;  
 	    }
 	};
 	public static final Comparator<Player> compareMinuteDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = o2.getMinute();
-	    	Double d1 = o1.getMinute();
-	        return d2.compareTo(d1);
+	    	double d2 = o2.getMinute();
+	    	double d1 = o1.getMinute();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return o2.getMinute() > o1.getMinute() ? 1 : -1;
 	    }
 	};
@@ -194,9 +194,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = o2.getOffendReboundEfficient();
-	    	Double d1 = o1.getOffendReboundEfficient();
-	        return d2.compareTo(d1);
+	    	double d2 = o2.getOffendReboundEfficient();
+	    	double d1 = o1.getOffendReboundEfficient();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	// return o2.getOffendReboundEfficient() > o1.getOffendReboundEfficient() ? 1 : -1;
 	    }
 	};
@@ -204,9 +204,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = o2.getPenalty();
-	    	Double d1 = o1.getPenalty();
-	        return d2.compareTo(d1);
+	    	double d2 = o2.getPenalty();
+	    	double d1 = o1.getPenalty();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return o2.getPenalty() > o1.getPenalty() ? 1 : -1;
 	    }
 	};
@@ -223,9 +223,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = (double)o2.getPoint()/(double)o2.appearance;
-	    	Double d1 = (double)o1.getPoint()/(double)o1.appearance;
-	        return d2.compareTo(d1);
+	    	double d2 = (double)o2.getPoint()/(double)o2.appearance;
+	    	double d1 = (double)o1.getPoint()/(double)o1.appearance;
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    //	return (double)o2.getPoint()/(double)o2.appearance > (double)o1.getPoint()/(double)o1.appearance? 1 : -1;
 	    }
 	};
@@ -233,9 +233,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Integer i2=o2.getPoint();
-	    	Integer i1=o1.getPoint();
-	        return i2.compareTo(i1);
+	    	int i2=o2.getPoint();
+	    	int i1=o1.getPoint();
+	        if(i2>i1)return 1;else if(i2<i1)return -1;else return 0;
 	    	//return o2.getPoint() > o1.getPoint() ? 1 : -1;
 	    }
 	};
@@ -243,9 +243,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = o2.getRealShot();
-	    	Double d1 = o1.getRealShot();
-	        return d2.compareTo(d1);
+	    	double d2 = o2.getRealShot();
+	    	double d1 = o1.getRealShot();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return o2.getRealShot() > o1.getRealShot() ? 1 : -1;
 	    }
 	};
@@ -253,9 +253,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = (double)o2.getRebound()/(double)o2.appearance;
-	    	Double d1 = (double)o1.getRebound()/(double)o1.appearance;
-	        return d2.compareTo(d1);
+	    	double d2 = (double)o2.getRebound()/(double)o2.appearance;
+	    	double d1 = (double)o1.getRebound()/(double)o1.appearance;
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return (double)o2.getRebound()/(double)o2.appearance > (double)o1.getRebound()/(double)o1.appearance? 1 : -1;
 	    }
 	};
@@ -263,9 +263,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {
-	    	Integer i2=o2.getRebound();
-	    	Integer i1=o1.getRebound();
-	        return i2.compareTo(i1);
+	    	int i2=o2.getRebound();
+	    	int i1=o1.getRebound();
+	        if(i2>i1)return 1;else if(i2<i1)return -1;else return 0;
 	       // return o2.getRebound() > o1.getRebound() ? 1 : -1;
 	    }
 	};
@@ -273,9 +273,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = o2.getReboundEfficient();
-	    	Double d1 = o1.getReboundEfficient();
-	        return d2.compareTo(d1);
+	    	double d2 = o2.getReboundEfficient();
+	    	double d1 = o1.getReboundEfficient();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	// return o2.getReboundEfficient() > o1.getReboundEfficient() ? 1 : -1;
 	    }
 	};
@@ -283,9 +283,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 =o2.reboundPromotion;
-	    	Double d1 =o1.reboundPromotion ;
-	    	return d2.compareTo(d1);
+	    	double d2 =o2.reboundPromotion;
+	    	double d1 =o1.reboundPromotion ;
+	    	if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return o2.reboundPromotion > o1.reboundPromotion? 1 : -1;
 	    }
 	};
@@ -293,9 +293,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 =o2.scorePromotion;
-	    	Double d1 =o1.scorePromotion ;
-	    	return d2.compareTo(d1);
+	    	double d2 =o2.scorePromotion;
+	    	double d1 =o1.scorePromotion ;
+	    	if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return o2.scorePromotion > o1.scorePromotion? 1 : -1;
 	    }
 	};
@@ -303,9 +303,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = o2.getShot();
-	    	Double d1 = o1.getShot();
-	        return d2.compareTo(d1);
+	    	double d2 = o2.getShot();
+	    	double d1 = o1.getShot();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	// return o2.getShot() > o1.getShot() ? 1 : -1;
 	    }
 	};
@@ -313,9 +313,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = o2.getShotEfficient();
-	    	Double d1 = o1.getShotEfficient();
-	        return d2.compareTo(d1);
+	    	double d2 = o2.getShotEfficient();
+	    	double d1 = o1.getShotEfficient();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return o2.getShotEfficient() > o1.getShotEfficient() ? 1 : -1;
 	    }
 	};
@@ -323,18 +323,18 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 =(double)o2.getSteal()/(double)o2.appearance ;
-	    	Double d1 =(double)o1.getSteal()/(double)o1.appearance ;
-	    	return d2.compareTo(d1);      
+	    	double d2 =(double)o2.getSteal()/(double)o2.appearance ;
+	    	double d1 =(double)o1.getSteal()/(double)o1.appearance ;
+	    	if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;      
 	    }
 	};
 	public static final Comparator<Player> compareStealDesc = new Comparator<Player>() {  
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Integer d2 = o2.getSteal();
-	    	Integer d1 = o1.getSteal();
-	        return d2.compareTo(d1);
+	    	int d2 = o2.getSteal();
+	    	int d1 = o1.getSteal();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return o2.getSteal() > o1.getSteal() ? 1 : -1;
 	    }
 	};
@@ -342,9 +342,9 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = o2.getStealEfficient();
-	    	Double d1 = o1.getStealEfficient();
-	        return d2.compareTo(d1);
+	    	double d2 = o2.getStealEfficient();
+	    	double d1 = o1.getStealEfficient();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return o2.getStealEfficient() > o1.getStealEfficient() ? 1 : -1;
 	    }
 	};
@@ -352,198 +352,198 @@ public final  class Comparators {
 		  
 	    @Override  
 	    public int compare(Player o1, Player o2) {  
-	    	Double d2 = o2.getThree();
-	    	Double d1 = o1.getThree();
-	        return d2.compareTo(d1);
+	    	double d2 = o2.getThree();
+	    	double d1 = o1.getThree();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 	    	//return o2.getThree() > o1.getThree() ? 1 : -1;
 	    }
 	};
 	public static final Comparator<Team> TeamByAssist = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer d2 = t2.assist;
-			Integer d1 = t1.assist;
-			return d2.compareTo(d1);
+			int d2 = t2.assist;
+			int d1 = t1.assist;
+			if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByAssistAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer d2 = t2.assist;
-			Integer d1 = t1.assist;
-			return -d2.compareTo(d1);
+			int d2 = t2.assist;
+			int d1 = t1.assist;
+			if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByAssistAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = (double)t2.assist/t2.appearance;
-			Double d1 = (double)t1.assist/t1.appearance;
-			return d2.compareTo(d1);
+			double d2 = (double)t2.assist/t2.appearance;
+			double d1 = (double)t1.assist/t1.appearance;
+			if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByAssistAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = (double)t2.assist/t2.appearance;
-			Double d1 = (double)t1.assist/t1.appearance;
-			return -d2.compareTo(d1);
+			double d2 = (double)t2.assist/t2.appearance;
+			double d1 = (double)t1.assist/t1.appearance;
+			if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByAssistEfficient = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getAssistEfficient();
-	    	Double d1 = t1.getAssistEfficient();
-	        return d2.compareTo(d1);
+			double d2 = t2.getAssistEfficient();
+	    	double d1 = t1.getAssistEfficient();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 			//return t1.getAssistEfficient()<t2.getAssistEfficient()?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByAssistEfficientAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getAssistEfficient();
-	    	Double d1 = t1.getAssistEfficient();
-	        return -d2.compareTo(d1);
+			double d2 = t2.getAssistEfficient();
+	    	double d1 = t1.getAssistEfficient();
+	        if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 			//return -t1.getAssistEfficient()<t2.getAssistEfficient()?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByBlock = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer d2 = t2.blockShot;
-			Integer d1 = t1.blockShot;
-			return d2.compareTo(d1);
+			int d2 = t2.blockShot;
+			int d1 = t1.blockShot;
+			if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByBlockAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer d2 = t2.blockShot;
-			Integer d1 = t1.blockShot;
-			return -d2.compareTo(d1);
+			int d2 = t2.blockShot;
+			int d1 = t1.blockShot;
+			if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByBlockAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = (double)t2.blockShot/t2.appearance;
-			Double d1 = (double)t1.blockShot/t1.appearance;
-			return d2.compareTo(d1);
+			double d2 = (double)t2.blockShot/t2.appearance;
+			double d1 = (double)t1.blockShot/t1.appearance;
+			if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByBlockAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = (double)t2.blockShot/t2.appearance;
-			Double d1 = (double)t1.blockShot/t1.appearance;
-			return -d2.compareTo(d1);
+			double d2 = (double)t2.blockShot/t2.appearance;
+			double d1 = (double)t1.blockShot/t1.appearance;
+			if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByDefendEfficient = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getDefendEfficient();
-	    	Double d1 = t1.getDefendEfficient();
-	        return d2.compareTo(d1);
+			double d2 = t2.getDefendEfficient();
+	    	double d1 = t1.getDefendEfficient();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 			//return t1.getDefendEfficient()<t2.getDefendEfficient()?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByDefendEfficientAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getDefendEfficient();
-	    	Double d1 = t1.getDefendEfficient();
-	        return -d2.compareTo(d1);
+			double d2 = t2.getDefendEfficient();
+	    	double d1 = t1.getDefendEfficient();
+	        if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 			//return -t1.getDefendEfficient()<t2.getDefendEfficient()?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByDefendRebound = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer i1= t1.defendRebound;
-			Integer i2 = t2.defendRebound;
-			return i2.compareTo(i1);
+			int i1= t1.defendRebound;
+			int i2 = t2.defendRebound;
+			if(i2>i1)return 1;else if(i2<i1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByDefendReboundAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer i1= t1.defendRebound;
-			Integer i2 = t2.defendRebound;
-			return -i2.compareTo(i1);
+			int i1= t1.defendRebound;
+			int i2 = t2.defendRebound;
+			if(i2>i1)return -1;else if(i2<i1)return 1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByDefendReboundAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
 			Double i1= (double)t1.defendRebound/t1.appearance;
 			Double i2 = (double)t2.defendRebound/t2.appearance;
-			return i2.compareTo(i1);
+			if(i2>i1)return 1;else if(i2<i1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByDefendReboundAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
 			Double i1= (double)t1.defendRebound/t1.appearance;
 			Double i2 = (double)t2.defendRebound/t2.appearance;
-			return -i2.compareTo(i1);
+			if(i2>i1)return -1;else if(i2<i1)return 1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByDefendReboundEfficient = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getDefendReboundEfficient();
-	    	Double d1 = t1.getDefendReboundEfficient();
-	        return d2.compareTo(d1);
+			double d2 = t2.getDefendReboundEfficient();
+	    	double d1 = t1.getDefendReboundEfficient();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 			//return t1.getDefendReboundEfficient()<t2.getDefendReboundEfficient()?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByDefendReboundEfficientAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getDefendReboundEfficient();
-	    	Double d1 = t1.getDefendReboundEfficient();
-	        return -d2.compareTo(d1);
+			double d2 = t2.getDefendReboundEfficient();
+	    	double d1 = t1.getDefendReboundEfficient();
+	        if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 			//return -t1.getDefendReboundEfficient()<t2.getDefendReboundEfficient()?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByFault = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer i2 = t2.fault;
-			Integer i1 = t1.fault;
-			return i2.compareTo(i1);
+			int i2 = t2.fault;
+			int i1 = t1.fault;
+			if(i2>i1)return 1;else if(i2<i1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByFaultAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer i2 = t2.fault;
-			Integer i1 = t1.fault;
-			return -i2.compareTo(i1);
+			int i2 = t2.fault;
+			int i1 = t1.fault;
+			if(i2>i1)return -1;else if(i2<i1)return 1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByFaultAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer i2 = t2.fault/t2.appearance;
-			Integer i1 = t1.fault/t2.appearance;
-			return i2.compareTo(i1);
+			int i2 = t2.fault/t2.appearance;
+			int i1 = t1.fault/t2.appearance;
+			if(i2>i1)return 1;else if(i2<i1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByFaultAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer i2 = t2.fault;
-			Integer i1 = t1.fault;
-			return -i2.compareTo(i1);
+			int i2 = t2.fault;
+			int i1 = t1.fault;
+			if(i2>i1)return -1;else if(i2<i1)return 1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByFoul = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer i2 = t2.foul;
-			Integer i1 = t1.foul;
-			return i2.compareTo(i1);
+			int i2 = t2.foul;
+			int i1 = t1.foul;
+			if(i2>i1)return 1;else if(i2<i1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByFoulAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer i2 = t2.foul;
-			Integer i1 = t1.foul;
-			return -i2.compareTo(i1);
+			int i2 = t2.foul;
+			int i1 = t1.foul;
+			if(i2>i1)return -1;else if(i2<i1)return 1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByFoulAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = (double)t2.foul/t2.appearance;
-			Double d1 = (double)t1.foul/t1.appearance;
-			return d2.compareTo(d1);
+			double d2 = (double)t2.foul/t2.appearance;
+			double d1 = (double)t1.foul/t1.appearance;
+			if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByFoulAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = (double)t2.foul/t2.appearance;
-			Double d1 = (double)t1.foul/t1.appearance;
-			return -d2.compareTo(d1);
+			double d2 = (double)t2.foul/t2.appearance;
+			double d1 = (double)t1.foul/t1.appearance;
+			if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 		}
 	};
 	//升序
@@ -554,126 +554,126 @@ public final  class Comparators {
 	};
 	public static final Comparator<Team> TeamByOffendEfficient = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getOffendEfficient();
-	    	Double d1 = t1.getOffendEfficient();
-	        return d2.compareTo(d1);
+			double d2 = t2.getOffendEfficient();
+	    	double d1 = t1.getOffendEfficient();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 			//return t1.getOffendEfficient()<t2.getOffendEfficient()?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByOffendEfficientAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getOffendEfficient();
-	    	Double d1 = t1.getOffendEfficient();
-	        return -d2.compareTo(d1);
+			double d2 = t2.getOffendEfficient();
+	    	double d1 = t1.getOffendEfficient();
+	        if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 			//return -t1.getOffendEfficient()<t2.getOffendEfficient()?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByOffendRebound = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer d2 = t2.offendRebound;
-			Integer d1 = t1.offendRebound;
-	        return d2.compareTo(d1);
+			int d2 = t2.offendRebound;
+			int d1 = t1.offendRebound;
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 			//return t1.offendRebound<t2.offendRebound?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByOffendReboundAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer d2 = t2.offendRebound;
-			Integer d1 = t1.offendRebound;
-	        return -d2.compareTo(d1);
+			int d2 = t2.offendRebound;
+			int d1 = t1.offendRebound;
+	        if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 			//return -t1.offendRebound<t2.offendRebound?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByOffendReboundAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = (double)t2.offendRebound/t2.appearance;
-			Double d1 = (double)t1.offendRebound/t1.appearance;
-	        return d2.compareTo(d1);
+			double d2 = (double)t2.offendRebound/t2.appearance;
+			double d1 = (double)t1.offendRebound/t1.appearance;
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 			//return t1.offendRebound<t2.offendRebound?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByOffendReboundAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = (double)t2.offendRebound/t2.appearance;
-			Double d1 = (double)t1.offendRebound/t1.appearance;
-	        return -d2.compareTo(d1);
+			double d2 = (double)t2.offendRebound/t2.appearance;
+			double d1 = (double)t1.offendRebound/t1.appearance;
+	        if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 			//return t1.offendRebound<t2.offendRebound?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByOffendReboundEfficient = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getOffendReboundEfficient();
-	    	Double d1 = t1.getOffendReboundEfficient();
-	        return d2.compareTo(d1);
+			double d2 = t2.getOffendReboundEfficient();
+	    	double d1 = t1.getOffendReboundEfficient();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 			//return t1.getOffendReboundEfficient()<t2.getOffendReboundEfficient()?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByOffendReboundEfficientAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getOffendReboundEfficient();
-	    	Double d1 = t1.getOffendReboundEfficient();
-	        return -d2.compareTo(d1);
+			double d2 = t2.getOffendReboundEfficient();
+	    	double d1 = t1.getOffendReboundEfficient();
+	        if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 			//return -t1.getOffendReboundEfficient()<t2.getOffendReboundEfficient()?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByOffendRound = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getOffendRound();
-	    	Double d1 = t1.getOffendRound();
-	        return d2.compareTo(d1);
+			double d2 = t2.getOffendRound();
+	    	double d1 = t1.getOffendRound();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 			//return t1.getOffendRound()<t2.getOffendRound()?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByOffendRoundAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getOffendRound();
-	    	Double d1 = t1.getOffendRound();
-	        return -d2.compareTo(d1);
+			double d2 = t2.getOffendRound();
+	    	double d1 = t1.getOffendRound();
+	        if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 			//return -t1.getOffendRound()<t2.getOffendRound()?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByOffendRoundAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getOffendRound()/t2.appearance;
-	    	Double d1 = t1.getOffendRound()/t1.appearance;
-	        return d2.compareTo(d1);
+			double d2 = t2.getOffendRound()/t2.appearance;
+	    	double d1 = t1.getOffendRound()/t1.appearance;
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 			//return t1.getOffendRound()<t2.getOffendRound()?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByOffendRoundAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getOffendRound()/t2.appearance;
-	    	Double d1 = t1.getOffendRound()/t1.appearance;
-	        return -d2.compareTo(d1);
+			double d2 = t2.getOffendRound()/t2.appearance;
+	    	double d1 = t1.getOffendRound()/t1.appearance;
+	        if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 			//return t1.getOffendRound()<t2.getOffendRound()?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByPenalty = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getPenalty();
-			Double d1 = t1.getPenalty();
-			return d2.compareTo(d1);
+			double d2 = t2.getPenalty();
+			double d1 = t1.getPenalty();
+			if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByPenaltyAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getPenalty();
-			Double d1 = t1.getPenalty();
-			return -d2.compareTo(d1);
+			double d2 = t2.getPenalty();
+			double d1 = t1.getPenalty();
+			if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByPoint = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer d2 = t2.score;
-			Integer d1 = t1.score;
-			return d2.compareTo(d1);
+			int d2 = t2.score;
+			int d1 = t1.score;
+			if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByPointAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer d2 = t2.score;
-			Integer d1 = t1.score;
-			return -d2.compareTo(d1);
+			int d2 = t2.score;
+			int d1 = t1.score;
+			if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 		}
 	};
 	//avgteam comparator
@@ -685,131 +685,131 @@ public final  class Comparators {
 	
 	public static final Comparator<Team> TeamByPointAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = (double)t2.score/t2.appearance;
-			Double d1 = (double)t1.score/t1.appearance;
-			return d2.compareTo(d1);
+			double d2 = (double)t2.score/t2.appearance;
+			double d1 = (double)t1.score/t1.appearance;
+			if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByPointAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = (double)t2.score/t2.appearance;
-			Double d1 = (double)t1.score/t1.appearance;
-			return -d2.compareTo(d1);
+			double d2 = (double)t2.score/t2.appearance;
+			double d1 = (double)t1.score/t1.appearance;
+			if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByRebound = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer d2 = t2.rebound;
-			Integer d1 = t1.rebound;
-			return d2.compareTo(d1);
+			int d2 = t2.rebound;
+			int d1 = t1.rebound;
+			if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByReboundAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer d2 = t2.rebound;
-			Integer d1 = t1.rebound;
-			return -d2.compareTo(d1);
+			int d2 = t2.rebound;
+			int d1 = t1.rebound;
+			if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByReboundAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = (double)t2.rebound/t2.appearance;
-			Double d1 = (double)t1.rebound/t1.appearance;
-			return d2.compareTo(d1);
+			double d2 = (double)t2.rebound/t2.appearance;
+			double d1 = (double)t1.rebound/t1.appearance;
+			if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByReboundAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = (double)t2.rebound/t2.appearance;
-			Double d1 = (double)t1.rebound/t1.appearance;
-			return -d2.compareTo(d1);
+			double d2 = (double)t2.rebound/t2.appearance;
+			double d1 = (double)t1.rebound/t1.appearance;
+			if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByShot = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getShot();
-			Double d1 = t1.getShot();
-			return d2.compareTo(d1);
+			double d2 = t2.getShot();
+			double d1 = t1.getShot();
+			if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByShotAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getShot();
-			Double d1 = t1.getShot();
-			return -d2.compareTo(d1);
+			double d2 = t2.getShot();
+			double d1 = t1.getShot();
+			if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamBySteal = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer d2 = t2.steal;
-			Integer d1 = t1.steal;
-			return d2.compareTo(d1);
+			int d2 = t2.steal;
+			int d1 = t1.steal;
+			if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByStealAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Integer d2 = t2.steal;
-			Integer d1 = t1.steal;
-			return -d2.compareTo(d1);
+			int d2 = t2.steal;
+			int d1 = t1.steal;
+			if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByStealAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = (double)t2.steal/t2.appearance;
-			Double d1 = (double)t1.steal/t1.appearance;
-			return d2.compareTo(d1);
+			double d2 = (double)t2.steal/t2.appearance;
+			double d1 = (double)t1.steal/t1.appearance;
+			if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByStealAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = (double)t2.steal/t2.appearance;
-			Double d1 = (double)t1.steal/t1.appearance;
-			return -d2.compareTo(d1);
+			double d2 = (double)t2.steal/t2.appearance;
+			double d1 = (double)t1.steal/t1.appearance;
+			if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByStealEfficient = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getStealEfficient();
-	    	Double d1 = t1.getStealEfficient();
-	        return d2.compareTo(d1);
+			double d2 = t2.getStealEfficient();
+	    	double d1 = t1.getStealEfficient();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 			//return t1.getStealEfficient()<t2.getStealEfficient()?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByStealEfficientAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getStealEfficient();
-	    	Double d1 = t1.getStealEfficient();
-	        return -d2.compareTo(d1);
+			double d2 = t2.getStealEfficient();
+	    	double d1 = t1.getStealEfficient();
+	        if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 			//return -t1.getStealEfficient()<t2.getStealEfficient()?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByThree = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getThree();
-			Double d1 = t1.getThree();
-			return d2.compareTo(d1);
+			double d2 = t2.getThree();
+			double d1 = t1.getThree();
+			if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByThreeAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getThree();
-			Double d1 = t1.getThree();
-			return -d2.compareTo(d1);
+			double d2 = t2.getThree();
+			double d1 = t1.getThree();
+			if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByWinRate = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getWinRate();
-			Double d1 = t1.getWinRate();
-	        return d2.compareTo(d1);
+			double d2 = t2.getWinRate();
+			double d1 = t1.getWinRate();
+	        if(d2>d1)return 1;else if(d2<d1)return -1;else return 0;
 			//return t1.offendRebound<t2.offendRebound?1:-1;
 		}
 	};
 	public static final Comparator<Team> TeamByWinRateAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double d2 = t2.getWinRate();
-			Double d1 = t1.getWinRate();
-	        return -d2.compareTo(d1);
+			double d2 = t2.getWinRate();
+			double d1 = t1.getWinRate();
+	        if(d2>d1)return -1;else if(d2<d1)return 1;else return 0;
 			//return -t1.offendRebound<t2.offendRebound?1:-1;
 		}
 	};

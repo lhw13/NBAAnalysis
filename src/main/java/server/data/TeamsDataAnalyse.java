@@ -15,7 +15,7 @@ public  final class TeamsDataAnalyse {
 		String home;
 		int setupTime;
 		for (int i = 2; i < teamsList.size() - 1; i++) {
-			String[] oneLine = teamsList.get(i).replaceAll("║", "").split("\\│");
+			String[] oneLine = teamsList.get(i).replace("║", "").split("\\│");
 			fullName = oneLine[0].trim();
 			abbreviation = oneLine[1].trim();
 			location = oneLine[2].trim();
@@ -29,7 +29,7 @@ public  final class TeamsDataAnalyse {
 		return teamPOList;
 	}
 
-	private static int stringToInt(String str) {
+	private static final int stringToInt(String str) {
 		int result;
 		try {
 			result = Integer.parseInt(str);

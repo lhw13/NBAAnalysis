@@ -764,18 +764,18 @@ public  final class Player implements Cloneable{
 		double scorePastAvg = (double)(score - scoreRecent)/appearancePast;
 		double assistPastAvg = (double)(assist - assistRecent)/appearancePast;
 		double reboundPashAvg = (double)(rebound - reboundRecent)/appearancePast;
-		if(scorePastAvg==0)
-			scorePromotion=0;
+		if(scorePastAvg!=0)
+			scorePromotion=(scoreRecent/5 - scorePastAvg)/scorePastAvg;
 		else
-			scorePromotion = (scoreRecent/5 - scorePastAvg)/scorePastAvg;
-		if(assistPastAvg==0)
-			assistPromotion=0;
+			scorePromotion =0;
+		if(assistPastAvg!=0)
+			assistPromotion= (assistRecent/5 - assistPastAvg)/assistPastAvg;
 		else
-			assistPromotion = (assistRecent/5 - assistPastAvg)/assistPastAvg;
-		if(reboundPashAvg==0)
-			reboundPromotion=0;
+			assistPromotion =0;
+		if(reboundPashAvg!=0)
+			reboundPromotion=(reboundRecent/5 - reboundPashAvg)/reboundPashAvg;
 		else
-			reboundPromotion = (reboundRecent/5 - reboundPashAvg)/reboundPashAvg;
+			reboundPromotion = 0;
 		/*if(player.getName().equals("Allen Crabbe"))
 		{
 			for(int i=0;i<matches.size();i++)

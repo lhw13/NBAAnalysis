@@ -419,9 +419,9 @@ public class Console {
 			  
 	        @Override  
 	        public int compare(Player o1, Player o2) {  
-	        	Double d2 = (double)o2.getPoint()/(double)o2.getAppearance();
-	        	Double d1 = (double)o1.getPoint()/(double)o1.getAppearance();
-	            return d1.compareTo(d2);
+	        	double d2 = (double)o2.getPoint()/(double)o2.getAppearance();
+	        	double d1 = (double)o1.getPoint()/(double)o1.getAppearance();
+	            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
 	        	// return (double)o2.getPoint()/(double)o2.getAppearance() < (double)o1.getPoint()/(double)o1.getAppearance()? 1 : -1;
 	        }
 	    };
@@ -430,9 +430,9 @@ public class Console {
 			  
 	        @Override  
 	        public int compare(Player o1, Player o2) {
-	        	Double d2 = (double)o2.getRebound()/(double)o2.getAppearance();
-	        	Double d1 = (double)o1.getRebound()/(double)o1.getAppearance();
-	            return d1.compareTo(d2);
+	        	double d2 = (double)o2.getRebound()/(double)o2.getAppearance();
+	        	double d1 = (double)o1.getRebound()/(double)o1.getAppearance();
+	            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
 	            //return (double)o2.getRebound()/(double)o2.getAppearance() < (double)o1.getRebound()/(double)o1.getAppearance()? 1 : -1;
 	        }
 	    };
@@ -440,9 +440,9 @@ public class Console {
 			  
 	        @Override  
 	        public int compare(Player o1, Player o2) {
-	        	Double d2 = (double)o2.getAssist()/(double)o2.getAppearance();
-	        	Double d1 = (double)o1.getAssist()/(double)o1.getAppearance();
-	            return d1.compareTo(d2);
+	        	double d2 = (double)o2.getAssist()/(double)o2.getAppearance();
+	        	double d1 = (double)o1.getAssist()/(double)o1.getAppearance();
+	            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
 	            //return (double)o2.getAssist()/(double)o2.getAppearance() < (double)o1.getAssist()/(double)o1.getAppearance()? 1 : -1;
 	        }
 	    };
@@ -451,9 +451,9 @@ public class Console {
 			  
 	        @Override  
 	        public int compare(Player o1, Player o2) {  
-	        	Double d2 = (double)o2.getBlockShot()/(double)o2.getAppearance();
-	        	Double d1 = (double)o1.getBlockShot()/(double)o1.getAppearance();
-	            return d1.compareTo(d2);
+	        	double d2 = (double)o2.getBlockShot()/(double)o2.getAppearance();
+	        	double d1 = (double)o1.getBlockShot()/(double)o1.getAppearance();
+	            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
 	        	//return (double)o2.getBlockShot()/(double)o2.getAppearance() < (double)o1.getBlockShot()/(double)o1.getAppearance()? 1 : -1;
 	        }
 	    };
@@ -462,9 +462,9 @@ public class Console {
 			  
 	        @Override  
 	        public int compare(Player o1, Player o2) {  
-	        	Double d2 = (double)o2.getSteal()/(double)o2.getAppearance();
-	        	Double d1 = (double)o1.getSteal()/(double)o1.getAppearance();
-	            return d1.compareTo(d2);
+	        	double d2 = (double)o2.getSteal()/(double)o2.getAppearance();
+	        	double d1 = (double)o1.getSteal()/(double)o1.getAppearance();
+	            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
 	        	//return (double)o2.getSteal()/(double)o2.getAppearance() < (double)o1.getSteal()/(double)o1.getAppearance()? 1 : -1;
 	        }
 	    };
@@ -473,9 +473,9 @@ public class Console {
 			  
 	        @Override  
 	        public int compare(Player o1, Player o2) {  
-	        	Double d2 = (double)o2.getFoul()/(double)o2.getAppearance();
-	        	Double d1 = (double)o1.getFoul()/(double)o1.getAppearance();
-	            return d1.compareTo(d2);
+	        	double d2 = (double)o2.getFoul()/(double)o2.getAppearance();
+	        	double d1 = (double)o1.getFoul()/(double)o1.getAppearance();
+	            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
 	        	//return (double)o2.getFoul()/(double)o2.getAppearance() < (double)o1.getFoul()/(double)o1.getAppearance()? 1 : -1;
 	        }
 	    };
@@ -484,9 +484,9 @@ public class Console {
 			  
 	        @Override  
 	        public int compare(Player o1, Player o2) {  
-	        	Double d2 = (double)o2.getFault()/(double)o2.getAppearance();
-	        	Double d1 = (double)o1.getFault()/(double)o1.getAppearance();
-	            return d1.compareTo(d2);
+	        	double d2 = (double)o2.getFault()/(double)o2.getAppearance();
+	        	double d1 = (double)o1.getFault()/(double)o1.getAppearance();
+	            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
 	        	//return (double)o2.getFault()/(double)o2.getAppearance() < (double)o1.getFault()/(double)o1.getAppearance()? 1 : -1;
 	        }
 	    };
@@ -495,9 +495,9 @@ public class Console {
 			  
 	        @Override  
 	        public int compare(Player o1, Player o2) {  
-	        	Double d2 = (double)o2.getMinute()/(double)o2.getAppearance();
-	        	Double d1 = (double)o1.getMinute()/(double)o1.getAppearance();
-	            return d1.compareTo(d2);
+	        	double d2 = (double)o2.getMinute()/(double)o2.getAppearance();
+	        	double d1 = (double)o1.getMinute()/(double)o1.getAppearance();
+	            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
 	        	//return (double)o2.getMinute()/(double)o2.getAppearance() < (double)o1.getMinute()/(double)o1.getAppearance()? 1 : -1;
 	        }
 	    };
@@ -714,9 +714,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Integer d2 = o2.getPoint();
-        	Integer d1 = o1.getPoint();
-            return d1.compareTo(d2);
+        	int d2 = o2.getPoint();
+        	int d1 = o1.getPoint();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	//return o2() < o1.getPoint() ? 1 : -1;
         }
     };
@@ -725,9 +725,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Integer d2 = o2.getRebound();
-        	Integer d1 = o1.getRebound();
-            return d1.compareTo(d2);
+        	int d2 = o2.getRebound();
+        	int d1 = o1.getRebound();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	//return o2.getRebound() < o1.getRebound() ? 1 : -1;
         }
     };
@@ -735,9 +735,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Integer d2 = o2.getAssist();
-        	Integer d1 = o1.getAssist();
-            return d1.compareTo(d2);
+        	int d2 = o2.getAssist();
+        	int d1 = o1.getAssist();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	//return o2.getAssist() < o1.getAssist() ? 1 : -1;
         }
     };
@@ -746,9 +746,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Integer d2 = o2.getBlockShot();
-        	Integer d1 = o1.getBlockShot();
-            return d1.compareTo(d2);
+        	int d2 = o2.getBlockShot();
+        	int d1 = o1.getBlockShot();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	//return o2.getBlockShot() < o1.getBlockShot() ? 1 : -1;
         }
     };
@@ -757,9 +757,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Integer d2 = o2.getSteal();
-        	Integer d1 = o1.getSteal();
-            return d1.compareTo(d2);
+        	int d2 = o2.getSteal();
+        	int d1 = o1.getSteal();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	// return o2.getSteal() < o1.getSteal() ? 1 : -1;
         }
     };
@@ -768,9 +768,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Integer d2 = o2.getFoul();
-        	Integer d1 = o1.getFoul();
-            return d1.compareTo(d2);
+        	int d2 = o2.getFoul();
+        	int d1 = o1.getFoul();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	//return o2.getFoul() < o1.getFoul() ? 1 : -1;
         }
     };
@@ -779,9 +779,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Integer d2 = o2.getFault();
-        	Integer d1 = o1.getFault();
-            return d1.compareTo(d2);
+        	int d2 = o2.getFault();
+        	int d1 = o1.getFault();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	// return o2.getFault() < o1.getFault() ? 1 : -1;
         }
     };
@@ -790,9 +790,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Double d2 = o2.getMinute();
-        	Double d1 = o1.getMinute();
-            return d1.compareTo(d2);
+        	double d2 = o2.getMinute();
+        	double d1 = o1.getMinute();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	//return o2.getMinute() < o1.getMinute() ? 1 : -1;
         }
     };
@@ -801,9 +801,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Double d2 = o2.getEfficient();
-        	Double d1 = o1.getEfficient();
-            return d1.compareTo(d2);
+        	double d2 = o2.getEfficient();
+        	double d1 = o1.getEfficient();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	// return o2.getEfficient() < o1.getEfficient() ? 1 : -1;
         }
     };
@@ -812,9 +812,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Double d2 = o2.getShot();
-        	Double d1 = o1.getShot();
-            return d1.compareTo(d2);
+        	double d2 = o2.getShot();
+        	double d1 = o1.getShot();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	//return o2.getShot() < o1.getShot() ? 1 : -1;
         }
     };
@@ -823,9 +823,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Double d2 = o2.getThree();
-        	Double d1 = o1.getThree();
-            return d1.compareTo(d2);
+        	double d2 = o2.getThree();
+        	double d1 = o1.getThree();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	// return o2.getThree() < o1.getThree() ? 1 : -1;
         }
     };
@@ -834,9 +834,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Double d2 = o2.getPenalty();
-        	Double d1 = o1.getPenalty();
-            return d1.compareTo(d2);
+        	double d2 = o2.getPenalty();
+        	double d1 = o1.getPenalty();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	//return o2.getPenalty() < o1.getPenalty() ? 1 : -1;
         }
     };
@@ -845,9 +845,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Double d2 = o2.getDoubleTwo();
-        	Double d1 = o1.getDoubleTwo();
-            return d1.compareTo(d2);
+        	double d2 = o2.getDoubleTwo();
+        	double d1 = o1.getDoubleTwo();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	//return o2.getDoubleTwo() < o1.getDoubleTwo() ? 1 : -1;
         }
     };
@@ -856,9 +856,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Double d2 = o2.getRealShot();
-        	Double d1 = o1.getRealShot();
-            return d1.compareTo(d2);
+        	double d2 = o2.getRealShot();
+        	double d1 = o1.getRealShot();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	//return o2.getRealShot() < o1.getRealShot() ? 1 : -1;
         }
     };
@@ -867,9 +867,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Double d2 = o2.getGmSc();
-        	Double d1 = o1.getGmSc();
-            return d1.compareTo(d2);
+        	double d2 = o2.getGmSc();
+        	double d1 = o1.getGmSc();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	// return o2.getGmSc() < o1.getGmSc() ? 1 : -1;
         }
     };
@@ -878,9 +878,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Double d2 = o2.getShotEfficient();
-        	Double d1 = o1.getShotEfficient();
-            return d1.compareTo(d2);
+        	double d2 = o2.getShotEfficient();
+        	double d1 = o1.getShotEfficient();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	//return o2.getShotEfficient() < o1.getShotEfficient() ? 1 : -1;
         }
     };
@@ -889,9 +889,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Double d2 = o2.getReboundEfficient();
-        	Double d1 = o1.getReboundEfficient();
-            return d1.compareTo(d2);
+        	double d2 = o2.getReboundEfficient();
+        	double d1 = o1.getReboundEfficient();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	//return o2.getReboundEfficient() < o1.getReboundEfficient() ? 1 : -1;
         }
     };
@@ -900,9 +900,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Double d2 = o2.getOffendReboundEfficient();
-        	Double d1 = o1.getOffendReboundEfficient();
-            return d1.compareTo(d2);
+        	double d2 = o2.getOffendReboundEfficient();
+        	double d1 = o1.getOffendReboundEfficient();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	//return o2.getOffendReboundEfficient() < o1.getOffendReboundEfficient() ? 1 : -1;
         }
     };
@@ -911,9 +911,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Double d2 = o2.getDefendReboundEfficient();
-        	Double d1 = o1.getDefendReboundEfficient();
-            return d1.compareTo(d2);
+        	double d2 = o2.getDefendReboundEfficient();
+        	double d1 = o1.getDefendReboundEfficient();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	//return o2.getDefendReboundEfficient() < o1.getDefendReboundEfficient() ? 1 : -1;
         }
     };
@@ -922,9 +922,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Double d2 = o2.getAssistEfficient();
-        	Double d1 = o1.getAssistEfficient();
-            return d1.compareTo(d2);
+        	double d2 = o2.getAssistEfficient();
+        	double d1 = o1.getAssistEfficient();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	// return o2.getAssistEfficient() < o1.getAssistEfficient() ? 1 : -1;
         }
     };
@@ -933,9 +933,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Double d2 = o2.getStealEfficient();
-        	Double d1 = o1.getStealEfficient();
-            return d1.compareTo(d2);
+        	double d2 = o2.getStealEfficient();
+        	double d1 = o1.getStealEfficient();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	//return o2.getStealEfficient() < o1.getStealEfficient() ? 1 : -1;
         }
     };
@@ -944,9 +944,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Double d2 = o2.getBlockShotEfficient();
-        	Double d1 = o1.getBlockShotEfficient();
-            return d1.compareTo(d2);
+        	double d2 = o2.getBlockShotEfficient();
+        	double d1 = o1.getBlockShotEfficient();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	//return o2.getBlockShotEfficient() < o1.getBlockShotEfficient() ? 1 : -1;
         }
     };
@@ -955,9 +955,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Double d2 = o2.getFaultEfficient();
-        	Double d1 = o1.getFaultEfficient();
-            return d1.compareTo(d2);
+        	double d2 = o2.getFaultEfficient();
+        	double d1 = o1.getFaultEfficient();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	//return o2.getFaultEfficient() < o1.getFaultEfficient() ? 1 : -1;
         }
     };
@@ -966,9 +966,9 @@ public class Console {
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
-        	Double d2 = o2.getFrequency();
-        	Double d1 = o1.getFrequency();
-            return d1.compareTo(d2);
+        	double d2 = o2.getFrequency();
+        	double d1 = o1.getFrequency();
+            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
         	//return o2.getFrequency() < o1.getFrequency() ? 1 : -1;
         }
     };

@@ -303,7 +303,7 @@ public final class BLController implements BLService {
 
 			// put some data in team 1
 			String ab = timtemp1.getAbbreviation();
-			if(ab.equals("NOH") && season.compareTo("13-14")>=0)
+			/*if(ab.equals("NOH") && season.compareTo("13-14")>=0)
 			{
 				Team foundTeam = teamsHash.get(ab);
 				ab = "NOP";
@@ -322,7 +322,7 @@ public final class BLController implements BLService {
 					teamsHash.put(ab, foundTeam);
 					teamsHash.remove("CHA");
 				}
-			}
+			}*/
 			Team foundTeam = teamsHash.get(ab);
 			if (foundTeam == null) {
 				Team tTeam = new Team(teamPOHash.get(ab));
@@ -344,7 +344,7 @@ public final class BLController implements BLService {
 
 			// put some data in team 2
 			ab = timtemp2.getAbbreviation();
-			if(ab.equals("NOH") && season.compareTo("13-14")>=0)
+			/*if(ab.equals("NOH") && season.compareTo("13-14")>=0)
 			{
 				foundTeam = teamsHash.get(ab);
 				ab = "NOP";
@@ -363,7 +363,7 @@ public final class BLController implements BLService {
 					teamsHash.put(ab, foundTeam);
 					teamsHash.remove("CHA");
 				}
-			}
+			}*/
 			foundTeam = teamsHash.get(ab);
 			if (foundTeam == null) {
 				Team tTeam = new Team(teamPOHash.get(ab));
@@ -396,8 +396,8 @@ public final class BLController implements BLService {
 											// creat an object without info
 						playerPO = new PlayerPO(name);
 					}
-					if(teamsHash.get(ab)==null)
-						System.out.print(ab);
+					/*if(teamsHash.get(ab)==null)
+						System.out.print(ab);*/
 					Player tPlayer = new Player(teamsHash.get(ab).getTeamPO(),
 							playerPO);
 					if(theSeason)
@@ -448,8 +448,8 @@ public final class BLController implements BLService {
 					if (playerPO == null) {// see above
 						playerPO = new PlayerPO(name);
 					}
-					if(teamsHash.get(ab)==null)
-						System.out.println("123"+ab);
+					/*if(teamsHash.get(ab)==null)
+						System.out.println("123"+ab);*/
 					Player tPlayer = new Player(teamsHash.get(ab).getTeamPO(),
 							playerPO);
 					if(theSeason)

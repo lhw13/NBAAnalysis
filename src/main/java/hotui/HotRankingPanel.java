@@ -809,8 +809,10 @@ public class HotRankingPanel extends JPanel {
 			MainFrame.pip.update(name);
 			MainFrame.pip.scrollPane.setVisible(true);
 			MainFrame.hrp.scrollPane.setVisible(false);
+			
 			MainFrame.backPanels.add(MainFrame.currentPanel);
 			MainFrame.currentPanel = Panels.PlayerInfoPanel;
+			MainFrame.frame.setTitle("NBA球员信息");
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {			

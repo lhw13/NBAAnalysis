@@ -60,7 +60,7 @@ public final class BLController implements BLService {
 	}
 	public ArrayList<TeamVO> getHotTeamVO(String sortCon,int n) {
 		getHotTeam(sortCon);
-		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>(n+1);
 		for(int i=0;i<n && i<teams.size();i++)
 			result.add(teams.get(i).toVO());
 		return result;
@@ -78,7 +78,7 @@ public final class BLController implements BLService {
 		if(comp==null)
 			comp = Comparators.getPlayerComparator(sortCon);
 		Collections.sort(players, comp);
-		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>(n+1);
 		for(int i=0;i<n && i<players.size();i++)
 			if(players.get(i).active)
 				result.add(players.get(i).toVO());
@@ -89,7 +89,7 @@ public final class BLController implements BLService {
 	
 	public ArrayList<PlayerVO> getDailyHotPlayerVO(String sortCon, int n) {
 		getDailyHotPlayer(sortCon);
-		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>(n+1);
 		for(int i=0;i<n && i<todayPlayers.size();i++)
 			result.add(todayPlayers.get(i).toVO());
 		return result;
@@ -106,16 +106,21 @@ public final class BLController implements BLService {
 	
 	public ArrayList<PlayerVO> getBestPromotion(String sortCon, int n) {
 		analyse();
+		return toPVOs(getBestPromotionForConsole(sortCon,n));
+	}
+        
+        public ArrayList<Player> getBestPromotionForConsole(String sortCon, int n) {
+		analyse();
 		switch(sortCon) {
 		case "point": Collections.sort(players, Comparators.compareScorePromotionDesc);break;
 		case "score": Collections.sort(players, Comparators.compareScorePromotionDesc);break;
 		case "assist": Collections.sort(players, Comparators.compareAssistPromotionDesc);break;
 		case "rebound": Collections.sort(players, Comparators.compareReboundPromotionDesc);break;
 		}
-		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		ArrayList<Player> result = new ArrayList<Player>(n+1);
 		for(int i=0;i<n && i<players.size();i++)
 			if(players.get(i).active)
-				result.add(players.get(i).toVO());
+				result.add(players.get(i));
 		return result;
 	}
 	
@@ -180,7 +185,7 @@ public final class BLController implements BLService {
 
 	public ArrayList<TeamWithPlayersVO> getTeamsWithPlayers() {
 		analyse();
-		ArrayList<TeamWithPlayersVO> result = new ArrayList<TeamWithPlayersVO>();
+		ArrayList<TeamWithPlayersVO> result = new ArrayList<TeamWithPlayersVO>(35);
 		for (int i = 0; i < teams.size(); i++) {
 			Team team = teams.get(i);
 			result.add(new TeamWithPlayersVO(team.toVO(),
@@ -276,9 +281,10 @@ public final class BLController implements BLService {
 			boolean theDay = mttemp.getDate().equals(day);
 			ScorePO finalTemp = mttemp.getFinalScore();
 			ArrayList<ScorePO> scoresTemp = mttemp.getScores();
-			ArrayList<Integer> scores1 = new ArrayList<Integer>();
-			ArrayList<Integer> scores2 = new ArrayList<Integer>();
-			for (int j = 0; j < scoresTemp.size(); j++) {
+                        int size = scoresTemp.size();
+			ArrayList<Integer> scores1 = new ArrayList<Integer>(size+1);
+			ArrayList<Integer> scores2 = new ArrayList<Integer>(size+1);
+			for (int j = 0; j < size; j++) {
 				ScorePO scoreTemp = scoresTemp.get(j);
 				scores1.add(scoreTemp.getTeam1());
 				scores2.add(scoreTemp.getTeam2());
@@ -485,7 +491,7 @@ public final class BLController implements BLService {
 	}
 
 	private ArrayList<PlayerVO> getPlayersInTeam(String abbreviation) {// 参数是简称
-		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>(20);
 		int i = 5;
 		/*for (i = 0; i < players.size(); i ++)
 			// here just use some small trick to improve the efficiency

@@ -6,7 +6,7 @@ import java.util.Calendar;
 import server.po.HeightPO;
 import server.po.PlayerPO;
 
-public class PlayersDataAnalyse {
+public  final class PlayersDataAnalyse {
 	private static String fileName;
 
 	public static PlayerPO PlayerPOMade(ArrayList<String> playerForm) {
@@ -20,7 +20,7 @@ public class PlayersDataAnalyse {
 		int age;
 		int exp;
 		String school;
-		ArrayList<String> playerData = new ArrayList<String>();
+		ArrayList<String> playerData = new ArrayList<String>(10);
 		for (int i = 2; i < playerForm.size(); i = i + 2) {
 			playerData.add(playerForm.get(i).split("\\│")[1].replace("║", ""));
 		}

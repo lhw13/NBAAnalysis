@@ -14,7 +14,7 @@ import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.image.PNGTranscoder;
 
-public class Picture {
+public  final class Picture {
 	public static  ImageIcon getTeamPic(String abbreviation) {
 		File file = new File("./conf/transferStation/transferPic.png");
 		FileOutputStream outputStream = null;

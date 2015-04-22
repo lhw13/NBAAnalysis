@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import server.po.TeamPO;
 
-public class TeamsDataAnalyse {
+public  final class TeamsDataAnalyse {
 	public static ArrayList<TeamPO> teamPOListMade(ArrayList<String> teamsList) {
-		ArrayList<TeamPO> teamPOList = new ArrayList<TeamPO>();
+		ArrayList<TeamPO> teamPOList = new ArrayList<TeamPO>(35);
 		String fullName;
 		String abbreviation;
 		String location;

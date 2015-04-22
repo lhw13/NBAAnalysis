@@ -7,9 +7,9 @@ import console.Console;
 import server.po.MatchPO;
 import server.po.PlayerPO;
 
-public class PlayersData {
+public  final class PlayersData {
 	private static File[] PlayersFile;
-	private static ArrayList<PlayerPO> playersList = new ArrayList<PlayerPO>();
+	private static ArrayList<PlayerPO> playersList = new ArrayList<PlayerPO>(500);
 	static {
 		File f = new File(Console.path+"/players/info");
 		PlayersFile = f.listFiles();

@@ -34,18 +34,18 @@ public  final class Player implements Cloneable{
 	TeamPO team;
 	PlayerPO player;
 	PlayerInMatchesPO playerInMatches = new PlayerInMatchesPO();
-	ArrayList<MatchPO> matches = new ArrayList<MatchPO>();
-	ArrayList<TeamInMatches> thisTeam = new ArrayList<TeamInMatches>();
-	ArrayList<Integer> orders = new ArrayList<Integer>();// this array just to
+	ArrayList<MatchPO> matches = new ArrayList<MatchPO>(85);
+	ArrayList<TeamInMatches> thisTeam = new ArrayList<TeamInMatches>(85);
+	ArrayList<Integer> orders = new ArrayList<Integer>(85);// this array just to
 															// promote
 															// efficiency
-	ArrayList<TeamInMatches> opponentTeam = new ArrayList<TeamInMatches>();
+	ArrayList<TeamInMatches> opponentTeam = new ArrayList<TeamInMatches>(85);
 	
-	ArrayList<TeamInMatches> thisTeamNew = new ArrayList<TeamInMatches>();
-	ArrayList<Integer> ordersNew = new ArrayList<Integer>();// this array just to
+	ArrayList<TeamInMatches> thisTeamNew = new ArrayList<TeamInMatches>(10);
+	ArrayList<Integer> ordersNew = new ArrayList<Integer>(10);// this array just to
 															// promote
 															// efficiency
-	ArrayList<TeamInMatches> opponentTeamNew = new ArrayList<TeamInMatches>();
+	ArrayList<TeamInMatches> opponentTeamNew = new ArrayList<TeamInMatches>(10);
 	
 	ArrayList<TeamInMatches> thisTeamPast = new ArrayList<TeamInMatches>();
 	ArrayList<TeamInMatches> opponentTeamPast = new ArrayList<TeamInMatches>();
@@ -543,6 +543,10 @@ public  final class Player implements Cloneable{
 	public TeamPO getTeam() {
 		return team;
 	}
+        
+        public String getTeamAbbreviation() {
+            return team.getAbbreviation();
+        }
 
 	public PlayerPO getPlayer() {
 		return player;
@@ -810,6 +814,16 @@ public  final class Player implements Cloneable{
 		case "blockShotEfficient":return getBlockShotEfficient();
 		case "faultEfficient":return getFaultEfficient();
 		case "frequency":return getFrequency();		
+		default: return 0;
+		}
+	}
+        
+        public double getUpgradeRate(String value) {
+		switch(value) {
+		case "point": return scorePromotion;
+		case "score": return scorePromotion;
+		case "rebound": return reboundPromotion;	
+		case "assist": return assistPromotion;
 		default: return 0;
 		}
 	}

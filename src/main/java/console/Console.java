@@ -276,10 +276,10 @@ public class Console {
 					//out.println(playerList.get(i).toVO());
 				}
 			} else if(hot) {
-				ArrayList<PlayerVO> list = bl.getBestPromotion(condition, n);
+				ArrayList<Player> list = bl.getBestPromotionForConsole(condition, n);
 				for(int i=0;i<n && i<list.size();i++)
 				{
-					PlayerVO p = list.get(i);
+					Player p = list.get(i);
 					PlayerHotInfo playerHot = new PlayerHotInfo();
 					playerHot.setName(p.getName());
 					playerHot.setTeamName(p.getTeamAbbreviation());

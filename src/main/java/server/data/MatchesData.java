@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import console.Console;
 import server.po.MatchPO;
 
-public class MatchesData {
+public  final class MatchesData {
 	private static File[] matchesFile;
-	private static ArrayList<MatchPO> matchesList = new ArrayList<MatchPO>();
-	private static ArrayList<MatchPO> matchesAddList = new ArrayList<MatchPO>();
+	private static ArrayList<MatchPO> matchesList = new ArrayList<MatchPO>(1300);
+	private static ArrayList<MatchPO> matchesAddList = new ArrayList<MatchPO>(300);
 	private static boolean isDEL=false;
 	static {
 		File f = new File(Console.path+"/matches");

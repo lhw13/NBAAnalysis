@@ -7,14 +7,15 @@ import server.po.PlayerInMatchesPO;
 import server.po.ScorePO;
 import server.po.TeamInMatchesPO;
 
-public class MatchesDataAnalyse {
+public  final class MatchesDataAnalyse {
 	public static MatchPO MatchPOMade(ArrayList<String> matchData) {
 		String[] fileName = matchData.get(0).split("_");
 		String season = fileName[0];
 		String monthAndDay = fileName[1];
 		Calendar date = getDate(season, monthAndDay);
-		String abbreviation1 = fileName[2].split("-")[0];
-		String abbreviation2 = fileName[2].split("-")[1];
+                String sa[] = fileName[2].split("-");
+		String abbreviation1 = sa[0];
+		String abbreviation2 = sa[1];
 		if(abbreviation1.equals("NOH")){
 			abbreviation1="NOP";
 		}
@@ -24,15 +25,15 @@ public class MatchesDataAnalyse {
 		String[] firstLine = matchData.get(1).split(";");
 		ScorePO finalScore = stringToScorePO(firstLine[2]);
 		String[] secondLine = matchData.get(2).split(";");
-		ArrayList<ScorePO> scores = new ArrayList<ScorePO>();
+		ArrayList<ScorePO> scores = new ArrayList<ScorePO>(10);
 		for (String str : secondLine) {
 			scores.add(stringToScorePO(str));
 		}
 
 		TeamInMatchesPO team1;
 		TeamInMatchesPO team2;
-		ArrayList<PlayerInMatchesPO> players1 = new ArrayList<PlayerInMatchesPO>();
-		ArrayList<PlayerInMatchesPO> players2 = new ArrayList<PlayerInMatchesPO>();
+		ArrayList<PlayerInMatchesPO> players1 = new ArrayList<PlayerInMatchesPO>(15);
+		ArrayList<PlayerInMatchesPO> players2 = new ArrayList<PlayerInMatchesPO>(15);
 		int line = 4;
 		while (!(matchData.get(line).equals(abbreviation2)||matchData.get(line).equals("NOH"))) {
 			// 球队一的队员情况
@@ -74,8 +75,9 @@ public class MatchesDataAnalyse {
 	}
 
 	private static ScorePO stringToScorePO(String score) {
-		String scoreTeam1 = score.split("-")[0];
-		String scoreTeam2 = score.split("-")[1];
+                String sa[] = score.split("-");
+		String scoreTeam1 = sa[0];
+		String scoreTeam2 = sa[1];
 		return new ScorePO(stringToInt(scoreTeam1), stringToInt(scoreTeam2));
 	}
 
@@ -91,9 +93,10 @@ public class MatchesDataAnalyse {
 		}
 		String playTime = player[2];
 		int playTimeBySeconds = -1;// 脏数据取负值
-		if (playTime.split(":").length == 2) {
-			playTimeBySeconds = stringToInt(playTime.split(":")[0]) * 60
-					+ stringToInt(playTime.split(":")[1]);
+                String sa[] = playTime.split(":");
+		if (sa.length == 2) {
+			playTimeBySeconds = stringToInt(sa[0]) * 60
+					+ stringToInt(sa[1]);
 		}
 		int hit = stringToInt(player[3]);// 命中
 		int shot = stringToInt(player[4]);// 出手
@@ -117,10 +120,12 @@ public class MatchesDataAnalyse {
 	}
 
 	public static Calendar getDate(String season, String monthAndDay) {
-		int year1 = stringToInt(season.split("-")[0]);
-		int year2 = stringToInt(season.split("-")[1]);
-		int month = stringToInt(monthAndDay.split("-")[0]);
-		int day = stringToInt(monthAndDay.split("-")[1]);
+                String sa1[] = season.split("-");
+		int year1 = stringToInt(sa1[0]);
+		int year2 = stringToInt(sa1[1]);
+                String sa2[] = monthAndDay.split("-");
+		int month = stringToInt(sa2[0]);
+		int day = stringToInt(sa2[1]);
 		int year = 2000;
 		//if (month >= 11)//changed by lhw 
 		if (month >= 10){

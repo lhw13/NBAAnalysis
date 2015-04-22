@@ -6,12 +6,12 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class DataReader {
+public  final class DataReader {
 	private static BufferedReader br;
 	private static InputStreamReader file;
 
 	public static synchronized ArrayList<String> dataReader(File filePoint) {
-		ArrayList<String> result = new ArrayList<String>();
+		ArrayList<String> result = new ArrayList<String>(40);
 		try {
 			file = new InputStreamReader(new FileInputStream(filePoint), "UTF-8");
 			br = new BufferedReader(file);

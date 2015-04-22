@@ -1,4 +1,4 @@
-package consoletest;
+package ignored;
 
 import java.util.ArrayList;
 import java.util.Collections;

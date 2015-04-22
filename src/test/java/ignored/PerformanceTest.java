@@ -1,4 +1,4 @@
-package consoletest;
+package ignored;
 
 import java.io.PrintStream;
 import java.util.ArrayList;

@@ -22,7 +22,7 @@ public class NewConsoleTest {
 			e.printStackTrace();
 		}
 		String ss[] = {"-player","-hot","assist","-n","5"};
-		c.execute(System.out, ss);
+		c.execute(p, ss);
 	}
 	
 	@Test

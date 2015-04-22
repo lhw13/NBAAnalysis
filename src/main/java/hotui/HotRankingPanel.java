@@ -20,8 +20,11 @@ import javax.swing.table.TableColumnModel;
 import blservice.BLService;
 import presentation.ImageHandle;
 import presentation.mainui.MainFrame;
+import presentation.mainui.Panels;
+import presentation.matchui.MatchSelectionPanel;
 import presentation.playerui.PlayerInfoPanel;
 import presentation.playerui.PlayerSelectionPanel;
+import presentation.teamsui.TeamsSelectionFrame;
 import server.businesslogic.BLController;
 import server.businesslogic.Comparators;
 import server.businesslogic.Team;
@@ -50,6 +53,9 @@ public class HotRankingPanel extends JPanel {
 	Vector columnName1;
 	Vector columnName2;
 	Vector columnName3;
+	ArrayList<MatchPO> matches;//update2()
+	TeamInMatchesPO team1;//update2()
+	TeamInMatchesPO team2;
 	DefaultTableModel model_1 = new DefaultTableModel(){
 		private static final long serialVersionUID = 1L;
 
@@ -92,6 +98,8 @@ public class HotRankingPanel extends JPanel {
 	private JTable table_2;
 	private JScrollPane scrollPane_3;
 	private JTable table_3;
+	ArrayList<Team> teamWest = new ArrayList<Team>();
+	ArrayList<Team> teamEast = new ArrayList<Team>();
 	public HotRankingPanel() {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
@@ -195,6 +203,7 @@ public class HotRankingPanel extends JPanel {
 		
 		table_1 = new JTable(model_1);
 		table_1.setBounds(545, 100, 385, 216);
+		table_1.addMouseListener(new tableListener1());
 		panelOfBottom.add(table_1);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -202,6 +211,7 @@ public class HotRankingPanel extends JPanel {
 		panelOfBottom.add(scrollPane_2);
 		
 		table_2 = new JTable(model_2);
+		table_2.addMouseListener(new tableListener2());
 		scrollPane_2.setViewportView(table_2);
 		
 		scrollPane_3 = new JScrollPane();
@@ -209,6 +219,7 @@ public class HotRankingPanel extends JPanel {
 		panelOfBottom.add(scrollPane_3);
 		
 		table_3 = new JTable(model_3);
+		table_3.addMouseListener(new tableListener3());
 		scrollPane_3.setViewportView(table_3);
 		
 		JLabel lblNewLabel_2 = new JLabel("今日比赛");
@@ -602,7 +613,7 @@ public class HotRankingPanel extends JPanel {
 	public void update2() {
 		Vector rowDatas2 = new Vector();
 		
-		ArrayList<MatchPO> matches = blservice.getAllMatch();
+		matches = blservice.getAllMatch();
 		int size = matches.size();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");		
 		String dateLatest = sdf.format(matches.get(size-1).getDate().getTime());
@@ -611,8 +622,8 @@ public class HotRankingPanel extends JPanel {
 			String dateTemp = sdf.format(matchTemp.getDate().getTime());
 			if(!dateTemp.equals(dateLatest)  )  break;
 			Vector rowData2 = new Vector();
-			TeamInMatchesPO team1 = matchTemp.getTeam1();
-			TeamInMatchesPO team2 = matchTemp.getTeam2();
+			 team1 = matchTemp.getTeam1();
+			 team2 = matchTemp.getTeam2();
 			TeamWithPlayersVO team11= blservice.getTeamAnalysis(team1.getAbbreviation());
 			TeamWithPlayersVO team22= blservice.getTeamAnalysis(team2.getAbbreviation());
 			
@@ -656,8 +667,7 @@ public class HotRankingPanel extends JPanel {
 		Vector rowDatas3 = new Vector();
 		ArrayList<Team> teams = BLController.getInstance().getTeams();		
 		Collections.sort(teams,Comparators.getTeamComparator("winRate"));
-		ArrayList<Team> teamWest = new ArrayList<Team>();
-		ArrayList<Team> teamEast = new ArrayList<Team>();
+		
 		for(int i=0;i<teams.size();i++) {
 			Team temp = teams.get(i);
 			if(temp.getTeamPO().getDivision() == 'E') teamEast.add(temp);
@@ -782,6 +792,36 @@ public class HotRankingPanel extends JPanel {
 
 		}
 	}
+	
+	public class tableListener1 extends MouseAdapter{
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			JTable table =(JTable) e.getSource();
+			int r = table.getSelectedRow();
+			
+			String name = (String)table.getValueAt(r, 2);
+			MainFrame.pip.update(name);
+			MainFrame.pip.scrollPane.setVisible(true);
+			MainFrame.hrp.scrollPane.setVisible(false);
+			MainFrame.backPanels.add(MainFrame.currentPanel);
+			MainFrame.currentPanel = Panels.PlayerInfoPanel;
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {			
+			JTable table =(JTable) e.getSource();
+			
+			table.setCursor(Cursor
+					.getPredefinedCursor(Cursor.HAND_CURSOR));
+			
+		}
+		public void mouseExited(MouseEvent e) {
+			JTable table =(JTable) e.getSource();
+			table.setCursor(Cursor.getDefaultCursor());
+
+		}
+	}
+
 	public class Listener2 extends MouseAdapter{
 
 		@Override
@@ -843,10 +883,48 @@ public class HotRankingPanel extends JPanel {
 
 		}
 	}
-	public class Listener3 extends MouseAdapter{
+	
+	public class tableListener2 extends MouseAdapter{
 
+		
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			JTable table =(JTable) e.getSource();
+			int r = table.getSelectedRow();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");	
+			int size = matches.size();
+			MatchPO matchTemp = matches.get(size-1-r);
+			String dateTemp = sdf.format(matchTemp.getDate().getTime());
+				
+			
+			
+			MatchSelectionPanel.goToMatchFromPlayer(dateTemp,team1.getAbbreviation());
+			MainFrame.hrp.scrollPane.setVisible(false);
+			MainFrame.backPanels.add(MainFrame.currentPanel);
+			MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {			
+			JTable table =(JTable) e.getSource();
+			
+			table.setCursor(Cursor
+					.getPredefinedCursor(Cursor.HAND_CURSOR));
+			
+		}
+		public void mouseExited(MouseEvent e) {
+			JTable table =(JTable) e.getSource();
+			table.setCursor(Cursor.getDefaultCursor());
+
+		}
+	}
+
+	public class Listener3 extends MouseAdapter{
+
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			
+			
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {			
@@ -873,4 +951,36 @@ public class HotRankingPanel extends JPanel {
 
 		}
 	}
+	
+	public class tableListener3 extends MouseAdapter{
+
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			JTable table =(JTable) e.getSource();
+			int r = table.getSelectedRow();
+			
+			if(root3.equals("西"))
+				TeamsSelectionFrame.goToTeam(teamWest.get(r).getAbbreviation());				
+			 else 
+				TeamsSelectionFrame.goToTeam(teamWest.get(r).getAbbreviation());
+			MainFrame.hrp.scrollPane.setVisible(false);
+			MainFrame.backPanels.add(MainFrame.currentPanel);
+			MainFrame.currentPanel = Panels.TeamsInfoFrame;
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {			
+			JTable table =(JTable) e.getSource();
+			
+			table.setCursor(Cursor
+					.getPredefinedCursor(Cursor.HAND_CURSOR));
+			
+		}
+		public void mouseExited(MouseEvent e) {
+			JTable table =(JTable) e.getSource();
+			table.setCursor(Cursor.getDefaultCursor());
+
+		}
+	}
+	
 }

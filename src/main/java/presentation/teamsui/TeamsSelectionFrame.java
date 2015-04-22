@@ -1097,7 +1097,7 @@ public class TeamsSelectionFrame {
 	}
 
 	//传递制定球队信息
-	public void setTeamsInfo(String teamName) {
+	public static void setTeamsInfo(String teamName) {
 		TeamsSelectionFrame.scrollPane.setVisible(false);
 		TeamsSelectionFrame.timer.cancel();
 		MainFrame.frame.getContentPane().remove(TeamsSelectionFrame.scrollPane);

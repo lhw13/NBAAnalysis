@@ -1,5 +1,6 @@
 package presentation.playerui;
 
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -31,7 +32,9 @@ import blservice.BLService;
 import presentation.ImageHandle;
 import presentation.mainui.MainFrame;
 import presentation.mainui.Panels;
+import presentation.matchui.MatchSelectionPanel;
 import presentation.teamsui.TeamsRankingFrame;
+import presentation.teamsui.TeamsSelectionFrame;
 import server.businesslogic.BLController;
 import server.businesslogic.Comparators;
 import server.businesslogic.Player;
@@ -117,12 +120,35 @@ public class PlayerInfoPanel extends JPanel {
 		tabbedPane.addTab("场均", null, scrollPane_2, null);
 
 		table_1 = new JTable(model_1);
+		table_1.addMouseListener(new MouseListenTeam());
+		table_1.addMouseMotionListener(new MouseAdapter(){
+			public void mouseMoved(MouseEvent e) {  
+	        int row=table_1.rowAtPoint(e.getPoint());  
+	        int col=table_1.columnAtPoint(e.getPoint());  
+	        if(col==1){  
+	        	table_1.setCursor(Cursor
+					.getPredefinedCursor(Cursor.HAND_CURSOR));
+			} else {
+				table_1.setCursor(Cursor.getDefaultCursor());
+			}
+	    }  }); 
 		scrollPane_2.setViewportView(table_1);
 
 		JScrollPane scrollPane_3 = new JScrollPane();
 		tabbedPane.addTab("总计", null, scrollPane_3, null);
 
 		table_2 = new JTable(model_2);
+		table_2.addMouseListener(new MouseListenTeam());
+		table_2.addMouseMotionListener(new MouseAdapter(){public void mouseMoved(MouseEvent e) {  
+	        int row=table_2.rowAtPoint(e.getPoint());  
+	        int col=table_2.columnAtPoint(e.getPoint());  
+	        if(col==1){  
+	        	table_2.setCursor(Cursor
+					.getPredefinedCursor(Cursor.HAND_CURSOR));
+			} else {
+				table_2.setCursor(Cursor.getDefaultCursor());
+			}
+	    }  }); 
 		scrollPane_3.setViewportView(table_2);
 
 		button = new JButton("返回");
@@ -196,7 +222,7 @@ public class PlayerInfoPanel extends JPanel {
 			columnName_avgAssist.add(cname_avgAssist[i]);
 		}	
 		table_8 = new JTable(model_8);
-		
+		table_8.addMouseListener(new MouseListen());
 		table_8.setRowHeight(20);
 		scrollPane_9.setViewportView(table_8);
 		
@@ -238,6 +264,18 @@ public class PlayerInfoPanel extends JPanel {
 		
 		table_9 = new JTable(model_9);
 		table_9.setBounds(387, 10, 230, 228);
+		table_9.addMouseListener(new MouseListenTeam());
+		table_9.addMouseMotionListener(new MouseAdapter(){
+			public void mouseMoved(MouseEvent e) {  
+	        int row=table_9.rowAtPoint(e.getPoint());  
+	        int col=table_9.columnAtPoint(e.getPoint());  
+	        if(row==1&&col==1){  
+	        	table_9.setCursor(Cursor
+					.getPredefinedCursor(Cursor.HAND_CURSOR));
+			} else {
+				table_9.setCursor(Cursor.getDefaultCursor());
+			}
+	    }  }); 
 		panelOfBottom.add(table_9);
 		
 		JLabel label_1 = new JLabel("高阶数据查询");
@@ -364,10 +402,12 @@ public class PlayerInfoPanel extends JPanel {
 		rowData_3.add(handleDecimal(vo.getOffensiveReboundRate()*100)+"%");
 		rowData_3.add(handleDecimal(vo.getDefensiveReboundRate()*100)+"%");
 		rowData_3.add(handleDecimal(vo.getBlockRate()*100)+"%");
-		rowData_3.add(handleDecimal(vo.getAssistRate()*100)+"%");
-		rowData_3.add(handleDecimal(vo.getStealRate()*100)+"%");		
 		rowData_3.add(handleDecimal(vo.getMissRate()*100)+"%");
 		rowData_3.add(handleDecimal(vo.getUseRate()*100)+"%");
+		rowData_3.add(handleDecimal(vo.getAssistRate()*100)+"%");
+		rowData_3.add(handleDecimal(vo.getStealRate()*100)+"%");		
+		
+		
 		
 		
 		rowDatas_3.add(rowData_3);
@@ -770,12 +810,10 @@ public class PlayerInfoPanel extends JPanel {
 		rowData_3.add(handleDecimal(vo.getOffensiveReboundRate()*100)+"%");
 		rowData_3.add(handleDecimal(vo.getDefensiveReboundRate()*100)+"%");
 		rowData_3.add(handleDecimal(vo.getBlockRate()*100)+"%");
-		rowData_3.add(handleDecimal(vo.getAssistRate()*100)+"%");
-		rowData_3.add(handleDecimal(vo.getStealRate()*100)+"%");		
 		rowData_3.add(handleDecimal(vo.getMissRate()*100)+"%");
 		rowData_3.add(handleDecimal(vo.getUseRate()*100)+"%");
-		
-		
+		rowData_3.add(handleDecimal(vo.getAssistRate()*100)+"%");
+		rowData_3.add(handleDecimal(vo.getStealRate()*100)+"%");		
 		rowDatas_3.add(rowData_3);
 
 		model_3.setDataVector(rowDatas_3, columnName3);
@@ -1007,19 +1045,52 @@ public class PlayerInfoPanel extends JPanel {
 			JTable table = (JTable) e.getSource();
 			int r = table.getSelectedRow();
 			int c = table.getSelectedColumn();
-			Object temp = table.getValueAt(r, c);
-			String name = null;
-			if (temp != null)
-				name = temp.toString();
+			String date = (String) table.getValueAt(r, 0);
+			String teamName = (String) table.getValueAt(r, 1);
+			
 
 			try {
-				if (name != null) {
-					PlayerSelectionPanel.scrollPane.setVisible(false);
-					PlayerInfoPanel.scrollPane.setVisible(true);
-				}
+				
+					PlayerInfoPanel.scrollPane.setVisible(false);
+					MatchSelectionPanel.goToMatchFromPlayer(date,
+							teamName.split(" ")[1]);
+					
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 		}
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			JTable table = (JTable) e.getSource();
+			table.setCursor(Cursor
+					.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			JTable table = (JTable) e.getSource();
+			table.setCursor(Cursor.getDefaultCursor());
+
+		}
+	}
+	public class MouseListenTeam extends MouseAdapter {
+		public void mouseClicked(MouseEvent e) {
+
+			JTable table = (JTable) e.getSource();
+			int r = table.getSelectedRow();
+			int c = table.getSelectedColumn();
+			String teamName = (String) table.getValueAt(r, 1);
+			if(c==1){	
+				try {				
+						PlayerInfoPanel.scrollPane.setVisible(false);
+						//TeamsSelectionFrame.setTeamsInfo(vo.getTeamAbbreviation());
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		}
+		
+		
 	}
 }

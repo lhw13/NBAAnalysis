@@ -1079,7 +1079,7 @@ public class PlayerInfoPanel extends JPanel {
 
 	public class MouseListen extends MouseAdapter {
 		public void mouseClicked(MouseEvent e) {
-
+ 
 			JTable table = (JTable) e.getSource();
 			int r = table.getSelectedRow();
 			int c = table.getSelectedColumn();
@@ -1087,12 +1087,9 @@ public class PlayerInfoPanel extends JPanel {
 			String teamName = (String) table.getValueAt(r, 1);
 			try {
 				
-					PlayerInfoPanel.scrollPane.setVisible(false);
+					
 					MatchSelectionPanel.goToMatchFromPlayer(date,
 							teamName.split(" ")[1]);
-					MainFrame.backPanels.add(MainFrame.currentPanel);
-					MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
-					MainFrame.frame.setTitle("NBA比赛详情");
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
@@ -1123,9 +1120,6 @@ public class PlayerInfoPanel extends JPanel {
 				try {				
 						PlayerInfoPanel.scrollPane.setVisible(false);
 						TeamsSelectionFrame.goToTeam(vo.getTeamAbbreviation());
-						MainFrame.backPanels.add(MainFrame.currentPanel);
-						MainFrame.currentPanel = Panels.TeamsInfoFrame;
-						MainFrame.frame.setTitle("NBA球队信息");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

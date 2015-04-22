@@ -113,8 +113,8 @@ public class TeamsRankingFrame {
 		}
 		
 		comboBox = new JComboBox<String>();
+		comboBox.addItem("胜率");
 		comboBox.addItem("得分");
-		comboBox.addItem("总篮板");
 		comboBox.addItem("助攻");
 		comboBox.addItem("抢断");
 		comboBox.addItem("盖帽");
@@ -125,7 +125,8 @@ public class TeamsRankingFrame {
 		comboBox.addItem("罚球命中率");
 		comboBox.addItem("失误");
 		comboBox.addItem("犯规");
-		comboBox.addItem("胜率");
+	
+		comboBox.addItem("总篮板");
 		comboBox.addItem("进攻回合");
 		comboBox.addItem("进攻效率");
 		comboBox.addItem("防守效率");
@@ -150,16 +151,17 @@ public class TeamsRankingFrame {
 				int index = comboBox.getSelectedIndex();
 				switch(index){
 				case 0: 
+					MainFrame.selection2="胜率";
+					columnName1.setElementAt("胜率(场均)", 3);
+					columnName1.setElementAt("胜率(总计)", 4);
+					updataTeamsRanking();
+					break;
+				case 1: 
 					MainFrame.selection2="得分";
 					columnName1.setElementAt("得分(场均)", 3);
 					columnName1.setElementAt("得分(总计)", 4);
 					updataTeamsRanking();
-					break;
-				case 1: 
-					MainFrame.selection2="总篮板";
-					columnName1.setElementAt("总篮板(场均)", 3);
-					columnName1.setElementAt("总篮板(总计)", 4);
-					updataTeamsRanking();
+					
 					break;
 				case 2: 
 					MainFrame.selection2="助攻";
@@ -222,10 +224,11 @@ public class TeamsRankingFrame {
 					updataTeamsRanking();
 					break;
 				case 12: 
-					MainFrame.selection2="胜率";
-					columnName1.setElementAt("胜率(场均)", 3);
-					columnName1.setElementAt("胜率(总计)", 4);
+					MainFrame.selection2="总篮板";
+					columnName1.setElementAt("总篮板(场均)", 3);
+					columnName1.setElementAt("总篮板(总计)", 4);
 					updataTeamsRanking();
+					
 					break;
 				case 13: 
 					MainFrame.selection2="进攻回合";

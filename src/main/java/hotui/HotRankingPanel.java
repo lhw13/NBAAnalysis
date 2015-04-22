@@ -54,9 +54,8 @@ public class HotRankingPanel extends JPanel {
 	Vector columnName1;
 	Vector columnName2;
 	Vector columnName3;
-	ArrayList<MatchPO> matches;//update2()
-	TeamInMatchesPO team1;//update2()
-	TeamInMatchesPO team2;
+	
+	
 	DefaultTableModel model_1 = new DefaultTableModel(){
 		private static final long serialVersionUID = 1L;
 
@@ -621,7 +620,7 @@ public class HotRankingPanel extends JPanel {
 	public void update2() {
 		Vector rowDatas2 = new Vector();
 		
-		matches = blservice.getAllMatch();
+		ArrayList<MatchPO> matches = blservice.getAllMatch();
 		int size = matches.size();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");		
 		String dateLatest = sdf.format(matches.get(size-1).getDate().getTime());
@@ -630,8 +629,8 @@ public class HotRankingPanel extends JPanel {
 			String dateTemp = sdf.format(matchTemp.getDate().getTime());
 			if(!dateTemp.equals(dateLatest)  )  break;
 			Vector rowData2 = new Vector();
-			 team1 = matchTemp.getTeam1();
-			 team2 = matchTemp.getTeam2();
+			TeamInMatchesPO team1= matchTemp.getTeam1();//update2()
+			TeamInMatchesPO team2= matchTemp.getTeam2();			
 			TeamWithPlayersVO team11= blservice.getTeamAnalysis(team1.getAbbreviation());
 			TeamWithPlayersVO team22= blservice.getTeamAnalysis(team2.getAbbreviation());
 			
@@ -807,15 +806,20 @@ public class HotRankingPanel extends JPanel {
 		public void mouseClicked(MouseEvent e) {
 			JTable table =(JTable) e.getSource();
 			int r = table.getSelectedRow();
-			
-			String name = (String)table.getValueAt(r, 2);
-			MainFrame.pip.update(name);
-			MainFrame.pip.scrollPane.setVisible(true);
-			MainFrame.hrp.scrollPane.setVisible(false);
-			
-			MainFrame.backPanels.add(MainFrame.currentPanel);
-			MainFrame.currentPanel = Panels.PlayerInfoPanel;
-			MainFrame.frame.setTitle("NBA球员信息");
+			if(!root.equals("赛季热点球队")){
+				String name = (String)table.getValueAt(r, 2);
+				MainFrame.pip.update(name);
+				MainFrame.pip.scrollPane.setVisible(true);
+				MainFrame.hrp.scrollPane.setVisible(false);
+				
+				MainFrame.backPanels.add(MainFrame.currentPanel);
+				MainFrame.currentPanel = Panels.PlayerInfoPanel;
+				MainFrame.frame.setTitle("NBA球员信息");
+			} else {
+				String name = (String)table.getValueAt(r, 2);
+				TeamsSelectionFrame.goToTeam(translate(name));
+				MainFrame.hrp.scrollPane.setVisible(false);
+			}
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {			
@@ -905,6 +909,7 @@ public class HotRankingPanel extends JPanel {
 			JTable table =(JTable) e.getSource();
 			int r = table.getSelectedRow();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");	
+			ArrayList<MatchPO> matches = blservice.getAllMatch();
 			int size = matches.size();
 			MatchPO matchTemp = matches.get(size-1-r);
 			String dateTemp = sdf.format(matchTemp.getDate().getTime());
@@ -991,5 +996,70 @@ public class HotRankingPanel extends JPanel {
 
 		}
 	}
-	
+	public static String translate(String team){
+		String result = "GSW";
+        if(team.equals("马刺"))
+        	result = "SAS";
+        else if(team.equals("灰熊"))
+        	result = "MEM";
+        else if(team.equals("小牛"))
+        	result = "DAL";
+        else if(team.equals("火箭"))
+        	result = "HOU";
+        else if(team.equals("鹈鹕"))
+        	result = "NOP";
+        else if(team.equals("森林狼"))
+        	result = "MIN";
+        else if(team.equals("掘金"))
+        	result = "DEN";
+        else if(team.equals("爵士"))
+        	result = "UTA";
+        else if(team.equals("开拓者"))
+        	result = "POR";
+        else if(team.equals("雷霆"))
+        	result = "OKC";
+        else if(team.equals("国王"))
+        	result = "SAC";
+        else if(team.equals("太阳"))
+        	result = "PHX";
+        else if(team.equals("湖人"))
+        	result = "LAL";
+        else if(team.equals("快船"))
+        	result = "LAC";
+        else if(team.equals("勇士"))
+        	result = "GSW";
+        else if(team.equals("热火"))
+        	result = "MIA";
+        else if(team.equals("魔术"))
+        	result = "ORL";
+        else if(team.equals("老鹰"))
+        	result = "ATL";
+        else if(team.equals("奇才"))
+        	result = "WAS";
+        else if(team.equals("黄蜂"))
+        	result = "CHA";
+        else if(team.equals("活塞"))
+        	result = "DET";
+        else if(team.equals("步行者"))
+        	result = "IND";
+        else if(team.equals("骑士"))
+        	result = "CLE";
+        else if(team.equals("公牛"))
+        	result = "CHI";
+        else if(team.equals("雄鹿"))
+        	result = "MIL";
+        else if(team.equals("凯尔特人"))
+        	result = "BOS";
+        else if(team.equals("76人"))
+        	result = "PHI";
+        else if(team.equals("尼克斯"))
+        	result = "NYK";
+        else if(team.equals("篮网"))
+        	result = "BKN";
+        else if(team.equals("猛龙"))
+        	result = "TOR";
+        
+        return result;
+	}
+
 }

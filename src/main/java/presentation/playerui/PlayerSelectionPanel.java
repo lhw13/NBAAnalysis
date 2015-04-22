@@ -958,6 +958,7 @@ public class PlayerSelectionPanel extends JPanel {
 					MainFrame.pip.update(name);
 					PlayerInfoPanel.scrollPane.setVisible(true);
 					MainFrame.frame.setTitle("NBA球员信息");
+					MainFrame.backPanels.add(MainFrame.currentPanel);
 					MainFrame.currentPanel = Panels.PlayerInfoPanel;
 				}
 			} catch (Exception e1) {

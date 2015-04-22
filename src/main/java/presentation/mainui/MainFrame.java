@@ -48,8 +48,9 @@ public class MainFrame {
 
 	public static JFrame frame;
 	public static Panels currentPanel=Panels.MainFrame;
+	public static ArrayList<Panels> backPanels;
 	public static JPanel panel;
-
+	
 	public static PlayerInfoPanel pip;
 	public static PlayerSelectionPanel psp;
 	public static HotRankingPanel hrp;
@@ -305,7 +306,7 @@ public class MainFrame {
 	}
 
 	private void initialize() {
-
+		backPanels = new ArrayList<Panels>();
 		frame = new JFrame();
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 1000, 600);
@@ -535,7 +536,9 @@ public class MainFrame {
 					psp.update();
 					PlayerSelectionPanel.scrollPane.setVisible(true);
 					MainFrame.frame.setTitle("NBA球员选择");
+					backPanels.add(currentPanel);
 					currentPanel = Panels.PlayerSelectionPanel;
+					
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

@@ -156,14 +156,24 @@ public class PlayerInfoPanel extends JPanel {
 		button.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				try {
+				int size = MainFrame.backPanels.size();
+				Panels temp = MainFrame.backPanels.get(size-1);
+				switch(temp) {
+				case MainFrame:
+					
+					break;
+				case PlayerSelectionPanel:
 					PlayerInfoPanel.scrollPane.setVisible(false);
 					PlayerSelectionPanel.scrollPane.setVisible(true);
 					MainFrame.frame.setTitle("NBA球员选择");
 					MainFrame.currentPanel = Panels.PlayerSelectionPanel;
-				} catch (Exception e1) {
-					e1.printStackTrace();
+					break;
 				}
+				PlayerInfoPanel.scrollPane.setVisible(false);
+				PlayerSelectionPanel.scrollPane.setVisible(true);
+				MainFrame.frame.setTitle("NBA球员选择");
+				MainFrame.currentPanel = Panels.PlayerSelectionPanel;
+				
 
 			}
 
@@ -264,7 +274,7 @@ public class PlayerInfoPanel extends JPanel {
 		
 		table_9 = new JTable(model_9);
 		table_9.setBounds(387, 10, 230, 228);
-		table_9.addMouseListener(new MouseListenTeam());
+		table_9.addMouseListener(new MouseListenTeam9());
 		table_9.addMouseMotionListener(new MouseAdapter(){
 			public void mouseMoved(MouseEvent e) {  
 	        int row=table_9.rowAtPoint(e.getPoint());  
@@ -1047,14 +1057,13 @@ public class PlayerInfoPanel extends JPanel {
 			int c = table.getSelectedColumn();
 			String date = (String) table.getValueAt(r, 0);
 			String teamName = (String) table.getValueAt(r, 1);
-			
-
 			try {
 				
 					PlayerInfoPanel.scrollPane.setVisible(false);
 					MatchSelectionPanel.goToMatchFromPlayer(date,
 							teamName.split(" ")[1]);
-					
+					MainFrame.backPanels.add(MainFrame.currentPanel);
+					MainFrame.currentPanel = Panels.MatchDetailInfoPanel; 
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
@@ -1085,12 +1094,32 @@ public class PlayerInfoPanel extends JPanel {
 				try {				
 						PlayerInfoPanel.scrollPane.setVisible(false);
 						//TeamsSelectionFrame.setTeamsInfo(vo.getTeamAbbreviation());
+						MainFrame.backPanels.add(MainFrame.currentPanel);
+						MainFrame.currentPanel = Panels.TeamsInfoFrame;
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
 			}
 		}
-		
-		
+	}
+	
+	public class MouseListenTeam9 extends MouseAdapter {
+		public void mouseClicked(MouseEvent e) {
+
+			JTable table = (JTable) e.getSource();
+			int r = table.getSelectedRow();
+			int c = table.getSelectedColumn();
+			String teamName = (String) table.getValueAt(r, 1);
+			if(c==1&&r==1){	
+				try {				
+						PlayerInfoPanel.scrollPane.setVisible(false);
+						MainFrame.backPanels.add(MainFrame.currentPanel);
+						MainFrame.currentPanel = Panels.TeamsInfoFrame;
+						//TeamsSelectionFrame.setTeamsInfo(vo.getTeamAbbreviation());
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		}
 	}
 }

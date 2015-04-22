@@ -741,8 +741,8 @@ public class HotRankingPanel extends JPanel {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			
-			
+			HotRankingPanel.scrollPane.setVisible(false);
+			MainFrame.setPlayersRanking();
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {			
@@ -833,6 +833,9 @@ public class HotRankingPanel extends JPanel {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			JLabel label = (JLabel) e.getSource();
+			HotRankingPanel.scrollPane.setVisible(false);
+			MainFrame.setPlayersRanking();
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {			
@@ -903,7 +906,6 @@ public class HotRankingPanel extends JPanel {
 			MatchPO matchTemp = matches.get(size-1-r);
 			String dateTemp = sdf.format(matchTemp.getDate().getTime());
 			
-			
 			MatchSelectionPanel.goToMatchFromPlayer(dateTemp,matchTemp.getTeam1().getAbbreviation());
 			MainFrame.hrp.scrollPane.setVisible(false);
 			
@@ -928,8 +930,8 @@ public class HotRankingPanel extends JPanel {
 		
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			
-			
+			HotRankingPanel.scrollPane.setVisible(false);
+			MainFrame.setTeamsRanking();
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {			

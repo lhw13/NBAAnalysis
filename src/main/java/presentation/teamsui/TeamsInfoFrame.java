@@ -82,7 +82,7 @@ public class TeamsInfoFrame extends JPanel{
 			return getValueAt(0, columnIndex).getClass();
 		}
 	};
-	private static String selection="投篮命中数";
+	private static String selection="胜率";
 	
 	Vector columnName;
 	DefaultTableModel model = new DefaultTableModel();
@@ -306,7 +306,7 @@ public class TeamsInfoFrame extends JPanel{
 		scrollPane.setBounds(0, 0, 990, 560);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		
-		String[] names1 = new String[]{"","球员", "场数", "在场时间", "投篮命中数(场均)", "投篮命中数(总计)"};
+		String[] names1 = new String[]{"","球员", "场数", "在场时间", "胜率(场均)", "胜率(总计)"};
 		columnName1 = new Vector();
 		for(int i=0;i<names1.length;i++) {
 			columnName1.add(names1[i]);

@@ -33,6 +33,7 @@ import presentation.teamsui.TeamsRankingFrame;
 import presentation.teamsui.TeamsSelectionFrame;
 import server.businesslogic.BLController;
 import server.po.MatchPO;
+import vo.TeamVO;
 
 import javax.swing.JButton;
 
@@ -253,6 +254,7 @@ public class MatchSelectionPanel extends JPanel {
 	}
 	
 	private void setMatchInfo(int rowNum){
+		compute = BLController.getInstance();
 		MatchPO mpo = mpoList.get(rowNum);
 		String[] cname1 = new String[] {
 				"球员", "位置", "在场时间", "投篮", "三分", "罚球",
@@ -330,8 +332,7 @@ public class MatchSelectionPanel extends JPanel {
 		rowData3.add(mpo.getSeason());
 		rowData3.add((mpo.getDate().get(Calendar.MONTH)+1)+"-"+
 	                 mpo.getDate().get(Calendar.DAY_OF_MONTH));
-		rowData3.add(PlayerSelectionPanel.translate(mpo.getTeam1().getAbbreviation())+"VS"+
-				PlayerSelectionPanel.translate(mpo.getTeam2().getAbbreviation()));
+		rowData3.add(mpo.getTeam1().getAbbreviation()+"-"+mpo.getTeam2().getAbbreviation());
 		rowData3.add(mpo.getFinalScore().getTeam1()+"-"+mpo.getFinalScore().getTeam2());
 		rowData3.add(mpo.getScores().get(0).getTeam1()+"-"+mpo.getScores().get(0).getTeam2());
 		rowData3.add(mpo.getScores().get(1).getTeam1()+"-"+mpo.getScores().get(1).getTeam2());
@@ -350,11 +351,21 @@ public class MatchSelectionPanel extends JPanel {
 			columnName4.add(cname3[i]);
 		}
 		
+		int winMatchNum;
+		int loseMatchNum;
 		Vector rowDatas4 = new Vector();
 		Vector rowData4 = new Vector();
-		rowData4.add(PlayerSelectionPanel.translate(mpo.getTeam1().getAbbreviation()));
+		TeamVO tvo1= compute.getTeamAnalysis(mpo.getTeam1().getAbbreviation()).getTeam();
+		winMatchNum = (int)(tvo1.getWinRate()*tvo1.getAppearance());
+		loseMatchNum = tvo1.getAppearance()-winMatchNum;
+		rowData4.add(PlayerSelectionPanel.translate(mpo.getTeam1().getAbbreviation())+" 胜"+winMatchNum+
+				" 负"+loseMatchNum);
 		rowData4.add("各项最高");
-		rowData4.add(PlayerSelectionPanel.translate(mpo.getTeam2().getAbbreviation()));
+		TeamVO tvo2= compute.getTeamAnalysis(mpo.getTeam2().getAbbreviation()).getTeam();
+		winMatchNum = (int)(tvo2.getWinRate()*tvo2.getAppearance());
+		loseMatchNum = tvo2.getAppearance()-winMatchNum;
+		rowData4.add(PlayerSelectionPanel.translate(mpo.getTeam2().getAbbreviation())+" 胜"+winMatchNum+
+				" 负"+loseMatchNum);
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
 		rowData4.add(mpo.getTeam1().getHighestScore().getName()+" "+
@@ -531,8 +542,7 @@ public class MatchSelectionPanel extends JPanel {
 		rowData3.add(mpo.getSeason());
 		rowData3.add((mpo.getDate().get(Calendar.MONTH)+1)+"-"+
 	                 mpo.getDate().get(Calendar.DAY_OF_MONTH));
-		rowData3.add(PlayerSelectionPanel.translate(mpo.getTeam1().getAbbreviation())+"VS"+
-				PlayerSelectionPanel.translate(mpo.getTeam2().getAbbreviation()));
+		rowData3.add(mpo.getTeam1().getAbbreviation()+"-"+mpo.getTeam2().getAbbreviation());
 		rowData3.add(mpo.getFinalScore().getTeam1()+"-"+mpo.getFinalScore().getTeam2());
 		rowData3.add(mpo.getScores().get(0).getTeam1()+"-"+mpo.getScores().get(0).getTeam2());
 		rowData3.add(mpo.getScores().get(1).getTeam1()+"-"+mpo.getScores().get(1).getTeam2());
@@ -551,11 +561,21 @@ public class MatchSelectionPanel extends JPanel {
 			columnName4.add(cname3[i]);
 		}
 		
+		int winMatchNum;
+		int loseMatchNum;
 		Vector rowDatas4 = new Vector();
 		Vector rowData4 = new Vector();
-		rowData4.add(PlayerSelectionPanel.translate(mpo.getTeam1().getAbbreviation()));
+		TeamVO tvo1= compute.getTeamAnalysis(mpo.getTeam1().getAbbreviation()).getTeam();
+		winMatchNum = (int)(tvo1.getWinRate()*tvo1.getAppearance());
+		loseMatchNum = tvo1.getAppearance()-winMatchNum;
+		rowData4.add(PlayerSelectionPanel.translate(mpo.getTeam1().getAbbreviation())+" 胜"+winMatchNum+
+				" 负"+loseMatchNum);
 		rowData4.add("各项最高");
-		rowData4.add(PlayerSelectionPanel.translate(mpo.getTeam2().getAbbreviation()));
+		TeamVO tvo2= compute.getTeamAnalysis(mpo.getTeam2().getAbbreviation()).getTeam();
+		winMatchNum = (int)(tvo2.getWinRate()*tvo2.getAppearance());
+		loseMatchNum = tvo2.getAppearance()-winMatchNum;
+		rowData4.add(PlayerSelectionPanel.translate(mpo.getTeam2().getAbbreviation())+" 胜"+winMatchNum+
+				" 负"+loseMatchNum);
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
 		rowData4.add(mpo.getTeam1().getHighestScore().getName()+" "+

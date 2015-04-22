@@ -303,7 +303,7 @@ public class PlayerInfoPanel extends JPanel {
 		panelOfBottom.add(lblNewLabel);
 		
 		table_9 = new JTable(model_9);
-		table_9.setBounds(387, 10, 230, 228);
+		table_9.setBounds(387, 10, 285, 228);
 		table_9.addMouseListener(new MouseListenTeam9());
 		table_9.addMouseMotionListener(new MouseAdapter(){
 			public void mouseMoved(MouseEvent e) {  
@@ -430,7 +430,7 @@ public class PlayerInfoPanel extends JPanel {
 		model_2.setColumnCount(table_2.getColumnCount());
 		model_2.setRowCount(rowDatas_2.size());
 		table_2.setModel(model_2);
-		int[] width_2={40,30,30,30,40,55,55,55,40,40,40,40,40,40,40,40,40,40};
+		int[] width_2={40,30,30,30,40,58,55,55,40,40,40,40,40,40,40,40,40,40};
 		table_2.setColumnModel(getColumn(table_2, width_2));
 		table_2.updateUI();
 
@@ -838,7 +838,7 @@ public class PlayerInfoPanel extends JPanel {
 		model_2.setColumnCount(table_2.getColumnCount());
 		model_2.setRowCount(rowDatas_2.size());
 		table_2.setModel(model_2);
-		int[] width_2={40,30,30,30,40,55,55,55,40,40,40,40,40,40,40,40,40,40};
+		int[] width_2={40,30,30,30,40,58,55,55,40,40,40,40,40,40,40,40,40,40};
 		table_2.setColumnModel(getColumn(table_2, width_2));
 		table_2.updateUI();
 

@@ -1677,7 +1677,7 @@ public class PlayerRankingPanel extends JPanel {
 				rowDatas1.add(rowData1);
 			}
 		}
-		
+		 
 		comboBox.setSelectedItem(MainFrame.selection1);
 		model_1.setDataVector(rowDatas1, columnName1);
 		model_1.setColumnCount(table.getColumnCount());

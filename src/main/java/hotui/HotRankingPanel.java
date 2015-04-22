@@ -905,8 +905,7 @@ public class HotRankingPanel extends JPanel {
 			
 			MatchSelectionPanel.goToMatchFromPlayer(dateTemp,team1.getAbbreviation());
 			MainFrame.hrp.scrollPane.setVisible(false);
-			MainFrame.backPanels.add(MainFrame.currentPanel);
-			MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
+			
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {			
@@ -970,8 +969,7 @@ public class HotRankingPanel extends JPanel {
 			 else 
 				TeamsSelectionFrame.goToTeam(teamWest.get(r).getAbbreviation());
 			MainFrame.hrp.scrollPane.setVisible(false);
-			MainFrame.backPanels.add(MainFrame.currentPanel);
-			MainFrame.currentPanel = Panels.TeamsInfoFrame;
+			
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {			

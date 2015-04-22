@@ -1138,9 +1138,7 @@ public class PlayerInfoPanel extends JPanel {
 				try {				
 						PlayerInfoPanel.scrollPane.setVisible(false);
 						TeamsSelectionFrame.goToTeam(vo.getTeamAbbreviation());
-						MainFrame.backPanels.add(MainFrame.currentPanel);
-						MainFrame.currentPanel = Panels.TeamsInfoFrame;
-						MainFrame.frame.setTitle("NBA球队信息");
+						
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

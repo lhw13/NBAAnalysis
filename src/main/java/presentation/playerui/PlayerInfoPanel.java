@@ -1,5 +1,7 @@
 package presentation.playerui;
 
+import hotui.HotRankingPanel;
+
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -32,7 +34,9 @@ import blservice.BLService;
 import presentation.ImageHandle;
 import presentation.mainui.MainFrame;
 import presentation.mainui.Panels;
+import presentation.matchui.MatchDetailInfoPanel;
 import presentation.matchui.MatchSelectionPanel;
+import presentation.teamsui.TeamsInfoFrame;
 import presentation.teamsui.TeamsRankingFrame;
 import presentation.teamsui.TeamsSelectionFrame;
 import server.businesslogic.BLController;
@@ -158,23 +162,47 @@ public class PlayerInfoPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				int size = MainFrame.backPanels.size();
 				Panels temp = MainFrame.backPanels.get(size-1);
+				MainFrame.backPanels.remove(size-1);
 				switch(temp) {
-				case MainFrame:
-					
-					break;
+				
 				case PlayerSelectionPanel:
 					PlayerInfoPanel.scrollPane.setVisible(false);
 					PlayerSelectionPanel.scrollPane.setVisible(true);
 					MainFrame.frame.setTitle("NBA球员选择");
 					MainFrame.currentPanel = Panels.PlayerSelectionPanel;
 					break;
+				case MatchDetailInfoPanel:
+					PlayerInfoPanel.scrollPane.setVisible(false);
+					MatchDetailInfoPanel.scrollPane.setVisible(true);
+					MainFrame.frame.setTitle("NBA比赛详情");
+					MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
+					break;
+				case MatchSelectionPanel:
+					PlayerInfoPanel.scrollPane.setVisible(false);
+					MatchSelectionPanel.scrollPane.setVisible(true);
+					MainFrame.frame.setTitle("NBA比赛查询");
+					MainFrame.currentPanel = Panels.MatchSelectionPanel;
+					break;
+				case PlayerRankingPanel:
+					PlayerInfoPanel.scrollPane.setVisible(false);
+					PlayerRankingPanel.scrollPane.setVisible(true);
+					MainFrame.frame.setTitle("NBA球员排名");
+					MainFrame.currentPanel = Panels.PlayerRankingPanel;
+					break;
+				case TeamsInfoFrame:
+					PlayerInfoPanel.scrollPane.setVisible(false);
+					TeamsInfoFrame.scrollPane.setVisible(true);
+					MainFrame.frame.setTitle("NBA球队信息");
+					MainFrame.currentPanel = Panels.TeamsInfoFrame;
+					break;
+				case HotRankingPanel:
+					PlayerInfoPanel.scrollPane.setVisible(false);
+					HotRankingPanel.scrollPane.setVisible(true);
+					MainFrame.frame.setTitle("今日快讯");
+					MainFrame.currentPanel = Panels.HotRankingPanel;
+					break;
+					
 				}
-				PlayerInfoPanel.scrollPane.setVisible(false);
-				PlayerSelectionPanel.scrollPane.setVisible(true);
-				MainFrame.frame.setTitle("NBA球员选择");
-				MainFrame.currentPanel = Panels.PlayerSelectionPanel;
-				
-
 			}
 
 		});
@@ -1093,7 +1121,7 @@ public class PlayerInfoPanel extends JPanel {
 			if(c==1){	
 				try {				
 						PlayerInfoPanel.scrollPane.setVisible(false);
-						//TeamsSelectionFrame.setTeamsInfo(vo.getTeamAbbreviation());
+						TeamsSelectionFrame.goToTeam(vo.getTeamAbbreviation());
 						MainFrame.backPanels.add(MainFrame.currentPanel);
 						MainFrame.currentPanel = Panels.TeamsInfoFrame;
 				} catch (Exception e1) {
@@ -1113,9 +1141,10 @@ public class PlayerInfoPanel extends JPanel {
 			if(c==1&&r==1){	
 				try {				
 						PlayerInfoPanel.scrollPane.setVisible(false);
+						TeamsSelectionFrame.goToTeam(vo.getTeamAbbreviation());
 						MainFrame.backPanels.add(MainFrame.currentPanel);
 						MainFrame.currentPanel = Panels.TeamsInfoFrame;
-						//TeamsSelectionFrame.setTeamsInfo(vo.getTeamAbbreviation());
+						
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

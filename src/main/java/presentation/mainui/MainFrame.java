@@ -689,7 +689,7 @@ public class MainFrame {
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
 					searchTheMatch();
-					currentPanel = Panels.MatchSelectionInfoPanel;
+					currentPanel = Panels.MatchSelectionPanel;
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

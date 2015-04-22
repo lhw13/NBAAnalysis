@@ -120,7 +120,7 @@ public class MatchDetailInfoPanel extends JPanel {
 					MatchDetailInfoPanel.scrollPane=null;
 					if(MatchSelectionPanel.scrollPane!=null){
 						MatchSelectionPanel.scrollPane.setVisible(true);
-						MainFrame.currentPanel = Panels.MatchSelectionInfoPanel;
+						MainFrame.currentPanel = Panels.MatchSelectionPanel;
 					}else if(TeamsInfoFrame.scrollPane!=null){
 						TeamsInfoFrame.scrollPane.setVisible(true);
 						MainFrame.currentPanel = Panels.TeamsInfoFrame;

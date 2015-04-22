@@ -1,5 +1,7 @@
 package presentation.playerui;
 
+import hotui.HotRankingPanel;
+
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -29,10 +31,12 @@ import presentation.mainui.MainFrame;
 import presentation.mainui.Panels;
 import presentation.matchui.MatchSelectionPanel.MouseListen;
 import presentation.teamsui.TeamsRankingFrame;
+import presentation.teamsui.TeamsSelectionFrame;
 import server.businesslogic.BLController;
 import server.businesslogic.Comparators;
 import server.businesslogic.Player;
 import vo.PlayerVO;
+import vo.TeamWithPlayersVO;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -77,8 +81,8 @@ public class PlayerRankingPanel extends JPanel {
 	
 	MouseListen listener = new MouseListen();
 	
-	Vector columnName1;
-	DefaultTableModel model_1=new DefaultTableModel() {
+	private static Vector columnName1;
+	private static DefaultTableModel model_1=new DefaultTableModel() {
 		private static final long serialVersionUID = 1L;
 
 		public Class<?> getColumnClass(int columnIndex) {
@@ -86,7 +90,7 @@ public class PlayerRankingPanel extends JPanel {
 		}
 	};
 	
-	private BLController compute;
+	private static BLController compute;
 
 	public PlayerRankingPanel() {
 		setLayout(null);
@@ -103,14 +107,30 @@ public class PlayerRankingPanel extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				PlayerRankingPanel.scrollPane.setVisible(false);
-				MainFrame.frame.getContentPane().remove(PlayerRankingPanel.scrollPane);
-				PlayerRankingPanel.scrollPane=null;
-				MainFrame.panel.setVisible(true);
-				MainFrame.frame.setTitle("NBA");
-				MainFrame.currentPanel = Panels.MainFrame;
+				int size = MainFrame.backPanels.size();
+				Panels temp = MainFrame.backPanels.get(size-1);
+				MainFrame.backPanels.remove(size-1);
+				switch(temp) {
+				case HotRankingPanel:
+					HotRankingPanel.scrollPane.setVisible(true);
+					PlayerRankingPanel.scrollPane.setVisible(false);
+					MainFrame.frame.setTitle("今日快讯");
+					MainFrame.currentPanel = Panels.HotRankingPanel;
+					break;
+				case PlayerInfoPanel:
+					PlayerInfoPanel.scrollPane.setVisible(true);
+					PlayerRankingPanel.scrollPane.setVisible(false);
+					MainFrame.frame.setTitle("球员信息");
+					MainFrame.currentPanel = Panels.PlayerInfoPanel;
+					break;
+				case MainFrame:
+					MainFrame.panel.setVisible(true);
+					PlayerRankingPanel.scrollPane.setVisible(false);
+					MainFrame.frame.setTitle("NBA");
+					MainFrame.currentPanel = Panels.MainFrame;
+					break;
+				}
 			}
-
 		});
 		
 		kingOfScore = new JLabel("得分榜");
@@ -299,6 +319,17 @@ public class PlayerRankingPanel extends JPanel {
 		table.setDefaultRenderer(Object.class, tcr);
 		
 		table.addMouseListener(listener);
+		table.addMouseMotionListener(new MouseAdapter(){
+			public void mouseMoved(MouseEvent e) {  
+	        int row=table.rowAtPoint(e.getPoint());  
+	        int col=table.columnAtPoint(e.getPoint());  
+	        if(col==0 || col==2){  
+	        	table.setCursor(Cursor
+					.getPredefinedCursor(Cursor.HAND_CURSOR));
+			} else {
+				table.setCursor(Cursor.getDefaultCursor());
+			}
+	    }  }); 
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(50, 150, 800, 400);
@@ -1688,7 +1719,7 @@ public class PlayerRankingPanel extends JPanel {
 		table.updateUI();
 	}
 	
-	public void updatePlayerRanking(){
+	public static void updatePlayerRanking(){
 		
 		 
 		compute = BLController.getInstance();
@@ -1792,27 +1823,31 @@ public class PlayerRankingPanel extends JPanel {
 			int r = table.getSelectedRow();
 			int c = table.getSelectedColumn();
 			try {
-				PlayerRankingPanel.scrollPane.setVisible(false);
-				MainFrame.frame.getContentPane().remove(PlayerRankingPanel.scrollPane);
-				PlayerRankingPanel.scrollPane=null;
-				MainFrame.pip = new PlayerInfoPanel();
-				MainFrame.pip.update(table.getValueAt(r,1).toString());
-				MainFrame.frame.getContentPane().add(PlayerInfoPanel.scrollPane);
-				PlayerInfoPanel.scrollPane.setVisible(true);
-				MainFrame.currentPanel = Panels.PlayerInfoPanel;
-				MainFrame.frame.setTitle("NBA球员信息");
-				MainFrame.frame.repaint();//刷新重画 
-				MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+				if(c==0){
+					PlayerRankingPanel.scrollPane.setVisible(false);
+					MainFrame.pip = new PlayerInfoPanel();
+					MainFrame.pip.update(table.getValueAt(r,1).toString());
+					MainFrame.frame.getContentPane().add(MainFrame.pip.scrollPane);
+					MainFrame.pip.scrollPane.setVisible(true);
+					MainFrame.backPanels.add(MainFrame.currentPanel);
+					MainFrame.currentPanel = Panels.PlayerInfoPanel;
+					MainFrame.frame.setTitle("NBA球员信息");
+					MainFrame.frame.repaint();//刷新重画 
+					MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+				}
+				else if(c==2){
+					PlayerRankingPanel.scrollPane.setVisible(false);
+					String team = getTeamName(table.getValueAt(r,2).toString());
+					if(team!=null){
+						TeamsSelectionFrame.goToTeam(team);
+					}
+				}
+				
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 		}
-		public void mouseEntered(MouseEvent e) {
-			table.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		}
-		public void mouseExited(MouseEvent e) {
-			table.setCursor(Cursor.getDefaultCursor());
-		}
+		
 	}
 	
 	public static String[] JudeTheFilter(String position, char division, String zone) {
@@ -1872,13 +1907,81 @@ public class PlayerRankingPanel extends JPanel {
 		return result;
 	}
 	
-	public TableColumnModel getColumn(JTable table, int[] width) {  
+	public static TableColumnModel getColumn(JTable table, int[] width) {  
 	    TableColumnModel columns = table.getColumnModel();  
 	    for (int i = 0; i < width.length; i++) {  
 	        TableColumn column = columns.getColumn(i);  
 	        column.setPreferredWidth(width[i]);  
 	    }  
 	    return columns;  
+	}
+	
+	public String getTeamName(String teamName){
+		switch(teamName){
+		case "Hawks":
+			return "ATL";
+		case "Nets":
+			return "BKN";
+		case "Celtics":
+			return "BOS";
+		case "Hornets":
+			return "CHA";
+		case "Bulls":
+			return "CHI";
+		case "Cavaliers":
+			return "CLE";
+		case "Mavericks":
+			return "DAL";
+		case "Nuggets":
+			return "DEN";
+		case "Pistons":
+			return "DET";
+		case "Warriors":
+			return "GSW";
+		case "Rockets":
+			return "HOU";
+		case "Pacers":
+			return "IND";
+		case "Clippers":
+			return "LAC";
+		case "Lakers":
+			return "LAL";
+		case "Grizzlies":
+			return "MEM";
+		case "Heat":
+			return "MIA";
+		case "Bucks":
+			return "MIL";
+		case "Timberwolves":
+			return "MIN";
+		case "Pelicans":
+			return "NOP";
+		case "Knicks":
+			return "NYK";
+		case "Thunder":
+			return "OKC";
+		case "Magic":
+			return "ORL";
+		case "76ers":
+			return "PHI";
+		case "Suns":
+			return "PHX";
+		case "Trail Blazers":
+			return "POR";
+		case "Kings":
+			return "SAC";
+		case "Spurs":
+			return "SAS";
+		case "Raptors":
+			return "TOR";
+		case "Jazz":
+			return "UTA";
+		case "Wizards":
+			return "WAS";
+		default:
+			return null;
+		}
+		
 	}
 	
 }

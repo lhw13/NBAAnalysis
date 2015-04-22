@@ -30,6 +30,7 @@ import presentation.playerui.PlayerInfoPanel;
 import presentation.playerui.PlayerSelectionPanel;
 import presentation.playerui.PlayerInfoPanel.MouseListen;
 import presentation.teamsui.TeamsRankingFrame;
+import presentation.teamsui.TeamsSelectionFrame;
 import server.businesslogic.BLController;
 import server.po.MatchPO;
 
@@ -46,10 +47,10 @@ public class MatchSelectionPanel extends JPanel {
 	
 	MouseListen listener = new MouseListen();
 	
-	DefaultTableModel model_1=new DefaultTableModel();
-	Vector columnName1;
+	private static DefaultTableModel model_1=new DefaultTableModel();
+	private static Vector columnName1;
 	
-	ArrayList<MatchPO> mpoList;
+	private static ArrayList<MatchPO> mpoList;
 	
 	private static BLController compute;
 	
@@ -174,17 +175,23 @@ public class MatchSelectionPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MainFrame.frame.getContentPane().remove(MatchSelectionPanel.scrollPane);
-				MatchSelectionPanel.scrollPane=null;
-				MainFrame.panel.setVisible(true);
-				MainFrame.frame.setTitle("NBA");
-				MainFrame.currentPanel = Panels.MainFrame;
+				int size = MainFrame.backPanels.size();
+				Panels temp = MainFrame.backPanels.get(size-1);
+				MainFrame.backPanels.remove(size-1);
+				switch(temp) {
+				case MainFrame:
+					MainFrame.panel.setVisible(true);
+					MatchSelectionPanel.scrollPane.setVisible(false);
+					MainFrame.frame.setTitle("NBA");
+					MainFrame.currentPanel = Panels.MainFrame;
+					break;
+				}
 			}
 			
 		});
 	}
 	
-	public void update(){
+	public static void update(){
 		compute = BLController.getInstance();
 		ArrayList<MatchPO> matchList = compute.getAllMatch();
 		
@@ -232,7 +239,6 @@ public class MatchSelectionPanel extends JPanel {
 			int c = table.getSelectedColumn();
 			try {
 				setMatchInfo(r);
-				MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
@@ -406,6 +412,7 @@ public class MatchSelectionPanel extends JPanel {
 			MainFrame.frame.getContentPane().add(mdip.scrollPane);
 			MainFrame.frame.repaint();//刷新重画 
 			MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+			MainFrame.backPanels.add(MainFrame.currentPanel);
 			MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
 		}
 	}
@@ -417,6 +424,7 @@ public class MatchSelectionPanel extends JPanel {
 		strArray = date.split("-");
 		int year = Integer.parseInt(strArray[0]);
 		int month = Integer.parseInt(strArray[1]);
+		int day = Integer.parseInt(strArray[2]);
 		String season = "";
 		if(1<=month && month<=4){
 			int a=year%10; 
@@ -434,7 +442,8 @@ public class MatchSelectionPanel extends JPanel {
 		for(int i=0;i<matchList.size();i++){
 			if(matchList.get(i).getSeason().equals(season) &&
 				(matchList.get(i).getDate().get(Calendar.MONTH)+1)==month &&
-				   (matchList.get(i).getTeam1().getAbbreviation().equals(teamName) || matchList.get(i).getTeam2().getAbbreviation().equals(teamName))
+				  (matchList.get(i).getDate().get(Calendar.DAY_OF_MONTH))==day &&
+				    (matchList.get(i).getTeam1().getAbbreviation().equals(teamName) || matchList.get(i).getTeam2().getAbbreviation().equals(teamName))
 				   ){
 				mpo = matchList.get(i);
 			}
@@ -603,12 +612,13 @@ public class MatchSelectionPanel extends JPanel {
 			MainFrame.frame.getContentPane().add(mdip.scrollPane);
 			MainFrame.frame.repaint();//刷新重画 
 			MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+			MainFrame.backPanels.add(MainFrame.currentPanel);
 			MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
 		}
 		
 	}
 	
-	public TableColumnModel getColumn(JTable table, int[] width) {  
+	public static TableColumnModel getColumn(JTable table, int[] width) {  
 	    TableColumnModel columns = table.getColumnModel();  
 	    for (int i = 0; i < width.length; i++) {  
 	        TableColumn column = columns.getColumn(i);  

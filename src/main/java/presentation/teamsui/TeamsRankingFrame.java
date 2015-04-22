@@ -1,5 +1,7 @@
 package presentation.teamsui;
 
+import hotui.HotRankingPanel;
+
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -47,8 +49,8 @@ public class TeamsRankingFrame {
 	private JButton btnNewButton;
 	private JComboBox<String> comboBox;
 
-	Vector columnName1;
-	DefaultTableModel model_1=new DefaultTableModel() {
+	private static Vector columnName1;
+	private static DefaultTableModel model_1=new DefaultTableModel() {
 		private static final long serialVersionUID = 1L;
 
 		public Class<?> getColumnClass(int columnIndex) {
@@ -58,7 +60,7 @@ public class TeamsRankingFrame {
 	
 	MouseListen listener = new MouseListen();
 	
-	private BLController compute;
+	private static BLController compute;
 	/**
 	 * Create the application.
 	 */
@@ -310,18 +312,30 @@ public class TeamsRankingFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				TeamsRankingFrame.scrollPane.setVisible(false);
-				MainFrame.frame.getContentPane().remove(TeamsRankingFrame.scrollPane);
-				TeamsRankingFrame.scrollPane=null;
-				MainFrame.panel.setVisible(true);
-				MainFrame.frame.setTitle("NBA");
-				MainFrame.currentPanel = Panels.MainFrame;
+				int size = MainFrame.backPanels.size();
+				Panels temp = MainFrame.backPanels.get(size-1);
+				MainFrame.backPanels.remove(size-1);
+				switch(temp) {
+				case HotRankingPanel:
+					HotRankingPanel.scrollPane.setVisible(true);
+					TeamsRankingFrame.scrollPane.setVisible(false);
+					MainFrame.frame.setTitle("今日快讯");
+					MainFrame.currentPanel = Panels.HotRankingPanel;
+					break;
+				case MainFrame:
+					MainFrame.panel.setVisible(true);
+					TeamsRankingFrame.scrollPane.setVisible(false);
+					MainFrame.frame.setTitle("NBA");
+					MainFrame.currentPanel = Panels.MainFrame;
+					break;
+				}
+				
 			}
 		});
 		
 	}
 	
-	public void updataTeamsRanking(){
+	public static void updataTeamsRanking(){
 		compute = BLController.getInstance();
 		ArrayList<TeamVO> tvoList = compute.getTeamAnalysis();
 		ImageIcon picture;
@@ -460,8 +474,6 @@ public class TeamsRankingFrame {
 			int c = table.getSelectedColumn();
 			try {
 				TeamsRankingFrame.scrollPane.setVisible(false);
-				MainFrame.frame.getContentPane().remove(TeamsRankingFrame.scrollPane);
-				TeamsRankingFrame.scrollPane=null;
 				TeamWithPlayersVO twpvo = getTeam(table.getValueAt(r,1).toString());
 				TeamsInfoFrame tip = new TeamsInfoFrame(twpvo);
 				tip.updateTeam(twpvo, "投篮命中数");
@@ -469,6 +481,7 @@ public class TeamsRankingFrame {
 				MainFrame.frame.getContentPane().add(tip.scrollPane);
 				tip.scrollPane.setVisible(true);
 				MainFrame.frame.setTitle(twpvo.getTeam().getAbbreviation());
+				MainFrame.backPanels.add(MainFrame.currentPanel);
 				MainFrame.currentPanel = Panels.TeamsInfoFrame;
 				MainFrame.frame.repaint();//刷新重画 
 				MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
@@ -554,7 +567,7 @@ public class TeamsRankingFrame {
 	}
 	
 	// 保留小数点
-	public String handleDecimal(double f) {
+	public static String handleDecimal(double f) {
 		return String.format("%.1f", f);
 	}
 	

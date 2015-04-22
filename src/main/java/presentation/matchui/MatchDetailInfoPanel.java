@@ -1,5 +1,7 @@
 package presentation.matchui;
 
+import hotui.HotRankingPanel;
+
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -18,6 +20,7 @@ import presentation.mainui.MainFrame;
 import presentation.mainui.Panels;
 import presentation.playerui.PlayerInfoPanel;
 import presentation.teamsui.TeamsInfoFrame;
+import presentation.teamsui.TeamsRankingFrame;
 import presentation.teamsui.TeamsSelectionFrame;
 
 import javax.swing.JLabel;
@@ -116,18 +119,29 @@ public class MatchDetailInfoPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					MatchDetailInfoPanel.scrollPane.setVisible(false);
-					MatchDetailInfoPanel.scrollPane=null;
-					if(MatchSelectionPanel.scrollPane!=null){
+					int size = MainFrame.backPanels.size();
+					Panels temp = MainFrame.backPanels.get(size-1);
+					MainFrame.backPanels.remove(size-1);
+					switch(temp) {
+					case MatchSelectionPanel:
 						MatchSelectionPanel.scrollPane.setVisible(true);
+						MatchDetailInfoPanel.scrollPane.setVisible(false);
+						MainFrame.frame.setTitle("查询比赛");
 						MainFrame.currentPanel = Panels.MatchSelectionPanel;
-					}else if(TeamsInfoFrame.scrollPane!=null){
+						break;
+					case TeamsInfoFrame:
 						TeamsInfoFrame.scrollPane.setVisible(true);
+						MatchDetailInfoPanel.scrollPane.setVisible(false);
+						MainFrame.frame.setTitle("NBA球队信息");
 						MainFrame.currentPanel = Panels.TeamsInfoFrame;
-					}
-					else if(PlayerInfoPanel.scrollPane!=null){
+						break;
+					case PlayerInfoPanel:
 						PlayerInfoPanel.scrollPane.setVisible(true);
+						MatchDetailInfoPanel.scrollPane.setVisible(false);
+						MainFrame.frame.setTitle("NBA球员信息");
 						MainFrame.currentPanel = Panels.PlayerInfoPanel;
+						break;
+						
 					}
 					
 				} catch (Exception e1) {

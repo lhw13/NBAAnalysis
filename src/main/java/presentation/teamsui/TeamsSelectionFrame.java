@@ -2,11 +2,14 @@ package presentation.teamsui;
 
 import presentation.mainui.MainFrame;
 import presentation.mainui.Panels;
+import presentation.playerui.PlayerInfoPanel;
+import presentation.playerui.PlayerRankingPanel;
 import presentation.teamsui.TeamsInfoFrame;
 import server.businesslogic.BLController;
 import vo.PlayerVO;
 import vo.TeamVO;
 import vo.TeamWithPlayersVO;
+import hotui.HotRankingPanel;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -1074,14 +1077,17 @@ public class TeamsSelectionFrame {
 
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TeamsSelectionFrame.scrollPane.setVisible(false);
-					MainFrame.frame.getContentPane().remove(TeamsSelectionFrame.scrollPane);
-					TeamsSelectionFrame.scrollPane=null;
-					TeamsSelectionFrame.flag = false;
-					timer.cancel();
-					MainFrame.panel.setVisible(true);
-					MainFrame.frame.setTitle("NBA");
-					MainFrame.currentPanel = Panels.MainFrame;
+					int size = MainFrame.backPanels.size();
+					Panels temp = MainFrame.backPanels.get(size-1);
+					MainFrame.backPanels.remove(size-1);
+					switch(temp) {
+					case MainFrame:
+						MainFrame.panel.setVisible(true);
+						TeamsSelectionFrame.scrollPane.setVisible(false);
+						MainFrame.frame.setTitle("NBA");
+						MainFrame.currentPanel = Panels.MainFrame;
+						break;
+					}
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -1105,6 +1111,7 @@ public class TeamsSelectionFrame {
 			MainFrame.frame.getContentPane().add(tip.scrollPane);
 			tip.updateTeam(twpvo, "投篮命中数");
 			tip.latestMatchs(teamName);
+			MainFrame.backPanels.add(MainFrame.currentPanel);
 			MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			MainFrame.frame.repaint();//刷新重画 
 			MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
@@ -1115,9 +1122,7 @@ public class TeamsSelectionFrame {
 	//传递制定球队信息
 	public static void setTeamsInfo(String teamName) {
 		TeamsSelectionFrame.scrollPane.setVisible(false);
-		TeamsSelectionFrame.timer.cancel();
-		MainFrame.frame.getContentPane().remove(TeamsSelectionFrame.scrollPane);
-		TeamsSelectionFrame.scrollPane=null;
+		TeamsSelectionFrame.flag = false;
 		MainFrame.frame.setTitle(teamName);
         
 		compute = BLController.getInstance();
@@ -1128,6 +1133,7 @@ public class TeamsSelectionFrame {
 			MainFrame.frame.getContentPane().add(tip.scrollPane);
 			tip.updateTeam(twpvo, "投篮命中数");
 			tip.latestMatchs(teamName);
+			MainFrame.backPanels.add(MainFrame.currentPanel);
 			MainFrame.currentPanel = Panels.TeamsInfoFrame;
 			MainFrame.frame.repaint();//刷新重画 
 			MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 

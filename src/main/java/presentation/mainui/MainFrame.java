@@ -368,13 +368,25 @@ public class MainFrame {
 			public void mouseClicked(MouseEvent e) {
 				try {
 					//初始化球队选择面板
-					MainFrame.panel.setVisible(false);
-					TeamsSelectionFrame tsp = new TeamsSelectionFrame();
-					frame.getContentPane().add(tsp.scrollPane);
-					tsp.scrollPane.setVisible(true);
-					tsp.flag = true;
-					MainFrame.frame.setTitle("NBA球队选择");
-					currentPanel = Panels.TeamsSelectionFrame;
+					if(TeamsSelectionFrame.scrollPane!=null){
+						MainFrame.panel.setVisible(false);
+						TeamsSelectionFrame.scrollPane.setVisible(true);
+						TeamsSelectionFrame.flag = true;
+						MainFrame.frame.setTitle("NBA球队选择");
+						backPanels.add(currentPanel);
+						currentPanel = Panels.TeamsSelectionFrame;
+					}
+					else{
+						MainFrame.panel.setVisible(false);
+						TeamsSelectionFrame tsp = new TeamsSelectionFrame();
+						frame.getContentPane().add(tsp.scrollPane);
+						tsp.scrollPane.setVisible(true);
+						tsp.flag = true;
+						MainFrame.frame.setTitle("NBA球队选择");
+						backPanels.add(currentPanel);
+						currentPanel = Panels.TeamsSelectionFrame;
+					}
+					
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -452,7 +464,6 @@ public class MainFrame {
 			public void mouseClicked(MouseEvent e) {
 				try {
 					setTeamsRanking();
-					currentPanel = Panels.TeamsRankingFrame;
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -616,7 +627,6 @@ public class MainFrame {
 			public void mouseClicked(MouseEvent e) {
 				try {
 					setPlayersRanking();
-					currentPanel = Panels.PlayerRankingPanel;
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -689,7 +699,6 @@ public class MainFrame {
 			public void mouseClicked(java.awt.event.MouseEvent e) {
 				try {
 					searchTheMatch();
-					currentPanel = Panels.MatchSelectionPanel;
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -801,71 +810,79 @@ public class MainFrame {
 
 	// 设置查询比赛面板信息
 	public static void searchTheMatch(){
-		MainFrame.panel.setVisible(false);
-		MainFrame.frame.setTitle("NBA比赛查询");
 		
 		if(MatchSelectionPanel.scrollPane!=null){
-			frame.getContentPane().remove(MatchSelectionPanel.scrollPane);
-			MatchSelectionPanel.scrollPane=null;
-			MatchSelectionPanel msp = new MatchSelectionPanel();
-			msp.update();
-			frame.getContentPane().add(msp.scrollPane);
+			MainFrame.panel.setVisible(false);
+			MatchSelectionPanel.scrollPane.setVisible(true);
+			MatchSelectionPanel.update();
+			MainFrame.frame.setTitle("NBA比赛查询");
 			frame.repaint();//刷新重画 
 			frame.validate();//保证重画后的窗口能正常立即显示 
+			backPanels.add(currentPanel);
+			currentPanel = Panels.MatchSelectionPanel;
 		}else{
+			MainFrame.panel.setVisible(false);
 			MatchSelectionPanel msp = new MatchSelectionPanel();
 			msp.update();
 			frame.getContentPane().add(msp.scrollPane);
+			MainFrame.frame.setTitle("NBA比赛查询");
 			frame.repaint();//刷新重画 
 			frame.validate();//保证重画后的窗口能正常立即显示 
+			backPanels.add(currentPanel);
+			currentPanel = Panels.MatchSelectionPanel;
 		}
 		
 	}
 	
 	// 设置球队排名面板信息
 	public static void setTeamsRanking() {
-		MainFrame.panel.setVisible(false);
-		frame.setTitle("NBA球队排名");
+		
 		
 		if(TeamsRankingFrame.scrollPane!=null){
-			TeamsRankingFrame.scrollPane.setVisible(false);
-			MainFrame.frame.getContentPane().remove(TeamsRankingFrame.scrollPane);
-			TeamsSelectionFrame.scrollPane=null;
-			TeamsRankingFrame trp = new TeamsRankingFrame();
-			trp.updataTeamsRanking();
-			frame.getContentPane().add(trp.scrollPane);
+			MainFrame.panel.setVisible(false);
+			TeamsRankingFrame.scrollPane.setVisible(true);
+			TeamsRankingFrame.updataTeamsRanking();
+			frame.setTitle("NBA球队排名");
 			frame.repaint();//刷新重画 
 			frame.validate();//保证重画后的窗口能正常立即显示
+			backPanels.add(currentPanel);
+			currentPanel = Panels.TeamsRankingFrame;
 		}else{
+			MainFrame.panel.setVisible(false);
 			TeamsRankingFrame trp = new TeamsRankingFrame();
 			trp.updataTeamsRanking();
 			frame.getContentPane().add(trp.scrollPane);
+			frame.setTitle("NBA球队排名");
 			frame.repaint();//刷新重画 
 			frame.validate();//保证重画后的窗口能正常立即显示
+			backPanels.add(currentPanel);
+			currentPanel = Panels.TeamsRankingFrame;
 		}
 		
 	}
 	
 	// 设置球员排名面板信息
 	public static void setPlayersRanking() {
-		MainFrame.panel.setVisible(false);
-		MainFrame.frame.setTitle("NBA球员排名");
 
 		if(PlayerRankingPanel.scrollPane!=null){
-			PlayerRankingPanel.scrollPane.setVisible(false);
-			MainFrame.frame.getContentPane().remove(PlayerRankingPanel.scrollPane);
-			PlayerRankingPanel.scrollPane=null;
-			PlayerRankingPanel prp = new PlayerRankingPanel();
-			prp.updatePlayerRanking();
-			frame.getContentPane().add(prp.scrollPane);
+			MainFrame.panel.setVisible(false);
+			PlayerRankingPanel.scrollPane.setVisible(true);
+			PlayerRankingPanel.updatePlayerRanking();
+			MainFrame.frame.setTitle("NBA球员排名");
 			frame.repaint();//刷新重画 
 			frame.validate();//保证重画后的窗口能正常立即显示
+			backPanels.add(currentPanel);
+			currentPanel = Panels.PlayerRankingPanel;
 		}else{
+			MainFrame.panel.setVisible(false);
 			PlayerRankingPanel prp = new PlayerRankingPanel();
 			prp.updatePlayerRanking();
 			frame.getContentPane().add(PlayerRankingPanel.scrollPane);
+			MainFrame.frame.setTitle("NBA球员排名");
 			frame.repaint();//刷新重画 
 			frame.validate();//保证重画后的窗口能正常立即显示 
+			backPanels.add(currentPanel);
+			currentPanel = Panels.PlayerRankingPanel;
 		}
 		
 		

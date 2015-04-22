@@ -1,5 +1,7 @@
 package presentation.teamsui;
 
+import hotui.HotRankingPanel;
+
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -519,17 +521,36 @@ public class TeamsInfoFrame extends JPanel{
 
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TeamsInfoFrame.scrollPane.setVisible(false);
-					MainFrame.frame.getContentPane().remove(TeamsInfoFrame.scrollPane);
-					TeamsInfoFrame.scrollPane = null;
-					TeamsSelectionFrame tsp = new TeamsSelectionFrame();
-					MainFrame.frame.getContentPane().add(tsp.scrollPane);
-					tsp.scrollPane.setVisible(true);
-					tsp.flag = true;
-					MainFrame.frame.setTitle("NBA球队选择");
-					MainFrame.frame.repaint();//刷新重画 
-					MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
-					MainFrame.currentPanel = Panels.TeamsSelectionFrame;
+					int size = MainFrame.backPanels.size();
+					Panels temp = MainFrame.backPanels.get(size-1);
+					MainFrame.backPanels.remove(size-1);
+					switch(temp) {
+					case TeamsSelectionFrame:
+						TeamsSelectionFrame.scrollPane.setVisible(true);
+						TeamsSelectionFrame.flag = true;
+						TeamsInfoFrame.scrollPane.setVisible(false);
+						MainFrame.frame.setTitle("NBA球队选择");
+						MainFrame.currentPanel = Panels.TeamsSelectionFrame;
+						break;
+					case TeamsRankingFrame:
+						TeamsRankingFrame.scrollPane.setVisible(true);
+						TeamsInfoFrame.scrollPane.setVisible(false);
+						MainFrame.frame.setTitle("NBA球队排名");
+						MainFrame.currentPanel = Panels.TeamsRankingFrame;
+						break;
+					case PlayerRankingPanel:
+						PlayerRankingPanel.scrollPane.setVisible(true);
+						TeamsInfoFrame.scrollPane.setVisible(false);
+						MainFrame.frame.setTitle("NBA球员排名");
+						MainFrame.currentPanel = Panels.PlayerRankingPanel;
+						break;
+					case PlayerInfoPanel:
+						PlayerInfoPanel.scrollPane.setVisible(true);
+						TeamsInfoFrame.scrollPane.setVisible(false);
+						MainFrame.frame.setTitle("NBA球员信息");
+						MainFrame.currentPanel = Panels.PlayerInfoPanel;
+						break;
+					}
 					
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -1470,13 +1491,12 @@ public class TeamsInfoFrame extends JPanel{
 			try {
 				if(!table.getValueAt(r,3).toString().equals("0")){
 					TeamsInfoFrame.scrollPane.setVisible(false);
-					MainFrame.frame.getContentPane().remove(TeamsInfoFrame.scrollPane);
-					TeamsInfoFrame.scrollPane=null;
 					MainFrame.pip = new PlayerInfoPanel();
 					MainFrame.pip.update(table.getValueAt(r,1).toString());
 					MainFrame.frame.getContentPane().add(PlayerInfoPanel.scrollPane);
 					PlayerInfoPanel.scrollPane.setVisible(true);
 					MainFrame.frame.setTitle("NBA球员信息");
+					MainFrame.backPanels.add(MainFrame.currentPanel);
 					MainFrame.currentPanel = Panels.PlayerInfoPanel;
 					MainFrame.frame.repaint();//刷新重画 
 					MainFrame.frame.validate();//保证重画后的窗口能正常立即显示
@@ -1651,6 +1671,7 @@ public class TeamsInfoFrame extends JPanel{
 		MainFrame.frame.getContentPane().add(mdip.scrollPane);
 		MainFrame.frame.repaint();//刷新重画 
 		MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+		MainFrame.backPanels.add(MainFrame.currentPanel);
 		MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
 		
 		

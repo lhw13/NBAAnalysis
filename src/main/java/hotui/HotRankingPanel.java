@@ -21,6 +21,7 @@ import blservice.BLService;
 import presentation.ImageHandle;
 import presentation.mainui.MainFrame;
 import presentation.mainui.Panels;
+import presentation.matchui.MatchDetailInfoPanel;
 import presentation.matchui.MatchSelectionPanel;
 import presentation.playerui.PlayerInfoPanel;
 import presentation.playerui.PlayerSelectionPanel;
@@ -114,9 +115,13 @@ public class HotRankingPanel extends JPanel {
 		button.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
+				int size = MainFrame.backPanels.size();
+				Panels temp = MainFrame.backPanels.get(size-1);
+				MainFrame.backPanels.remove(size-1);
 				try {
 					HotRankingPanel.scrollPane.setVisible(false);
 					MainFrame.panel.setVisible(true);
+					MainFrame.currentPanel = Panels.MainFrame;
 					MainFrame.frame.setTitle("NBA");
 				} catch (Exception e1) {
 					e1.printStackTrace();

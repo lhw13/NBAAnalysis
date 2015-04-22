@@ -1091,7 +1091,8 @@ public class PlayerInfoPanel extends JPanel {
 					MatchSelectionPanel.goToMatchFromPlayer(date,
 							teamName.split(" ")[1]);
 					MainFrame.backPanels.add(MainFrame.currentPanel);
-					MainFrame.currentPanel = Panels.MatchDetailInfoPanel; 
+					MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
+					MainFrame.frame.setTitle("NBA比赛详情");
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
@@ -1124,6 +1125,7 @@ public class PlayerInfoPanel extends JPanel {
 						TeamsSelectionFrame.goToTeam(vo.getTeamAbbreviation());
 						MainFrame.backPanels.add(MainFrame.currentPanel);
 						MainFrame.currentPanel = Panels.TeamsInfoFrame;
+						MainFrame.frame.setTitle("NBA球队信息");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -1144,7 +1146,7 @@ public class PlayerInfoPanel extends JPanel {
 						TeamsSelectionFrame.goToTeam(vo.getTeamAbbreviation());
 						MainFrame.backPanels.add(MainFrame.currentPanel);
 						MainFrame.currentPanel = Panels.TeamsInfoFrame;
-						
+						MainFrame.frame.setTitle("NBA球队信息");
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}

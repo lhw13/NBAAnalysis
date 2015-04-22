@@ -771,6 +771,7 @@ public class MainFrame {
 					
 					MainFrame.panel.setVisible(false);
 					frame.getContentPane().add(hrp.scrollPane);
+					backPanels.add(currentPanel);
 					currentPanel = Panels.HotRankingPanel;
 					hrp.update1();	
 					hrp.update2();

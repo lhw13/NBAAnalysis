@@ -908,7 +908,7 @@ public class MainFrame {
 		case PlayerRankingPanel: PlayerRankingPanel.updatePlayerRanking();break;
 		case TeamsInfoFrame: TeamsSelectionFrame.setTeamsInfo(teamNAME);;break;
 		case TeamsRankingFrame: setTeamsRanking();;break;
-		
+		case HotRankingPanel: hrp.update1();hrp.update2();hrp.update3();break;
 		}
 	}
 }

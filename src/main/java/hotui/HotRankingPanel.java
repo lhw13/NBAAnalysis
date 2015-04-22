@@ -209,6 +209,7 @@ public class HotRankingPanel extends JPanel {
 		table_1 = new JTable(model_1);
 		table_1.setBounds(545, 100, 385, 216);
 		table_1.addMouseListener(new tableListener1());
+		table_1.setShowGrid(false);
 		panelOfBottom.add(table_1);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -217,6 +218,7 @@ public class HotRankingPanel extends JPanel {
 		
 		table_2 = new JTable(model_2);
 		table_2.addMouseListener(new tableListener2());
+		table_2.setShowGrid(false);
 		scrollPane_2.setViewportView(table_2);
 		
 		scrollPane_3 = new JScrollPane();
@@ -225,6 +227,7 @@ public class HotRankingPanel extends JPanel {
 		
 		table_3 = new JTable(model_3);
 		table_3.addMouseListener(new tableListener3());
+		table_3.setShowGrid(false);
 		scrollPane_3.setViewportView(table_3);
 		
 		JLabel lblNewLabel_2 = new JLabel("今日比赛");

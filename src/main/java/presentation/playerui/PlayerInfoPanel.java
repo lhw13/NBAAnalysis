@@ -127,6 +127,7 @@ public class PlayerInfoPanel extends JPanel {
 
 		table_1 = new JTable(model_1);
 		table_1.addMouseListener(new MouseListenTeam());
+		table_1.setShowGrid(false);
 		table_1.addMouseMotionListener(new MouseAdapter(){
 			public void mouseMoved(MouseEvent e) {  
 	        int row=table_1.rowAtPoint(e.getPoint());  
@@ -144,6 +145,7 @@ public class PlayerInfoPanel extends JPanel {
 		tabbedPane.addTab("总计", null, scrollPane_3, null);
 
 		table_2 = new JTable(model_2);
+		table_2.setShowGrid(false);
 		table_2.addMouseListener(new MouseListenTeam());
 		table_2.addMouseMotionListener(new MouseAdapter(){public void mouseMoved(MouseEvent e) {  
 	        int row=table_2.rowAtPoint(e.getPoint());  
@@ -216,6 +218,7 @@ public class PlayerInfoPanel extends JPanel {
 		panelOfBottom.add(scrollPane_4);
 
 		table_3 = new JTable(model_3);
+		table_3.setShowGrid(false);
 		scrollPane_4.setViewportView(table_3);
 		
 		JScrollPane scrollPane_9 = new JScrollPane();
@@ -262,6 +265,7 @@ public class PlayerInfoPanel extends JPanel {
 			columnName_avgAssist.add(cname_avgAssist[i]);
 		}	
 		table_8 = new JTable(model_8);
+		table_8.setShowGrid(false);
 		table_8.addMouseListener(new MouseListen());
 		table_8.setRowHeight(20);
 		scrollPane_9.setViewportView(table_8);
@@ -303,6 +307,7 @@ public class PlayerInfoPanel extends JPanel {
 		panelOfBottom.add(lblNewLabel);
 		
 		table_9 = new JTable(model_9);
+		table_9.setShowGrid(false);
 		table_9.setBounds(387, 10, 285, 228);
 		table_9.addMouseListener(new MouseListenTeam9());
 		table_9.addMouseMotionListener(new MouseAdapter(){
@@ -329,14 +334,17 @@ public class PlayerInfoPanel extends JPanel {
 		
 		table_avgScore = new JTable(model_avgScore);
 		table_avgScore.setBounds(787, 48, 190, 130);
+		table_avgScore.setShowGrid(false);
 		panelOfBottom.add(table_avgScore);
 		
 		table_avgRebound = new JTable(model_avgRebound);
 		table_avgRebound.setBounds(787, 213, 190, 130);
+		table_avgRebound.setShowGrid(false);
 		panelOfBottom.add(table_avgRebound);
 		
 		table_avgAssist = new JTable(model_avgAssist);
 		table_avgAssist.setBounds(787, 385, 190, 130);
+		table_avgAssist.setShowGrid(false);
 		panelOfBottom.add(table_avgAssist);
 		
 		 label_3 = new JLabel("场均篮板排名");

@@ -433,7 +433,8 @@ public class MatchSelectionPanel extends JPanel {
 		for(int i=0;i<matchList.size();i++){
 			if(matchList.get(i).getSeason().equals(season) &&
 				(matchList.get(i).getDate().get(Calendar.MONTH)+1)==month &&
-				   (matchList.get(i).getTeam1().getAbbreviation().equals(teamName) || matchList.get(i).getTeam2().getAbbreviation().equals(teamName))){
+				   (matchList.get(i).getTeam1().getAbbreviation().equals(teamName) || matchList.get(i).getTeam2().getAbbreviation().equals(teamName))
+				   ){
 				mpo = matchList.get(i);
 			}
 		}

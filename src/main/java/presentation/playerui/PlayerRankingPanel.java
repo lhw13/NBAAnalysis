@@ -280,7 +280,7 @@ public class PlayerRankingPanel extends JPanel {
 		crownOfBlock.setIcon(new ImageIcon("conf\\pictures\\crown.png"));
 		crownOfBlock.setVisible(false);
 		
-		String[] names1 = new String[]{"", "球员", "位置", "赛区", "分区", "得分(场均)", "得分(总计)"};
+		String[] names1 = new String[]{"", "球员", "球队", "位置", "赛区", "分区", "得分(场均)", "得分(总计)"};
 		columnName1 = new Vector();
 		for(int i=0;i<names1.length;i++) {
 			columnName1.add(names1[i]);
@@ -342,86 +342,86 @@ public class PlayerRankingPanel extends JPanel {
 				switch(index){
 				case 0: 
 					MainFrame.selection1="得分";
-					columnName1.setElementAt("得分(场均)", 5);
-					columnName1.setElementAt("得分(总计)", 6);
+					columnName1.setElementAt("得分(场均)", 6);
+					columnName1.setElementAt("得分(总计)", 7);
 					updatePlayerRanking();
 					break;
 				case 1: 
 					MainFrame.selection1="篮板";
-					columnName1.setElementAt("篮板(场均)", 5);
-					columnName1.setElementAt("篮板(总计)", 6);
+					columnName1.setElementAt("篮板(场均)", 6);
+					columnName1.setElementAt("篮板(总计)", 7);
 					updatePlayerRanking();
 					break;
 				case 2: 
 					MainFrame.selection1="助攻";
-					columnName1.setElementAt("助攻(场均)", 5);
-					columnName1.setElementAt("助攻(总计)", 6);
+					columnName1.setElementAt("助攻(场均)", 6);
+					columnName1.setElementAt("助攻(总计)", 7);
 					updatePlayerRanking();
 					break;
 				case 3: 
 					MainFrame.selection1="得分/篮板/助攻";
-					columnName1.setElementAt("得分/篮板/助攻(场均)", 5);
-					columnName1.setElementAt("得分/篮板/助攻(总计)", 6);
+					columnName1.setElementAt("得分/篮板/助攻(场均)", 6);
+					columnName1.setElementAt("得分/篮板/助攻(总计)", 7);
 					updatePlayerRanking();
 					break;
 				case 4: 
 					MainFrame.selection1="盖帽";
-					columnName1.setElementAt("盖帽(场均)", 5);
-					columnName1.setElementAt("盖帽(总计)", 6);
+					columnName1.setElementAt("盖帽(场均)", 6);
+					columnName1.setElementAt("盖帽(总计)", 7);
 					updatePlayerRanking();
 					break;
 				case 5: 
 					MainFrame.selection1="抢断";
-					columnName1.setElementAt("抢断(场均)", 5);
-					columnName1.setElementAt("抢断(总计)", 6);
+					columnName1.setElementAt("抢断(场均)", 6);
+					columnName1.setElementAt("抢断(总计)", 7);
 					updatePlayerRanking();
 					break;
 				case 6: 
 					MainFrame.selection1="犯规";
-					columnName1.setElementAt("犯规(场均)", 5);
-					columnName1.setElementAt("犯规(总计)", 6);
+					columnName1.setElementAt("犯规(场均)", 6);
+					columnName1.setElementAt("犯规(总计)", 7);
 					updatePlayerRanking();
 					break;
 				case 7: 
 					MainFrame.selection1="失误";
-					columnName1.setElementAt("失误(场均)", 5);
-					columnName1.setElementAt("失误(总计)", 6);
+					columnName1.setElementAt("失误(场均)", 6);
+					columnName1.setElementAt("失误(总计)", 7);
 					updatePlayerRanking();
 					break;
 				case 8: 
 					MainFrame.selection1="分钟";
-					columnName1.setElementAt("分钟(场均)", 5);
-					columnName1.setElementAt("分钟(总计)", 6);
+					columnName1.setElementAt("分钟(场均)", 6);
+					columnName1.setElementAt("分钟(总计)", 7);
 					updatePlayerRanking();
 					break;
 				case 9: 
 					MainFrame.selection1="效率";
-					columnName1.setElementAt("效率(场均)", 5);
-					columnName1.setElementAt("效率(总计)", 6);
+					columnName1.setElementAt("效率(场均)", 6);
+					columnName1.setElementAt("效率(总计)", 7);
 					updatePlayerRanking();
 					break;
 				case 10: 
 					MainFrame.selection1="投篮";
-					columnName1.setElementAt("投篮(场均)", 5);
-					columnName1.setElementAt("投篮(总计)", 6);
+					columnName1.setElementAt("投篮(场均)", 6);
+					columnName1.setElementAt("投篮(总计)", 7);
 					updatePlayerRanking();
 					break;
 				case 11: 
 					MainFrame.selection1="三分";
-					columnName1.setElementAt("三分(场均)", 5);
-					columnName1.setElementAt("三分(总计)", 6);
+					columnName1.setElementAt("三分(场均)", 6);
+					columnName1.setElementAt("三分(总计)", 7);
 					updatePlayerRanking();
 					break;
 				case 12: 
 					MainFrame.selection1="罚球";
-					columnName1.setElementAt("罚球(场均)", 5);
-					columnName1.setElementAt("罚球(总计)", 6);
+					columnName1.setElementAt("罚球(场均)", 6);
+					columnName1.setElementAt("罚球(总计)", 7);
 					updatePlayerRanking();
 					break;
 				case 13: 
 					MainFrame.selection1="两双";
-					columnName1.setElementAt("两双(场均)", 5);
-					columnName1.setElementAt("两双(总计)", 6);
+					columnName1.setElementAt("两双(场均)", 6);
+					columnName1.setElementAt("两双(总计)", 7);
 					updatePlayerRanking();
 					break;
 				}
@@ -1633,6 +1633,7 @@ public class PlayerRankingPanel extends JPanel {
 					s = JudeTheFilter(pvo.getPosition(), pvo.getDivision(),
 							pvo.getZone());
 				}
+				rowData1.add(pvo.getTeamFullName());
 				rowData1.add(s[0]);
 				rowData1.add(s[1]);
 				rowData1.add(s[2]);
@@ -1681,7 +1682,7 @@ public class PlayerRankingPanel extends JPanel {
 		model_1.setDataVector(rowDatas1, columnName1);
 		model_1.setColumnCount(table.getColumnCount());
 		model_1.setRowCount(rowDatas1.size());
-		int[] width={80,150,80,80,80,80,80};
+		int[] width={80,150,80,80,80,80,80,80};
 		table.setColumnModel(getColumn(table, width));
 		table.setModel(model_1);
 		table.updateUI();
@@ -1706,6 +1707,7 @@ public class PlayerRankingPanel extends JPanel {
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
 				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getTeamFullName());
 				if (pvo.getPosition() != null) {
 					s = JudeTheFilter(pvo.getPosition(), pvo.getDivision(),
 							pvo.getZone());
@@ -1777,7 +1779,7 @@ public class PlayerRankingPanel extends JPanel {
 		model_1.setDataVector(rowDatas1, columnName1);
 		model_1.setColumnCount(table.getColumnCount());
 		model_1.setRowCount(rowDatas1.size());
-		int[] width={80,150,80,80,80,80,80};
+		int[] width={80,150,80,80,80,80,80,80};
 		table.setColumnModel(getColumn(table, width));
 		table.setModel(model_1);
 		table.updateUI();

@@ -46,6 +46,8 @@ import vo.TeamWithPlayersVO;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 
+import blservice.BLService;
+
 /* 
  * 单个球队比赛信息面板
  */
@@ -86,7 +88,8 @@ public class TeamsInfoFrame extends JPanel{
 	DefaultTableModel model = new DefaultTableModel();
 
 	public TeamsInfoFrame(final TeamWithPlayersVO twpvo) {// 构造函数
-
+		compute = BLController.getInstance();
+		
 		JPanel panel = new JPanel();
 		panel.setBounds(5, 5, 100, 50);
 
@@ -120,10 +123,15 @@ public class TeamsInfoFrame extends JPanel{
 			home = tvo.getHome();
 			setupTime = tvo.getSetupTime();
 		}
+		int winMatchNum;
+		int loseMatchNum;
 		Vector rowDatas = new Vector();
 		Vector rowData = new Vector();			
 		rowData.add("球队");
-		rowData.add(fullName);
+		TeamVO t= compute.getTeamAnalysis(abbreviation).getTeam();
+		winMatchNum = (int)(t.getWinRate()*t.getAppearance());
+		loseMatchNum = t.getAppearance()-winMatchNum;
+		rowData.add(PlayerSelectionPanel.translate(abbreviation)+" 胜"+winMatchNum+" 负"+loseMatchNum);
 		rowDatas.add(rowData);
 		rowData = new Vector();
 		rowData.add("球队缩写");
@@ -556,6 +564,12 @@ public class TeamsInfoFrame extends JPanel{
 						TeamsInfoFrame.scrollPane.setVisible(false);
 						MainFrame.frame.setTitle("今日快讯");
 						MainFrame.currentPanel = Panels.HotRankingPanel;
+						break;
+					case MatchDetailInfoPanel:
+						MatchDetailInfoPanel.scrollPane.setVisible(true);
+						TeamsInfoFrame.scrollPane.setVisible(false);
+						MainFrame.frame.setTitle("NBA球队信息");
+						MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
 						break;
 					}
 					
@@ -1617,11 +1631,21 @@ public class TeamsInfoFrame extends JPanel{
 			columnName4.add(cname3[i]);
 		}
 		
+		int winMatchNum;
+		int loseMatchNum;
 		Vector rowDatas4 = new Vector();
 		Vector rowData4 = new Vector();
-		rowData4.add(PlayerSelectionPanel.translate(mpo.getTeam1().getAbbreviation()));
+		TeamVO tvo1= compute.getTeamAnalysis(mpo.getTeam1().getAbbreviation()).getTeam();
+		winMatchNum = (int)(tvo1.getWinRate()*tvo1.getAppearance());
+		loseMatchNum = tvo1.getAppearance()-winMatchNum;
+		rowData4.add(PlayerSelectionPanel.translate(mpo.getTeam1().getAbbreviation())+" 胜"+winMatchNum+
+				" 负"+loseMatchNum);
 		rowData4.add("各项最高");
-		rowData4.add(PlayerSelectionPanel.translate(mpo.getTeam2().getAbbreviation()));
+		TeamVO tvo2= compute.getTeamAnalysis(mpo.getTeam2().getAbbreviation()).getTeam();
+		winMatchNum = (int)(tvo2.getWinRate()*tvo2.getAppearance());
+		loseMatchNum = tvo2.getAppearance()-winMatchNum;
+		rowData4.add(PlayerSelectionPanel.translate(mpo.getTeam2().getAbbreviation())+" 胜"+winMatchNum+
+				" 负"+loseMatchNum);
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
 		rowData4.add(mpo.getTeam1().getHighestScore().getName()+" "+
@@ -1653,10 +1677,10 @@ public class TeamsInfoFrame extends JPanel{
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
 		rowData4.add(mpo.getTeam1().getHighestBlock().getName()+" "+
-                mpo.getTeam1().getHighestBlock().getBlock());
+                       mpo.getTeam1().getHighestBlock().getBlock());
         rowData4.add("盖帽");
-        rowData4.add(mpo.getTeam2().getHighestBlock().getName()+" "+
-                mpo.getTeam2().getHighestBlock().getBlock());
+        rowData4.add(mpo.getTeam1().getHighestBlock().getName()+" "+
+                       mpo.getTeam1().getHighestBlock().getBlock());
 		rowDatas4.add(rowData4);
 		
 		model4.setDataVector(rowDatas4, columnName4);		

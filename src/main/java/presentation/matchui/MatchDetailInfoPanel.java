@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -143,10 +144,60 @@ public class MatchDetailInfoPanel extends JPanel {
 		lblNewLabel.setIcon(ii[0]);
 		panelOfBottom.add(lblNewLabel);
 		
+		lblNewLabel.addMouseListener(new MouseListener(){
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String[] strArray = table_2.getValueAt(0, 2).toString().split("-");
+				String team1 = strArray[0];
+				MatchDetailInfoPanel.scrollPane.setVisible(false);
+				if(team1!=null){
+					TeamsSelectionFrame.goToTeam(team1);
+				}
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel.setCursor(Cursor.getDefaultCursor());
+			}});
+		
 		lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBounds(750, 35, 200, 150);
 		lblNewLabel_1.setIcon(ii[1]);
 		panelOfBottom.add(lblNewLabel_1);
+		
+		lblNewLabel_1.addMouseListener(new MouseListener(){
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String[] strArray = table_2.getValueAt(0, 2).toString().split("-");
+				String team2 = strArray[1];
+				MatchDetailInfoPanel.scrollPane.setVisible(false);
+				if(team2!=null){
+					TeamsSelectionFrame.goToTeam(team2);
+				}
+			}
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel_1.setCursor(Cursor.getDefaultCursor());
+			}});
 		
 		btnNewButton.addActionListener(new ActionListener(){
 

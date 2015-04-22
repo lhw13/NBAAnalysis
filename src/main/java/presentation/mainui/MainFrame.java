@@ -36,6 +36,7 @@ import presentation.matchui.MatchSelectionPanel;
 import presentation.playerui.PlayerInfoPanel;
 import presentation.playerui.PlayerRankingPanel;
 import presentation.playerui.PlayerSelectionPanel;
+import presentation.teamsui.TeamsInfoFrame;
 import presentation.teamsui.TeamsSelectionFrame;
 import presentation.teamsui.TeamsRankingFrame;
 import server.businesslogic.BLController;
@@ -110,6 +111,7 @@ public class MainFrame {
 	public static int date=3;
 	
 	public static String teamNAME = "";
+	public static TeamWithPlayersVO TWPVO;
 
 	BLService blservice = BLController.getInstance();
 	public static void main(String[] args) {
@@ -906,7 +908,10 @@ public class MainFrame {
 		case PlayerSelectionPanel: psp.update();break;
 		case MatchSelectionPanel: MatchSelectionPanel.update();break;
 		case PlayerRankingPanel: PlayerRankingPanel.updatePlayerRanking();break;
-		case TeamsInfoFrame: TeamsSelectionFrame.setTeamsInfo(teamNAME);;break;
+		case TeamsInfoFrame: 
+			TeamsInfoFrame.updateTeam(TWPVO, "投篮命中数");
+			TeamsInfoFrame.latestMatchs(teamNAME);
+			break;
 		case TeamsRankingFrame: TeamsRankingFrame.updataTeamsRanking();break;
 		case HotRankingPanel: hrp.update1();hrp.update2();hrp.update3();break;
 		}

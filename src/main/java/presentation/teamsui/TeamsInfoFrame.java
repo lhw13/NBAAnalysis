@@ -66,16 +66,16 @@ public class TeamsInfoFrame extends JPanel{
 	private JComboBox comboBox_2;
 	private static String season="13-14";
 	private static int date=0;
-	Vector columnName3;
-	DefaultTableModel model_3=new DefaultTableModel();
-	private ArrayList<MatchPO> mpoList;
+	private static Vector columnName3;
+	private static DefaultTableModel model_3=new DefaultTableModel();
+	private static ArrayList<MatchPO> mpoList;
 	private MouseListen_1 listener_1 = new MouseListen_1();
 	private MouseListen_2 listener_2 = new MouseListen_2();
 	
 	private static BLController compute;
 	
-	Vector columnName1;
-	DefaultTableModel model_1=new DefaultTableModel() {
+	private static Vector columnName1;
+	private static DefaultTableModel model_1=new DefaultTableModel() {
 		private static final long serialVersionUID = 1L;
 
 		public Class<?> getColumnClass(int columnIndex) {
@@ -583,8 +583,8 @@ public class TeamsInfoFrame extends JPanel{
 		
 	}
 	
-	public void updateTeam(TeamWithPlayersVO twpvo, String con) {
-		
+	public static void updateTeam(TeamWithPlayersVO twpvo, String con) {
+		MainFrame.TWPVO = twpvo;
 		ArrayList<PlayerVO> players = twpvo.getPlayers();
 		TeamVO tvo = twpvo.getTeam();
 		Vector rowDatas1 = new Vector();
@@ -1360,7 +1360,7 @@ public class TeamsInfoFrame extends JPanel{
 	}
 	
 	//最新比赛数据
-	public void latestMatchs(String teamName){
+	public static void latestMatchs(String teamName){
 		
 		compute = BLController.getInstance();
 		ArrayList<MatchPO> matchList = compute.getAllMatch();
@@ -1710,7 +1710,7 @@ public class TeamsInfoFrame extends JPanel{
 		
 	}
 	
-	public TableColumnModel getColumn(JTable table, int[] width) {  
+	public static TableColumnModel getColumn(JTable table, int[] width) {  
 	    TableColumnModel columns = table.getColumnModel();  
 	    for (int i = 0; i < width.length; i++) {  
 	        TableColumn column = columns.getColumn(i);  
@@ -1719,7 +1719,7 @@ public class TeamsInfoFrame extends JPanel{
 	    return columns;  
 	}
 	
-	public String handleDecimal(double f) {
+	public static String handleDecimal(double f) {
 		return String.format("%.1f", f);
 	}
 	

@@ -412,6 +412,7 @@ public class MatchSelectionPanel extends JPanel {
 			MainFrame.frame.getContentPane().add(mdip.scrollPane);
 			MainFrame.frame.repaint();//刷新重画 
 			MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+			MainFrame.frame.setTitle("NBA比赛信息");
 			MainFrame.backPanels.add(MainFrame.currentPanel);
 			MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
 		}
@@ -611,6 +612,7 @@ public class MatchSelectionPanel extends JPanel {
 		MainFrame.frame.getContentPane().add(mdip.scrollPane);
 		MainFrame.frame.repaint();//刷新重画 
 		MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+		MainFrame.frame.setTitle("NBA比赛信息");
 		MainFrame.backPanels.add(MainFrame.currentPanel);
 		MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
 		

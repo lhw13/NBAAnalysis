@@ -108,6 +108,8 @@ public class MainFrame {
 	
 	public static String season="13-14";
 	public static int date=3;
+	
+	public static String teamNAME = "";
 
 	BLService blservice = BLController.getInstance();
 	public static void main(String[] args) {
@@ -838,7 +840,6 @@ public class MainFrame {
 	// 设置球队排名面板信息
 	public static void setTeamsRanking() {
 		
-		
 		if(TeamsRankingFrame.scrollPane!=null){
 			MainFrame.panel.setVisible(false);
 			TeamsRankingFrame.scrollPane.setVisible(true);
@@ -903,6 +904,11 @@ public class MainFrame {
 		switch(currentPanel) {
 		case PlayerInfoPanel: pip.refresh(pip.playerName); break;
 		case PlayerSelectionPanel: psp.update();break;
+		case MatchSelectionPanel: MatchSelectionPanel.update();break;
+		case PlayerRankingPanel: PlayerRankingPanel.updatePlayerRanking();break;
+		case TeamsInfoFrame: TeamsSelectionFrame.setTeamsInfo(teamNAME);;break;
+		case TeamsRankingFrame: setTeamsRanking();;break;
+		
 		}
 	}
 }

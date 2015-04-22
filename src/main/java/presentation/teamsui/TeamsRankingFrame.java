@@ -474,17 +474,11 @@ public class TeamsRankingFrame {
 			int c = table.getSelectedColumn();
 			try {
 				TeamsRankingFrame.scrollPane.setVisible(false);
-				TeamWithPlayersVO twpvo = getTeam(table.getValueAt(r,1).toString());
-				TeamsInfoFrame tip = new TeamsInfoFrame(twpvo);
-				tip.updateTeam(twpvo, "投篮命中数");
-				tip.latestMatchs(twpvo.getTeam().getAbbreviation());
-				MainFrame.frame.getContentPane().add(tip.scrollPane);
-				tip.scrollPane.setVisible(true);
-				MainFrame.frame.setTitle(twpvo.getTeam().getAbbreviation());
-				MainFrame.backPanels.add(MainFrame.currentPanel);
-				MainFrame.currentPanel = Panels.TeamsInfoFrame;
-				MainFrame.frame.repaint();//刷新重画 
-				MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+				String team = getTeamName(table.getValueAt(r,1).toString());
+				if(team!=null){
+					TeamsSelectionFrame.goToTeam(team);
+				}
+				
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
@@ -579,6 +573,74 @@ public class TeamsRankingFrame {
 			result = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 		}
 		return result;
+	}
+	
+	public String getTeamName(String teamName){
+		switch(teamName){
+		case "Hawks":
+			return "ATL";
+		case "Nets":
+			return "BKN";
+		case "Celtics":
+			return "BOS";
+		case "Hornets":
+			return "CHA";
+		case "Bulls":
+			return "CHI";
+		case "Cavaliers":
+			return "CLE";
+		case "Mavericks":
+			return "DAL";
+		case "Nuggets":
+			return "DEN";
+		case "Pistons":
+			return "DET";
+		case "Warriors":
+			return "GSW";
+		case "Rockets":
+			return "HOU";
+		case "Pacers":
+			return "IND";
+		case "Clippers":
+			return "LAC";
+		case "Lakers":
+			return "LAL";
+		case "Grizzlies":
+			return "MEM";
+		case "Heat":
+			return "MIA";
+		case "Bucks":
+			return "MIL";
+		case "Timberwolves":
+			return "MIN";
+		case "Pelicans":
+			return "NOP";
+		case "Knicks":
+			return "NYK";
+		case "Thunder":
+			return "OKC";
+		case "Magic":
+			return "ORL";
+		case "76ers":
+			return "PHI";
+		case "Suns":
+			return "PHX";
+		case "Trail Blazers":
+			return "POR";
+		case "Kings":
+			return "SAC";
+		case "Spurs":
+			return "SAS";
+		case "Raptors":
+			return "TOR";
+		case "Jazz":
+			return "UTA";
+		case "Wizards":
+			return "WAS";
+		default:
+			return null;
+		}
+		
 	}
 	
 }

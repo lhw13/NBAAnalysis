@@ -2,10 +2,13 @@ package presentation.matchui;
 
 import hotui.HotRankingPanel;
 
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -19,9 +22,12 @@ import javax.swing.JButton;
 import presentation.mainui.MainFrame;
 import presentation.mainui.Panels;
 import presentation.playerui.PlayerInfoPanel;
+import presentation.playerui.PlayerRankingPanel;
+import presentation.playerui.PlayerRankingPanel.MouseListen;
 import presentation.teamsui.TeamsInfoFrame;
 import presentation.teamsui.TeamsRankingFrame;
 import presentation.teamsui.TeamsSelectionFrame;
+import vo.TeamWithPlayersVO;
 
 import javax.swing.JLabel;
 
@@ -38,6 +44,8 @@ public class MatchDetailInfoPanel extends JPanel {
 	private JButton btnNewButton;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
+	
+	MouseListen_1 listener_1 = new MouseListen_1();
 	
 	public TableColumnModel getColumn(JTable table, int[] width) {  
 	    TableColumnModel columns = table.getColumnModel();  
@@ -72,6 +80,19 @@ public class MatchDetailInfoPanel extends JPanel {
 		table.setColumnModel(getColumn(table, width));
 		scrollPane_1.setViewportView(table);
 		
+		table.addMouseListener(listener_1);
+		table.addMouseMotionListener(new MouseAdapter(){
+			public void mouseMoved(MouseEvent e) {  
+	        int row=table.rowAtPoint(e.getPoint());  
+	        int col=table.columnAtPoint(e.getPoint());  
+	        if(col==0){  
+	        	table.setCursor(Cursor
+					.getPredefinedCursor(Cursor.HAND_CURSOR));
+			} else {
+				table.setCursor(Cursor.getDefaultCursor());
+			}
+	    }  }); 
+		
 		scrollPane_2 = new JScrollPane();
 		scrollPane_2.setBounds(50, 475, 900, 250);
 		panelOfBottom.add(scrollPane_2);
@@ -81,6 +102,19 @@ public class MatchDetailInfoPanel extends JPanel {
 		int[] width1={120,30,50,30,30,30,30,30,30,30,30,30,30,30,30};
 		table_1.setColumnModel(getColumn(table_1, width1));
 		scrollPane_2.setViewportView(table_1);
+		
+		table_1.addMouseListener(listener_1);
+		table_1.addMouseMotionListener(new MouseAdapter(){
+			public void mouseMoved(MouseEvent e) {  
+	        int row=table_1.rowAtPoint(e.getPoint());  
+	        int col=table_1.columnAtPoint(e.getPoint());  
+	        if(col==0){  
+	        	table_1.setCursor(Cursor
+					.getPredefinedCursor(Cursor.HAND_CURSOR));
+			} else {
+				table_1.setCursor(Cursor.getDefaultCursor());
+			}
+	    }  }); 
 		
 		table_2 = new JTable();
 		table_2.setModel(model3);
@@ -157,4 +191,29 @@ public class MatchDetailInfoPanel extends JPanel {
 			
 		});
 	}
+	
+	public class MouseListen_1 extends MouseAdapter {
+		public void mouseClicked(MouseEvent e) {
+			JTable table = (JTable) e.getSource();
+			int r = table.getSelectedRow();
+			int c = table.getSelectedColumn();
+			try {
+				if(c==0){
+					MatchDetailInfoPanel.scrollPane.setVisible(false);
+					MainFrame.pip = new PlayerInfoPanel();
+					MainFrame.pip.update(table.getValueAt(r,0).toString());
+					MainFrame.frame.getContentPane().add(MainFrame.pip.scrollPane);
+					MainFrame.pip.scrollPane.setVisible(true);
+					MainFrame.backPanels.add(MainFrame.currentPanel);
+					MainFrame.currentPanel = Panels.PlayerInfoPanel;
+					MainFrame.frame.setTitle("NBA球员信息");
+					MainFrame.frame.repaint();//刷新重画 
+					MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+				}
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		}
+	}
+	
 }

@@ -323,7 +323,7 @@ public class PlayerRankingPanel extends JPanel {
 			public void mouseMoved(MouseEvent e) {  
 	        int row=table.rowAtPoint(e.getPoint());  
 	        int col=table.columnAtPoint(e.getPoint());  
-	        if(col==0 || col==2){  
+	        if(col==0 || col==2 || col==1){  
 	        	table.setCursor(Cursor
 					.getPredefinedCursor(Cursor.HAND_CURSOR));
 			} else {
@@ -1823,7 +1823,7 @@ public class PlayerRankingPanel extends JPanel {
 			int r = table.getSelectedRow();
 			int c = table.getSelectedColumn();
 			try {
-				if(c==0){
+				if(c==0 || c==1){
 					PlayerRankingPanel.scrollPane.setVisible(false);
 					MainFrame.pip = new PlayerInfoPanel();
 					MainFrame.pip.update(table.getValueAt(r,1).toString());

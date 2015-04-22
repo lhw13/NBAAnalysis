@@ -12,7 +12,7 @@ import server.po.PlayerPO;
 import server.po.TeamPO;
 import dataservice.DataService;
 
-public class DataController implements DataService {
+public  final class DataController implements DataService {
 	public HashMap<String, PlayerPO> getAllPlayers() {
 		ArrayList<PlayerPO> playerPOList = PlayersData.getPlayerPOList();
 		int n = playerPOList.size();

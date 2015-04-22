@@ -1,5 +1,5 @@
 package server.data;
 
-public class DataWriter {
+public  final class DataWriter {
 
 }

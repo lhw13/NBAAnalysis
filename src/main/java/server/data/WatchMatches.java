@@ -14,7 +14,7 @@ import presentation.mainui.MainFrame;
 import server.po.MatchPO;
 import console.Console;
 
-public class WatchMatches implements Runnable {
+public  final class WatchMatches implements Runnable {
 	public  void run() {
 		// TODO Auto-generated method stub
 		try {

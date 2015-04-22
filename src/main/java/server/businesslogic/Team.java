@@ -18,15 +18,15 @@ public  final class Team {
 	boolean newData = true;
 	boolean added = false;
 	TeamPO teamPO;
-	ArrayList<MatchPO> matches = new ArrayList<MatchPO>();
-	ArrayList<TeamInMatches> thisTeam = new ArrayList<TeamInMatches>();
-	ArrayList<TeamInMatches> opponentTeam = new ArrayList<TeamInMatches>();
+	ArrayList<MatchPO> matches = new ArrayList<MatchPO>(85);
+	ArrayList<TeamInMatches> thisTeam = new ArrayList<TeamInMatches>(85);
+	ArrayList<TeamInMatches> opponentTeam = new ArrayList<TeamInMatches>(85);
 	
 	ArrayList<TeamInMatches> thisTeamPast = new ArrayList<TeamInMatches>();
 	ArrayList<TeamInMatches> opponentTeamPast = new ArrayList<TeamInMatches>();
 	
-	ArrayList<TeamInMatches> thisTeamNew = new ArrayList<TeamInMatches>();
-	ArrayList<TeamInMatches> opponentTeamNew = new ArrayList<TeamInMatches>();
+	ArrayList<TeamInMatches> thisTeamNew = new ArrayList<TeamInMatches>(10);
+	ArrayList<TeamInMatches> opponentTeamNew = new ArrayList<TeamInMatches>(10);
 
 	// this team's data
 	int appearance = 0;// 比赛场数

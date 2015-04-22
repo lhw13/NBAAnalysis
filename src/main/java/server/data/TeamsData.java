@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import console.Console;
 import server.po.TeamPO;
 
-public class TeamsData {
+public  final class TeamsData {
 	private static File teamsFile;
 	private static ArrayList<TeamPO> teamPOList;
 	static {

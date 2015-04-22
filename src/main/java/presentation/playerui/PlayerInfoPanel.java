@@ -98,10 +98,12 @@ public class PlayerInfoPanel extends JPanel {
 	JComboBox comboBox = new JComboBox();
 	private JButton btnNewButton;
 	private JTable table_9;
-	private JLabel label_2;
+	
 	private JTable table_avgScore;
 	private JTable table_avgRebound;
 	private JTable table_avgAssist;
+	private JLabel label_2;
+	private JLabel label_3;
 	private JLabel label_4;
 	
 	public PlayerInfoPanel() {
@@ -322,6 +324,7 @@ public class PlayerInfoPanel extends JPanel {
 		
 		label_2 = new JLabel("场均得分排名");
 		label_2.setBounds(848, 23, 83, 15);
+		label_2.addMouseListener(new RankListener());
 		panelOfBottom.add(label_2);
 		
 		table_avgScore = new JTable(model_avgScore);
@@ -336,12 +339,14 @@ public class PlayerInfoPanel extends JPanel {
 		table_avgAssist.setBounds(787, 385, 190, 130);
 		panelOfBottom.add(table_avgAssist);
 		
-		JLabel label_3 = new JLabel("场均篮板排名");
+		 label_3 = new JLabel("场均篮板排名");
 		label_3.setBounds(848, 188, 83, 15);
+		label_3.addMouseListener(new RankListener());
 		panelOfBottom.add(label_3);
 		
 		label_4 = new JLabel("场均助攻排名");
 		label_4.setBounds(848, 357, 83, 15);
+		label_4.addMouseListener(new RankListener());
 		panelOfBottom.add(label_4);
 		
 		//scrollPane.setBounds(0, 0, 990, 600);
@@ -1145,6 +1150,28 @@ public class PlayerInfoPanel extends JPanel {
 					e1.printStackTrace();
 				}
 			}
+		}
+	}
+	
+	public class RankListener extends MouseAdapter {
+		public void mouseClicked(MouseEvent e) {
+
+			JLabel label = (JLabel) e.getSource();
+			PlayerInfoPanel.scrollPane.setVisible(false);
+			MainFrame.setPlayersRanking();			
+			
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			JLabel label = (JLabel) e.getSource();
+			label.setCursor(Cursor
+					.getPredefinedCursor(Cursor.HAND_CURSOR));
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			JLabel label = (JLabel) e.getSource();
+			label.setCursor(Cursor.getDefaultCursor());
 		}
 	}
 }

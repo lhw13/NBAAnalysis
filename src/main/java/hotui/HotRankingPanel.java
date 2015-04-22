@@ -902,10 +902,9 @@ public class HotRankingPanel extends JPanel {
 			int size = matches.size();
 			MatchPO matchTemp = matches.get(size-1-r);
 			String dateTemp = sdf.format(matchTemp.getDate().getTime());
-				
 			
 			
-			MatchSelectionPanel.goToMatchFromPlayer(dateTemp,team1.getAbbreviation());
+			MatchSelectionPanel.goToMatchFromPlayer(dateTemp,matchTemp.getTeam1().getAbbreviation());
 			MainFrame.hrp.scrollPane.setVisible(false);
 			
 		}

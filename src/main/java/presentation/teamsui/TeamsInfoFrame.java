@@ -550,6 +550,12 @@ public class TeamsInfoFrame extends JPanel{
 						MainFrame.frame.setTitle("NBA球员信息");
 						MainFrame.currentPanel = Panels.PlayerInfoPanel;
 						break;
+					case HotRankingPanel:
+						HotRankingPanel.scrollPane.setVisible(true);
+						TeamsInfoFrame.scrollPane.setVisible(false);
+						MainFrame.frame.setTitle("今日快讯");
+						MainFrame.currentPanel = Panels.HotRankingPanel;
+						break;
 					}
 					
 				} catch (Exception e1) {
@@ -1671,6 +1677,7 @@ public class TeamsInfoFrame extends JPanel{
 		MainFrame.frame.getContentPane().add(mdip.scrollPane);
 		MainFrame.frame.repaint();//刷新重画 
 		MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+		MainFrame.frame.setTitle("NBA比赛信息");
 		MainFrame.backPanels.add(MainFrame.currentPanel);
 		MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
 		

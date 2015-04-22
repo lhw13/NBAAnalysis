@@ -141,6 +141,12 @@ public class MatchDetailInfoPanel extends JPanel {
 						MainFrame.frame.setTitle("NBA球员信息");
 						MainFrame.currentPanel = Panels.PlayerInfoPanel;
 						break;
+					case HotRankingPanel:
+						HotRankingPanel.scrollPane.setVisible(true);
+						MatchDetailInfoPanel.scrollPane.setVisible(false);
+						MainFrame.frame.setTitle("今日快讯");
+						MainFrame.currentPanel = Panels.HotRankingPanel;
+						break;
 						
 					}
 					

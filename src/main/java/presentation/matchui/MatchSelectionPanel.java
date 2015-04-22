@@ -606,15 +606,13 @@ public class MatchSelectionPanel extends JPanel {
 		ii[1].setImage(ii[1].getImage().getScaledInstance(width, height,
 				Image.SCALE_DEFAULT));
 		
-		if(PlayerInfoPanel.scrollPane!=null){
-			PlayerInfoPanel.scrollPane.setVisible(false);
-			MatchDetailInfoPanel mdip = new MatchDetailInfoPanel(ii,model1,model2,model3,model4);
-			MainFrame.frame.getContentPane().add(mdip.scrollPane);
-			MainFrame.frame.repaint();//刷新重画 
-			MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
-			MainFrame.backPanels.add(MainFrame.currentPanel);
-			MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
-		}
+		PlayerInfoPanel.scrollPane.setVisible(false);
+		MatchDetailInfoPanel mdip = new MatchDetailInfoPanel(ii,model1,model2,model3,model4);
+		MainFrame.frame.getContentPane().add(mdip.scrollPane);
+		MainFrame.frame.repaint();//刷新重画 
+		MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+		MainFrame.backPanels.add(MainFrame.currentPanel);
+		MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
 		
 	}
 	

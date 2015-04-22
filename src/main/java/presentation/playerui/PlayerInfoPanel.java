@@ -494,8 +494,14 @@ public class PlayerInfoPanel extends JPanel {
 			SimpleDateFormat sdf8 = new SimpleDateFormat("yyyy-MM-dd");
 			String dateStr8 = sdf8.format(matchTemp.getDate().getTime());
 			rowData8.add(dateStr8);//日期
-			rowData8.add(matchTemp.getFinalScore().toString()+" "+					
+			if(vo.getTeamAbbreviation().equals(matchTemp.getTeam1().getAbbreviation()))
+				rowData8.add(matchTemp.getFinalScore().toString()+" "+					
 					matchTemp.getTeam2().getAbbreviation());//得分
+			else {
+				String[] score=matchTemp.getFinalScore().toString().split("-");
+				rowData8.add(score[1]+"-"+score[0]+" "+					
+					matchTemp.getTeam1().getAbbreviation());//得分
+			}
 			rowData8.add(playerTemp.getPlayTime());
 			rowData8.add(playerTemp.getHit()+"-"+playerTemp.getShot());
 			rowData8.add(playerTemp.getThirdHit()+"-"+playerTemp.getThirdshot());
@@ -758,8 +764,11 @@ public class PlayerInfoPanel extends JPanel {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			String dateStr8 = sdf.format(matchTemp.getDate().getTime());
 			rowData8.add(dateStr8);//日期
-			rowData8.add(matchTemp.getFinalScore().toString()+" "+					
+			if(vo.getTeamAbbreviation().equals(matchTemp.getTeam1().getAbbreviation()))
+				rowData8.add(matchTemp.getFinalScore().toString()+" "+					
 					matchTemp.getTeam2().getAbbreviation());//得分
+			else rowData8.add(matchTemp.getFinalScore().toString()+" "+					
+					matchTemp.getTeam1().getAbbreviation());//得分
 			rowData8.add(playerTemp.getPlayTime());
 			rowData8.add(playerTemp.getHit()+"-"+playerTemp.getShot());
 			rowData8.add(playerTemp.getThirdHit()+"-"+playerTemp.getThirdshot());
@@ -1056,8 +1065,11 @@ public class PlayerInfoPanel extends JPanel {
 			}			
 			
 			rowData8.add(dateStr8);//日期
-			rowData8.add(matchTemp.getFinalScore().toString()+" "+					
+			if(vo.getTeamAbbreviation().equals(matchTemp.getTeam1().getAbbreviation()))
+				rowData8.add(matchTemp.getFinalScore().toString()+" "+					
 					matchTemp.getTeam2().getAbbreviation());//得分
+			else rowData8.add(matchTemp.getFinalScore().toString()+" "+					
+					matchTemp.getTeam1().getAbbreviation());//得分
 			rowData8.add(playerTemp.getPlayTime());
 			rowData8.add(playerTemp.getHit()+"-"+playerTemp.getShot());
 			rowData8.add(playerTemp.getThirdHit()+"-"+playerTemp.getThirdshot());

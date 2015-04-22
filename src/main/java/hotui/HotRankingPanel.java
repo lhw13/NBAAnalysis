@@ -98,8 +98,8 @@ public class HotRankingPanel extends JPanel {
 	private JTable table_2;
 	private JScrollPane scrollPane_3;
 	private JTable table_3;
-	ArrayList<Team> teamWest = new ArrayList<Team>();
-	ArrayList<Team> teamEast = new ArrayList<Team>();
+	ArrayList<Team> teamWest ;
+	ArrayList<Team> teamEast ;
 	public HotRankingPanel() {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
@@ -674,7 +674,8 @@ public class HotRankingPanel extends JPanel {
 		Vector rowDatas3 = new Vector();
 		ArrayList<Team> teams = BLController.getInstance().getTeams();		
 		Collections.sort(teams,Comparators.getTeamComparator("winRate"));
-		
+		teamWest = new ArrayList<Team>();
+		teamEast = new ArrayList<Team>();
 		for(int i=0;i<teams.size();i++) {
 			Team temp = teams.get(i);
 			if(temp.getTeamPO().getDivision() == 'E') teamEast.add(temp);

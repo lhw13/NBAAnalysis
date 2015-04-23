@@ -38,8 +38,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-import com.sun.prism.paint.Color;
-
 /*
  * 所有球队排名面板
  */

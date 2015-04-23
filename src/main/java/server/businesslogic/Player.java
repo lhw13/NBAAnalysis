@@ -477,14 +477,11 @@ public  final class Player implements Cloneable{
 	}
 
 	public double getAssistEfficient() {
-		if (playTime == 0)
-			return 0;
-		else if (assist == 0)
-			return 0;
-		else if (((double) playTime / ((double) teamPlayTime / 5) * teamHit - hit) == 0)
-			return 0;
-		return (double) assist
-				/ ((double) playTime / ((double) teamPlayTime / 5) * teamHit - hit);
+                double divisor = (double) playTime / ((double) teamPlayTime / 5) * teamHit - hit;
+		if (playTime != 0 && divisor!=0)
+                    return (double) assist/ divisor;
+                else
+                    return 0;
 	}
 
 	private double getOffensiveRound() {// 进攻回合

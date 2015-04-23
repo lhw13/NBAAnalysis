@@ -415,7 +415,7 @@ public class Console {
 	}
 	
 	//avg player asc comparator
-		public Comparator<Player> comparePointAvgAsc = new Comparator<Player>(){  
+		public static final Comparator<Player> comparePointAvgAsc = new Comparator<Player>(){  
 			  
 	        @Override  
 	        public int compare(Player o1, Player o2) {  
@@ -426,7 +426,7 @@ public class Console {
 	        }
 	    };
 	    
-	    public Comparator<Player> compareReboundAvgAsc = new Comparator<Player>(){  
+	    public static final Comparator<Player> compareReboundAvgAsc = new Comparator<Player>(){  
 			  
 	        @Override  
 	        public int compare(Player o1, Player o2) {
@@ -436,7 +436,7 @@ public class Console {
 	            //return (double)o2.getRebound()/(double)o2.getAppearance() < (double)o1.getRebound()/(double)o1.getAppearance()? 1 : -1;
 	        }
 	    };
-	    public Comparator<Player> compareAssistAvgAsc = new Comparator<Player>(){  
+	    public static final Comparator<Player> compareAssistAvgAsc = new Comparator<Player>(){  
 			  
 	        @Override  
 	        public int compare(Player o1, Player o2) {
@@ -447,7 +447,7 @@ public class Console {
 	        }
 	    };
 	    
-	    public Comparator<Player> compareBlockShotAvgAsc = new Comparator<Player>(){  
+	    public static final Comparator<Player> compareBlockShotAvgAsc = new Comparator<Player>(){  
 			  
 	        @Override  
 	        public int compare(Player o1, Player o2) {  
@@ -458,7 +458,7 @@ public class Console {
 	        }
 	    };
 	    
-	    public Comparator<Player> compareStealAvgAsc = new Comparator<Player>(){  
+	    public static final Comparator<Player> compareStealAvgAsc = new Comparator<Player>(){  
 			  
 	        @Override  
 	        public int compare(Player o1, Player o2) {  
@@ -469,7 +469,7 @@ public class Console {
 	        }
 	    };
 	    
-	    public Comparator<Player> compareFoulAvgAsc = new Comparator<Player>(){  
+	    public static final Comparator<Player> compareFoulAvgAsc = new Comparator<Player>(){  
 			  
 	        @Override  
 	        public int compare(Player o1, Player o2) {  
@@ -480,7 +480,7 @@ public class Console {
 	        }
 	    };
 	    
-	    public Comparator<Player> compareFaultAvgAsc = new Comparator<Player>(){  
+	    public static final Comparator<Player> compareFaultAvgAsc = new Comparator<Player>(){  
 			  
 	        @Override  
 	        public int compare(Player o1, Player o2) {  
@@ -491,7 +491,7 @@ public class Console {
 	        }
 	    };
 	    
-	    public Comparator<Player> compareMinuteAvgAsc = new Comparator<Player>(){  
+	    public static final Comparator<Player> compareMinuteAvgAsc = new Comparator<Player>(){  
 			  
 	        @Override  
 	        public int compare(Player o1, Player o2) {  
@@ -702,7 +702,7 @@ public class Console {
     };*/
     
     //升序Comparator
-    public Comparator<Player> comparePlayerNameAsc = new Comparator<Player>() {  
+    public static final Comparator<Player> comparePlayerNameAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -710,7 +710,7 @@ public class Console {
         }
     };
     
-    public Comparator<Player> comparePointAsc = new Comparator<Player>() {  
+    public static final Comparator<Player> comparePointAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -721,7 +721,7 @@ public class Console {
         }
     };
     
-    public Comparator<Player> compareReboundAsc = new Comparator<Player>() {  
+    public static final Comparator<Player> compareReboundAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -731,7 +731,7 @@ public class Console {
         	//return o2.getRebound() < o1.getRebound() ? 1 : -1;
         }
     };
-    private Comparator<Player> compareAssistAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareAssistAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -742,7 +742,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareBlockShotAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareBlockShotAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -753,7 +753,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareStealAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareStealAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -764,7 +764,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareFoulAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareFoulAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -775,7 +775,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareFaultAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareFaultAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -786,7 +786,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareMinuteAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareMinuteAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -797,7 +797,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareEfficientAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareEfficientAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -808,7 +808,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareShotAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareShotAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -819,7 +819,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareThreeAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareThreeAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -830,7 +830,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> comparePenaltyAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> comparePenaltyAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -841,7 +841,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareDoubleTwoAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareDoubleTwoAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -852,7 +852,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareRealShotAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareRealShotAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -863,7 +863,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareGmScAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareGmScAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -874,7 +874,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareShotEfficientAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareShotEfficientAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -885,7 +885,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareReboundEfficientAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareReboundEfficientAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -896,7 +896,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareOffendReboundEfficientAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareOffendReboundEfficientAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -907,7 +907,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareDefendReboundEfficientAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareDefendReboundEfficientAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -918,7 +918,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareAssistEfficientAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareAssistEfficientAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -929,7 +929,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareStealEfficientAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareStealEfficientAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -940,7 +940,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareBlockShotEfficientAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareBlockShotEfficientAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -951,7 +951,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareFaultEfficientAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareFaultEfficientAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -962,7 +962,7 @@ public class Console {
         }
     };
     
-    private Comparator<Player> compareFrequencyAsc = new Comparator<Player>() {  
+    private static final Comparator<Player> compareFrequencyAsc = new Comparator<Player>() {  
 		  
         @Override  
         public int compare(Player o1, Player o2) {  
@@ -975,36 +975,32 @@ public class Console {
 
 
 	//用于多重排序
-	public void sort(List<Player> list, final List<Comparator<Player>> comList) {  
+	public final void sort(List<Player> list, final List<Comparator<Player>> comList) {  
         if (comList == null)  
             return;  
         Comparator<Player> cmp = new Comparator<Player>() {  
             @Override  
-            public int compare(Player o1, Player o2) {  
-                for (Comparator<Player> comparator : comList) {  
-                    if (comparator.compare(o1, o2) > 0) {  
-                        return 1;  
-                    } else if (comparator.compare(o1, o2) < 0) {  
-                        return -1;  
-                    }  
+            public final int compare(Player o1, Player o2) {  
+                for (Comparator<Player> comparator : comList) {
+                    int x = comparator.compare(o1, o2);
+                    if(x!=0)
+                        return x;
                 }  
                 return 0;  
             }  
         };  
         Collections.sort(list, cmp);  
     }  
-	public void sortTeam(ArrayList<Team> list, final ArrayList<Comparator<Team>> comList) {  
+	public final void sortTeam(ArrayList<Team> list, final ArrayList<Comparator<Team>> comList) {  
         if (comList == null)  
             return;  
         Comparator<Team> cmp = new Comparator<Team>() {  
             @Override  
-            public int compare(Team o1, Team o2) {  
+            public final int compare(Team o1, Team o2) {  
                 for (Comparator<Team> comparator : comList) {  
-                    if (comparator.compare(o1, o2) > 0) {  
-                        return 1;  
-                    } else if (comparator.compare(o1, o2) < 0) {  
-                        return -1;  
-                    }  
+                    int x = comparator.compare(o1, o2);
+                    if(x!=0)
+                        return x;
                 }  
                 return 0;  
             }  

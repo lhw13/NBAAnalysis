@@ -683,6 +683,7 @@ public class HotRankingPanel extends JPanel {
 		}
 		switch(root3) {
 		case "西":
+			columnName3.setElementAt("西部球队", 2);
 			int size =teamWest.size();
 			int winFirst = teamWest.get(0).getWin();
 			for(int i=0;i<size;i++) {
@@ -707,6 +708,7 @@ public class HotRankingPanel extends JPanel {
 			break;
 		
 		case "东":
+			columnName3.setElementAt("东部球队", 2);
 			int sizeE =teamEast.size();
 			int winFirstE = teamEast.get(0).getWin();
 			for(int i=0;i<sizeE;i++) {
@@ -731,6 +733,7 @@ public class HotRankingPanel extends JPanel {
 			}
 			break;			
 		}
+		
 		model_3.setDataVector(rowDatas3, columnName3);		
 		model_3.setColumnCount(table_3.getColumnCount());
 		model_3.setRowCount(rowDatas3.size());

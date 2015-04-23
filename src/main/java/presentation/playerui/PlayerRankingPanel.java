@@ -1672,36 +1672,36 @@ public class PlayerRankingPanel extends JPanel {
 				switch(condition){
 				case "point":
 					MainFrame.selection1="得分";
-					columnName1.setElementAt("得分(场均)", 5);
-					columnName1.setElementAt("得分(总计)", 6);
+					columnName1.setElementAt("得分(场均)", 6);
+					columnName1.setElementAt("得分(总计)", 7);
 					rowData1.add(handle((double) pvo.getScore(), appearance));
 					rowData1.add(pvo.getScore());
 					break;
 				case "rebound":
 					MainFrame.selection1="篮板";
-					columnName1.setElementAt("篮板(场均)", 5);
-					columnName1.setElementAt("篮板(总计)", 6);
+					columnName1.setElementAt("篮板(场均)", 6);
+					columnName1.setElementAt("篮板(总计)", 7);
 					rowData1.add(handle((double) pvo.getTotalRebound(),appearance));
 					rowData1.add(pvo.getTotalRebound());
 					break;
 				case "assist":
 					MainFrame.selection1="助攻";
-					columnName1.setElementAt("助攻(场均)", 5);
-					columnName1.setElementAt("助攻(总计)", 6);
+					columnName1.setElementAt("助攻(场均)", 6);
+					columnName1.setElementAt("助攻(总计)", 7);
 					rowData1.add(handle((double) pvo.getAssist(), appearance));
 					rowData1.add(pvo.getAssist());
 					break;
 				case "blockShot":
 					MainFrame.selection1="盖帽";
-					columnName1.setElementAt("盖帽(场均)", 5);
-					columnName1.setElementAt("盖帽(总计)", 6);
+					columnName1.setElementAt("盖帽(场均)", 6);
+					columnName1.setElementAt("盖帽(总计)", 7);
 					rowData1.add(handle((double) pvo.getBlock(), appearance));
 					rowData1.add(pvo.getBlock());
 					break;
 				case "steal":
 					MainFrame.selection1="抢断";
-					columnName1.setElementAt("抢断(场均)", 5);
-					columnName1.setElementAt("抢断(总计)", 6);
+					columnName1.setElementAt("抢断(场均)", 6);
+					columnName1.setElementAt("抢断(总计)", 7);
 					rowData1.add(handle((double) pvo.getSteal(), appearance));
 					rowData1.add(pvo.getSteal());
 					break;

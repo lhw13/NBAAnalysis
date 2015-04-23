@@ -424,16 +424,16 @@ public  final class Player implements Cloneable{
 	}
 
 	public double getEfficient() {
-		return (score + rebound + assist + steal + blockShot) - (chuShou - hit)
-				- (freeshot - freeHit) - fault;
+		return (double)((score + rebound + assist + steal + blockShot) - (chuShou - hit)
+				- (freeshot - freeHit) - fault)/appearance;
 	}
 
 	public double getGmSc() {
-		return score + 0.4 * (double) hit - 0.7 * (double) chuShou - 0.4
+		return (score + 0.4 * (double) hit - 0.7 * (double) chuShou - 0.4
 				* (double) (freeshot - freeHit) + 0.7
 				* (double) offensiveRebound + 0.3 * (double) defensiveRebound
 				+ steal + 0.7 * (double) assist + 0.7 * (double) blockShot - 0.4
-				* (double) foul - fault;
+				* (double) foul - fault)/appearance;
 	}
 
 	public double getRealShot() {

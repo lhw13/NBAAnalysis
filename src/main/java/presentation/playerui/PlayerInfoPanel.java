@@ -446,7 +446,7 @@ public class PlayerInfoPanel extends JPanel {
 		Vector rowDatas_3 = new Vector();
 		rowData_3.add(vo.getMatches().get(0).getSeason());
 		rowData_3.add(handleDecimal(vo.getRealHitRate()*100)+"%");
-		rowData_3.add(vo.getEfficiency());
+		rowData_3.add(handleDecimal(vo.getEfficiency()));
 		rowData_3.add(handleDecimal(vo.getGmScEfficiency()));
 		rowData_3.add(handleDecimal(vo.getShotEfficiency()));
 		rowData_3.add(handleDecimal(vo.getReboundRate()*100)+"%");
@@ -863,7 +863,7 @@ public class PlayerInfoPanel extends JPanel {
 		Vector rowDatas_3 = new Vector();
 		rowData_3.add(vo.getMatches().get(0).getSeason());
 		rowData_3.add(handleDecimal(vo.getRealHitRate()*100)+"%");
-		rowData_3.add(vo.getEfficiency());
+		rowData_3.add(handleDecimal(vo.getEfficiency()));
 		rowData_3.add(handleDecimal(vo.getGmScEfficiency()));
 		rowData_3.add(handleDecimal(vo.getShotEfficiency()));
 		rowData_3.add(handleDecimal(vo.getReboundRate()*100)+"%");

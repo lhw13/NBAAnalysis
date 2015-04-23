@@ -90,6 +90,9 @@ public class PlayerRankingPanel extends JPanel {
 		}
 	};
 	
+	private Vector columnName0;
+	DefaultTableModel model0 = new DefaultTableModel();
+	
 	private static BLController compute;
 
 	public PlayerRankingPanel() {
@@ -100,6 +103,21 @@ public class PlayerRankingPanel extends JPanel {
 
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
+
+
+		Vector rowDatas = new Vector();
+		columnName0 = new Vector();
+		columnName0.add("排名");
+		for(int i=0;i<500;i++){
+			Vector rowData = new Vector();
+			rowData.add((i+1)+"");
+			rowDatas.add(rowData);
+		}
+		JTable table0 = new JTable();
+		model0 = new DefaultTableModel(rowDatas,columnName0);
+		table0.setModel(model0);
+		table0.setPreferredScrollableViewportSize(new Dimension(50, 1000));
+		table0.setRowHeight(56);
 
 		btnNewButton = new JButton("返回");
 		btnNewButton.setBounds(50, 10, 100, 40);
@@ -337,6 +355,7 @@ public class PlayerRankingPanel extends JPanel {
 
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setViewportView(table);
+		scrollPane_1.setRowHeaderView(table0);
 		tabbedPane.addTab("球员排名", null, scrollPane_1, null);
 
 		panel.add(btnNewButton);

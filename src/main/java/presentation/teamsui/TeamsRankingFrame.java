@@ -60,6 +60,9 @@ public class TeamsRankingFrame {
 		}
 	};
 	
+	private Vector columnName0;
+	DefaultTableModel model0 = new DefaultTableModel();
+	
 	MouseListen listener = new MouseListen();
 	
 	private static BLController compute;
@@ -84,6 +87,20 @@ public class TeamsRankingFrame {
 		scrollPane.setViewportView(panel);
 		panel.setLayout(null);
 		
+		Vector rowDatas = new Vector();
+		columnName0 = new Vector();
+		columnName0.add("排名");
+		for(int i=0;i<30;i++){
+			Vector rowData = new Vector();
+			rowData.add((i+1)+"");
+			rowDatas.add(rowData);
+		}
+		JTable table0 = new JTable();
+		model0 = new DefaultTableModel(rowDatas,columnName0);
+		table0.setModel(model0);
+		table0.setPreferredScrollableViewportSize(new Dimension(50, 600));
+		table0.setRowHeight(70);
+		
 		table = new JTable();
 		table.setModel(model_1);
 		table.setRowSorter(new TableRowSorter<TableModel>(model_1));
@@ -98,6 +115,7 @@ public class TeamsRankingFrame {
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setViewportView(table);
+		scrollPane_1.setRowHeaderView(table0);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(100, 60, 800, 470);

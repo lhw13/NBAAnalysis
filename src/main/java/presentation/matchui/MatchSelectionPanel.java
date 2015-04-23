@@ -161,6 +161,7 @@ public class MatchSelectionPanel extends JPanel {
 		table = new JTable();
 		table.setModel(model_1);
 		table.addMouseListener(listener);
+		table.setShowGrid(false);
 		
 		scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(100, 100, 800, 400);

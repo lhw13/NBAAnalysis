@@ -105,7 +105,7 @@ public class MainFrame {
 	private static BLController compute;
 	
 	public static String selection1="得分";
-	public static String selection2="得分";
+	public static String selection2="胜率";
 	
 	public static String season="13-14";
 	public static int date=3;
@@ -909,7 +909,7 @@ public class MainFrame {
 		case MatchSelectionPanel: MatchSelectionPanel.update();break;
 		case PlayerRankingPanel: PlayerRankingPanel.updatePlayerRanking();break;
 		case TeamsInfoFrame: 
-			TeamsInfoFrame.updateTeam(TWPVO, "投篮命中数");
+			TeamsInfoFrame.updateTeam(TWPVO, "胜率");
 			TeamsInfoFrame.latestMatchs(teamNAME);
 			break;
 		case TeamsRankingFrame: TeamsRankingFrame.updataTeamsRanking();break;

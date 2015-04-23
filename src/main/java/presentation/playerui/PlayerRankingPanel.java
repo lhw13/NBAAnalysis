@@ -313,6 +313,7 @@ public class PlayerRankingPanel extends JPanel {
 		table.setRowSorter(sorter);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		table.setRowHeight(56);
+		table.setShowGrid(false);
 		
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(JLabel.CENTER);

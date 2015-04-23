@@ -64,7 +64,7 @@ public class TeamsInfoFrame extends JPanel{
 	private JScrollPane scrollPane_search;
 	private JComboBox<String> comboBox_1;
 	private JComboBox comboBox_2;
-	private static String season="13-14";
+	private static String season="12-13";
 	private static int date=0;
 	private static Vector columnName3;
 	private static DefaultTableModel model_3=new DefaultTableModel();
@@ -174,6 +174,7 @@ public class TeamsInfoFrame extends JPanel{
 		int[] width={100,200};
 		table.setColumnModel(getColumn(table, width));
 		table.updateUI();
+		table.setShowGrid(false);
 		
 		
 		scrollPane_5.setViewportView(table);
@@ -204,6 +205,7 @@ public class TeamsInfoFrame extends JPanel{
 		scrollPane_search.setViewportView(table_2);
 		
 		table_2.addMouseListener(listener_1);
+		table_2.setShowGrid(false);
 		
 		comboBox_1 = new JComboBox<String>();
 		comboBox_1.setBounds(500, 475, 150, 30);
@@ -351,6 +353,7 @@ public class TeamsInfoFrame extends JPanel{
 		table_1.setRowSorter(sorter);
 		table_1.setRowHeight(56);
 		table_1.addMouseListener(listener_2);
+		table_1.setShowGrid(false);
 		
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(JLabel.CENTER);
@@ -583,7 +586,9 @@ public class TeamsInfoFrame extends JPanel{
 		
 	}
 	
-	public static void updateTeam(TeamWithPlayersVO twpvo, String con) {
+	public static void updateTeam(TeamWithPlayersVO t, String con) {
+		compute = BLController.getInstance();
+		TeamWithPlayersVO twpvo = compute.getTeamAnalysis(t.getTeam().getAbbreviation());
 		MainFrame.TWPVO = twpvo;
 		ArrayList<PlayerVO> players = twpvo.getPlayers();
 		TeamVO tvo = twpvo.getTeam();

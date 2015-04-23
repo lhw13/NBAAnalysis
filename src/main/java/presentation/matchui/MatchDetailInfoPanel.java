@@ -79,6 +79,7 @@ public class MatchDetailInfoPanel extends JPanel {
 		table.setModel(model1);
 		int[] width={120,30,50,30,30,30,30,30,30,30,30,30,30,30,30};
 		table.setColumnModel(getColumn(table, width));
+		table.setShowGrid(false);
 		scrollPane_1.setViewportView(table);
 		
 		table.addMouseListener(listener_1);
@@ -102,6 +103,7 @@ public class MatchDetailInfoPanel extends JPanel {
 		table_1.setModel(model2);
 		int[] width1={120,30,50,30,30,30,30,30,30,30,30,30,30,30,30};
 		table_1.setColumnModel(getColumn(table_1, width1));
+		table_1.setShowGrid(false);
 		scrollPane_2.setViewportView(table_1);
 		
 		table_1.addMouseListener(listener_1);
@@ -121,6 +123,7 @@ public class MatchDetailInfoPanel extends JPanel {
 		table_2.setModel(model3);
 		int[] width2={40,30,80,50,30,30,30,30};
 		table_2.setColumnModel(getColumn(table_2, width2));
+		table_2.setShowGrid(false);
 		
 		scrollPane_3 = new JScrollPane();
 		scrollPane_3.setBounds(250, 10, 500, 50);
@@ -133,6 +136,7 @@ public class MatchDetailInfoPanel extends JPanel {
 		table_3.setColumnModel(getColumn(table_3, width3));
 		table_3.setBounds(250, 70, 500, 300);
 		table_3.setFont(new Font("微软雅黑", Font.BOLD, 13));
+		table_3.setShowGrid(false);
 		panelOfBottom.add(table_3);
 		
 		btnNewButton = new JButton("返回");

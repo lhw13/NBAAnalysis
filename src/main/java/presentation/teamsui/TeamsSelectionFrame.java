@@ -1124,7 +1124,7 @@ public class TeamsSelectionFrame {
 	public static void setTeamsInfo(String teamName) {
 		TeamsSelectionFrame.scrollPane.setVisible(false);
 		TeamsSelectionFrame.flag = false;
-		MainFrame.teamNAME = teamName; 
+		MainFrame.teamNAME = teamName;
         
 		compute = BLController.getInstance();
 		TeamWithPlayersVO twpvo = compute.getTeamAnalysis(teamName);
@@ -1132,6 +1132,7 @@ public class TeamsSelectionFrame {
 		if(twpvo!=null&&twpvo.getTeam()!=null) {
 			TeamsInfoFrame tip = new TeamsInfoFrame(twpvo);
 			MainFrame.frame.getContentPane().add(tip.scrollPane);
+			MainFrame.TWPVO = twpvo;
 			tip.updateTeam(twpvo, "胜率");
 			tip.latestMatchs(teamName);
 			MainFrame.frame.setTitle("NBA球队信息");

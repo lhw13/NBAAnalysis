@@ -38,6 +38,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import com.sun.prism.paint.Color;
+
 /*
  * 所有球队排名面板
  */
@@ -88,6 +90,7 @@ public class TeamsRankingFrame {
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		table.setRowHeight(70);
 		table.addMouseListener(listener);
+		table.setShowGrid(false);
 		
 		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
 		tcr.setHorizontalAlignment(JLabel.CENTER);
@@ -106,7 +109,7 @@ public class TeamsRankingFrame {
 		btnNewButton.setBounds(100, 10, 120, 30);
 		panel.add(btnNewButton);
 		
-		String[] names1 = new String[]{"","球队", "场数", "得分(场均)", "得分(总计)"};
+		String[] names1 = new String[]{"","球队", "场数", "胜率(场均)", "胜率(总计)"};
 		columnName1 = new Vector();
 		for(int i=0;i<names1.length;i++) {
 			columnName1.add(names1[i]);

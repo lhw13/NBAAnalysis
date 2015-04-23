@@ -104,6 +104,7 @@ public class MainFrame {
 	
 	private static BLController compute;
 	
+	public static String selection="胜率";
 	public static String selection1="得分";
 	public static String selection2="胜率";
 	
@@ -901,7 +902,7 @@ public class MainFrame {
 		}
 		return result;
 	}
-	 
+	
 	public static void refresh() {
 		switch(currentPanel) {
 		case PlayerInfoPanel: pip.refresh(pip.playerName); break;
@@ -909,7 +910,7 @@ public class MainFrame {
 		case MatchSelectionPanel: MatchSelectionPanel.update();break;
 		case PlayerRankingPanel: PlayerRankingPanel.updatePlayerRanking();break;
 		case TeamsInfoFrame: 
-			TeamsInfoFrame.updateTeam(TWPVO, "胜率");
+			TeamsInfoFrame.updateTeam(TWPVO, MainFrame.selection);
 			TeamsInfoFrame.latestMatchs(teamNAME);
 			break;
 		case TeamsRankingFrame: TeamsRankingFrame.updataTeamsRanking();break;

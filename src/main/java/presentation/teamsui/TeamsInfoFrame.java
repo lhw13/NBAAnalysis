@@ -82,7 +82,7 @@ public class TeamsInfoFrame extends JPanel{
 			return getValueAt(0, columnIndex).getClass();
 		}
 	};
-	private static String selection="胜率";
+	
 	
 	Vector columnName;
 	DefaultTableModel model = new DefaultTableModel();
@@ -369,158 +369,158 @@ public class TeamsInfoFrame extends JPanel{
 				String index =(String) comboBox.getSelectedItem();
 				switch(index){
 				case "胜率": 
-					selection="胜率";
+					MainFrame.selection="胜率";
 					columnName1.setElementAt("胜率(场均)", 4);
 					columnName1.setElementAt("胜率(总计)", 5);
 					updateTeam(twpvo, "胜率");
 					
 					break;
 				case "投篮出手数":
-					selection="投篮出手数";
+					MainFrame.selection="投篮出手数";
 					columnName1.setElementAt("投篮出手数(场均)", 4);
 					columnName1.setElementAt("投篮出手数(总计)", 5);
 					updateTeam(twpvo, "投篮出手数");
 					break;
 				case "三分命中数": 
-					selection="三分命中数";
+					MainFrame.selection="三分命中数";
 					columnName1.setElementAt("三分命中数(场均)", 4);
 					columnName1.setElementAt("三分命中数(总计)", 5);
 					updateTeam(twpvo, "三分命中数");
 					break;
 				case "三分出手数": 
-					selection="三分出手数";
+					MainFrame.selection="三分出手数";
 					columnName1.setElementAt("三分出手数(场均)", 4);
 					columnName1.setElementAt("三分出手数(总计)", 5);
 					updateTeam(twpvo, "三分出手数");
 					break;
 				case "罚球命中数": 
-					selection="罚球命中数";
+					MainFrame.selection="罚球命中数";
 					columnName1.setElementAt("罚球命中数(场均)", 4);
 					columnName1.setElementAt("罚球命中数(总计)", 5);
 					updateTeam(twpvo, "罚球命中数");
 					break;
 				case "罚球出手数": 
-					selection="罚球出手数";
+					MainFrame.selection="罚球出手数";
 					columnName1.setElementAt("罚球出手数(场均)", 4);
 					columnName1.setElementAt("罚球出手数(总计)", 5);
 					updateTeam(twpvo, "罚球出手数");
 					break;
 				case "进攻篮板": 
-					selection="进攻篮板";
+					MainFrame.selection="进攻篮板";
 					columnName1.setElementAt("进攻篮板(场均)", 4);
 					columnName1.setElementAt("进攻篮板(总计)", 5);
 					updateTeam(twpvo, "进攻篮板");
 					break;
 				case "防守篮板": 
-					selection="防守篮板";
+					MainFrame.selection="防守篮板";
 					columnName1.setElementAt("防守篮板(场均)", 4);
 					columnName1.setElementAt("防守篮板(总计)", 5);
 					updateTeam(twpvo, "防守篮板");
 					break;
 				case "总篮板": 
-					selection="总篮板";
+					MainFrame.selection="总篮板";
 					columnName1.setElementAt("总篮板(场均)", 4);
 					columnName1.setElementAt("总篮板(总计)", 5);
 					updateTeam(twpvo, "总篮板");
 					break;
 				case "助攻": 
-					selection="助攻";
+					MainFrame.selection="助攻";
 					columnName1.setElementAt("助攻(场均)", 4);
 					columnName1.setElementAt("助攻(总计)", 5);
 					updateTeam(twpvo, "助攻");
 					break;
 				case "抢断": 
-					selection="抢断";
+					MainFrame.selection="抢断";
 					columnName1.setElementAt("抢断(场均)", 4);
 					columnName1.setElementAt("抢断(总计)", 5);
 					updateTeam(twpvo, "抢断");
 					break;
 				case "盖帽": 
-					selection="盖帽";
+					MainFrame.selection="盖帽";
 					columnName1.setElementAt("盖帽(场均)", 4);
 					columnName1.setElementAt("盖帽(总计)", 5);
 					updateTeam(twpvo, "盖帽");
 					break;
 				case "失误": 
-					selection="失误";
+					MainFrame.selection="失误";
 					columnName1.setElementAt("失误(场均)", 4);
 					columnName1.setElementAt("失误(总计)", 5);
 					updateTeam(twpvo, "失误");
 					break;
 				case "犯规": 
-					selection="犯规";
+					MainFrame.selection="犯规";
 					columnName1.setElementAt("犯规(场均)", 4);
 					columnName1.setElementAt("犯规(总计)", 5);
 					updateTeam(twpvo, "犯规");
 					break;
 				case "得分": 
-					selection="得分";
+					MainFrame.selection="得分";
 					columnName1.setElementAt("得分(场均)", 4);
 					columnName1.setElementAt("得分(总计)", 5);
 					updateTeam(twpvo, "得分");
 					break;
 				case "投篮命中率": 
-					selection="投篮命中率";
+					MainFrame.selection="投篮命中率";
 					columnName1.setElementAt("投篮命中率(场均)", 4);
 					columnName1.setElementAt("投篮命中率(总计)", 5);
 					updateTeam(twpvo, "投篮命中率");
 					break;
 				case "三分命中率": 
-					selection="三分命中率";
+					MainFrame.selection="三分命中率";
 					columnName1.setElementAt("三分命中率(场均)", 4);
 					columnName1.setElementAt("三分命中率(总计)", 5);
 					updateTeam(twpvo, "三分命中率");
 					break;
 				case "罚球命中率": 
-					selection="罚球命中率";
+					MainFrame.selection="罚球命中率";
 					columnName1.setElementAt("罚球命中率(场均)", 4);
 					columnName1.setElementAt("罚球命中率(总计)", 5);
 					updateTeam(twpvo, "罚球命中率");
 					break;
 				case "投篮命中数": 
-					selection="投篮命中数";
+					MainFrame.selection="投篮命中数";
 					columnName1.setElementAt("投篮命中数(场均)", 4);
 					columnName1.setElementAt("投篮命中数(总计)", 5);
 					updateTeam(twpvo, "投篮命中数");
 					break;
 				case "进攻回合": 
-					selection="进攻回合";
+					MainFrame.selection="进攻回合";
 					columnName1.setElementAt("进攻回合(场均)", 4);
 					columnName1.setElementAt("进攻回合(总计)", 5);
 					updateTeam(twpvo, "进攻回合");
 					break;
 				case "进攻效率": 
-					selection="进攻效率";
+					MainFrame.selection="进攻效率";
 					columnName1.setElementAt("进攻效率(场均)", 4);
 					columnName1.setElementAt("进攻效率(总计)", 5);
 					updateTeam(twpvo, "进攻效率");
 					break;
 				case "防守效率": 
-				    selection="防守效率";
+					MainFrame.selection="防守效率";
 					columnName1.setElementAt("防守效率(场均)", 4);
 					columnName1.setElementAt("防守效率(总计)", 5);
 					updateTeam(twpvo, "防守效率");
 					break;
 				case "进攻篮板效率": 
-					selection="进攻篮板效率";
+					MainFrame.selection="进攻篮板效率";
 					columnName1.setElementAt("进攻篮板效率(场均)", 4);
 					columnName1.setElementAt("进攻篮板效率(总计)", 5);
 					updateTeam(twpvo, "进攻篮板效率");
 					break;
 				case "防守篮板效率": 
-					selection="防守篮板效率";
+					MainFrame.selection="防守篮板效率";
 					columnName1.setElementAt("防守篮板效率(场均)", 4);
 					columnName1.setElementAt("防守篮板效率(总计)", 5);
 					updateTeam(twpvo, "防守篮板效率");
 					break;
 				case "抢断效率": 
-					selection="抢断效率";
+					MainFrame.selection="抢断效率";
 					columnName1.setElementAt("抢断效率(场均)", 4);
 					columnName1.setElementAt("抢断效率(总计)", 5);
 					updateTeam(twpvo, "抢断效率");
 					break;
 				case "助攻率": 
-					selection="助攻率";
+					MainFrame.selection="助攻率";
 					columnName1.setElementAt("助攻率(场均)", 4);
 					columnName1.setElementAt("助攻率(总计)", 5);
 					updateTeam(twpvo, "助攻率");

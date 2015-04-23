@@ -1112,6 +1112,7 @@ public class TeamsSelectionFrame {
 			MainFrame.frame.getContentPane().add(tip.scrollPane);
 			tip.updateTeam(twpvo, "胜率");
 			tip.latestMatchs(teamName);
+			MainFrame.selection = "胜率";
 			MainFrame.frame.setTitle("NBA球队信息");
 			MainFrame.backPanels.add(MainFrame.currentPanel);
 			MainFrame.currentPanel = Panels.TeamsInfoFrame;
@@ -1135,6 +1136,7 @@ public class TeamsSelectionFrame {
 			MainFrame.TWPVO = twpvo;
 			tip.updateTeam(twpvo, "胜率");
 			tip.latestMatchs(teamName);
+			MainFrame.selection = "胜率";
 			MainFrame.frame.setTitle("NBA球队信息");
 			MainFrame.backPanels.add(MainFrame.currentPanel);
 			MainFrame.currentPanel = Panels.TeamsInfoFrame;

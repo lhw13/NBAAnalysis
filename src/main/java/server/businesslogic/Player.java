@@ -459,7 +459,7 @@ public  final class Player implements Cloneable{
 	}
 
 	public double getOffendReboundEfficient() {
-		double divisor = (double) (teamOffensiveRebound + teamOffensiveRebound2);
+		double divisor = (double) (teamOffensiveRebound + teamDefensiveRebound2);
 		if(divisor==0 || playTime==0)
 			return 0;
 		return (double) offensiveRebound * ((double) teamPlayTime / 5)
@@ -468,7 +468,7 @@ public  final class Player implements Cloneable{
 	}
 
 	public double getDefendReboundEfficient() {
-		double divisor = (double) (teamDefensiveRebound + teamDefensiveRebound2);
+		double divisor = (double) (teamDefensiveRebound + teamOffensiveRebound2);
 		if(divisor==0 || playTime==0)
 			return 0;
 		return (double) defensiveRebound * ((double) teamPlayTime / 5)

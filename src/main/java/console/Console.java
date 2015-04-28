@@ -68,7 +68,12 @@ public class Console {
 				case "-king":king = true; 
 							 condition = args[++i];
 							 timeCon = args[++i];
-							 n=5; 
+							 boolean isN=false;
+							 for(int j=1;j<args.length;j++)	{
+								 if(args[j].equals("-n")) {isN = true;break;}
+							 }
+							 if(!isN)	
+							 	n=5; 
 							 break;
 				
 				case "-sort":	sort = true;

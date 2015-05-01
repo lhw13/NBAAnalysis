@@ -15,7 +15,7 @@ public class OneExcuteTest {
 	{
 		PrintStream p = null;
 		try {
-			p = new PrintStream(new File("test0.txt"));
+			p = new PrintStream(new File("OneExcutetest0.txt"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -31,7 +31,7 @@ public class OneExcuteTest {
 		String ss[] = {"-team"};
 		PrintStream p = null;
 		try {
-			p = new PrintStream(new File("test1.txt"));
+			p = new PrintStream(new File("OneExcutetest1.txt"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -46,7 +46,7 @@ public class OneExcuteTest {
 		String ss[] = {"-team","hot","assist","-n","5"};
 		PrintStream p = null;
 		try {
-			p = new PrintStream(new File("test2.txt"));
+			p = new PrintStream(new File("OneExcutetest2.txt"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,7 +61,7 @@ public class OneExcuteTest {
 		String ss[] = {"-team","-total","-all","-n","10","-sort","shot.desc"};
 		PrintStream p = null;
 		try {
-			p = new PrintStream(new File("test3.txt"));
+			p = new PrintStream(new File("OneExcutetest3.txt"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,7 +76,7 @@ public class OneExcuteTest {
 		String ss[] = {"-team","-high","-n","5","-sort","stealEfficient.asc"};
 		PrintStream p = null;
 		try {
-			p = new PrintStream(new File("test4.txt"));
+			p = new PrintStream(new File("OneExcutetest4.txt"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -91,7 +91,7 @@ public class OneExcuteTest {
 		String ss[] = {"-team","-all","-total"};
 		PrintStream p = null;
 		try {
-			p = new PrintStream(new File("testAllTeam.txt"));
+			p = new PrintStream(new File("OneExcutetestAllTeam.txt"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -106,7 +106,7 @@ public class OneExcuteTest {
 		String ss[] = {"-player","-all","n","50","-total"};
 		PrintStream p = null;
 		try {
-			p = new PrintStream(new File("testAllPlayer.txt"));
+			p = new PrintStream(new File("OneExcutetestAllPlayer.txt"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -122,7 +122,7 @@ public class OneExcuteTest {
 		
 		PrintStream p = null;
 		try {
-			p = new PrintStream(new File("test11.txt"));
+			p = new PrintStream(new File("OneExcutetest11.txt"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -139,7 +139,7 @@ public class OneExcuteTest {
 		
 		PrintStream p = null;
 		try {
-			p = new PrintStream(new File("test12.txt"));
+			p = new PrintStream(new File("OneExcutetest12.txt"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -155,7 +155,7 @@ public class OneExcuteTest {
 		
 		PrintStream p = null;
 		try {
-			p = new PrintStream(new File("test13.txt"));
+			p = new PrintStream(new File("OneExcutetest13.txt"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -171,7 +171,7 @@ public class OneExcuteTest {
 		
 		PrintStream p = null;
 		try {
-			p = new PrintStream(new File("test14.txt"));
+			p = new PrintStream(new File("OneExcutetest14.txt"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -186,7 +186,7 @@ public class OneExcuteTest {
 		
 		PrintStream p = null;
 		try {
-			p = new PrintStream(new File("test15.txt"));
+			p = new PrintStream(new File("OneExcutetest15.txt"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -201,7 +201,7 @@ public class OneExcuteTest {
 		
 		PrintStream p = null;
 		try {
-			p = new PrintStream(new File("test16.txt"));
+			p = new PrintStream(new File("OneExcutetest16.txt"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -216,7 +216,7 @@ public class OneExcuteTest {
 		
 		PrintStream p = null;
 		try {
-			p = new PrintStream(new File("test17.txt"));
+			p = new PrintStream(new File("OneExcutetest17.txt"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

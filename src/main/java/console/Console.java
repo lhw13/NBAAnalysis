@@ -44,7 +44,9 @@ public class Console {
 	
 	
 	public void player(PrintStream out, String[] args) {
-		ArrayList<Player> players = BLController.getInstance().getPlayers();
+		if(bl==null)
+			bl = BLController.getInstance();
+		ArrayList<Player> players = bl.getPlayers();
 		List<Player> playerList = players;
 		List<Comparator<Player>> sortConsList = new ArrayList<Comparator<Player>>();
 		int n=50;//default
@@ -97,7 +99,7 @@ public class Console {
 			sortCons = new String[1];
 			sortCons[0] = condition+".desc";
 			if(timeCon.equals("season"))sort = true;
-			else playerList = BLController.getInstance().getDailyHotPlayer(condition);
+			else playerList = bl.getDailyHotPlayer(condition);
 		}
 		
 		if(filter){
@@ -289,7 +291,7 @@ public class Console {
 					//out.println(playerList.get(i).toVO());
 				}
 			} else if(hot) {
-				ArrayList<Player> list = BLController.getInstance().getBestPromotionForConsole(condition, n);
+				ArrayList<Player> list = bl.getBestPromotionForConsole(condition, n);
 				for(int i=0;i<n && i<list.size();i++)
 				{
 					Player p = list.get(i);
@@ -325,8 +327,10 @@ public class Console {
 	
 	}
 	public void team(PrintStream out, String[] args) {
+		if(bl==null)
+			bl = BLController.getInstance();
 		Comparator<Team> teamByName = Comparators.TeamByNameAsc;
-		ArrayList<Team> teams = BLController.getInstance().getTeams();
+		ArrayList<Team> teams = bl.getTeams();
 		//注意是Team 不是 TeamVO
 		boolean total = false;
 		int n=30;

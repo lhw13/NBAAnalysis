@@ -213,6 +213,19 @@ public  final class Player implements Cloneable{
 		computePromotion();
 		newData=false;
 		active = (appearance>0);
+		
+		//compute some high information to improve performance
+		double divisor =  (teamshot + 0.44 * teamFreeshot + teamMiss);
+		if(divisor==0 || playTime==0)
+			frequency = 0;
+		frequency = (double) (chuShou + 0.44 * freeshot + fault)
+				* ((double) teamPlayTime / 5) / playTime
+				/ divisor;
+		gmSc = (score + 0.4 * (double) hit - 0.7 * (double) chuShou - 0.4
+				* (double) (freeshot - freeHit) + 0.7
+				* (double) offensiveRebound + 0.3 * (double) defensiveRebound
+				+ steal + 0.7 * (double) assist + 0.7 * (double) blockShot - 0.4
+				* (double) foul - fault)/appearance;
 		return true;
 	}
 	
@@ -428,12 +441,9 @@ public  final class Player implements Cloneable{
 				- (freeshot - freeHit) - fault)/appearance;
 	}
 
+	double gmSc;
 	public double getGmSc() {
-		return (score + 0.4 * (double) hit - 0.7 * (double) chuShou - 0.4
-				* (double) (freeshot - freeHit) + 0.7
-				* (double) offensiveRebound + 0.3 * (double) defensiveRebound
-				+ steal + 0.7 * (double) assist + 0.7 * (double) blockShot - 0.4
-				* (double) foul - fault)/appearance;
+		return gmSc;
 	}
 
 	public double getRealShot() {
@@ -516,21 +526,9 @@ public  final class Player implements Cloneable{
 				/ divisor;
 	}
 
+	double frequency;
 	public double getFrequency() {
-		double divisor =  (teamshot + 0.44 * teamFreeshot + teamMiss);
-		if(divisor==0 || playTime==0)
-			return 0;
-/*		if(player.getName().equals("Kevin Durant") || player.getName().equals("DeAndre Liggins"))
-		{
-			System.out.println(player.getName());
-			System.out.println((double) (chuShou + 0.44 * freeshot + fault)
-					* ((double) teamPlayTime / 5) / playTime
-					/ divisor);
-			//System.out.println(toVO().getUseRate());x
-		}*/
-		return (double) (chuShou + 0.44 * freeshot + fault)
-				* ((double) teamPlayTime / 5) / playTime
-				/ divisor;
+		return frequency;
 	}
 
 	public boolean isAnalysed() {

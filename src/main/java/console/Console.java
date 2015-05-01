@@ -244,32 +244,11 @@ public class Console {
 						case "frequency": sortConsList.add(compareFrequencyAsc);break;
 						}				
 					} else {//降序
-						switch(temps[0]) {
-						case "point": 
-						case "rebound": 
-						case "assist":					
-						case "blockShot": 
-						case "steal": 
-						case "foul": 
-						case "fault": 
-						case "minute": System.out.println(temps[0]);sortConsList.add(Comparators.getPlayerAvgComparator(temps[0]));break;
-						case "efficient": 
-						case "shot": 
-						case "three": 
-						case "penalty": 
-						case "doubleTwo": 
-						case "realShot": 
-						case "GmSc": 
-						case "shotEfficient": 
-						case "reboundEfficient": 
-						case "offendReboundEfficient": ;
-						case "defendReboundEfficient": 
-						case "assistEfficient": 
-						case "stealEfficient": 
-						case "blockShotEfficient": 
-						case "faultEfficient": 
-						case "frequency": sortConsList.add(Comparators.getPlayerComparator(temps[0]));break;
-						}
+						String s = temps[0];
+						Comparator<Player> c = Comparators.getPlayerAvgComparator(s);
+						if(c==null)
+							c = Comparators.getPlayerComparator(s);
+						sortConsList.add(c);
 					}
 				}
 				

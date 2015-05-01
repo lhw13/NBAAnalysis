@@ -104,7 +104,7 @@ public class NewConsoleTest {
 	public void testAllPlayer()
 	{
 		Console c = new Console();
-		String ss[] = {"-player","-all","n","50","-total"};
+		String ss[] = {"-player","-all","-n","50","-total"};
 		PrintStream p = null;
 		try {
 			p = new PrintStream(new File("testAllPlayer.txt"));

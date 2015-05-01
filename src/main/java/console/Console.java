@@ -23,20 +23,28 @@ import org.apache.commons.collections.Transformer;
 
 public class Console {
 	public static String path="./conf/nba";
-	BLController bl = BLController.getInstance();
+	BLController bl = null;
+	//BLController bl = BLController.getInstance();
 	public void execute(PrintStream out, String[] args){
 		//for detailed information, see http://dongwei.iteye.com/blog/230458
-		if(args[0].equals("-team"))
-			team(out,args);
-		if(args[0].equals("-player"))
-			player(out,args);
-		if(args[0].equals("--datasource"))
-			path=args[1];
+		try {
+			if(args[0].equals("-team"))
+				team(out,args);
+			if(args[0].equals("-player"))
+				player(out,args);
+			if(args[0].equals("--datasource"))
+			{
+				path=args[1];
+				bl = BLController.getInstance();
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
 	public void player(PrintStream out, String[] args) {
-		ArrayList<Player> players = bl.getPlayers();
+		ArrayList<Player> players = BLController.getInstance().getPlayers();
 		List<Player> playerList = players;
 		List<Comparator<Player>> sortConsList = new ArrayList<Comparator<Player>>();
 		int n=50;//default
@@ -89,7 +97,7 @@ public class Console {
 			sortCons = new String[1];
 			sortCons[0] = condition+".desc";
 			if(timeCon.equals("season"))sort = true;
-			else playerList = bl.getDailyHotPlayer(condition);
+			else playerList = BLController.getInstance().getDailyHotPlayer(condition);
 		}
 		
 		if(filter){
@@ -281,7 +289,7 @@ public class Console {
 					//out.println(playerList.get(i).toVO());
 				}
 			} else if(hot) {
-				ArrayList<Player> list = bl.getBestPromotionForConsole(condition, n);
+				ArrayList<Player> list = BLController.getInstance().getBestPromotionForConsole(condition, n);
 				for(int i=0;i<n && i<list.size();i++)
 				{
 					Player p = list.get(i);

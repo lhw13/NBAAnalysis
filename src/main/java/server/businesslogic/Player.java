@@ -226,10 +226,11 @@ public  final class Player implements Cloneable{
 				* (double) offensiveRebound + 0.3 * (double) defensiveRebound
 				+ steal + 0.7 * (double) assist + 0.7 * (double) blockShot - 0.4
 				* (double) foul - fault)/appearance;
+		updateTeam();
 		return true;
 	}
 	
-	public void updateTeam() {
+	private void updateTeam() {
 		String teamAb = thisTeam.get(thisTeam.size()-1).getAbbreviation();
 		BLController bl = BLController.getInstance();
 		if(!teamAb.equals(team.getAbbreviation()))

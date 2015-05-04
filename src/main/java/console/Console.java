@@ -96,8 +96,11 @@ public class Console {
 		if(king) {	
 			sortCons = new String[1];
 			sortCons[0] = condition+".desc";
-			if(timeCon.equals("season"))sort = true;
-			else playerList = BLController.getInstance().getDailyHotPlayer(condition);
+			if(timeCon.equals("-season"))sort = true;
+			else {
+				System.out.println("!!!!");
+				playerList = BLController.getInstance().getDailyHotPlayer(condition);
+			}
 		}
 		
 		if(filter){
@@ -244,6 +247,7 @@ public class Console {
 					} else {//降序
 						switch(temps[0]) {
 						case "point": 
+						case "score":
 						case "rebound": 
 						case "assist":					
 						case "blockShot": 

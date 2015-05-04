@@ -213,10 +213,12 @@ public  final class Player implements Cloneable{
 		computePromotion();
 		newData=false;
 		active = (appearance>0);
+		
+		updateTeam();
 		return true;
 	}
 	
-	public void updateTeam() {
+	private void updateTeam() {
 		String teamAb = thisTeam.get(thisTeam.size()-1).getAbbreviation();
 		BLController bl = BLController.getInstance();
 		if(!teamAb.equals(team.getAbbreviation()))
@@ -318,7 +320,7 @@ public  final class Player implements Cloneable{
 		pni.setEfficiency(getEfficient());
 		pni.setFault(fault);
 		pni.setFoul(foul);
-		pni.setMinute(playTime/60);
+		pni.setMinute(getMinute());
 		pni.setName(player.getName());
 		pni.setNumOfGame(appearance);
 		pni.setOffend(offensiveRebound);
@@ -342,7 +344,7 @@ public  final class Player implements Cloneable{
 		pni.setEfficiency(getEfficient());
 		pni.setFault((double)fault/appearance);
 		pni.setFoul((double)foul/appearance);
-		pni.setMinute((double)playTime/60/appearance);
+		pni.setMinute(getMinute()/appearance);
 		pni.setName(player.getName());
 		pni.setNumOfGame(appearance);
 		pni.setOffend((double)offensiveRebound/appearance);
@@ -424,11 +426,16 @@ public  final class Player implements Cloneable{
 	}
 
 	public double getEfficient() {
+		if(appearance==0)
+			return 0;
 		return (double)((score + rebound + assist + steal + blockShot) - (chuShou - hit)
 				- (freeshot - freeHit) - fault)/appearance;
 	}
 
+
 	public double getGmSc() {
+		if(appearance==0)
+			return 0;
 		return (score + 0.4 * (double) hit - 0.7 * (double) chuShou - 0.4
 				* (double) (freeshot - freeHit) + 0.7
 				* (double) offensiveRebound + 0.3 * (double) defensiveRebound
@@ -520,14 +527,6 @@ public  final class Player implements Cloneable{
 		double divisor =  (teamshot + 0.44 * teamFreeshot + teamMiss);
 		if(divisor==0 || playTime==0)
 			return 0;
-/*		if(player.getName().equals("Kevin Durant") || player.getName().equals("DeAndre Liggins"))
-		{
-			System.out.println(player.getName());
-			System.out.println((double) (chuShou + 0.44 * freeshot + fault)
-					* ((double) teamPlayTime / 5) / playTime
-					/ divisor);
-			//System.out.println(toVO().getUseRate());x
-		}*/
 		return (double) (chuShou + 0.44 * freeshot + fault)
 				* ((double) teamPlayTime / 5) / playTime
 				/ divisor;
@@ -578,7 +577,7 @@ public  final class Player implements Cloneable{
 	}
 	
 	public double getMinute() {
-		return playTime/60;
+		return (double)playTime/60;
 	}
 
 	public int getHit() {

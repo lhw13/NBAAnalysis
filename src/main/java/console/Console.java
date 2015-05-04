@@ -44,7 +44,9 @@ public class Console {
 	
 	
 	public void player(PrintStream out, String[] args) {
-		ArrayList<Player> players = BLController.getInstance().getPlayers();
+		if(bl==null)
+			bl = BLController.getInstance();
+		ArrayList<Player> players = bl.getPlayers();
 		List<Player> playerList = players;
 		List<Comparator<Player>> sortConsList = new ArrayList<Comparator<Player>>();
 		int n=50;//default
@@ -101,6 +103,7 @@ public class Console {
 				System.out.println("!!!!");
 				playerList = BLController.getInstance().getDailyHotPlayer(condition);
 			}
+
 		}
 		
 		if(filter){
@@ -112,7 +115,8 @@ public class Console {
 			                    public boolean evaluate(Object arg0) {
 			                    	Player p = (Player) arg0;
 			                    	switch(temps[0]){
-			                    	case "position": return temps[1].equals(p.getPosition());
+			                    	case "position": 
+			                    		return handleThePosition(temps[1], p.getPosition());
 			                    	case "league": return temps[1].equals(p.getLeague());
 			                    	case "age": 
 			                    		switch(temps[1]){
@@ -272,6 +276,11 @@ public class Console {
 						case "faultEfficient": 
 						case "frequency": sortConsList.add(Comparators.getPlayerComparator(temps[0]));break;
 						}
+						String s = temps[0];
+						Comparator<Player> c = Comparators.getPlayerAvgComparator(s);
+						if(c==null)
+							c = Comparators.getPlayerComparator(s);
+						sortConsList.add(c);
 					}
 				}
 				
@@ -293,7 +302,7 @@ public class Console {
 					//out.println(playerList.get(i).toVO());
 				}
 			} else if(hot) {
-				ArrayList<Player> list = BLController.getInstance().getBestPromotionForConsole(condition, n);
+				ArrayList<Player> list = bl.getBestPromotionForConsole(condition, n);
 				for(int i=0;i<n && i<list.size();i++)
 				{
 					Player p = list.get(i);
@@ -329,8 +338,10 @@ public class Console {
 	
 	}
 	public void team(PrintStream out, String[] args) {
+		if(bl==null)
+			bl = BLController.getInstance();
 		Comparator<Team> teamByName = Comparators.TeamByNameAsc;
-		ArrayList<Team> teams = BLController.getInstance().getTeams();
+		ArrayList<Team> teams = bl.getTeams();
 		//注意是Team 不是 TeamVO
 		boolean total = false;
 		int n=30;
@@ -1024,4 +1035,36 @@ public class Console {
         };  
         Collections.sort(list, cmp);  
     }
+	
+	public boolean handleThePosition(String temp, String position){
+		switch(temp){
+		case "F":
+			if(position.equals("F")||position.equals("F-C")||position.equals("F-G")||
+					position.equals("C-F")||position.equals("G-F")){
+				return true;
+			}
+			else{
+				return false;
+			}
+		case "C":
+			if(position.equals("C")||position.equals("C-F")||position.equals("C-G")||
+					position.equals("F-C")||position.equals("G-C")){
+				return true;
+			}
+			else{
+				return false;
+			}
+		case "G":
+			if(position.equals("G")||position.equals("G-C")||position.equals("G-F")||
+					position.equals("C-G")||position.equals("F-G")){
+				return true;
+			}
+			else{
+				return false;
+			}
+		default:
+			return false;
+		}
+		
+	}
 }

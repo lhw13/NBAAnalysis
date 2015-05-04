@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
-Class-Path: lib/testData.jar lib/swingset3_beautyeye.jar lib/commons-collections-3.2.1/commons-collections-3.2.1.jar 
+Class-Path: libs/testData.jar libs/swingset3_beautyeye.jar libs/commons-collections-3.2.1/commons-collections-3.2.1.jar 
 Main-Class: presentation.mainui.MainFrame
 

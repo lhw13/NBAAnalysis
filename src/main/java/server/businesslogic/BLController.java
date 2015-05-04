@@ -283,7 +283,8 @@ public final class BLController implements BLService {
 		for (int i = 0; i < matches.size(); i++) {
 			MatchPO mttemp = matches.get(i);
 			boolean theSeason = mttemp.getSeason().compareTo(season)==0;
-			boolean theDay = mttemp.getDate().equals(day);
+			Calendar tempc = mttemp.getDate();
+			boolean theDay = (day.get(Calendar.YEAR)==tempc.get(Calendar.YEAR) && day.get(Calendar.MONTH)==tempc.get(Calendar.MONTH) && day.get(Calendar.DAY_OF_MONTH)==tempc.get(Calendar.DAY_OF_MONTH));
 			ScorePO finalTemp = mttemp.getFinalScore();
 			ArrayList<ScorePO> scoresTemp = mttemp.getScores();
                         int size = scoresTemp.size();

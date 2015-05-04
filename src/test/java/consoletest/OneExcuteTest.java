@@ -20,8 +20,7 @@ public class OneExcuteTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//String ss[] = {"-player","-filter","position.F,league.West"};
-		String ss[] = {"-player","-king","assist","-daily"};
+		String ss[] = {"-player","-hot","assist","-n","5"};
 		c.execute(p, ss);
 	}
 	

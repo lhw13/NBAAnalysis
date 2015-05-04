@@ -111,7 +111,8 @@ public class Console {
 			                    public boolean evaluate(Object arg0) {
 			                    	Player p = (Player) arg0;
 			                    	switch(temps[0]){
-			                    	case "position": return temps[1].equals(p.getPosition());
+			                    	case "position": 
+			                    		return handleThePosition(temps[1], p.getPosition());
 			                    	case "league": return temps[1].equals(p.getLeague());
 			                    	case "age": 
 			                    		switch(temps[1]){
@@ -1003,4 +1004,36 @@ public class Console {
         };  
         Collections.sort(list, cmp);  
     }
+	
+	public boolean handleThePosition(String temp, String position){
+		switch(temp){
+		case "F":
+			if(position.equals("F")||position.equals("F-C")||position.equals("F-G")||
+					position.equals("C-F")||position.equals("G-F")){
+				return true;
+			}
+			else{
+				return false;
+			}
+		case "C":
+			if(position.equals("C")||position.equals("C-F")||position.equals("C-G")||
+					position.equals("F-C")||position.equals("G-C")){
+				return true;
+			}
+			else{
+				return false;
+			}
+		case "G":
+			if(position.equals("G")||position.equals("G-C")||position.equals("G-F")||
+					position.equals("C-G")||position.equals("F-G")){
+				return true;
+			}
+			else{
+				return false;
+			}
+		default:
+			return false;
+		}
+		
+	}
 }

@@ -47,6 +47,9 @@ public  final class Team {
 	int score = 0;
 	int win = 0;// 胜出场数
 	int playTime = 0;// 比赛时间
+	
+	double offendRound = 0;
+	double defendRound = 0;
 
 	// opponent's data
 	int hit2 = 0;// 命中
@@ -195,6 +198,7 @@ public  final class Team {
 				win2++;
 		}
 		}
+		//increment
 		else
 		{
 			int size = thisTeamNew.size();
@@ -222,7 +226,7 @@ public  final class Team {
 
 	private void add(TeamInMatches tim) {// simple addition to each
 											// corresponding domain
-		tim.computeTotal();
+		//tim.computeTotal();
 		hit += tim.getHit();
 		chuShou += tim.getShot();
 		thirdHit += tim.getThirdHit();
@@ -238,30 +242,27 @@ public  final class Team {
 		fault += tim.getMiss();
 		foul += tim.getFoul();
 		playTime += tim.getPlayTime();
+		offendRound += tim.getOffendRound();
 		// score will be dealt in other place
 	}
 
 	private void addOpponent(TeamInMatches tim) {
-		ArrayList<PlayerInMatchesPO> players = tim.getTeamInMatchespo()
-				.getPlayers();
-		for (int i = 0; i < players.size(); i++) {
-			PlayerInMatchesPO player = players.get(i);
-			hit2 += player.getHit();
-			shot2 += player.getShot();
-			thirdHit2 += player.getThirdHit();
-			thirdshot2 += player.getThirdshot();
-			freeHit2 += player.getFreeHit();
-			freeshot2 += player.getFreeshot();
-			offensiveRebound2 += player.getOffensiveRebound();
-			defensiveRebound2 += player.getDefensiveRebound();
-			totalRebound2 += player.getTotalRebound();
-			assist2 += player.getAssist();
-			steal2 += player.getSteal();
-			block2 += player.getBlock();
-			miss2 += player.getMiss();
-			foul2 += player.getFoul();
+			hit2 += tim.getHit();
+			shot2 += tim.getShot();
+			thirdHit2 += tim.getThirdHit();
+			thirdshot2 += tim.getThirdshot();
+			freeHit2 += tim.getFreeHit();
+			freeshot2 += tim.getFreeshot();
+			offensiveRebound2 += tim.getOffensiveRebound();
+			defensiveRebound2 += tim.getDefensiveRebound();
+			totalRebound2 += tim.getTotalRebound();
+			assist2 += tim.getAssist();
+			steal2 += tim.getSteal();
+			block2 += tim.getBlock();
+			miss2 += tim.getMiss();
+			foul2 += tim.getFoul();
+			defendRound += tim.getOffendRound();
 			// score will be dealt in other place
-		}
 	}
 
 	private double getHitRate() {
@@ -285,13 +286,7 @@ public  final class Team {
 	}
 
 	public double getOffendRound() {// 进攻回合
-		return chuShou
-				+ 0.4
-				* freeshot
-				- 1.07
-				* ((double) offendRebound
-						/ (offendRebound + defensiveRebound2) * getLost())
-				+ 1.07 * fault;
+		return offendRound;
 	}
 
 	public double getOffendEfficient() {
@@ -299,13 +294,7 @@ public  final class Team {
 	}
 
 	public double getDefendRound() {// whether it's right?
-		return shot2
-				+ 0.4
-				* freeshot2
-				- 1.07
-				* ((double) offensiveRebound2
-						/ (offensiveRebound2 + defendRebound) * getLost2())
-				+ 1.07 * miss2;
+		return defendRound;
 	}
 
 	public double getDefendEfficient() {

@@ -303,9 +303,15 @@ public final class BLController implements BLService {
 					finalTemp.getTeam2(), scores2, finalTemp.getTeam2()
 							- finalTemp.getTeam1());
 
+			timtemp1.setTeamInMatches2(timtemp2);
+			timtemp2.setTeamInMatches2(timtemp1);
 			// to handle dirty data
 			timtemp1.clean();
 			timtemp2.clean();
+			timtemp1.computeTotal();
+			timtemp2.computeTotal();
+			timtemp1.computeRound();
+			timtemp2.computeRound();
 
 			// put some data in team 1
 			String ab = timtemp1.getAbbreviation();

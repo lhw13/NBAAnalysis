@@ -25,6 +25,7 @@ public final  class TeamInMatches {
 	}
 
 	TeamInMatchesPO teamInMatchespo;
+	TeamInMatches teamInMatches2;
 	int finalScore;
 	ArrayList<Integer> scores;
 	int win;
@@ -46,6 +47,8 @@ public final  class TeamInMatches {
 	int foul = 0;
 	int score = 0;
 	int playTime = 0;
+	
+	double offendRound = 0;
 
 	public void computeTotal() {// sum all the players' data as the team data
 		ArrayList<PlayerInMatchesPO> players = getPlayers();
@@ -68,6 +71,16 @@ public final  class TeamInMatches {
 			score += player.getScore();
 			playTime += player.getPlayTime();
 		}
+	}
+	
+	public void computeRound() {
+		offendRound = shot
+				+ 0.4
+				* freeshot
+				- 1.07
+				* ((double) offensiveRebound
+						/ (offensiveRebound + teamInMatches2.getDefensiveRebound()) * (shot-hit))
+				+ 1.07 * miss;
 	}
 
 	public void clean() {// deal with dirty or null data
@@ -203,5 +216,13 @@ public final  class TeamInMatches {
 
 	public int getPlayTime() {
 		return playTime;
+	}
+	
+	public double getOffendRound() {
+		return offendRound;
+	}
+
+	public void setTeamInMatches2(TeamInMatches teamInMatches2) {
+		this.teamInMatches2 = teamInMatches2;
 	}
 }

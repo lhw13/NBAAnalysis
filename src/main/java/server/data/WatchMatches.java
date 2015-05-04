@@ -36,7 +36,7 @@ public  final class WatchMatches implements Runnable {
 		                	String name= event.context().toString();
 		                	File f=new File(path+name);
 		                	MatchesData.add(f);
-		                	MainFrame.refresh();
+		                	//MainFrame.refresh();
 		                	a='n';//事件归元
 		            		}
 		            		else{

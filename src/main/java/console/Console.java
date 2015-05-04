@@ -13,13 +13,7 @@ import server.businesslogic.Team;
 import test.data.PlayerHotInfo;
 import test.data.PlayerKingInfo;
 import test.data.TeamHotInfo;
-
-
 import vo.PlayerVO;
-
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.Predicate;
-import org.apache.commons.collections.Transformer;
 
 public class Console {
 	public static String path="./conf/nba";
@@ -99,64 +93,22 @@ public class Console {
 			sortCons = new String[1];
 			sortCons[0] = condition+".desc";
 			if(timeCon.equals("-season"))sort = true;
-			else {
-				System.out.println("!!!!");
-				playerList = BLController.getInstance().getDailyHotPlayer(condition);
-			}
-
+			else playerList = bl.getDailyHotPlayer(condition);
 		}
 		
 		if(filter){
 			for(String temp : filterCons) {//遍历所有排序命令
 			    final String[] temps = temp.split("\\.");
 			    if(!temps[1].equals("All")){
-			    	playerList = (List<Player>) CollectionUtils.select(playerList,
-			                new Predicate() {
-			                    public boolean evaluate(Object arg0) {
-			                    	Player p = (Player) arg0;
-			                    	switch(temps[0]){
-			                    	case "position": 
-			                    		return handleThePosition(temps[1], p.getPosition());
-			                    	case "league": return temps[1].equals(p.getLeague());
-			                    	case "age": 
-			                    		switch(temps[1]){
-			                    		case "<=22": 
-			                    			if(p.getAge()<=22){
-			                    				return true;
-			                    			}
-			                    			break;
-			                    		case "22<X<=25": 
-			                    			if(22<p.getAge() && p.getAge()<=25){
-			                    				return true;
-			                    			}
-			                    			break;
-			                    		case "25<X<=30":
-			                    			if(25<p.getAge() && p.getAge()<=30){
-			                    				return true;
-			                    			}
-			                    			break;
-			                    		case ">30": 
-			                    			if(p.getAge()>30){
-			                    				return true;
-			                    			}
-			                    			break;
-			                    		}
-			                    	default: return false;
-			                    	}
-			                        
-			                    }
-			                });
-			    	playerList = (ArrayList<Player>) CollectionUtils.collect(
-							playerList, new Transformer() {
-			                    public Object transform(Object arg0) {
-			                    	Player p = (Player) arg0;
-			                        return p;
-			                    }
-			                });
+			    	ArrayList<Player> result=new ArrayList<Player>();
+			    	for(int i=0;i<playerList.size();i++) {
+			                    Player p = playerList.get(i);
+			                    if(satisfy(temps,p))
+			                        result.add(p);
+			                }
+			    	playerList = result;
 			    }
-				
 			}
-			
 		}
 		
 		if(total) {//返回的数据是总数据
@@ -204,13 +156,11 @@ public class Console {
 					sortConsList.add(Comparators.comparePointDesc);
 				} 
 			}
-			if(!timeCon.equals("daily")) {
+			if(!timeCon.equals("-daily")) {
 				sortConsList.add(comparePlayerNameAsc);
 				sort(playerList, sortConsList);
 			}
-//			System.out.println("====================="+playerList.size());
-//			System.out.println("====================="+players.size());
-//			
+		
 				for(int i=0;i<n && i<playerList.size();i++)//这是模仿刘瀚文，不知道干嘛
 				{
 					out.println(playerList.get(i).toNormalInfo());//to use which function
@@ -258,7 +208,7 @@ public class Console {
 						case "steal": 
 						case "foul": 
 						case "fault": 
-						case "minute": System.out.println(temps[0]);sortConsList.add(Comparators.getPlayerAvgComparator(temps[0]));break;
+						case "minute": sortConsList.add(Comparators.getPlayerAvgComparator(temps[0]));break;
 						case "efficient": 
 						case "shot": 
 						case "three": 
@@ -291,7 +241,7 @@ public class Console {
 					sortConsList.add(Comparators.comparePointAvgDesc);
 				} 
 			}
-			if(!timeCon.equals("daily")&&!hot) {
+			if(!timeCon.equals("-daily")&&!hot) {
 				sortConsList.add(comparePlayerNameAsc);
 				sort(playerList, sortConsList);
 			}
@@ -1035,8 +985,39 @@ public class Console {
         };  
         Collections.sort(list, cmp);  
     }
-	
+	private boolean satisfy(String[] temps,Player p) {
+		switch(temps[0]){
+    	case "position": 
+    		return handleThePosition(temps[1], p.getPosition());
+    	case "league": return temps[1].equals(p.getLeague());
+    	case "age": 
+    		switch(temps[1]){
+    		case "<=22": 
+    			if(p.getAge()<=22){
+    				return true;
+    			}
+    			break;
+    		case "22<X<=25": 
+    			if(22<p.getAge() && p.getAge()<=25){
+    				return true;
+    			}
+    			break;
+    		case "25<X<=30":
+    			if(25<p.getAge() && p.getAge()<=30){
+    				return true;
+    			}
+    			break;
+    		case ">30": 
+    			if(p.getAge()>30){
+    				return true;
+    			}
+    			break;
+    		}
+    	default: return false;
+    	}
+	}
 	public boolean handleThePosition(String temp, String position){
+		if(position == null) return false;
 		switch(temp){
 		case "F":
 			if(position.equals("F")||position.equals("F-C")||position.equals("F-G")||

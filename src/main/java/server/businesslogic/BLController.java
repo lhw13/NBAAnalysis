@@ -7,12 +7,14 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map.Entry;
 
 import javax.swing.ImageIcon;
 
 import org.apache.batik.swing.JSVGCanvas;
 
+import console.Console;
 import dataservice.DataService;
 import server.data.DataController;
 import server.po.MatchPO;
@@ -100,7 +102,10 @@ public final class BLController implements BLService {
 		Comparator<Player> comp = Comparators.getPlayerAvgComparator(sortCon);
 		if(comp==null)
 			comp = Comparators.getPlayerComparator(sortCon);
-		Collections.sort(todayPlayers, comp);
+		List<Comparator<Player>> sortConsList = new ArrayList<Comparator<Player>>();
+		sortConsList.add(comp);
+		sortConsList.add(Console.comparePlayerNameAsc);
+		sort(todayPlayers, sortConsList);
 		return todayPlayers;
 	}
 	
@@ -550,4 +555,22 @@ public final class BLController implements BLService {
 		Collections.sort(teams, ct);
 		return true;
 	}
+	
+	//用于多重排序
+		public final void sort(List<Player> list, final List<Comparator<Player>> comList) {  
+	        if (comList == null)  
+	            return;  
+	        Comparator<Player> cmp = new Comparator<Player>() {  
+	            @Override  
+	            public final int compare(Player o1, Player o2) {  
+	                for (Comparator<Player> comparator : comList) {
+	                    int x = comparator.compare(o1, o2);
+	                    if(x!=0)
+	                        return x;
+	                }  
+	                return 0;  
+	            }  
+	        };  
+	        Collections.sort(list, cmp);  
+	    }  
 }

@@ -94,6 +94,9 @@ public class Console {
 			sortCons[0] = condition+".desc";
 			if(timeCon.equals("-season"))sort = true;
 			else playerList = bl.getDailyHotPlayer(condition);
+			for(int i=0;i<5;i++){
+				System.out.println(playerList.get(i).toNormalInfo());
+			}
 		}
 		
 		if(filter){

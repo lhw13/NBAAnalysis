@@ -270,7 +270,7 @@ public class Console {
 				}
 			} else if(hot) {
 				ArrayList<Player> list = bl.getBestPromotionForConsole(condition, n);
-				for(int i=0,index=0;i<n && i<list.size();i++,index++)
+				for(int i=0,index=0;i<n && index<list.size();i++,index++)
 				{
 					Player p = list.get(index);
 					PlayerHotInfo playerHot = new PlayerHotInfo();
@@ -285,7 +285,7 @@ public class Console {
 					//out.println();
 				}
 			} else if (king) {
-				for(int i=0, index=0;i<n && i<playerList.size();i++, index++)
+				for(int i=0, index=0;i<n && index<playerList.size();i++, index++)
 				{
 					Player p = playerList.get(index);
 					if(!p.isActive())
@@ -304,7 +304,7 @@ public class Console {
 					//out.println();
 				}
 			}else {
-				for(int i=0,index=0;i<n && i<playerList.size();i++,index++)
+				for(int i=0,index=0;i<n && index<playerList.size();i++,index++)
 				{
 					Player player = playerList.get(index);
 					if(!player.isActive())

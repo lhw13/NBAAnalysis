@@ -166,6 +166,7 @@ public class Console {
 		
 				for(int i=0;i<n && i<playerList.size();i++)//这是模仿刘瀚文，不知道干嘛
 				{
+					out.println(i+1);
 					out.println(playerList.get(i).toNormalInfo());//to use which function
 					//out.println(playerList.get(i).toVO());
 				}
@@ -251,6 +252,7 @@ public class Console {
 			if(high) {
 				for(int i=0;i<n && i<playerList.size();i++)
 				{
+					out.println(i+1);
 					out.println(playerList.get(i).toHighInfo());//to use which function
 					//out.println(playerList.get(i).toVO());
 				}
@@ -266,6 +268,7 @@ public class Console {
 					playerHot.setValue(p.getValue(condition));
 					playerHot.setPosition(p.getPosition());
 					playerHot.setUpgradeRate(p.getUpgradeRate(condition));
+					out.println(i+1);
 					out.println(playerHot);//to use which function
 				}
 			} else if (king) {
@@ -278,11 +281,13 @@ public class Console {
 					playerKing.setField(condition);
 					playerKing.setValue(p.getValue(condition));
 					playerKing.setPosition(p.getPosition());
+					out.println(i+1);
 					out.println(playerKing);//to use which function
 				}
 			}else {
 				for(int i=0;i<n && i<playerList.size();i++)
 				{
+					out.println(i+1);
 					out.println(playerList.get(i).toNormalInfoAvg());//to use which function
 					//out.println(playerList.get(i).toVO());
 				}
@@ -337,6 +342,7 @@ public class Console {
 				sortTeam(teams,sortConsList);
 			for(int i=0;i<n && i<teams.size();i++)
 			{
+				out.println(i+1);
 				out.println(teams.get(i).toNormalInfo());//to use which function
 				//out.println(teams.get(i).toVO());
 			}
@@ -354,6 +360,7 @@ public class Console {
 				td.setLeague(ts.getLeague());
 				td.setTeamName(ts.getAbbreviation());
 				td.setValue(ts.getValue(sortCondition));
+				out.println(i+1);
 				out.println(td);//to use which function
 				//out.println(teams.get(i).toVO());
 			}
@@ -371,6 +378,7 @@ public class Console {
 			sortTeam(teams,sortConsList);
 			for(int i=0;i<n && i<teams.size();i++)
 			{
+				out.println(i+1);
 				out.println(teams.get(i).toNormalInfoAvg());//to use which function
 				//out.println(teams.get(i).toVO());
 			}
@@ -389,6 +397,7 @@ public class Console {
 			sortTeam(teams,sortConsList);
 		for(int i=0;i<n && i<teams.size();i++)
 		{
+			out.println(i+1);
 			out.println(teams.get(i).toHighInfo());//to use which function
 			//out.println(teams.get(i).toVO());
 		}

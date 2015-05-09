@@ -103,49 +103,36 @@ public  final class Player implements Cloneable{
 			add(tim.getPlayers().get(orders.get(i)));// add idividual data
 			teamPlayTime += tim.getPlayTime();// add this team data below
 			teamTotalRebound += tim.getTotalRebound();
-			int teamOffensiveRebound = tim.getOffensiveRebound();
-			this.teamOffensiveRebound+=teamOffensiveRebound;
-			int teamDefensiveRebound = tim.getDefensiveRebound();
-			this.teamDefensiveRebound+=teamDefensiveRebound;
-			int teamshot = tim.getShot();
-			this.teamshot+=teamshot;
-			int teamHit = tim.getHit();
-			this.teamHit+=teamHit;
-			int teamFreeshot = tim.getFreeshot();
-			this.teamFreeshot+=teamFreeshot;
-			int teamMiss = tim.getMiss();
-			this.teamMiss+=teamMiss;
+			this.teamOffensiveRebound+=tim.getOffensiveRebound();
+			//int teamDefensiveRebound = tim.getDefensiveRebound();
+			this.teamDefensiveRebound+=tim.getDefensiveRebound();
+			//int teamshot = tim.getShot();
+			this.teamshot+=tim.getShot();
+			//int teamHit = tim.getHit();
+			this.teamHit+=tim.getHit();
+			//int teamFreeshot = tim.getFreeshot();
+			this.teamFreeshot+=tim.getFreeshot();
+			//int teamMiss = tim.getMiss();
+			this.teamMiss+=tim.getMiss();
 			// add opponent data below
 			TeamInMatches tim2 = opponentTeam.get(i);
 			teamTotalRebound2 += tim2.getTotalRebound();
-			int teamOffensiveRebound2 = tim2.getOffensiveRebound();
-			this.teamOffensiveRebound2 += teamOffensiveRebound2;
-			int teamDefensiveRebound2 = tim2.getDefensiveRebound();
-			this.teamDefensiveRebound2 +=teamDefensiveRebound2;
-			int teamshot2 = tim2.getShot();
-			this.teamshot2+=teamshot2;
+			//int teamOffensiveRebound2 = tim2.getOffensiveRebound();
+			this.teamOffensiveRebound2 += tim2.getOffensiveRebound();
+			//int teamDefensiveRebound2 = tim2.getDefensiveRebound();
+			this.teamDefensiveRebound2 +=tim2.getDefensiveRebound();
+			//int teamshot2 = tim2.getShot();
+			this.teamshot2+=tim2.getShot();
 			teamThirdshot2 += tim2.getThirdshot();
-			int teamFreeshot2 = tim2.getFreeshot();
-			this.teamFreeshot2+=teamFreeshot2;
-			int teamHit2 = tim2.getHit();
-			this.teamHit2+=teamHit2;
-			int teamMiss2 = tim2.getMiss();
-			this.teamMiss2+=teamMiss2;
+			//int teamFreeshot2 = tim2.getFreeshot();
+			this.teamFreeshot2+=tim2.getFreeshot();
+			//int teamHit2 = tim2.getHit();
+			this.teamHit2+=tim2.getHit();
+			//int teamMiss2 = tim2.getMiss();
+			this.teamMiss2+=tim2.getMiss();
 			
-			teamOffendRound +=teamshot
-					+ 0.4
-					* teamFreeshot
-					- 1.07
-					* ((double) teamOffensiveRebound
-							/ (teamOffensiveRebound + teamDefensiveRebound2) * (teamshot - teamHit))
-					+ 1.07 * teamMiss;
-			teamOffendRound2 +=teamshot2
-			+ 0.4
-			* teamFreeshot2
-			- 1.07
-			* ((double) teamOffensiveRebound2
-					/ (teamOffensiveRebound2 + teamDefensiveRebound) * (teamshot2 - teamHit2))
-			+ 1.07 * teamMiss2;
+			teamOffendRound += tim.getOffendRound();
+			teamOffendRound2 += tim2.getOffendRound();
 		}
 		}
 		
@@ -160,50 +147,36 @@ public  final class Player implements Cloneable{
 				add(tim.getPlayers().get(ordersNew.get(i)));// add idividual data
 				teamPlayTime += tim.getPlayTime();// add this team data below
 				teamTotalRebound += tim.getTotalRebound();
-				int teamOffensiveRebound = tim.getOffensiveRebound();
-				this.teamOffensiveRebound+=teamOffensiveRebound;
-				int teamDefensiveRebound = tim.getDefensiveRebound();
-				this.teamDefensiveRebound+=teamDefensiveRebound;
-				int teamshot = tim.getShot();
-				this.teamshot+=teamshot;
-				int teamHit = tim.getHit();
-				this.teamHit+=teamHit;
-				int teamFreeshot = tim.getFreeshot();
-				this.teamFreeshot+=teamFreeshot;
-				int teamMiss = tim.getMiss();
-				this.teamMiss+=teamMiss;
+				this.teamOffensiveRebound+=tim.getOffensiveRebound();
+				//int teamDefensiveRebound = tim.getDefensiveRebound();
+				this.teamDefensiveRebound+=tim.getDefensiveRebound();
+				//int teamshot = tim.getShot();
+				this.teamshot+=tim.getShot();
+				//int teamHit = tim.getHit();
+				this.teamHit+=tim.getHit();
+				//int teamFreeshot = tim.getFreeshot();
+				this.teamFreeshot+=tim.getFreeshot();
+				//int teamMiss = tim.getMiss();
+				this.teamMiss+=tim.getMiss();
 				// add opponent data below
-				TeamInMatches tim2 = opponentTeamNew.get(i);
-				opponentTeam.add(tim2);
+				TeamInMatches tim2 = opponentTeam.get(i);
 				teamTotalRebound2 += tim2.getTotalRebound();
-				int teamOffensiveRebound2 = tim2.getOffensiveRebound();
-				this.teamOffensiveRebound2 += teamOffensiveRebound2;
-				int teamDefensiveRebound2 = tim2.getDefensiveRebound();
-				this.teamDefensiveRebound2 +=teamDefensiveRebound2;
-				int teamshot2 = tim2.getShot();
-				this.teamshot2+=teamshot2;
+				//int teamOffensiveRebound2 = tim2.getOffensiveRebound();
+				this.teamOffensiveRebound2 += tim2.getOffensiveRebound();
+				//int teamDefensiveRebound2 = tim2.getDefensiveRebound();
+				this.teamDefensiveRebound2 +=tim2.getDefensiveRebound();
+				//int teamshot2 = tim2.getShot();
+				this.teamshot2+=tim2.getShot();
 				teamThirdshot2 += tim2.getThirdshot();
-				int teamFreeshot2 = tim2.getFreeshot();
-				this.teamFreeshot2+=teamFreeshot2;
-				int teamHit2 = tim2.getHit();
-				this.teamHit2+=teamHit2;
-				int teamMiss2 = tim2.getMiss();
-				this.teamMiss2+=teamMiss2;
+				//int teamFreeshot2 = tim2.getFreeshot();
+				this.teamFreeshot2+=tim2.getFreeshot();
+				//int teamHit2 = tim2.getHit();
+				this.teamHit2+=tim2.getHit();
+				//int teamMiss2 = tim2.getMiss();
+				this.teamMiss2+=tim2.getMiss();
 				
-				teamOffendRound +=teamshot
-						+ 0.4
-						* teamFreeshot
-						- 1.07
-						* ((double) teamOffensiveRebound
-								/ (teamOffensiveRebound + teamDefensiveRebound2) * (teamshot - teamHit))
-						+ 1.07 * teamMiss;
-				teamOffendRound2 +=teamshot2
-				+ 0.4
-				* teamFreeshot2
-				- 1.07
-				* ((double) teamOffensiveRebound2
-						/ (teamOffensiveRebound2 + teamDefensiveRebound) * (teamshot2 - teamHit2))
-				+ 1.07 * teamMiss2;
+				teamOffendRound += tim.getOffendRound();
+				teamOffendRound2 += tim2.getOffendRound();
 				
 			}
 			thisTeamNew.clear();

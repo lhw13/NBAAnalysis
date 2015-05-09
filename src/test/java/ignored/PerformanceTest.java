@@ -6,8 +6,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.apache.commons.collections.ComparatorUtils;
-import org.apache.commons.collections.comparators.ComparableComparator;
 import org.junit.Ignore;
 import org.junit.Test;
 

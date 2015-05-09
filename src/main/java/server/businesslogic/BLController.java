@@ -283,7 +283,8 @@ public final class BLController implements BLService {
 		for (int i = 0; i < matches.size(); i++) {
 			MatchPO mttemp = matches.get(i);
 			boolean theSeason = mttemp.getSeason().compareTo(season)==0;
-			boolean theDay = mttemp.getDate().equals(day);
+			Calendar tempc = mttemp.getDate();
+			boolean theDay = (day.get(Calendar.YEAR)==tempc.get(Calendar.YEAR) && day.get(Calendar.MONTH)==tempc.get(Calendar.MONTH) && day.get(Calendar.DAY_OF_MONTH)==tempc.get(Calendar.DAY_OF_MONTH));
 			ScorePO finalTemp = mttemp.getFinalScore();
 			ArrayList<ScorePO> scoresTemp = mttemp.getScores();
                         int size = scoresTemp.size();
@@ -302,9 +303,15 @@ public final class BLController implements BLService {
 					finalTemp.getTeam2(), scores2, finalTemp.getTeam2()
 							- finalTemp.getTeam1());
 
+			timtemp1.setTeamInMatches2(timtemp2);
+			timtemp2.setTeamInMatches2(timtemp1);
 			// to handle dirty data
 			timtemp1.clean();
 			timtemp2.clean();
+			timtemp1.computeTotal();
+			timtemp2.computeTotal();
+			timtemp1.computeRound();
+			timtemp2.computeRound();
 
 			// put some data in team 1
 			String ab = timtemp1.getAbbreviation();

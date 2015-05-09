@@ -15,13 +15,12 @@ public class OneExcuteTest {
 	{
 		PrintStream p = null;
 		try {
-			p = new PrintStream(new File("test0.txt"));
+			p = new PrintStream(new File("OneExcutetest0.txt"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//String ss[] = {"-player","-filter","position.F,league.West"};
-		String ss[] = {"-player","-king","score","-daily"};
+		String ss[] = {"-player","-hot","assist","-n","5"};
 		c.execute(p, ss);
 	}
 	
@@ -198,7 +197,7 @@ public class OneExcuteTest {
 	@Test
 	public void test6()
 	{
-		String ss[] = {"-player","-total","-all","-n","10","-filter","position.F,league.West","-sort","shot.desc"};
+		String ss[] = {"-player","-total","-all","-n","10","-filter","position.F,league.west","-sort","shot.desc"};
 		
 		PrintStream p = null;
 		try {

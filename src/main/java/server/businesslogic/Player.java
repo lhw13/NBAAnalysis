@@ -226,7 +226,11 @@ public  final class Player implements Cloneable{
 			highestScore=scoretemp;
 		char p = player.getPosition();
 		if (p == 'F' || p == 'G' || p == 'C')
+		{
 			starting++;
+			if(this.player.getPosition()==null)
+				this.player.setPosition(String.valueOf(p));
+		}
 		int tp = 0;
 		if (scoretemp >= 10)
 			tp++;
@@ -796,6 +800,10 @@ public  final class Player implements Cloneable{
 		default: return 0;
 		}
 	}
+
+		public boolean isActive() {
+			return active;
+		}
 	
 	
 }

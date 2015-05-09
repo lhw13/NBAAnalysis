@@ -94,9 +94,6 @@ public class Console {
 			sortCons[0] = condition+".desc";
 			if(timeCon.equals("-season"))sort = true;
 			else playerList = bl.getDailyHotPlayer(condition);
-			for(int i=0;i<5;i++){
-				System.out.println(playerList.get(i).toNormalInfo());
-			}
 		}
 		
 		if(filter){
@@ -164,10 +161,17 @@ public class Console {
 				sort(playerList, sortConsList);
 			}
 		
-				for(int i=0;i<n && i<playerList.size();i++)//这是模仿刘瀚文，不知道干嘛
+				for(int i=0,index=0;i<n && index<playerList.size();i++,index++)//这是模仿刘瀚文，不知道干嘛
 				{
+					Player player = playerList.get(index);
+					if(!player.isActive())
+					{
+						i--;
+						continue;
+					}
 					out.println(i+1);
-					out.println(playerList.get(i).toNormalInfo());//to use which function
+					out.println(player.toNormalInfo());//to use which function
+					out.println();
 					//out.println(playerList.get(i).toVO());
 				}
 		} else {//返回的数据是场均数据
@@ -250,17 +254,24 @@ public class Console {
 				sort(playerList, sortConsList);
 			}
 			if(high) {
-				for(int i=0;i<n && i<playerList.size();i++)
+				for(int i=0,index=0 ;i<n && index<playerList.size();i++)
 				{
+					Player player = playerList.get(index);
+					if(!player.isActive())
+					{
+						i--;
+						continue;
+					}
 					out.println(i+1);
 					out.println(playerList.get(i).toHighInfo());//to use which function
+					out.println();
 					//out.println(playerList.get(i).toVO());
 				}
 			} else if(hot) {
 				ArrayList<Player> list = bl.getBestPromotionForConsole(condition, n);
-				for(int i=0;i<n && i<list.size();i++)
+				for(int i=0,index=0;i<n && i<list.size();i++,index++)
 				{
-					Player p = list.get(i);
+					Player p = list.get(index);
 					PlayerHotInfo playerHot = new PlayerHotInfo();
 					playerHot.setName(p.getName());
 					playerHot.setTeamName(p.getTeamAbbreviation());
@@ -270,11 +281,17 @@ public class Console {
 					playerHot.setUpgradeRate(p.getUpgradeRate(condition));
 					out.println(i+1);
 					out.println(playerHot);//to use which function
+					out.println();
 				}
 			} else if (king) {
-				for(int i=0;i<n && i<playerList.size();i++)
+				for(int i=0, index=0;i<n && i<playerList.size();i++, index++)
 				{
-					Player p = playerList.get(i);
+					Player p = playerList.get(index);
+					if(!p.isActive())
+					{
+						i--;
+						continue;
+					}
 					PlayerKingInfo playerKing = new PlayerKingInfo();
 					playerKing.setName(p.getName());
 					playerKing.setTeamName(p.getTeam().getAbbreviation());
@@ -283,12 +300,20 @@ public class Console {
 					playerKing.setPosition(p.getPosition());
 					out.println(i+1);
 					out.println(playerKing);//to use which function
+					out.println();
 				}
 			}else {
-				for(int i=0;i<n && i<playerList.size();i++)
+				for(int i=0,index=0;i<n && i<playerList.size();i++,index++)
 				{
+					Player player = playerList.get(index);
+					if(!player.isActive())
+					{
+						i--;
+						continue;
+					}
 					out.println(i+1);
-					out.println(playerList.get(i).toNormalInfoAvg());//to use which function
+					out.println(player.toNormalInfoAvg());//to use which function
+					out.println();
 					//out.println(playerList.get(i).toVO());
 				}
 			}
@@ -344,6 +369,7 @@ public class Console {
 			{
 				out.println(i+1);
 				out.println(teams.get(i).toNormalInfo());//to use which function
+				out.println();
 				//out.println(teams.get(i).toVO());
 			}
 		}
@@ -362,6 +388,7 @@ public class Console {
 				td.setValue(ts.getValue(sortCondition));
 				out.println(i+1);
 				out.println(td);//to use which function
+				out.println();
 				//out.println(teams.get(i).toVO());
 			}
 		}
@@ -380,6 +407,7 @@ public class Console {
 			{
 				out.println(i+1);
 				out.println(teams.get(i).toNormalInfoAvg());//to use which function
+				out.println();
 				//out.println(teams.get(i).toVO());
 			}
 		}
@@ -399,6 +427,7 @@ public class Console {
 		{
 			out.println(i+1);
 			out.println(teams.get(i).toHighInfo());//to use which function
+			out.println();
 			//out.println(teams.get(i).toVO());
 		}
 		}

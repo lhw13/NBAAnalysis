@@ -51,12 +51,12 @@ public class Console {
 		boolean filter = false;//是否有filter命令
 		boolean hot = false;//是否有热点命令
 		boolean king = false;//是否有数据王命令
-		
+		boolean daily = false;
 		
 		String[] sortCons = null;
 		String[] filterCons = null;
 		String condition = "score";
-		String timeCon = "season";//判断是赛季还是当日
+		//String timeCon = "season";//判断是赛季还是当日
 		
 		
 		for(int i=1;i<args.length;i++)
@@ -71,7 +71,7 @@ public class Console {
 							 break;
 				case "-king":king = true; 
 							 condition = args[++i];
-							 timeCon = args[++i];
+							 
 							 boolean isN=false;
 							 for(int j=1;j<args.length;j++)	{
 								 if(args[j].equals("-n")) {isN = true;break;}
@@ -79,6 +79,7 @@ public class Console {
 							 if(!isN)	
 							 	n=5; 
 							 break;
+				case "-daily": daily=true;break;
 				
 				case "-sort":	sort = true;
 								sortCons=args[++i].split(",");
@@ -92,7 +93,7 @@ public class Console {
 		if(king) {	
 			sortCons = new String[1];
 			sortCons[0] = condition+".desc";
-			if(timeCon.equals("-season"))sort = true;
+			if(!daily)sort = true;
 			else playerList = bl.getDailyHotPlayer(condition);
 		}
 		
@@ -156,7 +157,7 @@ public class Console {
 					sortConsList.add(Comparators.comparePointDesc);
 				} 
 			}
-			if(!timeCon.equals("-daily")) {
+			if(!daily) {
 				sortConsList.add(comparePlayerNameAsc);
 				sort(playerList, sortConsList);
 			}
@@ -249,7 +250,7 @@ public class Console {
 					sortConsList.add(Comparators.comparePointAvgDesc);
 				} 
 			}
-			if(!timeCon.equals("-daily")&&!hot) {
+			if(!daily) {
 				sortConsList.add(comparePlayerNameAsc);
 				sort(playerList, sortConsList);
 			}
@@ -1038,12 +1039,12 @@ public class Console {
     				return true;
     			}
     			break;
-    		case "22<X<=25": 
+    		case "22< X <=25": 
     			if(22<p.getAge() && p.getAge()<=25){
     				return true;
     			}
     			break;
-    		case "25<X<=30":
+    		case "25< X <=30":
     			if(25<p.getAge() && p.getAge()<=30){
     				return true;
     			}

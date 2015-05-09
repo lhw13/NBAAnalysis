@@ -43,7 +43,7 @@ public class OneExcuteTest {
 	public void testTeam2()
 	{
 		
-		String ss[] = {"-team","hot","assist","-n","5"};
+		String ss[] = {"-team","-hot","assist","-n","5"};
 		PrintStream p = null;
 		try {
 			p = new PrintStream(new File("OneExcutetest2.txt"));

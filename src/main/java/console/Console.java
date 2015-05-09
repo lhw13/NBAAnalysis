@@ -264,7 +264,7 @@ public class Console {
 						continue;
 					}
 					out.println(i+1);
-					out.println(playerList.get(i).toHighInfo());//to use which function
+					out.println(player.toHighInfo());//to use which function
 					//out.println();
 					//out.println(playerList.get(i).toVO());
 				}
@@ -344,7 +344,7 @@ public class Console {
 					String temps[] = args[++i].split("\\."); 
 					sortCondition =temps[0]; sortOrder=temps[1];
 					break;
-				case "-high":high=true;
+				case "-high":high=true;break;
 				case "-hot": hot = true; sortCondition = args[++i]; break;				
 			}
 		ArrayList<Comparator<Team>> sortConsList = new ArrayList<Comparator<Team>>();
@@ -420,7 +420,7 @@ public class Console {
 			}
 			else
 			{
-				Collections.sort(teams,Comparators.getTeamComparatorAsc(sortCondition));
+				sortConsList.add(Comparators.getTeamComparatorAsc(sortCondition));
 			}
 			sortConsList.add(teamByName);
 			sortTeam(teams,sortConsList);

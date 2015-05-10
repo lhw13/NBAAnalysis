@@ -11,27 +11,30 @@ import console.Console;
 
 public class KingTest {
 	static ArrayList<String> playerKing = new ArrayList<String>();
+	static ArrayList<String> sd = new ArrayList<String>();
 	Console c = new Console();
 	static {
 		playerKing.add("score");
 		playerKing.add("rebound");
 		playerKing.add("assist");
+		sd.add("-daily");
+		sd.add("-season");
 	}
 	@Test
 	public void testDailyKing() {
 		
-		
+	for(int j=0;j<sd.size();j++)	
 		for(int i=0; i<playerKing.size();i++)
 		{
 			String sortCondition = playerKing.get(i);
 			PrintStream p = null;
 			try {
-				p = new PrintStream(new File("-player-king"+sortCondition+".txt"));
+				p = new PrintStream(new File("-player-king"+sortCondition+sd.get(j)+".txt"));
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			String ss[] = {"-player","-king",sortCondition,"-daily"};
+			String ss[] = {"-player","-king",sortCondition,sd.get(j)};
 			c.execute(p, ss);
 		}
 	}
@@ -39,18 +42,18 @@ public class KingTest {
 	@Test
 	public void testDailyNumberKing() {
 		
-		
+	for(int j=0;j<sd.size();j++)	
 		for(int i=0; i<playerKing.size();i++)
 		{
 			String sortCondition = playerKing.get(i);
 			PrintStream p = null;
 			try {
-				p = new PrintStream(new File("-player-kingnumber"+sortCondition+".txt"));
+				p = new PrintStream(new File("-player-kingnumber"+sortCondition+sd.get(j)+".txt"));
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			String ss[] = {"-player","-king",sortCondition,"-n","10","-daily"};
+			String ss[] = {"-player","-king",sortCondition,"-n","10",sd.get(j)};
 			c.execute(p, ss);
 		}
 	}

@@ -493,19 +493,19 @@ public  final class Team {
 	
 	public double getValue(String value) {
 		switch(value) {
-		case "point": return score/appearance;
-		case "score": return score/appearance;
-		case "rebound": return rebound/appearance;
-		case "blockShot": return blockShot/appearance;
-		case "assist": return assist/appearance;
-		case "steal": return steal/appearance;
-		case "foul": return foul/appearance;
-		case "fault": return fault/appearance;
+		case "point": return (double)score/appearance;
+		case "score": return (double)score/appearance;
+		case "rebound": return (double)rebound/appearance;
+		case "blockShot": return (double)blockShot/appearance;
+		case "assist": return (double)assist/appearance;
+		case "steal": return (double)steal/appearance;
+		case "foul": return (double)foul/appearance;
+		case "fault": return (double)fault/appearance;
 		case "three": return getThree();
 		case "shot": return getShot();
 		case "penalty": return getPenalty();
-		case "defendRebound": return getDefendRebound()/appearance;
-		case "offendRebound": return getOffendRebound()/appearance;
+		case "defendRebound": return (double)getDefendRebound()/appearance;
+		case "offendRebound": return (double)getOffendRebound()/appearance;
 		default: return 0;
 		}
 	}

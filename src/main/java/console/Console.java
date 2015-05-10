@@ -255,7 +255,7 @@ public class Console {
 				sort(playerList, sortConsList);
 			}
 			if(high) {
-				for(int i=0,index=0 ;i<n && index<playerList.size();i++)
+				for(int i=0,index=0 ;i<n && index<playerList.size();i++,index++)
 				{
 					Player player = playerList.get(index);
 					if(!player.isActive())

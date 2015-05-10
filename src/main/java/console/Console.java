@@ -362,7 +362,7 @@ public class Console {
 				}
 				else
 				{
-					Collections.sort(teams,Comparators.getTeamComparatorAsc(sortCondition));
+					sortConsList.add(Comparators.getTeamComparatorAsc(sortCondition));
 				}
 				sortConsList.add(teamByName);
 				sortTeam(teams,sortConsList);

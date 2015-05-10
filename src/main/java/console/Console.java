@@ -1035,7 +1035,7 @@ public class Console {
     	case "age": 
     		switch(temps[1]){
     		case "<=22": 
-    			if(p.getAge()<=22){
+    			if((p.getAge()<=22)&&p.getAge()>0){
     				return true;
     			}
     			break;

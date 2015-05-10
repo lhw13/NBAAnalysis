@@ -386,7 +386,7 @@ public class Console {
 				td.setField(sortCondition);
 				td.setLeague(ts.getLeague());
 				td.setTeamName(ts.getAbbreviation());
-				td.setValue(ts.getValue(sortCondition));
+				td.setValue(ts.getValue(sortCondition)/ts.getAppearance());
 				out.println(i+1);
 				out.println(td);//to use which function
 				//out.println();

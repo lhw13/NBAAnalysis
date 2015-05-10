@@ -338,6 +338,16 @@ public final  class Comparators {
 	    	//return o2.getSteal() > o1.getSteal() ? 1 : -1;
 	    }
 	};
+	private static final Comparator<Player> compareDoubleTwoAvgDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+        	double d2 = o2.getDoubleTwo()/(double)o2.getAppearance();
+        	double d1 = o1.getDoubleTwo()/(double)o1.getAppearance();
+            if(d1>d2)return -1;else if(d1<d2)return 1;else return 0;
+        	//return o2.getDoubleTwo() < o1.getDoubleTwo() ? 1 : -1;
+        }
+    };
 	public static final Comparator<Player> compareStealEfficientDesc = new Comparator<Player>() {  
 		  
 	    @Override  
@@ -462,15 +472,15 @@ public final  class Comparators {
 	};
 	public static final Comparator<Team> TeamByDefendReboundAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double i1= (double)t1.defendRebound/t1.appearance;
-			Double i2 = (double)t2.defendRebound/t2.appearance;
+			double i1= (double)t1.defendRebound/t1.appearance;
+			double i2 = (double)t2.defendRebound/t2.appearance;
 			if(i2>i1)return 1;else if(i2<i1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByDefendReboundAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double i1= (double)t1.defendRebound/t1.appearance;
-			Double i2 = (double)t2.defendRebound/t2.appearance;
+			double i1= (double)t1.defendRebound/t1.appearance;
+			double i2 = (double)t2.defendRebound/t2.appearance;
 			if(i2>i1)return -1;else if(i2<i1)return 1;else return 0;
 		}
 	};
@@ -506,15 +516,15 @@ public final  class Comparators {
 	};
 	public static final Comparator<Team> TeamByFaultAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			int i2 = t2.fault/t2.appearance;
-			int i1 = t1.fault/t2.appearance;
+			double i2 = (double)t2.fault/t2.appearance;
+			double i1 = (double)t1.fault/t2.appearance;
 			if(i2>i1)return 1;else if(i2<i1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByFaultAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			int i2 = t2.fault;
-			int i1 = t1.fault;
+			double i2 = (double)t2.fault/t2.appearance;
+			double i1 = (double)t1.fault/t1.appearance;
 			if(i2>i1)return -1;else if(i2<i1)return 1;else return 0;
 		}
 	};
@@ -933,6 +943,7 @@ public final  class Comparators {
 		case "foul": return compareFoulAvgDesc;
 		case "fault": return compareFaultAvgDesc;
 		case "minute": return compareMinuteAvgDesc;
+		case "doubleTwo": return compareDoubleTwoAvgDesc;
 		default: return null;
 		}
 	}

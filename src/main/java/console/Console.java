@@ -194,7 +194,7 @@ public class Console {
 						case "shot": sortConsList.add(compareShotAsc);break;
 						case "three": sortConsList.add(compareThreeAsc);break;
 						case "penalty": sortConsList.add(comparePenaltyAsc);break;
-						case "doubleTwo": sortConsList.add(compareDoubleTwoAsc);break;
+						case "doubleTwo": sortConsList.add(compareDoubleTwoAvgAsc);break;
 						case "realShot": sortConsList.add(compareRealShotAsc);break;
 						case "GmSc": sortConsList.add(compareGmScAsc);break;
 						case "shotEfficient": sortConsList.add(compareShotEfficientAsc);break;
@@ -217,12 +217,12 @@ public class Console {
 						case "steal": 
 						case "foul": 
 						case "fault": 
+						case "doubleTwo": 
 						case "minute": sortConsList.add(Comparators.getPlayerAvgComparator(temps[0]));break;
 						case "efficient": 
 						case "shot": 
 						case "three": 
 						case "penalty": 
-						case "doubleTwo": 
 						case "realShot": 
 						case "GmSc": 
 						case "shotEfficient": 
@@ -362,7 +362,7 @@ public class Console {
 				}
 				else
 				{
-					Collections.sort(teams,Comparators.getTeamComparatorAsc(sortCondition));
+					sortConsList.add(Comparators.getTeamComparatorAsc(sortCondition));
 				}
 				sortConsList.add(teamByName);
 				sortTeam(teams,sortConsList);
@@ -386,7 +386,7 @@ public class Console {
 				td.setField(sortCondition);
 				td.setLeague(ts.getLeague());
 				td.setTeamName(ts.getAbbreviation());
-				td.setValue(ts.getValue(sortCondition));
+				td.setValue(ts.getValue(sortCondition)/ts.getAppearance());
 				out.println(i+1);
 				out.println(td);//to use which function
 				//out.println();
@@ -475,6 +475,17 @@ public class Console {
 	        	double d1 = (double)o1.getBlockShot()/(double)o1.getAppearance();
 	            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
 	        	//return (double)o2.getBlockShot()/(double)o2.getAppearance() < (double)o1.getBlockShot()/(double)o1.getAppearance()? 1 : -1;
+	        }
+	    };
+	    
+	    private static final Comparator<Player> compareDoubleTwoAvgAsc = new Comparator<Player>() {  
+			  
+	        @Override  
+	        public int compare(Player o1, Player o2) {  
+	        	double d2 = o2.getDoubleTwo()/(double)o2.getAppearance();
+	        	double d1 = o1.getDoubleTwo()/(double)o1.getAppearance();
+	            if(d1>d2)return 1;else if(d1<d2)return -1;else return 0;
+	        	//return o2.getDoubleTwo() < o1.getDoubleTwo() ? 1 : -1;
 	        }
 	    };
 	    

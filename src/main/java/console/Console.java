@@ -172,7 +172,7 @@ public class Console {
 					}
 					out.println(i+1);
 					out.println(player.toNormalInfo());//to use which function
-					out.println();
+					//out.println();
 					//out.println(playerList.get(i).toVO());
 				}
 		} else {//返回的数据是场均数据
@@ -264,13 +264,13 @@ public class Console {
 						continue;
 					}
 					out.println(i+1);
-					out.println(playerList.get(i).toHighInfo());//to use which function
-					out.println();
+					out.println(player.toHighInfo());//to use which function
+					//out.println();
 					//out.println(playerList.get(i).toVO());
 				}
 			} else if(hot) {
 				ArrayList<Player> list = bl.getBestPromotionForConsole(condition, n);
-				for(int i=0,index=0;i<n && i<list.size();i++,index++)
+				for(int i=0,index=0;i<n && index<list.size();i++,index++)
 				{
 					Player p = list.get(index);
 					PlayerHotInfo playerHot = new PlayerHotInfo();
@@ -282,10 +282,10 @@ public class Console {
 					playerHot.setUpgradeRate(p.getUpgradeRate(condition));
 					out.println(i+1);
 					out.println(playerHot);//to use which function
-					out.println();
+					//out.println();
 				}
 			} else if (king) {
-				for(int i=0, index=0;i<n && i<playerList.size();i++, index++)
+				for(int i=0, index=0;i<n && index<playerList.size();i++, index++)
 				{
 					Player p = playerList.get(index);
 					if(!p.isActive())
@@ -301,10 +301,10 @@ public class Console {
 					playerKing.setPosition(p.getPosition());
 					out.println(i+1);
 					out.println(playerKing);//to use which function
-					out.println();
+					//out.println();
 				}
 			}else {
-				for(int i=0,index=0;i<n && i<playerList.size();i++,index++)
+				for(int i=0,index=0;i<n && index<playerList.size();i++,index++)
 				{
 					Player player = playerList.get(index);
 					if(!player.isActive())
@@ -314,7 +314,7 @@ public class Console {
 					}
 					out.println(i+1);
 					out.println(player.toNormalInfoAvg());//to use which function
-					out.println();
+					//out.println();
 					//out.println(playerList.get(i).toVO());
 				}
 			}
@@ -344,7 +344,7 @@ public class Console {
 					String temps[] = args[++i].split("\\."); 
 					sortCondition =temps[0]; sortOrder=temps[1];
 					break;
-				case "-high":high=true;
+				case "-high":high=true;break;
 				case "-hot": hot = true; sortCondition = args[++i]; break;				
 			}
 		ArrayList<Comparator<Team>> sortConsList = new ArrayList<Comparator<Team>>();
@@ -370,7 +370,7 @@ public class Console {
 			{
 				out.println(i+1);
 				out.println(teams.get(i).toNormalInfo());//to use which function
-				out.println();
+				//out.println();
 				//out.println(teams.get(i).toVO());
 			}
 		}
@@ -389,7 +389,7 @@ public class Console {
 				td.setValue(ts.getValue(sortCondition));
 				out.println(i+1);
 				out.println(td);//to use which function
-				out.println();
+				//out.println();
 				//out.println(teams.get(i).toVO());
 			}
 		}
@@ -408,7 +408,7 @@ public class Console {
 			{
 				out.println(i+1);
 				out.println(teams.get(i).toNormalInfoAvg());//to use which function
-				out.println();
+				//out.println();
 				//out.println(teams.get(i).toVO());
 			}
 		}
@@ -420,7 +420,7 @@ public class Console {
 			}
 			else
 			{
-				Collections.sort(teams,Comparators.getTeamComparatorAsc(sortCondition));
+				sortConsList.add(Comparators.getTeamComparatorAsc(sortCondition));
 			}
 			sortConsList.add(teamByName);
 			sortTeam(teams,sortConsList);
@@ -428,7 +428,7 @@ public class Console {
 		{
 			out.println(i+1);
 			out.println(teams.get(i).toHighInfo());//to use which function
-			out.println();
+			//out.println();
 			//out.println(teams.get(i).toVO());
 		}
 		}

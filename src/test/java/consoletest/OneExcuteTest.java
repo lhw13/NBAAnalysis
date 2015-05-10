@@ -43,7 +43,7 @@ public class OneExcuteTest {
 	public void testTeam2()
 	{
 		
-		String ss[] = {"-team","hot","assist","-n","5"};
+		String ss[] = {"-team","-hot","assist","-n","5"};
 		PrintStream p = null;
 		try {
 			p = new PrintStream(new File("OneExcutetest2.txt"));
@@ -197,7 +197,7 @@ public class OneExcuteTest {
 	@Test
 	public void test6()
 	{
-		String ss[] = {"-player","-total","-all","-n","10","-filter","position.F,league.west","-sort","shot.desc"};
+		String ss[] = {"-player","-total","-all","-n","10","-filter","position.F,league.West","-sort","shot.desc"};
 		
 		PrintStream p = null;
 		try {

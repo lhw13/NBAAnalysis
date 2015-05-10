@@ -338,6 +338,16 @@ public final  class Comparators {
 	    	//return o2.getSteal() > o1.getSteal() ? 1 : -1;
 	    }
 	};
+	private static final Comparator<Player> compareDoubleTwoAvgDesc = new Comparator<Player>() {  
+		  
+        @Override  
+        public int compare(Player o1, Player o2) {  
+        	double d2 = o2.getDoubleTwo()/(double)o2.getAppearance();
+        	double d1 = o1.getDoubleTwo()/(double)o1.getAppearance();
+            if(d1>d2)return -1;else if(d1<d2)return 1;else return 0;
+        	//return o2.getDoubleTwo() < o1.getDoubleTwo() ? 1 : -1;
+        }
+    };
 	public static final Comparator<Player> compareStealEfficientDesc = new Comparator<Player>() {  
 		  
 	    @Override  
@@ -933,6 +943,7 @@ public final  class Comparators {
 		case "foul": return compareFoulAvgDesc;
 		case "fault": return compareFaultAvgDesc;
 		case "minute": return compareMinuteAvgDesc;
+		case "doubleTwo": return compareDoubleTwoAvgDesc;
 		default: return null;
 		}
 	}

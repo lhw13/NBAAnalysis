@@ -1098,7 +1098,6 @@ public class Console {
 			}
 		default:
 			return false;
-		}
-		
+		}		
 	}
 }

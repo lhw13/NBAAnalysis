@@ -462,15 +462,15 @@ public final  class Comparators {
 	};
 	public static final Comparator<Team> TeamByDefendReboundAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double i1= (double)t1.defendRebound/t1.appearance;
-			Double i2 = (double)t2.defendRebound/t2.appearance;
+			double i1= (double)t1.defendRebound/t1.appearance;
+			double i2 = (double)t2.defendRebound/t2.appearance;
 			if(i2>i1)return 1;else if(i2<i1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByDefendReboundAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			Double i1= (double)t1.defendRebound/t1.appearance;
-			Double i2 = (double)t2.defendRebound/t2.appearance;
+			double i1= (double)t1.defendRebound/t1.appearance;
+			double i2 = (double)t2.defendRebound/t2.appearance;
 			if(i2>i1)return -1;else if(i2<i1)return 1;else return 0;
 		}
 	};
@@ -506,15 +506,15 @@ public final  class Comparators {
 	};
 	public static final Comparator<Team> TeamByFaultAvg = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			int i2 = t2.fault/t2.appearance;
-			int i1 = t1.fault/t2.appearance;
+			double i2 = (double)t2.fault/t2.appearance;
+			double i1 = (double)t1.fault/t2.appearance;
 			if(i2>i1)return 1;else if(i2<i1)return -1;else return 0;
 		}
 	};
 	public static final Comparator<Team> TeamByFaultAvgAsc = new Comparator<Team>() {
 		public int compare(Team t1,Team t2) {
-			int i2 = t2.fault;
-			int i1 = t1.fault;
+			double i2 = (double)t2.fault/t2.appearance;
+			double i1 = (double)t1.fault/t1.appearance;
 			if(i2>i1)return -1;else if(i2<i1)return 1;else return 0;
 		}
 	};

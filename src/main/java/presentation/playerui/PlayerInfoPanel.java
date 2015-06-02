@@ -59,6 +59,7 @@ public class PlayerInfoPanel extends JPanel {
 	private JTable table_1;
 	private JTable table_2;
 	JButton button;
+	JButton button_1;
 	ImageIcon picture;
 	ImageIcon pictureOfAct;
 	MouseListen listener = new MouseListen();
@@ -356,6 +357,21 @@ public class PlayerInfoPanel extends JPanel {
 		label_4.setBounds(848, 357, 83, 15);
 		label_4.addMouseListener(new RankListener());
 		panelOfBottom.add(label_4);
+		
+		button_1 = new JButton("对比");
+		button_1.setBounds(106, 6, 93, 23);
+		button_1.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				PlayerInfoPanel.scrollPane.setVisible(false);
+				PlayerComparePanel.scrollPane.setVisible(true);
+				MainFrame.pcp.update1(playerName, vo.getTeamAbbreviation());
+				MainFrame.frame.setTitle("球员对比");
+				MainFrame.currentPanel = Panels.PlayerComparePanel;
+				
+			}
+		});
+		panelOfBottom.add(button_1);
 		
 		//scrollPane.setBounds(0, 0, 990, 600);
 

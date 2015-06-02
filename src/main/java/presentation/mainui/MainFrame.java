@@ -33,6 +33,7 @@ import org.jvnet.substance.watermark.SubstanceWoodWatermark;
 import blservice.BLService;
 import presentation.ImageHandle;
 import presentation.matchui.MatchSelectionPanel;
+import presentation.playerui.PlayerComparePanel;
 import presentation.playerui.PlayerInfoPanel;
 import presentation.playerui.PlayerRankingPanel;
 import presentation.playerui.PlayerSelectionPanel;
@@ -55,6 +56,7 @@ public class MainFrame {
 	public static PlayerInfoPanel pip;
 	public static PlayerSelectionPanel psp;
 	public static HotRankingPanel hrp;
+	public static PlayerComparePanel pcp;
 	
 	public static boolean flag = false;
 	public static boolean flag0 = false;
@@ -116,22 +118,22 @@ public class MainFrame {
 
 	BLService blservice = BLController.getInstance();
 	public static void main(String[] args) {
-//		try {
-//			UIManager.setLookAndFeel(new SubstanceLookAndFeel());
-//			if (System.getProperty("substancelaf.useDecorations") == null) {
-//				JFrame.setDefaultLookAndFeelDecorated(true);
-//				JDialog.setDefaultLookAndFeelDecorated(true);
-//				/**
-//				 * setDefaultLookAndFeelDecorated设置为true或者false
-//				 * JDialog也可以使用setDefaultLookAndFeelDecorated
-//				 */
-//			}
-//
-//			 //设置当前的主题风格
-//			SubstanceLookAndFeel.setSkin(new MagmaSkin());
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		try {
+			UIManager.setLookAndFeel(new SubstanceLookAndFeel());
+			if (System.getProperty("substancelaf.useDecorations") == null) {
+				JFrame.setDefaultLookAndFeelDecorated(true);
+				JDialog.setDefaultLookAndFeelDecorated(true);
+				/**
+				 * setDefaultLookAndFeelDecorated设置为true或者false
+				 * JDialog也可以使用setDefaultLookAndFeelDecorated
+				 */
+			}
+
+			 //设置当前的主题风格
+			SubstanceLookAndFeel.setSkin(new MagmaSkin());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -174,6 +176,10 @@ public class MainFrame {
 		hrp = new HotRankingPanel();
 		frame.getContentPane().add(HotRankingPanel.scrollPane);
 		HotRankingPanel.scrollPane.setVisible(false);
+		
+		pcp = new PlayerComparePanel();
+		frame.getContentPane().add(PlayerComparePanel.scrollPane);
+		PlayerComparePanel.scrollPane.setVisible(false);
 	}
 
 	private class ScheduleTask extends TimerTask {

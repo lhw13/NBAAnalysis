@@ -45,7 +45,7 @@ import server.po.MatchPO;
 import vo.PlayerVO;
 import vo.TeamVO;
 import vo.TeamWithPlayersVO;
- 
+
 public class MainFrame {
 
 	public static JFrame frame;

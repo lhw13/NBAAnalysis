@@ -106,7 +106,7 @@ public class MainFrame {
 	
 	private static BLController compute;
 	
-	public static String selection="胜率";
+	public static String selection="得分";
 	public static String selection1="得分";
 	public static String selection2="胜率";
 	

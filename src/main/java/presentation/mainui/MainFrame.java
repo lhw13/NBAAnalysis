@@ -45,7 +45,7 @@ import server.po.MatchPO;
 import vo.PlayerVO;
 import vo.TeamVO;
 import vo.TeamWithPlayersVO;
- 
+
 public class MainFrame {
 
 	public static JFrame frame;
@@ -106,7 +106,7 @@ public class MainFrame {
 	
 	private static BLController compute;
 	
-	public static String selection="胜率";
+	public static String selection="得分";
 	public static String selection1="得分";
 	public static String selection2="胜率";
 	

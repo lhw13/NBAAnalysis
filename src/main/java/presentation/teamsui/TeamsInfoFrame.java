@@ -64,7 +64,7 @@ public class TeamsInfoFrame extends JPanel{
 	private JScrollPane scrollPane_search;
 	private JComboBox<String> comboBox_1;
 	private JComboBox comboBox_2;
-	private static String season="12-13";
+	private static String season="13-14";
 	private static int date=0;
 	private static Vector columnName3;
 	private static DefaultTableModel model_3=new DefaultTableModel();
@@ -308,15 +308,15 @@ public class TeamsInfoFrame extends JPanel{
 		scrollPane.setBounds(0, 0, 990, 560);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		
-		String[] names1 = new String[]{"","球员", "场数", "在场时间", "胜率(场均)", "胜率(总计)"};
+		String[] names1 = new String[]{"","球员", "场数", "在场时间", "得分(场均)", "得分(总计)"};
 		columnName1 = new Vector();
 		for(int i=0;i<names1.length;i++) {
 			columnName1.add(names1[i]);
 		}
 		
 		final JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.addItem("胜率");
 		comboBox.addItem("得分");
+		comboBox.addItem("胜率");
 		comboBox.addItem("抢断");
 		comboBox.addItem("盖帽");
 		comboBox.addItem("助攻");
@@ -342,6 +342,7 @@ public class TeamsInfoFrame extends JPanel{
 		comboBox.addItem("罚球命中数");
 		comboBox.addItem("罚球出手数");
 		comboBox.setBounds(750, 140, 150, 30);
+		comboBox.setSelectedItem("得分");
 		panel_1.add(comboBox);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();

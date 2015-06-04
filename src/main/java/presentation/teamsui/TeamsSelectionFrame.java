@@ -1110,9 +1110,9 @@ public class TeamsSelectionFrame {
 		if(twpvo!=null&&twpvo.getTeam()!=null) {
 			TeamsInfoFrame tip = new TeamsInfoFrame(twpvo);
 			MainFrame.frame.getContentPane().add(tip.scrollPane);
-			tip.updateTeam(twpvo, "胜率");
+			tip.updateTeam(twpvo, "得分");
 			tip.latestMatchs(teamName);
-			MainFrame.selection = "胜率";
+			MainFrame.selection = "得分";
 			MainFrame.frame.setTitle("NBA球队信息");
 			MainFrame.backPanels.add(MainFrame.currentPanel);
 			MainFrame.currentPanel = Panels.TeamsInfoFrame;
@@ -1134,9 +1134,9 @@ public class TeamsSelectionFrame {
 			TeamsInfoFrame tip = new TeamsInfoFrame(twpvo);
 			MainFrame.frame.getContentPane().add(tip.scrollPane);
 			MainFrame.TWPVO = twpvo;
-			tip.updateTeam(twpvo, "胜率");
+			tip.updateTeam(twpvo, "得分");
 			tip.latestMatchs(teamName);
-			MainFrame.selection = "胜率";
+			MainFrame.selection = "得分";
 			MainFrame.frame.setTitle("NBA球队信息");
 			MainFrame.backPanels.add(MainFrame.currentPanel);
 			MainFrame.currentPanel = Panels.TeamsInfoFrame;

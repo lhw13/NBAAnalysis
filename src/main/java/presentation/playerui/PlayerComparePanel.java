@@ -4,6 +4,8 @@ import hotui.HotRankingPanel;
 
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.text.SimpleDateFormat;
@@ -16,6 +18,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import presentation.ImageHandle;
+import presentation.mainui.MainFrame;
+import presentation.mainui.Panels;
+import presentation.matchui.MatchDetailInfoPanel;
+import presentation.matchui.MatchSelectionPanel;
+import presentation.teamsui.TeamsInfoFrame;
 import server.businesslogic.BLController;
 import vo.PlayerVO;
 import vo.TeamVO;
@@ -27,6 +34,7 @@ import blservice.BLService;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JButton;
 
 public class PlayerComparePanel extends JPanel {
 	BLService blservice = BLController.getInstance();
@@ -66,6 +74,9 @@ public class PlayerComparePanel extends JPanel {
 	Vector columnName_c = new Vector();
 	Vector columnName_l = new Vector();
 	Vector columnName_r = new Vector();
+	
+	private JButton button;
+	
 	public PlayerComparePanel() {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
@@ -103,13 +114,13 @@ public class PlayerComparePanel extends JPanel {
 		
 //comboBox========================================================
 		comboBoxOfLTeam = new JComboBox();
-		comboBoxOfLTeam.setBounds(30, 20, 124, 26);
+		comboBoxOfLTeam.setBounds(172, 21, 124, 26);
 		panelOfBottom.add(comboBoxOfLTeam);
 		comboBoxOfLTeam.addItem("选择球队");
 		comboBoxOfLTeam.addItemListener(new TeamItemListener('l'));
 		
 		comboBoxOfLPlayer = new JComboBox();
-		comboBoxOfLPlayer.setBounds(178, 20, 124, 26);
+		comboBoxOfLPlayer.setBounds(306, 21, 124, 26);
 		panelOfBottom.add(comboBoxOfLPlayer);
 		comboBoxOfLPlayer.addItem("选择球员");
 		comboBoxOfLPlayer.addItemListener(new PlayerItemListener('l'));
@@ -191,6 +202,24 @@ public class PlayerComparePanel extends JPanel {
 		
 		table_r.setBounds(515, 57, 139, 190);
 		panelOfBottom.add(table_r);
+		
+//button=====================================================================		
+		button = new JButton("返回");
+		button.setBounds(30, 21, 111, 26);
+		button.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				int size = MainFrame.backPanels.size();
+				Panels temp = MainFrame.backPanels.get(size-1);
+				MainFrame.backPanels.remove(size-1);
+				
+				PlayerInfoPanel.scrollPane.setVisible(true);
+				PlayerComparePanel.scrollPane.setVisible(false);
+				MainFrame.frame.setTitle("NBA球员信息");
+				MainFrame.currentPanel = Panels.PlayerInfoPanel;
+			}
+		});
+		panelOfBottom.add(button);
 		
 	}
 	

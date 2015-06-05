@@ -600,16 +600,42 @@ public class PlayerComparePanel extends JPanel {
 		else{
 			PlayerVO vo1 = blservice.getPlayerAnalysis(playerName1);
 
-			int[] scoreArray = {vo1.getScore(), 0};
-			dataMap.put("得分", scoreArray);
-			int[] reboundArray = {vo1.getTotalRebound(), 0};
-			dataMap.put("篮板", reboundArray);
-			int[] assistArray = {vo1.getAssist(), 0};
-			dataMap.put("助攻", assistArray);
-			int[] freehitArray = {vo1.getFreeHit(), 0};
-			dataMap.put("罚球", freehitArray);
-			int[] stealArray = {vo1.getSteal(), 0};
-			dataMap.put("抢断", stealArray);
+			for(int i=0;i<checkBoxItem.size();i++){
+				switch(checkBoxItem.get(i)){
+				case "得分":
+					int[] scoreArray = {vo1.getScore(), 0};
+					dataMap.put("得分", scoreArray);
+					break;
+				case "篮板":
+					int[] reboundArray = {vo1.getTotalRebound(), 0};
+					dataMap.put("篮板", reboundArray);
+					break;
+				case "助攻":
+					int[] assistArray = {vo1.getAssist(), 0};
+					dataMap.put("助攻", assistArray);
+					break;
+				case "罚球":
+					int[] freehitArray = {vo1.getFreeHit(), 0};
+					dataMap.put("罚球", freehitArray);
+					break;
+				case "抢断":
+					int[] stealArray = {vo1.getSteal(), 0};
+					dataMap.put("抢断", stealArray);
+					break;
+				case "盖帽":
+					int[] blockArray = {vo1.getBlock(), 0};
+					dataMap.put("盖帽", blockArray);
+					break;
+				case "失误":
+					int[] missArray = {vo1.getMiss(), 0};
+					dataMap.put("失误", missArray);
+					break;
+				case "犯规":
+					int[] foulArray = {vo1.getFoul(), 0};
+					dataMap.put("犯规", foulArray);
+					break;
+				}
+			}
 
 			String[] players = {playerName1, playerName2};
 

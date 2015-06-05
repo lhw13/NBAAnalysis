@@ -366,7 +366,7 @@ public class PlayerInfoPanel extends JPanel {
 				PlayerInfoPanel.scrollPane.setVisible(false);
 				PlayerComparePanel.scrollPane.setVisible(true);
 				MainFrame.pcp.update1(playerName, vo.getTeamAbbreviation());
-				MainFrame.pcp.update_chart(playerName, "NoPlayer2");
+				MainFrame.pcp.update_chart(playerName, PlayerComparePanel.player_2);
 				PlayerComparePanel.player_1 = playerName;
 				MainFrame.frame.setTitle("NBA球员对比");
 				MainFrame.backPanels.add(MainFrame.currentPanel);

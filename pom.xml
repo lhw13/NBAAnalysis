@@ -56,6 +56,20 @@
     	<scope>system</scope>
     	<systemPath>${project.basedir}/lib/testData.jar</systemPath>
     </dependency>
+    <dependency>
+    	<groupId>jfreechart</groupId>
+    	<artifactId>jfreechart</artifactId>
+    	<version>1.0.19</version>
+    	<scope>system</scope>
+    	<systemPath>${project.basedir}/lib/jfreechart-1.0.19.jar</systemPath>
+    </dependency>
+    <dependency>
+    	<groupId>jcommon</groupId>
+    	<artifactId>jcommon</artifactId>
+    	<version>1.0.23</version>
+    	<scope>system</scope>
+    	<systemPath>${project.basedir}/lib/jcommon-1.0.23.jar</systemPath>
+    </dependency>
   </dependencies>
   
 <build>  

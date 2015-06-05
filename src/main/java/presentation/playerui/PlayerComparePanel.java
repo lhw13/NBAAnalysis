@@ -234,13 +234,13 @@ public class PlayerComparePanel extends JPanel {
 		labelOfPhoto4.setBounds(865, 79, 100, 100);
 		panelOfBottom.add(labelOfPhoto4);
 
-		//Icon========================================================
+//Icon========================================================
 		picture3 = ImageHandle.loadTeam(pname2);
 		picture3.setImage(picture3.getImage().getScaledInstance(145, 145,
 				Image.SCALE_DEFAULT));
 		labelOfPhoto3.setIcon(picture3);
 
-		//comboBox========================================================
+//comboBox========================================================
 		comboBoxOfLTeam = new JComboBox();
 		comboBoxOfLTeam.setBounds(172, 21, 124, 26);
 		panelOfBottom.add(comboBoxOfLTeam);
@@ -272,7 +272,7 @@ public class PlayerComparePanel extends JPanel {
 			comboBoxOfRTeam.addItem(PlayerSelectionPanel.translate(tempvo.getAbbreviation()));
 		}
 
-		//column==============================================================
+//column==============================================================
 		String[] cname_c = new String[] {""};
 		for(int i=0;i<cname_c.length;i++) {
 			columnName_c.add(cname_c[i]);
@@ -288,7 +288,7 @@ public class PlayerComparePanel extends JPanel {
 			columnName_r.add(cname_r[i]);
 		}	
 
-		//table=================================================================
+//table=================================================================
 		table_l = new JTable(model_l);
 		table_l.setBounds(330, 57, 140, 190);
 		panelOfBottom.add(table_l);
@@ -331,7 +331,7 @@ public class PlayerComparePanel extends JPanel {
 		table_r.setBounds(515, 57, 139, 190);
 		panelOfBottom.add(table_r);
 
-		//button=====================================================================		
+//button=====================================================================		
 		button = new JButton("返回");
 		button.setBounds(30, 21, 111, 26);
 		button.addActionListener(new ActionListener() {

@@ -32,6 +32,7 @@ import org.jvnet.substance.watermark.SubstanceWoodWatermark;
 
 import blservice.BLService;
 import presentation.ImageHandle;
+import presentation.matchui.MatchPlayoffPanel;
 import presentation.matchui.MatchSelectionPanel;
 import presentation.playerui.PlayerComparePanel;
 import presentation.playerui.PlayerInfoPanel;
@@ -57,6 +58,8 @@ public class MainFrame {
 	public static PlayerSelectionPanel psp;
 	public static HotRankingPanel hrp;
 	public static PlayerComparePanel pcp;
+	public static MatchPlayoffPanel mpp;
+	
 	
 	public static boolean flag = false;
 	public static boolean flag0 = false;
@@ -180,6 +183,10 @@ public class MainFrame {
 		pcp = new PlayerComparePanel();
 		frame.getContentPane().add(PlayerComparePanel.scrollPane);
 		PlayerComparePanel.scrollPane.setVisible(false);
+		
+		mpp = new MatchPlayoffPanel();
+		frame.getContentPane().add(MatchPlayoffPanel.scrollPane);
+		MatchPlayoffPanel.scrollPane.setVisible(false);
 	}
 
 	private class ScheduleTask extends TimerTask {

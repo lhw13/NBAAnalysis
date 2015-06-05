@@ -26,6 +26,7 @@ import javax.swing.table.TableRowSorter;
 import presentation.ImageHandle;
 import presentation.mainui.MainFrame;
 import presentation.mainui.Panels;
+import presentation.playerui.PlayerComparePanel;
 import presentation.playerui.PlayerInfoPanel;
 import presentation.playerui.PlayerSelectionPanel;
 import presentation.playerui.PlayerInfoPanel.MouseListen;
@@ -173,6 +174,22 @@ public class MatchSelectionPanel extends JPanel {
 		btnNewButton.setBounds(100, 50, 100, 30);
 		panelOfBottom.add(btnNewButton);
 		
+		JButton button = new JButton("季后赛");
+		button.setBounds(800, 50, 100, 30);
+		panelOfBottom.add(button);
+		button.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				
+				MatchSelectionPanel.scrollPane.setVisible(false);
+				MatchPlayoffPanel.scrollPane.setVisible(true);
+				
+				MainFrame.frame.setTitle("NBA季后赛");
+				MainFrame.backPanels.add(MainFrame.currentPanel);
+				MainFrame.currentPanel = Panels.MatchPlayoffPanel;
+				
+			}
+		});
 		btnNewButton.addActionListener(new ActionListener(){
 
 			@Override
@@ -647,5 +664,4 @@ public class MatchSelectionPanel extends JPanel {
 	    }  
 	    return columns;  
 	}
-	
 }

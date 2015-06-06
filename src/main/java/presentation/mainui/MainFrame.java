@@ -872,6 +872,7 @@ public class MainFrame {
 			currentPanel = Panels.TeamsRankingFrame;
 		}else{
 			MainFrame.panel.setVisible(false);
+			TeamsRankingFrame.sortTheTeamsOnWinRate();
 			TeamsRankingFrame trp = new TeamsRankingFrame();
 			trp.updataTeamsRanking();
 			frame.getContentPane().add(trp.scrollPane);
@@ -900,6 +901,7 @@ public class MainFrame {
 			MainFrame.panel.setVisible(false);
 			PlayerRankingPanel prp = new PlayerRankingPanel();
 			prp.updatePlayerRanking();
+			PlayerRankingPanel.updatePlayerWithCondition("point");
 			frame.getContentPane().add(PlayerRankingPanel.scrollPane);
 			MainFrame.frame.setTitle("NBA球员排名");
 			frame.repaint();//刷新重画 

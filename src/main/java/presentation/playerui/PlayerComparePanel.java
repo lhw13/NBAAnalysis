@@ -465,6 +465,35 @@ public class PlayerComparePanel extends JPanel {
 		table_r.updateUI();
 	}
 
+	public void updatechange() {
+		comboBoxOfRTeam.removeAllItems();
+		comboBoxOfRTeam.addItem("选择球队");
+		
+		comboBoxOfLTeam.removeAllItems();
+		comboBoxOfLTeam.addItem("选择球队");
+		ArrayList<TeamVO> teams = blservice.getTeamAnalysis();
+		for(int i=0;i<teams.size();i++) {
+			TeamVO tempvo = teams.get(i);
+			comboBoxOfLTeam.addItem(PlayerSelectionPanel.translate(tempvo.getAbbreviation()));
+			comboBoxOfRTeam.addItem(PlayerSelectionPanel.translate(tempvo.getAbbreviation()));
+		}
+		
+		comboBoxOfRPlayer.removeAllItems();
+		comboBoxOfRPlayer.addItem("选择球员");
+		comboBoxOfLPlayer.removeAllItems();
+		comboBoxOfLPlayer.addItem("选择球员");
+		picture3 = ImageHandle.loadTeam("NBA");
+		picture4 = ImageHandle.loadTeam("");
+
+		picture3.setImage(picture3.getImage().getScaledInstance(145, 145,
+				Image.SCALE_DEFAULT));
+		picture4.setImage(picture4.getImage().getScaledInstance(100, 100,
+				Image.SCALE_DEFAULT));
+
+		labelOfPhoto3.setIcon(picture3);
+		labelOfPhoto4.setIcon(picture4);
+		table_r.setVisible(false);
+	}
 	public class TeamItemListener implements ItemListener{
 
 		char c = ' ';

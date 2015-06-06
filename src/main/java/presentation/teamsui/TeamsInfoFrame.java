@@ -374,7 +374,6 @@ public class TeamsInfoFrame extends JPanel{
 					columnName1.setElementAt("胜率(场均)", 4);
 					columnName1.setElementAt("胜率(总计)", 5);
 					updateTeam(twpvo, "胜率");
-					
 					break;
 				case "投篮出手数":
 					MainFrame.selection="投篮出手数";
@@ -587,12 +586,27 @@ public class TeamsInfoFrame extends JPanel{
 		
 	}
 	
+	private static ArrayList<PlayerVO> sortThePlayerOnScore(ArrayList<PlayerVO> players){
+		for(int i=0;i<players.size();i++) {
+			for(int j=i+1;j<players.size();j++){
+				if(players.get(i).getScore()<players.get(j).getScore()){
+					PlayerVO temp = players.get(i);
+					players.set(i, players.get(j));
+					players.set(j, temp);
+				}
+			}
+		}
+		return players;
+	}
+	
 	public static void updateTeam(TeamWithPlayersVO t, String con) {
 		compute = BLController.getInstance();
 		TeamWithPlayersVO twpvo = compute.getTeamAnalysis(t.getTeam().getAbbreviation());
 		MainFrame.TWPVO = twpvo;
-		ArrayList<PlayerVO> players = twpvo.getPlayers();
+		ArrayList<PlayerVO> players_NoSort = twpvo.getPlayers();
 		TeamVO tvo = twpvo.getTeam();
+		//球员按得分从大到小排序
+		ArrayList<PlayerVO> players = sortThePlayerOnScore(players_NoSort);
 		Vector rowDatas1 = new Vector();
 		Vector rowData2;
 		ImageIcon picture;

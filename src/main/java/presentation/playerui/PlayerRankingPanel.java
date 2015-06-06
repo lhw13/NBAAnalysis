@@ -52,7 +52,7 @@ public class PlayerRankingPanel extends JPanel {
 	
 	public static JScrollPane scrollPane;
 	private JButton btnNewButton;
-	private JComboBox<String> comboBox;
+	private static JComboBox<String> comboBox;
 	public static JTable table;
 	 
 	private static JLabel kingOfScore;
@@ -1662,7 +1662,7 @@ public class PlayerRankingPanel extends JPanel {
 
 	}
 	
-	public void updatePlayerWithCondition(String condition){
+	public static void updatePlayerWithCondition(String condition){
 		ArrayList<Player> players = compute.getPlayers();
 		List<Player> playerList = players;
 		Collections.sort(playerList, Comparators.getPlayerComparator(condition));

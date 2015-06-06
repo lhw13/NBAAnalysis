@@ -357,9 +357,22 @@ public class TeamsRankingFrame {
 		
 	}
 	
-	public static void updataTeamsRanking(){
+	private static ArrayList<TeamVO> tvoList;
+	public static void sortTheTeamsOnWinRate(){
 		compute = BLController.getInstance();
-		ArrayList<TeamVO> tvoList = compute.getTeamAnalysis();
+		tvoList = compute.getTeamAnalysis();
+		for (int i=0;i<tvoList.size();i++){
+			for(int j=i+1;j<tvoList.size();j++){
+				if(tvoList.get(i).getWinRate() < tvoList.get(j).getWinRate()){
+					TeamVO tem = tvoList.get(i);
+					tvoList.set(i, tvoList.get(j));
+					tvoList.set(j, tem);
+	              }
+			}
+		}
+	}
+	
+	public static void updataTeamsRanking(){
 		ImageIcon picture;
 		Vector rowDatas1 = new Vector();
 		for (int i = 0; i < tvoList.size(); i++) {

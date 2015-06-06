@@ -4,7 +4,7 @@ public  final class PlayerInMatchesPO {
 	public PlayerInMatchesPO() {
 	}
 
-	public PlayerInMatchesPO(String name, char position, int playTime, int hit,
+	public PlayerInMatchesPO(String name, String position, int playTime, int hit,
 			int shot, int thirdHit, int thirdshot, int freeHit, int freeshot,
 			int offensiveRebound, int defensiveRebound, int totalRebound,
 			int assist, int steal, int block, int miss, int foul, int score) {
@@ -30,7 +30,7 @@ public  final class PlayerInMatchesPO {
 	}
 
 	String name;
-	char position;
+	String position;
 	int playTime;
 	int hit;// 命中
 	int shot;// 出手
@@ -64,11 +64,11 @@ public  final class PlayerInMatchesPO {
 		this.name = name;
 	}
 
-	public char getPosition() {
+	public String getPosition() {
 		return position;
 	}
 
-	public void setPosition(char position) {
+	public void setPosition(String position) {
 		this.position = position;
 	}
 

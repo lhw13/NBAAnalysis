@@ -76,12 +76,12 @@ public class DirtyDataTest {
 			int start1 = 0;
 			int start2 = 0;
 			for (int j = 0; j < players1.size(); j++) {
-				char p = players1.get(j).getPosition();
+				char p = players1.get(j).getPosition().charAt(0);
 				if (p == 'F' || p == 'G' || p == 'C')
 					start1++;
 			}
 			for (int j = 0; j < players2.size(); j++) {
-				char p = players2.get(j).getPosition();
+				char p = players2.get(j).getPosition().charAt(0);
 				if (p == 'F' || p == 'G' || p == 'C')
 					start2++;
 			}

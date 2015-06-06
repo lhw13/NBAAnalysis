@@ -65,8 +65,8 @@ public class PlayerComparePanel extends JPanel {
 
 	ImageIcon picture1;
 	ImageIcon picture2;
-	ImageIcon picture3;
-	ImageIcon picture4;
+	public ImageIcon picture3;
+	public ImageIcon picture4;
 
 	String pname1="NBA";
 	String tname1;
@@ -409,6 +409,7 @@ public class PlayerComparePanel extends JPanel {
 
 	//update right player info
 	public void update2(String playerName2,String teamName2) {
+		
 		pname2 = playerName2;
 		tname2 = teamName2;
 
@@ -459,6 +460,7 @@ public class PlayerComparePanel extends JPanel {
 		model_r.setColumnCount(table_r.getColumnCount());
 		model_r.setRowCount(rowDatas_r.size());
 		table_r.setFont(new Font("微软雅黑", Font.BOLD, 14));
+		table_r.setVisible(true);
 		table_r.setModel(model_r);
 		table_r.updateUI();
 	}
@@ -492,7 +494,18 @@ public class PlayerComparePanel extends JPanel {
 					comboBoxOfRPlayer.removeAllItems();
 					String teamSelected =e.getItem().toString();
 					if(teamSelected.equals("选择球队")) {
-						comboBoxOfLPlayer.addItem("选择球员");
+						comboBoxOfRPlayer.addItem("选择球员");
+						picture3 = ImageHandle.loadTeam("NBA");
+						picture4 = ImageHandle.loadTeam("");
+
+						picture3.setImage(picture3.getImage().getScaledInstance(145, 145,
+								Image.SCALE_DEFAULT));
+						picture4.setImage(picture4.getImage().getScaledInstance(100, 100,
+								Image.SCALE_DEFAULT));
+
+						labelOfPhoto3.setIcon(picture3);
+						labelOfPhoto4.setIcon(picture4);
+						table_r.setVisible(false);
 					} else {
 						TeamWithPlayersVO teamvo = blservice.getTeamAnalysis(HotRankingPanel.translate(teamSelected));
 						ArrayList<PlayerVO> players = teamvo.getPlayers();

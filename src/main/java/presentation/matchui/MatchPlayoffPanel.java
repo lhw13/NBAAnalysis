@@ -119,13 +119,29 @@ public class MatchPlayoffPanel extends JPanel implements MouseListener{
 		 l8.setSize(WIDTH, HIGHT);
 		 l8.setLocation(172, 480);
 		 r1 = new JLabel("r1");
+		 r1.setSize(WIDTH, HIGHT);
+		 r1.setLocation(732, 55);
 		 r2 = new JLabel("r2");
+		 r2.setLocation(732, 108);
+		 r2.setSize(WIDTH, HIGHT);
 		 r3 = new JLabel("r3");
+		 r3.setLocation(732, 180);
+		 r3.setSize(WIDTH, HIGHT);
 		 r4 = new JLabel("r4");
+		 r4.setLocation(732, 233);
+		 r4.setSize(WIDTH, HIGHT);
 		 r5 = new JLabel("r5");
+		 r5.setLocation(732, 307);
+		 r5.setSize(WIDTH, HIGHT);
 		 r6 = new JLabel("r6");
+		 r6.setLocation(732, 351);
+		 r6.setSize(WIDTH, HIGHT);
 		 r7 = new JLabel("r7");
+		 r7.setLocation(732, 434);
+		 r7.setSize(WIDTH, HIGHT);
 		 r8 = new JLabel("r8");
+		 r8.setLocation(732, 480);
+		 r8.setSize(WIDTH, HIGHT);
 		
 		 ll1 = new JLabel("ll1");
 		 ll1.setSize(WIDTH, HIGHT);
@@ -140,9 +156,17 @@ public class MatchPlayoffPanel extends JPanel implements MouseListener{
 		 ll4.setSize(WIDTH, HIGHT);
 		 ll4.setLocation(302, 433);
 		 rr1 = new JLabel("rr1");
+		 rr1.setSize(WIDTH, HIGHT);
+		 rr1.setLocation(618, 130);
 		 rr2 = new JLabel("rr2");
+		 rr2.setSize(WIDTH, HIGHT);
+		 rr2.setLocation(618, 180);
 		 rr3 = new JLabel("rr3");
+		 rr3.setSize(WIDTH, HIGHT);
+		 rr3.setLocation(618, 380);
 		 rr4 = new JLabel("rr4");
+		 rr4.setSize(WIDTH, HIGHT);
+		 rr4.setLocation(618, 433);
 		
 		 lll1 = new JLabel("lll1");
 		 lll1.setSize(WIDTH, HIGHT);
@@ -151,7 +175,11 @@ public class MatchPlayoffPanel extends JPanel implements MouseListener{
 		 lll2.setSize(WIDTH, HIGHT);
 		 lll2.setLocation(355, 313);
 		 rrr1 = new JLabel("rrr1");
+		 rrr1.setSize(WIDTH, HIGHT);
+		 rrr1.setLocation(570, 253);
 		 rrr2 = new JLabel("rrr2");
+		 rrr2.setSize(WIDTH, HIGHT);
+		 rrr2.setLocation(570, 313);
 		
 		 c1 = new JLabel("c1");
 		 c1.setSize(WIDTH, HIGHT);
@@ -348,6 +376,76 @@ public class MatchPlayoffPanel extends JPanel implements MouseListener{
 		cp2.setImage(cp2.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		c2.setIcon(cp2);
+		
+		ImageIcon rp1 = new ImageIcon("conf/pictures/ATL.png");
+		rp1.setImage(rp1.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		r1.setIcon(rp1);	
+		
+		ImageIcon rp2 = new ImageIcon("conf/pictures/ATL.png");
+		rp2.setImage(rp2.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		r2.setIcon(rp2);
+		
+		ImageIcon rp3 = new ImageIcon("conf/pictures/ATL.png");
+		rp3.setImage(rp3.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		r3.setIcon(rp3);
+		
+		ImageIcon rp4 = new ImageIcon("conf/pictures/ATL.png");
+		rp4.setImage(rp4.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		r4.setIcon(rp4);
+		
+		ImageIcon rp5 = new ImageIcon("conf/pictures/ATL.png");
+		rp5.setImage(rp5.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		r5.setIcon(rp5);
+		
+		ImageIcon rp6 = new ImageIcon("conf/pictures/ATL.png");
+		rp6.setImage(rp6.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		r6.setIcon(rp6);
+		
+		ImageIcon rp7 = new ImageIcon("conf/pictures/ATL.png");
+		rp7.setImage(rp7.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		r7.setIcon(rp7);
+		
+		ImageIcon rp8 = new ImageIcon("conf/pictures/ATL.png");
+		rp8.setImage(rp8.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		r8.setIcon(rp8);
+		
+		ImageIcon rrp1 = new ImageIcon("conf/pictures/ATL.png");
+		rrp1.setImage(rrp1.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		rr1.setIcon(rrp1);
+		
+		ImageIcon rrp2 = new ImageIcon("conf/pictures/ATL.png");
+		rrp2.setImage(rrp2.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		rr2.setIcon(rrp2);
+		
+		ImageIcon rrp3 = new ImageIcon("conf/pictures/ATL.png");
+		rrp3.setImage(rrp3.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		rr3.setIcon(rrp3);
+		
+		ImageIcon rrp4 = new ImageIcon("conf/pictures/ATL.png");
+		rrp4.setImage(rrp4.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		rr4.setIcon(rrp4);
+		
+		ImageIcon rrrp1 = new ImageIcon("conf/pictures/ATL.png");
+		rrrp1.setImage(rrrp1.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		rrr1.setIcon(rrrp1);
+		
+		ImageIcon rrrp2 = new ImageIcon("conf/pictures/ATL.png");
+		rrrp2.setImage(rrrp2.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		rrr2.setIcon(rrrp2);
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {

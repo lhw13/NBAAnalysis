@@ -376,6 +376,20 @@ public class PlayerInfoPanel extends JPanel {
 		});
 		panelOfBottom.add(button_1);
 		
+		JButton button_2 = new JButton("分析");
+		button_2.setBounds(207, 6, 93, 23);
+		button_2.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				PlayerInfoPanel.scrollPane.setVisible(false);
+				PlayerAnalysePanel.scrollPane.setVisible(true);
+				MainFrame.frame.setTitle("NBA球员分析");
+				MainFrame.backPanels.add(MainFrame.currentPanel);
+				MainFrame.currentPanel = Panels.PlayerAnalysePanel;
+			}
+		});
+		panelOfBottom.add(button_2);
+		
 		//scrollPane.setBounds(0, 0, 990, 600);
 
 		scrollPane.setBounds(0, 0, 990, 600);

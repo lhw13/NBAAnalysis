@@ -128,21 +128,37 @@ public class MatchPlayoffPanel extends JPanel implements MouseListener{
 		 r8 = new JLabel("r8");
 		
 		 ll1 = new JLabel("ll1");
+		 ll1.setSize(WIDTH, HIGHT);
+		 ll1.setLocation(302, 130);
 		 ll2 = new JLabel("ll2");
+		 ll2.setSize(WIDTH, HIGHT);
+		 ll2.setLocation(302, 180);
 		 ll3 = new JLabel("ll3");
+		 ll3.setSize(WIDTH, HIGHT);
+		 ll3.setLocation(302, 380);
 		 ll4 = new JLabel("ll4");
+		 ll4.setSize(WIDTH, HIGHT);
+		 ll4.setLocation(302, 433);
 		 rr1 = new JLabel("rr1");
 		 rr2 = new JLabel("rr2");
 		 rr3 = new JLabel("rr3");
 		 rr4 = new JLabel("rr4");
 		
 		 lll1 = new JLabel("lll1");
+		 lll1.setSize(WIDTH, HIGHT);
+		 lll1.setLocation(355, 253);
 		 lll2 = new JLabel("lll2");
+		 lll2.setSize(WIDTH, HIGHT);
+		 lll2.setLocation(355, 313);
 		 rrr1 = new JLabel("rrr1");
 		 rrr2 = new JLabel("rrr2");
 		
 		 c1 = new JLabel("c1");
+		 c1.setSize(WIDTH, HIGHT);
+		 c1.setLocation(460, 188);
 		 c2 = new JLabel("c2");
+		 c2.setSize(WIDTH, HIGHT);
+		 c2.setLocation(460, 250);
 		
 		label_background = new JLabel();
 		label_background.setBounds(159, 74, 690, 493);
@@ -292,6 +308,46 @@ public class MatchPlayoffPanel extends JPanel implements MouseListener{
 		lp8.setImage(lp8.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		l8.setIcon(lp8);
+		
+		ImageIcon llp1 = new ImageIcon("conf/pictures/ATL.png");
+		llp1.setImage(llp1.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		ll1.setIcon(llp1);	
+		
+		ImageIcon llp2 = new ImageIcon("conf/pictures/ATL.png");
+		llp2.setImage(llp2.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		ll2.setIcon(llp2);
+		
+		ImageIcon llp3 = new ImageIcon("conf/pictures/ATL.png");
+		llp3.setImage(llp3.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		ll3.setIcon(llp3);
+		
+		ImageIcon llp4 = new ImageIcon("conf/pictures/ATL.png");
+		llp4.setImage(llp4.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		ll4.setIcon(llp4);
+		
+		ImageIcon lllp1 = new ImageIcon("conf/pictures/ATL.png");
+		lllp1.setImage(lllp1.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		lll1.setIcon(lllp1);
+		
+		ImageIcon lllp2 = new ImageIcon("conf/pictures/ATL.png");
+		lllp2.setImage(lllp2.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		lll2.setIcon(lllp2);
+		
+		ImageIcon cp1 = new ImageIcon("conf/pictures/ATL.png");
+		cp1.setImage(cp1.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		c1.setIcon(cp1);
+		
+		ImageIcon cp2 = new ImageIcon("conf/pictures/ATL.png");
+		cp2.setImage(cp2.getImage().getScaledInstance(HIGHT, HIGHT,
+				Image.SCALE_DEFAULT));
+		c2.setIcon(cp2);
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {

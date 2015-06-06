@@ -34,6 +34,7 @@ import blservice.BLService;
 import presentation.ImageHandle;
 import presentation.matchui.MatchPlayoffPanel;
 import presentation.matchui.MatchSelectionPanel;
+import presentation.playerui.PlayerAnalysePanel;
 import presentation.playerui.PlayerComparePanel;
 import presentation.playerui.PlayerInfoPanel;
 import presentation.playerui.PlayerRankingPanel;
@@ -59,7 +60,7 @@ public class MainFrame {
 	public static HotRankingPanel hrp;
 	public static PlayerComparePanel pcp;
 	public static MatchPlayoffPanel mpp;
-	
+	public static PlayerAnalysePanel pap;
 	
 	public static boolean flag = false;
 	public static boolean flag0 = false;
@@ -187,6 +188,10 @@ public class MainFrame {
 		mpp = new MatchPlayoffPanel();
 		frame.getContentPane().add(MatchPlayoffPanel.scrollPane);
 		MatchPlayoffPanel.scrollPane.setVisible(false);
+		
+		pap = new PlayerAnalysePanel();
+		frame.getContentPane().add(PlayerAnalysePanel.scrollPane);
+		PlayerAnalysePanel.scrollPane.setVisible(false);
 	}
 
 	private class ScheduleTask extends TimerTask {

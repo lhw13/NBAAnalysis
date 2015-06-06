@@ -22,6 +22,7 @@ import server.po.PlayerInMatchesPO;
 import server.po.PlayerPO;
 import server.po.ScorePO;
 import server.po.TeamPO;
+import vo.HeightVO;
 import vo.PlayerVO;
 import vo.TeamVO;
 import vo.TeamWithPlayersVO;
@@ -196,6 +197,31 @@ public final class BLController implements BLService {
 			result.add(new TeamWithPlayersVO(team.toVO(),
 					getPlayersInTeam(team.teamPO.getAbbreviation())));
 		}
+		return result;
+	}
+	
+	//iteration III
+	public PlayerVO getPlayerSeasonAvg() {
+		analyse();
+		ArrayList<PlayerVO> h =  getPlayerAnalysis();
+		PlayerVO result = new PlayerVO
+				(" ", " ",
+						' ', " ", " ", -1,
+						" ", null, -1, null,
+						0, 0, " ", 0, 0,
+						0, 0, 0, 0, 0,
+						0, 0, 0,
+						0,  0,  0,  0,
+						 0,  0,  0,  0,  0,
+						 0,  0,  0,
+						 0,  0,  0,
+						 0,  0,
+						 0,  0,  0,
+						 0,  0,  0,  0, null, 
+						 0,  0,  0,  0);
+		for(int i=0; i<h.size(); i++)
+			result.add(h.get(i));
+		result.divide(h.size());
 		return result;
 	}
 	

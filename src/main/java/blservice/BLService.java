@@ -41,4 +41,10 @@ public interface BLService {
 	public JSVGCanvas getSwing(String abbreviation);
 	
 	public void startWatchMatches();//to watch the file changes, start the watch thread
+	
+	
+	
+	//iteration III
+	//public void setSeason(String season);
+	public PlayerVO getPlayerSeasonAvg();
 }

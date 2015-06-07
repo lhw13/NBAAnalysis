@@ -85,11 +85,11 @@ public  final class MatchesDataAnalyse {
 			String playerInMatches) {
 		String[] player = playerInMatches.split(";");
 		String name = player[0];
-		char position;
+		String position;
 		if (player[1].isEmpty()) {
-			position = ' ';
+			position = " ";
 		} else {
-			position = player[1].charAt(0);
+			position = player[1];
 		}
 		String playTime = player[2];
 		int playTimeBySeconds = -1;// 脏数据取负值

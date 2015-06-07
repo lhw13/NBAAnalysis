@@ -224,8 +224,8 @@ public  final class Player implements Cloneable{
 		score += scoretemp;
 		if(scoretemp>highestScore)
 			highestScore=scoretemp;
-		char p = player.getPosition();
-		if (p == 'F' || p == 'G' || p == 'C')
+		String p = player.getPosition();
+		if (p.charAt(0) == 'F' || p.charAt(0) == 'G' || p.charAt(0) == 'C')
 		{
 			starting++;
 			if(this.player.getPosition()==null)

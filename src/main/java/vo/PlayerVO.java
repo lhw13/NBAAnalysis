@@ -79,6 +79,93 @@ public class PlayerVO {
 	public PlayerVO() {
 	}
 
+	public void add(PlayerVO adder) {
+		this.weight += adder. weight;
+		this.age += adder. age;
+		this.exp += adder. exp;
+		this.appearance += adder. appearance;
+		this.starting += adder. starting;
+		this.playTime += adder. playTime;
+		this.hit += adder. hit;
+		this.shot += adder. shot;
+		this.thirdHit += adder. thirdHit;
+		this.thirdshot += adder. thirdshot;
+		this.freeHit += adder. freeHit;
+		this.freeshot += adder. freeshot;
+		this.offensiveRebound += adder. offensiveRebound;
+		this.defensiveRebound += adder. defensiveRebound;
+		this.totalRebound += adder. totalRebound;
+		this.assist += adder. assist;
+		this.steal += adder. steal;
+		this.block += adder. block;
+		this.miss += adder. miss;
+		this.foul += adder. foul;
+		this.score += adder. score;
+		this.hitRate += adder. hitRate;
+		this.thirdHitRate += adder. thirdHitRate;
+		this.freeHitRate += adder. freeHitRate;
+		this.efficiency += adder. efficiency;
+		this.gmScEfficiency += adder. gmScEfficiency;
+		this.realHitRate += adder. realHitRate;
+		this.shotEfficiency += adder. shotEfficiency;
+		this.reboundRate += adder. reboundRate;
+		this.offensiveReboundRate += adder. offensiveReboundRate;
+		this.defensiveReboundRate += adder. defensiveReboundRate;
+		this.assistRate += adder. assistRate;
+		this.stealRate += adder. stealRate;
+		this.blockRate += adder. blockRate;
+		this.missRate += adder. missRate;
+		this.useRate += adder. useRate;
+		this.towPairs += adder. towPairs;
+		this.scorePromotion += adder. scorePromotion;
+		this.reboundPromotion += adder. reboundPromotion;
+		this.assistPromotion += adder. assistPromotion;
+		this.highestScore += adder. highestScore;
+	}
+	
+	public void divide(int divisor) {
+		this.weight /= divisor ;
+		this.age /= divisor ;
+		this.exp /= divisor ;
+		this.appearance /= divisor ;
+		this.starting /= divisor ;
+		this.playTime /= divisor ;
+		this.hit /= divisor ;
+		this.shot /= divisor ;
+		this.thirdHit /= divisor ;
+		this.thirdshot /= divisor ;
+		this.freeHit /= divisor ;
+		this.freeshot /= divisor ;
+		this.offensiveRebound /= divisor ;
+		this.defensiveRebound /= divisor ;
+		this.totalRebound /= divisor ;
+		this.assist /= divisor ;
+		this.steal /= divisor ;
+		this.block /= divisor ;
+		this.miss /= divisor ;
+		this.foul /= divisor ;
+		this.score /= divisor ;
+		this.hitRate /= divisor ;
+		this.thirdHitRate /= divisor ;
+		this.freeHitRate /= divisor ;
+		this.efficiency /= divisor ;
+		this.gmScEfficiency /= divisor ;
+		this.realHitRate /= divisor ;
+		this.shotEfficiency /= divisor ;
+		this.reboundRate /= divisor ;
+		this.offensiveReboundRate /= divisor ;
+		this.defensiveReboundRate /= divisor ;
+		this.assistRate /= divisor ;
+		this.stealRate /= divisor ;
+		this.blockRate /= divisor ;
+		this.missRate /= divisor ;
+		this.useRate /= divisor ;
+		this.towPairs /= divisor ;
+		this.scorePromotion /= divisor ;
+		this.reboundPromotion /= divisor ;
+		this.assistPromotion /= divisor ;
+		this.highestScore /= divisor ;
+	}
 	// Detailed Info
 	String teamFullName;
 	String teamAbbreviation;// 所属球队简称

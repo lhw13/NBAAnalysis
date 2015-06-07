@@ -494,6 +494,7 @@ public class PlayerComparePanel extends JPanel {
 		labelOfPhoto4.setIcon(picture4);
 		table_r.setVisible(false);
 	}
+	
 	public class TeamItemListener implements ItemListener{
 
 		char c = ' ';

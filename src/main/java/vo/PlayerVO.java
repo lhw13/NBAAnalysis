@@ -90,17 +90,17 @@ public class PlayerVO {
 		this.shot += adder. shot/adder. appearance;
 		this.thirdHit += adder. thirdHit/adder. appearance;
 		this.thirdshot += adder. thirdshot/adder. appearance;
-		this.freeHit += adder. freeHit/adder. appearance;
+		this.freeHitAvg += (adder. freeHit+0.0)/adder. appearance;
 		this.freeshot += adder. freeshot/adder. appearance;
 		this.offensiveRebound += adder. offensiveRebound/adder. appearance;
 		this.defensiveRebound += adder. defensiveRebound/adder. appearance;
-		this.totalRebound += adder. totalRebound/adder. appearance;
-		this.assist += adder. assist/adder. appearance;
-		this.steal += adder. steal/adder. appearance;
-		this.block += adder. block/adder. appearance;
-		this.miss += adder. miss/adder. appearance;
-		this.foul += adder. foul/adder. appearance;
-		this.score += adder. score/adder. appearance;
+		this.reboundAvg += (adder. totalRebound+0.0)/adder. appearance;
+		this.assistAvg += (adder. assist+0.0)/adder. appearance;
+		this.stealAvg += (adder. steal+0.0)/adder. appearance;
+		this.blockAvg += (adder. block+0.0)/adder. appearance;
+		this.missAvg += (adder. miss+0.0)/adder. appearance;
+		this.foulAvg += (adder. foul+0.0)/adder. appearance;
+		this.scoreAvg += (adder. score+0.0)/adder. appearance;
 		this.hitRate += adder. hitRate;
 		this.thirdHitRate += adder. thirdHitRate;
 		this.freeHitRate += adder. freeHitRate;
@@ -134,17 +134,17 @@ public class PlayerVO {
 		this.shot /= divisor ;
 		this.thirdHit /= divisor ;
 		this.thirdshot /= divisor ;
-		this.freeHit /= divisor ;
+		this.freeHitAvg /= divisor ;
 		this.freeshot /= divisor ;
 		this.offensiveRebound /= divisor ;
 		this.defensiveRebound /= divisor ;
-		this.totalRebound /= divisor ;
-		this.assist /= divisor ;
-		this.steal /= divisor ;
-		this.block /= divisor ;
-		this.miss /= divisor ;
-		this.foul /= divisor ;
-		this.score /= divisor ;
+		this.reboundAvg /= divisor ;
+		this.assistAvg /= divisor ;
+		this.stealAvg /= divisor ;
+		this.blockAvg /= divisor ;
+		this.missAvg /= divisor ;
+		this.foulAvg /= divisor ;
+		this.scoreAvg /= divisor ;
 		this.hitRate /= divisor ;
 		this.thirdHitRate /= divisor ;
 		this.freeHitRate /= divisor ;
@@ -190,16 +190,24 @@ public class PlayerVO {
 	int thirdHit;// 三分命中
 	int thirdshot;// 三分出手
 	int freeHit;// 罚球命中
+	double freeHitAvg;
 	int freeshot;// 罚球出手
 	int offensiveRebound;// 进攻篮板
 	int defensiveRebound;// 防守篮板
 	int totalRebound;// 总篮板
+	double reboundAvg;
 	int assist;// 助攻
+	double assistAvg;
 	int steal;// 抢断
+	double stealAvg;
 	int block;// 盖帽
+	double blockAvg;
 	int miss;// 失误
+	double missAvg;
 	int foul;// 犯规
+	double foulAvg;
 	int score;
+	double scoreAvg;
 
 	// analysis
 	double hitRate;
@@ -227,6 +235,30 @@ public class PlayerVO {
 	
 	int highestScore;
 
+	public double getFreeHitAvg() {
+		return this.freeHitAvg;
+	}
+	public double getScoreAvg() {
+		return this.scoreAvg;
+	}
+	public double getStealAvg() {
+		return this.stealAvg;
+	}
+	public double getAssistAvg() {
+		return this.assistAvg;
+	}
+	public double getReboundAvg() {
+		return this.reboundAvg;
+	}
+	public double getFoulAvg() {
+		return this.foulAvg;
+	}
+	public double getMissAvg() {
+		return this.missAvg;
+	}
+	public double getBlockAvg() {
+		return this.blockAvg;
+	}
 	public String getTeamFullName() {
 		return teamFullName;
 	}

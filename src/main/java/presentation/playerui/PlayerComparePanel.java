@@ -90,7 +90,7 @@ public class PlayerComparePanel extends JPanel {
 
 	private JPanel charPanel;
 	public static String player_1 = "NoPlayer1";
-	public static String player_2 = "NoPlayer2";
+	public static String player_2 = "赛季平均";
 
 	private static JCheckBox CheckBox_1;
 	private static JCheckBox CheckBox_2;
@@ -537,6 +537,8 @@ public class PlayerComparePanel extends JPanel {
 						labelOfPhoto4.setIcon(picture4);
 						table_r.setVisible(false);
 					} else {
+						player_2 = "赛季平均";
+						update_chart(player_1, player_2);
 						TeamWithPlayersVO teamvo = blservice.getTeamAnalysis(HotRankingPanel.translate(teamSelected));
 						ArrayList<PlayerVO> players = teamvo.getPlayers();
 						comboBoxOfRPlayer.addItem("选择球员");
@@ -586,7 +588,7 @@ public class PlayerComparePanel extends JPanel {
 
 	//update the chart info
 	public void update_chart(String playerName1,String playerName2){
-		if(!playerName2.equals("NoPlayer2")){
+		if(!playerName2.equals("赛季平均")){
 			PlayerVO vo1 = blservice.getPlayerAnalysis(playerName1);
 			PlayerVO vo2 = blservice.getPlayerAnalysis(playerName2);
 
@@ -652,40 +654,49 @@ public class PlayerComparePanel extends JPanel {
 		}
 		else{
 			PlayerVO vo1 = blservice.getPlayerAnalysis(playerName1);
+			PlayerVO avg_vo = blservice.getPlayerSeasonAvg();
 
 			for(int i=0;i<checkBoxItem.size();i++){
-				int appearance = vo1.getAppearance();
+				int appearance_1 = vo1.getAppearance();
 				switch(checkBoxItem.get(i)){
 				case "得分":
-					double[] scoreArray = {handle((double) vo1.getScore(), appearance), 0};
+					double[] scoreArray = {handle((double) vo1.getScore(), appearance_1), 
+							handle((double) avg_vo.getScore(), 1)};
 					dataMap.put("得分", scoreArray);
 					break;
 				case "篮板":
-					double[] reboundArray = {handle((double) vo1.getTotalRebound(), appearance), 0};
+					double[] reboundArray = {handle((double) vo1.getTotalRebound(), appearance_1), 
+							handle((double) avg_vo.getTotalRebound(), 1)};
 					dataMap.put("篮板", reboundArray);
 					break;
 				case "助攻":
-					double[] assistArray = {handle((double) vo1.getAssist(), appearance), 0};
+					double[] assistArray = {handle((double) vo1.getAssist(), appearance_1), 
+							handle((double) avg_vo.getAssist(), 1)};
 					dataMap.put("助攻", assistArray);
 					break;
 				case "罚球":
-					double[] freehitArray = {handle((double) vo1.getFreeHit(), appearance), 0};
+					double[] freehitArray = {handle((double) vo1.getFreeHit(), appearance_1), 
+							handle((double) avg_vo.getFreeHit(), 1)};
 					dataMap.put("罚球", freehitArray);
 					break;
 				case "抢断":
-					double[] stealArray = {handle((double) vo1.getSteal(), appearance), 0};
+					double[] stealArray = {handle((double) vo1.getSteal(), appearance_1), 
+							handle((double) avg_vo.getSteal(), 1)};
 					dataMap.put("抢断", stealArray);
 					break;
 				case "盖帽":
-					double[] blockArray = {handle((double) vo1.getBlock(), appearance), 0};
+					double[] blockArray = {handle((double) vo1.getBlock(), appearance_1), 
+							handle((double) avg_vo.getBlock(), 1)};
 					dataMap.put("盖帽", blockArray);
 					break;
 				case "失误":
-					double[] missArray = {handle((double) vo1.getMiss(), appearance), 0};
+					double[] missArray = {handle((double) vo1.getMiss(), appearance_1), 
+							handle((double) avg_vo.getMiss(), 1)};
 					dataMap.put("失误", missArray);
 					break;
 				case "犯规":
-					double[] foulArray = {handle((double) vo1.getFoul(), appearance), 0};
+					double[] foulArray = {handle((double) vo1.getFoul(), appearance_1), 
+							handle((double) avg_vo.getFoul(), 1)};
 					dataMap.put("犯规", foulArray);
 					break;
 				}
@@ -936,7 +947,7 @@ public class PlayerComparePanel extends JPanel {
 		Double r = new Double(result);
 		if(result!=0&&!r.isNaN()&&!r.isInfinite()) {
 			BigDecimal bg = new BigDecimal(result);
-			result = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+			result = bg.setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
 		}
 		return result;
 	}

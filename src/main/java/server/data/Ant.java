@@ -97,7 +97,7 @@ public class Ant {
 			return null;
 	}
 
-	private static MatchPO analyseteaminfo(String url) {
+	public static MatchPO analyseteaminfo(String url) {
 		String a = url.substring(34, 37);
 		String b = url.substring(37, 40);
 		String dateString = url.substring(25, 33);

@@ -538,8 +538,20 @@ public class PlayerComparePanel extends JPanel {
 						labelOfPhoto4.setIcon(picture4);
 						table_r.setVisible(false);
 					} else {
+						picture3 = ImageHandle.loadTeam("NBA");
+						picture4 = ImageHandle.loadTeam("");
+
+						picture3.setImage(picture3.getImage().getScaledInstance(145, 145,
+								Image.SCALE_DEFAULT));
+						picture4.setImage(picture4.getImage().getScaledInstance(100, 100,
+								Image.SCALE_DEFAULT));
+
+						labelOfPhoto3.setIcon(picture3);
+						labelOfPhoto4.setIcon(picture4);
+						
 						player_2 = "赛季平均";
 						update_chart(player_1, player_2);
+						
 						TeamWithPlayersVO teamvo = blservice.getTeamAnalysis(HotRankingPanel.translate(teamSelected));
 						ArrayList<PlayerVO> players = teamvo.getPlayers();
 						comboBoxOfRPlayer.addItem("选择球员");

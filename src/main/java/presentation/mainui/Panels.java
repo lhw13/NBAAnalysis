@@ -4,5 +4,5 @@ public enum Panels {
 	MatchDetailInfoPanel,MatchSelectionPanel,PlayerInfoPanel,PlayerRankingPanel,
 	PlayerSelectionPanel,TeamsInfoFrame,TeamsRankingFrame,MainFrame,
 	TeamsSelectionFrame,HotRankingPanel,PlayerComparePanel,MatchPlayoffPanel,
-	PlayerAnalysePanel
+	PlayerAnalysePanel,MatchLivePanel
 }

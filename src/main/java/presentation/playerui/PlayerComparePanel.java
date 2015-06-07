@@ -674,42 +674,42 @@ public class PlayerComparePanel extends JPanel {
 				switch(checkBoxItem.get(i)){
 				case "得分":
 					double[] scoreArray = {handle((double) vo1.getScore(), appearance_1), 
-							handle((double) avg_vo.getScore(), 1)};
+							handle((double) avg_vo.getScoreAvg(), 1)};
 					dataMap.put("得分", scoreArray);
 					break;
 				case "篮板":
 					double[] reboundArray = {handle((double) vo1.getTotalRebound(), appearance_1), 
-							handle((double) avg_vo.getTotalRebound(), 1)};
+							handle((double) avg_vo.getReboundAvg(), 1)};
 					dataMap.put("篮板", reboundArray);
 					break;
 				case "助攻":
 					double[] assistArray = {handle((double) vo1.getAssist(), appearance_1), 
-							handle((double) avg_vo.getAssist(), 1)};
+							handle((double) avg_vo.getAssistAvg(), 1)};
 					dataMap.put("助攻", assistArray);
 					break;
 				case "罚球":
 					double[] freehitArray = {handle((double) vo1.getFreeHit(), appearance_1), 
-							handle((double) avg_vo.getFreeHit(), 1)};
+							handle((double) avg_vo.getFreeHitAvg(), 1)};
 					dataMap.put("罚球", freehitArray);
 					break;
 				case "抢断":
 					double[] stealArray = {handle((double) vo1.getSteal(), appearance_1), 
-							handle((double) avg_vo.getSteal(), 1)};
+							handle((double) avg_vo.getStealAvg(), 1)};
 					dataMap.put("抢断", stealArray);
 					break;
 				case "盖帽":
 					double[] blockArray = {handle((double) vo1.getBlock(), appearance_1), 
-							handle((double) avg_vo.getBlock(), 1)};
+							handle((double) avg_vo.getBlockAvg(), 1)};
 					dataMap.put("盖帽", blockArray);
 					break;
 				case "失误":
 					double[] missArray = {handle((double) vo1.getMiss(), appearance_1), 
-							handle((double) avg_vo.getMiss(), 1)};
+							handle((double) avg_vo.getMissAvg(), 1)};
 					dataMap.put("失误", missArray);
 					break;
 				case "犯规":
 					double[] foulArray = {handle((double) vo1.getFoul(), appearance_1), 
-							handle((double) avg_vo.getFoul(), 1)};
+							handle((double) avg_vo.getFoulAvg(), 1)};
 					dataMap.put("犯规", foulArray);
 					break;
 				}

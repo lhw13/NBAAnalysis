@@ -174,20 +174,55 @@ public class MatchSelectionPanel extends JPanel {
 		btnNewButton.setBounds(100, 50, 100, 30);
 		panelOfBottom.add(btnNewButton);
 		
+		JButton live_bt = new JButton("文字直播");
+		live_bt.setBounds(650, 50, 120, 30);
+		panelOfBottom.add(live_bt);
+		live_bt.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				
+				if(MatchLivePanel.scrollPane!=null){
+					MatchSelectionPanel.scrollPane.setVisible(false);
+					MatchLivePanel.scrollPane.setVisible(true);
+					
+					MainFrame.frame.setTitle("文字直播");
+					MainFrame.frame.repaint();//刷新重画 
+					MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+					MainFrame.backPanels.add(MainFrame.currentPanel);
+					MainFrame.currentPanel = Panels.MatchLivePanel;
+					
+				}
+				else{
+					MatchSelectionPanel.scrollPane.setVisible(false);
+					MatchLivePanel mlp = new MatchLivePanel();
+					MainFrame.frame.getContentPane().add(mlp.scrollPane);
+					
+					MainFrame.frame.setTitle("文字直播");
+					MainFrame.frame.repaint();//刷新重画 
+					MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
+					MainFrame.backPanels.add(MainFrame.currentPanel);
+					MainFrame.currentPanel = Panels.MatchLivePanel;
+				}
+				
+				
+			}
+		});
+		
 		JButton button = new JButton("季后赛");
 		button.setBounds(800, 50, 100, 30);
 		panelOfBottom.add(button);
 		button.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				
 				MatchSelectionPanel.scrollPane.setVisible(false);
 				MatchPlayoffPanel.scrollPane.setVisible(true);
-				
+
 				MainFrame.frame.setTitle("NBA季后赛");
+				MainFrame.frame.repaint();//刷新重画 
+				MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
 				MainFrame.backPanels.add(MainFrame.currentPanel);
 				MainFrame.currentPanel = Panels.MatchPlayoffPanel;
-				
+
 			}
 		});
 		btnNewButton.addActionListener(new ActionListener(){

@@ -52,7 +52,7 @@ import blservice.BLService;
  * 单个球队比赛信息面板
  */
 public class TeamsInfoFrame extends JPanel{
- 
+
 	private static JTable table;
 	private static JTable table_1;
 	private static JTable table_2;

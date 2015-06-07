@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -594,35 +595,43 @@ public class PlayerComparePanel extends JPanel {
 				int appearance_2 = vo2.getAppearance();
 				switch(checkBoxItem.get(i)){
 				case "得分":
-					double[] scoreArray = {vo1.getScore()/appearance_1, vo2.getScore()/appearance_2};
+					double[] scoreArray = {handle((double) vo1.getScore(), appearance_1), 
+							handle((double) vo2.getScore(), appearance_2)};
 					dataMap.put("得分", scoreArray);
 					break;
 				case "篮板":
-					double[] reboundArray = {vo1.getTotalRebound()/appearance_1, vo2.getTotalRebound()/appearance_2};
+					double[] reboundArray = {handle((double) vo1.getTotalRebound(), appearance_1), 
+							handle((double) vo2.getTotalRebound(), appearance_2)};
 					dataMap.put("篮板", reboundArray);
 					break;
 				case "助攻":
-					double[] assistArray = {vo1.getAssist()/appearance_1, vo2.getAssist()/appearance_2};
+					double[] assistArray = {handle((double) vo1.getAssist(), appearance_1), 
+							handle((double) vo2.getAssist(), appearance_2)};
 					dataMap.put("助攻", assistArray);
 					break;
 				case "罚球":
-					double[] freehitArray = {vo1.getFreeHit()/appearance_1, vo2.getFreeHit()/appearance_2};
+					double[] freehitArray = {handle((double) vo1.getFreeHit(), appearance_1), 
+							handle((double) vo2.getFreeHit(), appearance_2)};
 					dataMap.put("罚球", freehitArray);
 					break;
 				case "抢断":
-					double[] stealArray = {vo1.getSteal()/appearance_1, vo2.getSteal()/appearance_2};
+					double[] stealArray = {handle((double) vo1.getSteal(), appearance_1), 
+							handle((double) vo2.getSteal(), appearance_2)};
 					dataMap.put("抢断", stealArray);
 					break;
 				case "盖帽":
-					double[] blockArray = {vo1.getBlock()/appearance_1, vo2.getBlock()/appearance_2};
+					double[] blockArray = {handle((double) vo1.getBlock(), appearance_1), 
+							handle((double) vo2.getBlock(), appearance_2)};
 					dataMap.put("盖帽", blockArray);
 					break;
 				case "失误":
-					double[] missArray = {vo1.getMiss()/appearance_1, vo2.getMiss()/appearance_2};
+					double[] missArray = {handle((double) vo1.getMiss(), appearance_1), 
+							handle((double) vo2.getMiss(), appearance_2)};
 					dataMap.put("失误", missArray);
 					break;
 				case "犯规":
-					double[] foulArray = {vo1.getFoul()/appearance_1, vo2.getFoul()/appearance_2};
+					double[] foulArray = {handle((double) vo1.getFoul(), appearance_1), 
+							handle((double) vo2.getFoul(), appearance_2)};
 					dataMap.put("犯规", foulArray);
 					break;
 				}
@@ -648,35 +657,35 @@ public class PlayerComparePanel extends JPanel {
 				int appearance = vo1.getAppearance();
 				switch(checkBoxItem.get(i)){
 				case "得分":
-					double[] scoreArray = {vo1.getScore()/appearance, 0};
+					double[] scoreArray = {handle((double) vo1.getScore(), appearance), 0};
 					dataMap.put("得分", scoreArray);
 					break;
 				case "篮板":
-					double[] reboundArray = {vo1.getTotalRebound()/appearance, 0};
+					double[] reboundArray = {handle((double) vo1.getTotalRebound(), appearance), 0};
 					dataMap.put("篮板", reboundArray);
 					break;
 				case "助攻":
-					double[] assistArray = {vo1.getAssist()/appearance, 0};
+					double[] assistArray = {handle((double) vo1.getAssist(), appearance), 0};
 					dataMap.put("助攻", assistArray);
 					break;
 				case "罚球":
-					double[] freehitArray = {vo1.getFreeHit()/appearance, 0};
+					double[] freehitArray = {handle((double) vo1.getFreeHit(), appearance), 0};
 					dataMap.put("罚球", freehitArray);
 					break;
 				case "抢断":
-					double[] stealArray = {vo1.getSteal()/appearance, 0};
+					double[] stealArray = {handle((double) vo1.getSteal(), appearance), 0};
 					dataMap.put("抢断", stealArray);
 					break;
 				case "盖帽":
-					double[] blockArray = {vo1.getBlock()/appearance, 0};
+					double[] blockArray = {handle((double) vo1.getBlock(), appearance), 0};
 					dataMap.put("盖帽", blockArray);
 					break;
 				case "失误":
-					double[] missArray = {vo1.getMiss()/appearance, 0};
+					double[] missArray = {handle((double) vo1.getMiss(), appearance), 0};
 					dataMap.put("失误", missArray);
 					break;
 				case "犯规":
-					double[] foulArray = {vo1.getFoul()/appearance, 0};
+					double[] foulArray = {handle((double) vo1.getFoul(), appearance), 0};
 					dataMap.put("犯规", foulArray);
 					break;
 				}
@@ -920,6 +929,16 @@ public class PlayerComparePanel extends JPanel {
 			CheckBox_8.setEnabled(true);
 		}
 		
+	}
+	
+	public static double handle(double a, int b) {
+		double result = a / (double) b;
+		Double r = new Double(result);
+		if(result!=0&&!r.isNaN()&&!r.isInfinite()) {
+			BigDecimal bg = new BigDecimal(result);
+			result = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+		}
+		return result;
 	}
 
 }

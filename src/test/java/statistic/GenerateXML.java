@@ -33,44 +33,91 @@ public class GenerateXML {
 			File f = Opendoc("result.xml");
 			WritableWorkbook book = Workbook.createWorkbook(f);
 			WritableSheet sheet = book.createSheet("第一页", 0);
-			Label label = new Label(0, 0, "库存盘点");
+			Label label = null;
+			label = new Label(0, 0, "本场比赛得分");
 			sheet.addCell(label);
-			label = new Label(1, 0, "批次：");
+			label = new Label(1, 0, "最近20场本队平均进球");
 			sheet.addCell(label);
-			label = new Label(2, 0, "批号：");
+			label = new Label(2, 0, "最近10场对手平均失球");
 			sheet.addCell(label);
-			label = new Label(0, 1, "行号");
+			label = new Label(3, 0, "主场");
 			sheet.addCell(label);
-			label = new Label(1, 1, "名称");
-			sheet.addCell(label);
-			label = new Label(2, 1, "型号");
-			sheet.addCell(label);
-			label = new Label(3, 1, "库存数量");
-			sheet.addCell(label);
-			label = new Label(4, 1, "库存均价");
-			sheet.addCell(label);
-			/*for (int i = 2; i <= temp.size() + 1; i++)
+			//label = new Label(4, 0, "最近5场两队比赛进球");
+			//sheet.addCell(label);
+			for (int i = 2000, row=1; i < h.size(); i++,row++)
 			{
-				label = new Label(0, i, Integer.toString(i - 1));
+				MatchPO po = h.get(i);
+				label = new Label(0, row, Integer.toString(po.getFinalScore().getTeam1()));
 				sheet.addCell(label);
-				CommodityVO comvo = vo.getList().get(i - 2);
-				label = new Label(1, i, comvo.getName());
+				label = new Label(1, row, Integer.toString(computeScore(h,po.getTeam1().getAbbreviation(),20,i)));
 				sheet.addCell(label);
-				label = new Label(2, i, comvo.getModel());
+				label = new Label(2, row, Integer.toString(computeScore2(h,po.getTeam1().getAbbreviation(),10,i)));
 				sheet.addCell(label);
-				label = new Label(3, i, Integer.toString(comvo.getNumber()));
+				label = new Label(3, row, "1");
 				sheet.addCell(label);
-				label = new Label(4, i, Double.toString(comvo.getIn()));
+				//label = new Label(4, row, "0");
+				//sheet.addCell(label);
+			}
+			
+			for (int i = 2000, row=1; i < h.size(); i++,row++)
+			{
+				MatchPO po = h.get(i);
+				label = new Label(0, row, Integer.toString(po.getFinalScore().getTeam2()));
 				sheet.addCell(label);
-			}*/
+				label = new Label(1, row, Integer.toString(computeScore(h,po.getTeam2().getAbbreviation(),20,i)));
+				sheet.addCell(label);
+				label = new Label(2, row, Integer.toString(computeScore2(h,po.getTeam2().getAbbreviation(),10,i)));
+				sheet.addCell(label);
+				label = new Label(3, row, "-1");
+				sheet.addCell(label);
+				//label = new Label(4, row, "0");
+				//sheet.addCell(label);
+			}
 			book.write();
 			book.close();
+			
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
 
+	}
+	
+	public static int computeScore(ArrayList<MatchPO> h, String abr,int num, int end)
+	{
+		int result=0;
+		int count=0;
+		for(int i=end-1;i>=0;i--)
+		{
+			MatchPO po = h.get(i);
+			if(po.containsTeam(abr))
+			{
+				count++;
+				result+=po.getScore(abr);
+			}
+			if(count>=num)
+				return result/num;
+		}
+		return result/num;
+	}
+	
+	public static int computeScore2(ArrayList<MatchPO> h, String abr,int num, int end)
+	{
+		int result=0;
+		int count=0;
+		for(int i=end-1;i>=0;i--)
+		{
+			MatchPO po = h.get(i);
+			if(po.containsTeam(abr))
+			{
+				count++;
+				result+=po.getScore2(abr);
+			}
+			if(count>=num)
+				return result/num;
+		}
+		return result/num;
 	}
 	
 	public static File Opendoc(String s)

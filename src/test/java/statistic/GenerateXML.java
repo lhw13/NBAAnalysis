@@ -42,10 +42,12 @@ public class GenerateXML {
 			sheet.addCell(label);
 			label = new Label(3, 0, "主场");
 			sheet.addCell(label);
-			//label = new Label(4, 0, "最近5场两队比赛进球");
-			//sheet.addCell(label);
+			label = new Label(4, 0, "最近5场两队比赛进球");
+			sheet.addCell(label);
+			label = new Label(5, 0, "进步指数");
+			sheet.addCell(label);
 			int row=1;
-			for (int i = 5000; i < h.size(); i++,row++)
+			for (int i = 5800; i < h.size(); i++,row++)
 			{
 				MatchPO po = h.get(i);
 				
@@ -57,11 +59,13 @@ public class GenerateXML {
 				sheet.addCell(label);
 				label = new Label(3, row, "1");
 				sheet.addCell(label);
-				//label = new Label(4, row, "0");
-				//sheet.addCell(label);
+				label = new Label(4, row, Integer.toString(computeScore(h,po.getTeam1().getAbbreviation(),po.getTeam2().getAbbreviation(),3,i)));
+				sheet.addCell(label);
+				label = new Label(5, row, Integer.toString(computeScore(h,po.getTeam1().getAbbreviation(),5,i)));
+				sheet.addCell(label);
 			}
 			
-			for (int i = 5000; i < h.size(); i++,row++)
+			for (int i = 5800; i < h.size(); i++,row++)
 			{
 				MatchPO po = h.get(i);
 				label = new Label(0, row, Integer.toString(po.getFinalScore().getTeam2()));
@@ -72,8 +76,10 @@ public class GenerateXML {
 				sheet.addCell(label);
 				label = new Label(3, row, "-1");
 				sheet.addCell(label);
-				//label = new Label(4, row, "0");
-				//sheet.addCell(label);
+				label = new Label(4, row, Integer.toString(computeScore(h,po.getTeam2().getAbbreviation(),po.getTeam1().getAbbreviation(),3,i)));
+				sheet.addCell(label);
+				label = new Label(5, row, Integer.toString(computeScore(h,po.getTeam2().getAbbreviation(),5,i)));
+				sheet.addCell(label);
 			}
 			book.write();
 			book.close();
@@ -106,7 +112,7 @@ public class GenerateXML {
 			//label = new Label(4, 0, "最近5场两队比赛进球");
 			//sheet.addCell(label);
 			int row=1;
-			for (int i = 5000; i < h.size(); i++,row++)
+			for (int i = 5800; i < h.size(); i++,row++)
 			{
 				MatchPO po = h.get(i);
 				
@@ -120,7 +126,7 @@ public class GenerateXML {
 				//sheet.addCell(label);
 			}
 			
-			for (int i = 5000; i < h.size(); i++,row++)
+			for (int i = 5800; i < h.size(); i++,row++)
 			{
 				MatchPO po = h.get(i);
 				label = new Label(0, row, Integer.toString(po.getFinalScore().getTeam2()-po.getFinalScore().getTeam1()));
@@ -151,6 +157,25 @@ public class GenerateXML {
 		{
 			MatchPO po = h.get(i);
 			if(po.containsTeam(abr))
+			{
+				count++;
+				result+=po.getScore(abr);
+			}
+			if(count>=num)
+				return result/num;
+		}
+		System.out.println("abnormal");
+		return result/num;
+	}
+	
+	public static int computeScore(ArrayList<MatchPO> h, String abr, String abr2,int num, int end)
+	{
+		int result=0;
+		int count=0;
+		for(int i=end-1;i>=0;i--)
+		{
+			MatchPO po = h.get(i);
+			if(po.containsTeam(abr) && po.containsTeam(abr2))
 			{
 				count++;
 				result+=po.getScore(abr);

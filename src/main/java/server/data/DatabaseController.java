@@ -46,13 +46,13 @@ public class DatabaseController {
 //						.dataReader(i)));
 //			}
 		 
-		 createTableOfTeam();
-		 File  teamsFile = new File(Console.path+"/teams/teams");
-		 ArrayList<TeamPO>teamPOList = TeamsDataAnalyse.teamPOListMade(DataReader
-					.dataReader(teamsFile));
-		 for(TeamPO tp:teamPOList){
-			 writeTeam(tp);
-		 }
+//		 createTableOfTeam();
+//		 File  teamsFile = new File(Console.path+"/teams/teams");
+//		 ArrayList<TeamPO>teamPOList = TeamsDataAnalyse.teamPOListMade(DataReader
+//					.dataReader(teamsFile));
+//		 for(TeamPO tp:teamPOList){
+//			 writeTeam(tp);
+//		 }
 		 conn.close();
 	}
 	private static void  writeMatch(MatchPO mp) {
@@ -216,6 +216,7 @@ public class DatabaseController {
 		while(rs.next()){
 			TeamPO tp=new TeamPO(rs.getString("fullName"), rs.getString("abbreviation"), rs.getString("location"),
 					rs.getString("division").charAt(0), rs.getString("zone"), rs.getString("home"), rs.getInt("setupTime"));
+			teamList.add(tp);
 		}
 		return teamList;
 	}

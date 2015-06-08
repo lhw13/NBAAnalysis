@@ -386,6 +386,7 @@ public class PlayerInfoPanel extends JPanel {
 				PlayerInfoPanel.scrollPane.setVisible(false);
 				PlayerAnalysePanel.scrollPane.setVisible(true);
 				MainFrame.frame.setTitle("NBA球员分析");
+				MainFrame.pap.update(playerName);
 				MainFrame.backPanels.add(MainFrame.currentPanel);
 				MainFrame.currentPanel = Panels.PlayerAnalysePanel;
 			}

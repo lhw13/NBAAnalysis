@@ -24,7 +24,7 @@ import jxl.write.WritableWorkbook;
 
 public class GenerateXML {
 	@Test
-	public void testSort() {
+	public void testResult() {
 		DataService data = new DataController();
 		ArrayList<MatchPO> h = data.getAllMatch();
 		Collections.sort(h, new SortMatchesByCalendar());
@@ -44,9 +44,11 @@ public class GenerateXML {
 			sheet.addCell(label);
 			//label = new Label(4, 0, "最近5场两队比赛进球");
 			//sheet.addCell(label);
-			for (int i = 2000, row=1; i < h.size(); i++,row++)
+			int row=1;
+			for (int i = 5000; i < h.size(); i++,row++)
 			{
 				MatchPO po = h.get(i);
+				
 				label = new Label(0, row, Integer.toString(po.getFinalScore().getTeam1()));
 				sheet.addCell(label);
 				label = new Label(1, row, Integer.toString(computeScore(h,po.getTeam1().getAbbreviation(),20,i)));
@@ -59,7 +61,7 @@ public class GenerateXML {
 				//sheet.addCell(label);
 			}
 			
-			for (int i = 2000, row=1; i < h.size(); i++,row++)
+			for (int i = 5000; i < h.size(); i++,row++)
 			{
 				MatchPO po = h.get(i);
 				label = new Label(0, row, Integer.toString(po.getFinalScore().getTeam2()));
@@ -69,6 +71,63 @@ public class GenerateXML {
 				label = new Label(2, row, Integer.toString(computeScore2(h,po.getTeam2().getAbbreviation(),10,i)));
 				sheet.addCell(label);
 				label = new Label(3, row, "-1");
+				sheet.addCell(label);
+				//label = new Label(4, row, "0");
+				//sheet.addCell(label);
+			}
+			book.write();
+			book.close();
+			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+	
+	@Test
+	public void testHome() {
+		DataService data = new DataController();
+		ArrayList<MatchPO> h = data.getAllMatch();
+		Collections.sort(h, new SortMatchesByCalendar());
+		try
+		{
+			File f = Opendoc("home.xml");
+			WritableWorkbook book = Workbook.createWorkbook(f);
+			WritableSheet sheet = book.createSheet("第一页", 0);
+			Label label = null;
+			label = new Label(0, 0, "净胜分");
+			sheet.addCell(label);
+			label = new Label(1, 0, "主场");
+			sheet.addCell(label);
+			label = new Label(2, 0, "客场");
+			sheet.addCell(label);
+			//label = new Label(4, 0, "最近5场两队比赛进球");
+			//sheet.addCell(label);
+			int row=1;
+			for (int i = 5000; i < h.size(); i++,row++)
+			{
+				MatchPO po = h.get(i);
+				
+				label = new Label(0, row, Integer.toString(po.getFinalScore().getTeam1()-po.getFinalScore().getTeam2()));
+				sheet.addCell(label);
+				label = new Label(1, row, "1");
+				sheet.addCell(label);
+				label = new Label(2, row, "0");
+				sheet.addCell(label);
+				//label = new Label(4, row, "0");
+				//sheet.addCell(label);
+			}
+			
+			for (int i = 5000; i < h.size(); i++,row++)
+			{
+				MatchPO po = h.get(i);
+				label = new Label(0, row, Integer.toString(po.getFinalScore().getTeam2()-po.getFinalScore().getTeam1()));
+				sheet.addCell(label);
+				label = new Label(1, row, "0");
+				sheet.addCell(label);
+				label = new Label(2, row, "1");
 				sheet.addCell(label);
 				//label = new Label(4, row, "0");
 				//sheet.addCell(label);
@@ -99,6 +158,7 @@ public class GenerateXML {
 			if(count>=num)
 				return result/num;
 		}
+		System.out.println("abnormal");
 		return result/num;
 	}
 	
@@ -117,6 +177,7 @@ public class GenerateXML {
 			if(count>=num)
 				return result/num;
 		}
+		System.out.println("abnormal");
 		return result/num;
 	}
 	

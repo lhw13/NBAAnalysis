@@ -14,7 +14,7 @@ import presentation.mainui.MainFrame;
 import presentation.mainui.Panels;
 
 public class MatchLivePanel extends JPanel{
- 
+
 	public static JScrollPane scrollPane;
 	
 	JPanel panelOfBottom = new JPanel();

@@ -1,5 +1,6 @@
 package server.data;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -8,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import console.Console;
 import server.po.MatchPO;
 import server.po.PlayerInMatchesPO;
 import server.po.ScorePO;
@@ -23,6 +25,17 @@ public class DatabaseController {
 		 //writeMatch(Ant.analyseteaminfo("http://www.nba.com/games/20140502/TORBKN/gameinfo.html"));
 		 //DataTransformation.MatchPOToText(getMatchPOListBySeason("13-14").get(0),"E:\\dataText\\");
 		 //System.out.println(getMatchPOListBySeason("13-14").size());
+
+//			File f = new File(Console.path+"/matches");
+//			File[]  matchesFile = f.listFiles();
+//			for (File i : matchesFile) {
+//				MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
+//						.dataReader(i));
+//				if(newMatchPO!=null){
+//					writeMatch(newMatchPO);
+//				}
+//			}
+		
 		 conn.close();
 	}
 	private static void  writeMatch(MatchPO mp) {
@@ -61,12 +74,14 @@ public class DatabaseController {
 		for(PlayerInMatchesPO playerScore:team1){
 			String sql1="insert into "+playerTableName+" values(";
 			sql1=sql1+"'"+mp.getFileName()+"','"+mp.getTeam1().getAbbreviation()+"',";
-			sql1=sql1+"'"+playerScore.getName()+"','"+playerScore.getPosition()+"',"+playerScore.getPlayTime()+","+playerScore.getHit()+","+playerScore.getShot()+","+playerScore.getThirdHit()+","+playerScore.getThirdshot()+","+playerScore.getFreeHit()+","+playerScore.getFreeshot()+","+playerScore.getOffensiveRebound()+","+playerScore.getDefensiveRebound()+","+playerScore.getTotalRebound()+","+playerScore.getAssist()+","+playerScore.getSteal()+","+playerScore.getBlock()+","+playerScore.getMiss()+","+playerScore.getFoul()+","+playerScore.getScore();
+			sql1=sql1+"'"+playerScore.getName().replaceAll("'", "''")+"','"+playerScore.getPosition()+"',"+playerScore.getPlayTime()+","+playerScore.getHit()+","+playerScore.getShot()+","+playerScore.getThirdHit()+","+playerScore.getThirdshot()+","+playerScore.getFreeHit()+","+playerScore.getFreeshot()+","+playerScore.getOffensiveRebound()+","+playerScore.getDefensiveRebound()+","+playerScore.getTotalRebound()+","+playerScore.getAssist()+","+playerScore.getSteal()+","+playerScore.getBlock()+","+playerScore.getMiss()+","+playerScore.getFoul()+","+playerScore.getScore();
 			sql1=sql1+");";
 			try {
 				stat.execute(sql1);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
+				System.out.println(mp.getFileName());
+				System.out.println(sql1);
 				e.printStackTrace();
 			}
 		}
@@ -74,7 +89,7 @@ public class DatabaseController {
 
 			String sql2="insert into "+playerTableName+" values(";
 			sql2=sql2+"'"+mp.getFileName()+"','"+mp.getTeam2().getAbbreviation()+"',";
-			sql2=sql2+"'"+playerScore.getName()+"','"+playerScore.getPosition()+"',"+playerScore.getPlayTime()+","+playerScore.getHit()+","+playerScore.getShot()+","+playerScore.getThirdHit()+","+playerScore.getThirdshot()+","+playerScore.getFreeHit()+","+playerScore.getFreeshot()+","+playerScore.getOffensiveRebound()+","+playerScore.getDefensiveRebound()+","+playerScore.getTotalRebound()+","+playerScore.getAssist()+","+playerScore.getSteal()+","+playerScore.getBlock()+","+playerScore.getMiss()+","+playerScore.getFoul()+","+playerScore.getScore();
+			sql2=sql2+"'"+playerScore.getName().replaceAll("'", "''")+"','"+playerScore.getPosition()+"',"+playerScore.getPlayTime()+","+playerScore.getHit()+","+playerScore.getShot()+","+playerScore.getThirdHit()+","+playerScore.getThirdshot()+","+playerScore.getFreeHit()+","+playerScore.getFreeshot()+","+playerScore.getOffensiveRebound()+","+playerScore.getDefensiveRebound()+","+playerScore.getTotalRebound()+","+playerScore.getAssist()+","+playerScore.getSteal()+","+playerScore.getBlock()+","+playerScore.getMiss()+","+playerScore.getFoul()+","+playerScore.getScore();
 			sql2=sql2+");";
 			try {
 				stat.execute(sql2);

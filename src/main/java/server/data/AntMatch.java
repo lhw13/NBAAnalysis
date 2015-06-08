@@ -26,14 +26,74 @@ import server.po.PlayerInMatchesPO;
 import server.po.ScorePO;
 import server.po.TeamInMatchesPO;
 
-public class Ant {
-
-	public static void main(String[] args) throws IOException {
+public class AntMatch implements Runnable{
+	int n;
+	public static void main(String[] args)  throws IOException {
 		 //TODO Auto-generated method stub
 		Properties prop = System.getProperties();
 		prop.setProperty("http.proxyHost", "localhost"); 
-		prop.setProperty("http.proxyPort", "56670"); 
-		getOneSeasonData(2008);
+		prop.setProperty("http.proxyPort", "49616"); 
+		//getOneSeasonData(2013);
+		AntMatch a=new AntMatch();
+		AntMatch b=new AntMatch();
+		AntMatch c=new AntMatch();
+		AntMatch d=new AntMatch();
+		AntMatch e=new AntMatch();
+		a.setN(0);
+		b.setN(1);
+		c.setN(2);
+		d.setN(3);
+		e.setN(4);
+		Thread ta=new Thread(a);
+		Thread tb=new Thread(b);
+		Thread tc=new Thread(c);
+		Thread td=new Thread(d);
+		Thread te=new Thread(e);
+		ta.start();
+		tb.start();
+		tc.start();
+		td.start();
+		te.start();
+		
+	}
+	public void setN(int n){
+		this.n=n;
+	}
+	public void run(){
+		try {
+			work(2013,n);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	private static void work(int year,int n) throws IOException{
+
+		int year2=year+1;
+		String filename=year+"-"+year2;
+		//File f=new File("E:\\dataText\\"+filename);
+		//f.mkdirs();
+		String address="E:/dataText/"+filename;
+		int start=year*10000+10*100;
+		int end=year2*10000+631;
+		int i=20131029;
+		for(;i<=end;i++){
+			if(i%100<=31&&i%5==n){
+				if(i%10000-i%100<=1200){
+					String[] matchUrlList=analysePageByDay("http://www.nba.com/gameline/"+i+"/");
+					if(matchUrlList!=null){
+						for(String url:matchUrlList){
+							MatchPO mp=analyseteaminfo(url);
+							if(mp!=null){
+							DataTransformation.MatchPOToText(mp,address );
+							}
+						}
+					}
+				}
+			}
+		}
+	
+		
 	}
 	private static void getOneSeasonData(int year) throws IOException{
 		int year2=year+1;
@@ -43,7 +103,7 @@ public class Ant {
 		String address="E:/dataText/"+filename;
 		int start=year*10000+10*100+29;
 		int end=year2*10000+631;
-		int i=start;
+		int i=20140419;
 		for(;i<=end;i++){
 			if(i%100<=31){
 				if(i%10000-i%100<=1200){
@@ -52,7 +112,7 @@ public class Ant {
 						for(String url:matchUrlList){
 							MatchPO mp=analyseteaminfo(url);
 							if(mp!=null){
-							//DataTransformation.MatchPOToText(mp,address );
+							DataTransformation.MatchPOToText(mp,address );
 							}
 						}
 					}
@@ -83,6 +143,7 @@ public class Ant {
 					list[number] = "http://www.nba.com" + m.group();
 				}
 			}
+			reader.close();
 		} catch (Exception e) {
 			return null;
 		}
@@ -126,6 +187,7 @@ public class Ant {
 			while ((str = reader.readLine()) != null) {
 				html = html + "\r\n" + str;
 			}
+			reader.close();
 		} catch (Exception e) {
 			return null;
 		}
@@ -191,7 +253,36 @@ public class Ant {
 		}
 		return result;
 	}
+	private static String getName(String url){
+		String name="";
+		try {
+			HttpURLConnection conn = (HttpURLConnection) new URL(url)
+					.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setUseCaches(true);
+			conn.connect();
+			InputStream is = conn.getInputStream();
+			BufferedReader reader = new BufferedReader(
+					new InputStreamReader(is));
+			String str = null;
 
+			while ((str = reader.readLine()) != null) {
+				Pattern p3 = Pattern
+						.compile("<title>(?<abc>.*) Stats, Video, Bio, Profile | NBA.com</title>");
+				Matcher m3 = p3.matcher(str);
+				while(m3.find()){
+					name=m3.group("abc");
+					break;
+				}
+				break;
+			}
+			reader.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+		return name;
+	}
 	private static PlayerInMatchesPO analysePlayerScore(
 			String PlayerInMatchesInfo) {
 		Pattern p1 = Pattern
@@ -199,15 +290,26 @@ public class Ant {
 		Matcher m1 = p1.matcher(PlayerInMatchesInfo);
 		String name="";
 		String position="";
-		
+		boolean boo=false;
+		String playerfile="";
 		while (m1.find()) {
 			String a[] = m1.group("abc").split("_");
+			 playerfile="http://www.nba.com/playerfile/"+ m1.group("abc")+"/index.html";
 			for (String i:a){
+				if(i.length()>0){
+					if(i.length()<=3){
+						boo=true;
+						break;
+					}
 				char first=(char) (i.charAt(0) + 'A' - 'a');
 				name=name+first+i.substring(1) + " ";
+				}
 			}
 			name=name.trim();
 			break;
+		}
+		if(boo){
+			name=getName(playerfile);
 		}
 		if (name.equals("")){
 			return null;

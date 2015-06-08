@@ -10,10 +10,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import console.Console;
+import server.po.HeightPO;
 import server.po.MatchPO;
 import server.po.PlayerInMatchesPO;
+import server.po.PlayerPO;
 import server.po.ScorePO;
 import server.po.TeamInMatchesPO;
+import server.po.TeamPO;
 
 public class DatabaseController {
 	static Statement stat;
@@ -35,7 +38,21 @@ public class DatabaseController {
 //					writeMatch(newMatchPO);
 //				}
 //			}
-		
+//		 createTableOfPlayer();
+//		 File f = new File(Console.path+"/players/info");
+//		 File[]	PlayersFile = f.listFiles();
+//			for (File i : PlayersFile) {
+//				writePlayer(PlayersDataAnalyse.PlayerPOMade(DataReader
+//						.dataReader(i)));
+//			}
+		 
+		 createTableOfTeam();
+		 File  teamsFile = new File(Console.path+"/teams/teams");
+		 ArrayList<TeamPO>teamPOList = TeamsDataAnalyse.teamPOListMade(DataReader
+					.dataReader(teamsFile));
+		 for(TeamPO tp:teamPOList){
+			 writeTeam(tp);
+		 }
 		 conn.close();
 	}
 	private static void  writeMatch(MatchPO mp) {
@@ -146,5 +163,60 @@ public class DatabaseController {
 		matchPOlist.add(matchPO);
 		}
 		return matchPOlist;
+	}
+	private static void createTableOfPlayer() throws SQLException{
+		stat.execute("create table if not exists PlayerPO(name varchar(30), number int,  position varchar(5), feet int,inch int,weight int, year int, month int, day int ,age int, exp int, school varchar(50),primary key(name));");
+	}
+	private static void  writePlayer(PlayerPO pp) throws SQLException{
+		String sql="insert into PlayerPO values(";
+		int year=pp.getBirth().get(Calendar.YEAR);
+		int month=pp.getBirth().get(Calendar.MONTH);
+		int day=pp.getBirth().get(Calendar.DAY_OF_MONTH);
+		sql=sql+"'"+pp.getName().replaceAll("'", "''")+"',"+pp.getNumber()+",'"+pp.getPosition()+"',"+pp.getHeight().getFeet()+","+pp.getHeight().getInch()+","+pp.getWeight()+","+year+","+month+","+day+","+pp.getAge()+","+pp.getExp()+",'"+pp.getSchool().replaceAll("'", "''")+"');";
+		stat.execute(sql);
+	}
+	private static ArrayList<PlayerPO> getPlayerList() throws SQLException{
+		ArrayList<PlayerPO> ppList=new ArrayList<PlayerPO>(5000);
+		ResultSet rs = stat.executeQuery("select * from 'PlayerPO';");
+		while(rs.next()){
+			String name=rs.getString("name");
+			int number=rs.getInt("number");
+			String position=rs.getString("position");
+			HeightPO height = new HeightPO(rs.getInt("feet"),rs.getInt("inch"));
+			int weight=rs.getInt("weight");
+			Calendar birth=Calendar.getInstance();
+			birth.set(rs.getInt("year"), rs.getInt("month"), rs.getInt("day"), 0, 0,0);
+			int age=rs.getInt("age");
+			int exp=rs.getInt("exp");
+			String school=rs.getString("school");
+			PlayerPO pp=new PlayerPO( name,  number,  position,  height,
+					 weight,  birth,  age,  exp,  school);
+			ppList.add(pp);
+		}
+		return ppList;
+	}
+	private static void createTableOfTeam()throws SQLException{
+		stat.execute("create table if not exists TeamPO( fullName varchar(30), abbreviation varchar(5),location varchar(30),division varchar(2),  zone varchar(30), home varchar(50), setupTime int,primary key(fullName));");
+	}
+	private static void  writeTeam(TeamPO tp) throws SQLException{
+		String sql="insert into TeamPO values(";
+		String fullName=tp.getFullName();
+		String abbreviation=tp.getAbbreviation();
+		String location=tp.getLocation();
+		char division=tp.getDivision();
+		String zone=tp.getZone();
+		String home=tp.getHome();
+		int setupTime=tp.getSetupTime();
+		sql=sql+"'"+fullName+"','"+abbreviation+"','"+location+"','"+division+"','"+zone+"','"+home+"',"+setupTime+");";
+		stat.execute(sql);
+	}
+	private static ArrayList<TeamPO> getTeamList() throws SQLException{
+		ArrayList<TeamPO> teamList=new ArrayList<TeamPO>(40);
+		ResultSet rs = stat.executeQuery("select * from 'TeamPO';");
+		while(rs.next()){
+			TeamPO tp=new TeamPO(rs.getString("fullName"), rs.getString("abbreviation"), rs.getString("location"),
+					rs.getString("division").charAt(0), rs.getString("zone"), rs.getString("home"), rs.getInt("setupTime"));
+		}
+		return teamList;
 	}
 }

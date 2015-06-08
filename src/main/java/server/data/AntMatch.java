@@ -28,11 +28,14 @@ import server.po.TeamInMatchesPO;
 
 public class AntMatch implements Runnable{
 	int n;
+	static String playerNameLista[]=new String[500];
+	static String playerNameListb[]=new String[500];
+	static int nameNumber=-1;
 	public static void main(String[] args)  throws IOException {
 		 //TODO Auto-generated method stub
 		Properties prop = System.getProperties();
 		prop.setProperty("http.proxyHost", "localhost"); 
-		prop.setProperty("http.proxyPort", "49616"); 
+		prop.setProperty("http.proxyPort", "60164"); 
 		//getOneSeasonData(2013);
 		AntMatch a=new AntMatch();
 		AntMatch b=new AntMatch();
@@ -54,14 +57,14 @@ public class AntMatch implements Runnable{
 		tc.start();
 		td.start();
 		te.start();
-		
+	
 	}
 	public void setN(int n){
 		this.n=n;
 	}
 	public void run(){
 		try {
-			work(2013,n);
+			work(2010,n);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,7 +79,7 @@ public class AntMatch implements Runnable{
 		String address="E:/dataText/"+filename;
 		int start=year*10000+10*100;
 		int end=year2*10000+631;
-		int i=20131029;
+		int i=20101026;
 		for(;i<=end;i++){
 			if(i%100<=31&&i%5==n){
 				if(i%10000-i%100<=1200){
@@ -253,7 +256,7 @@ public class AntMatch implements Runnable{
 		}
 		return result;
 	}
-	private static String getName(String url){
+	private static synchronized String getName(String url,String name1){
 		String name="";
 		try {
 			HttpURLConnection conn = (HttpURLConnection) new URL(url)
@@ -261,7 +264,7 @@ public class AntMatch implements Runnable{
 			conn.setRequestMethod("GET");
 			conn.setUseCaches(true);
 			conn.connect();
-			InputStream is = conn.getInputStream();
+			InputStream is=conn.getInputStream();
 			BufferedReader reader = new BufferedReader(
 					new InputStreamReader(is));
 			String str = null;
@@ -272,6 +275,9 @@ public class AntMatch implements Runnable{
 				Matcher m3 = p3.matcher(str);
 				while(m3.find()){
 					name=m3.group("abc");
+					nameNumber++;
+					playerNameLista[nameNumber]=name1;
+					playerNameListb[nameNumber]=name;
 					break;
 				}
 				break;
@@ -290,17 +296,18 @@ public class AntMatch implements Runnable{
 		Matcher m1 = p1.matcher(PlayerInMatchesInfo);
 		String name="";
 		String position="";
-		boolean boo=false;
+		boolean boo1=false;
+		boolean boo2=true;
 		String playerfile="";
 		while (m1.find()) {
 			String a[] = m1.group("abc").split("_");
 			 playerfile="http://www.nba.com/playerfile/"+ m1.group("abc")+"/index.html";
 			for (String i:a){
 				if(i.length()>0){
-					if(i.length()<=3){
-						boo=true;
-						break;
-					}
+//					if(i.length()<=3){
+//						boo1=true;
+//						break;
+//					}
 				char first=(char) (i.charAt(0) + 'A' - 'a');
 				name=name+first+i.substring(1) + " ";
 				}
@@ -308,9 +315,18 @@ public class AntMatch implements Runnable{
 			name=name.trim();
 			break;
 		}
-		if(boo){
-			name=getName(playerfile);
-		}
+//		if(boo1){
+//			for(int j=0;j<=nameNumber;j++){
+//				if(playerNameLista[j].equals(m1.group("abc"))){
+//					name=playerNameListb[j];
+//					boo2=false;
+//					break;
+//				}
+//			}
+//		}
+//		if(boo1&&boo2){
+//			name=getName(playerfile,m1.group("abc"));
+//		}
 		if (name.equals("")){
 			return null;
 		}

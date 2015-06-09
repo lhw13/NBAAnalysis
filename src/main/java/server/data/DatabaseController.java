@@ -231,8 +231,8 @@ public class DatabaseController {
 					 weight,  birth,  age,  exp,  school);
 			ppList.add(pp);
 		}
-
-		 conn.close();
+		conn.close();
+	
 		return ppList;
 	}
 	private static void createTableOfTeam()throws Exception{

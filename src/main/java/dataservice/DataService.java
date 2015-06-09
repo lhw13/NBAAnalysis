@@ -35,4 +35,5 @@ public interface DataService {
 	public   ArrayList<MatchPO> getNewMatch();//获得新增比赛数据
 	
 	public boolean isDEL();//是否出现比赛数据删除
+	public ArrayList<MatchPO> getAllMatchByseason(String season);//按赛季获得数据
 }

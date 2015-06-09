@@ -103,6 +103,13 @@ public final  class MatchPO {
 			return finalScore.team2;
 	}
 	
+	public int getWin(String abr) {
+		if(team1.getAbbreviation().equals(abr))
+			return finalScore.team1-finalScore.team2;
+		else
+			return finalScore.team2-finalScore.team1;
+	}
+	
 	public int getScore2(String abr) {
 		if(team1.getAbbreviation().equals(abr))
 			return finalScore.team2;

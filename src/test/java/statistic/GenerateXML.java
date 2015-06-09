@@ -78,7 +78,7 @@ public class GenerateXML {
 				sheet.addCell(label);
 				label = new Label(7, row, Integer.toString(computeScore(h,po.getTeam1().getAbbreviation(),5,i)));
 				sheet.addCell(label);
-				label = new Label(8, row, Double.toString(computeRound(h,po.getTeam1().getAbbreviation(),10,i)));
+				label = new Label(8, row, Double.toString(computeOffensiveRound(h,po.getTeam1().getAbbreviation(),10,i)));
 				sheet.addCell(label);
 				label = new Label(9, row, Double.toString(computeRound(h,po.getTeam2().getAbbreviation(),10,i)));
 				sheet.addCell(label);
@@ -106,7 +106,101 @@ public class GenerateXML {
 				sheet.addCell(label);
 				label = new Label(7, row, Integer.toString(computeScore(h,po.getTeam2().getAbbreviation(),5,i)));
 				sheet.addCell(label);
-				label = new Label(8, row, Double.toString(computeRound(h,po.getTeam2().getAbbreviation(),10,i)));
+				label = new Label(8, row, Double.toString(computeOffensiveRound(h,po.getTeam2().getAbbreviation(),10,i)));
+				sheet.addCell(label);
+				label = new Label(9, row, Double.toString(computeRound(h,po.getTeam1().getAbbreviation(),10,i)));
+				sheet.addCell(label);
+			}
+			book.write();
+			book.close();
+			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+	
+	@Test
+	public void testOneTeamResult() {
+		DataService data = new DataController();
+		ArrayList<MatchPO> h = data.getAllMatch();
+		Collections.sort(h, new SortMatchesByCalendar());
+		try
+		{
+			File f = Opendoc("oneTeamresult.xml");
+			WritableWorkbook book = Workbook.createWorkbook(f);
+			WritableSheet sheet = book.createSheet("第一页", 0);
+			Label label = null;
+			label = new Label(0, 0, "文件名");
+			sheet.addCell(label);
+			label = new Label(1, 0, "");
+			sheet.addCell(label);
+			label = new Label(2, 0, "本场比赛得分");
+			sheet.addCell(label);
+			label = new Label(3, 0, "最近20场本队平均进球");
+			sheet.addCell(label);
+			label = new Label(4, 0, "最近10场对手平均失球");
+			sheet.addCell(label);
+			label = new Label(5, 0, "主场");
+			sheet.addCell(label);
+			label = new Label(6, 0, "最近5场两队比赛进球");
+			sheet.addCell(label);
+			label = new Label(7, 0, "进步指数");
+			sheet.addCell(label);
+			label = new Label(8, 0, "最近5场本队平均进攻回合");
+			sheet.addCell(label);
+			label = new Label(9, 0, "最近5场对手平均进攻回合");
+			sheet.addCell(label);
+			int row=1;
+			for (int i = 4800; i < h.size(); i++,row++)
+			{
+				MatchPO po = h.get(i);
+				
+				
+				
+				label = new Label(0, row, po.getFileName());
+				sheet.addCell(label);
+				label = new Label(2, row, Integer.toString(po.getFinalScore().getTeam1()));
+				sheet.addCell(label);
+				label = new Label(3, row, Integer.toString(computeScore(h,po.getTeam1().getAbbreviation(),20,i)));
+				sheet.addCell(label);
+				label = new Label(4, row, Integer.toString(computeScore2(h,po.getTeam1().getAbbreviation(),10,i)));
+				sheet.addCell(label);
+				label = new Label(5, row, "1");
+				sheet.addCell(label);
+				label = new Label(6, row, Integer.toString(computeScore(h,po.getTeam1().getAbbreviation(),po.getTeam2().getAbbreviation(),3,i)));
+				sheet.addCell(label);
+				label = new Label(7, row, Integer.toString(computeScore(h,po.getTeam1().getAbbreviation(),5,i)));
+				sheet.addCell(label);
+				label = new Label(8, row, Double.toString(computeOffensiveRound(h,po.getTeam1().getAbbreviation(),10,i)));
+				sheet.addCell(label);
+				label = new Label(9, row, Double.toString(computeRound(h,po.getTeam2().getAbbreviation(),10,i)));
+				sheet.addCell(label);
+			}
+			
+			for (int i = 4800; i < h.size(); i++,row++)
+			{
+				MatchPO po = h.get(i);
+				
+				
+				
+				label = new Label(0, row, po.getFileName());
+				sheet.addCell(label);
+				label = new Label(2, row, Integer.toString(po.getFinalScore().getTeam2()));
+				sheet.addCell(label);
+				label = new Label(3, row, Integer.toString(computeScore(h,po.getTeam2().getAbbreviation(),20,i)));
+				sheet.addCell(label);
+				label = new Label(4, row, Integer.toString(computeScore2(h,po.getTeam2().getAbbreviation(),10,i)));
+				sheet.addCell(label);
+				label = new Label(5, row, "-1");
+				sheet.addCell(label);
+				label = new Label(6, row, Integer.toString(computeScore(h,po.getTeam2().getAbbreviation(),po.getTeam1().getAbbreviation(),3,i)));
+				sheet.addCell(label);
+				label = new Label(7, row, Integer.toString(computeScore(h,po.getTeam2().getAbbreviation(),5,i)));
+				sheet.addCell(label);
+				label = new Label(8, row, Double.toString(computeOffensiveRound(h,po.getTeam2().getAbbreviation(),10,i)));
 				sheet.addCell(label);
 				label = new Label(9, row, Double.toString(computeRound(h,po.getTeam1().getAbbreviation(),10,i)));
 				sheet.addCell(label);
@@ -304,6 +398,40 @@ public class GenerateXML {
 				else
 					result += timtemp2.getOffendRound();*/
 					result += timtemp2.getOffendRound()+ timtemp1.getOffendRound();
+			}
+			if(count>=num)
+				return result/num;
+		}
+		System.out.println("abnormal");
+		return result/num;
+	}
+	
+	public static double computeOffensiveRound(ArrayList<MatchPO> h, String abr,int num, int end)
+	{
+		double result=0;
+		int count=0;
+		for(int i=end-1;i>=0;i--)
+		{
+			MatchPO po = h.get(i);
+			if(po.containsTeam(abr))
+			{
+				TeamInMatches timtemp1 = new TeamInMatches(po.getTeam1(),
+						po.getFinalScore().getTeam1(), new ArrayList(), po.getFinalScore().getTeam1()
+								- po.getFinalScore().getTeam2());
+				TeamInMatches timtemp2 = new TeamInMatches(po.getTeam2(),
+						po.getFinalScore().getTeam2(), new ArrayList(), po.getFinalScore().getTeam2()
+								- po.getFinalScore().getTeam1());
+				timtemp1.setTeamInMatches2(timtemp2);
+				timtemp2.setTeamInMatches2(timtemp1);
+				timtemp1.computeTotal();
+				timtemp1.computeRound();
+				timtemp2.computeTotal();
+				timtemp2.computeRound();
+				count++;
+				if(abr.equals(timtemp1.getAbbreviation()))
+					result += timtemp1.getOffendRound();
+				else
+					result += timtemp2.getOffendRound();
 			}
 			if(count>=num)
 				return result/num;

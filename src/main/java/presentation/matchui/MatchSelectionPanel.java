@@ -174,7 +174,7 @@ public class MatchSelectionPanel extends JPanel {
 		btnNewButton.setBounds(100, 50, 100, 30);
 		panelOfBottom.add(btnNewButton);
 		
-		JButton live_bt = new JButton("文字直播");
+		JButton live_bt = new JButton("直播");
 		live_bt.setBounds(650, 50, 120, 30);
 		panelOfBottom.add(live_bt);
 		live_bt.addActionListener(new ActionListener() {
@@ -182,10 +182,10 @@ public class MatchSelectionPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(MatchLivePanel.scrollPane!=null){
+					MainFrame.frame.setTitle("直播");
 					MatchSelectionPanel.scrollPane.setVisible(false);
 					MatchLivePanel.scrollPane.setVisible(true);
 					
-					MainFrame.frame.setTitle("文字直播");
 					MainFrame.frame.repaint();//刷新重画 
 					MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
 					MainFrame.backPanels.add(MainFrame.currentPanel);
@@ -193,11 +193,11 @@ public class MatchSelectionPanel extends JPanel {
 					
 				}
 				else{
+					MainFrame.frame.setTitle("直播");
 					MatchSelectionPanel.scrollPane.setVisible(false);
 					MatchLivePanel mlp = new MatchLivePanel();
 					MainFrame.frame.getContentPane().add(mlp.scrollPane);
 					
-					MainFrame.frame.setTitle("文字直播");
 					MainFrame.frame.repaint();//刷新重画 
 					MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
 					MainFrame.backPanels.add(MainFrame.currentPanel);

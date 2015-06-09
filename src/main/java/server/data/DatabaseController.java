@@ -20,10 +20,10 @@ import server.po.TeamPO;
 
 public class DatabaseController {
 	public static void main(String[] args) throws Exception{
-		Class.forName("org.sqlite.JDBC");
-		Connection conn = DriverManager
-				.getConnection("jdbc:sqlite:nba.db");
-		 Statement stat = conn.createStatement();
+//		Class.forName("org.sqlite.JDBC");
+//		Connection conn = DriverManager
+//				.getConnection("jdbc:sqlite:nba.db");
+//		 Statement stat = conn.createStatement();
 		 //writeMatch(Ant.analyseteaminfo("http://www.nba.com/games/20140502/TORBKN/gameinfo.html"));
 		 //DataTransformation.MatchPOToText(getMatchPOListBySeason("13-14").get(0),"E:\\dataText\\");
 		 //System.out.println(getMatchPOListBySeason("13-14").size());
@@ -52,7 +52,9 @@ public class DatabaseController {
 //		 for(TeamPO tp:teamPOList){
 //			 writeTeam(tp);
 //		 }
-		 conn.close();
+//		 conn.close();
+
+
 	}
 	private static void  writeMatch(MatchPO mp) throws Exception {
 		Class.forName("org.sqlite.JDBC");
@@ -136,6 +138,8 @@ public class DatabaseController {
 		Connection conn = DriverManager
 				.getConnection("jdbc:sqlite:nba.db");
 		 Statement stat = conn.createStatement();
+		 Statement stat1 = conn.createStatement();
+		 Statement stat2 = conn.createStatement();
 		String table1="MatchPO"+Season.substring(0, 2)+Season.substring(3, 5);
 		String table2="playerInMatchesPO"+Season.substring(0, 2)+Season.substring(3, 5);
 		ArrayList<MatchPO> matchPOlist =new ArrayList<MatchPO>(2000);
@@ -160,7 +164,7 @@ public class DatabaseController {
 		String abbreviation2=rs.getString("team2");
 		ArrayList<PlayerInMatchesPO> players1 = new ArrayList<PlayerInMatchesPO>(15);
 		ArrayList<PlayerInMatchesPO> players2 = new ArrayList<PlayerInMatchesPO>(15);
-		ResultSet rs1=stat.executeQuery("select * from '"+table2+"' where key='"+key+"' and team='"+abbreviation1+"';");
+		ResultSet rs1=stat1.executeQuery("select * from '"+table2+"' where key='"+key+"' and team='"+abbreviation1+"';");
 		 while(rs1.next()){
 			 PlayerInMatchesPO player=new PlayerInMatchesPO(rs1.getString("name") , rs1.getString("position"), rs1.getInt("playTime"), rs1.getInt("hit")  ,
 					 rs1.getInt("shot") , rs1.getInt("thirdHit"), rs1.getInt("thirdShot"), rs1.getInt("freeHit"), rs1.getInt("freeshot"),
@@ -168,7 +172,7 @@ public class DatabaseController {
 							 rs1.getInt("assist"), rs1.getInt("steal"), rs1.getInt("block"),  rs1.getInt("miss"), rs1.getInt("foul"),rs1.getInt("score"));
 			 players1.add(player);
 		 }
-		 ResultSet rs2=stat.executeQuery("select * from '"+table2+"' where key='"+key+"' and team='"+abbreviation2+"';");
+		 ResultSet rs2=stat2.executeQuery("select * from '"+table2+"' where key='"+key+"' and team='"+abbreviation2+"';");
 		 while(rs2.next()){
 			 PlayerInMatchesPO player=new PlayerInMatchesPO(rs2.getString("name") , rs2.getString("position"), rs2.getInt("playTime"), rs2.getInt("hit")  ,
 					 rs2.getInt("shot") , rs2.getInt("thirdHit"), rs2.getInt("thirdShot"), rs2.getInt("freeHit"), rs2.getInt("freeshot"),

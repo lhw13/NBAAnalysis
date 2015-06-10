@@ -28,7 +28,9 @@ public class GenerateXML {
 	public void testResult() {
 		DataService data = new DataController();
 		ArrayList<MatchPO> h = data.getAllMatch();
+		System.out.println(h.size());
 		Collections.sort(h, new SortMatchesByCalendar());
+		System.out.println(h.size());
 		try
 		{
 			File f = Opendoc("result.xml");
@@ -51,9 +53,7 @@ public class GenerateXML {
 			sheet.addCell(label);
 			label = new Label(7, 0, "进步指数");
 			sheet.addCell(label);
-			label = new Label(8, 0, "最近5场本队平均进攻回合");
-			sheet.addCell(label);
-			label = new Label(9, 0, "最近5场对手平均进攻回合");
+			label = new Label(8, 0, "最近5场对手平均进攻回合");
 			sheet.addCell(label);
 			int row=1;
 			for (int i = 5800; i < h.size(); i++,row++)
@@ -78,9 +78,7 @@ public class GenerateXML {
 				sheet.addCell(label);
 				label = new Label(7, row, Integer.toString(computeScore(h,po.getTeam1().getAbbreviation(),5,i)));
 				sheet.addCell(label);
-				label = new Label(8, row, Double.toString(computeOffensiveRound(h,po.getTeam1().getAbbreviation(),10,i)));
-				sheet.addCell(label);
-				label = new Label(9, row, Double.toString(computeRound(h,po.getTeam2().getAbbreviation(),10,i)));
+				label = new Label(8, row, Double.toString(computeRound(h,po.getTeam2().getAbbreviation(),10,i)));
 				sheet.addCell(label);
 			}
 			
@@ -106,9 +104,7 @@ public class GenerateXML {
 				sheet.addCell(label);
 				label = new Label(7, row, Integer.toString(computeScore(h,po.getTeam2().getAbbreviation(),5,i)));
 				sheet.addCell(label);
-				label = new Label(8, row, Double.toString(computeOffensiveRound(h,po.getTeam2().getAbbreviation(),10,i)));
-				sheet.addCell(label);
-				label = new Label(9, row, Double.toString(computeRound(h,po.getTeam1().getAbbreviation(),10,i)));
+				label = new Label(8, row, Double.toString(computeRound(h,po.getTeam1().getAbbreviation(),10,i)));
 				sheet.addCell(label);
 			}
 			book.write();
@@ -126,16 +122,18 @@ public class GenerateXML {
 	public void testOneTeamResult() {
 		DataService data = new DataController();
 		ArrayList<MatchPO> h = data.getAllMatch();
+		System.out.println(h.size());
 		Collections.sort(h, new SortMatchesByCalendar());
+		System.out.println(h.size());
 		try
 		{
-			File f = Opendoc("oneTeamresult.xml");
+			File f = Opendoc("oneTeamResult.xml");
 			WritableWorkbook book = Workbook.createWorkbook(f);
 			WritableSheet sheet = book.createSheet("第一页", 0);
 			Label label = null;
-			label = new Label(0, 0, "文件名");
+			label = new Label(0, 0, "球队1");
 			sheet.addCell(label);
-			label = new Label(1, 0, "");
+			label = new Label(1, 0, "球队2");
 			sheet.addCell(label);
 			label = new Label(2, 0, "本场比赛得分");
 			sheet.addCell(label);
@@ -149,9 +147,7 @@ public class GenerateXML {
 			sheet.addCell(label);
 			label = new Label(7, 0, "进步指数");
 			sheet.addCell(label);
-			label = new Label(8, 0, "最近5场本队平均进攻回合");
-			sheet.addCell(label);
-			label = new Label(9, 0, "最近5场对手平均进攻回合");
+			label = new Label(8, 0, "最近5场对手平均进攻回合");
 			sheet.addCell(label);
 			int row=1;
 			for (int i = 4800; i < h.size(); i++,row++)
@@ -160,7 +156,9 @@ public class GenerateXML {
 				
 				
 				
-				label = new Label(0, row, po.getFileName());
+				label = new Label(0, row, po.getTeam1().getAbbreviation());
+				sheet.addCell(label);
+				label = new Label(1, row, po.getTeam2().getAbbreviation());
 				sheet.addCell(label);
 				label = new Label(2, row, Integer.toString(po.getFinalScore().getTeam1()));
 				sheet.addCell(label);
@@ -174,9 +172,7 @@ public class GenerateXML {
 				sheet.addCell(label);
 				label = new Label(7, row, Integer.toString(computeScore(h,po.getTeam1().getAbbreviation(),5,i)));
 				sheet.addCell(label);
-				label = new Label(8, row, Double.toString(computeOffensiveRound(h,po.getTeam1().getAbbreviation(),10,i)));
-				sheet.addCell(label);
-				label = new Label(9, row, Double.toString(computeRound(h,po.getTeam2().getAbbreviation(),10,i)));
+				label = new Label(8, row, Double.toString(computeRound(h,po.getTeam2().getAbbreviation(),10,i)));
 				sheet.addCell(label);
 			}
 			
@@ -186,7 +182,9 @@ public class GenerateXML {
 				
 				
 				
-				label = new Label(0, row, po.getFileName());
+				label = new Label(0, row, po.getTeam1().getAbbreviation());
+				sheet.addCell(label);
+				label = new Label(1, row, po.getTeam2().getAbbreviation());
 				sheet.addCell(label);
 				label = new Label(2, row, Integer.toString(po.getFinalScore().getTeam2()));
 				sheet.addCell(label);
@@ -200,9 +198,7 @@ public class GenerateXML {
 				sheet.addCell(label);
 				label = new Label(7, row, Integer.toString(computeScore(h,po.getTeam2().getAbbreviation(),5,i)));
 				sheet.addCell(label);
-				label = new Label(8, row, Double.toString(computeOffensiveRound(h,po.getTeam2().getAbbreviation(),10,i)));
-				sheet.addCell(label);
-				label = new Label(9, row, Double.toString(computeRound(h,po.getTeam1().getAbbreviation(),10,i)));
+				label = new Label(8, row, Double.toString(computeRound(h,po.getTeam1().getAbbreviation(),10,i)));
 				sheet.addCell(label);
 			}
 			book.write();

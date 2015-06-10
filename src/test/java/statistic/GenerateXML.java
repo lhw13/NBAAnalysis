@@ -149,6 +149,8 @@ public class GenerateXML {
 			sheet.addCell(label);
 			label = new Label(8, 0, "最近5场对手平均进攻回合");
 			sheet.addCell(label);
+			label = new Label(9, 0, "最近10场篮板");
+			sheet.addCell(label);
 			int row=1;
 			for (int i = 4800; i < h.size(); i++,row++)
 			{
@@ -164,7 +166,7 @@ public class GenerateXML {
 				sheet.addCell(label);
 				label = new Label(3, row, Integer.toString(computeScore(h,po.getTeam1().getAbbreviation(),20,i)));
 				sheet.addCell(label);
-				label = new Label(4, row, Integer.toString(computeScore2(h,po.getTeam1().getAbbreviation(),10,i)));
+				label = new Label(4, row, Integer.toString(computeScore2(h,po.getTeam2().getAbbreviation(),10,i)));
 				sheet.addCell(label);
 				label = new Label(5, row, "1");
 				sheet.addCell(label);
@@ -173,6 +175,8 @@ public class GenerateXML {
 				label = new Label(7, row, Integer.toString(computeScore(h,po.getTeam1().getAbbreviation(),5,i)));
 				sheet.addCell(label);
 				label = new Label(8, row, Double.toString(computeRound(h,po.getTeam2().getAbbreviation(),10,i)));
+				sheet.addCell(label);
+				label = new Label(9, row, Double.toString(computeOffensiveRebound(h,po.getTeam1().getAbbreviation(),3,i)));
 				sheet.addCell(label);
 			}
 			
@@ -190,7 +194,7 @@ public class GenerateXML {
 				sheet.addCell(label);
 				label = new Label(3, row, Integer.toString(computeScore(h,po.getTeam2().getAbbreviation(),20,i)));
 				sheet.addCell(label);
-				label = new Label(4, row, Integer.toString(computeScore2(h,po.getTeam2().getAbbreviation(),10,i)));
+				label = new Label(4, row, Integer.toString(computeScore2(h,po.getTeam1().getAbbreviation(),10,i)));
 				sheet.addCell(label);
 				label = new Label(5, row, "-1");
 				sheet.addCell(label);
@@ -199,6 +203,8 @@ public class GenerateXML {
 				label = new Label(7, row, Integer.toString(computeScore(h,po.getTeam2().getAbbreviation(),5,i)));
 				sheet.addCell(label);
 				label = new Label(8, row, Double.toString(computeRound(h,po.getTeam1().getAbbreviation(),10,i)));
+				sheet.addCell(label);
+				label = new Label(9, row, Double.toString(computeOffensiveRebound(h,po.getTeam2().getAbbreviation(),3,i)));
 				sheet.addCell(label);
 			}
 			book.write();
@@ -367,6 +373,41 @@ public class GenerateXML {
 
 	}
 	
+	
+	public static double computeOffensiveRebound(ArrayList<MatchPO> h, String abr,int num, int end)
+	{
+		double result=0;
+		int count=0;
+		for(int i=end-1;i>=0;i--)
+		{
+			MatchPO po = h.get(i);
+			if(po.containsTeam(abr))
+			{
+				TeamInMatches timtemp1 = new TeamInMatches(po.getTeam1(),
+						po.getFinalScore().getTeam1(), new ArrayList(), po.getFinalScore().getTeam1()
+								- po.getFinalScore().getTeam2());
+				TeamInMatches timtemp2 = new TeamInMatches(po.getTeam2(),
+						po.getFinalScore().getTeam2(), new ArrayList(), po.getFinalScore().getTeam2()
+								- po.getFinalScore().getTeam1());
+				timtemp1.setTeamInMatches2(timtemp2);
+				timtemp2.setTeamInMatches2(timtemp1);
+				timtemp1.computeTotal();
+				timtemp1.computeRound();
+				timtemp2.computeTotal();
+				timtemp2.computeRound();
+				count++;
+				if(abr.equals(timtemp1.getAbbreviation()))
+					result += timtemp1.getOffensiveRebound();
+				else
+					result += timtemp2.getOffensiveRebound();
+			}
+			if(count>=num)
+				return result/num;
+		}
+		System.out.println("abnormal");
+		return result/num;
+	}
+	
 	public static double computeRound(ArrayList<MatchPO> h, String abr,int num, int end)
 	{
 		double result=0;
@@ -428,6 +469,67 @@ public class GenerateXML {
 					result += timtemp1.getOffendRound();
 				else
 					result += timtemp2.getOffendRound();
+			}
+			if(count>=num)
+				return result/num;
+		}
+		System.out.println("abnormal");
+		return result/num;
+	}
+	
+	public static double computeCountWin(ArrayList<MatchPO> h, String abr,String abr2, int num, int end)
+	{
+		double result=0;
+		int count=0;
+		for(int i=end-1;i>=0;i--)
+		{
+			MatchPO po = h.get(i);
+			if(po.containsTeam(abr) && po.containsTeam(abr2))
+			{
+				count++;
+				int win = po.getFinalScore().getTeam1()-po.getFinalScore().getTeam2();
+				if(po.getTeam1().getAbbreviation().equals(abr))
+					if(win>0)
+						result++;
+				if(po.getTeam1().getAbbreviation().equals(abr))
+					if(win<0)
+						result++;
+			}
+			if(count>=num)
+				return result;
+		}
+		System.out.println(abr);
+		System.out.println(abr2);
+		System.out.println("abnormal");
+		return result;
+	}
+	
+	public static double computeTurnOver(ArrayList<MatchPO> h, String abr,int num, int end)
+	{
+		double result=0;
+		int count=0;
+		for(int i=end-1;i>=0;i--)
+		{
+			MatchPO po = h.get(i);
+			if(po.containsTeam(abr))
+			{
+				TeamInMatches timtemp1 = new TeamInMatches(po.getTeam1(),
+						po.getFinalScore().getTeam1(), new ArrayList(), po.getFinalScore().getTeam1()
+								- po.getFinalScore().getTeam2());
+				TeamInMatches timtemp2 = new TeamInMatches(po.getTeam2(),
+						po.getFinalScore().getTeam2(), new ArrayList(), po.getFinalScore().getTeam2()
+								- po.getFinalScore().getTeam1());
+				timtemp1.setTeamInMatches2(timtemp2);
+				timtemp2.setTeamInMatches2(timtemp1);
+				timtemp1.computeTotal();
+				timtemp1.computeRound();
+				timtemp2.computeTotal();
+				timtemp2.computeRound();
+				count++;
+				if(abr.equals(timtemp1.getAbbreviation()))
+					result += timtemp1.getMiss();
+				else
+					result += timtemp2.getMiss();
 			}
 			if(count>=num)
 				return result/num;

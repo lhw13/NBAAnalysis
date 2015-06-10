@@ -247,9 +247,6 @@ public class MatchLivePanel extends JPanel{
 		sp = new JScrollPane(jtext);
 		sp.setBounds(150,280,700,650);
 		panelOfBottom.add(sp);
-
-		t = new Timer();
-		t.schedule(new LiveThread(), 0, 5000);
 		
 		try{
 			Thread.sleep(1000);

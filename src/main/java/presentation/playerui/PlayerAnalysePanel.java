@@ -9,26 +9,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.Timer;
-
-import presentation.ImageHandle;
-import presentation.mainui.MainFrame;
-import presentation.mainui.Panels;
-import server.businesslogic.BLController;
-import server.po.MatchPO;
-import server.po.PlayerInMatchesPO;
-import server.po.TeamInMatchesPO;
-import vo.PlayerVO;
-import blservice.BLService;
-
-import javax.swing.JLabel;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -40,8 +27,6 @@ import org.jfree.chart.axis.CategoryAnchor;
 import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.ValueAxis;
-import org.jfree.chart.labels.ItemLabelAnchor;
-import org.jfree.chart.labels.ItemLabelPosition;
 import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.CategoryPlot;
@@ -57,14 +42,22 @@ import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
-import org.jfree.data.time.Month;
-import org.jfree.data.time.TimeSeries;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.ui.Layer;
 import org.jfree.ui.TextAnchor;
 import org.jfree.util.Rotation;
+
+import presentation.ImageHandle;
+import presentation.mainui.MainFrame;
+import presentation.mainui.Panels;
+import server.businesslogic.BLController;
+import server.po.MatchPO;
+import server.po.PlayerInMatchesPO;
+import server.po.TeamInMatchesPO;
+import vo.PlayerVO;
+import blservice.BLService;
 
 public class PlayerAnalysePanel extends JPanel {
 	BLService blservice = BLController.getInstance();
@@ -148,7 +141,7 @@ public class PlayerAnalysePanel extends JPanel {
 		
 		String[] players = {playerName, "联盟平均"};
 		barchart = createPanel_3(players);
-		barchart.setBounds(220, 10, 350, 300);
+		barchart.setBounds(200, 10, 500, 300);
 		barchart.setVisible(true);		
 		barchart.updateUI();
 		panelOfBottom.add(pie);
@@ -286,12 +279,6 @@ public class PlayerAnalysePanel extends JPanel {
 				false, // 是否生成工具
 				false  // 是否生成 URL 链接
 				); 
-		CustomBarRenderer3D custombarrenderer3d = new CustomBarRenderer3D();
-		custombarrenderer3d.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator());
-		custombarrenderer3d.setBaseItemLabelsVisible(true);
-		custombarrenderer3d.setItemLabelAnchorOffset(10D);
-		custombarrenderer3d.setBasePositiveItemLabelPosition(new ItemLabelPosition(ItemLabelAnchor.OUTSIDE12, TextAnchor.BASELINE_LEFT));
-		
 		//中文乱码
 		CategoryPlot categoryplot = (CategoryPlot) chart.getPlot();
 		NumberAxis numberaxis = (NumberAxis) categoryplot.getRangeAxis();  
@@ -299,8 +286,6 @@ public class PlayerAnalysePanel extends JPanel {
 		
 		ValueMarker valuemarker = new ValueMarker(0.69999999999999996D, new Color(200, 200, 255), new BasicStroke(1.0F), new Color(200, 200, 255), new BasicStroke(1.0F), 1.0F);
 		categoryplot.addRangeMarker(valuemarker, Layer.BACKGROUND);
-		custombarrenderer3d.setBaseItemLabelsVisible(true);
-		custombarrenderer3d.setMaximumBarWidth(0.050000000000000003D);
 		CategoryTextAnnotation categorytextannotation = new CategoryTextAnnotation("Minimum grade to pass", "Robert", 0.70999999999999996D);
 		categorytextannotation.setCategoryAnchor(CategoryAnchor.START);
 		categorytextannotation.setFont(new Font("SansSerif", 0, 12));
@@ -334,12 +319,12 @@ public class PlayerAnalysePanel extends JPanel {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset(); 
 		PlayerVO vo1 = blservice.getPlayerAnalysis(playerName);
 		PlayerVO avg_vo = blservice.getPlayerSeasonAvg();
-		double[] hitRateArray = {handle( vo1.getHitRate()), 
-				handle( avg_vo.getHitRate())};
-		double[] thirdRateArray = {handle( vo1.getThirdHitRate()), 
-				handle( avg_vo.getThirdHitRate())};
-		double[] freeHitRateArray = {handle(vo1.getFreeHitRate()), 
-				handle( avg_vo.getFreeHitRate())};
+		double[] hitRateArray = {handle((double)vo1.getHitRate()), 
+				handle((double)avg_vo.getHitRate())};
+		double[] thirdRateArray = {handle((double)vo1.getThirdHitRate()), 
+				handle((double)avg_vo.getThirdHitRate())};
+		double[] freeHitRateArray = {handle((double)vo1.getFreeHitRate()), 
+				handle((double)avg_vo.getFreeHitRate())};
 		
 		dataset.addValue(hitRateArray[0], players[0], "命中率");
 		dataset.addValue(hitRateArray[1], players[1], "命中率");
@@ -359,7 +344,7 @@ public class PlayerAnalysePanel extends JPanel {
 	}
 	
 	public static double handle(double a) {
-		double result = a;
+		double result = a/1.0;
 		Double r = new Double(result);
 		if(result!=0&&!r.isNaN()&&!r.isInfinite()) {
 			BigDecimal bg = new BigDecimal(result);

@@ -91,12 +91,12 @@ public class LiveThread extends TimerTask {
 					String team_2_name = line.substring(line.indexOf("blank\">")+7, line.indexOf("</a>"));
 					team_score.put("team_2_name", team_2_name);
 				}
-				if(line.contains("</p>") && index < 13){
+				if(line.contains("</p>") && line.contains("(") && line.contains(")") && index < 13){
 					String team_1_zong = line.substring(0, line.indexOf("</p>"));
 					team_1_zong = team_1_zong.trim();
 					team_score.put("team_1_zong", team_1_zong);
 				}
-				if(line.contains("</p>") && index > 13){
+				if(line.contains("</p>") && line.contains("(") && line.contains(")") && index > 13){
 					String team_2_zong = line.substring(0, line.indexOf("</p>"));
 					team_2_zong = team_2_zong.trim();
 					team_score.put("team_2_zong", team_2_zong);

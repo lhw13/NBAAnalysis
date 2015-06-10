@@ -10,6 +10,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Timer;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -186,6 +187,10 @@ public class MatchSelectionPanel extends JPanel {
 					MatchSelectionPanel.scrollPane.setVisible(false);
 					MatchLivePanel.scrollPane.setVisible(true);
 					
+					MatchLivePanel.t = null;
+					MatchLivePanel.t = new Timer();
+					MatchLivePanel.t.schedule(new LiveThread(), 0, 5000);
+					
 					MainFrame.frame.repaint();//刷新重画 
 					MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
 					MainFrame.backPanels.add(MainFrame.currentPanel);
@@ -197,6 +202,10 @@ public class MatchSelectionPanel extends JPanel {
 					MatchSelectionPanel.scrollPane.setVisible(false);
 					MatchLivePanel mlp = new MatchLivePanel();
 					MainFrame.frame.getContentPane().add(mlp.scrollPane);
+					
+					MatchLivePanel.t = null;
+					MatchLivePanel.t = new Timer();
+					MatchLivePanel.t.schedule(new LiveThread(), 0, 5000);
 					
 					MainFrame.frame.repaint();//刷新重画 
 					MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 

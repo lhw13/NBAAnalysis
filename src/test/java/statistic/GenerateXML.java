@@ -149,8 +149,6 @@ public class GenerateXML {
 			sheet.addCell(label);
 			label = new Label(8, 0, "最近5场对手平均进攻回合");
 			sheet.addCell(label);
-			label = new Label(9, 0, "最近10场篮板");
-			sheet.addCell(label);
 			int row=1;
 			for (int i = 4800; i < h.size(); i++,row++)
 			{
@@ -170,13 +168,11 @@ public class GenerateXML {
 				sheet.addCell(label);
 				label = new Label(5, row, "1");
 				sheet.addCell(label);
-				label = new Label(6, row, Integer.toString(computeScore(h,po.getTeam1().getAbbreviation(),po.getTeam2().getAbbreviation(),3,i)));
+				label = new Label(6, row, Integer.toString(computeScore(h,po.getTeam1().getAbbreviation(),po.getTeam2().getAbbreviation(),4,i)));
 				sheet.addCell(label);
 				label = new Label(7, row, Integer.toString(computeScore(h,po.getTeam1().getAbbreviation(),5,i)));
 				sheet.addCell(label);
-				label = new Label(8, row, Double.toString(computeRound(h,po.getTeam2().getAbbreviation(),10,i)));
-				sheet.addCell(label);
-				label = new Label(9, row, Double.toString(computeOffensiveRebound(h,po.getTeam1().getAbbreviation(),3,i)));
+				label = new Label(8, row, Double.toString(computeRound(h,po.getTeam2().getAbbreviation(),5,i)));
 				sheet.addCell(label);
 			}
 			
@@ -198,13 +194,11 @@ public class GenerateXML {
 				sheet.addCell(label);
 				label = new Label(5, row, "-1");
 				sheet.addCell(label);
-				label = new Label(6, row, Integer.toString(computeScore(h,po.getTeam2().getAbbreviation(),po.getTeam1().getAbbreviation(),3,i)));
+				label = new Label(6, row, Integer.toString(computeScore(h,po.getTeam2().getAbbreviation(),po.getTeam1().getAbbreviation(),4,i)));
 				sheet.addCell(label);
 				label = new Label(7, row, Integer.toString(computeScore(h,po.getTeam2().getAbbreviation(),5,i)));
 				sheet.addCell(label);
-				label = new Label(8, row, Double.toString(computeRound(h,po.getTeam1().getAbbreviation(),10,i)));
-				sheet.addCell(label);
-				label = new Label(9, row, Double.toString(computeOffensiveRebound(h,po.getTeam2().getAbbreviation(),3,i)));
+				label = new Label(8, row, Double.toString(computeRound(h,po.getTeam1().getAbbreviation(),5,i)));
 				sheet.addCell(label);
 			}
 			book.write();

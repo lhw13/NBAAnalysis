@@ -398,6 +398,10 @@ public class PlayerVO {
 	public double getEfficiency() {
 		return efficiency;
 	}
+	
+	public double getEfficient() {
+		return efficiency;
+	}
 
 	public double getGmScEfficiency() {
 		return gmScEfficiency;

@@ -39,6 +39,7 @@ import presentation.playerui.PlayerComparePanel;
 import presentation.playerui.PlayerInfoPanel;
 import presentation.playerui.PlayerRankingPanel;
 import presentation.playerui.PlayerSelectionPanel;
+import presentation.teamsui.TeamAnalysePanel;
 import presentation.teamsui.TeamsInfoFrame;
 import presentation.teamsui.TeamsSelectionFrame;
 import presentation.teamsui.TeamsRankingFrame;
@@ -61,6 +62,7 @@ public class MainFrame {
 	public static PlayerComparePanel pcp;
 	public static MatchPlayoffPanel mpp;
 	public static PlayerAnalysePanel pap;
+	public static TeamAnalysePanel tap;
 	
 	public static boolean flag = false;
 	public static boolean flag0 = false;
@@ -192,6 +194,10 @@ public class MainFrame {
 		pap = new PlayerAnalysePanel();
 		frame.getContentPane().add(PlayerAnalysePanel.scrollPane);
 		PlayerAnalysePanel.scrollPane.setVisible(false);
+		
+		tap = new TeamAnalysePanel();
+		frame.getContentPane().add(TeamAnalysePanel.scrollPane);
+		TeamAnalysePanel.scrollPane.setVisible(false);
 	}
 
 	private class ScheduleTask extends TimerTask {

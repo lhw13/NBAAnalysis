@@ -34,6 +34,7 @@ import presentation.ImageHandle;
 import presentation.mainui.MainFrame;
 import presentation.mainui.Panels;
 import presentation.matchui.MatchDetailInfoPanel;
+import presentation.playerui.PlayerAnalysePanel;
 import presentation.playerui.PlayerInfoPanel;
 import presentation.playerui.PlayerRankingPanel;
 import presentation.playerui.PlayerSelectionPanel;
@@ -87,15 +88,32 @@ public class TeamsInfoFrame extends JPanel{
 	Vector columnName;
 	DefaultTableModel model = new DefaultTableModel();
 
+	String abb;
 	public TeamsInfoFrame(final TeamWithPlayersVO twpvo) {// 构造函数
 		compute = BLController.getInstance();
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(5, 5, 100, 50);
-
+		panel.setBounds(0, 0, 120, 100);
+		panel.setLayout(null);
+		
 		JButton btnNewButton = new JButton("返回");
-		btnNewButton.setBounds(0, 0, 100, 50);
+		btnNewButton.setBounds(0, 0, 50, 23);
 		panel.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("分析");
+		btnNewButton_1.setBounds(60, 0, 50, 23);
+		panel.add(btnNewButton_1);
+		btnNewButton_1.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				TeamsInfoFrame.scrollPane.setVisible(false);
+				TeamAnalysePanel.scrollPane.setVisible(true);
+				MainFrame.frame.setTitle("NBA球队分析");
+				MainFrame.tap.update(abb);
+				MainFrame.backPanels.add(MainFrame.currentPanel);
+				MainFrame.currentPanel = Panels.TeamAnalysePanel;
+			}
+		});
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(100, 160, 800, 300);
@@ -117,6 +135,7 @@ public class TeamsInfoFrame extends JPanel{
 			tvo = twpvo.getTeam();
 			fullName = tvo.getFullName();
 			abbreviation = tvo.getAbbreviation();
+			abb = abbreviation;
 			location = tvo.getLocation();
 			division = tvo.getDivision();
 			zone = tvo.getZone();

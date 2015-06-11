@@ -184,7 +184,7 @@ public class PlayerAnalysePanel extends JPanel {
 	
 		defaultpiedataset.setValue("三分", new Double(vo.getThirdHit()*3));
 		defaultpiedataset.setValue("罚球", new Double(vo.getFreeHit()));
-		defaultpiedataset.setValue("两分", new Double((vo.getHit()-vo.getThirdHit()-vo.getFreeHit())*2));
+		defaultpiedataset.setValue("两分", new Double((vo.getHit()-vo.getThirdHit())*2));
 		
 		return defaultpiedataset;
 	}
@@ -270,7 +270,7 @@ public class PlayerAnalysePanel extends JPanel {
 	
 	private static JFreeChart createChart_3(CategoryDataset dataset){//用数据集创建一个图表
 		JFreeChart chart = ChartFactory.createBarChart3D( 
-				"球员对比", // 图表标题
+				"球员各项命中率", // 图表标题
 				"球员", // 目录轴的显示标签
 				"数值", // 数值轴的显示标签
 				dataset, // 数据集
@@ -286,11 +286,7 @@ public class PlayerAnalysePanel extends JPanel {
 		
 		ValueMarker valuemarker = new ValueMarker(0.69999999999999996D, new Color(200, 200, 255), new BasicStroke(1.0F), new Color(200, 200, 255), new BasicStroke(1.0F), 1.0F);
 		categoryplot.addRangeMarker(valuemarker, Layer.BACKGROUND);
-		CategoryTextAnnotation categorytextannotation = new CategoryTextAnnotation("Minimum grade to pass", "Robert", 0.70999999999999996D);
-		categorytextannotation.setCategoryAnchor(CategoryAnchor.START);
-		categorytextannotation.setFont(new Font("SansSerif", 0, 12));
-		categorytextannotation.setTextAnchor(TextAnchor.BOTTOM_LEFT);
-		categoryplot.addAnnotation(categorytextannotation);
+		
 		numberaxis.setNumberFormatOverride(NumberFormat.getPercentInstance());
 		numberaxis.setUpperMargin(0.10000000000000001D);
 		ChartUtilities.applyCurrentTheme(chart);

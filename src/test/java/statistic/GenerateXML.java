@@ -28,9 +28,9 @@ public class GenerateXML {
 	public void testResult() {
 		DataService data = new DataController();
 		ArrayList<MatchPO> h = data.getAllMatch();
-		System.out.println(h.size());
+		//System.out.println(h.size());
 		Collections.sort(h, new SortMatchesByCalendar());
-		System.out.println(h.size());
+		//System.out.println(h.size());
 		try
 		{
 			File f = Opendoc("result.xml");
@@ -122,9 +122,9 @@ public class GenerateXML {
 	public void testOneTeamResult() {
 		DataService data = new DataController();
 		ArrayList<MatchPO> h = data.getAllMatch();
-		System.out.println(h.size());
+		//System.out.println(h.size());
 		Collections.sort(h, new SortMatchesByCalendar());
-		System.out.println(h.size());
+		//System.out.println(h.size());
 		try
 		{
 			File f = Opendoc("oneTeamResult.xml");
@@ -311,6 +311,61 @@ public class GenerateXML {
 	}
 	
 	@Test
+	public void testWinByStrength() {
+		BLController bl = BLController.getInstance();
+		bl.analyse();
+		ArrayList<MatchPO> h = bl.getAllMatch();
+		try
+		{
+			File f = Opendoc("stanfordpredict.xml");
+			WritableWorkbook book = Workbook.createWorkbook(f);
+			WritableSheet sheet = book.createSheet("第一页", 0);
+			Label label = null;
+			label = new Label(0, 0, "文件名");
+			sheet.addCell(label);
+			label = new Label(1, 0, "本场净胜");
+			sheet.addCell(label);
+			label = new Label(2, 0, "实力差");
+			sheet.addCell(label);
+			label = new Label(3, 0, "主场");
+			sheet.addCell(label);
+			int row=1;
+			int n=0;
+			for (int i = 4800; i < h.size(); i++,row++,n++)
+			{
+				System.out.println(i);
+				MatchPO po = h.get(i);
+				label = new Label(0, row, po.getFileName());
+				sheet.addCell(label);
+				label = new Label(1, row, Double.toString((double)(po.getFinalScore().getTeam1()-po.getFinalScore().getTeam2())));
+				sheet.addCell(label);
+				label = new Label(2, row, Double.toString(bl.getStrengthDiff(po.getTeam1().getAbbreviation(), po.getTeam2().getAbbreviation(), n, i)));
+				sheet.addCell(label);
+				label = new Label(3, row, "1");
+				sheet.addCell(label);
+				
+				row++;
+				label = new Label(0, row, po.getFileName());
+				sheet.addCell(label);
+				label = new Label(1, row, Double.toString((double)(po.getFinalScore().getTeam2()-po.getFinalScore().getTeam1())));
+				sheet.addCell(label);
+				label = new Label(2, row, Double.toString(bl.getStrengthDiff(po.getTeam2().getAbbreviation(), po.getTeam1().getAbbreviation(), n, i)));
+				sheet.addCell(label);
+				label = new Label(3, row, "-1");
+				sheet.addCell(label);
+			}
+			book.write();
+			book.close();
+			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+	
+	@Test
 	public void testHome() {
 		DataService data = new DataController();
 		ArrayList<MatchPO> h = data.getAllMatch();
@@ -375,7 +430,7 @@ public class GenerateXML {
 		for(int i=end-1;i>=0;i--)
 		{
 			MatchPO po = h.get(i);
-			if(po.containsTeam(abr))
+			if(po.containsTeam(abr)>0)
 			{
 				TeamInMatches timtemp1 = new TeamInMatches(po.getTeam1(),
 						po.getFinalScore().getTeam1(), new ArrayList(), po.getFinalScore().getTeam1()
@@ -409,7 +464,7 @@ public class GenerateXML {
 		for(int i=end-1;i>=0;i--)
 		{
 			MatchPO po = h.get(i);
-			if(po.containsTeam(abr))
+			if(po.containsTeam(abr)>0)
 			{
 				TeamInMatches timtemp1 = new TeamInMatches(po.getTeam1(),
 						po.getFinalScore().getTeam1(), new ArrayList(), po.getFinalScore().getTeam1()
@@ -444,7 +499,7 @@ public class GenerateXML {
 		for(int i=end-1;i>=0;i--)
 		{
 			MatchPO po = h.get(i);
-			if(po.containsTeam(abr))
+			if(po.containsTeam(abr)>0)
 			{
 				TeamInMatches timtemp1 = new TeamInMatches(po.getTeam1(),
 						po.getFinalScore().getTeam1(), new ArrayList(), po.getFinalScore().getTeam1()
@@ -478,7 +533,7 @@ public class GenerateXML {
 		for(int i=end-1;i>=0;i--)
 		{
 			MatchPO po = h.get(i);
-			if(po.containsTeam(abr) && po.containsTeam(abr2))
+			if(po.containsTeam(abr)>0 && po.containsTeam(abr2)>0)
 			{
 				count++;
 				int win = po.getFinalScore().getTeam1()-po.getFinalScore().getTeam2();
@@ -505,7 +560,7 @@ public class GenerateXML {
 		for(int i=end-1;i>=0;i--)
 		{
 			MatchPO po = h.get(i);
-			if(po.containsTeam(abr))
+			if(po.containsTeam(abr)>0)
 			{
 				TeamInMatches timtemp1 = new TeamInMatches(po.getTeam1(),
 						po.getFinalScore().getTeam1(), new ArrayList(), po.getFinalScore().getTeam1()
@@ -539,7 +594,7 @@ public class GenerateXML {
 		for(int i=end-1;i>=0;i--)
 		{
 			MatchPO po = h.get(i);
-			if(po.containsTeam(abr))
+			if(po.containsTeam(abr)>0)
 			{
 				count++;
 				result+=po.getScore(abr);
@@ -558,7 +613,7 @@ public class GenerateXML {
 		for(int i=end-1;i>=0;i--)
 		{
 			MatchPO po = h.get(i);
-			if(po.containsTeam(abr))
+			if(po.containsTeam(abr)>0)
 			{
 				count++;
 				result+=(double)po.getWin(abr)/(double)po.getScore(abr);
@@ -577,7 +632,7 @@ public class GenerateXML {
 		for(int i=end-1;i>=0;i--)
 		{
 			MatchPO po = h.get(i);
-			if(po.containsTeam(abr) && po.containsTeam(abr2))
+			if(po.containsTeam(abr)>0 && po.containsTeam(abr2)>0)
 			{
 				count++;
 				result+=po.getScore(abr);
@@ -596,7 +651,7 @@ public class GenerateXML {
 		for(int i=end-1;i>=0;i--)
 		{
 			MatchPO po = h.get(i);
-			if(po.containsTeam(abr) && po.containsTeam(abr2))
+			if(po.containsTeam(abr)>0 && po.containsTeam(abr2)>0)
 			{
 				count++;
 				result+=(double)po.getWin(abr)/(double)po.getScore(abr);
@@ -615,7 +670,7 @@ public class GenerateXML {
 		for(int i=end-1;i>=0;i--)
 		{
 			MatchPO po = h.get(i);
-			if(po.containsTeam(abr))
+			if(po.containsTeam(abr)>0)
 			{
 				count++;
 				result+=po.getScore2(abr);

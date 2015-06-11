@@ -13,6 +13,11 @@ public  final class Team {
 	public Team(TeamPO teamPO) {
 		super();
 		this.teamPO = teamPO;
+		for(int i=0;i<7000;i++)
+		{
+			strengthList.add(0.0);
+			strengthAvalible.add(false);
+		}
 	}
 
 	boolean newData = true;
@@ -27,6 +32,9 @@ public  final class Team {
 	
 	ArrayList<TeamInMatches> thisTeamNew = new ArrayList<TeamInMatches>(10);
 	ArrayList<TeamInMatches> opponentTeamNew = new ArrayList<TeamInMatches>(10);
+	
+	ArrayList<Double> strengthList = new ArrayList<Double>(7000);
+	ArrayList<Boolean> strengthAvalible = new ArrayList<Boolean>(7000);
 
 	// this team's data
 	int appearance = 0;// 比赛场数
@@ -224,6 +232,51 @@ public  final class Team {
 		return true;
 	}
 
+	public double getStrength(int n,int now) {
+		double theta = 0.084;
+		double k = 0.024;
+		if(n==0)
+			return 0;
+		BLController bl = BLController.getInstance();
+		ArrayList<MatchPO> all = bl.getAllMatch();
+		if(now==-1)
+			now = all.size();
+		if(strengthAvalible.get(now))
+		{
+			System.out.println("hit");
+			return strengthList.get(now);
+		}
+		MatchPO mpo = all.get(now-1);
+		int contain = mpo.containsTeam(teamPO.getAbbreviation());
+		if(contain<0)
+		{
+			//System.out.println("miss");
+			strengthList.set(now, getStrength(n-1,now-1));
+			strengthAvalible.set(now,true);
+			return strengthList.get(now);
+		}
+		
+		else
+		{
+			System.out.println("reallymiss");
+			if(contain==1)
+			{
+				String abr = mpo.getTeam2().getAbbreviation();
+				Team t = bl.getTeamsHash().get(abr);
+				strengthList.set(now, getStrength(n-1,now-1)+Math.pow(Math.E,-k*(n-1))*theta*(Math.abs(mpo.getWin(abr))-(getStrength(n-1,now-1)-t.getStrength(n-1, now-1))));
+				strengthAvalible.set(now,true);
+				return strengthList.get(now);
+			}
+			else
+			{
+				String abr = mpo.getTeam1().getAbbreviation();
+				Team t = bl.getTeamsHash().get(abr);
+				strengthList.set(now, getStrength(n-1,now-1)+Math.pow(Math.E,-k*(n-1))*theta*(-Math.abs(mpo.getWin(abr))-(getStrength(n-1,now-1)-t.getStrength(n-1, now-1))));
+				strengthAvalible.set(now,true);
+				return strengthList.get(now);
+			}
+		}
+	}
 	private void add(TeamInMatches tim) {// simple addition to each
 											// corresponding domain
 		//tim.computeTotal();

@@ -69,6 +69,8 @@ public final class BLController implements BLService {
 		return;
 	}
 	
+	
+	//iteration 3
 	public double[][] getDataForRegression(int scale)
 	{//参数在1000～5000之间的偶数，为double数组的行数
 		DataService data = new DataController();
@@ -150,6 +152,13 @@ public final class BLController implements BLService {
 			result[1][5] = GenerateXML.computeScore(h,teamabr2,5,i);
 			result[1][6] = GenerateXML.computeRound(h,teamabr1,5,i);
 		return result;
+	}
+	
+	public double getStrengthDiff(String teamabr1, String teamabr2,int n, int now)
+	{
+		Team team1 = teamsHash.get(teamabr1);
+		Team team2 = teamsHash.get(teamabr2);
+		return team1.getStrength(n, now)-team2.getStrength(n, now);
 	}
 	
 	public ArrayList<TeamVO> getHotTeamVO(String sortCon) {
@@ -319,7 +328,7 @@ public final class BLController implements BLService {
 		return result;
 	}
 	
-	private boolean analyse() {// the operation of core algorithm
+	public boolean analyse() {// the operation of core algorithm
 		//if (players.size() > 0)// already have content in buffer
 			//return true;
 		//else {// when just start the program, we will first compute the data
@@ -699,5 +708,17 @@ public final class BLController implements BLService {
 	            }  
 	        };  
 	        Collections.sort(list, cmp);  
-	    }  
+	    }
+
+		public static String getSeason() {
+			return season;
+		}
+
+		public HashMap<String, Player> getPlayersHash() {
+			return playersHash;
+		}
+
+		public HashMap<String, Team> getTeamsHash() {
+			return teamsHash;
+		}  
 }

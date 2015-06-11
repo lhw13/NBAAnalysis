@@ -192,7 +192,11 @@ public  final class Player implements Cloneable{
 	}
 	
 	private void updateTeam() {
+		if(thisTeam.size()==0)
+			return;
 		String teamAb = thisTeam.get(thisTeam.size()-1).getAbbreviation();
+		if(team==null)
+			team = new TeamPO();
 		BLController bl = BLController.getInstance();
 		if(!teamAb.equals(team.getAbbreviation()))
 			team=bl.teamsHash.get(teamAb).teamPO;

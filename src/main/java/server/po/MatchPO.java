@@ -94,8 +94,13 @@ public final  class MatchPO {
 		this.team2 = team2;
 	}
 	
-	public boolean containsTeam(String abr) {
-		return (team1.getAbbreviation().equals(abr) || team2.getAbbreviation().equals(abr));
+	public int containsTeam(String abr) {
+		if (team1.getAbbreviation().equals(abr))
+			return 1;
+		else if(team2.getAbbreviation().equals(abr))
+			return 2;
+		else
+			return -1;
 	}
 	
 	public int getScore(String abr) {

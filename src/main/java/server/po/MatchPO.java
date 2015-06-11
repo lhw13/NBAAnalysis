@@ -31,6 +31,8 @@ public final  class MatchPO {
 	ArrayList<ScorePO> scores = new ArrayList<ScorePO>();
 	TeamInMatchesPO team1;
 	TeamInMatchesPO team2;
+	
+	String type="regular";
 
 	public void sortPlayersByScore() {
 		team1.sortPlayersByScore();
@@ -115,5 +117,13 @@ public final  class MatchPO {
 			return finalScore.team2;
 		else
 			return finalScore.team1;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 }

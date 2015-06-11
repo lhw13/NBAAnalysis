@@ -19,24 +19,25 @@ import server.po.TeamInMatchesPO;
 import server.po.TeamPO;
 
 public class DatabaseController {
+	static Statement stat=null;
 	public static void main(String[] args) throws Exception{
-//		Class.forName("org.sqlite.JDBC");
-//		Connection conn = DriverManager
-//				.getConnection("jdbc:sqlite:nba.db");
-//		 Statement stat = conn.createStatement();
+		Class.forName("org.sqlite.JDBC");
+		Connection conn = DriverManager
+				.getConnection("jdbc:sqlite:nba.db");
+		 Statement stat = conn.createStatement();
 		 //writeMatch(Ant.analyseteaminfo("http://www.nba.com/games/20140502/TORBKN/gameinfo.html"));
 		 //DataTransformation.MatchPOToText(getMatchPOListBySeason("13-14").get(0),"E:\\dataText\\");
 		 //System.out.println(getMatchPOListBySeason("13-14").size());
 
-//			File f = new File(Console.path+"/matches");
-//			File[]  matchesFile = f.listFiles();
-//			for (File i : matchesFile) {
-//				MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
-//						.dataReader(i));
-//				if(newMatchPO!=null){
-//					writeMatch(newMatchPO);
-//				}
-//			}
+			File f = new File("C:\\Users\\wjc\\Desktop\\CSEIII NBA Tool\\liveData");
+			File[]  matchesFile = f.listFiles();
+			for (File i : matchesFile) {
+				MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
+						.dataReader(i));
+				if(newMatchPO!=null){
+					writeMatch(newMatchPO);
+				}
+			}
 //		 createTableOfPlayer();
 //		 File f = new File(Console.path+"/players/info");
 //		 File[]	PlayersFile = f.listFiles();
@@ -52,15 +53,11 @@ public class DatabaseController {
 //		 for(TeamPO tp:teamPOList){
 //			 writeTeam(tp);
 //		 }
-//		 conn.close();
+	 conn.close();
 
 
 	}
 	private static void  writeMatch(MatchPO mp) throws Exception {
-		Class.forName("org.sqlite.JDBC");
-		Connection conn = DriverManager
-				.getConnection("jdbc:sqlite:nba.db");
-		 Statement stat = conn.createStatement();
 		String season=mp.getSeason().substring(0, 2)+mp.getSeason().substring(3, 5);
 		String matchTableName="MatchPO"+season;
 		String playerTableName="playerInMatchesPO"+season;
@@ -121,17 +118,10 @@ public class DatabaseController {
 			}
 		}
 
-		 conn.close();
 	}
 	private static void  createTableOfMatch(String season) throws Exception{
-		Class.forName("org.sqlite.JDBC");
-		Connection conn = DriverManager
-				.getConnection("jdbc:sqlite:nba.db");
-		 Statement stat = conn.createStatement();
 		stat.execute("create table if not exists MatchPO"+season+"(key varchar(20), season varchar(10), year int, month int, day int,team1 varchar(5),team2 varchar(5), score1 int, score2 int, score3 int, score4 int, score5 int, score6 int, score7 int, score8 int, score9 int, score10 int ,primary key(key));");
 		stat.execute("create table if not exists playerInMatchesPO"+season+"(key varchar(20), team varchar(5), name varchar(30), position varchar(5), playTime int, hit int, shot int, thirdHit int, thirdshot int, freeHit int, freeshot int, offensiveRebound int, defensiveRebound int, totalRebound int, assist int, steal int, block int, miss int, foul int, score int,primary key(key,name,team));");
-
-		 conn.close();
 	}
 	public static ArrayList<MatchPO> getMatchPOListBySeason(String Season) throws Exception{
 		Class.forName("org.sqlite.JDBC");
@@ -191,27 +181,15 @@ public class DatabaseController {
 		return matchPOlist;
 	}
 	private static void createTableOfPlayer() throws Exception{
-		Class.forName("org.sqlite.JDBC");
-		Connection conn = DriverManager
-				.getConnection("jdbc:sqlite:nba.db");
-		 Statement stat = conn.createStatement();
 		stat.execute("create table if not exists PlayerPO(name varchar(30), number int,  position varchar(5), feet int,inch int,weight int, year int, month int, day int ,age int, exp int, school varchar(50),primary key(name));");
-
-		 conn.close();
 	}
 	private static void  writePlayer(PlayerPO pp) throws Exception{
-		Class.forName("org.sqlite.JDBC");
-		Connection conn = DriverManager
-				.getConnection("jdbc:sqlite:nba.db");
-		 Statement stat = conn.createStatement();
 		String sql="insert into PlayerPO values(";
 		int year=pp.getBirth().get(Calendar.YEAR);
 		int month=pp.getBirth().get(Calendar.MONTH);
 		int day=pp.getBirth().get(Calendar.DAY_OF_MONTH);
 		sql=sql+"'"+pp.getName().replaceAll("'", "''")+"',"+pp.getNumber()+",'"+pp.getPosition()+"',"+pp.getHeight().getFeet()+","+pp.getHeight().getInch()+","+pp.getWeight()+","+year+","+month+","+day+","+pp.getAge()+","+pp.getExp()+",'"+pp.getSchool().replaceAll("'", "''")+"');";
 		stat.execute(sql);
-
-		 conn.close();
 	}
 	public static ArrayList<PlayerPO> getPlayerList() throws Exception{
 		Class.forName("org.sqlite.JDBC");
@@ -240,19 +218,9 @@ public class DatabaseController {
 		return ppList;
 	}
 	private static void createTableOfTeam()throws Exception{
-		Class.forName("org.sqlite.JDBC");
-		Connection conn = DriverManager
-				.getConnection("jdbc:sqlite:nba.db");
-		 Statement stat = conn.createStatement();
 		stat.execute("create table if not exists TeamPO( fullName varchar(30), abbreviation varchar(5),location varchar(30),division varchar(2),  zone varchar(30), home varchar(50), setupTime int,primary key(fullName));");
-
-		 conn.close();
 	}
 	private static void  writeTeam(TeamPO tp) throws Exception{
-		Class.forName("org.sqlite.JDBC");
-		Connection conn = DriverManager
-				.getConnection("jdbc:sqlite:nba.db");
-		 Statement stat = conn.createStatement();
 		String sql="insert into TeamPO values(";
 		String fullName=tp.getFullName();
 		String abbreviation=tp.getAbbreviation();
@@ -263,7 +231,6 @@ public class DatabaseController {
 		int setupTime=tp.getSetupTime();
 		sql=sql+"'"+fullName+"','"+abbreviation+"','"+location+"','"+division+"','"+zone+"','"+home+"',"+setupTime+");";
 		stat.execute(sql);
-		 conn.close();
 	}
 	public static ArrayList<TeamPO> getTeamList() throws Exception{
 		Class.forName("org.sqlite.JDBC");

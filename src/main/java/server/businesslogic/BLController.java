@@ -1,5 +1,6 @@
 package server.businesslogic;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -11,6 +12,11 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import javax.swing.ImageIcon;
+
+import jxl.Workbook;
+import jxl.write.Label;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
 
 import org.apache.batik.swing.JSVGCanvas;
 
@@ -27,6 +33,7 @@ import vo.PlayerVO;
 import vo.TeamVO;
 import vo.TeamWithPlayersVO;
 import blservice.BLService;
+import statistic.*;
 
 public final class BLController implements BLService {
 	private BLController() {
@@ -56,6 +63,93 @@ public final class BLController implements BLService {
 	//iteration 2
 	public void startWatchMatches() {
 		data.startWatchMatches();
+	}
+	
+	public void setSeason(String season){
+		return;
+	}
+	
+	public double[][] getDataForRegression(int scale)
+	{//参数在1000～5000之间的偶数，为double数组的行数
+		DataService data = new DataController();
+		ArrayList<MatchPO> h = data.getAllMatch();
+		Collections.sort(h, new SortMatchesByCalendar());
+		double result[][] = new double [scale][7];
+		try
+		{
+			/*label = new Label(0, 0, "球队1");
+			sheet.addCell(label);
+			label = new Label(1, 0, "球队2");
+			sheet.addCell(label);
+			label = new Label(2, 0, "本场比赛得分");
+			sheet.addCell(label);
+			label = new Label(3, 0, "最近20场本队平均进球");
+			sheet.addCell(label);
+			label = new Label(4, 0, "最近10场对手平均失球");
+			sheet.addCell(label);
+			label = new Label(5, 0, "主场");
+			sheet.addCell(label);
+			label = new Label(6, 0, "最近5场两队比赛进球");
+			sheet.addCell(label);
+			label = new Label(7, 0, "进步指数");
+			sheet.addCell(label);
+			label = new Label(8, 0, "最近5场对手平均进攻回合");
+			sheet.addCell(label);*/
+			int row=0;
+			for (int i = h.size()-scale/2; i < h.size(); i++,row++)
+			{
+				MatchPO po = h.get(i);
+				result[row][0] = po.getFinalScore().getTeam1();
+				result[row][1] = GenerateXML.computeScore(h,po.getTeam1().getAbbreviation(),20,i);
+				result[row][2] = GenerateXML.computeScore2(h,po.getTeam2().getAbbreviation(),10,i);
+				result[row][3] = 1;
+				result[row][4] = GenerateXML.computeScore(h,po.getTeam1().getAbbreviation(),po.getTeam2().getAbbreviation(),4,i);
+				result[row][5] = GenerateXML.computeScore(h,po.getTeam1().getAbbreviation(),5,i);
+				result[row][6] = GenerateXML.computeRound(h,po.getTeam2().getAbbreviation(),5,i);
+			}
+			
+			for (int i = h.size()-scale/2; i < h.size(); i++,row++)
+			{
+				MatchPO po = h.get(i);
+				
+				result[row][0] = po.getFinalScore().getTeam2();
+				result[row][1] = GenerateXML.computeScore(h,po.getTeam2().getAbbreviation(),20,i);
+				result[row][2] = GenerateXML.computeScore2(h,po.getTeam1().getAbbreviation(),10,i);
+				result[row][3] = 1;
+				result[row][4] = GenerateXML.computeScore(h,po.getTeam2().getAbbreviation(),po.getTeam1().getAbbreviation(),4,i);
+				result[row][5] = GenerateXML.computeScore(h,po.getTeam2().getAbbreviation(),5,i);
+				result[row][6] = GenerateXML.computeRound(h,po.getTeam1().getAbbreviation(),5,i);
+			}
+			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return result;
+	}
+	public double[][] getVariables(String teamabr1, String teamabr2)
+	{//返回值第一行为球队1，第二行为球队2
+		DataService data = new DataController();
+		ArrayList<MatchPO> h = data.getAllMatch();
+		Collections.sort(h, new SortMatchesByCalendar());
+		double result[][] = new double [2][7];
+			int i = h.size();
+			result[0][1] = GenerateXML.computeScore(h,teamabr1,20,i);
+			result[0][2] = GenerateXML.computeScore2(h,teamabr2,10,i);
+			result[0][3] = 1;
+			result[0][4] = GenerateXML.computeScore(h,teamabr1,teamabr2,4,i);
+			result[0][5] = GenerateXML.computeScore(h,teamabr1,5,i);
+			result[0][6] = GenerateXML.computeRound(h,teamabr2,5,i);
+			
+				
+			result[1][1] = GenerateXML.computeScore(h,teamabr2,20,i);
+			result[1][2] = GenerateXML.computeScore2(h,teamabr1,10,i);
+			result[1][3] = 1;
+			result[1][4] = GenerateXML.computeScore(h,teamabr2,teamabr1,4,i);
+			result[1][5] = GenerateXML.computeScore(h,teamabr2,5,i);
+			result[1][6] = GenerateXML.computeRound(h,teamabr1,5,i);
+		return result;
 	}
 	
 	public ArrayList<TeamVO> getHotTeamVO(String sortCon) {

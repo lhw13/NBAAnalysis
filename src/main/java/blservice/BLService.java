@@ -45,6 +45,9 @@ public interface BLService {
 	
 	
 	//iteration III
-	//public void setSeason(String season);
 	public PlayerVO getPlayerSeasonAvg();
+	public void setSeason(String season);
+	//for prediction
+	public double[][] getDataForRegression(int scale);//参数在1000～5000之间的偶数，为double数组的行数
+	public double[][] getVariables(String teamabr1, String teamabr2);//返回值第一行为球队1，第二行为球队2
 }

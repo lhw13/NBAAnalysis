@@ -2,6 +2,7 @@ package presentation.playerui;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Paint;
@@ -10,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -59,21 +61,31 @@ import server.po.TeamInMatchesPO;
 import vo.PlayerVO;
 import blservice.BLService;
 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 public class PlayerAnalysePanel extends JPanel {
 	BLService blservice = BLController.getInstance();
 
 	JPanel panelOfBottom = new JPanel();
-	JPanel pie =null;
 	JPanel crosshair =null;
+	JPanel crosshair2 =null;
 	JPanel barchart =null;
 	
 	JButton button;
 
 	JLabel label_action;
 	public static JScrollPane scrollPane;
-
-	 String playerName;
+	JScrollPane scrollPane_1;
+	
+	String playerName;
 	String teamName;
+	
+	private JTable table;
+	
+	DefaultTableModel model = new DefaultTableModel();
+	
+	Vector columnName = new Vector();
 	public PlayerAnalysePanel() {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
@@ -83,9 +95,12 @@ public class PlayerAnalysePanel extends JPanel {
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		add(scrollPane);
 
+		scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(320, 1030, 250, 68);
+		panelOfBottom.add(scrollPane_1);
 		//panel===========================================================
 		panelOfBottom.setLayout(null);
-
+		panelOfBottom.setPreferredSize(new Dimension(1000, 1200));
 		//button===========================================================
 		button = new JButton("返回");
 		button.setBounds(30, 21, 111, 26);
@@ -104,10 +119,20 @@ public class PlayerAnalysePanel extends JPanel {
 		});
 		panelOfBottom.add(button);
 
-		//label==============================================================
+	//label==============================================================
 		label_action = new JLabel("");
 		label_action.setBounds(30, 88, 230, 365);
 		panelOfBottom.add(label_action);
+		
+		
+	//table=============================================================	
+		table = new JTable(model);
+		scrollPane_1.setViewportView(table);
+		
+		String[] cname = new String[] {"","得分","篮板","助攻"};
+		for(int i=0;i<cname.length;i++) {
+			columnName.add(cname[i]);
+		}	
 	}
 
 	public void update(String pname) {
@@ -117,92 +142,171 @@ public class PlayerAnalysePanel extends JPanel {
 		picture.setImage(picture.getImage().getScaledInstance(230, 365,
 				Image.SCALE_DEFAULT));
 		label_action.setIcon(picture);
-		if(pie!=null){
-			pie.setVisible(false);
-			pie = null;
-		}
 		if(crosshair!=null) {
 			crosshair.setVisible(false);
 			crosshair = null;
+		}
+		if(crosshair2!=null) {
+			crosshair2.setVisible(false);
+			crosshair2 = null;
 		}
 		if(barchart!=null) {
 			barchart.setVisible(false);
 			barchart = null;
 		}
-		pie = createDemoPanel();
-		pie.setBounds(680, 20, 250, 200);
-		pie.setVisible(true);		
-		pie.updateUI();
+		
 		
 		crosshair = createDemoPanel_2();
-		crosshair.setBounds(220, 300, 650, 300);
+		crosshair.setBounds(220, 300, 650, 350);
 		crosshair.setVisible(true);		
 		crosshair.updateUI();
 		
+		crosshair2 = createDemoPanel_1();
+		crosshair2.setBounds(80, 660, 770, 350);
+		crosshair2.setVisible(true);		
+		crosshair2.updateUI();
+		
 		String[] players = {playerName, "联盟平均"};
 		barchart = createPanel_3(players);
-		barchart.setBounds(200, 10, 500, 300);
+		barchart.setBounds(200, 1, 700, 300);
 		barchart.setVisible(true);		
 		barchart.updateUI();
-		panelOfBottom.add(pie);
 		panelOfBottom.add(crosshair);
+		panelOfBottom.add(crosshair2);
 		panelOfBottom.add(barchart);
 		panelOfBottom.repaint();
-	}
-	private static JFreeChart createChart(PieDataset piedataset)
-	{
-		//创建主题样式  
-        StandardChartTheme standardChartTheme=new StandardChartTheme("CN");  
-        //设置标题字体  
-        standardChartTheme.setExtraLargeFont(new Font("隶书",Font.BOLD,20));  
-        //设置图例的字体  
-        standardChartTheme.setRegularFont(new Font("宋书",Font.PLAIN,15));  
-        //设置轴向的字体  
-        standardChartTheme.setLargeFont(new Font("宋书",Font.PLAIN,15));  
-        //应用主题样式  
-        ChartFactory.setChartTheme(standardChartTheme);
-
-		JFreeChart jfreechart = ChartFactory.createPieChart3D("球员各项得分占比", piedataset, true, false, false);
-		PiePlot3D pieplot3d = (PiePlot3D)jfreechart.getPlot();
 		
+		PlayerVO vo = blservice.getPlayerAnalysis(pname);
+		Vector rowData_1 = new Vector();
+		Vector rowDatas_1 = new Vector();
+		rowData_1.add("均值");
+		double score_avg = ((double)vo.getScore())/vo.getAppearance();
+		rowData_1.add(handleDecimal(score_avg));
+		double rebound_avg = ((double)vo.getTotalRebound())/vo.getAppearance();
+		rowData_1.add(handleDecimal(rebound_avg));
+		double assist_avg = ((double)vo.getAssist())/vo.getAppearance();
+		rowData_1.add(handleDecimal(assist_avg));
+		rowDatas_1.add(rowData_1);
+		rowData_1 = new Vector();
+		rowData_1.add("标准差");
+		ArrayList<MatchPO> matches = vo.getMatches();
+		int i=0;
+		double scores=0,rebounds=0,assists=0;
+		for(;i<matches.size();i++){
+			MatchPO matchTemp = matches.get(i);
+			TeamInMatchesPO team = null;
+			if(matchTemp.getTeam1().getAbbreviation().equals
+					(vo.getTeamAbbreviation())){
+				team = matchTemp.getTeam1();
+			} else {
+				team = matchTemp.getTeam2();
+			}
+			ArrayList<PlayerInMatchesPO> playersInMatch = team.getPlayers();
+			PlayerInMatchesPO playerTemp = null; 
+			for(int j=0;j<playersInMatch.size();j++) {
+				playerTemp = playersInMatch.get(j);
+				if(playerTemp.getName().equals(vo.getName())) break;
+				
+			}
+			scores += (playerTemp.getScore()-score_avg)*(playerTemp.getScore()-score_avg);
+			rebounds += (playerTemp. getTotalRebound()-rebound_avg)*(playerTemp.getTotalRebound()-rebound_avg);
+			assists +=(playerTemp.getAssist()-assist_avg)*(playerTemp.getAssist()-assist_avg);
+		}
+		
+		rowData_1.add(handleDecimal(Math.sqrt(scores/vo.getAppearance())));
+		rowData_1.add(handleDecimal(Math.sqrt(rebounds/vo.getAppearance())));
+		rowData_1.add(handleDecimal(Math.sqrt(assists/vo.getAppearance())));
+		rowDatas_1.add(rowData_1);
+		model.setDataVector(rowDatas_1, columnName);		
+		model.setColumnCount(table.getColumnCount());
+		model.setRowCount(rowDatas_1.size());
+		table.setModel(model);
+		table.setFont(new Font("宋体", Font.PLAIN, 14));
+		table.updateUI();
+	}
+	// 保留小数点
+	public String handleDecimal(double f) {
+		return String.format("%.1f", f);
+	}
+
+	private XYDataset createDataset_1()
+	{
+		
+		XYSeries xyseries1 = new XYSeries("篮板");
+		XYSeries xyseries2 = new XYSeries("助攻");
+		
+		PlayerVO vo = blservice.getPlayerAnalysis(playerName);
+		ArrayList<MatchPO> matches = vo.getMatches();
+		int i=0,index=1;
+
+		double efficient=0;
+		for(;i<matches.size();i++){
+			MatchPO matchTemp = matches.get(i);
+			TeamInMatchesPO team = null;
+			if(matchTemp.getTeam1().getAbbreviation().equals
+					(vo.getTeamAbbreviation())){
+				team = matchTemp.getTeam1();
+			} else {
+				team = matchTemp.getTeam2();
+			}
+			ArrayList<PlayerInMatchesPO> playersInMatch = team.getPlayers();
+			PlayerInMatchesPO playerTemp = null; 
+			for(int j=0;j<playersInMatch.size();j++) {
+				playerTemp = playersInMatch.get(j);
+				if(playerTemp.getName().equals(vo.getName())) break; 
+			}
+//			efficient = playerTemp.getScore()+playerTemp.getTotalRebound()+
+//					playerTemp.getAssist()+playerTemp.getSteal()+
+//					playerTemp.getBlock()-playerTemp.getShot()+playerTemp.getHit()-
+//					playerTemp.getFreeshot()+playerTemp.getFreeHit()-playerTemp.getMiss();
+			xyseries1.add(index, playerTemp.getTotalRebound());
+			xyseries2.add(index, playerTemp.getAssist());
+			index++;
+		}
+		XYSeriesCollection xyseriescollection = new XYSeriesCollection();
+		xyseriescollection.addSeries(xyseries1);
+		xyseriescollection.addSeries(xyseries2);
+		
+		return xyseriescollection;
+	}
+
+	private static JFreeChart createChart_1(XYDataset xydataset)
+	{
+		JFreeChart jfreechart = ChartFactory.createXYLineChart("球员赛季每场篮板和助攻", "X", "Y", xydataset, PlotOrientation.VERTICAL, true, true, false);
+		
+		XYPlot xyplot = (XYPlot)jfreechart.getPlot();
+		xyplot.setDomainCrosshairVisible(true);
+		xyplot.setRangeCrosshairVisible(true);
+		xyplot.setDomainPannable(true);
+		xyplot.setRangePannable(true);
+		XYLineAndShapeRenderer xylineandshaperenderer = (XYLineAndShapeRenderer)xyplot.getRenderer();
+		xylineandshaperenderer.setBaseShapesVisible(true);
+		xylineandshaperenderer.setBaseShapesFilled(true);
+		NumberAxis numberaxis = (NumberAxis)xyplot.getRangeAxis();
+		numberaxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+		numberaxis.setTickLabelPaint(Color.white);
 		TextTitle textTitle = jfreechart.getTitle();
 		textTitle.setFont(new Font("黑体", Font.PLAIN, 20));
 		textTitle.setPaint(Color.white);
 		
-		pieplot3d.setStartAngle(270D);
-		pieplot3d.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} ({2} )"));
-		pieplot3d.setDirection(Rotation.ANTICLOCKWISE);
-		pieplot3d.setForegroundAlpha(0.6F);
+		ValueAxis domainAxis = xyplot.getDomainAxis();  
+		domainAxis.setTickLabelPaint(Color.white);
 		jfreechart.setBackgroundPaint(new Color(0.0F, 0.0F, 0.0F, 0.0F));
 		return jfreechart;
 	}
 
-	private  PieDataset createDataset()
+	public JPanel createDemoPanel_1()
 	{
-		PlayerVO vo = blservice.getPlayerAnalysis(playerName);
-		DefaultPieDataset defaultpiedataset = new DefaultPieDataset();
-	
-		defaultpiedataset.setValue("三分", new Double(vo.getThirdHit()*3));
-		defaultpiedataset.setValue("罚球", new Double(vo.getFreeHit()));
-		defaultpiedataset.setValue("两分", new Double((vo.getHit()-vo.getThirdHit())*2));
-		
-		return defaultpiedataset;
+		JFreeChart jfreechart = createChart_1(createDataset_1());
+		ChartPanel chartpanel = new ChartPanel(jfreechart);
+		chartpanel.setMouseWheelEnabled(true);
+		return chartpanel;
 	}
-
-	
-	public JPanel createDemoPanel()
-	{
-		JFreeChart jfreechart = createChart(createDataset());
-		Rotator rotator = new Rotator((PiePlot3D)jfreechart.getPlot());
-		rotator.start();
-		return new ChartPanel(jfreechart);
-	}
-	
-	
 	private XYDataset createDataset_2()
 	{
 		
 		XYSeries xyseries = new XYSeries("得分");
+		
 		PlayerVO vo = blservice.getPlayerAnalysis(playerName);
 		ArrayList<MatchPO> matches = vo.getMatches();
 		int i=0,index=1;
@@ -230,7 +334,6 @@ public class PlayerAnalysePanel extends JPanel {
 		}
 		XYSeriesCollection xyseriescollection = new XYSeriesCollection();
 		xyseriescollection.addSeries(xyseries);
-
 		return xyseriescollection;
 	}
 
@@ -263,7 +366,7 @@ public class PlayerAnalysePanel extends JPanel {
 	{
 		JFreeChart jfreechart = createChart_2(createDataset_2());
 		ChartPanel chartpanel = new ChartPanel(jfreechart);
-		chartpanel.setMouseWheelEnabled(true);
+		chartpanel.setMouseWheelEnabled(false);
 		return chartpanel;
 	}
 	
@@ -321,6 +424,9 @@ public class PlayerAnalysePanel extends JPanel {
 				handle((double)avg_vo.getThirdHitRate())};
 		double[] freeHitRateArray = {handle((double)vo1.getFreeHitRate()), 
 				handle((double)avg_vo.getFreeHitRate())};
+		double[] realHitRateArray = {handle((double)vo1.getRealHitRate()), 
+				handle((double)avg_vo.getRealHitRate())};
+		
 		
 		dataset.addValue(hitRateArray[0], players[0], "命中率");
 		dataset.addValue(hitRateArray[1], players[1], "命中率");
@@ -330,6 +436,9 @@ public class PlayerAnalysePanel extends JPanel {
 		
 		dataset.addValue(freeHitRateArray[0], players[0], "罚球命中率");
 		dataset.addValue(freeHitRateArray[1], players[1], "罚球命中率");
+	
+		dataset.addValue(realHitRateArray[0], players[0], "真实命中率");
+		dataset.addValue(realHitRateArray[1], players[1], "真实命中率");
 	
 		return dataset; 
 	}
@@ -348,6 +457,7 @@ public class PlayerAnalysePanel extends JPanel {
 		}
 		return result;
 	}
+	
 	static class CustomBarRenderer3D extends BarRenderer3D
 	{
 

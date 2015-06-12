@@ -154,11 +154,11 @@ public final class BLController implements BLService {
 		return result;
 	}
 	
-	public double getStrengthDiff(String teamabr1, String teamabr2,int n, int now)
+	public double getStrengthDiff(String teamabr1, String teamabr2,int n, int now,double theta,double k)
 	{
 		Team team1 = teamsHash.get(teamabr1);
 		Team team2 = teamsHash.get(teamabr2);
-		return team1.getStrength(n, now)-team2.getStrength(n, now);
+		return team1.getStrength(n, now,theta,k)-team2.getStrength(n, now,theta,k);
 	}
 	
 	public ArrayList<TeamVO> getHotTeamVO(String sortCon) {
@@ -720,5 +720,9 @@ public final class BLController implements BLService {
 
 		public HashMap<String, Team> getTeamsHash() {
 			return teamsHash;
+		}
+
+		public ArrayList<MatchPO> getMatches() {
+			return matches;
 		}  
 }

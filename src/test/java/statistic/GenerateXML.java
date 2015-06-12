@@ -24,6 +24,8 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
 public class GenerateXML {
+	double theta=0.048;
+	double k=0.024;
 	@Test
 	public void testResult() {
 		DataService data = new DataController();
@@ -339,7 +341,7 @@ public class GenerateXML {
 				sheet.addCell(label);
 				label = new Label(1, row, Double.toString((double)(po.getFinalScore().getTeam1()-po.getFinalScore().getTeam2())));
 				sheet.addCell(label);
-				label = new Label(2, row, Double.toString(bl.getStrengthDiff(po.getTeam1().getAbbreviation(), po.getTeam2().getAbbreviation(), n, i)));
+				label = new Label(2, row, Double.toString(bl.getStrengthDiff(po.getTeam1().getAbbreviation(), po.getTeam2().getAbbreviation(), n, i,theta,k)));
 				sheet.addCell(label);
 				label = new Label(3, row, "1");
 				sheet.addCell(label);
@@ -349,7 +351,7 @@ public class GenerateXML {
 				sheet.addCell(label);
 				label = new Label(1, row, Double.toString((double)(po.getFinalScore().getTeam2()-po.getFinalScore().getTeam1())));
 				sheet.addCell(label);
-				label = new Label(2, row, Double.toString(bl.getStrengthDiff(po.getTeam2().getAbbreviation(), po.getTeam1().getAbbreviation(), n, i)));
+				label = new Label(2, row, Double.toString(bl.getStrengthDiff(po.getTeam2().getAbbreviation(), po.getTeam1().getAbbreviation(), n, i,theta,k)));
 				sheet.addCell(label);
 				label = new Label(3, row, "-1");
 				sheet.addCell(label);
@@ -365,6 +367,33 @@ public class GenerateXML {
 
 	}
 	
+	@Test
+	public void testFindTheta() {
+		BLController bl = BLController.getInstance();
+		bl.analyse();
+		ArrayList<MatchPO> h = bl.getAllMatch();
+			int row=1;
+			int n=100;
+			theta=0.01;
+			k=0.024;
+			ArrayList<Integer> result = new ArrayList<Integer>();
+			for(int j=0;j<2;j++,theta+=0.01)
+			{
+				h = bl.getAllMatch();
+				int count=0;
+			for (int i = 4800; i < h.size(); i++,row++,n++)
+			{
+				MatchPO po = h.get(i);
+				if((po.getFinalScore().getTeam1()-po.getFinalScore().getTeam2())*
+				bl.getStrengthDiff(po.getTeam1().getAbbreviation(), po.getTeam2().getAbbreviation(), n, i,theta,k)>0)
+					count++;
+			}
+			result.add(count);
+			System.out.println(count);
+			}
+			
+
+	}
 	@Test
 	public void testHome() {
 		DataService data = new DataController();

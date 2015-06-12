@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import dataservice.DataService;
@@ -25,7 +26,8 @@ import jxl.write.WritableWorkbook;
 
 public class GenerateXML {
 	double theta=0.048;
-	double k=0.024;
+	//double k=0.024;
+	double k=0.0;
 	@Test
 	public void testResult() {
 		DataService data = new DataController();
@@ -332,10 +334,9 @@ public class GenerateXML {
 			label = new Label(3, 0, "主场");
 			sheet.addCell(label);
 			int row=1;
-			int n=0;
+			int n=500;
 			for (int i = 4800; i < h.size(); i++,row++,n++)
 			{
-				System.out.println(i);
 				MatchPO po = h.get(i);
 				label = new Label(0, row, po.getFileName());
 				sheet.addCell(label);
@@ -367,7 +368,7 @@ public class GenerateXML {
 
 	}
 	
-	@Test
+	@Ignore
 	public void testFindTheta() {
 		BLController bl = BLController.getInstance();
 		bl.analyse();

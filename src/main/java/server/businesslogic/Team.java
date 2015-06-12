@@ -259,7 +259,7 @@ public  final class Team {
 			{
 				String abr = mpo.getTeam2().getAbbreviation();
 				Team t = bl.getTeamsHash().get(abr);
-				strengthList.set(now, getStrength(n-1,now-1,theta,k)+Math.pow(Math.E,-k*(n-1))*theta*(Math.abs(mpo.getWin(abr))-(getStrength(n-1,now-1,theta,k)-t.getStrength(n-1, now-1,theta,k))));
+				strengthList.set(now, getStrength(n-1,now-1,theta,k)+Math.pow(Math.E,-k*(n-1))*theta*(-mpo.getWin(abr)-(getStrength(n-1,now-1,theta,k)-t.getStrength(n-1, now-1,theta,k))));
 				strengthAvalible.set(now,true);
 				return strengthList.get(now);
 			}
@@ -267,7 +267,7 @@ public  final class Team {
 			{
 				String abr = mpo.getTeam1().getAbbreviation();
 				Team t = bl.getTeamsHash().get(abr);
-				strengthList.set(now, getStrength(n-1,now-1,theta,k)+Math.pow(Math.E,-k*(n-1))*theta*(-Math.abs(mpo.getWin(abr))-(getStrength(n-1,now-1,theta,k)-t.getStrength(n-1, now-1,theta,k))));
+				strengthList.set(now, getStrength(n-1,now-1,theta,k)+Math.pow(Math.E,-k*(n-1))*theta*(-mpo.getWin(abr)-(getStrength(n-1,now-1,theta,k)-t.getStrength(n-1, now-1,theta,k))));
 				strengthAvalible.set(now,true);
 				return strengthList.get(now);
 			}

@@ -10,7 +10,7 @@ import server.po.PlayerInMatchesPO;
 import server.po.ScorePO;
 
 public class DataTransformation {
-	public static void MatchPOToText(MatchPO matchPO,String address) throws IOException{
+	public static void MatchPOToText(MatchPO matchPO,String address) throws IOException{ 
 		String Abbreviation1=matchPO.getTeam1().getAbbreviation();
 		String Abbreviation2=matchPO.getTeam2().getAbbreviation();
 		File f=new File(address+"/"+matchPO.getFileName());

@@ -13,7 +13,7 @@ public  final class DataReader {
 	public static synchronized ArrayList<String> dataReader(File filePoint) {
 		ArrayList<String> result = new ArrayList<String>(40);
 		try {
-			file = new InputStreamReader(new FileInputStream(filePoint), "UTF-8");
+			file = new InputStreamReader(new FileInputStream(filePoint), "GBK");
 			br = new BufferedReader(file);
 			String line = "";
 			result.add(filePoint.getName());

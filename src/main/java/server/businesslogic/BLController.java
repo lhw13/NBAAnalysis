@@ -1,7 +1,5 @@
 package server.businesslogic;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -13,10 +11,6 @@ import java.util.Map.Entry;
 
 import javax.swing.ImageIcon;
 
-import jxl.Workbook;
-import jxl.write.Label;
-import jxl.write.WritableSheet;
-import jxl.write.WritableWorkbook;
 
 import org.apache.batik.swing.JSVGCanvas;
 
@@ -28,12 +22,10 @@ import server.po.PlayerInMatchesPO;
 import server.po.PlayerPO;
 import server.po.ScorePO;
 import server.po.TeamPO;
-import vo.HeightVO;
 import vo.PlayerVO;
 import vo.TeamVO;
 import vo.TeamWithPlayersVO;
 import blservice.BLService;
-import statistic.*;
 
 public final class BLController implements BLService {
 	private BLController() {

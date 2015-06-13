@@ -1,25 +1,10 @@
 package server.businesslogic;
 
-import static org.junit.Assert.assertTrue;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 
-import org.junit.Ignore;
-import org.junit.Test;
 
-import dataservice.DataService;
-import server.data.DataController;
 import server.po.MatchPO;
-import blservice.BLService;
-import jxl.Workbook;
-import jxl.write.Label;
-import jxl.write.WritableSheet;
-import jxl.write.WritableWorkbook;
 
 public class GenerateXML {
 	double theta=0.048;

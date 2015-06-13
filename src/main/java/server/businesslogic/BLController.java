@@ -1,5 +1,6 @@
 package server.businesslogic;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -11,6 +12,12 @@ import java.util.Map.Entry;
 
 import javax.swing.ImageIcon;
 
+
+
+import jxl.Workbook;
+import jxl.write.Label;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
 
 import org.apache.batik.swing.JSVGCanvas;
 
@@ -109,7 +116,7 @@ public final class BLController implements BLService {
 				result[row][0] = po.getFinalScore().getTeam2();
 				result[row][1] = GenerateXML.computeScore(h,po.getTeam2().getAbbreviation(),20,i);
 				result[row][2] = GenerateXML.computeScore2(h,po.getTeam1().getAbbreviation(),10,i);
-				result[row][3] = 1;
+				result[row][3] = -1;
 				result[row][4] = GenerateXML.computeScore(h,po.getTeam2().getAbbreviation(),po.getTeam1().getAbbreviation(),4,i);
 				result[row][5] = GenerateXML.computeScore(h,po.getTeam2().getAbbreviation(),5,i);
 				result[row][6] = GenerateXML.computeRound(h,po.getTeam1().getAbbreviation(),5,i);
@@ -139,10 +146,83 @@ public final class BLController implements BLService {
 				
 			result[1][1] = GenerateXML.computeScore(h,teamabr2,20,i);
 			result[1][2] = GenerateXML.computeScore2(h,teamabr1,10,i);
-			result[1][3] = 1;
+			result[1][3] = -1;
 			result[1][4] = GenerateXML.computeScore(h,teamabr2,teamabr1,4,i);
 			result[1][5] = GenerateXML.computeScore(h,teamabr2,5,i);
 			result[1][6] = GenerateXML.computeRound(h,teamabr1,5,i);
+		return result;
+	}
+	
+	public void getDataForStrengthRegression(int scale) {
+		analyse();
+		double result[][] = new double [scale][3];
+		double theta=0.048;
+		//double k=0.024;
+		double k=0.0;
+			int row=0;
+			int n=500;
+			for (int i = matches.size()-scale/2; i < matches.size(); i++,row++,n++)
+			{
+				MatchPO po = matches.get(i);
+				result[row][0] = (double)(po.getFinalScore().getTeam1()-po.getFinalScore().getTeam2());
+				result[row][1] = getStrengthDiff(po.getTeam1().getAbbreviation(), po.getTeam2().getAbbreviation(), n, i,theta,k);
+				result[row][2] = 1.0;
+				
+				row++;
+				result[row][0] = (double)(po.getFinalScore().getTeam2()-po.getFinalScore().getTeam1());
+				result[row][1] = getStrengthDiff(po.getTeam2().getAbbreviation(), po.getTeam1().getAbbreviation(), n, i,theta,k);
+				result[row][2] = -1.0;
+			}
+	}
+	
+	public void getDataForStrengthVariables(String teamabr1, String teamabr2) {
+		analyse();
+		double result[][] = new double [2][3];
+		double theta=0.048;
+		//double k=0.024;
+		double k=0.0;
+		int i = matches.size();
+			int n=500;
+				result[0][1] = getStrengthDiff(teamabr1, teamabr2, n, i,theta,k);
+				result[0][2] = 1.0;
+				
+				result[1][1] = getStrengthDiff(teamabr2, teamabr1, n, i,theta,k);
+				result[1][2] = -1.0;
+	
+	}
+	
+	public int[] adjustPredictResult(double score1, double score2, double diff)
+	{
+		int result[] = new int[2];
+		if((score1-score2)*diff<0)
+		{
+			double avg = score1+score2;
+			if(diff>0)
+			{
+				result[0] = (int)avg+1;
+				result[1] = (int)avg-1;
+			}
+			else
+			{
+				result[0] = (int)avg-1;
+				result[1] = (int)avg+1;
+			}
+		}
+		else
+		{
+			if(score1-score2>0 && score1-score2<2)
+			{
+				score1++;
+				score2--;
+			}
+			else if(score2-score1>0 && score2-score1<2)
+			{
+				score1--;
+				score2++;
+			}
+			result[0] = (int)score1;
+			result[1] = (int)score2;
+		}
 		return result;
 	}
 	

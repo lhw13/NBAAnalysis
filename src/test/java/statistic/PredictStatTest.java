@@ -450,6 +450,12 @@ public class PredictStatTest {
 		}
 
 	}
+	@Test
+	public void testAvalible()
+	{
+		BLController bl = BLController.getInstance();
+		bl.getDataForRegression(1000);
+	}
 	public static File Opendoc(String s)
 	{//参数为需要打开的文件路径
 	    File f = new File(s);

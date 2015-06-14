@@ -56,7 +56,7 @@ public  final class DataController implements DataService {
 	//	return MatchesData.getMatchPOList();
 		ArrayList<MatchPO> matchPOList=null;
 		try {
-			matchPOList = DatabaseController.getMatchPOListBySeason("13-14");
+			matchPOList = DatabaseController.getMatchPOListBySeason();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -67,7 +67,7 @@ public  final class DataController implements DataService {
 	public ArrayList<MatchPO> getAllMatchByseason(String season) {
 		ArrayList<MatchPO> matchPOList=null;
 		try {
-			matchPOList = DatabaseController.getMatchPOListBySeason("season");
+			matchPOList = DatabaseController.getMatchPOListBySeason();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -101,5 +101,8 @@ public  final class DataController implements DataService {
 	}
 	public boolean isDEL(){
 		return MatchesData.isDEL();
+	}
+	public void setSeason(String season){
+		DatabaseController.season=season;
 	}
 }

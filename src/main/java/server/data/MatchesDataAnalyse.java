@@ -127,6 +127,9 @@ public  final class MatchesDataAnalyse {
 		int month = stringToInt(sa2[0]);
 		int day = stringToInt(sa2[1]);
 		int year = 2000;
+		if(year1>50){
+			year=year-100;
+		}
 		//if (month >= 11)//changed by lhw 
 		if (month >= 10){
 			year = year + year1;

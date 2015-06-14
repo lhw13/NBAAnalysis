@@ -48,6 +48,7 @@ public class TeamsRankingFrame {
 	public static JScrollPane scrollPane;
 	private JButton btnNewButton;
 	private JComboBox<String> comboBox;
+	private JComboBox<String> choose_season;
 
 	private static Vector columnName1;
 	private static DefaultTableModel model_1=new DefaultTableModel() {
@@ -125,6 +126,55 @@ public class TeamsRankingFrame {
 		btnNewButton.setBounds(100, 10, 120, 30);
 		panel.add(btnNewButton);
 		
+		choose_season = new JComboBox<String>();
+		choose_season.setBounds(600, 15, 100, 30);
+		choose_season.addItem("选择赛季");
+		choose_season.addItem("11-12");
+		choose_season.addItem("12-13");
+		choose_season.addItem("13-14");
+		choose_season.addItem("14-15");
+		choose_season.setSelectedItem(MainFrame.season);
+		panel.add(choose_season);
+		
+		choose_season.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int index = choose_season.getSelectedIndex();
+				switch(index){
+				case 1:
+					MainFrame.season="11-12";
+					compute = BLController.getInstance();
+					compute.setSeason("11-12");
+					sortTheTeamsOnWinRate();
+					updataTeamsRanking();
+					break;
+				case 2:
+					MainFrame.season="12-13";
+					compute = BLController.getInstance();
+					compute.setSeason("12-13");
+					sortTheTeamsOnWinRate();
+					updataTeamsRanking();
+					break;
+				case 3:
+					MainFrame.season="13-14";
+					compute = BLController.getInstance();
+					compute.setSeason("13-14");
+					sortTheTeamsOnWinRate();
+					updataTeamsRanking();
+					break;
+				case 4:
+					MainFrame.season="14-15";
+					compute = BLController.getInstance();
+					compute.setSeason("14-15");
+					sortTheTeamsOnWinRate();
+					updataTeamsRanking();
+					break;
+				}
+			}
+			
+		});
+		
 		String[] names1 = new String[]{"","球队", "场数", "胜率(场均)", "胜率(总计)"};
 		columnName1 = new Vector();
 		for(int i=0;i<names1.length;i++) {
@@ -180,7 +230,6 @@ public class TeamsRankingFrame {
 					columnName1.setElementAt("得分(场均)", 3);
 					columnName1.setElementAt("得分(总计)", 4);
 					updataTeamsRanking();
-					
 					break;
 				case 2: 
 					MainFrame.selection2="助攻";

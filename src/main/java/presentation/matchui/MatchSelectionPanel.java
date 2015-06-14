@@ -79,6 +79,7 @@ public class MatchSelectionPanel extends JPanel {
 		comboBox = new JComboBox<String>();
 		comboBox.setBounds(250, 50, 100, 30);
 		comboBox.addItem("选择赛季");
+		comboBox.addItem("11-12");
 		comboBox.addItem("12-13");
 		comboBox.addItem("13-14");
 		comboBox.addItem("14-15");
@@ -92,15 +93,23 @@ public class MatchSelectionPanel extends JPanel {
 				int index = comboBox.getSelectedIndex();
 				switch(index){
 				case 1:
-					MainFrame.season="12-13";
+					compute = BLController.getInstance();
+					compute.setSeason("11-12");
 					update();
 					break;
 				case 2:
-					MainFrame.season="13-14";
+					compute = BLController.getInstance();
+					compute.setSeason("12-13");
 					update();
 					break;
 				case 3:
-					MainFrame.season="14-15";
+					compute = BLController.getInstance();
+					compute.setSeason("13-14");
+					update();
+					break;
+				case 4:
+					compute = BLController.getInstance();
+					compute.setSeason("14-15");
 					update();
 					break;
 				}

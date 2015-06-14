@@ -229,6 +229,7 @@ public class TeamsInfoFrame extends JPanel{
 		comboBox_1 = new JComboBox<String>();
 		comboBox_1.setBounds(500, 475, 150, 30);
 		comboBox_1.addItem("选择赛季");
+		comboBox_1.addItem("11-12");
 		comboBox_1.addItem("12-13");
 		comboBox_1.addItem("13-14");
 		comboBox_1.addItem("14-15");
@@ -243,15 +244,27 @@ public class TeamsInfoFrame extends JPanel{
 				int index = comboBox_1.getSelectedIndex();
 				switch(index){
 				case 1:
-					season="12-13";
+					season="11-12";
+					compute = BLController.getInstance();
+					compute.setSeason("11-12");
 					searchTheMatch(teamName);
 					break;
 				case 2:
-					season="13-14";
+					season="12-13";
+					compute = BLController.getInstance();
+					compute.setSeason("12-13");
 					searchTheMatch(teamName);
 					break;
 				case 3:
+					season="13-14";
+					compute = BLController.getInstance();
+					compute.setSeason("13-14");
+					searchTheMatch(teamName);
+					break;
+				case 4:
 					season="14-15";
+					compute = BLController.getInstance();
+					compute.setSeason("14-15");
 					searchTheMatch(teamName);
 					break;
 				}

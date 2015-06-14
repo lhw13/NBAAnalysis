@@ -53,6 +53,7 @@ public class PlayerRankingPanel extends JPanel {
 	public static JScrollPane scrollPane;
 	private JButton btnNewButton;
 	private static JComboBox<String> comboBox;
+	private JComboBox<String> choose_season;
 	public static JTable table;
 	 
 	private static JLabel kingOfScore;
@@ -365,6 +366,47 @@ public class PlayerRankingPanel extends JPanel {
 		chckbxNewCheckBox = new JCheckBox("前锋");
 		chckbxNewCheckBox.setBounds(200, 10, 150, 30);
 		panel.add(chckbxNewCheckBox);
+		
+		choose_season = new JComboBox<String>();
+		choose_season.setBounds(700, 100, 150, 30);
+		choose_season.addItem("选择赛季");
+		choose_season.addItem("11-12");
+		choose_season.addItem("12-13");
+		choose_season.addItem("13-14");
+		choose_season.addItem("14-15");
+		choose_season.setSelectedItem(MainFrame.season);
+		panel.add(choose_season);
+		
+		choose_season.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int index = choose_season.getSelectedIndex();
+				switch(index){
+				case 1:
+					compute = BLController.getInstance();
+					compute.setSeason("11-12");
+					updatePlayerWithCondition("point");
+					break;
+				case 2:
+					compute = BLController.getInstance();
+					compute.setSeason("12-13");
+					updatePlayerWithCondition("point");
+					break;
+				case 3:
+					compute = BLController.getInstance();
+					compute.setSeason("13-14");
+					updatePlayerWithCondition("point");
+					break;
+				case 4:
+					compute = BLController.getInstance();
+					compute.setSeason("14-15");
+					updatePlayerWithCondition("point");
+					break;
+				}
+			}
+			
+		});
 		
 		comboBox = new JComboBox<String>();
 		comboBox.addItem("得分");
@@ -1740,8 +1782,6 @@ public class PlayerRankingPanel extends JPanel {
 	}
 	
 	public static void updatePlayerRanking(){
-		
-		 
 		compute = BLController.getInstance();
 		ArrayList<PlayerVO> pvoList = compute.getPlayerAnalysis();
 		PlayerVO pvo = new PlayerVO();

@@ -53,7 +53,7 @@ public class PlayerRankingPanel extends JPanel {
 	public static JScrollPane scrollPane;
 	private JButton btnNewButton;
 	private static JComboBox<String> comboBox;
-	private JComboBox<String> choose_season;
+	private static JComboBox<String> choose_season;
 	public static JTable table;
 	 
 	private static JLabel kingOfScore;
@@ -386,21 +386,29 @@ public class PlayerRankingPanel extends JPanel {
 				case 1:
 					compute = BLController.getInstance();
 					compute.setSeason("11-12");
+					MainFrame.season = "11-12";
+					MainFrame.seasonChange = true;
 					updatePlayerWithCondition("point");
 					break;
 				case 2:
 					compute = BLController.getInstance();
 					compute.setSeason("12-13");
+					MainFrame.season = "12-13";
+					MainFrame.seasonChange = true;
 					updatePlayerWithCondition("point");
 					break;
 				case 3:
 					compute = BLController.getInstance();
 					compute.setSeason("13-14");
+					MainFrame.season = "13-14";
+					MainFrame.seasonChange = true;
 					updatePlayerWithCondition("point");
 					break;
 				case 4:
 					compute = BLController.getInstance();
 					compute.setSeason("14-15");
+					MainFrame.season = "14-15";
+					MainFrame.seasonChange = true;
 					updatePlayerWithCondition("point");
 					break;
 				}
@@ -1782,6 +1790,7 @@ public class PlayerRankingPanel extends JPanel {
 	}
 	
 	public static void updatePlayerRanking(){
+		choose_season.setSelectedItem(MainFrame.season);
 		compute = BLController.getInstance();
 		ArrayList<PlayerVO> pvoList = compute.getPlayerAnalysis();
 		PlayerVO pvo = new PlayerVO();

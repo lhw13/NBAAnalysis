@@ -117,6 +117,7 @@ public class MainFrame {
 	public static String selection2="胜率";
 	
 	public static String season="13-14";
+	public static boolean seasonChange = false;
 	public static int date=3;
 	
 	public static String teamNAME = "";
@@ -844,7 +845,10 @@ public class MainFrame {
 		if(MatchSelectionPanel.scrollPane!=null){
 			MainFrame.panel.setVisible(false);
 			MatchSelectionPanel.scrollPane.setVisible(true);
-			MatchSelectionPanel.update();
+			if(seasonChange){
+				MainFrame.seasonChange = false;
+				MatchSelectionPanel.update();
+			}
 			MainFrame.frame.setTitle("NBA比赛查询");
 			frame.repaint();//刷新重画 
 			frame.validate();//保证重画后的窗口能正常立即显示 
@@ -852,6 +856,8 @@ public class MainFrame {
 			currentPanel = Panels.MatchSelectionPanel;
 		}else{
 			MainFrame.panel.setVisible(false);
+			compute = BLController.getInstance();
+			compute.setSeason(MainFrame.season);
 			MatchSelectionPanel msp = new MatchSelectionPanel();
 			msp.update();
 			frame.getContentPane().add(msp.scrollPane);
@@ -870,13 +876,19 @@ public class MainFrame {
 		if(TeamsRankingFrame.scrollPane!=null){
 			MainFrame.panel.setVisible(false);
 			TeamsRankingFrame.scrollPane.setVisible(true);
-			TeamsRankingFrame.updataTeamsRanking();
+			if(seasonChange){
+				MainFrame.seasonChange = false;
+				TeamsRankingFrame.sortTheTeamsOnWinRate();
+				TeamsRankingFrame.updataTeamsRanking();
+			}
 			frame.setTitle("NBA球队排名");
 			frame.repaint();//刷新重画 
 			frame.validate();//保证重画后的窗口能正常立即显示
 			backPanels.add(currentPanel);
 			currentPanel = Panels.TeamsRankingFrame;
 		}else{
+			compute = BLController.getInstance();
+			compute.setSeason(MainFrame.season);
 			MainFrame.panel.setVisible(false);
 			TeamsRankingFrame.sortTheTeamsOnWinRate();
 			TeamsRankingFrame trp = new TeamsRankingFrame();
@@ -897,13 +909,18 @@ public class MainFrame {
 		if(PlayerRankingPanel.scrollPane!=null){
 			MainFrame.panel.setVisible(false);
 			PlayerRankingPanel.scrollPane.setVisible(true);
-			PlayerRankingPanel.updatePlayerRanking();
+			if(seasonChange){
+				MainFrame.seasonChange = false;
+				PlayerRankingPanel.updatePlayerWithCondition("point");
+			}
 			MainFrame.frame.setTitle("NBA球员排名");
 			frame.repaint();//刷新重画 
 			frame.validate();//保证重画后的窗口能正常立即显示
 			backPanels.add(currentPanel);
 			currentPanel = Panels.PlayerRankingPanel;
 		}else{
+			compute = BLController.getInstance();
+			compute.setSeason(MainFrame.season);
 			MainFrame.panel.setVisible(false);
 			PlayerRankingPanel prp = new PlayerRankingPanel();
 			prp.updatePlayerRanking();

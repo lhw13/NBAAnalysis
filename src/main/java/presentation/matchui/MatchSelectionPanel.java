@@ -44,7 +44,7 @@ public class MatchSelectionPanel extends JPanel {
 	public static JTable table;
 	
 	private JPanel panelOfBottom = new JPanel();
-	private JComboBox<String> comboBox;
+	private static JComboBox<String> comboBox;
 	private JComboBox comboBox_1;
 	private JScrollPane scrollPane_1;
 	
@@ -95,21 +95,29 @@ public class MatchSelectionPanel extends JPanel {
 				case 1:
 					compute = BLController.getInstance();
 					compute.setSeason("11-12");
+					MainFrame.season = "11-12";
+					MainFrame.seasonChange = true;
 					update();
 					break;
 				case 2:
 					compute = BLController.getInstance();
 					compute.setSeason("12-13");
+					MainFrame.season = "12-13";
+					MainFrame.seasonChange = true;
 					update();
 					break;
 				case 3:
 					compute = BLController.getInstance();
 					compute.setSeason("13-14");
+					MainFrame.season = "13-14";
+					MainFrame.seasonChange = true;
 					update();
 					break;
 				case 4:
 					compute = BLController.getInstance();
 					compute.setSeason("14-15");
+					MainFrame.season = "14-15";
+					MainFrame.seasonChange = true;
 					update();
 					break;
 				}
@@ -264,6 +272,7 @@ public class MatchSelectionPanel extends JPanel {
 	}
 	
 	public static void update(){
+		comboBox.setSelectedItem(MainFrame.season);
 		compute = BLController.getInstance();
 		ArrayList<MatchPO> matchList = compute.getAllMatch();
 		

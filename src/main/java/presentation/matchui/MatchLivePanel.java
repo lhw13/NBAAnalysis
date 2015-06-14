@@ -122,32 +122,32 @@ public class MatchLivePanel extends JPanel{
 		team_2.setIcon(ii[1]);
 		panelOfBottom.add(team_2);
 
-		team_1_score = new JLabel("108");
+		team_1_score = new JLabel("0");
 		team_1_score.setBounds(300, 0, 150, 120);
 		team_1_score.setFont(new Font("黑体",Font.PLAIN,50));
 		panelOfBottom.add(team_1_score);
 
-		team_2_score = new JLabel("100");
+		team_2_score = new JLabel("0");
 		team_2_score.setBounds(600, 0, 150, 120);
 		team_2_score.setFont(new Font("黑体",Font.PLAIN,50));
 		panelOfBottom.add(team_2_score);
 
-		team_1_name = new JLabel("勇士(1)");
+		team_1_name = new JLabel("无");
 		team_1_name.setBounds(300, 60, 150, 150);
 		team_1_name.setFont(new Font("黑体",Font.PLAIN,20));
 		panelOfBottom.add(team_1_name);
 
-		team_2_name = new JLabel("骑士(1)");
+		team_2_name = new JLabel("无");
 		team_2_name.setBounds(600, 60, 150, 150);
 		team_2_name.setFont(new Font("黑体",Font.PLAIN,20));
 		panelOfBottom.add(team_2_name);
 
-		team_1_state = new JLabel("主队（67胜15负）");
+		team_1_state = new JLabel("无");
 		team_1_state.setBounds(300, 80, 150, 150);
 		team_1_state.setFont(new Font("黑体",Font.PLAIN,15));
 		panelOfBottom.add(team_1_state);
 
-		team_2_state = new JLabel("客队（53胜29负）");
+		team_2_state = new JLabel("无");
 		team_2_state.setBounds(600, 80, 150, 150);
 		team_2_state.setFont(new Font("黑体",Font.PLAIN,15));
 		panelOfBottom.add(team_2_state);

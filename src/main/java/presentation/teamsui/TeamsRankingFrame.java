@@ -48,7 +48,7 @@ public class TeamsRankingFrame {
 	public static JScrollPane scrollPane;
 	private JButton btnNewButton;
 	private JComboBox<String> comboBox;
-	private JComboBox<String> choose_season;
+	private static JComboBox<String> choose_season;
 
 	private static Vector columnName1;
 	private static DefaultTableModel model_1=new DefaultTableModel() {
@@ -144,6 +144,7 @@ public class TeamsRankingFrame {
 				switch(index){
 				case 1:
 					MainFrame.season="11-12";
+					MainFrame.seasonChange = true;
 					compute = BLController.getInstance();
 					compute.setSeason("11-12");
 					sortTheTeamsOnWinRate();
@@ -151,6 +152,7 @@ public class TeamsRankingFrame {
 					break;
 				case 2:
 					MainFrame.season="12-13";
+					MainFrame.seasonChange = true;
 					compute = BLController.getInstance();
 					compute.setSeason("12-13");
 					sortTheTeamsOnWinRate();
@@ -158,6 +160,7 @@ public class TeamsRankingFrame {
 					break;
 				case 3:
 					MainFrame.season="13-14";
+					MainFrame.seasonChange = true;
 					compute = BLController.getInstance();
 					compute.setSeason("13-14");
 					sortTheTeamsOnWinRate();
@@ -165,6 +168,7 @@ public class TeamsRankingFrame {
 					break;
 				case 4:
 					MainFrame.season="14-15";
+					MainFrame.seasonChange = true;
 					compute = BLController.getInstance();
 					compute.setSeason("14-15");
 					sortTheTeamsOnWinRate();
@@ -422,6 +426,7 @@ public class TeamsRankingFrame {
 	}
 	
 	public static void updataTeamsRanking(){
+		choose_season.setSelectedItem(MainFrame.season);
 		ImageIcon picture;
 		Vector rowDatas1 = new Vector();
 		for (int i = 0; i < tvoList.size(); i++) {

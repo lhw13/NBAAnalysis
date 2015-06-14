@@ -65,7 +65,6 @@ public class TeamsInfoFrame extends JPanel{
 	private JScrollPane scrollPane_search;
 	private JComboBox<String> comboBox_1;
 	private JComboBox comboBox_2;
-	private static String season="13-14";
 	private static int date=0;
 	private static Vector columnName3;
 	private static DefaultTableModel model_3=new DefaultTableModel();
@@ -244,27 +243,31 @@ public class TeamsInfoFrame extends JPanel{
 				int index = comboBox_1.getSelectedIndex();
 				switch(index){
 				case 1:
-					season="11-12";
 					compute = BLController.getInstance();
 					compute.setSeason("11-12");
+					MainFrame.season = "11-12";
+					MainFrame.seasonChange = true;
 					searchTheMatch(teamName);
 					break;
 				case 2:
-					season="12-13";
 					compute = BLController.getInstance();
 					compute.setSeason("12-13");
+					MainFrame.season = "12-13";
+					MainFrame.seasonChange = true;
 					searchTheMatch(teamName);
 					break;
 				case 3:
-					season="13-14";
 					compute = BLController.getInstance();
 					compute.setSeason("13-14");
+					MainFrame.season = "13-14";
+					MainFrame.seasonChange = true;
 					searchTheMatch(teamName);
 					break;
 				case 4:
-					season="14-15";
 					compute = BLController.getInstance();
 					compute.setSeason("14-15");
+					MainFrame.season = "14-15";
+					MainFrame.seasonChange = true;
 					searchTheMatch(teamName);
 					break;
 				}
@@ -573,36 +576,42 @@ public class TeamsInfoFrame extends JPanel{
 						TeamsSelectionFrame.scrollPane.setVisible(true);
 						TeamsSelectionFrame.flag = true;
 						TeamsInfoFrame.scrollPane.setVisible(false);
+						TeamsInfoFrame.scrollPane = null;
 						MainFrame.frame.setTitle("NBA球队选择");
 						MainFrame.currentPanel = Panels.TeamsSelectionFrame;
 						break;
 					case TeamsRankingFrame:
 						TeamsRankingFrame.scrollPane.setVisible(true);
 						TeamsInfoFrame.scrollPane.setVisible(false);
+						TeamsInfoFrame.scrollPane = null;
 						MainFrame.frame.setTitle("NBA球队排名");
 						MainFrame.currentPanel = Panels.TeamsRankingFrame;
 						break;
 					case PlayerRankingPanel:
 						PlayerRankingPanel.scrollPane.setVisible(true);
 						TeamsInfoFrame.scrollPane.setVisible(false);
+						TeamsInfoFrame.scrollPane = null;
 						MainFrame.frame.setTitle("NBA球员排名");
 						MainFrame.currentPanel = Panels.PlayerRankingPanel;
 						break;
 					case PlayerInfoPanel:
 						PlayerInfoPanel.scrollPane.setVisible(true);
 						TeamsInfoFrame.scrollPane.setVisible(false);
+						TeamsInfoFrame.scrollPane = null;
 						MainFrame.frame.setTitle("NBA球员信息");
 						MainFrame.currentPanel = Panels.PlayerInfoPanel;
 						break;
 					case HotRankingPanel:
 						HotRankingPanel.scrollPane.setVisible(true);
 						TeamsInfoFrame.scrollPane.setVisible(false);
+						TeamsInfoFrame.scrollPane = null;
 						MainFrame.frame.setTitle("今日快讯");
 						MainFrame.currentPanel = Panels.HotRankingPanel;
 						break;
 					case MatchDetailInfoPanel:
 						MatchDetailInfoPanel.scrollPane.setVisible(true);
 						TeamsInfoFrame.scrollPane.setVisible(false);
+						TeamsInfoFrame.scrollPane = null;
 						MainFrame.frame.setTitle("NBA球队信息");
 						MainFrame.currentPanel = Panels.MatchDetailInfoPanel;
 						break;
@@ -1424,7 +1433,7 @@ public class TeamsInfoFrame extends JPanel{
 		int compareNum = 0;
 		
 		for(int i=0;i<matchList.size();i++){
-			if(matchList.get(i).getSeason().equals(season) && 
+			if(matchList.get(i).getSeason().equals(MainFrame.season) && 
 					(matchList.get(i).getTeam1().getAbbreviation().equals(teamName) ||
 					 matchList.get(i).getTeam2().getAbbreviation().equals(teamName))){
 
@@ -1447,7 +1456,7 @@ public class TeamsInfoFrame extends JPanel{
 		
 		
 		for(int i=0;i<matchList.size();i++){
-			if(matchList.get(i).getSeason().equals(season) && 
+			if(matchList.get(i).getSeason().equals(MainFrame.season) && 
 					matchList.get(i).getDate().get(Calendar.MONTH)==date &&
 					(matchList.get(i).getTeam1().getAbbreviation().equals(teamName) ||
 					 matchList.get(i).getTeam2().getAbbreviation().equals(teamName))){
@@ -1495,7 +1504,7 @@ public class TeamsInfoFrame extends JPanel{
 		
 		ArrayList<MatchPO> selectedMatchs = new ArrayList<MatchPO>();
 		for(int i=0;i<matchList.size();i++){
-			if(matchList.get(i).getSeason().equals(season) && 
+			if(matchList.get(i).getSeason().equals(MainFrame.season) && 
 					matchList.get(i).getDate().get(Calendar.MONTH)==date &&
 					(matchList.get(i).getTeam1().getAbbreviation().equals(teamName) ||
 					 matchList.get(i).getTeam2().getAbbreviation().equals(teamName))){

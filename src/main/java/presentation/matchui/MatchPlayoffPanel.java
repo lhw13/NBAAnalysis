@@ -454,8 +454,8 @@ public class MatchPlayoffPanel extends JPanel implements MouseListener{
 		}
 		System.out.println("f===================");
 		
-			PlayoffVO vo = playoffW.get(0);
-			System.out.println(vo.getAbr1()+":"+vo.getAbr2()+"  "+vo.getWin1()+":"+vo.getWin2());
+			//PlayoffVO vo = playoffFinal.get(0);
+			//System.out.println(vo.getAbr1()+":"+vo.getAbr2()+"  "+vo.getWin1()+":"+vo.getWin2());
 		
 	}
 	@Override

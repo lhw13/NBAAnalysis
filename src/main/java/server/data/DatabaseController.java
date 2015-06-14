@@ -225,7 +225,8 @@ public class DatabaseController {
 	public static ArrayList<MatchPO> getMatchPOListBySeason()
 			throws Exception {
 		Class.forName("org.sqlite.JDBC");
-		Connection conn = DriverManager.getConnection("jdbc:sqlite:nba.db");
+//		Connection conn = DriverManager.getConnection("jdbc:sqlite:nba.db");
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:nbaHistory.db");	
 		Statement stat = conn.createStatement();
 		Statement stat1 = conn.createStatement();
 		Statement stat2 = conn.createStatement();
@@ -325,7 +326,8 @@ public class DatabaseController {
 
 	public static ArrayList<PlayerPO> getPlayerList() throws Exception {
 		Class.forName("org.sqlite.JDBC");
-		Connection conn = DriverManager.getConnection("jdbc:sqlite:nba.db");
+//		Connection conn = DriverManager.getConnection("jdbc:sqlite:nba.db");
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:nbaHistory.db");
 		Statement stat = conn.createStatement();
 		ArrayList<PlayerPO> ppList = new ArrayList<PlayerPO>(5000);
 		ResultSet rs = stat.executeQuery("select * from 'PlayerPO';");
@@ -371,7 +373,8 @@ public class DatabaseController {
 
 	public static ArrayList<TeamPO> getTeamList() throws Exception {
 		Class.forName("org.sqlite.JDBC");
-		Connection conn = DriverManager.getConnection("jdbc:sqlite:nba.db");
+//		Connection conn = DriverManager.getConnection("jdbc:sqlite:nba.db");
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:nbaHistory.db");
 		Statement stat = conn.createStatement();
 		ArrayList<TeamPO> teamList = new ArrayList<TeamPO>(40);
 		ResultSet rs = stat.executeQuery("select * from 'TeamPO';");

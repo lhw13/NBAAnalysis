@@ -8,12 +8,14 @@ public class ImageHandle {
 	}
 
 	public static ImageIcon loadPlayer(String name) {
+		name=name.replace("\\d", "");
 		ImageIcon PLAYER = new ImageIcon("conf/nba/players/portrait/" + name
 				+ ".png");
 		return PLAYER;
 	}
 
 	public static ImageIcon loadPlayerAct(String name) {
+		name=name.replace("\\d", "");
 		ImageIcon PLAYER = new ImageIcon("conf/nba/players/action/" + name + ".png");
 		return PLAYER;
 	}

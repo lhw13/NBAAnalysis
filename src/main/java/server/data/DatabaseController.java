@@ -436,11 +436,12 @@ public class DatabaseController implements Runnable{
 				String y1 = (y + "").substring(2, 4);
 				String y2 = ((y + 1) + "").substring(2, 4);
 				String season = y1 + "-" + y2;
+				DataClass dc=wholeData.get(season);
 				try{	
-					DataClass dc=wholeData.get(season);
 					dc.setList(getMatchPOListBySeason(season));
 					dc.setIsOK(true);
 				}catch(Exception e){
+					dc.setList(null);
 					e.printStackTrace();
 				}
 			}

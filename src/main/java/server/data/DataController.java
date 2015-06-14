@@ -67,7 +67,14 @@ public  final class DataController implements DataService {
 	public ArrayList<MatchPO> getAllMatchByseason( ) {
 		ArrayList<MatchPO> matchPOList=null;
 		try {
+	//matchPOList = DatabaseController.getMatchPOListBySeason();
+			DataClass dc=DatabaseController.getWholeData().get(DatabaseController.getSeason());
+			if (dc.isOK()){
+				matchPOList=dc.getList();
+			}
+			else{
 			matchPOList = DatabaseController.getMatchPOListBySeason();
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -103,7 +110,21 @@ public  final class DataController implements DataService {
 		return MatchesData.isDEL();
 	}
 	public void setSeason(String season){
-		DatabaseController.season=season;
+		DatabaseController.setSeason(season);
 		MatchesData.isDEL=true;
+	}
+	public void loadData(){
+		DatabaseController a=new DatabaseController();
+		DatabaseController b=new DatabaseController();
+		DatabaseController c=new DatabaseController();
+		a.setN(0);
+		b.setN(1);
+		c.setN(2);
+		Thread ta=new Thread(a);
+		Thread tb=new Thread(b);
+		Thread tc=new Thread(c);
+		ta.start();
+		tb.start();
+		tc.start();
 	}
 }

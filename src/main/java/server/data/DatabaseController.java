@@ -332,6 +332,7 @@ public class DatabaseController implements Runnable{
 			MatchPO matchPO = new MatchPO(season, date, finalScore, scores,
 					team1, team2);
 			matchPO.setFileName(key);
+			matchPO.setType(rs.getString("type"));
 			matchPOlist.add(matchPO);
 		}
 

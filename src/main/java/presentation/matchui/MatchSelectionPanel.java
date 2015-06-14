@@ -131,6 +131,8 @@ public class MatchSelectionPanel extends JPanel {
 		comboBox_1.addItem(2);
 		comboBox_1.addItem(3);
 		comboBox_1.addItem(4);
+		comboBox_1.addItem(5);
+		comboBox_1.addItem(6);
 		comboBox_1.addItem(10);
 		comboBox_1.addItem(11);
 		comboBox_1.addItem(12);
@@ -161,14 +163,22 @@ public class MatchSelectionPanel extends JPanel {
 					update();
 					break;
 				case 5:
-					MainFrame.date=9;
+					MainFrame.date=4;
 					update();
 					break;
 				case 6:
-					MainFrame.date=10;
+					MainFrame.date=5;
 					update();
 					break;
 				case 7:
+					MainFrame.date=9;
+					update();
+					break;
+				case 8:
+					MainFrame.date=10;
+					update();
+					break;
+				case 9:
 					MainFrame.date=11;
 					update();
 					break;

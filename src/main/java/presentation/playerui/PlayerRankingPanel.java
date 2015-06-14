@@ -368,7 +368,7 @@ public class PlayerRankingPanel extends JPanel {
 		panel.add(chckbxNewCheckBox);
 		
 		choose_season = new JComboBox<String>();
-		choose_season.setBounds(700, 100, 150, 30);
+		choose_season.setBounds(700, 100, 100, 30);
 		choose_season.addItem("选择赛季");
 		choose_season.addItem("11-12");
 		choose_season.addItem("12-13");
@@ -452,6 +452,7 @@ public class PlayerRankingPanel extends JPanel {
 					columnName1.setElementAt("篮板(场均)", 6);
 					columnName1.setElementAt("篮板(总计)", 7);
 					updatePlayerRanking();
+					System.out.println("ni mei");
 					break;
 				case 2: 
 					MainFrame.selection1="助攻";

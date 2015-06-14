@@ -281,6 +281,8 @@ public class TeamsInfoFrame extends JPanel{
 		comboBox_2.addItem(2);
 		comboBox_2.addItem(3);
 		comboBox_2.addItem(4);
+		comboBox_2.addItem(5);
+		comboBox_2.addItem(6);
 		comboBox_2.addItem(10);
 		comboBox_2.addItem(11);
 		comboBox_2.addItem(12);
@@ -310,14 +312,22 @@ public class TeamsInfoFrame extends JPanel{
 					searchTheMatch(teamName);
 					break;
 				case 5:
-					date=9;
+					date=4;
 					searchTheMatch(teamName);
 					break;
 				case 6:
-					date=10;
+					date=5;
 					searchTheMatch(teamName);
 					break;
 				case 7:
+					date=9;
+					searchTheMatch(teamName);
+					break;
+				case 8:
+					date=10;
+					searchTheMatch(teamName);
+					break;
+				case 9:
 					date=11;
 					searchTheMatch(teamName);
 					break;

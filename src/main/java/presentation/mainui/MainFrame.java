@@ -44,6 +44,7 @@ import presentation.teamsui.TeamsInfoFrame;
 import presentation.teamsui.TeamsSelectionFrame;
 import presentation.teamsui.TeamsRankingFrame;
 import server.businesslogic.BLController;
+import server.data.DataController;
 import server.po.MatchPO;
 import vo.PlayerVO;
 import vo.TeamVO;
@@ -158,6 +159,8 @@ public class MainFrame {
 	 * Create the application.
 	 */
 	public MainFrame() {
+		DataController dc = new DataController();
+		dc.loadData();
 		initialize();
 		initPanels();
 		timer = new Timer();

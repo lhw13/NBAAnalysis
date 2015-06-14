@@ -36,4 +36,5 @@ public interface DataService {
 	
 	public boolean isDEL();//是否出现比赛数据删除
 	public ArrayList<MatchPO> getAllMatchByseason();//按赛季获得数据
+	public void setSeason(String season);
 }

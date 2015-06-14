@@ -1495,7 +1495,7 @@ public class TeamsInfoFrame extends JPanel{
 		table_2.updateUI();
 		
 	}
-	
+	 
 	//球队过往查询
 	public void searchTheMatch(String teamName){
 		

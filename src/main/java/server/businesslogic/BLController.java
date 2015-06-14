@@ -69,7 +69,7 @@ public final class BLController implements BLService {
 	}
 	
 	public void setSeason(String season){
-		return null;
+		data.setSeason(season);
 	}
 	
 	

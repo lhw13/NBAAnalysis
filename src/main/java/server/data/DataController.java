@@ -104,5 +104,6 @@ public  final class DataController implements DataService {
 	}
 	public void setSeason(String season){
 		DatabaseController.season=season;
+		MatchesData.isDEL=true;
 	}
 }

@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -15,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import server.businesslogic.BLController;
+import vo.PlayOffListVO;
+import vo.PlayoffVO;
 import blservice.BLService;
 
 import javax.swing.JLabel;
@@ -298,154 +301,162 @@ public class MatchPlayoffPanel extends JPanel implements MouseListener{
 
 	public void update() {
 		ImageIcon lp1 = new ImageIcon("conf/smallTeam/ATL.png");
-		lp1.setImage(lp1.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
+		
 		l1.setIcon(lp1);	
 		
 		ImageIcon lp2 = new ImageIcon("conf/smallTeam/ATL.png");
-		lp2.setImage(lp2.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
+		
 		l2.setIcon(lp2);
 		
 		ImageIcon lp3 = new ImageIcon("conf/smallTeam/ATL.png");
-		lp3.setImage(lp3.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
+		
 		l3.setIcon(lp3);
 		
 		ImageIcon lp4 = new ImageIcon("conf/smallTeam/ATL.png");
-		lp4.setImage(lp4.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
+		
 		l4.setIcon(lp4);
 		
 		ImageIcon lp5 = new ImageIcon("conf/smallTeam/ATL.png");
-		lp5.setImage(lp5.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
+	
 		l5.setIcon(lp5);
 		
 		ImageIcon lp6 = new ImageIcon("conf/smallTeam/ATL.png");
-		lp6.setImage(lp6.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
+		
 		l6.setIcon(lp6);
 		
 		ImageIcon lp7 = new ImageIcon("conf/smallTeam/ATL.png");
-		lp7.setImage(lp7.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
+		
 		l7.setIcon(lp7);
 		
 		ImageIcon lp8 = new ImageIcon("conf/smallTeam/ATL.png");
-		lp8.setImage(lp8.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
+	
 		l8.setIcon(lp8);
 		
-		ImageIcon llp1 = new ImageIcon("conf/pictures/ATL.png");
-		llp1.setImage(llp1.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
+		ImageIcon llp1 = new ImageIcon("conf/smallTeam/ATL.png");
+		
 		ll1.setIcon(llp1);	
 		
-		ImageIcon llp2 = new ImageIcon("conf/pictures/ATL.png");
-		llp2.setImage(llp2.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
+		ImageIcon llp2 = new ImageIcon("conf/smallTeam/ATL.png");
+		
 		ll2.setIcon(llp2);
 		
-		ImageIcon llp3 = new ImageIcon("conf/pictures/ATL.png");
-		llp3.setImage(llp3.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
+		ImageIcon llp3 = new ImageIcon("conf/smallTeam/ATL.png");
+		
 		ll3.setIcon(llp3);
 		
-		ImageIcon llp4 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon llp4 = new ImageIcon("conf/smallTeam/ATL.png");
 		llp4.setImage(llp4.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		ll4.setIcon(llp4);
 		
-		ImageIcon lllp1 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon lllp1 = new ImageIcon("conf/smallTeam/ATL.png");
 		lllp1.setImage(lllp1.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		lll1.setIcon(lllp1);
 		
-		ImageIcon lllp2 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon lllp2 = new ImageIcon("conf/smallTeam/ATL.png");
 		lllp2.setImage(lllp2.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		lll2.setIcon(lllp2);
 		
-		ImageIcon cp1 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon cp1 = new ImageIcon("conf/smallTeam/ATL.png");
 		cp1.setImage(cp1.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		c1.setIcon(cp1);
 		
-		ImageIcon cp2 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon cp2 = new ImageIcon("conf/smallTeam/ATL.png");
 		cp2.setImage(cp2.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		c2.setIcon(cp2);
 		
-		ImageIcon rp1 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon rp1 = new ImageIcon("conf/smallTeam/ATL.png");
 		rp1.setImage(rp1.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		r1.setIcon(rp1);	
 		
-		ImageIcon rp2 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon rp2 = new ImageIcon("conf/smallTeam/ATL.png");
 		rp2.setImage(rp2.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		r2.setIcon(rp2);
 		
-		ImageIcon rp3 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon rp3 = new ImageIcon("conf/smallTeam/ATL.png");
 		rp3.setImage(rp3.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		r3.setIcon(rp3);
 		
-		ImageIcon rp4 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon rp4 = new ImageIcon("conf/smallTeam/ATL.png");
 		rp4.setImage(rp4.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		r4.setIcon(rp4);
 		
-		ImageIcon rp5 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon rp5 = new ImageIcon("conf/smallTeam/ATL.png");
 		rp5.setImage(rp5.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		r5.setIcon(rp5);
 		
-		ImageIcon rp6 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon rp6 = new ImageIcon("conf/smallTeam/ATL.png");
 		rp6.setImage(rp6.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		r6.setIcon(rp6);
 		
-		ImageIcon rp7 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon rp7 = new ImageIcon("conf/smallTeam/ATL.png");
 		rp7.setImage(rp7.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		r7.setIcon(rp7);
 		
-		ImageIcon rp8 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon rp8 = new ImageIcon("conf/smallTeam/ATL.png");
 		rp8.setImage(rp8.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		r8.setIcon(rp8);
 		
-		ImageIcon rrp1 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon rrp1 = new ImageIcon("conf/smallTeam/ATL.png");
 		rrp1.setImage(rrp1.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		rr1.setIcon(rrp1);
 		
-		ImageIcon rrp2 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon rrp2 = new ImageIcon("conf/smallTeam/ATL.png");
 		rrp2.setImage(rrp2.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		rr2.setIcon(rrp2);
 		
-		ImageIcon rrp3 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon rrp3 = new ImageIcon("conf/smallTeam/ATL.png");
 		rrp3.setImage(rrp3.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		rr3.setIcon(rrp3);
 		
-		ImageIcon rrp4 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon rrp4 = new ImageIcon("conf/smallTeam/ATL.png");
 		rrp4.setImage(rrp4.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		rr4.setIcon(rrp4);
 		
-		ImageIcon rrrp1 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon rrrp1 = new ImageIcon("conf/smallTeam/ATL.png");
 		rrrp1.setImage(rrrp1.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		rrr1.setIcon(rrrp1);
 		
-		ImageIcon rrrp2 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon rrrp2 = new ImageIcon("conf/smallTeam/ATL.png");
 		rrrp2.setImage(rrrp2.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		rrr2.setIcon(rrrp2);
+		PlayOffListVO list = blservice.getPlayOff();
+		ArrayList<PlayoffVO> playoffE = list.getPlayOffE();
+		ArrayList<PlayoffVO> playoffW = list.getPlayOffW();
+		ArrayList<PlayoffVO> playoffFinal = list.getFinals();
+		System.out.println("E===================");
+		for(int i=0;i<playoffE.size();i++) {
+			PlayoffVO vo = playoffE.get(i);
+			System.out.println(vo.getAbr1()+":"+vo.getAbr2()+"  "+vo.getWin1()+":"+vo.getWin2());
+		}
+		System.out.println("w===================");
+		for(int i=0;i<playoffW.size();i++) {
+			PlayoffVO vo = playoffW.get(i);
+			System.out.println(vo.getAbr1()+":"+vo.getAbr2()+"  "+vo.getWin1()+":"+vo.getWin2());
+		}
+		System.out.println("f===================");
+		
+			PlayoffVO vo = playoffW.get(0);
+			System.out.println(vo.getAbr1()+":"+vo.getAbr2()+"  "+vo.getWin1()+":"+vo.getWin2());
+		
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {

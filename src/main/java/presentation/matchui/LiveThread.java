@@ -3,6 +3,8 @@ package presentation.matchui;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,6 +23,20 @@ public class LiveThread extends TimerTask {
 
 	@Override
 	public void run() {
+		
+		Process proc;
+		try {
+			proc = Runtime.getRuntime().exec("python live.py");
+			StreamGobbler errorGobbler = new StreamGobbler(proc.getErrorStream(),"Error");  
+			StreamGobbler outputGobbler = new StreamGobbler(proc.getInputStream(),"Output");  
+			errorGobbler.start();  
+			outputGobbler.start(); 
+			proc.waitFor(); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
 		//get team_score===================================
 		team_score = new HashMap<String,String>();
@@ -631,6 +647,34 @@ public class LiveThread extends TimerTask {
 		catch (Exception e) {  
 			e.printStackTrace();  
 		} 
+	}
+	
+	public class StreamGobbler extends Thread {  
+		  
+	    InputStream is;  
+	    String type;  
+	  
+	    public StreamGobbler(InputStream is, String type) {  
+	        this.is = is;  
+	        this.type = type;  
+	    }  
+	  
+	    public void run() {  
+	        try {  
+	            InputStreamReader isr = new InputStreamReader(is);  
+	            BufferedReader br = new BufferedReader(isr);  
+	            String line = null;  
+	            while ((line = br.readLine()) != null) {  
+	                if (type.equals("Error")) {  
+	                    System.out.println("Error   :" + line);  
+	                } else {  
+	                    System.out.println("Debug:" + line);  
+	                }  
+	            }  
+	        } catch (IOException ioe) {  
+	            ioe.printStackTrace();  
+	        }  
+	    }  
 	}
 
 }

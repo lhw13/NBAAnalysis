@@ -64,7 +64,7 @@ public  final class DataController implements DataService {
 		}
 		return matchPOList;
 	}
-	public ArrayList<MatchPO> getAllMatchByseason(String season) {
+	public ArrayList<MatchPO> getAllMatchByseason( ) {
 		ArrayList<MatchPO> matchPOList=null;
 		try {
 			matchPOList = DatabaseController.getMatchPOListBySeason();

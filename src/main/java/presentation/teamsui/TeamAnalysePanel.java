@@ -6,6 +6,18 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -122,7 +134,111 @@ public class TeamAnalysePanel extends JPanel {
 		panelOfBottom.add(pie);
 		panelOfBottom.add(box);
 		panelOfBottom.repaint();
+		write("datax.txt","datay.txt");
+		Process proc;
+		try {
+			proc = Runtime.getRuntime().exec("python 123.py");
+			
+			StreamGobbler errorGobbler = new StreamGobbler(proc.getErrorStream(), "Error");  
+			StreamGobbler outputGobbler = new StreamGobbler(proc.getInputStream(), "Output");  
+			errorGobbler.start();  
+			outputGobbler.start(); 
+			proc.waitFor(); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}  
 		
+	}
+	public class StreamGobbler extends Thread {  
+		  
+	    InputStream is;  
+	    String type;  
+	  
+	    public StreamGobbler(InputStream is, String type) {  
+	        this.is = is;  
+	        this.type = type;  
+	    }  
+	  
+	    public void run() {  
+	        try {  
+	            InputStreamReader isr = new InputStreamReader(is);  
+	            BufferedReader br = new BufferedReader(isr);  
+	            String line = null;  
+	            while ((line = br.readLine()) != null) {  
+	                if (type.equals("Error")) {  
+	                    System.out.println("Error   :" + line);  
+	                } else {  
+	                    System.out.println("Debug:" + line);  
+	                }  
+	            }  
+	        } catch (IOException ioe) {  
+	            ioe.printStackTrace();  
+	        }  
+	    }  
+	}  
+	public void read(String filename) {
+		File f = Opendoc(filename);
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(f));
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void write(String filenamex,String filenamey) {
+		File fx = Opendoc(filenamex);
+		File fy = Opendoc(filenamey);
+		int scale = 2000;
+		double[][] datas = blservice.getDataForRegression(scale);
+		int len = datas[0].length;
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter(fx));
+			for(int i=0;i<scale;i++) {
+				for(int j=1;j<len-1;j++) {
+					writer.write(Double.toString(datas[i][j])+",");
+				}
+				writer.write(Double.toString(datas[i][len-1])+"\n");
+			}
+			writer.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+					
+		try {
+			BufferedWriter writer2 = new BufferedWriter(new FileWriter(fy));
+			for(int i=0;i<scale-1;i++) {	
+				writer2.write(Double.toString(datas[i][0])+",");
+			}
+			writer2.write(Double.toString(datas[scale-1][0]));
+			writer2.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	public File Opendoc(String s)
+	{//参数为需要打开的文件路径
+	    File f = new File(s);
+	    if(!f.exists())//若文件不存在，自动创建
+	    try
+	    {
+	    	if(f.getParentFile() != null)
+	    		f.getParentFile().mkdirs();
+	        f.createNewFile();
+	    }
+	    catch(IOException e)
+	    {
+	        System.out.println(e);
+	    }
+		return f;
 	}
 	private static JFreeChart createChart(PieDataset piedataset)
 	{

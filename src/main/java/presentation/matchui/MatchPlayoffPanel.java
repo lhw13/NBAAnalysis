@@ -297,42 +297,42 @@ public class MatchPlayoffPanel extends JPanel implements MouseListener{
 	}
 
 	public void update() {
-		ImageIcon lp1 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon lp1 = new ImageIcon("conf/smallTeam/ATL.png");
 		lp1.setImage(lp1.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		l1.setIcon(lp1);	
 		
-		ImageIcon lp2 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon lp2 = new ImageIcon("conf/smallTeam/ATL.png");
 		lp2.setImage(lp2.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		l2.setIcon(lp2);
 		
-		ImageIcon lp3 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon lp3 = new ImageIcon("conf/smallTeam/ATL.png");
 		lp3.setImage(lp3.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		l3.setIcon(lp3);
 		
-		ImageIcon lp4 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon lp4 = new ImageIcon("conf/smallTeam/ATL.png");
 		lp4.setImage(lp4.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		l4.setIcon(lp4);
 		
-		ImageIcon lp5 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon lp5 = new ImageIcon("conf/smallTeam/ATL.png");
 		lp5.setImage(lp5.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		l5.setIcon(lp5);
 		
-		ImageIcon lp6 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon lp6 = new ImageIcon("conf/smallTeam/ATL.png");
 		lp6.setImage(lp6.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		l6.setIcon(lp6);
 		
-		ImageIcon lp7 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon lp7 = new ImageIcon("conf/smallTeam/ATL.png");
 		lp7.setImage(lp7.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		l7.setIcon(lp7);
 		
-		ImageIcon lp8 = new ImageIcon("conf/pictures/ATL.png");
+		ImageIcon lp8 = new ImageIcon("conf/smallTeam/ATL.png");
 		lp8.setImage(lp8.getImage().getScaledInstance(HIGHT, HIGHT,
 				Image.SCALE_DEFAULT));
 		l8.setIcon(lp8);

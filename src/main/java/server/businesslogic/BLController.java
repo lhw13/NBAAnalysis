@@ -14,6 +14,8 @@ import javax.swing.ImageIcon;
 
 
 
+
+
 import jxl.Workbook;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
@@ -29,7 +31,9 @@ import server.po.PlayerInMatchesPO;
 import server.po.PlayerPO;
 import server.po.ScorePO;
 import server.po.TeamPO;
+import vo.PlayOffListVO;
 import vo.PlayerVO;
+import vo.PlayoffVO;
 import vo.TeamVO;
 import vo.TeamWithPlayersVO;
 import blservice.BLService;
@@ -65,11 +69,100 @@ public final class BLController implements BLService {
 	}
 	
 	public void setSeason(String season){
-		return;
+		return null;
 	}
 	
 	
 	//iteration 3
+	public PlayOffListVO getPlayOff()
+	{//为了提过季后赛赛程表
+		analyse();
+		ArrayList<PlayoffVO> finals = new ArrayList<PlayoffVO>();
+		ArrayList<PlayoffVO> resultW = new ArrayList<PlayoffVO>();
+		ArrayList<PlayoffVO> resultE = new ArrayList<PlayoffVO>();
+		
+		if(!matches.get(matches.size()-1).getType().equals("playOff"))
+			return new PlayOffListVO(resultW,resultE,finals);
+		int i=matches.size()-1;
+		int n=0;
+		for(i=matches.size()-1;matches.get(i).equals("playOff");i--,n++);
+		int j=i;
+		for(j=i;j<matches.size();j++)
+		{
+			MatchPO mpo = matches.get(j);
+			String abr1 = mpo.getTeam1().getAbbreviation();
+			String abr2 = mpo.getTeam2().getAbbreviation();
+			Team t1 = teamsHash.get(abr1);
+			Team t2 = teamsHash.get(abr2);
+			if(t1.getTeamPO().getDivision()=='W' && t2.getTeamPO().getDivision()=='W')
+				addPlayOff(resultW,  abr1, abr2,mpo.getWin(abr1));
+			else if(t1.getTeamPO().getDivision()=='E' && t2.getTeamPO().getDivision()=='E')
+				addPlayOff(resultE,  abr1, abr2,mpo.getWin(abr1));
+			else
+				addPlayOff(finals,  abr1, abr2,mpo.getWin(abr1));
+		}
+		if(resultW.size()>4)
+		{
+			adjustPlayOff(resultW);
+		}
+		if(resultW.size()>4)
+		{
+			adjustPlayOff(resultE);
+		}
+		return new PlayOffListVO(resultW,resultE,finals);
+	}
+	private void adjustPlayOff(ArrayList<PlayoffVO> result)
+	{
+		PlayoffVO pf = result.get(4);
+		int right1=-1;
+		int right2=-1;
+		for(int i=0;i<4;i++){
+		if((result.get(i).contains(pf.getAbr1()))||(result.get(i).contains(pf.getAbr1())));
+		{
+			if(right1<0)
+				right1=i;
+			else
+				right2=i;
+		}}
+		if(right1<2 && right2<2)
+			return ;
+		if(right1>=2 && right2>=2)
+		{
+			PlayoffVO temp1 = result.get(right1);
+			PlayoffVO temp2 = result.get(right2);
+			result.set(right1,result.get(0));
+			result.set(right2,result.get(1));
+			result.set(0,temp1);
+			result.set(1,temp2);
+		}
+		else
+		{
+			int f = 1-right1;
+			PlayoffVO temp2 = result.get(right2);
+			result.set(right2,result.get(f));
+			result.set(f,temp2);
+		}
+	}
+	private void addPlayOff(ArrayList<PlayoffVO> result, String abr1,String abr2,int win)
+	{
+		int contain=-1;
+		for(int i=0;i<result.size();i++)
+			if(result.get(i).contains(abr1, abr2))
+			{
+				contain=i;
+				break;
+			}
+		if(contain==-1)
+		{
+			contain = result.size();
+			result.add(new PlayoffVO(abr1,abr2));
+		}
+		PlayoffVO pf = result.get(contain);
+		if(win>0)
+			pf.incre1();
+		else
+			pf.incre2();
+	}
 	public double[][] getDataForRegression(int scale)
 	{//参数在1000～5000之间的偶数，为double数组的行数
 		DataService data = new DataController();

@@ -55,4 +55,6 @@ public interface BLService {
 	public void getDataForStrengthVariables(String teamabr1, String teamabr2);
 	
 	public int[] adjustPredictResult(double score1, double score2, double diff);//调整预测结果，前两个参数为第一个预测的结果，最后一个参数为第二个预测的结果
+	
+	public PlayOffListVO getPlayOff();
 }

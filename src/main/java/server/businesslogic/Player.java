@@ -100,7 +100,10 @@ public  final class Player implements Cloneable{
 		appearance = thisTeam.size();
 		for (int i = 0; i < appearance; i++) {
 			TeamInMatches tim = thisTeam.get(i);
-			add(tim.getPlayers().get(orders.get(i)));// add idividual data
+			boolean start=false;
+			if(i<5)
+				start=true;
+			add(tim.getPlayers().get(orders.get(i)),start);// add idividual data
 			teamPlayTime += tim.getPlayTime();// add this team data below
 			teamTotalRebound += tim.getTotalRebound();
 			this.teamOffensiveRebound+=tim.getOffensiveRebound();
@@ -144,7 +147,10 @@ public  final class Player implements Cloneable{
 				TeamInMatches tim = thisTeamNew.get(i);
 				thisTeam.add(tim);
 				orders.add(ordersNew.get(i));
-				add(tim.getPlayers().get(ordersNew.get(i)));// add idividual data
+				boolean start=false;
+				if(i<5)
+					start=true;
+				add(tim.getPlayers().get(ordersNew.get(i)),start);// add idividual data
 				teamPlayTime += tim.getPlayTime();// add this team data below
 				teamTotalRebound += tim.getTotalRebound();
 				this.teamOffensiveRebound+=tim.getOffensiveRebound();
@@ -202,7 +208,7 @@ public  final class Player implements Cloneable{
 			team=bl.teamsHash.get(teamAb).teamPO;
 	}
 
-	public void add(PlayerInMatchesPO player) {// simple add to each domain
+	public void add(PlayerInMatchesPO player,boolean start) {// simple add to each domain
 												// record two pairs
 		int scoretemp = player.getScore();
 		int totalReboundtemp = player.getTotalRebound();
@@ -229,12 +235,10 @@ public  final class Player implements Cloneable{
 		if(scoretemp>highestScore)
 			highestScore=scoretemp;
 		String p = player.getPosition();
-		if (p.charAt(0) == 'F' || p.charAt(0) == 'G' || p.charAt(0) == 'C')
-		{
+		if(start)
 			starting++;
-			if(this.player.getPosition()==null)
-				this.player.setPosition(String.valueOf(p));
-		}
+		if(this.player.getPosition()==null)
+			this.player.setPosition(String.valueOf(p));
 		int tp = 0;
 		if (scoretemp >= 10)
 			tp++;

@@ -79,7 +79,7 @@ public class LiveThread extends TimerTask {
 
 	public static void readTeamScore(){
 		try { 
-			String pathname = "D:\\team_score.txt";
+			String pathname = "team_score.txt";
 			File filename = new File(pathname); 
 			InputStreamReader reader = new InputStreamReader(new FileInputStream(filename),"utf-8"); 
 			BufferedReader br = new BufferedReader(reader); 
@@ -137,7 +137,7 @@ public class LiveThread extends TimerTask {
 	
 	public static void readEachPart(){
 		try { 
-			String pathname = "D:\\each_part.txt";
+			String pathname = "each_part.txt";
 			File filename = new File(pathname); 
 			InputStreamReader reader = new InputStreamReader(new FileInputStream(filename),"utf-8"); 
 			BufferedReader br = new BufferedReader(reader); 
@@ -301,7 +301,7 @@ public class LiveThread extends TimerTask {
 
 	public static void readPlayerData1(){
 		try { 
-			String pathname = "D:\\player_data_1.txt";
+			String pathname = "player_data_1.txt";
 			File filename = new File(pathname); 
 			InputStreamReader reader = new InputStreamReader(new FileInputStream(filename),"utf-8"); 
 			BufferedReader br = new BufferedReader(reader); 
@@ -460,7 +460,7 @@ public class LiveThread extends TimerTask {
 	
 	public static void readPlayerData2(){
 		try { 
-			String pathname = "D:\\player_data_2.txt";
+			String pathname = "player_data_2.txt";
 			File filename = new File(pathname); 
 			InputStreamReader reader = new InputStreamReader(new FileInputStream(filename),"utf-8"); 
 			BufferedReader br = new BufferedReader(reader); 
@@ -619,7 +619,7 @@ public class LiveThread extends TimerTask {
 
 	public static void readLive(){
 		try { 
-			String pathname = "D:\\live.txt";
+			String pathname = "live.txt";
 			File filename = new File(pathname); 
 			InputStreamReader reader = new InputStreamReader(new FileInputStream(filename),"utf-8"); 
 			BufferedReader br = new BufferedReader(reader); 

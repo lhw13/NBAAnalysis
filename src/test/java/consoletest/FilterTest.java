@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import console.Console;
@@ -29,7 +30,7 @@ public class FilterTest {
 		valueOfAge.add("25< X <=30");
 		valueOfAge.add(">30");
 	}
-	@Test
+	@Ignore
 	public void testPosition() {
 			
 		PrintStream p = null;
@@ -46,7 +47,7 @@ public class FilterTest {
 			c.execute(p, ss);
 		}
 	}
-	@Test
+	@Ignore
 	public void testLeague() {
 		
 		PrintStream p = null;
@@ -64,7 +65,7 @@ public class FilterTest {
 		}
 	}
 	
-	@Test
+	@Ignore
 	public void testAge() {
 		
 		PrintStream p = null;
@@ -82,7 +83,7 @@ public class FilterTest {
 		}
 	}
 	
-	@Test
+	@Ignore
 	public void testMultiCon() {
 		
 		PrintStream p = null;

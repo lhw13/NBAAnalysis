@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import console.Console;
@@ -37,7 +38,7 @@ public class HotTest {
 		
 	}
 	
-	@Test
+	@Ignore
 	public void testHotPlayer()
 	{
 		for(int i=0; i<playerHot.size();i++)
@@ -55,7 +56,7 @@ public class HotTest {
 		}
 	}
 	
-	@Test
+	@Ignore
 	public void testHotTeam()
 	{
 		for(int i=0; i<teamHot.size();i++)
@@ -72,7 +73,7 @@ public class HotTest {
 			c.execute(p, ss);
 		}
 	}
-	@Test
+	@Ignore
 	public void testHotPlayerWithNormalN()
 	{
 		n=35;
@@ -80,14 +81,14 @@ public class HotTest {
 	}
 	
 	
-	@Test
+	@Ignore
 	public void testHotTeamWithNormalN()
 	{
 		n=25;
 		testHotTeamWithN();
 	}
 	
-	@Test
+	@Ignore
 	public void testHotPlayerWithAbnormalN()
 	{
 		n=900;
@@ -95,7 +96,7 @@ public class HotTest {
 	}
 	
 	
-	@Test
+	@Ignore
 	public void testHotTeamWithAbnormalN()
 	{
 		n=40;

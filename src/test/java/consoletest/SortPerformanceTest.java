@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import console.Console;
@@ -71,7 +72,7 @@ public class SortPerformanceTest {
 		teamHigh.add("assistEfficient");
 	}
 	
-	@Test
+	@Ignore
 	public void testPlayerSort()
 	{
 		//asc
@@ -198,7 +199,7 @@ public class SortPerformanceTest {
 	}
 	
 	
-	@Test
+	@Ignore
 	public void testTeamSort()
 	{
 		//asc
@@ -577,7 +578,7 @@ public class SortPerformanceTest {
 					c.execute(p, ss);
 				}	
 	}
-	@Test
+	@Ignore
 	public void testPlayerSortWithNormalN()
 	{
 		n=35;
@@ -585,14 +586,14 @@ public class SortPerformanceTest {
 	}
 	
 	
-	@Test
+	@Ignore
 	public void testTeamSortWithNormalN()
 	{
 		n=25;
 		testTeamSortWithN();
 	}
 	
-	@Test
+	@Ignore
 	public void testPlayerSortWithAbnormalN()
 	{
 		n=900;
@@ -600,7 +601,7 @@ public class SortPerformanceTest {
 	}
 	
 	
-	@Test
+	@Ignore
 	public void testTeamSortWithAbnormalN()
 	{
 		n=40;

@@ -369,6 +369,8 @@ public final class BLController implements BLService {
 		ArrayList<TeamWithPlayersVO> result = new ArrayList<TeamWithPlayersVO>(35);
 		for (int i = 0; i < teams.size(); i++) {
 			Team team = teams.get(i);
+			if(team.teamPO==null)
+				continue;
 			result.add(new TeamWithPlayersVO(team.toVO(),
 					getPlayersInTeam(team.teamPO.getAbbreviation())));
 		}
@@ -724,10 +726,13 @@ public final class BLController implements BLService {
 			else
 				break;*/
 		for (i = 0; i < players.size(); i ++)
-			if (players.get(i).team.getAbbreviation().equals(abbreviation)) {
-				if(players.get(i).active)
+		{
+			if(players.get(i).team==null)
+				continue;
+			if(players.get(i).active)
+				if (players.get(i).team.getAbbreviation().equals(abbreviation)) 
 					result.add(players.get(i).toVO());
-			}
+		}
 		return result;
 	}
 

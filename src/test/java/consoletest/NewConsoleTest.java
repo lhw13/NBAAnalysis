@@ -10,7 +10,7 @@ import org.junit.Test;
 import console.Console;
 
 public class NewConsoleTest {
-	@Test
+	@Ignore
 	public void testExecutable()
 	{
 		Console c = new Console();
@@ -25,7 +25,7 @@ public class NewConsoleTest {
 		c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void testTeam1()
 	{
 		Console c = new Console();
@@ -40,7 +40,7 @@ public class NewConsoleTest {
 		c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void testTeam2()
 	{
 		Console c = new Console();
@@ -55,7 +55,7 @@ public class NewConsoleTest {
 		c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void testTeam3()
 	{
 		Console c = new Console();
@@ -70,7 +70,7 @@ public class NewConsoleTest {
 		c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void testTeam4()
 	{
 		Console c = new Console();
@@ -85,7 +85,7 @@ public class NewConsoleTest {
 		c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void testAllTeam()
 	{
 		Console c = new Console();
@@ -100,7 +100,7 @@ public class NewConsoleTest {
 		c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void testAllPlayer()
 	{
 		Console c = new Console();
@@ -115,7 +115,7 @@ public class NewConsoleTest {
 		c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void test1()
 	{
 		String ss[] = {"-player","-hot","assist","-n","5"};
@@ -133,7 +133,7 @@ public class NewConsoleTest {
 		
 	}
 	
-	@Test
+	@Ignore
 	public void test2()
 	{
 		String ss[] = {"-player","-all","-n","10"};
@@ -149,7 +149,7 @@ public class NewConsoleTest {
 		
 	}
 	
-	@Test
+	@Ignore
 	public void test3()
 	{
 		String ss[] = {"-player","-high","-n","20","-sort","frequency.desc"};
@@ -165,7 +165,7 @@ public class NewConsoleTest {
 		
 	}
 	
-	@Test
+	@Ignore
 	public void test4()
 	{
 		String ss[] = {"-player","-king","score","-season"};
@@ -180,7 +180,7 @@ public class NewConsoleTest {
 			c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void test5()
 	{
 		String ss[] = {"-player","-king","score","-season"};
@@ -195,7 +195,7 @@ public class NewConsoleTest {
 			c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void test6()
 	{
 		String ss[] = {"-player","-total","-all","-n","10","-filter","position.F,league.west","-sort","shot.desc"};
@@ -210,7 +210,7 @@ public class NewConsoleTest {
 			c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void test7()
 	{
 		String ss[] = {"-team","-all","-n","10"};
@@ -224,7 +224,7 @@ public class NewConsoleTest {
 		}
 			c.execute(p, ss);
 	}
-	@Test
+	@Ignore
 	public void test8()
 	{
 		String ss[] = {"-player","-high","-n","20"};

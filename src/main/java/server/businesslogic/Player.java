@@ -252,6 +252,22 @@ public  final class Player implements Cloneable{
 
 	public PlayerVO toVO() {
 		computePromotion();
+		if(team==null)
+			return new PlayerVO("unknown", "unknown",
+					'x', "unknown", player.getName(),
+					player.getNumber(), player.getPosition(), new HeightVO(player
+							.getHeight().getFeet(), player.getHeight().getInch()),
+					player.getWeight(), player.getBirth(), player.getAge(),
+					player.getExp(), player.getSchool(), appearance, starting,
+					playTime/60, hit, chuShou, thirdHit, thirdshot, freeHit, freeshot,
+					offensiveRebound, defensiveRebound, rebound, assist,
+					steal, blockShot, fault, foul, score, getHitRate(),
+					getThree(), getPenalty(), getEfficient(),
+					getGmSc(), getRealShot(), getShotEfficient(),
+					getReboundEfficient(), getOffendReboundEfficient(),
+					getDefendReboundEfficient(), getAssistEfficient(), getStealEfficient(),
+					getBlockShotEfficient(), getFaultEfficient(), getFrequency(), doubleTwo, matches,
+					scorePromotion, reboundPromotion, assistPromotion, highestScore);
 		return new PlayerVO(team.getFullName(), team.getAbbreviation(),
 				team.getDivision(), team.getZone(), player.getName(),
 				player.getNumber(), player.getPosition(), new HeightVO(player

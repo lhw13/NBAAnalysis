@@ -1,6 +1,7 @@
 package server.businesslogic;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import server.po.MatchPO;
 import server.po.PlayerInMatchesPO;
@@ -78,6 +79,18 @@ public  final class Team {
 	int win2 = 0;// 胜出场数
 
 	public TeamVO toVO() {
+		if(teamPO==null)
+			return new TeamVO("unknown", "unknown",
+					"unknown", 'x', "unknown",
+					"unknown", 'x', appearance, hit, chuShou,
+					thirdHit, thirdshot, freeHit, freeshot, offendRebound,
+					defendRebound, rebound, assist, steal, blockShot, fault,
+					foul, score, getHitRate(), getThree(), getPenalty(),
+					getWinRate(), getOffendRound(), getOffendEfficient(),
+					getDefendRound(), getDefendEfficient(),
+					getOffendReboundEfficient(),
+					getDefendReboundEfficient(), getStealEfficient(),
+					getAssistEfficient(),matches);
 		return new TeamVO(teamPO.getFullName(), teamPO.getAbbreviation(),
 				teamPO.getLocation(), teamPO.getDivision(), teamPO.getZone(),
 				teamPO.getHome(), teamPO.getSetupTime(), appearance, hit, chuShou,

@@ -4,13 +4,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import console.Console;
 
 public class OneExcuteTest {
 	Console c = new Console();
-	@Test
+	@Ignore
 	public void executableTest()
 	{
 		PrintStream p = null;
@@ -24,7 +25,7 @@ public class OneExcuteTest {
 		c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void testTeam1()
 	{
 		
@@ -39,7 +40,7 @@ public class OneExcuteTest {
 		c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void testTeam2()
 	{
 		
@@ -54,7 +55,7 @@ public class OneExcuteTest {
 		c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void testTeam3()
 	{
 		
@@ -69,7 +70,7 @@ public class OneExcuteTest {
 		c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void testTeam4()
 	{
 		
@@ -84,7 +85,7 @@ public class OneExcuteTest {
 		c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void testAllTeam()
 	{
 		
@@ -99,7 +100,7 @@ public class OneExcuteTest {
 		c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void testAllPlayer()
 	{
 		
@@ -114,7 +115,7 @@ public class OneExcuteTest {
 		c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void test1()
 	{
 		String ss[] = {"-player","-hot","assist","-n","5"};
@@ -132,7 +133,7 @@ public class OneExcuteTest {
 		
 	}
 	
-	@Test
+	@Ignore
 	public void test2()
 	{
 		String ss[] = {"-player","-all","-n","10"};
@@ -148,7 +149,7 @@ public class OneExcuteTest {
 		
 	}
 	
-	@Test
+	@Ignore
 	public void test3()
 	{
 		String ss[] = {"-player","-high","-n","10","-sort","frequency.desc"};
@@ -164,7 +165,7 @@ public class OneExcuteTest {
 		
 	}
 	
-	@Test
+	@Ignore
 	public void test4()
 	{
 		String ss[] = {"-player","-king","score","-season"};
@@ -179,7 +180,7 @@ public class OneExcuteTest {
 			c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void test5()
 	{
 		String ss[] = {"-player","-king","score","-season"};
@@ -194,7 +195,7 @@ public class OneExcuteTest {
 			c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void test6()
 	{
 		String ss[] = {"-player","-total","-all","-n","10","-filter","position.F,league.West","-sort","shot.desc"};
@@ -209,7 +210,7 @@ public class OneExcuteTest {
 			c.execute(p, ss);
 	}
 	
-	@Test
+	@Ignore
 	public void test7()
 	{
 		String ss[] = {"-team","-all","-n","10"};

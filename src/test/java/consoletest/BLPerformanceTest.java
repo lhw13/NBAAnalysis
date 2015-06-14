@@ -6,9 +6,12 @@
 package consoletest;
 
 import console.Console;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -16,7 +19,7 @@ import org.junit.Test;
  * @author soft
  */
 public class BLPerformanceTest {
-	@Test
+	@Ignore
 	public void testBLPerformance()
         {
                 Console c = new Console();

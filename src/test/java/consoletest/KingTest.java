@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import console.Console;
@@ -20,7 +21,7 @@ public class KingTest {
 		sd.add("-daily");
 		sd.add("-season");
 	}
-	@Test
+	@Ignore
 	public void testDailyKing() {
 		
 	for(int j=0;j<sd.size();j++)	
@@ -39,7 +40,7 @@ public class KingTest {
 		}
 	}
 	
-	@Test
+	@Ignore
 	public void testDailyNumberKing() {
 		
 	for(int j=0;j<sd.size();j++)	

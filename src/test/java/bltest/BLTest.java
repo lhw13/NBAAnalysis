@@ -49,4 +49,11 @@ public class BLTest {
 		bl.getTeamsWithPlayers();
 		assertTrue(true);
 	}
+	
+	@Test
+	public void testBLservice() {
+		BLService bl = BLController.getInstance();
+		bl.getPlayOff();
+		assertTrue(true);
+	}
 }

@@ -124,28 +124,29 @@ public class DatabaseController implements Runnable{
 //				}
 //		}
 //		conn.close();
-		DatabaseController a=new DatabaseController();
-		DatabaseController b=new DatabaseController();
-		DatabaseController c=new DatabaseController();
-		a.setN(0);
-		b.setN(1);
-		c.setN(2);
-		Thread ta=new Thread(a);
-		Thread tb=new Thread(b);
-		Thread tc=new Thread(c);
-		ta.start();
-		tb.start();
-		tc.start();
-		while(true){
-			for(int y=1985;y<2015;y++){
-				String y1 = (y + "").substring(2, 4);
-				String y2 = ((y + 1) + "").substring(2, 4);
-				String season = y1 + "-" + y2;
-				System.out.print(wholeData.get(season).isOK()+" ");
-			}
-			System.out.println("");
-			Thread.sleep(5000);
-		}
+//		DatabaseController a=new DatabaseController();
+//		DatabaseController b=new DatabaseController();
+//		DatabaseController c=new DatabaseController();
+//		a.setN(0);
+//		b.setN(1);
+//		c.setN(2);
+//		Thread ta=new Thread(a);
+//		Thread tb=new Thread(b);
+//		Thread tc=new Thread(c);
+//		ta.start();
+//		tb.start();
+//		tc.start();
+//		while(true){
+//			for(int y=1985;y<2015;y++){
+//				String y1 = (y + "").substring(2, 4);
+//				String y2 = ((y + 1) + "").substring(2, 4);
+//				String season = y1 + "-" + y2;
+//				System.out.print(wholeData.get(season).isOK()+" ");
+//			}
+//			System.out.println("");
+//			Thread.sleep(5000);
+//		}
+		getMatchPOListBySeason();
 	}
 	private static void writeMatch(MatchPO mp) throws Exception {
 		String season = mp.getSeason().substring(0, 2)
@@ -327,8 +328,8 @@ public class DatabaseController implements Runnable{
 						rs2.getInt("score"));
 				players2.add(player);
 			}
-			TeamInMatchesPO team1 = new TeamInMatchesPO(abbreviation1, players1);
-			TeamInMatchesPO team2 = new TeamInMatchesPO(abbreviation2, players2);
+			TeamInMatchesPO team1 = new TeamInMatchesPO(TransToStandard.getStandard(abbreviation1), players1);
+			TeamInMatchesPO team2 = new TeamInMatchesPO(TransToStandard.getStandard(abbreviation2), players2);
 			MatchPO matchPO = new MatchPO(season, date, finalScore, scores,
 					team1, team2);
 			matchPO.setFileName(key);
@@ -521,8 +522,8 @@ public class DatabaseController implements Runnable{
 						rs2.getInt("score"));
 				players2.add(player);
 			}
-			TeamInMatchesPO team1 = new TeamInMatchesPO(abbreviation1, players1);
-			TeamInMatchesPO team2 = new TeamInMatchesPO(abbreviation2, players2);
+			TeamInMatchesPO team1 = new TeamInMatchesPO(TransToStandard.getStandard(abbreviation1), players1);
+			TeamInMatchesPO team2 = new TeamInMatchesPO(TransToStandard.getStandard(abbreviation2), players2);
 			MatchPO matchPO = new MatchPO(season, date, finalScore, scores,
 					team1, team2);
 			matchPO.setFileName(key);

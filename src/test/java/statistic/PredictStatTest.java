@@ -475,4 +475,95 @@ public class PredictStatTest {
 	    }
 		return f;
 	}
+	
+	@Test
+	public void testRegression1() {
+		BLController bl = BLController.getInstance();
+		double a[][]=bl.getDataForRegression(2000);
+		try
+		{
+			File f = Opendoc("testRegression1.xml");
+			WritableWorkbook book = Workbook.createWorkbook(f);
+			WritableSheet sheet = book.createSheet("第一页", 0);
+			Label label = null;
+			label = new Label(0, 0, "本场比赛得分");
+			sheet.addCell(label);
+			label = new Label(1, 0, "最近20场本队平均进球");
+			sheet.addCell(label);
+			label = new Label(2, 0, "最近10场对手平均失球");
+			sheet.addCell(label);
+			label = new Label(3, 0, "主场");
+			sheet.addCell(label);
+			label = new Label(4, 0, "最近5场两队比赛进球");
+			sheet.addCell(label);
+			label = new Label(5, 0, "进步指数");
+			sheet.addCell(label);
+			label = new Label(6, 0, "最近5场对手平均进攻回合");
+			sheet.addCell(label);
+			int row=1;
+			for (int i = 0; i < 2000; i++,row++)
+			{
+				label = new Label(0, row, Double.toString(a[i][0]));
+				sheet.addCell(label);
+				label = new Label(1, row, Double.toString(a[i][1]));
+				sheet.addCell(label);
+				label = new Label(2, row, Double.toString(a[i][2]));
+				sheet.addCell(label);
+				label = new Label(3, row, Double.toString(a[i][3]));
+				sheet.addCell(label);
+				label = new Label(4, row, Double.toString(a[i][4]));
+				sheet.addCell(label);
+				label = new Label(5, row, Double.toString(a[i][5]));
+				sheet.addCell(label);
+				label = new Label(6, row, Double.toString(a[i][5]));
+				sheet.addCell(label);
+			}
+			book.write();
+			book.close();
+			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+	
+	@Test
+	public void testRegression2() {
+		BLController bl = BLController.getInstance();
+		double a[][]=bl.getDataForStrengthRegression(2000);
+		try
+		{
+			File f = Opendoc("testRegression2.xml");
+			WritableWorkbook book = Workbook.createWorkbook(f);
+			WritableSheet sheet = book.createSheet("第一页", 0);
+			Label label = null;
+			label = new Label(0, 0, "本场净胜");
+			sheet.addCell(label);
+			label = new Label(1, 0, "实力差");
+			sheet.addCell(label);
+			label = new Label(2, 0, "主场");
+			sheet.addCell(label);
+			int row=1;
+			int n=500;
+			for (int i = 0; i < 2000; i++,row++)
+			{
+				label = new Label(0, row, Double.toString(a[i][0]));
+				sheet.addCell(label);
+				label = new Label(1, row, Double.toString(a[i][1]));
+				sheet.addCell(label);
+				label = new Label(2, row, Double.toString(a[i][2]));
+				sheet.addCell(label);
+			}
+			book.write();
+			book.close();
+			
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+	}
 }

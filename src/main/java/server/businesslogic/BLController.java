@@ -129,12 +129,15 @@ public final class BLController implements BLService {
 		int right1=-1;
 		int right2=-1;
 		for(int i=0;i<4;i++){
-		if((result.get(i).contains(pf.getAbr1()))||(result.get(i).contains(pf.getAbr1())));
+		if((result.get(i).contains(pf.getAbr1()))||(result.get(i).contains(pf.getAbr2())))
 		{
 			if(right1<0)
 				right1=i;
 			else
+			{
 				right2=i;
+				break;
+			}
 		}}
 		if(right1<2 && right2<2)
 			return ;

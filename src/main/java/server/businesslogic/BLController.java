@@ -85,15 +85,27 @@ public final class BLController implements BLService {
 			return new PlayOffListVO(resultW,resultE,finals);
 		int i=matches.size()-1;
 		int n=0;
-		for(i=matches.size()-1;matches.get(i).equals("playOff");i--,n++);
-		int j=i;
-		for(j=i;j<matches.size();j++)
+		for(i=matches.size()-1;matches.get(i).getType().equals("playOff");i--,n++);
+		int j=i+1;
+		for(j=i+1;j<matches.size();j++)
 		{
 			MatchPO mpo = matches.get(j);
 			String abr1 = mpo.getTeam1().getAbbreviation();
 			String abr2 = mpo.getTeam2().getAbbreviation();
 			Team t1 = teamsHash.get(abr1);
 			Team t2 = teamsHash.get(abr2);
+			if(t1.getTeamPO()==null)
+			{
+				System.out.println(abr1);
+				System.out.println(mpo.getFileName());
+				continue;
+			}
+			if(t2.getTeamPO()==null)
+			{
+				System.out.println(abr2);
+				System.out.println(mpo.getFileName());
+				continue;
+			}
 			if(t1.getTeamPO().getDivision()=='W' && t2.getTeamPO().getDivision()=='W')
 				addPlayOff(resultW,  abr1, abr2,mpo.getWin(abr1));
 			else if(t1.getTeamPO().getDivision()=='E' && t2.getTeamPO().getDivision()=='E')
@@ -502,6 +514,8 @@ public final class BLController implements BLService {
 		isDEL=data.isDEL() || isBegin;
 		isBegin=false;
 		linkDatas();
+		if(!isDEL)
+			return true;
 		if(matches.size()==0)
 			return true;
 		Iterator<Entry<String, Team>> iter = teamsHash.entrySet()

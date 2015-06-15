@@ -914,6 +914,7 @@ public class MainFrame {
 			PlayerRankingPanel.scrollPane.setVisible(true);
 			if(seasonChange){
 				MainFrame.seasonChange = false;
+				PlayerRankingPanel.choose_season.setSelectedItem(MainFrame.season);
 				PlayerRankingPanel.updatePlayerWithCondition("point");
 			}
 			MainFrame.frame.setTitle("NBA球员排名");

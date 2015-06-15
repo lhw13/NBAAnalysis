@@ -73,7 +73,15 @@ public class TransToStandard {
 		}
 	}
 	public static void main(String[] args) {
-		System.out.println(getStandard("NOH"));
+		
+	}
+	public static String getStandard(String ab,String season){
+		String result="";
+		result=data.get(season+ab);
+		if(result==null){
+			result=ab;
+		}
+		return result;
 	}
 	public static String getStandard(String ab){
 		String result="";

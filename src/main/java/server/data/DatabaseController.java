@@ -525,8 +525,8 @@ public class DatabaseController implements Runnable{
 						rs2.getInt("score"));
 				players2.add(player);
 			}
-			TeamInMatchesPO team1 = new TeamInMatchesPO(TransToStandard.getStandard(abbreviation1), players1);
-			TeamInMatchesPO team2 = new TeamInMatchesPO(TransToStandard.getStandard(abbreviation2), players2);
+			TeamInMatchesPO team1 = new TeamInMatchesPO(TransToStandard.getStandard(abbreviation1,season), players1);
+			TeamInMatchesPO team2 = new TeamInMatchesPO(TransToStandard.getStandard(abbreviation2,season), players2);
 			MatchPO matchPO = new MatchPO(season, date, finalScore, scores,
 					team1, team2);
 			matchPO.setFileName(key);

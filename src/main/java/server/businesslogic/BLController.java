@@ -166,7 +166,7 @@ public final class BLController implements BLService {
 	public double[][] getDataForRegression(int scale)
 	{//参数在1000～5000之间的偶数，为double数组的行数
 		DataService data = new DataController();
-		ArrayList<MatchPO> h = data.getAllMatch();
+		ArrayList<MatchPO> h = data.getAllMatch2();
 		Collections.sort(h, new SortMatchesByCalendar());
 		double result[][] = new double [scale][7];
 		try
@@ -225,7 +225,7 @@ public final class BLController implements BLService {
 	public double[][] getVariables(String teamabr1, String teamabr2)
 	{//返回值第一行为球队1，第二行为球队2
 		DataService data = new DataController();
-		ArrayList<MatchPO> h = data.getAllMatch();
+		ArrayList<MatchPO> h = data.getAllMatch2();
 		Collections.sort(h, new SortMatchesByCalendar());
 		double result[][] = new double [2][7];
 			int i = h.size();

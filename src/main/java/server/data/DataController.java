@@ -13,6 +13,7 @@ import server.po.TeamPO;
 import dataservice.DataService;
 
 public final class DataController implements DataService {
+	String previousseason;
 	public HashMap<String, PlayerPO> getAllPlayers() {
 		// ArrayList<PlayerPO> playerPOList = PlayersData.getPlayerPOList();
 		ArrayList<PlayerPO> playerPOList = null;
@@ -54,6 +55,11 @@ public final class DataController implements DataService {
 	public ArrayList<MatchPO> getAllMatch() {
 		// return MatchesData.getMatchPOList();
 
+		if(DatabaseController.getSeason().equals("All"))
+		{
+			setSeason(previousseason);
+			return getAllMatch2();//added by lhw
+		}
 		ArrayList<MatchPO> matchPOList = null;
 		try {
 			// matchPOList = DatabaseController.getMatchPOListBySeason();
@@ -131,6 +137,8 @@ public final class DataController implements DataService {
 	}
 
 	public void setSeason(String season) {
+		if(season.equals("All"))
+			previousseason = DatabaseController.getSeason();
 		DatabaseController.setSeason(season);
 		MatchesData.isDEL = true;
 	}

@@ -83,7 +83,7 @@ public final class DataController implements DataService {
 		ArrayList<MatchPO> matchPOList = new ArrayList<MatchPO>(60000);
 		try {
 			// matchPOList = DatabaseController.getMatchPOListBySeason();
-			for (int y = 2014; y > 1894; y--) {
+			for (int y = 2014; y > 1984; y--) {
 				String y1 = (y + "").substring(2, 4);
 				String y2 = ((y + 1) + "").substring(2, 4);
 				String season = y1 + "-" + y2;

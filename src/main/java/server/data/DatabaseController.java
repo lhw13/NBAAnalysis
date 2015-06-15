@@ -1,5 +1,6 @@
 package server.data;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -36,8 +37,8 @@ public class DatabaseController implements Runnable{
 //		 Connection conn = DriverManager
 //				.getConnection("jdbc:sqlite:"+Path.path);
 //		stat = conn.createStatement();
-		
-		
+//		
+//		
 		// writeMatch(Ant.analyseteaminfo("http://www.nba.com/games/20140502/TORBKN/gameinfo.html"));
 		// DataTransformation.MatchPOToText(getMatchPOListBySeason("13-14").get(0),"E:\\dataText\\");
 		// System.out.println(getMatchPOListBySeason("13-14").size());
@@ -52,42 +53,42 @@ public class DatabaseController implements Runnable{
 		// writeMatch(newMatchPO);
 		// }
 		// }
-		// for(int y=1985;y<2015;y++){
-		// String y1=(y+"").substring(2, 4);
-		// String y2=((y+1)+"").substring(2, 4);
-		// String season=y1+"-"+y2;
-		// System.out.println(season);
-		// ArrayList<MatchPO> list1=new ArrayList<MatchPO>(2000);
-		// File f = new File("E:\\dataBasketball\\"+season+"regular");
-		// File[] matchesFile = f.listFiles();
-		// for (File i : matchesFile) {
-		// MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
-		// .dataReader(i));
-		// if(newMatchPO!=null){
-		// newMatchPO.setType("regular");
-		// list1.add(newMatchPO);
-		// }
-		// }
-		// for(MatchPO mp:list1){
-		// writeMatch(mp);
-		// }
-		// ArrayList<MatchPO> list2=new ArrayList<MatchPO>(200);
-		// File f1 = new File("E:\\dataBasketball\\"+season+"playOff");
-		// File[] matchesFile1 = f1.listFiles();
-		// for (File i : matchesFile1) {
-		// MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
-		// .dataReader(i));
-		// if(newMatchPO!=null){
-		// newMatchPO.setType("playOff");
-		// list2.add(newMatchPO);
-		//
-		// }
-		// }
-		// for(MatchPO mp:list2){
-		// writeMatch(mp);
-		// }
-		// }
-		//
+//		 for(int y=2012;y<2015;y++){
+//		 String y1=(y+"").substring(2, 4);
+//		 String y2=((y+1)+"").substring(2, 4);
+//		 String season=y1+"-"+y2;
+//		 System.out.println(season);
+//		 ArrayList<MatchPO> list1=new ArrayList<MatchPO>(2000);
+//		 File f = new File("E:\\dataBasketball\\"+season+"regular");
+//		 File[] matchesFile = f.listFiles();
+//		 for (File i : matchesFile) {
+//		 MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
+//		 .dataReader(i));
+//		 if(newMatchPO!=null){
+//		 newMatchPO.setType("regular");
+//		 list1.add(newMatchPO);
+//		 }
+//		 }
+//		 for(MatchPO mp:list1){
+//		 writeMatch(mp);
+//		 }
+//		 ArrayList<MatchPO> list2=new ArrayList<MatchPO>(200);
+//		 File f1 = new File("E:\\dataBasketball\\"+season+"playOff");
+//		 File[] matchesFile1 = f1.listFiles();
+//		 for (File i : matchesFile1) {
+//		 MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
+//		 .dataReader(i));
+//		 if(newMatchPO!=null){
+//		 newMatchPO.setType("playOff");
+//		 list2.add(newMatchPO);
+//		
+//		 }
+//		 }
+//		 for(MatchPO mp:list2){
+//		 writeMatch(mp);
+//		 }
+//		 }
+		
 		// createTableOfPlayer();
 		// File f = new File("C:\\Users\\wjc\\Desktop\\info");
 		// File[] PlayersFile = f.listFiles();
@@ -124,6 +125,9 @@ public class DatabaseController implements Runnable{
 //				}
 //		}
 //		conn.close();
+		
+		
+		
 //		DatabaseController a=new DatabaseController();
 //		DatabaseController b=new DatabaseController();
 //		DatabaseController c=new DatabaseController();
@@ -146,7 +150,6 @@ public class DatabaseController implements Runnable{
 //			System.out.println("");
 //			Thread.sleep(5000);
 //		}
-		getMatchPOListBySeason();
 	}
 	private static void writeMatch(MatchPO mp) throws Exception {
 		String season = mp.getSeason().substring(0, 2)

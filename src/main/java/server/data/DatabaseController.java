@@ -18,10 +18,10 @@ import server.po.ScorePO;
 import server.po.TeamInMatchesPO;
 import server.po.TeamPO;
 
-public class DatabaseController implements Runnable{
-	private static HashMap<String, DataClass> wholeData=new HashMap<>(50);
-	static{
-		for(int y=1985;y<2015;y++){
+public class DatabaseController implements Runnable {
+	private static HashMap<String, DataClass> wholeData = new HashMap<>(50);
+	static {
+		for (int y = 1985; y < 2015; y++) {
 			String y1 = (y + "").substring(2, 4);
 			String y2 = ((y + 1) + "").substring(2, 4);
 			String season = y1 + "-" + y2;
@@ -30,15 +30,16 @@ public class DatabaseController implements Runnable{
 	}
 	static Statement stat = null;
 	static String[][] list = new String[4145][2];
-	private static String season="13-14";
+	private static String season = "13-14";
 	int n;
+
 	public static void main(String[] args) throws Exception {
-//		Class.forName("org.sqlite.JDBC");
-//		 Connection conn = DriverManager
-//				.getConnection("jdbc:sqlite:"+Path.path);
-//		stat = conn.createStatement();
-//		
-//		
+		// Class.forName("org.sqlite.JDBC");
+		// Connection conn = DriverManager
+		// .getConnection("jdbc:sqlite:"+Path.path);
+		// stat = conn.createStatement();
+		//
+		//
 		// writeMatch(Ant.analyseteaminfo("http://www.nba.com/games/20140502/TORBKN/gameinfo.html"));
 		// DataTransformation.MatchPOToText(getMatchPOListBySeason("13-14").get(0),"E:\\dataText\\");
 		// System.out.println(getMatchPOListBySeason("13-14").size());
@@ -53,42 +54,42 @@ public class DatabaseController implements Runnable{
 		// writeMatch(newMatchPO);
 		// }
 		// }
-//		 for(int y=2012;y<2015;y++){
-//		 String y1=(y+"").substring(2, 4);
-//		 String y2=((y+1)+"").substring(2, 4);
-//		 String season=y1+"-"+y2;
-//		 System.out.println(season);
-//		 ArrayList<MatchPO> list1=new ArrayList<MatchPO>(2000);
-//		 File f = new File("E:\\dataBasketball\\"+season+"regular");
-//		 File[] matchesFile = f.listFiles();
-//		 for (File i : matchesFile) {
-//		 MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
-//		 .dataReader(i));
-//		 if(newMatchPO!=null){
-//		 newMatchPO.setType("regular");
-//		 list1.add(newMatchPO);
-//		 }
-//		 }
-//		 for(MatchPO mp:list1){
-//		 writeMatch(mp);
-//		 }
-//		 ArrayList<MatchPO> list2=new ArrayList<MatchPO>(200);
-//		 File f1 = new File("E:\\dataBasketball\\"+season+"playOff");
-//		 File[] matchesFile1 = f1.listFiles();
-//		 for (File i : matchesFile1) {
-//		 MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
-//		 .dataReader(i));
-//		 if(newMatchPO!=null){
-//		 newMatchPO.setType("playOff");
-//		 list2.add(newMatchPO);
-//		
-//		 }
-//		 }
-//		 for(MatchPO mp:list2){
-//		 writeMatch(mp);
-//		 }
-//		 }
-		
+		// for(int y=2012;y<2015;y++){
+		// String y1=(y+"").substring(2, 4);
+		// String y2=((y+1)+"").substring(2, 4);
+		// String season=y1+"-"+y2;
+		// System.out.println(season);
+		// ArrayList<MatchPO> list1=new ArrayList<MatchPO>(2000);
+		// File f = new File("E:\\dataBasketball\\"+season+"regular");
+		// File[] matchesFile = f.listFiles();
+		// for (File i : matchesFile) {
+		// MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
+		// .dataReader(i));
+		// if(newMatchPO!=null){
+		// newMatchPO.setType("regular");
+		// list1.add(newMatchPO);
+		// }
+		// }
+		// for(MatchPO mp:list1){
+		// writeMatch(mp);
+		// }
+		// ArrayList<MatchPO> list2=new ArrayList<MatchPO>(200);
+		// File f1 = new File("E:\\dataBasketball\\"+season+"playOff");
+		// File[] matchesFile1 = f1.listFiles();
+		// for (File i : matchesFile1) {
+		// MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
+		// .dataReader(i));
+		// if(newMatchPO!=null){
+		// newMatchPO.setType("playOff");
+		// list2.add(newMatchPO);
+		//
+		// }
+		// }
+		// for(MatchPO mp:list2){
+		// writeMatch(mp);
+		// }
+		// }
+
 		// createTableOfPlayer();
 		// File f = new File("C:\\Users\\wjc\\Desktop\\info");
 		// File[] PlayersFile = f.listFiles();
@@ -105,52 +106,51 @@ public class DatabaseController implements Runnable{
 		// for(TeamPO tp:teamPOList){
 		// writeTeam(tp);
 		// }
-		
-//		
-//		ResultSet rs = stat.executeQuery("select * from 'PlayerPO';");
-//		int n = 0;
-//		while (rs.next()) {
-//			list[n][0] = rs.getString("name");
-//			list[n][1] = rs.getString("position");
-//			n++;
-//		}
-//		for (int y = 1986; y < 2015; y++) {
-//				String y1 = (y + "").substring(2, 4);
-//				String y2 = ((y + 1) + "").substring(2, 4);
-//				String tableName = "playerInMatchesPO" + y1 + "" + y2;
-//				for (String[] player : list) {
-//					stat.execute("update " + tableName + " set position='"
-//							+ player[1] + "' where name='"
-//							+ player[0].replaceAll("'", "''") + "';");
-//				}
-//		}
-//		conn.close();
-		
-		
-		
-//		DatabaseController a=new DatabaseController();
-//		DatabaseController b=new DatabaseController();
-//		DatabaseController c=new DatabaseController();
-//		a.setN(0);
-//		b.setN(1);
-//		c.setN(2);
-//		Thread ta=new Thread(a);
-//		Thread tb=new Thread(b);
-//		Thread tc=new Thread(c);
-//		ta.start();
-//		tb.start();
-//		tc.start();
-//		while(true){
-//			for(int y=1985;y<2015;y++){
-//				String y1 = (y + "").substring(2, 4);
-//				String y2 = ((y + 1) + "").substring(2, 4);
-//				String season = y1 + "-" + y2;
-//				System.out.print(wholeData.get(season).isOK()+" ");
-//			}
-//			System.out.println("");
-//			Thread.sleep(5000);
-//		}
+
+		//
+		// ResultSet rs = stat.executeQuery("select * from 'PlayerPO';");
+		// int n = 0;
+		// while (rs.next()) {
+		// list[n][0] = rs.getString("name");
+		// list[n][1] = rs.getString("position");
+		// n++;
+		// }
+		// for (int y = 1986; y < 2015; y++) {
+		// String y1 = (y + "").substring(2, 4);
+		// String y2 = ((y + 1) + "").substring(2, 4);
+		// String tableName = "playerInMatchesPO" + y1 + "" + y2;
+		// for (String[] player : list) {
+		// stat.execute("update " + tableName + " set position='"
+		// + player[1] + "' where name='"
+		// + player[0].replaceAll("'", "''") + "';");
+		// }
+		// }
+		// conn.close();
+
+		// DatabaseController a=new DatabaseController();
+		// DatabaseController b=new DatabaseController();
+		// DatabaseController c=new DatabaseController();
+		// a.setN(0);
+		// b.setN(1);
+		// c.setN(2);
+		// Thread ta=new Thread(a);
+		// Thread tb=new Thread(b);
+		// Thread tc=new Thread(c);
+		// ta.start();
+		// tb.start();
+		// tc.start();
+		// while(true){
+		// for(int y=1985;y<2015;y++){
+		// String y1 = (y + "").substring(2, 4);
+		// String y2 = ((y + 1) + "").substring(2, 4);
+		// String season = y1 + "-" + y2;
+		// System.out.print(wholeData.get(season).isOK()+" ");
+		// }
+		// System.out.println("");
+		// Thread.sleep(5000);
+		// }
 	}
+
 	private static void writeMatch(MatchPO mp) throws Exception {
 		String season = mp.getSeason().substring(0, 2)
 				+ mp.getSeason().substring(3, 5);
@@ -259,11 +259,11 @@ public class DatabaseController implements Runnable{
 				+ "(key varchar(20), team varchar(5), name varchar(30), position varchar(5), playTime int, hit int, shot int, thirdHit int, thirdshot int, freeHit int, freeshot int, offensiveRebound int, defensiveRebound int, totalRebound int, assist int, steal int, block int, miss int, foul int, score int,primary key(key,name,team));");
 	}
 
-	public static ArrayList<MatchPO> getMatchPOListBySeason()
-			throws Exception {
+	public static ArrayList<MatchPO> getMatchPOListBySeason() throws Exception {
 		Class.forName("org.sqlite.JDBC");
-//		Connection conn = DriverManager.getConnection("jdbc:sqlite:nba.db");
-		Connection conn = DriverManager.getConnection("jdbc:sqlite:"+Path.path);	
+		// Connection conn = DriverManager.getConnection("jdbc:sqlite:nba.db");
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:"
+				+ Path.path);
 		Statement stat = conn.createStatement();
 		Statement stat1 = conn.createStatement();
 		Statement stat2 = conn.createStatement();
@@ -331,8 +331,10 @@ public class DatabaseController implements Runnable{
 						rs2.getInt("score"));
 				players2.add(player);
 			}
-			TeamInMatchesPO team1 = new TeamInMatchesPO(TransToStandard.getStandard(abbreviation1), players1);
-			TeamInMatchesPO team2 = new TeamInMatchesPO(TransToStandard.getStandard(abbreviation2), players2);
+			TeamInMatchesPO team1 = new TeamInMatchesPO(
+					TransToStandard.getStandard(abbreviation1), players1);
+			TeamInMatchesPO team2 = new TeamInMatchesPO(
+					TransToStandard.getStandard(abbreviation2), players2);
 			MatchPO matchPO = new MatchPO(season, date, finalScore, scores,
 					team1, team2);
 			matchPO.setFileName(key);
@@ -364,8 +366,9 @@ public class DatabaseController implements Runnable{
 
 	public static ArrayList<PlayerPO> getPlayerList() throws Exception {
 		Class.forName("org.sqlite.JDBC");
-//		Connection conn = DriverManager.getConnection("jdbc:sqlite:nba.db");
-		Connection conn = DriverManager.getConnection("jdbc:sqlite:"+Path.path);
+		// Connection conn = DriverManager.getConnection("jdbc:sqlite:nba.db");
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:"
+				+ Path.path);
 		Statement stat = conn.createStatement();
 		ArrayList<PlayerPO> ppList = new ArrayList<PlayerPO>(5000);
 		ResultSet rs = stat.executeQuery("select * from 'PlayerPO';");
@@ -411,8 +414,9 @@ public class DatabaseController implements Runnable{
 
 	public static ArrayList<TeamPO> getTeamList() throws Exception {
 		Class.forName("org.sqlite.JDBC");
-//		Connection conn = DriverManager.getConnection("jdbc:sqlite:nba.db");
-		Connection conn = DriverManager.getConnection("jdbc:sqlite:"+Path.path);
+		// Connection conn = DriverManager.getConnection("jdbc:sqlite:nba.db");
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:"
+				+ Path.path);
 		Statement stat = conn.createStatement();
 		ArrayList<TeamPO> teamList = new ArrayList<TeamPO>(40);
 		ResultSet rs = stat.executeQuery("select * from 'TeamPO';");
@@ -428,37 +432,296 @@ public class DatabaseController implements Runnable{
 		conn.close();
 		return teamList;
 	}
-	public static void setSeason(String newSeason){
-		season=newSeason;
+
+	public static ArrayList<MatchPO> getMatchByDate(Calendar date)
+			throws Exception {
+
+		Class.forName("org.sqlite.JDBC");
+		// Connection conn = DriverManager.getConnection("jdbc:sqlite:nba.db");
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:"
+				+ Path.path);
+		Statement stat = conn.createStatement();
+		Statement stat1 = conn.createStatement();
+		Statement stat2 = conn.createStatement();
+		String table1 = "MatchPO" + season.substring(0, 2)
+				+ season.substring(3, 5);
+		String table2 = "playerInMatchesPO" + season.substring(0, 2)
+				+ season.substring(3, 5);
+		ArrayList<MatchPO> matchPOlist = new ArrayList<MatchPO>(2000);
+		ResultSet rs = null;
+		int year = date.get(Calendar.YEAR);
+		int month = date.get(Calendar.MONTH);
+		int day = date.get(Calendar.DAY_OF_MONTH);
+		try {
+			rs = stat.executeQuery("select * from '" + table1
+					+ "' where year= " + year + "and month=" + month
+					+ " and day=" + day + ";");
+		} catch (SQLException e) {
+			return null;
+		}
+		while (rs.next()) {
+			String key = rs.getString("key");
+			String season = rs.getString("season");
+			ScorePO finalScore = new ScorePO(rs.getInt("score9"),
+					rs.getInt("score10"));
+			ArrayList<ScorePO> scores = new ArrayList<ScorePO>(4);
+			scores.add(new ScorePO(rs.getInt("score1"), rs.getInt("score2")));
+			scores.add(new ScorePO(rs.getInt("score3"), rs.getInt("score4")));
+			scores.add(new ScorePO(rs.getInt("score5"), rs.getInt("score6")));
+			scores.add(new ScorePO(rs.getInt("score7"), rs.getInt("score8")));
+			String abbreviation1 = rs.getString("team1");
+			String abbreviation2 = rs.getString("team2");
+			ArrayList<PlayerInMatchesPO> players1 = new ArrayList<PlayerInMatchesPO>(
+					15);
+			ArrayList<PlayerInMatchesPO> players2 = new ArrayList<PlayerInMatchesPO>(
+					15);
+			ResultSet rs1 = stat1.executeQuery("select * from '" + table2
+					+ "' where key='" + key + "' and team='" + abbreviation1
+					+ "';");
+			while (rs1.next()) {
+				PlayerInMatchesPO player = new PlayerInMatchesPO(
+						rs1.getString("name"), rs1.getString("position"),
+						rs1.getInt("playTime"), rs1.getInt("hit"),
+						rs1.getInt("shot"), rs1.getInt("thirdHit"),
+						rs1.getInt("thirdShot"), rs1.getInt("freeHit"),
+						rs1.getInt("freeshot"), rs1.getInt("offensiveRebound"),
+						rs1.getInt("defensiveRebound"),
+						rs1.getInt("totalRebound"), rs1.getInt("assist"),
+						rs1.getInt("steal"), rs1.getInt("block"),
+						rs1.getInt("miss"), rs1.getInt("foul"),
+						rs1.getInt("score"));
+				players1.add(player);
+			}
+			ResultSet rs2 = stat2.executeQuery("select * from '" + table2
+					+ "' where key='" + key + "' and team='" + abbreviation2
+					+ "';");
+			while (rs2.next()) {
+				PlayerInMatchesPO player = new PlayerInMatchesPO(
+						rs2.getString("name"), rs2.getString("position"),
+						rs2.getInt("playTime"), rs2.getInt("hit"),
+						rs2.getInt("shot"), rs2.getInt("thirdHit"),
+						rs2.getInt("thirdShot"), rs2.getInt("freeHit"),
+						rs2.getInt("freeshot"), rs2.getInt("offensiveRebound"),
+						rs2.getInt("defensiveRebound"),
+						rs2.getInt("totalRebound"), rs2.getInt("assist"),
+						rs2.getInt("steal"), rs2.getInt("block"),
+						rs2.getInt("miss"), rs2.getInt("foul"),
+						rs2.getInt("score"));
+				players2.add(player);
+			}
+			TeamInMatchesPO team1 = new TeamInMatchesPO(
+					TransToStandard.getStandard(abbreviation1), players1);
+			TeamInMatchesPO team2 = new TeamInMatchesPO(
+					TransToStandard.getStandard(abbreviation2), players2);
+			MatchPO matchPO = new MatchPO(season, date, finalScore, scores,
+					team1, team2);
+			matchPO.setFileName(key);
+			matchPO.setType(rs.getString("type"));
+			matchPOlist.add(matchPO);
+		}
+
+		conn.close();
+		return matchPOlist;
 	}
-	public static String getSeason(){
+
+	public static ArrayList<PlayerInMatchesPO> getPlayerInMatchesPOByName(
+			String name) throws Exception {
+		ArrayList<PlayerInMatchesPO> result = new ArrayList<PlayerInMatchesPO>(
+				500);
+		Class.forName("org.sqlite.JDBC");
+		// Connection conn = DriverManager.getConnection("jdbc:sqlite:nba.db");
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:"
+				+ Path.path);
+		Statement stat = conn.createStatement();
+		String table = "playerInMatchesPO" + season.substring(0, 2)
+				+ season.substring(3, 5);
+		ResultSet rs = stat.executeQuery("select * from '" + table
+				+ "' where name='" + name + "';");
+		while (rs.next()) {
+
+			PlayerInMatchesPO player = new PlayerInMatchesPO(
+					rs.getString("name"), rs.getString("position"),
+					rs.getInt("playTime"), rs.getInt("hit"), rs.getInt("shot"),
+					rs.getInt("thirdHit"), rs.getInt("thirdShot"),
+					rs.getInt("freeHit"), rs.getInt("freeshot"),
+					rs.getInt("offensiveRebound"),
+					rs.getInt("defensiveRebound"), rs.getInt("totalRebound"),
+					rs.getInt("assist"), rs.getInt("steal"),
+					rs.getInt("block"), rs.getInt("miss"), rs.getInt("foul"),
+					rs.getInt("score"));
+			result.add(player);
+
+		}
+
+		conn.close();
+		return result;
+	}
+
+	public static ArrayList<MatchPO> getMatchPObyTeam(String team)
+			throws Exception {
+		Class.forName("org.sqlite.JDBC");
+		// Connection conn = DriverManager.getConnection("jdbc:sqlite:nba.db");
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:"
+				+ Path.path);
+		Statement stat = conn.createStatement();
+		Statement stat1 = conn.createStatement();
+		Statement stat2 = conn.createStatement();
+		String table1 = "MatchPO" + season.substring(0, 2)
+				+ season.substring(3, 5);
+		String table2 = "playerInMatchesPO" + season.substring(0, 2)
+				+ season.substring(3, 5);
+		ArrayList<MatchPO> matchPOlist = new ArrayList<MatchPO>(2000);
+		ResultSet rs = null;
+		try {
+			rs = stat.executeQuery("select * from '" + table1
+					+ "' where team1='" + team + "' or team2='" + team + "' ;");
+		} catch (SQLException e) {
+			return null;
+		}
+		while (rs.next()) {
+			String key = rs.getString("key");
+			String season = rs.getString("season");
+			Calendar date = Calendar.getInstance();
+			date.set(rs.getInt("year"), rs.getInt("month"), rs.getInt("day"),
+					0, 0, 0);
+			ScorePO finalScore = new ScorePO(rs.getInt("score9"),
+					rs.getInt("score10"));
+			ArrayList<ScorePO> scores = new ArrayList<ScorePO>(4);
+			scores.add(new ScorePO(rs.getInt("score1"), rs.getInt("score2")));
+			scores.add(new ScorePO(rs.getInt("score3"), rs.getInt("score4")));
+			scores.add(new ScorePO(rs.getInt("score5"), rs.getInt("score6")));
+			scores.add(new ScorePO(rs.getInt("score7"), rs.getInt("score8")));
+			String abbreviation1 = rs.getString("team1");
+			String abbreviation2 = rs.getString("team2");
+			ArrayList<PlayerInMatchesPO> players1 = new ArrayList<PlayerInMatchesPO>(
+					15);
+			ArrayList<PlayerInMatchesPO> players2 = new ArrayList<PlayerInMatchesPO>(
+					15);
+			ResultSet rs1 = stat1.executeQuery("select * from '" + table2
+					+ "' where key='" + key + "' and team='" + abbreviation1
+					+ "';");
+			while (rs1.next()) {
+				PlayerInMatchesPO player = new PlayerInMatchesPO(
+						rs1.getString("name"), rs1.getString("position"),
+						rs1.getInt("playTime"), rs1.getInt("hit"),
+						rs1.getInt("shot"), rs1.getInt("thirdHit"),
+						rs1.getInt("thirdShot"), rs1.getInt("freeHit"),
+						rs1.getInt("freeshot"), rs1.getInt("offensiveRebound"),
+						rs1.getInt("defensiveRebound"),
+						rs1.getInt("totalRebound"), rs1.getInt("assist"),
+						rs1.getInt("steal"), rs1.getInt("block"),
+						rs1.getInt("miss"), rs1.getInt("foul"),
+						rs1.getInt("score"));
+				players1.add(player);
+			}
+			ResultSet rs2 = stat2.executeQuery("select * from '" + table2
+					+ "' where key='" + key + "' and team='" + abbreviation2
+					+ "';");
+			while (rs2.next()) {
+				PlayerInMatchesPO player = new PlayerInMatchesPO(
+						rs2.getString("name"), rs2.getString("position"),
+						rs2.getInt("playTime"), rs2.getInt("hit"),
+						rs2.getInt("shot"), rs2.getInt("thirdHit"),
+						rs2.getInt("thirdShot"), rs2.getInt("freeHit"),
+						rs2.getInt("freeshot"), rs2.getInt("offensiveRebound"),
+						rs2.getInt("defensiveRebound"),
+						rs2.getInt("totalRebound"), rs2.getInt("assist"),
+						rs2.getInt("steal"), rs2.getInt("block"),
+						rs2.getInt("miss"), rs2.getInt("foul"),
+						rs2.getInt("score"));
+				players2.add(player);
+			}
+			TeamInMatchesPO team1 = new TeamInMatchesPO(
+					TransToStandard.getStandard(abbreviation1), players1);
+			TeamInMatchesPO team2 = new TeamInMatchesPO(
+					TransToStandard.getStandard(abbreviation2), players2);
+			MatchPO matchPO = new MatchPO(season, date, finalScore, scores,
+					team1, team2);
+			matchPO.setFileName(key);
+			matchPO.setType(rs.getString("type"));
+			matchPOlist.add(matchPO);
+		}
+
+		conn.close();
+		return matchPOlist;
+	}
+
+	public static ArrayList<ScorePO> getPK(String ab1, String ab2)
+			throws Exception {
+		ArrayList<ScorePO> result = new ArrayList<ScorePO>(150);
+		Class.forName("org.sqlite.JDBC");
+		// Connection conn = DriverManager.getConnection("jdbc:sqlite:nba.db");
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:"
+				+ Path.path);
+		Statement stat = conn.createStatement();
+		for (int y = 1985; y < 2015; y++) {
+			String y1 = (y + "").substring(2, 4);
+			String y2 = ((y + 1) + "").substring(2, 4);
+			String season = y1 + "-" + y2;
+			String table = "MatchPO" + season.substring(0, 2)
+					+ season.substring(3, 5);
+			ResultSet rs = null;
+			try {
+				rs = stat
+						.executeQuery("select * from '" + table
+								+ "' where (team1='" + ab1 + "' and team2='"
+								+ ab2 + "') or(team1='" + ab2 + "' and team2='"
+								+ ab1 + "');");
+			} catch (SQLException e) {
+				return null;
+			}
+			while (rs.next()) {
+				if (rs.getString("team1").equals(ab1)) {
+					ScorePO finalScore = new ScorePO(rs.getInt("score9"),
+							rs.getInt("score10"));
+					result.add(finalScore);
+				} else {
+					ScorePO finalScore = new ScorePO(rs.getInt("score10"),
+							rs.getInt("score9"));
+					result.add(finalScore);
+				}
+			}
+		}
+		conn.close();
+		return result;
+	}
+
+	public static void setSeason(String newSeason) {
+		season = newSeason;
+	}
+
+	public static String getSeason() {
 		return season;
 	}
-	public void run(){
-		for(int y=2014;y>1984;y--){
-			if(y%3==n){
+
+	public void run() {
+		for (int y = 2014; y > 1984; y--) {
+			if (y % 3 == n) {
 				String y1 = (y + "").substring(2, 4);
 				String y2 = ((y + 1) + "").substring(2, 4);
 				String season = y1 + "-" + y2;
-				DataClass dc=wholeData.get(season);
-				try{	
+				DataClass dc = wholeData.get(season);
+				try {
 					dc.setList(getMatchPOListBySeason(season));
 					dc.setIsOK(true);
-				}catch(Exception e){
+				} catch (Exception e) {
 					dc.setList(null);
 					e.printStackTrace();
 				}
 			}
 		}
 	}
-	public void setN(int n){
-		this.n=n;
+
+	public void setN(int n) {
+		this.n = n;
 	}
+
 	public static ArrayList<MatchPO> getMatchPOListBySeason(String season)
 			throws Exception {
 		Class.forName("org.sqlite.JDBC");
-//		Connection conn = DriverManager.getConnection("jdbc:sqlite:nba.db");
-		Connection conn = DriverManager.getConnection("jdbc:sqlite:"+Path.path);	
+		// Connection conn = DriverManager.getConnection("jdbc:sqlite:nba.db");
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:"
+				+ Path.path);
 		Statement stat = conn.createStatement();
 		Statement stat1 = conn.createStatement();
 		Statement stat2 = conn.createStatement();
@@ -525,8 +788,12 @@ public class DatabaseController implements Runnable{
 						rs2.getInt("score"));
 				players2.add(player);
 			}
-			TeamInMatchesPO team1 = new TeamInMatchesPO(TransToStandard.getStandard(abbreviation1,season), players1);
-			TeamInMatchesPO team2 = new TeamInMatchesPO(TransToStandard.getStandard(abbreviation2,season), players2);
+			TeamInMatchesPO team1 = new TeamInMatchesPO(
+					TransToStandard.getStandard(abbreviation1, season),
+					players1);
+			TeamInMatchesPO team2 = new TeamInMatchesPO(
+					TransToStandard.getStandard(abbreviation2, season),
+					players2);
 			MatchPO matchPO = new MatchPO(season, date, finalScore, scores,
 					team1, team2);
 			matchPO.setFileName(key);
@@ -537,7 +804,8 @@ public class DatabaseController implements Runnable{
 		conn.close();
 		return matchPOlist;
 	}
-public static HashMap<String, DataClass> getWholeData(){
-	return wholeData;
-}
+
+	public static HashMap<String, DataClass> getWholeData() {
+		return wholeData;
+	}
 }

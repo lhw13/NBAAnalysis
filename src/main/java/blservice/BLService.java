@@ -51,8 +51,8 @@ public interface BLService {
 	public double[][] getDataForRegression(int scale);//参数在1000～5000之间的偶数，为double数组的行数
 	public double[][] getVariables(String teamabr1, String teamabr2);//返回值第一行为球队1，第二行为球队2
 	//functions below are based on Stanford's paper
-	public void getDataForStrengthRegression(int scale);
-	public void getDataForStrengthVariables(String teamabr1, String teamabr2);
+	public double[][] getDataForStrengthRegression(int scale);
+	public double[][] getDataForStrengthVariables(String teamabr1, String teamabr2);
 	
 	public int[] adjustPredictResult(double score1, double score2, double diff);//调整预测结果，前两个参数为第一个预测的结果，最后一个参数为第二个预测的结果
 	

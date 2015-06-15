@@ -260,7 +260,7 @@ public final class BLController implements BLService {
 		return result;
 	}
 	
-	public void getDataForStrengthRegression(int scale) {
+	public double[][] getDataForStrengthRegression(int scale) {
 		data.setSeason("All");
 		analyse();
 		double result[][] = new double [scale][3];
@@ -281,9 +281,10 @@ public final class BLController implements BLService {
 				result[row][1] = getStrengthDiff(po.getTeam2().getAbbreviation(), po.getTeam1().getAbbreviation(), n, i,theta,k);
 				result[row][2] = -1.0;
 			}
+			return result;
 	}
 	
-	public void getDataForStrengthVariables(String teamabr1, String teamabr2) {
+	public double[][] getDataForStrengthVariables(String teamabr1, String teamabr2) {
 		data.setSeason("All");
 		analyse();
 		double result[][] = new double [2][3];
@@ -297,6 +298,7 @@ public final class BLController implements BLService {
 				
 				result[1][1] = getStrengthDiff(teamabr2, teamabr1, n, i,theta,k);
 				result[1][2] = -1.0;
+				return result;
 	
 	}
 	

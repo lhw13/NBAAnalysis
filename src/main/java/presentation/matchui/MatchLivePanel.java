@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.Vector;
 
@@ -19,9 +20,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import presentation.ImageHandle;
 import presentation.mainui.MainFrame;
@@ -34,7 +38,6 @@ public class MatchLivePanel extends JPanel{
 	JPanel panelOfBottom = new JPanel();
 
 	private static JScrollPane sp;
-	public static JTextArea jtext;
 
 	JButton return_bt;
 
@@ -62,6 +65,10 @@ public class MatchLivePanel extends JPanel{
 	private static JTable table_2;
 	private static DefaultTableModel model_2=new DefaultTableModel();
 	private static Vector columnName_2;
+	
+	private static JTable table_live;
+	private static Vector columnName_3;
+	private static DefaultTableModel model_3=new DefaultTableModel();
 
 	JLabel live_label;
 	JLabel data_label;
@@ -237,15 +244,24 @@ public class MatchLivePanel extends JPanel{
 		scrollPane_2.setVisible(false);
 
 		//文字直播=================================================
-		jtext = new JTextArea(10, 20);
-		jtext.setLineWrap(true);
-		jtext.setWrapStyleWord(true);
-		jtext.setBackground(Color.LIGHT_GRAY);
-		jtext.setEditable(false);
-		jtext.setFont(new Font("黑体",Font.PLAIN,25));
-		jtext.setForeground(Color.BLACK);
-		sp = new JScrollPane(jtext);
-		sp.setBounds(150,280,700,650);
+		String[] names3 = new String[]{"剩余时间", "球队", "事件", "比分"};
+		columnName_3 = new Vector();
+		for(int i=0;i<names3.length;i++) {
+			columnName_3.add(names3[i]);
+		}
+		
+		table_live = new JTable();
+		table_live.setModel(model_3);
+		table_live.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		table_live.setShowGrid(false);
+		
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(JLabel.CENTER);
+		table_live.setDefaultRenderer(Object.class, tcr);
+		
+		sp = new JScrollPane();
+		sp.setViewportView(table_live);
+		sp.setBounds(50, 300, 900, 600);
 		panelOfBottom.add(sp);
 		
 		try{
@@ -258,6 +274,25 @@ public class MatchLivePanel extends JPanel{
 		}
 		
 
+	}
+	
+	public static void updateMatchInfo(ArrayList<String[]> content){
+		Vector rowDatas1 = new Vector();
+		for(int i=0;i<content.size();i++){
+			Vector rowData1 = new Vector();
+			rowData1.add(content.get(i)[0]);
+			rowData1.add(content.get(i)[1]);
+			rowData1.add(content.get(i)[2]);
+			rowData1.add(content.get(i)[3]);
+			rowDatas1.add(rowData1);
+		}
+		model_3.setDataVector(rowDatas1, columnName_3);
+		model_3.setColumnCount(table_live.getColumnCount());
+		model_3.setRowCount(rowDatas1.size());
+		int[] width={10,10,300,10};
+		table_live.setColumnModel(getColumn(table_live, width));
+		table_live.setModel(model_3);
+		table_live.updateUI();
 	}
 	
 	public static void updateLabel(){

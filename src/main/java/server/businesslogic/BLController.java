@@ -247,6 +247,7 @@ public final class BLController implements BLService {
 	}
 	
 	public void getDataForStrengthRegression(int scale) {
+		data.setSeason("All");
 		analyse();
 		double result[][] = new double [scale][3];
 		double theta=0.048;
@@ -269,6 +270,7 @@ public final class BLController implements BLService {
 	}
 	
 	public void getDataForStrengthVariables(String teamabr1, String teamabr2) {
+		data.setSeason("All");
 		analyse();
 		double result[][] = new double [2][3];
 		double theta=0.048;

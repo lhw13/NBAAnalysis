@@ -391,8 +391,7 @@ public class AntBasketball implements Runnable {
 		// System.out.print("\n");
 		return result;
 	}
-
-	private static final int stringToInt(String str) {
+	public static final int stringToInt(String str) {
 		int result;
 		try {
 			result = Integer.parseInt(str);

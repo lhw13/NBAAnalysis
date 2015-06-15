@@ -453,8 +453,6 @@ public class PredictStatTest {
 	@Test
 	public void testAvalible()
 	{
-		DataController d=new DataController();
-		d.loadData();
 		BLController bl = BLController.getInstance();
 		bl.getDataForRegression(1000);
 	}
@@ -533,6 +531,8 @@ public class PredictStatTest {
 	
 	@Test
 	public void testRegression2() {
+		DataController data = new DataController();
+		data.loadData();
 		BLController bl = BLController.getInstance();
 		double a[][]=bl.getDataForStrengthRegression(2000);
 		try

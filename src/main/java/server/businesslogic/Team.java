@@ -245,23 +245,23 @@ public  final class Team {
 		return true;
 	}
 
-	public double getStrength(int n,int now,double theta, double k) {
+	public double getStrength(int n,int now,double theta, double k,int d) {
 		if(n==0)
 			return 0;
 		BLController bl = BLController.getInstance();
 		ArrayList<MatchPO> all = bl.getMatches();
 		if(now==-1)
-			now = all.size();
+			now = all.size()-d;
 		if(strengthAvalible.get(now))
 		{
 			return strengthList.get(now);
 		}
-		MatchPO mpo = all.get(now-1);
+		MatchPO mpo = all.get(now-1+d);
 		int contain = mpo.containsTeam(teamPO.getAbbreviation());
 		if(contain<0)
 		{
 			//System.out.println("miss");
-			strengthList.set(now, getStrength(n-1,now-1,theta,k));
+			strengthList.set(now, getStrength(n-1,now-1,theta,k,d));
 			strengthAvalible.set(now,true);
 			return strengthList.get(now);
 		}
@@ -272,7 +272,7 @@ public  final class Team {
 			{
 				String abr = mpo.getTeam2().getAbbreviation();
 				Team t = bl.getTeamsHash().get(abr);
-				strengthList.set(now, getStrength(n-1,now-1,theta,k)+Math.pow(Math.E,-k*(n-1))*theta*(-mpo.getWin(abr)-(getStrength(n-1,now-1,theta,k)-t.getStrength(n-1, now-1,theta,k))));
+				strengthList.set(now, getStrength(n-1,now-1,theta,k,d)+Math.pow(Math.E,-k*(n-1))*theta*(-mpo.getWin(abr)-(getStrength(n-1,now-1,theta,k,d)-t.getStrength(n-1, now-1,theta,k,d))));
 				strengthAvalible.set(now,true);
 				return strengthList.get(now);
 			}
@@ -280,7 +280,7 @@ public  final class Team {
 			{
 				String abr = mpo.getTeam1().getAbbreviation();
 				Team t = bl.getTeamsHash().get(abr);
-				strengthList.set(now, getStrength(n-1,now-1,theta,k)+Math.pow(Math.E,-k*(n-1))*theta*(-mpo.getWin(abr)-(getStrength(n-1,now-1,theta,k)-t.getStrength(n-1, now-1,theta,k))));
+				strengthList.set(now, getStrength(n-1,now-1,theta,k,d)+Math.pow(Math.E,-k*(n-1))*theta*(-mpo.getWin(abr)-(getStrength(n-1,now-1,theta,k,d)-t.getStrength(n-1, now-1,theta,k,d))));
 				strengthAvalible.set(now,true);
 				return strengthList.get(now);
 			}

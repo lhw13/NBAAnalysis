@@ -344,7 +344,7 @@ public final class BLController implements BLService {
 	{
 		Team team1 = teamsHash.get(teamabr1);
 		Team team2 = teamsHash.get(teamabr2);
-		return team1.getStrength(n, now,theta,k)-team2.getStrength(n, now,theta,k);
+		return team1.getStrength(n, now,theta,k,matches.size()-6000)-team2.getStrength(n, now,theta,k,matches.size()-6000);
 	}
 	
 	public ArrayList<TeamVO> getHotTeamVO(String sortCon) {
@@ -658,6 +658,8 @@ public final class BLController implements BLService {
 			Team foundTeam = teamsHash.get(ab);
 			if (foundTeam == null) {
 				Team tTeam = new Team(teamPOHash.get(ab));
+				if(teamPOHash.get(ab)==null)
+					System.out.println(ab);
 				if(theSeason)
 				{//if the match belongs to this season
 					tTeam.addThisTeam(timtemp1);

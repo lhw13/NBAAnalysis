@@ -625,10 +625,22 @@ public class LiveThread extends TimerTask {
 			BufferedReader br = new BufferedReader(reader); 
 			String line = " ";  
 
+			int index = 0;
 			while (line != null) {  
 				line = br.readLine(); 
 				if(line == null){
 					break;
+				}
+				if(line.contains("<td colspan=\"4\" style=\"text-align:center\">")){
+					Pattern pattern1 = Pattern.compile(">(.*)</td>");
+					Matcher matcher1 = pattern1.matcher(line);  
+					if (matcher1.find()) {
+						line = matcher1.group(1).replaceAll("<b>", "");
+						line = line.replaceAll("</b>", "");
+						content += line + "\n";
+						content += "\n";
+						index = 0;
+					}
 				}
 				Pattern pattern1 = Pattern.compile(">(.*)</td>");
 				Matcher matcher1 = pattern1.matcher(line);  
@@ -636,10 +648,16 @@ public class LiveThread extends TimerTask {
 					line = matcher1.group(1).replaceAll("<b>", "");
 					line = line.replaceAll("</b>", "");
 					content += line + "\n";
+					index++;
+					if(index==4){
+						content += "\n";
+						index = 0;
+					}
 				}
 				if(line.substring(0, 1).equals(" ")){
 					line = line.replaceAll("</td>","").trim();
 					content += line + "\n";
+					index++;
 				}
 			}
 

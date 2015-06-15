@@ -119,7 +119,7 @@ public class MainFrame {
 	
 	public static String season="13-14";
 	public static boolean seasonChange = false;
-	public static int date=3;
+	public static int date=5;
 	
 	public static String teamNAME = "";
 	public static TeamWithPlayersVO TWPVO;

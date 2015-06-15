@@ -453,6 +453,8 @@ public class PredictStatTest {
 	@Test
 	public void testAvalible()
 	{
+		DataController d=new DataController();
+		d.loadData();
 		BLController bl = BLController.getInstance();
 		bl.getDataForRegression(1000);
 	}

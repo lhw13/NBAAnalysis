@@ -258,7 +258,7 @@ public class MatchSelectionPanel extends JPanel {
 				MainFrame.frame.validate();//保证重画后的窗口能正常立即显示 
 				MainFrame.mpp.update();
 				MainFrame.backPanels.add(MainFrame.currentPanel);
-				MainFrame.currentPanel = Panels.MatchPlayoffPanel;
+				MainFrame.currentPanel = Panels.TeamAnalysePanel;
 
 			}
 		});

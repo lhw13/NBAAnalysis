@@ -1,11 +1,16 @@
 package presentation.teamsui;
 
+import hotui.HotRankingPanel;
+
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -64,6 +69,9 @@ public class TeamAnalysePanel extends JPanel {
 	BLService blservice = BLController.getInstance();
 
 	JPanel panelOfBottom = new JPanel();
+	JPanel panelOfAnalyse = new JPanel();
+	JPanel panelOfPredict = new JPanel();
+	
 	JPanel pie;
 	JPanel box;
 	
@@ -74,6 +82,10 @@ public class TeamAnalysePanel extends JPanel {
 	String abbreviation;
 	
 	JLabel label ;
+	JLabel label_analyse;
+	JLabel label_predict;
+	JLabel label_pk1;
+	JLabel label_pk2;
 	public TeamAnalysePanel() {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
@@ -84,7 +96,17 @@ public class TeamAnalysePanel extends JPanel {
 		add(scrollPane);
 		//panel===========================================================
 		panelOfBottom.setLayout(null);
-		panelOfBottom.setPreferredSize(new Dimension(1000, 2000));
+		panelOfBottom.setPreferredSize(new Dimension(1000, 1800));
+		
+		panelOfAnalyse.setLayout(null);
+		panelOfAnalyse.setBounds(0, 50, 1000, 1700);
+		panelOfBottom.add(panelOfAnalyse);
+		panelOfAnalyse.setVisible(true);
+		
+		panelOfPredict.setLayout(null);
+		panelOfPredict.setBounds(0, 50, 1000, 550);
+		panelOfBottom.add(panelOfPredict);
+		panelOfPredict.setVisible(false);
 		//button===========================================================
 		button = new JButton("返回");
 		button.setBounds(30, 21, 111, 26);
@@ -104,7 +126,27 @@ public class TeamAnalysePanel extends JPanel {
 		
 		label = new JLabel("New label");
 		label.setBounds(30, 91, 200, 200);
-		panelOfBottom.add(label);
+		panelOfAnalyse.add(label);
+		
+		label_analyse = new JLabel("球队分析");
+		label_analyse.setFont(new Font("宋体", Font.PLAIN, 14));
+		label_analyse.setBounds(216, 27, 67, 20);
+		panelOfBottom.add(label_analyse);
+		label_analyse.addMouseListener(new Listener1());
+		
+		label_predict = new JLabel("预测PK");
+		label_predict.setFont(new Font("宋体", Font.PLAIN, 14));
+		label_predict.setBounds(293, 27, 67, 20);
+		label_predict.addMouseListener(new Listener1());
+		panelOfBottom.add(label_predict);
+		
+		label_pk1  = new JLabel("p1");
+		label_pk1.setBounds(30, 91, 200, 200);
+		panelOfPredict.add(label_pk1);
+		
+		label_pk2 = new JLabel("p2");
+		label_pk2.setBounds(530, 91, 200, 200);
+		panelOfPredict.add(label_pk2);
 	}
 
 	public void update(String abb) {
@@ -119,7 +161,7 @@ public class TeamAnalysePanel extends JPanel {
 			pie = null;
 		}
 		pie = createDemoPanel();
-		pie.setBounds(310, 680, 500, 410);
+		pie.setBounds(310, 80, 500, 410);
 		pie.setVisible(true);		
 		pie.updateUI();
 		
@@ -128,12 +170,12 @@ public class TeamAnalysePanel extends JPanel {
 			box = null;
 		}
 		box = createDemoPanel_1();
-		box.setBounds(50, 1200, 900, 400);
+		box.setBounds(50, 600, 900, 400);
 		box.setVisible(true);		
 		box.updateUI();
-		panelOfBottom.add(pie);
-		panelOfBottom.add(box);
-		panelOfBottom.repaint();
+		panelOfAnalyse.add(pie);
+		panelOfAnalyse.add(box);
+		panelOfAnalyse.repaint();
 		write("datax.txt","datay.txt");
 		Process proc;
 		try {
@@ -359,7 +401,37 @@ public class TeamAnalysePanel extends JPanel {
 		chartpanel.setMouseWheelEnabled(false);
 		return chartpanel;
 	}
-	
+	public class Listener1 extends MouseAdapter{
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			JLabel label1 =(JLabel) e.getSource();
+			label1.setCursor(Cursor
+					.getPredefinedCursor(Cursor.HAND_CURSOR));
+		}
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {			
+			JLabel label1 =(JLabel) e.getSource();
+			if(label1.getText().startsWith("球队")){
+				
+				label_analyse.setForeground(Color.WHITE);
+				label_predict.setForeground(Color.gray);
+				
+				panelOfAnalyse.setVisible(true);
+				panelOfPredict.setVisible(false);
+			} else if(label1.getText().startsWith("预测")) {
+				label_predict.setForeground(Color.WHITE);
+				label_analyse.setForeground(Color.gray);
+				panelOfAnalyse.setVisible(false);
+				panelOfPredict.setVisible(true);
+			} 
+		}		
+		public void mouseExited(MouseEvent e) {
+			JLabel label1 =(JLabel) e.getSource();
+			label1.setCursor(Cursor.getDefaultCursor());
+		}
+	}
 	public final Comparator<PlayerVO> compareEfficientDesc = new Comparator<PlayerVO>() {  
 		  
 	    @Override  

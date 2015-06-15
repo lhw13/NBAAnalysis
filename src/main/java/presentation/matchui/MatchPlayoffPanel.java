@@ -40,39 +40,11 @@ public class MatchPlayoffPanel extends JPanel implements MouseListener{
 	JLabel label_background;
 	JLabel big_l;
 	JLabel big_r;
-	JLabel l1;
-	JLabel l2;
-	JLabel l3;
-	JLabel l4;
-	JLabel l5;
-	JLabel l6;
-	JLabel l7;
-	JLabel l8;
-	JLabel r1;
-	JLabel r2;
-	JLabel r3;
-	JLabel r4;
-	JLabel r5;
-	JLabel r6;
-	JLabel r7;
-	JLabel r8;
 	
-	JLabel ll1;
-	JLabel ll2;
-	JLabel ll3;
-	JLabel ll4;
-	JLabel rr1;
-	JLabel rr2;
-	JLabel rr3;
-	JLabel rr4;
-	
-	JLabel lll1;
-	JLabel lll2;
-	JLabel rrr1;
-	JLabel rrr2;
-	
-	JLabel c1;
-	JLabel c2;
+	JLabel label_l[];
+	JLabel label_r[];
+	JLabel label_c[];
+
 	JButton button;
 	
 	private JTable table;
@@ -97,133 +69,65 @@ public class MatchPlayoffPanel extends JPanel implements MouseListener{
 		panelOfBottom.setLayout(null);
 		panelOfBottom.addMouseListener(this);
 //label==================================================================
-		 l1 = new JLabel("l1");
-		 l1.setBounds(172, 55, WIDTH, HIGHT);
+		 label_l = new JLabel[14];
+		 for(int i=0;i<label_l.length;i++) {
+			 label_l[i] = new JLabel();
+			 label_l[i].setSize(WIDTH, HIGHT);
+			 panelOfBottom.add(label_l[i]);
+			 
+		 }
+		 label_r = new JLabel[14];
+		 for(int i=0;i<label_r.length;i++) {
+			 label_r[i] = new JLabel();
+			 label_r[i].setSize(WIDTH, HIGHT);
+			 panelOfBottom.add(label_r[i]);
+			 
+		 }
+		 label_c = new JLabel[2];
+		 for(int i=0;i<label_c.length;i++) {
+			 label_c[i] = new JLabel();
+			 label_c[i].setSize(WIDTH, HIGHT);
+			 panelOfBottom.add(label_c[i]);
+			 
+		 }
+		 label_l[0].setLocation(172, 55);
+		 label_l[1].setLocation(172, 108);
+		 label_l[2].setLocation(172, 180);
+		 label_l[3].setLocation(172, 233);
+		 label_l[4].setLocation(172, 307);
+		 label_l[5].setLocation(172, 351);
+		 label_l[6].setLocation(172, 434);
+		 label_l[7].setLocation(172, 480);
+		 label_l[8].setLocation(302, 130);
+		 label_l[9].setLocation(302, 180);
+		 label_l[10].setLocation(302, 380);
+		 label_l[11].setLocation(302, 433);
+		 label_l[12].setLocation(355, 253);
+		 label_l[13].setLocation(355, 313);
 		 
-		 l2 = new JLabel("l2");
-		 l2.setLocation(172, 108);
-		 l2.setSize(WIDTH, HIGHT);
-		 l3 = new JLabel("l3");
-		 l3.setSize(WIDTH, HIGHT);
-		 l3.setLocation(172, 180);
-		 l4 = new JLabel("l4");
-		 l4.setSize(WIDTH, HIGHT);
-		 l4.setLocation(172, 233);
-		 l5 = new JLabel("l5");
-		 l5.setSize(WIDTH, HIGHT);
-		 l5.setLocation(172, 307);
-		 l6 = new JLabel("l6");
-		 l6.setSize(WIDTH, HIGHT);
-		 l6.setLocation(172, 351);
-		 l7 = new JLabel("l7");
-		 l7.setSize(WIDTH, HIGHT);
-		 l7.setLocation(172, 434);
-		 l8 = new JLabel("l8");
-		 l8.setSize(WIDTH, HIGHT);
-		 l8.setLocation(172, 480);
-		 r1 = new JLabel("r1");
-		 r1.setSize(WIDTH, HIGHT);
-		 r1.setLocation(732, 55);
-		 r2 = new JLabel("r2");
-		 r2.setLocation(732, 108);
-		 r2.setSize(WIDTH, HIGHT);
-		 r3 = new JLabel("r3");
-		 r3.setLocation(732, 180);
-		 r3.setSize(WIDTH, HIGHT);
-		 r4 = new JLabel("r4");
-		 r4.setLocation(732, 233);
-		 r4.setSize(WIDTH, HIGHT);
-		 r5 = new JLabel("r5");
-		 r5.setLocation(732, 307);
-		 r5.setSize(WIDTH, HIGHT);
-		 r6 = new JLabel("r6");
-		 r6.setLocation(732, 351);
-		 r6.setSize(WIDTH, HIGHT);
-		 r7 = new JLabel("r7");
-		 r7.setLocation(732, 434);
-		 r7.setSize(WIDTH, HIGHT);
-		 r8 = new JLabel("r8");
-		 r8.setLocation(732, 480);
-		 r8.setSize(WIDTH, HIGHT);
+		 label_r[0].setLocation(732, 55);
+		 label_r[1].setLocation(732, 108);
+		 label_r[2].setLocation(732, 180);
+		 label_r[3].setLocation(732, 233);
+		 label_r[4].setLocation(732, 307);
+		 label_r[5].setLocation(732, 351);
+		 label_r[6].setLocation(732, 434);
+		 label_r[7].setLocation(732, 480);
+		 label_r[8].setLocation(618, 130);
+		 label_r[9].setLocation(618, 180);
+		 label_r[10].setLocation(618, 380);
+		 label_r[11].setLocation(618, 433);
+		 label_r[12].setLocation(570, 253);
+		 label_r[13].setLocation(570, 313);
 		
-		 ll1 = new JLabel("ll1");
-		 ll1.setSize(WIDTH, HIGHT);
-		 ll1.setLocation(302, 130);
-		 ll2 = new JLabel("ll2");
-		 ll2.setSize(WIDTH, HIGHT);
-		 ll2.setLocation(302, 180);
-		 ll3 = new JLabel("ll3");
-		 ll3.setSize(WIDTH, HIGHT);
-		 ll3.setLocation(302, 380);
-		 ll4 = new JLabel("ll4");
-		 ll4.setSize(WIDTH, HIGHT);
-		 ll4.setLocation(302, 433);
-		 rr1 = new JLabel("rr1");
-		 rr1.setSize(WIDTH, HIGHT);
-		 rr1.setLocation(618, 130);
-		 rr2 = new JLabel("rr2");
-		 rr2.setSize(WIDTH, HIGHT);
-		 rr2.setLocation(618, 180);
-		 rr3 = new JLabel("rr3");
-		 rr3.setSize(WIDTH, HIGHT);
-		 rr3.setLocation(618, 380);
-		 rr4 = new JLabel("rr4");
-		 rr4.setSize(WIDTH, HIGHT);
-		 rr4.setLocation(618, 433);
-		
-		 lll1 = new JLabel("lll1");
-		 lll1.setSize(WIDTH, HIGHT);
-		 lll1.setLocation(355, 253);
-		 lll2 = new JLabel("lll2");
-		 lll2.setSize(WIDTH, HIGHT);
-		 lll2.setLocation(355, 313);
-		 rrr1 = new JLabel("rrr1");
-		 rrr1.setSize(WIDTH, HIGHT);
-		 rrr1.setLocation(570, 253);
-		 rrr2 = new JLabel("rrr2");
-		 rrr2.setSize(WIDTH, HIGHT);
-		 rrr2.setLocation(570, 313);
-		
-		 c1 = new JLabel("c1");
-		 c1.setSize(WIDTH, HIGHT);
-		 c1.setLocation(460, 188);
-		 c2 = new JLabel("c2");
-		 c2.setSize(WIDTH, HIGHT);
-		 c2.setLocation(460, 250);
+		 label_c[0].setLocation(460, 188);
+		 label_c[1].setLocation(460, 250);
 		
 		label_background = new JLabel();
 		label_background.setBounds(159, 74, 690, 493);
 		panelOfBottom.add(label_background);
-		panelOfBottom.add(l1);
-		panelOfBottom.add(l2);
-		panelOfBottom.add(l3);
-		panelOfBottom.add(l4);
-		panelOfBottom.add(l5);
-		panelOfBottom.add(l6);
-		panelOfBottom.add(l7);
-		panelOfBottom.add(l8);
-		panelOfBottom.add(r1);
-		panelOfBottom.add(r2);
-		panelOfBottom.add(r3);
-		panelOfBottom.add(r4);
-		panelOfBottom.add(r5);
-		panelOfBottom.add(r6);
-		panelOfBottom.add(r7);
-		panelOfBottom.add(r8);
-		panelOfBottom.add(ll1);
-		panelOfBottom.add(ll2);
-		panelOfBottom.add(ll3);
-		panelOfBottom.add(ll4);
-		panelOfBottom.add(rr1);
-		panelOfBottom.add(rr2);
-		panelOfBottom.add(rr3);
-		panelOfBottom.add(rr4);
-		panelOfBottom.add(lll1);
-		panelOfBottom.add(lll2);
-		panelOfBottom.add(rrr1);
-		panelOfBottom.add(rrr2);
-		panelOfBottom.add(c1);
-		panelOfBottom.add(c2);
+		
+		
 		
 //ImageIcon===========================================================
 		ImageIcon backgroundIcon = new ImageIcon("conf/pictures/playoffs.png");
@@ -300,163 +204,41 @@ public class MatchPlayoffPanel extends JPanel implements MouseListener{
 	}
 
 	public void update() {
-		ImageIcon lp1 = new ImageIcon("conf/smallTeam/ATL.png");
-		
-		l1.setIcon(lp1);	
-		
-		ImageIcon lp2 = new ImageIcon("conf/smallTeam/ATL.png");
-		
-		l2.setIcon(lp2);
-		
-		ImageIcon lp3 = new ImageIcon("conf/smallTeam/ATL.png");
-		
-		l3.setIcon(lp3);
-		
-		ImageIcon lp4 = new ImageIcon("conf/smallTeam/ATL.png");
-		
-		l4.setIcon(lp4);
-		
-		ImageIcon lp5 = new ImageIcon("conf/smallTeam/ATL.png");
-	
-		l5.setIcon(lp5);
-		
-		ImageIcon lp6 = new ImageIcon("conf/smallTeam/ATL.png");
-		
-		l6.setIcon(lp6);
-		
-		ImageIcon lp7 = new ImageIcon("conf/smallTeam/ATL.png");
-		
-		l7.setIcon(lp7);
-		
-		ImageIcon lp8 = new ImageIcon("conf/smallTeam/ATL.png");
-	
-		l8.setIcon(lp8);
-		
-		ImageIcon llp1 = new ImageIcon("conf/smallTeam/ATL.png");
-		
-		ll1.setIcon(llp1);	
-		
-		ImageIcon llp2 = new ImageIcon("conf/smallTeam/ATL.png");
-		
-		ll2.setIcon(llp2);
-		
-		ImageIcon llp3 = new ImageIcon("conf/smallTeam/ATL.png");
-		
-		ll3.setIcon(llp3);
-		
-		ImageIcon llp4 = new ImageIcon("conf/smallTeam/ATL.png");
-		llp4.setImage(llp4.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		ll4.setIcon(llp4);
-		
-		ImageIcon lllp1 = new ImageIcon("conf/smallTeam/ATL.png");
-		lllp1.setImage(lllp1.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		lll1.setIcon(lllp1);
-		
-		ImageIcon lllp2 = new ImageIcon("conf/smallTeam/ATL.png");
-		lllp2.setImage(lllp2.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		lll2.setIcon(lllp2);
-		
-		ImageIcon cp1 = new ImageIcon("conf/smallTeam/ATL.png");
-		cp1.setImage(cp1.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		c1.setIcon(cp1);
-		
-		ImageIcon cp2 = new ImageIcon("conf/smallTeam/ATL.png");
-		cp2.setImage(cp2.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		c2.setIcon(cp2);
-		
-		ImageIcon rp1 = new ImageIcon("conf/smallTeam/ATL.png");
-		rp1.setImage(rp1.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		r1.setIcon(rp1);	
-		
-		ImageIcon rp2 = new ImageIcon("conf/smallTeam/ATL.png");
-		rp2.setImage(rp2.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		r2.setIcon(rp2);
-		
-		ImageIcon rp3 = new ImageIcon("conf/smallTeam/ATL.png");
-		rp3.setImage(rp3.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		r3.setIcon(rp3);
-		
-		ImageIcon rp4 = new ImageIcon("conf/smallTeam/ATL.png");
-		rp4.setImage(rp4.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		r4.setIcon(rp4);
-		
-		ImageIcon rp5 = new ImageIcon("conf/smallTeam/ATL.png");
-		rp5.setImage(rp5.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		r5.setIcon(rp5);
-		
-		ImageIcon rp6 = new ImageIcon("conf/smallTeam/ATL.png");
-		rp6.setImage(rp6.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		r6.setIcon(rp6);
-		
-		ImageIcon rp7 = new ImageIcon("conf/smallTeam/ATL.png");
-		rp7.setImage(rp7.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		r7.setIcon(rp7);
-		
-		ImageIcon rp8 = new ImageIcon("conf/smallTeam/ATL.png");
-		rp8.setImage(rp8.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		r8.setIcon(rp8);
-		
-		ImageIcon rrp1 = new ImageIcon("conf/smallTeam/ATL.png");
-		rrp1.setImage(rrp1.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		rr1.setIcon(rrp1);
-		
-		ImageIcon rrp2 = new ImageIcon("conf/smallTeam/ATL.png");
-		rrp2.setImage(rrp2.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		rr2.setIcon(rrp2);
-		
-		ImageIcon rrp3 = new ImageIcon("conf/smallTeam/ATL.png");
-		rrp3.setImage(rrp3.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		rr3.setIcon(rrp3);
-		
-		ImageIcon rrp4 = new ImageIcon("conf/smallTeam/ATL.png");
-		rrp4.setImage(rrp4.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		rr4.setIcon(rrp4);
-		
-		ImageIcon rrrp1 = new ImageIcon("conf/smallTeam/ATL.png");
-		rrrp1.setImage(rrrp1.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		rrr1.setIcon(rrrp1);
-		
-		ImageIcon rrrp2 = new ImageIcon("conf/smallTeam/ATL.png");
-		rrrp2.setImage(rrrp2.getImage().getScaledInstance(HIGHT, HIGHT,
-				Image.SCALE_DEFAULT));
-		rrr2.setIcon(rrrp2);
 		PlayOffListVO list = blservice.getPlayOff();
 		ArrayList<PlayoffVO> playoffE = list.getPlayOffE();
 		ArrayList<PlayoffVO> playoffW = list.getPlayOffW();
 		ArrayList<PlayoffVO> playoffFinal = list.getFinals();
-		System.out.println("E===================");
-		for(int i=0;i<playoffE.size();i++) {
-			PlayoffVO vo = playoffE.get(i);
-			System.out.println(vo.getAbr1()+":"+vo.getAbr2()+"  "+vo.getWin1()+":"+vo.getWin2());
-		}
-		System.out.println("w===================");
-		for(int i=0;i<playoffW.size();i++) {
+		for(int i=0,j=0;i<playoffW.size();i++,j+=2) {
 			PlayoffVO vo = playoffW.get(i);
-			System.out.println(vo.getAbr1()+":"+vo.getAbr2()+"  "+vo.getWin1()+":"+vo.getWin2());
+			label_l[j].setText(Integer.toString(vo.getWin1()));
+			label_l[j+1].setText(Integer.toString(vo.getWin2()));
+			ImageIcon icon = new ImageIcon("conf/smallTeam/"+vo.getAbr1()+".png");	
+			
+			label_l[j].setIcon(icon);
+			icon = new ImageIcon("conf/smallTeam/"+vo.getAbr2()+".png");
+			
+			label_l[j+1].setIcon(icon);
 		}
-		//System.out.println("f===================");
-		
-		//PlayoffVO vo = playoffFinal.get(0);
-		//System.out.println(vo.getAbr1()+":"+vo.getAbr2()+"  "+vo.getWin1()+":"+vo.getWin2());
-		
+		for(int i=0,j=0;i<playoffE.size();i++,j+=2) {
+			PlayoffVO vo = playoffE.get(i);
+			label_r[j].setText(Integer.toString(vo.getWin1()));
+			label_r[j+1].setText(Integer.toString(vo.getWin2()));
+			ImageIcon icon = new ImageIcon("conf/smallTeam/"+vo.getAbr1()+".png");	
+			
+			label_r[j].setIcon(icon);
+			icon = new ImageIcon("conf/smallTeam/"+vo.getAbr2()+".png");
+			
+			label_r[j+1].setIcon(icon);
+		}
+		for(int i=0,j=0;i<playoffFinal.size();i++,j+=2) {
+			PlayoffVO vo = playoffFinal.get(i);
+			label_c[j].setText(Integer.toString(vo.getWin1()));
+			label_c[j+1].setText(Integer.toString(vo.getWin2()));
+			ImageIcon icon = new ImageIcon("conf/smallTeam/"+vo.getAbr1()+".png");	
+			label_c[j].setIcon(icon);
+			icon = new ImageIcon("conf/smallTeam/"+vo.getAbr2()+".png");	
+			label_c[j+1].setIcon(icon);
+		}
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {

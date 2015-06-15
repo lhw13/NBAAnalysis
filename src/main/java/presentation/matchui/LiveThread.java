@@ -14,13 +14,13 @@ import java.util.regex.Pattern;
 
 public class LiveThread extends TimerTask {
 
-	public static String content;
-
 	public static HashMap<String,String> team_score;
 	public static HashMap<String,String> each_part;
 	public static HashMap<String,String[]> player_data_1;
 	public static HashMap<String,String[]> player_data_2;
-
+	
+	public static ArrayList<String[]> content;
+	
 	@Override
 	public void run() {
 		
@@ -48,11 +48,10 @@ public class LiveThread extends TimerTask {
 		
 		if(MatchLivePanel.live_or_data==1){
 			//get Live=====================================
-			content = "";
 			readLive();
 			MatchLivePanel.updateLabel();
 			MatchLivePanel.updateLiveInfo();
-			MatchLivePanel.jtext.setText(content);
+			MatchLivePanel.updateMatchInfo(content);
 			
 		}else if(MatchLivePanel.live_or_data==-1){
 			//get player_data==============================
@@ -65,9 +64,9 @@ public class LiveThread extends TimerTask {
 			MatchLivePanel.updateTheData();
 		}else{
 			//get Live=====================================
-			content = "";
+			content = new ArrayList<String[]>();
 			readLive();
-			MatchLivePanel.jtext.setText(content);
+			MatchLivePanel.updateMatchInfo(content);
 			//get player_data==============================
 			player_data_1 = new HashMap<String,String[]>();
 			player_data_2 = new HashMap<String,String[]>();
@@ -626,6 +625,7 @@ public class LiveThread extends TimerTask {
 			String line = " ";  
 
 			int index = 0;
+			String[] strArray = new String[4]; 
 			while (line != null) {  
 				line = br.readLine(); 
 				if(line == null){
@@ -637,8 +637,8 @@ public class LiveThread extends TimerTask {
 					if (matcher1.find()) {
 						line = matcher1.group(1).replaceAll("<b>", "");
 						line = line.replaceAll("</b>", "");
-						content += line + "\n";
-						content += "\n";
+						String[] info = {"","",line,""};
+						content.add(info);
 						index = 0;
 					}
 				}
@@ -647,16 +647,18 @@ public class LiveThread extends TimerTask {
 				if (matcher1.find()) {
 					line = matcher1.group(1).replaceAll("<b>", "");
 					line = line.replaceAll("</b>", "");
-					content += line + "\n";
+					strArray[index] = line;
 					index++;
 					if(index==4){
-						content += "\n";
 						index = 0;
+						content.add(strArray);
+						strArray = null;
+						strArray = new String[4];
 					}
 				}
 				if(line.substring(0, 1).equals(" ")){
 					line = line.replaceAll("</td>","").trim();
-					content += line + "\n";
+					strArray[index] = line;
 					index++;
 				}
 			}

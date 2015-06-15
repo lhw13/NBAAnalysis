@@ -1,6 +1,7 @@
 package dataservice;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
@@ -38,4 +39,8 @@ public interface DataService {
 	public ArrayList<MatchPO> getAllMatch2();
 	public void setSeason(String season);
 	public void loadData();
+	public  ArrayList<MatchPO> getMatchByDate(Calendar date);
+	public 	ArrayList<PlayerInMatchesPO> getPlayerInMatchesPOByName(String name);
+	public  ArrayList<MatchPO> getMatchPObyTeam(String team);
+	public ArrayList<ScorePO> getPK(String ab1,String ab2);
 }

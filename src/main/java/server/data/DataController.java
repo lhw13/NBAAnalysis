@@ -1,6 +1,7 @@
 package server.data;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
@@ -8,12 +9,15 @@ import javax.swing.ImageIcon;
 import org.apache.batik.swing.JSVGCanvas;
 
 import server.po.MatchPO;
+import server.po.PlayerInMatchesPO;
 import server.po.PlayerPO;
+import server.po.ScorePO;
 import server.po.TeamPO;
 import dataservice.DataService;
 
 public final class DataController implements DataService {
 	String previousseason;
+
 	public HashMap<String, PlayerPO> getAllPlayers() {
 		// ArrayList<PlayerPO> playerPOList = PlayersData.getPlayerPOList();
 		ArrayList<PlayerPO> playerPOList = null;
@@ -55,10 +59,9 @@ public final class DataController implements DataService {
 	public ArrayList<MatchPO> getAllMatch() {
 		// return MatchesData.getMatchPOList();
 
-		if(DatabaseController.getSeason().equals("All"))
-		{
+		if (DatabaseController.getSeason().equals("All")) {
 			setSeason(previousseason);
-			return getAllMatch2();//added by lhw
+			return getAllMatch2();// added by lhw
 		}
 		ArrayList<MatchPO> matchPOList = null;
 		try {
@@ -132,12 +135,48 @@ public final class DataController implements DataService {
 		return new ArrayList<MatchPO>();
 	}
 
+	public ArrayList<MatchPO> getMatchByDate(Calendar date) {
+		try {
+			return DatabaseController.getMatchByDate(date);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public ArrayList<PlayerInMatchesPO> getPlayerInMatchesPOByName(String name) {
+		try {
+			return DatabaseController.getPlayerInMatchesPOByName(name);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public ArrayList<MatchPO> getMatchPObyTeam(String team) {
+		try {
+			return DatabaseController.getMatchPObyTeam(team);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public ArrayList<ScorePO> getPK(String ab1, String ab2) {
+		try {
+			return DatabaseController.getPK(ab1, ab2);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	public boolean isDEL() {
 		return MatchesData.isDEL();
 	}
 
 	public void setSeason(String season) {
-		if(season.equals("All"))
+		if (season.equals("All"))
 			previousseason = DatabaseController.getSeason();
 		DatabaseController.setSeason(season);
 		MatchesData.isDEL = true;
@@ -157,4 +196,5 @@ public final class DataController implements DataService {
 		tb.start();
 		tc.start();
 	}
+
 }

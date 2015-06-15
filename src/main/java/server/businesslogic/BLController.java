@@ -158,6 +158,8 @@ public final class BLController implements BLService {
 			result.add(new PlayoffVO(abr1,abr2));
 		}
 		PlayoffVO pf = result.get(contain);
+		if(abr1.equals(pf.getAbr2()))
+			win=-win;
 		if(win>0)
 			pf.incre1();
 		else

@@ -9,6 +9,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
@@ -29,8 +31,10 @@ import java.util.Comparator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -52,6 +56,7 @@ import presentation.mainui.MainFrame;
 import presentation.mainui.Panels;
 import presentation.playerui.PlayerAnalysePanel;
 import presentation.playerui.PlayerInfoPanel;
+import presentation.playerui.PlayerSelectionPanel;
 import presentation.playerui.Rotator;
 import server.businesslogic.BLController;
 import server.businesslogic.Comparators;
@@ -60,6 +65,7 @@ import server.po.MatchPO;
 import server.po.PlayerInMatchesPO;
 import server.po.TeamInMatchesPO;
 import vo.PlayerVO;
+import vo.TeamVO;
 import vo.TeamWithPlayersVO;
 import blservice.BLService;
 
@@ -71,7 +77,6 @@ public class TeamAnalysePanel extends JPanel {
 	JPanel panelOfBottom = new JPanel();
 	JPanel panelOfAnalyse = new JPanel();
 	JPanel panelOfPredict = new JPanel();
-	
 	JPanel pie;
 	JPanel box;
 	
@@ -86,6 +91,11 @@ public class TeamAnalysePanel extends JPanel {
 	JLabel label_predict;
 	JLabel label_pk1;
 	JLabel label_pk2;
+	
+	JTable table;
+	
+	JComboBox combox1;
+	JComboBox combox2;
 	public TeamAnalysePanel() {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
@@ -107,7 +117,7 @@ public class TeamAnalysePanel extends JPanel {
 		panelOfPredict.setBounds(0, 50, 1000, 550);
 		panelOfBottom.add(panelOfPredict);
 		panelOfPredict.setVisible(false);
-		//button===========================================================
+	//button===========================================================
 		button = new JButton("返回");
 		button.setBounds(30, 21, 111, 26);
 		button.addActionListener(new ActionListener() {
@@ -123,6 +133,7 @@ public class TeamAnalysePanel extends JPanel {
 			}
 		});
 		panelOfBottom.add(button);
+	//label========================================================
 		
 		label = new JLabel("New label");
 		label.setBounds(30, 91, 200, 200);
@@ -145,8 +156,27 @@ public class TeamAnalysePanel extends JPanel {
 		panelOfPredict.add(label_pk1);
 		
 		label_pk2 = new JLabel("p2");
-		label_pk2.setBounds(530, 91, 200, 200);
+		label_pk2.setBounds(680, 91, 200, 200);
 		panelOfPredict.add(label_pk2);
+//table================================================================
+		table = new JTable();
+		table.setFont(new Font("宋体", Font.PLAIN, 16));
+		table.setBounds(250, 100, 386, 200);
+		panelOfPredict.add(table);
+//combobox=============================================================
+		
+		combox1 = new JComboBox();
+		combox1.setBounds(50, 50, 100, 25);
+		panelOfPredict.add(combox1);
+		combox1.addItem("选择球队");
+		combox1.addItemListener(new TeamItemListener('l'));
+		
+		combox2 = new JComboBox();
+		combox2.setBounds(680, 50, 100, 25);
+		panelOfPredict.add(combox2);
+		combox2.addItem("选择球队");
+		combox2.addItemListener(new TeamItemListener('r'));
+		
 	}
 
 	public void update(String abb) {
@@ -191,6 +221,32 @@ public class TeamAnalysePanel extends JPanel {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}  
+	}
+	
+	public void update2(String abb1, String abb2) {
+		
+		ImageIcon picture = ImageHandle.loadTeam(abb1);
+		picture.setImage(picture.getImage().getScaledInstance(200, 200,
+				Image.SCALE_DEFAULT));
+		label_pk1.setIcon(picture);
+		
+		picture = ImageHandle.loadTeam(abb2);
+		picture.setImage(picture.getImage().getScaledInstance(200, 200,
+				Image.SCALE_DEFAULT));
+		label_pk2.setIcon(picture);
+		
+	}
+	
+	public void update3() {
+		combox1.removeAllItems();
+		combox2.removeAllItems();
+		combox1.addItem("选择球队");
+		combox2.addItem("选择球队");
+		ArrayList<TeamVO> teams = blservice.getTeamAnalysis();
+		for(TeamVO temp : teams) {
+			combox1.addItem(PlayerSelectionPanel.translate(temp.getAbbreviation()));
+			combox2.addItem(PlayerSelectionPanel.translate(temp.getAbbreviation()));
+		}
 		
 	}
 	public class StreamGobbler extends Thread {  
@@ -431,6 +487,47 @@ public class TeamAnalysePanel extends JPanel {
 			JLabel label1 =(JLabel) e.getSource();
 			label1.setCursor(Cursor.getDefaultCursor());
 		}
+	}
+	
+	public class TeamItemListener implements ItemListener{
+
+		char c = ' ';
+		public TeamItemListener() {}
+
+		public TeamItemListener(char flag) {
+			c = flag;
+		}
+		public void itemStateChanged(ItemEvent e) {
+
+			if(e.getStateChange()==ItemEvent.SELECTED) {
+				if(c == 'l') { 	
+					
+					String teamSelected =e.getItem().toString();
+					if(teamSelected.equals("选择球队")) {
+						
+					} else {
+						//TeamWithPlayersVO teamvo = blservice.getTeamAnalysis();
+						ImageIcon picture = ImageHandle.loadTeam(HotRankingPanel.translate(teamSelected));
+						picture.setImage(picture.getImage().getScaledInstance(200, 200,
+								Image.SCALE_DEFAULT));
+						label_pk1.setIcon(picture);
+						
+					}
+				} else if (c == 'r') {
+					String teamSelected =e.getItem().toString();
+					if(teamSelected.equals("选择球队")) {
+						
+					} else {
+						ImageIcon picture = ImageHandle.loadTeam(HotRankingPanel.translate(teamSelected));
+						picture.setImage(picture.getImage().getScaledInstance(200, 200,
+								Image.SCALE_DEFAULT));
+						label_pk2.setIcon(picture);
+						
+					}
+				}
+			}
+		}
+
 	}
 	public final Comparator<PlayerVO> compareEfficientDesc = new Comparator<PlayerVO>() {  
 		  

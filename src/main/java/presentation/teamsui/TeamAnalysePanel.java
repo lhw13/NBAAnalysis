@@ -268,30 +268,40 @@ public class TeamAnalysePanel extends JPanel {
 			score1+=co1[0]; score2+=co1[0];
 			
 			double[][] x2 = blservice.getDataForStrengthVariables(abb1, abb2);
-			double differential=0;
+			double differential=0;//净胜分
 			
-			for(int j=1;j<x1[0].length;j++) {
-				differential+=co2[j]*x1[0][j];
+			for(int j=1;j<x2[0].length;j++) {
+				differential+=co2[j]*x2[0][j];
 				
 			}
 			differential+=co2[0];
 			int[] s = blservice.adjustPredictResult(score1, score2, differential);
-			label_score1.setText(Integer.toString(s[0]));
-			label_score2.setText(Integer.toString(s[1]));
+			label_score1.setText(Double.toString(score1));
+			label_score2.setText(Double.toString(score2));
 			
-			double[][] vdata = new double[x2.length][2];
-			for(int i=0;i<x2.length;i++) {
-				vdata[i][0] = x2[i][0];
+			double[][] datas2 = blservice.getDataForStrengthRegression(2000);
+			double[][] vdata = new double[datas2.length][2];//计算方差,参数
+			
+			for(int i=0;i<datas2.length;i++) {
+				vdata[i][0] = datas2[i][0];
 				vdata[i][1] = co2[0];
-				for(int j=1;j<x2[0].length;j++) {
-					vdata[i][1]+= co2[j]*x2[i][j];
+				for(int j=1;j<datas2[0].length;j++) {
+					vdata[i][1]+= co2[j]*datas2[i][j];
 				}
 			}
 			double var = blservice.getVariance(vdata, vdata.length);
+			File fx = Opendoc("forWinRate.txt");
+			
+			try {
+				BufferedWriter writer = new BufferedWriter(new FileWriter(fx));
+				writer.write(Double.toString(differential)+",");
+				writer.write(Double.toString(var));
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
 		}
-		
-		
 	}
 	
 	public void update3() {
@@ -343,7 +353,6 @@ public class TeamAnalysePanel extends JPanel {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}  
-		
 		co2 = read("b.txt");//第一个接口需要的系数
 		
 	}

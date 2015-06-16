@@ -91,7 +91,7 @@ public class PlayerInfoPanel extends JPanel {
 	DefaultTableModel model_9 = new DefaultTableModel();
 	BLService blservice = BLController.getInstance();
 	PlayerVO vo;
-	public String playerName;
+	public static String playerName;
 	private JTable table_5;
 	private JTable table_6;
 	private JTable table_8;
@@ -275,11 +275,23 @@ public class PlayerInfoPanel extends JPanel {
 		label.setBounds(5, 417, 110, 29);
 		panelOfBottom.add(label);	
 		
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"选择赛季","14-15", "13-14","12-13"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"选择赛季",
+				"14-15", "13-14","12-13","11-12","10-11","09-10","08-09","07-08",
+				"06-07","05-06","04-05","03-04","02-03","01-02","00-01","99-00",
+				"98-99","97-98","96-97","95-96","94-95","93-94","92-93","91-92",
+				"90-91","89-90","88-89","87-88","86-87","85-86"}));
 		comboBox.setBounds(246, 417, 110, 29);
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				showPass();
+				String season = (String)comboBox.getSelectedItem();
+				if(!season.equals("选择赛季")){
+					blservice = BLController.getInstance();
+					blservice.setSeason(season);
+					vo = blservice.getPlayerAnalysis(playerName);
+					MainFrame.season = season;
+					MainFrame.seasonChange = true;
+					showPass();
+				}
 			}
 		});
 		panelOfBottom.add(comboBox);
@@ -412,6 +424,8 @@ public class PlayerInfoPanel extends JPanel {
 		playerName = name;
 		picture = ImageHandle.loadPlayer(name);
 		pictureOfAct = ImageHandle.loadPlayerAct(name);
+		picture.setImage(picture.getImage().getScaledInstance(230, 185,
+				Image.SCALE_DEFAULT));
 		labelOfPhoto.setIcon(picture);
 		
 		vo = blservice.getPlayerAnalysis(name);

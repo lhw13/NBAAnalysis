@@ -79,50 +79,50 @@ public class MatchSelectionPanel extends JPanel {
 		comboBox = new JComboBox<String>();
 		comboBox.setBounds(250, 50, 100, 30);
 		comboBox.addItem("选择赛季");
-		comboBox.addItem("11-12");
-		comboBox.addItem("12-13");
-		comboBox.addItem("13-14");
 		comboBox.addItem("14-15");
+		comboBox.addItem("13-14");
+		comboBox.addItem("12-13");
+		comboBox.addItem("11-12");
+		comboBox.addItem("10-11");
+		comboBox.addItem("09-10");
+		comboBox.addItem("08-09");
+		comboBox.addItem("07-08");
+		comboBox.addItem("06-07");
+		comboBox.addItem("05-06");
+		comboBox.addItem("04-05");
+		comboBox.addItem("03-04");
+		comboBox.addItem("02-03");
+		comboBox.addItem("01-02");
+		comboBox.addItem("00-11");
+		comboBox.addItem("99-00");
+		comboBox.addItem("98-99");
+		comboBox.addItem("97-98");
+		comboBox.addItem("96-97");
+		comboBox.addItem("95-96");
+		comboBox.addItem("94-95");
+		comboBox.addItem("93-94");
+		comboBox.addItem("92-93");
+		comboBox.addItem("91-92");
+		comboBox.addItem("90-91");
+		comboBox.addItem("89-90");
+		comboBox.addItem("88-89");
+		comboBox.addItem("87-88");
+		comboBox.addItem("86-87");
+		comboBox.addItem("85-86");
 		comboBox.setSelectedItem(MainFrame.season);
 		panelOfBottom.add(comboBox);
 		
-		comboBox.addActionListener(new ActionListener(){
-
-			@Override
+		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int index = comboBox.getSelectedIndex();
-				switch(index){
-				case 1:
+				String season = (String)comboBox.getSelectedItem();
+				if(!season.equals("选择赛季")){
 					compute = BLController.getInstance();
-					compute.setSeason("11-12");
-					MainFrame.season = "11-12";
+					compute.setSeason(season);
+					MainFrame.season = season;
 					MainFrame.seasonChange = true;
 					update();
-					break;
-				case 2:
-					compute = BLController.getInstance();
-					compute.setSeason("12-13");
-					MainFrame.season = "12-13";
-					MainFrame.seasonChange = true;
-					update();
-					break;
-				case 3:
-					compute = BLController.getInstance();
-					compute.setSeason("13-14");
-					MainFrame.season = "13-14";
-					MainFrame.seasonChange = true;
-					update();
-					break;
-				case 4:
-					compute = BLController.getInstance();
-					compute.setSeason("14-15");
-					MainFrame.season = "14-15";
-					MainFrame.seasonChange = true;
-					update();
-					break;
 				}
 			}
-			
 		});
 		
 		comboBox_1 = new JComboBox();

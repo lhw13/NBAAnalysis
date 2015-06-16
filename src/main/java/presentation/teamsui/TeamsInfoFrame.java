@@ -230,51 +230,51 @@ public class TeamsInfoFrame extends JPanel{
 		comboBox_1 = new JComboBox<String>();
 		comboBox_1.setBounds(500, 475, 150, 30);
 		comboBox_1.addItem("选择赛季");
-		comboBox_1.addItem("11-12");
-		comboBox_1.addItem("12-13");
-		comboBox_1.addItem("13-14");
 		comboBox_1.addItem("14-15");
+		comboBox_1.addItem("13-14");
+		comboBox_1.addItem("12-13");
+		comboBox_1.addItem("11-12");
+		comboBox_1.addItem("10-11");
+		comboBox_1.addItem("09-10");
+		comboBox_1.addItem("08-09");
+		comboBox_1.addItem("07-08");
+		comboBox_1.addItem("06-07");
+		comboBox_1.addItem("05-06");
+		comboBox_1.addItem("04-05");
+		comboBox_1.addItem("03-04");
+		comboBox_1.addItem("02-03");
+		comboBox_1.addItem("01-02");
+		comboBox_1.addItem("00-11");
+		comboBox_1.addItem("99-00");
+		comboBox_1.addItem("98-99");
+		comboBox_1.addItem("97-98");
+		comboBox_1.addItem("96-97");
+		comboBox_1.addItem("95-96");
+		comboBox_1.addItem("94-95");
+		comboBox_1.addItem("93-94");
+		comboBox_1.addItem("92-93");
+		comboBox_1.addItem("91-92");
+		comboBox_1.addItem("90-91");
+		comboBox_1.addItem("89-90");
+		comboBox_1.addItem("88-89");
+		comboBox_1.addItem("87-88");
+		comboBox_1.addItem("86-87");
+		comboBox_1.addItem("85-86");
 		comboBox_1.setSelectedItem("选择赛季");
 		
 		final String teamName = twpvo.getTeam().getAbbreviation();
 		
-		comboBox_1.addActionListener(new ActionListener(){
-
-			@Override
+		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int index = comboBox_1.getSelectedIndex();
-				switch(index){
-				case 1:
+				String season = (String)comboBox_1.getSelectedItem();
+				if(!season.equals("选择赛季")){
 					compute = BLController.getInstance();
-					compute.setSeason("11-12");
-					MainFrame.season = "11-12";
+					compute.setSeason(season);
+					MainFrame.season = season;
 					MainFrame.seasonChange = true;
 					searchTheMatch(teamName);
-					break;
-				case 2:
-					compute = BLController.getInstance();
-					compute.setSeason("12-13");
-					MainFrame.season = "12-13";
-					MainFrame.seasonChange = true;
-					searchTheMatch(teamName);
-					break;
-				case 3:
-					compute = BLController.getInstance();
-					compute.setSeason("13-14");
-					MainFrame.season = "13-14";
-					MainFrame.seasonChange = true;
-					searchTheMatch(teamName);
-					break;
-				case 4:
-					compute = BLController.getInstance();
-					compute.setSeason("14-15");
-					MainFrame.season = "14-15";
-					MainFrame.seasonChange = true;
-					searchTheMatch(teamName);
-					break;
 				}
 			}
-			
 		});
 		
 		comboBox_2 = new JComboBox();

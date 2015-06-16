@@ -370,50 +370,50 @@ public class PlayerRankingPanel extends JPanel {
 		choose_season = new JComboBox<String>();
 		choose_season.setBounds(700, 100, 150, 30);
 		choose_season.addItem("选择赛季");
-		choose_season.addItem("11-12");
-		choose_season.addItem("12-13");
-		choose_season.addItem("13-14");
 		choose_season.addItem("14-15");
+		choose_season.addItem("13-14");
+		choose_season.addItem("12-13");
+		choose_season.addItem("11-12");
+		choose_season.addItem("10-11");
+		choose_season.addItem("09-10");
+		choose_season.addItem("08-09");
+		choose_season.addItem("07-08");
+		choose_season.addItem("06-07");
+		choose_season.addItem("05-06");
+		choose_season.addItem("04-05");
+		choose_season.addItem("03-04");
+		choose_season.addItem("02-03");
+		choose_season.addItem("01-02");
+		choose_season.addItem("00-11");
+		choose_season.addItem("99-00");
+		choose_season.addItem("98-99");
+		choose_season.addItem("97-98");
+		choose_season.addItem("96-97");
+		choose_season.addItem("95-96");
+		choose_season.addItem("94-95");
+		choose_season.addItem("93-94");
+		choose_season.addItem("92-93");
+		choose_season.addItem("91-92");
+		choose_season.addItem("90-91");
+		choose_season.addItem("89-90");
+		choose_season.addItem("88-89");
+		choose_season.addItem("87-88");
+		choose_season.addItem("86-87");
+		choose_season.addItem("85-86");
 		choose_season.setSelectedItem(MainFrame.season);
 		panel.add(choose_season);
 		
-		choose_season.addActionListener(new ActionListener(){
-
-			@Override
+		choose_season.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int index = choose_season.getSelectedIndex();
-				switch(index){
-				case 1:
+				String season = (String)choose_season.getSelectedItem();
+				if(!season.equals("选择赛季")){
 					compute = BLController.getInstance();
-					compute.setSeason("11-12");
-					MainFrame.season = "11-12";
+					compute.setSeason(season);
+					MainFrame.season = season;
 					MainFrame.seasonChange = true;
 					updatePlayerWithCondition("point");
-					break;
-				case 2:
-					compute = BLController.getInstance();
-					compute.setSeason("12-13");
-					MainFrame.season = "12-13";
-					MainFrame.seasonChange = true;
-					updatePlayerWithCondition("point");
-					break;
-				case 3:
-					compute = BLController.getInstance();
-					compute.setSeason("13-14");
-					MainFrame.season = "13-14";
-					MainFrame.seasonChange = true;
-					updatePlayerWithCondition("point");
-					break;
-				case 4:
-					compute = BLController.getInstance();
-					compute.setSeason("14-15");
-					MainFrame.season = "14-15";
-					MainFrame.seasonChange = true;
-					updatePlayerWithCondition("point");
-					break;
 				}
 			}
-			
 		});
 		
 		comboBox = new JComboBox<String>();

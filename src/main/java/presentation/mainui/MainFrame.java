@@ -117,7 +117,7 @@ public class MainFrame {
 	public static String selection1="得分";
 	public static String selection2="胜率";
 	
-	public static String season="13-14";
+	public static String season="14-15";
 	public static boolean seasonChange = false;
 	public static int date=5;
 	

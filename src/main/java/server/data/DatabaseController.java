@@ -30,7 +30,7 @@ public class DatabaseController implements Runnable {
 	}
 	static Statement stat = null;
 	static String[][] list = new String[4145][2];
-	private static String season = "13-14";
+	private static String season = "14-15";
 	int n;
 
 	public static void main(String[] args) throws Exception {

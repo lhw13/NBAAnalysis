@@ -96,6 +96,9 @@ public class TeamAnalysePanel extends JPanel {
 	
 	JComboBox combox1;
 	JComboBox combox2;
+	
+	double[] co1;
+	double[] co2;
 	public TeamAnalysePanel() {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
@@ -177,6 +180,7 @@ public class TeamAnalysePanel extends JPanel {
 		combox2.addItem("选择球队");
 		combox2.addItemListener(new TeamItemListener('r'));
 		
+		calculate();//计算好回归需要的系数
 	}
 
 	public void update(String abb) {
@@ -206,21 +210,7 @@ public class TeamAnalysePanel extends JPanel {
 		panelOfAnalyse.add(pie);
 		panelOfAnalyse.add(box);
 		panelOfAnalyse.repaint();
-		write("datax.txt","datay.txt");
-		Process proc;
-		try {
-			proc = Runtime.getRuntime().exec("python 123.py");
-			
-			StreamGobbler errorGobbler = new StreamGobbler(proc.getErrorStream(), "Error");  
-			StreamGobbler outputGobbler = new StreamGobbler(proc.getInputStream(), "Output");  
-			errorGobbler.start();  
-			outputGobbler.start(); 
-			proc.waitFor(); 
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}  
+		
 	}
 	
 	public void update2(String abb1, String abb2) {
@@ -235,6 +225,26 @@ public class TeamAnalysePanel extends JPanel {
 				Image.SCALE_DEFAULT));
 		label_pk2.setIcon(picture);
 		
+		
+		double[][] x1 = blservice.getVariables(abb1, abb2);
+		double score1=0,score2=0;
+		
+		for(int j=1;j<x1[0].length;j++) {
+			score1+=co1[j]*x1[0][j];
+			score2+=co1[j]*x1[1][j];
+		}
+		score1+=co1[0]; score2+=co1[0];
+		System.out.println(score1+":"+score2);
+		
+		double[][] x2 = blservice.getDataForStrengthVariables(abb1, abb2);
+		double differential=0;
+		
+		for(int j=1;j<x1[0].length;j++) {
+			differential+=co2[j]*x1[0][j];
+			
+		}
+		differential+=co2[0];
+		System.out.println(score1+":"+score2+":"+differential);
 	}
 	
 	public void update3() {
@@ -248,6 +258,46 @@ public class TeamAnalysePanel extends JPanel {
 			combox2.addItem(PlayerSelectionPanel.translate(temp.getAbbreviation()));
 		}
 		
+	}
+	
+	public void calculate() {
+		double[][] datas1 = blservice.getDataForRegression(2000);
+		write("datax.txt","datay.txt",datas1);
+		Process proc;
+		try {
+			proc = Runtime.getRuntime().exec("python 123.py");
+			
+			StreamGobbler errorGobbler = new StreamGobbler(proc.getErrorStream(), "Error");  
+			StreamGobbler outputGobbler = new StreamGobbler(proc.getInputStream(), "Output");  
+			errorGobbler.start();  
+			outputGobbler.start(); 
+			proc.waitFor(); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}  
+		
+		co1 = read("b.txt");//第一个接口需要的系数
+		
+		double[][] datas2 = blservice.getDataForStrengthRegression(2000);
+		write("datax.txt","datay.txt",datas1);
+		
+		try {
+			proc = Runtime.getRuntime().exec("python 123.py");
+			
+			StreamGobbler errorGobbler = new StreamGobbler(proc.getErrorStream(), "Error");  
+			StreamGobbler outputGobbler = new StreamGobbler(proc.getInputStream(), "Output");  
+			errorGobbler.start();  
+			outputGobbler.start(); 
+			proc.waitFor(); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}  
+		
+		co2 = read("b.txt");//第一个接口需要的系数
 	}
 	public class StreamGobbler extends Thread {  
 		  
@@ -276,26 +326,35 @@ public class TeamAnalysePanel extends JPanel {
 	        }  
 	    }  
 	}  
-	public void read(String filename) {
+	public double[] read(String filename) {
 		File f = Opendoc(filename);
+		String[] co = null;
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(f));
-			
+			String line = reader.readLine();
+			co = line.split(",");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
+		double[] cod = new double[co.length];
+		for(int i=0;i<co.length;i++) {
+			cod[i] = Double.parseDouble(co[i]);
+		}
+		return cod;
 	}
 	
-	public void write(String filenamex,String filenamey) {
+	public void write(String filenamex,String filenamey,double[][] datas) {
 		File fx = Opendoc(filenamex);
 		File fy = Opendoc(filenamey);
-		int scale = 2000;
-		double[][] datas = blservice.getDataForRegression(scale);
+		int scale = datas.length;
+		//double[][] datas = blservice.getDataForRegression(scale);
 		int len = datas[0].length;
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(fx));
 			for(int i=0;i<scale;i++) {
+				writer.write("1,");
 				for(int j=1;j<len-1;j++) {
 					writer.write(Double.toString(datas[i][j])+",");
 				}
@@ -316,7 +375,6 @@ public class TeamAnalysePanel extends JPanel {
 			writer2.write(Double.toString(datas[scale-1][0]));
 			writer2.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -504,7 +562,10 @@ public class TeamAnalysePanel extends JPanel {
 					
 					String teamSelected =e.getItem().toString();
 					if(teamSelected.equals("选择球队")) {
-						
+						ImageIcon picture = ImageHandle.loadTeam("NBA");
+						picture.setImage(picture.getImage().getScaledInstance(200, 200,
+								Image.SCALE_DEFAULT));
+						label_pk2.setIcon(picture);
 					} else {
 						//TeamWithPlayersVO teamvo = blservice.getTeamAnalysis();
 						ImageIcon picture = ImageHandle.loadTeam(HotRankingPanel.translate(teamSelected));
@@ -516,7 +577,10 @@ public class TeamAnalysePanel extends JPanel {
 				} else if (c == 'r') {
 					String teamSelected =e.getItem().toString();
 					if(teamSelected.equals("选择球队")) {
-						
+						ImageIcon picture = ImageHandle.loadTeam("NBA");
+						picture.setImage(picture.getImage().getScaledInstance(200, 200,
+								Image.SCALE_DEFAULT));
+						label_pk2.setIcon(picture);
 					} else {
 						ImageIcon picture = ImageHandle.loadTeam(HotRankingPanel.translate(teamSelected));
 						picture.setImage(picture.getImage().getScaledInstance(200, 200,
@@ -525,6 +589,10 @@ public class TeamAnalysePanel extends JPanel {
 						
 					}
 				}
+				if(combox1.getSelectedIndex()!=0&&combox2.getSelectedIndex()!=0)
+					update2(HotRankingPanel.translate((String)combox1.getSelectedItem()),
+							HotRankingPanel.translate((String)combox2.getSelectedItem()));
+				
 			}
 		}
 

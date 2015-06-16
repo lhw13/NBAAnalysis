@@ -16,6 +16,7 @@ import javax.swing.ImageIcon;
 
 
 
+
 import jxl.Workbook;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
@@ -921,4 +922,11 @@ public final class BLController implements BLService {
 		public ArrayList<MatchPO> getMatches() {
 			return matches;
 		}  
+		
+		public double getVariance(double a[][],int scale){
+			double result=0;
+			for(int i=0;i<a.length;i++)
+				result+=Math.pow((a[i][0]-a[i][1]),2);
+			return result/a.length;
+		}
 }

@@ -57,4 +57,6 @@ public interface BLService {
 	public int[] adjustPredictResult(double score1, double score2, double diff);//调整预测结果，前两个参数为第一个预测的结果，最后一个参数为第二个预测的结果
 	
 	public PlayOffListVO getPlayOff();
+	
+	public double getVariance(double a[][],int scale);//两列的数组，之前给你的数据算出系数后，再算出历史比赛的推断值，与实际值分别作两列传给我
 }

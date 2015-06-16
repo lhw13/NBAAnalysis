@@ -315,6 +315,8 @@ public class PredictStatTest {
 	
 	@Test
 	public void testWinByStrength() {
+		DataController data = new DataController();
+		data.loadData();
 		BLController bl = BLController.getInstance();
 		bl.analyse();
 		ArrayList<MatchPO> h = bl.getAllMatch();

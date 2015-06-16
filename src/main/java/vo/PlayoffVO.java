@@ -45,6 +45,6 @@ public class PlayoffVO {
 	}
 	
 	public boolean contains(String abr) {
-		return ((this.abr1.equals(abr1) || this.abr2.equals(abr2)));
+		return ((this.abr1.equals(abr) || this.abr2.equals(abr)));
 	}
 }

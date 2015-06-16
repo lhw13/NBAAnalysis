@@ -311,7 +311,7 @@ public final class BLController implements BLService {
 		int result[] = new int[2];
 		if((score1-score2)*diff<0)
 		{
-			double avg = score1+score2;
+			double avg = score1+score2/2;
 			if(diff>0)
 			{
 				result[0] = (int)avg+1;
@@ -345,7 +345,7 @@ public final class BLController implements BLService {
 	{
 		Team team1 = teamsHash.get(teamabr1);
 		Team team2 = teamsHash.get(teamabr2);
-		return team1.getStrength(n, now,theta,k,matches.size()-6000)-team2.getStrength(n, now,theta,k,matches.size()-6000);
+		return team1.getStrength(n, now-(matches.size()-6000),theta,k,matches.size()-6000)-team2.getStrength(n, now-(matches.size()-6000),theta,k,matches.size()-6000);
 	}
 	
 	public ArrayList<TeamVO> getHotTeamVO(String sortCon) {

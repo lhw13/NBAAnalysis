@@ -1,37 +1,24 @@
 package presentation.teamsui;
 
-import presentation.mainui.MainFrame;
-import presentation.mainui.Panels;
-import presentation.playerui.PlayerInfoPanel;
-import presentation.playerui.PlayerRankingPanel;
-import presentation.teamsui.TeamsInfoFrame;
-import server.businesslogic.BLController;
-import vo.PlayerVO;
-import vo.TeamVO;
-import vo.TeamWithPlayersVO;
-import hotui.HotRankingPanel;
-
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
+
+import presentation.mainui.MainFrame;
+import presentation.mainui.Panels;
+import server.businesslogic.BLController;
+import vo.TeamWithPlayersVO;
 
 /*
  * 球队选择面板

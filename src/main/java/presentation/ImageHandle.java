@@ -8,7 +8,7 @@ public class ImageHandle {
 	}
 
 	public static ImageIcon loadPlayer(String name) {
-		name=name.replaceAll("\\d", "");
+//		name=name.replaceAll("\\d", "");
 		ImageIcon PLAYER = new ImageIcon("conf/nba/players/portrait/" + name
 				+ ".png");
 		return PLAYER;

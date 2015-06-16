@@ -1,9 +1,13 @@
 package presentation.matchui;
 
+import hotui.HotRankingPanel;
+
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
@@ -30,7 +34,7 @@ import presentation.playerui.PlayerInfoPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class MatchPlayoffPanel extends JPanel implements MouseListener{
+public class MatchPlayoffPanel extends JPanel{
 	BLService blservice = BLController.getInstance();
 	
 	JPanel panelOfBottom = new JPanel();
@@ -64,15 +68,15 @@ public class MatchPlayoffPanel extends JPanel implements MouseListener{
 		scrollPane.setBounds(0, 0, 990, 600);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		add(scrollPane);
-		
 //panel===========================================================
 		panelOfBottom.setLayout(null);
-		panelOfBottom.addMouseListener(this);
+		
 //label==================================================================
 		 label_l = new JLabel[14];
 		 for(int i=0;i<label_l.length;i++) {
 			 label_l[i] = new JLabel();
 			 label_l[i].setSize(WIDTH, HIGHT);
+			 label_l[i].addMouseListener(new LabelListener1(i));
 			 panelOfBottom.add(label_l[i]);
 			 
 		 }
@@ -80,13 +84,16 @@ public class MatchPlayoffPanel extends JPanel implements MouseListener{
 		 for(int i=0;i<label_r.length;i++) {
 			 label_r[i] = new JLabel();
 			 label_r[i].setSize(WIDTH, HIGHT);
+			 label_r[i].addMouseListener(new LabelListener2(i));
 			 panelOfBottom.add(label_r[i]);
 			 
 		 }
 		 label_c = new JLabel[2];
 		 for(int i=0;i<label_c.length;i++) {
 			 label_c[i] = new JLabel();
-			 label_c[i].setSize(WIDTH, HIGHT);
+			 label_c[i].setSize(180, 150);
+			 label_c[i].setFont(new Font("黑体", Font.PLAIN, 20));
+			 label_c[i].addMouseListener(new LabelListener3());
 			 panelOfBottom.add(label_c[i]);
 			 
 		 }
@@ -120,8 +127,8 @@ public class MatchPlayoffPanel extends JPanel implements MouseListener{
 		 label_r[12].setLocation(570, 253);
 		 label_r[13].setLocation(570, 313);
 		
-		 label_c[0].setLocation(460, 188);
-		 label_c[1].setLocation(460, 250);
+		 label_c[0].setLocation(420, 188);
+		 label_c[1].setLocation(420, 340);
 		
 		label_background = new JLabel();
 		label_background.setBounds(159, 74, 690, 493);
@@ -163,21 +170,23 @@ public class MatchPlayoffPanel extends JPanel implements MouseListener{
 		
 //table=============================================
 		table = new JTable(model);
-		table.setBounds(369, 87, 262, 55);
+		table.setBounds(369, 93, 262, 55);
 		table.setShowGrid(false);
 		panelOfBottom.add(table);
 		
 		big_l = new JLabel("p1");
-		big_l.setBounds(349, 10, 71, 67);
+		big_l.setBounds(349, 0, 140, 100);
+		big_l.setFont(new Font("黑体", Font.PLAIN, 36));
 		panelOfBottom.add(big_l);
 		
 		big_r = new JLabel("p2");
-		big_r.setBounds(563, 10, 79, 67);
+		big_r.setBounds(563, 0, 140,100);
+		big_r.setFont(new Font("黑体", Font.PLAIN, 36));
 		panelOfBottom.add(big_r);
-		updateTable();
 	}
 	
-	public void updateTable() {
+	public void updateTable(PlayoffVO vo) {
+		
 		Vector rowDatas = new Vector();
 		Vector rowData = new Vector();
 		rowData.add("100-89");
@@ -234,39 +243,124 @@ public class MatchPlayoffPanel extends JPanel implements MouseListener{
 			PlayoffVO vo = playoffFinal.get(i);
 			label_c[j].setText(Integer.toString(vo.getWin1()));
 			label_c[j+1].setText(Integer.toString(vo.getWin2()));
-			ImageIcon icon = new ImageIcon("conf/smallTeam/"+vo.getAbr1()+".png");	
+			ImageIcon icon = new ImageIcon("conf/pictures/"+vo.getAbr1()+".png");	
+			icon.setImage(icon.getImage().getScaledInstance(150, 150,
+					Image.SCALE_DEFAULT));
 			label_c[j].setIcon(icon);
-			icon = new ImageIcon("conf/smallTeam/"+vo.getAbr2()+".png");	
+			icon = new ImageIcon("conf/pictures/"+vo.getAbr2()+".png");	
+			icon.setImage(icon.getImage().getScaledInstance(150, 150,
+					Image.SCALE_DEFAULT));
 			label_c[j+1].setIcon(icon);
 		}
 	}
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		System.out.println(e.getX()+","+e.getY());
+	
+	public class LabelListener1 extends MouseAdapter {
+		int index=0;
+		PlayOffListVO list = blservice.getPlayOff();
+		ArrayList<PlayoffVO> playoffW = list.getPlayOffW();
+		PlayoffVO vo;
+		public LabelListener1() {}
+		public LabelListener1(int index) {
+			this.index = index;
+		}
 		
-	}
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			
+		}
+		
+		@Override
+		public void mouseEntered(MouseEvent e) {	
+			
 
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
+			int i = index/2;
+			vo = playoffW.get(i);
+			ImageIcon icon = new ImageIcon("conf/pictures/"+vo.getAbr1()+".png");	
+			icon.setImage(icon.getImage().getScaledInstance(100, 100,
+					Image.SCALE_DEFAULT));
+			big_l.setText(Integer.toString(vo.getWin1()));
+			big_l.setIcon(icon);
+			icon = new ImageIcon("conf/pictures/"+vo.getAbr2()+".png");
+			icon.setImage(icon.getImage().getScaledInstance(100, 100,
+					Image.SCALE_DEFAULT));
+			big_r.setText(Integer.toString(vo.getWin2()));
+			big_r.setIcon(icon);
+			updateTable(vo);
+		}
 		
-	}
+		public void mouseExited(MouseEvent e) {
+			
+			
 
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		}
 	}
+	
+	public class LabelListener2 extends MouseAdapter {
+		int index=0;
+		PlayOffListVO list = blservice.getPlayOff();
+		ArrayList<PlayoffVO> playoffE = list.getPlayOffE();
+		PlayoffVO vo;
+		public LabelListener2() {}
+		public LabelListener2(int index) {
+			this.index = index;
+		}
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {	
+			
 
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+			int i = index/2;
+			vo = playoffE.get(i);
+			ImageIcon icon = new ImageIcon("conf/pictures/"+vo.getAbr1()+".png");	
+			icon.setImage(icon.getImage().getScaledInstance(100, 100,
+					Image.SCALE_DEFAULT));
+			big_l.setText(Integer.toString(vo.getWin1()));
+			big_l.setIcon(icon);
+			icon = new ImageIcon("conf/pictures/"+vo.getAbr2()+".png");
+			icon.setImage(icon.getImage().getScaledInstance(100, 100,
+					Image.SCALE_DEFAULT));
+			big_r.setText(Integer.toString(vo.getWin2()));
+			big_r.setIcon(icon);
+			updateTable(vo);
+		}
 		
+		public void mouseExited(MouseEvent e) {
+		}
 	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
+	
+	public class LabelListener3 extends MouseAdapter {
+		int index=0;
+		PlayOffListVO list = blservice.getPlayOff();
+		ArrayList<PlayoffVO> finals = list.getFinals();
+		PlayoffVO vo;
+		public LabelListener3() {}
+		public LabelListener3(int index) {
+			this.index = index;
+		}
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {	
+			vo = finals.get(0);
+			ImageIcon icon = new ImageIcon("conf/pictures/"+vo.getAbr1()+".png");	
+			icon.setImage(icon.getImage().getScaledInstance(100, 100,
+					Image.SCALE_DEFAULT));
+			big_l.setText(Integer.toString(vo.getWin1()));
+			big_l.setIcon(icon);
+			icon = new ImageIcon("conf/pictures/"+vo.getAbr2()+".png");
+			icon.setImage(icon.getImage().getScaledInstance(100, 100,
+					Image.SCALE_DEFAULT));
+			big_r.setText(Integer.toString(vo.getWin2()));
+			big_r.setIcon(icon);
+			updateTable(vo);
+		}
 		
+		public void mouseExited(MouseEvent e) {
+		}
 	}
 }

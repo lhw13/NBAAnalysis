@@ -661,17 +661,19 @@ public class DatabaseController implements Runnable {
 			String table = "MatchPO" + season.substring(0, 2)
 					+ season.substring(3, 5);
 			ResultSet rs = null;
+			String team1=TransToStandard.getReal(ab1,season);
+			String team2=TransToStandard.getReal(ab2,season);
 			try {
 				rs = stat
 						.executeQuery("select * from '" + table
-								+ "' where (team1='" + ab1 + "' and team2='"
-								+ ab2 + "') or(team1='" + ab2 + "' and team2='"
-								+ ab1 + "');");
+								+ "' where (team1='" + team1 + "' and team2='"
+								+ team2 + "') or(team1='" + team2 + "' and team2='"
+								+ team1 + "');");
 			} catch (SQLException e) {
 				return null;
 			}
 			while (rs.next()) {
-				if (rs.getString("team1").equals(ab1)) {
+				if (rs.getString("team1").equals(team1)) {
 					ScorePO finalScore = new ScorePO(rs.getInt("score9"),
 							rs.getInt("score10"));
 					result.add(finalScore);

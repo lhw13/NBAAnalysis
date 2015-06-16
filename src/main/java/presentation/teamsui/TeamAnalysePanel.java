@@ -91,8 +91,13 @@ public class TeamAnalysePanel extends JPanel {
 	JLabel label_predict;
 	JLabel label_pk1;
 	JLabel label_pk2;
-	
-	JTable table;
+
+	JLabel label_score;
+	JLabel label_score1;
+	JLabel label_score2;
+	JLabel label_winrate;
+	JLabel label_winrate1;
+	JLabel label_winrate2;
 	
 	JComboBox combox1;
 	JComboBox combox2;
@@ -159,13 +164,40 @@ public class TeamAnalysePanel extends JPanel {
 		panelOfPredict.add(label_pk1);
 		
 		label_pk2 = new JLabel("p2");
-		label_pk2.setBounds(680, 91, 200, 200);
+		label_pk2.setBounds(720, 91, 200, 200);
 		panelOfPredict.add(label_pk2);
-//table================================================================
-		table = new JTable();
-		table.setFont(new Font("宋体", Font.PLAIN, 16));
-		table.setBounds(250, 100, 386, 200);
-		panelOfPredict.add(table);
+		
+		label_score = new JLabel("预测比分");
+		label_score.setFont(new Font("黑体", Font.PLAIN, 40));
+		label_score.setBounds(400, 150, 180, 40);
+		panelOfPredict.add(label_score);
+		
+		label_score1 = new JLabel("1");
+		label_score1.setFont(new Font("黑体", Font.PLAIN, 40));
+		label_score1.setBounds(300, 150, 100, 40);
+		panelOfPredict.add(label_score1);
+		
+		label_score2 = new JLabel("2");
+		label_score2.setFont(new Font("黑体", Font.PLAIN, 40));
+		label_score2.setBounds(600, 150, 100, 40);
+		panelOfPredict.add(label_score2);
+		
+		label_winrate = new JLabel("预测胜率");
+		label_winrate.setFont(new Font("黑体", Font.PLAIN, 40));
+		label_winrate.setBounds(400, 200, 180, 40);
+		panelOfPredict.add(label_winrate);
+		
+		label_winrate1 = new JLabel("1");
+		label_winrate1.setFont(new Font("黑体", Font.PLAIN, 40));
+		label_winrate1.setBounds(300, 200, 100, 40);
+		panelOfPredict.add(label_winrate1);
+		
+		label_winrate2 = new JLabel("2");
+		label_winrate2.setFont(new Font("黑体", Font.PLAIN, 40));
+		label_winrate2.setBounds(600, 200, 100, 40);
+		panelOfPredict.add(label_winrate2);
+		 
+
 //combobox=============================================================
 		
 		combox1 = new JComboBox();
@@ -225,26 +257,41 @@ public class TeamAnalysePanel extends JPanel {
 				Image.SCALE_DEFAULT));
 		label_pk2.setIcon(picture);
 		
-		
-		double[][] x1 = blservice.getVariables(abb1, abb2);
-		double score1=0,score2=0;
-		
-		for(int j=1;j<x1[0].length;j++) {
-			score1+=co1[j]*x1[0][j];
-			score2+=co1[j]*x1[1][j];
-		}
-		score1+=co1[0]; score2+=co1[0];
-		System.out.println(score1+":"+score2);
-		
-		double[][] x2 = blservice.getDataForStrengthVariables(abb1, abb2);
-		double differential=0;
-		
-		for(int j=1;j<x1[0].length;j++) {
-			differential+=co2[j]*x1[0][j];
+		if(abb1!="NBA"&&abb2!="NBA"){
+			double[][] x1 = blservice.getVariables(abb1, abb2);
+			double score1=0,score2=0;
+			
+			for(int j=1;j<x1[0].length;j++) {
+				score1+=co1[j]*x1[0][j];
+				score2+=co1[j]*x1[1][j];
+			}
+			score1+=co1[0]; score2+=co1[0];
+			
+			double[][] x2 = blservice.getDataForStrengthVariables(abb1, abb2);
+			double differential=0;
+			
+			for(int j=1;j<x1[0].length;j++) {
+				differential+=co2[j]*x1[0][j];
+				
+			}
+			differential+=co2[0];
+			int[] s = blservice.adjustPredictResult(score1, score2, differential);
+			label_score1.setText(Integer.toString(s[0]));
+			label_score2.setText(Integer.toString(s[1]));
+			
+			double[][] vdata = new double[x2.length][2];
+			for(int i=0;i<x2.length;i++) {
+				vdata[i][0] = x2[i][0];
+				vdata[i][1] = co2[0];
+				for(int j=1;j<x2[0].length;j++) {
+					vdata[i][1]+= co2[j]*x2[i][j];
+				}
+			}
+			double var = blservice.getVariance(vdata, vdata.length);
 			
 		}
-		differential+=co2[0];
-		System.out.println(score1+":"+score2+":"+differential);
+		
+		
 	}
 	
 	public void update3() {
@@ -281,7 +328,7 @@ public class TeamAnalysePanel extends JPanel {
 		co1 = read("b.txt");//第一个接口需要的系数
 		
 		double[][] datas2 = blservice.getDataForStrengthRegression(2000);
-		write("datax.txt","datay.txt",datas1);
+		write("datax.txt","datay.txt",datas2);
 		
 		try {
 			proc = Runtime.getRuntime().exec("python 123.py");
@@ -298,6 +345,7 @@ public class TeamAnalysePanel extends JPanel {
 		}  
 		
 		co2 = read("b.txt");//第一个接口需要的系数
+		
 	}
 	public class StreamGobbler extends Thread {  
 		  
@@ -562,36 +610,38 @@ public class TeamAnalysePanel extends JPanel {
 					
 					String teamSelected =e.getItem().toString();
 					if(teamSelected.equals("选择球队")) {
-						ImageIcon picture = ImageHandle.loadTeam("NBA");
-						picture.setImage(picture.getImage().getScaledInstance(200, 200,
-								Image.SCALE_DEFAULT));
-						label_pk2.setIcon(picture);
+						
 					} else {
 						//TeamWithPlayersVO teamvo = blservice.getTeamAnalysis();
 						ImageIcon picture = ImageHandle.loadTeam(HotRankingPanel.translate(teamSelected));
 						picture.setImage(picture.getImage().getScaledInstance(200, 200,
 								Image.SCALE_DEFAULT));
 						label_pk1.setIcon(picture);
-						
+						String t2 = (String)combox2.getSelectedItem();
+						if(!t2.equals("选择球队"))
+							update2(HotRankingPanel.translate((String)combox1.getSelectedItem()),
+								HotRankingPanel.translate((String)combox2.getSelectedItem()));
 					}
 				} else if (c == 'r') {
 					String teamSelected =e.getItem().toString();
 					if(teamSelected.equals("选择球队")) {
-						ImageIcon picture = ImageHandle.loadTeam("NBA");
-						picture.setImage(picture.getImage().getScaledInstance(200, 200,
-								Image.SCALE_DEFAULT));
-						label_pk2.setIcon(picture);
+						
 					} else {
 						ImageIcon picture = ImageHandle.loadTeam(HotRankingPanel.translate(teamSelected));
 						picture.setImage(picture.getImage().getScaledInstance(200, 200,
 								Image.SCALE_DEFAULT));
 						label_pk2.setIcon(picture);
+						String t1 = (String)combox1.getSelectedItem();
+						if(!t1.equals("选择球队")){
+							update2(HotRankingPanel.translate((String)combox1.getSelectedItem()),
+								HotRankingPanel.translate((String)combox2.getSelectedItem()));
+						} else {
+							update2(abbreviation,HotRankingPanel.translate((String)combox2.getSelectedItem()));
+						}
 						
 					}
 				}
-				if(combox1.getSelectedIndex()!=0&&combox2.getSelectedIndex()!=0)
-					update2(HotRankingPanel.translate((String)combox1.getSelectedItem()),
-							HotRankingPanel.translate((String)combox2.getSelectedItem()));
+				
 				
 			}
 		}

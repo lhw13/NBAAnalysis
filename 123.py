@@ -17,7 +17,7 @@ for line in linesy:
 x=np.matrix(m)
 y=np.matrix(n).T
 
-print x
+#print x
 #print y
 b=(x.T*x).I*x.T*y
 

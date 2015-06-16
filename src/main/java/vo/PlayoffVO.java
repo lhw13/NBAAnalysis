@@ -1,5 +1,7 @@
 package vo;
 
+import java.util.ArrayList;
+
 public class PlayoffVO {
 	public PlayoffVO(String abr1, String abr2) {
 		super();
@@ -10,6 +12,19 @@ public class PlayoffVO {
 	String abr2;
 	int win1=0;
 	int win2=0;
+	ArrayList<Double> scores1 = new ArrayList<Double>();
+	ArrayList<Double> scores2 = new ArrayList<Double>();
+	public void swap() {
+		String temps = abr2;
+		abr2 = abr1;
+		abr1 = temps;
+		int tempi = win2;
+		win2 = win1;
+		win1 = tempi;
+		ArrayList<Double> tempa = scores2;
+		scores2 = scores1;
+		scores1 = tempa;
+	}
 	public void incre1() {
 		win1++;
 	}

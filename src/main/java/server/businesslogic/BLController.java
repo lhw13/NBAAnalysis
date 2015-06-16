@@ -117,10 +117,12 @@ public final class BLController implements BLService {
 		if(resultW.size()>4)
 		{
 			adjustPlayOff(resultW);
+			adjustPlayOff2(resultW);
 		}
 		if(resultW.size()>4)
 		{
 			adjustPlayOff(resultE);
+			adjustPlayOff2(resultW);
 		}
 		return new PlayOffListVO(resultW,resultE,finals);
 	}
@@ -158,6 +160,18 @@ public final class BLController implements BLService {
 			result.set(right2,result.get(f));
 			result.set(f,temp2);
 		}
+	}
+	private void adjustPlayOff2(ArrayList<PlayoffVO> result)
+	{
+		PlayoffVO pf = result.get(4);
+		if(!result.get(0).contains(pf.getAbr1()))
+			pf.swap();
+		pf = result.get(5);
+		if(!result.get(2).contains(pf.getAbr1()))
+			pf.swap();
+		pf = result.get(6);
+		if(!result.get(4).contains(pf.getAbr1()))
+			pf.swap();
 	}
 	private void addPlayOff(ArrayList<PlayoffVO> result, String abr1,String abr2,int win)
 	{

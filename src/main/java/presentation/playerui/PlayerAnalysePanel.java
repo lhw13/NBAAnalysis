@@ -339,6 +339,11 @@ public class PlayerAnalysePanel extends JPanel {
 
 	private static JFreeChart createChart_2(XYDataset xydataset)
 	{
+		//防止中文无法显示
+		StandardChartTheme standardChartTheme=new StandardChartTheme("CN");
+		standardChartTheme.setRegularFont(new Font("宋书",Font.PLAIN,15));
+		ChartFactory.setChartTheme(standardChartTheme);
+		
 		JFreeChart jfreechart = ChartFactory.createXYLineChart("球员赛季每场得分", "X", "Y", xydataset, PlotOrientation.VERTICAL, true, true, false);
 		
 		XYPlot xyplot = (XYPlot)jfreechart.getPlot();

@@ -929,4 +929,36 @@ public final class BLController implements BLService {
 				result+=Math.pow((a[i][0]-a[i][1]),2);
 			return result/a.length;
 		}
+		
+		public double[] varifyByCentralMoment(double a[][],int scale){
+			ArrayList<Double> h = new ArrayList<Double>();
+			for(int i=0;i<a.length;i++)
+				h.add(a[i][0]-a[i][1]);
+			double a1=0,a2=0,a3=0,a4=0;
+			for(int i=0;i<h.size();i++)
+			{
+				a1+=h.get(i);
+				a2+=h.get(i)*h.get(i);
+				a3+=h.get(i)*h.get(i)*h.get(i);
+				a4+=h.get(i)*h.get(i)*h.get(i)*h.get(i);
+			}
+			a1/=h.size();
+			a2/=h.size();
+			a3/=h.size();
+			a4/=h.size();
+			
+			double b2=0,b3=0,b4=0;
+			b2=a2-a1*a1;
+			b3=a3-3*a2*a1+2*Math.pow(a1,3);
+			b4=a4-a3-4*a3*a1+6*a2*a1*a1-3*Math.pow(a1,4);
+			
+			int n=h.size();
+			double e1 = Math.sqrt(6*(n-2)/(n+1)/(n+3));
+			double e2 = Math.sqrt(24*n*(n-2)*(n-3)/(n+1)/(n+1)/(n+3)/(n+5));
+			double m2 = 3-6/(n+1);
+			double[] result = new double[2];
+			result[0]=b3/(Math.pow(b2, 3/2))/e1;
+			result[1]=(b4/(Math.pow(b2, 2))-m2)/e2;
+			return result;
+		}
 }

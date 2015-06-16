@@ -59,4 +59,6 @@ public interface BLService {
 	public PlayOffListVO getPlayOff();
 	
 	public double getVariance(double a[][],int scale);//两列的数组，之前给你的数据算出系数后，再算出历史比赛的推断值，与实际值分别作两列传给我
+	
+	public double[] varifyByCentralMoment(double a[][],int scale);//偏度峰度检验 by lhw
 }

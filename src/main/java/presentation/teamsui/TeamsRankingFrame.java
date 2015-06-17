@@ -42,7 +42,7 @@ import javax.swing.table.TableRowSorter;
  * 所有球队排名面板
  */
 public class TeamsRankingFrame {
-
+ 
 	public static JTable table;
 
 	public static JScrollPane scrollPane;

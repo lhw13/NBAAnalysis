@@ -108,11 +108,11 @@ public final class BLController implements BLService {
 				continue;
 			}
 			if(t1.getTeamPO().getDivision()=='W' && t2.getTeamPO().getDivision()=='W')
-				addPlayOff(resultW,  abr1, abr2,mpo.getWin(abr1));
+				addPlayOff(resultW,  abr1, abr2,mpo.getWin(abr1),mpo.getScore(abr1),mpo.getScore(abr1));
 			else if(t1.getTeamPO().getDivision()=='E' && t2.getTeamPO().getDivision()=='E')
-				addPlayOff(resultE,  abr1, abr2,mpo.getWin(abr1));
+				addPlayOff(resultE,  abr1, abr2,mpo.getWin(abr1),mpo.getScore(abr1),mpo.getScore(abr1));
 			else
-				addPlayOff(finals,  abr1, abr2,mpo.getWin(abr1));
+				addPlayOff(finals,  abr1, abr2,mpo.getWin(abr1),mpo.getScore(abr1),mpo.getScore(abr1));
 		}
 		if(resultW.size()>4)
 		{
@@ -122,7 +122,7 @@ public final class BLController implements BLService {
 		if(resultW.size()>4)
 		{
 			adjustPlayOff(resultE);
-			adjustPlayOff2(resultW);
+			adjustPlayOff2(resultE);
 		}
 		return new PlayOffListVO(resultW,resultE,finals);
 	}
@@ -173,7 +173,7 @@ public final class BLController implements BLService {
 		if(!result.get(4).contains(pf.getAbr1()))
 			pf.swap();
 	}
-	private void addPlayOff(ArrayList<PlayoffVO> result, String abr1,String abr2,int win)
+	private void addPlayOff(ArrayList<PlayoffVO> result, String abr1,String abr2,int win,int score1,int score2)
 	{
 		int contain=-1;
 		for(int i=0;i<result.size();i++)
@@ -189,11 +189,18 @@ public final class BLController implements BLService {
 		}
 		PlayoffVO pf = result.get(contain);
 		if(abr1.equals(pf.getAbr2()))
+		{
 			win=-win;
+			int temp = score1;
+			score1 = score2;
+			score2 = temp;
+		}
 		if(win>0)
 			pf.incre1();
 		else
 			pf.incre2();
+		pf.addScore1(score1);
+		pf.addScore2(score2);
 	}
 	public double[][] getDataForRegression(int scale)
 	{//参数在1000～5000之间的偶数，为double数组的行数

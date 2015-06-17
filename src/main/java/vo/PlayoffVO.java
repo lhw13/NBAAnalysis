@@ -12,8 +12,8 @@ public class PlayoffVO {
 	String abr2;
 	int win1=0;
 	int win2=0;
-	ArrayList<Double> scores1 = new ArrayList<Double>();
-	ArrayList<Double> scores2 = new ArrayList<Double>();
+	ArrayList<Integer> scores1 = new ArrayList<Integer>();
+	ArrayList<Integer> scores2 = new ArrayList<Integer>();
 	public void swap() {
 		String temps = abr2;
 		abr2 = abr1;
@@ -21,7 +21,7 @@ public class PlayoffVO {
 		int tempi = win2;
 		win2 = win1;
 		win1 = tempi;
-		ArrayList<Double> tempa = scores2;
+		ArrayList<Integer> tempa = scores2;
 		scores2 = scores1;
 		scores1 = tempa;
 	}
@@ -61,5 +61,13 @@ public class PlayoffVO {
 	
 	public boolean contains(String abr) {
 		return ((this.abr1.equals(abr) || this.abr2.equals(abr)));
+	}
+	
+	public void addScore1(int score) {
+		scores1.add(score);
+	}
+	
+	public void addScore2(int score) {
+		scores2.add(score);
 	}
 }

@@ -971,8 +971,8 @@ public final class BLController implements BLService {
 			double e2 = Math.sqrt(24*n*(n-2)*(n-3)/(n+1)/(n+1)/(n+3)/(n+5));
 			double m2 = 3-6/(n+1);
 			double[] result = new double[2];
-			result[0]=b3/(Math.pow(b2, 3/2))/e1;
-			result[1]=(b4/(Math.pow(b2, 2))-m2)/e2;
+			result[0]=b3/(Math.pow(b2, 3/2));
+			result[1]=(b4/(Math.pow(b2, 2))-m2);
 			return result;
 		}
 }

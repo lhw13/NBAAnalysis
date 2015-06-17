@@ -497,7 +497,9 @@ public class TeamAnalysePanel extends JPanel {
 			e.printStackTrace();
 		}  
 		co2 = read("b.txt");//第一个接口需要的系数
-		
+		for(int i=0;i<co1.length;i++) {
+			
+		}
 	}
 	public class StreamGobbler extends Thread {  
 		  

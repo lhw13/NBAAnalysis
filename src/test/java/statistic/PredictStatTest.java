@@ -517,7 +517,7 @@ public class PredictStatTest {
 				sheet.addCell(label);
 				label = new Label(5, row, Double.toString(a[i][5]));
 				sheet.addCell(label);
-				label = new Label(6, row, Double.toString(a[i][5]));
+				label = new Label(6, row, Double.toString(a[i][6]));
 				sheet.addCell(label);
 			}
 			book.write();

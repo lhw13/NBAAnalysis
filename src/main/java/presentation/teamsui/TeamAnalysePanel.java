@@ -131,15 +131,6 @@ public class TeamAnalysePanel extends JPanel {
 	double[] co1;
 	double[] co2;
 	
-	JLabel[] sword_1;
-	JLabel[] sword_2;
-	public static Timer timer;
-	private final int INITIAL_DELAY = 100;
-	private final int PERIOD_INTERVAL = 1000;
-	public static boolean flag = true;
-	public static String teamName_1;
-	public static String teamName_2;
-	
 	public TeamAnalysePanel() {
 		this.setBounds(0, 0, 1000, 600);
 		setLayout(null);
@@ -174,117 +165,6 @@ public class TeamAnalysePanel extends JPanel {
 		scrollPane_1.setBounds(100,430, 600,60);
 		
 	//button===========================================================
-		//sword===========================================================
-		
-		sword_1 = new JLabel[11];
-		
-		sword_1[0] = new JLabel("sword");
-		sword_1[0].setBounds(50, 1100, 100, 100);
-		sword_1[0].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_1[0]);
-		
-		sword_1[1] = new JLabel("sword");
-		sword_1[1].setBounds(150, 1000, 100, 100);
-		sword_1[1].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_1[1]);
-		
-		sword_1[2] = new JLabel("sword");
-		sword_1[2].setBounds(250, 900, 100, 100);
-		sword_1[2].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_1[2]);
-		
-		sword_1[3] = new JLabel("sword");
-		sword_1[3].setBounds(350, 800, 100, 100);
-		sword_1[3].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_1[3]);
-		
-		sword_1[4] = new JLabel("sword");
-		sword_1[4].setBounds(550, 600, 100, 100);
-		sword_1[4].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_1[4]);
-		
-		sword_1[5] = new JLabel("sword");
-		sword_1[5].setBounds(650, 500, 100, 100);
-		sword_1[5].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_1[5]);
-		
-		sword_1[6] = new JLabel("sword");
-		sword_1[6].setBounds(750, 400, 100, 100);
-		sword_1[6].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_1[6]);
-		
-		sword_1[7] = new JLabel("sword");
-		sword_1[7].setBounds(850, 300, 100, 100);
-		sword_1[7].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_1[7]);
-		
-		sword_1[8] = new JLabel("sword");
-		sword_1[8].setBounds(150, 800, 100, 100);
-		sword_1[8].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_1[8]);
-		
-		sword_1[9] = new JLabel("sword");
-		sword_1[9].setBounds(350, 1000, 100, 100);
-		sword_1[9].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_1[9]);
-		
-		//处于中间的
-		sword_1[10] = new JLabel("sword");
-		sword_1[10].setBounds(450, 700, 100, 100);
-		sword_1[10].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_1[10]);
-		
-        sword_2 = new JLabel[10];
-		
-		sword_2[0] = new JLabel("sword");
-		sword_2[0].setBounds(850, 1100, 100, 100);
-		sword_2[0].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_2[0]);
-		
-		sword_2[1] = new JLabel("sword");
-		sword_2[1].setBounds(750, 1000, 100, 100);
-		sword_2[1].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_2[1]);
-		
-		sword_2[2] = new JLabel("sword");
-		sword_2[2].setBounds(650, 900, 100, 100);
-		sword_2[2].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_2[2]);
-		
-		sword_2[3] = new JLabel("sword");
-		sword_2[3].setBounds(550, 800, 100, 100);
-		sword_2[3].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_2[3]);
-		
-		sword_2[4] = new JLabel("sword");
-		sword_2[4].setBounds(350, 600, 100, 100);
-		sword_2[4].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_2[4]);
-		
-		sword_2[5] = new JLabel("sword");
-		sword_2[5].setBounds(250, 500, 100, 100);
-		sword_2[5].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_2[5]);
-		
-		sword_2[6] = new JLabel("sword");
-		sword_2[6].setBounds(150, 400, 100, 100);
-		sword_2[6].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_2[6]);
-		
-		sword_2[7] = new JLabel("sword");
-		sword_2[7].setBounds(50, 300, 100, 100);
-		sword_2[7].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_2[7]);
-		
-		sword_2[8] = new JLabel("sword");
-		sword_2[8].setBounds(750, 800, 100, 100);
-		sword_2[8].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_2[8]);
-		
-		sword_2[9] = new JLabel("sword");
-		sword_2[9].setBounds(550, 1000, 100, 100);
-		sword_2[9].setIcon(new ImageIcon("conf\\pictures\\sword.png"));
-		panelOfPredict.add(sword_2[9]);
 		
 	    //button===========================================================
 		button = new JButton("返回");
@@ -409,7 +289,6 @@ public class TeamAnalysePanel extends JPanel {
 	public void update(String abb) {
 		TeamWithPlayersVO tpvo = blservice.getTeamAnalysis(abb);
 		TeamVO tvo = tpvo.getTeam();
-		teamName_1 = abb;
 		this.abbreviation = abb;
 		ImageIcon picture = ImageHandle.loadTeam(abb);
 		picture.setImage(picture.getImage().getScaledInstance(200, 200,
@@ -852,17 +731,11 @@ public class TeamAnalysePanel extends JPanel {
 				
 				panelOfAnalyse.setVisible(true);
 				panelOfPredict.setVisible(false);
-				if(timer!=null){
-					timer.cancel();
-				}
 			} else if(label1.getText().startsWith("预测")) {
 				label_predict.setForeground(Color.WHITE);
 				label_analyse.setForeground(Color.gray);
 				panelOfAnalyse.setVisible(false);
 				panelOfPredict.setVisible(true);
-				timer = new Timer();//初始化图片循环切换线程
-				timer.scheduleAtFixedRate(new ScheduleTask(), INITIAL_DELAY,
-						PERIOD_INTERVAL);
 			} 
 		}		
 		public void mouseExited(MouseEvent e) {
@@ -890,7 +763,6 @@ public class TeamAnalysePanel extends JPanel {
 					} else {
 
 						//TeamWithPlayersVO teamvo = blservice.getTeamAnalysis();
-						teamName_1 = HotRankingPanel.translate(teamSelected);
 						ImageIcon picture = ImageHandle.loadTeam(HotRankingPanel.translate(teamSelected));
 						picture.setImage(picture.getImage().getScaledInstance(200, 200,
 								Image.SCALE_DEFAULT));
@@ -905,7 +777,6 @@ public class TeamAnalysePanel extends JPanel {
 					if(teamSelected.equals("选择球队")) {
 						
 					} else {
-						teamName_2 = HotRankingPanel.translate(teamSelected);
 						ImageIcon picture = ImageHandle.loadTeam(HotRankingPanel.translate(teamSelected));
 						picture.setImage(picture.getImage().getScaledInstance(200, 200,
 								Image.SCALE_DEFAULT));
@@ -1014,55 +885,5 @@ public class TeamAnalysePanel extends JPanel {
 	    	//return o2.getEfficient() > o1.getEfficient() ? 1 : -1;
 	    }
 	};
-
-	int index_1 = 0;
-	int index_2 = 0;
-	// 图片循环切换线程
-	private class ScheduleTask extends TimerTask {
-
-		public void run() {
-			ImageIcon picture;
-			TeamWithPlayersVO twpvo_1 = blservice.getTeamAnalysis(teamName_1);
-			ArrayList<PlayerVO> players_1 = twpvo_1.getPlayers();
-			
-			ArrayList<PlayerVO> players_2 = null;
-			if(teamName_2!=null){
-				TeamWithPlayersVO twpvo_2 = blservice.getTeamAnalysis(teamName_2);
-				players_2 = twpvo_2.getPlayers();
-			}
-			if (flag) {
-				if(index_1<players_1.size()){
-					PlayerVO pvo = players_1.get(index_1);
-					picture = ImageHandle.loadPlayer(pvo.getName());
-					picture.setImage(picture.getImage().getScaledInstance(100, 100,
-							Image.SCALE_DEFAULT));
-					for(int j=0;j<10;j++){
-						sword_2[j].setIcon(picture);
-					}
-					index_1 ++;
-				}else{
-					index_1 = 0;
-				}
-				if(players_2!=null){
-					if(index_2<players_2.size()){
-						PlayerVO pvo = players_2.get(index_2);
-						picture = ImageHandle.loadPlayer(pvo.getName());
-						picture.setImage(picture.getImage().getScaledInstance(100, 100,
-								Image.SCALE_DEFAULT));
-						for(int j=0;j<10;j++){
-							sword_1[j].setIcon(picture);
-						}
-						index_2 ++;
-					}else{
-						index_2 = 0;
-					}
-				}
-				
-				
-			}
-			
-		}
-		
-	}
 	
 }

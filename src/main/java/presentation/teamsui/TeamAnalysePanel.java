@@ -2,6 +2,7 @@ package presentation.teamsui;
 
 import hotui.HotRankingPanel;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -22,11 +23,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
+import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Vector;
 import java.util.Timer;
 import java.util.TimerTask;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -34,20 +40,30 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.StandardChartTheme;
+import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PiePlot3D;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.ValueMarker;
+import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.title.TextTitle;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import org.jfree.data.statistics.BoxAndWhiskerCategoryDataset;
 import org.jfree.data.statistics.DefaultBoxAndWhiskerCategoryDataset;
+import org.jfree.ui.Layer;
 import org.jfree.util.Rotation;
 
 import presentation.ImageHandle;
@@ -64,6 +80,9 @@ import vo.TeamVO;
 import vo.TeamWithPlayersVO;
 import blservice.BLService;
 
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
+
 public class TeamAnalysePanel extends JPanel {
 	BLService blservice = BLController.getInstance();
 
@@ -72,8 +91,17 @@ public class TeamAnalysePanel extends JPanel {
 	JPanel panelOfPredict = new JPanel();
 	JPanel pie;
 	JPanel box;
+	JPanel barchart1;
+	JPanel barchart2;
 	
 	public static JScrollPane scrollPane;
+	public JScrollPane scrollPane_1;
+	
+	JTable table_1;
+	
+	DefaultTableModel model_1 = new DefaultTableModel();
+	
+	Vector columnName_1 = new Vector();
 	
 	JButton button;
 	
@@ -91,9 +119,14 @@ public class TeamAnalysePanel extends JPanel {
 	JLabel label_winrate;
 	JLabel label_winrate1;
 	JLabel label_winrate2;
+	JLabel label_red1;
+	JLabel label_blue2;
+	JLabel label_home;
+	JLabel label_nohome;
 	
 	JComboBox combox1;
 	JComboBox combox2;
+	
 	
 	double[] co1;
 	double[] co2;
@@ -115,7 +148,15 @@ public class TeamAnalysePanel extends JPanel {
 		scrollPane.setBounds(0, 0, 990, 600);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		add(scrollPane);
-		//panel===========================================================
+		
+		scrollPane_1 = new JScrollPane();
+		
+		String[] cname_1 = new String[] {"得分","投篮%","三分%",
+				"罚球%","前篮板","后篮板","总篮板","助攻","抢断","盖帽","失误","犯规"};
+		for(int i=0;i<cname_1.length;i++) {
+			columnName_1.add(cname_1[i]);
+		}	
+//panel===========================================================
 		panelOfBottom.setLayout(null);
 		panelOfBottom.setPreferredSize(new Dimension(1000, 1300));
 		
@@ -129,6 +170,10 @@ public class TeamAnalysePanel extends JPanel {
 		panelOfBottom.add(panelOfPredict);
 		panelOfPredict.setVisible(false);
 		
+		panelOfAnalyse.add(scrollPane_1);
+		scrollPane_1.setBounds(100,430, 600,60);
+		
+	//button===========================================================
 		//sword===========================================================
 		
 		sword_1 = new JLabel[11];
@@ -257,8 +302,14 @@ public class TeamAnalysePanel extends JPanel {
 			}
 		});
 		panelOfBottom.add(button);
+
+	//table======================================================
+		table_1 = new JTable(model_1);
+		table_1.setShowGrid(false);
+		scrollPane_1.setViewportView(table_1);
 		
-	    //label========================================================
+	//label========================================================
+
 		
 		label = new JLabel("New label");
 		label.setBounds(30, 91, 200, 200);
@@ -289,12 +340,12 @@ public class TeamAnalysePanel extends JPanel {
 		label_score.setBounds(400, 150, 180, 40);
 		panelOfPredict.add(label_score);
 		
-		label_score1 = new JLabel("1");
+		label_score1 = new JLabel();
 		label_score1.setFont(new Font("黑体", Font.PLAIN, 40));
 		label_score1.setBounds(300, 150, 100, 40);
 		panelOfPredict.add(label_score1);
 		
-		label_score2 = new JLabel("2");
+		label_score2 = new JLabel();
 		label_score2.setFont(new Font("黑体", Font.PLAIN, 40));
 		label_score2.setBounds(600, 150, 100, 40);
 		panelOfPredict.add(label_score2);
@@ -304,17 +355,40 @@ public class TeamAnalysePanel extends JPanel {
 		label_winrate.setBounds(400, 200, 180, 40);
 		panelOfPredict.add(label_winrate);
 		
-		label_winrate1 = new JLabel("1");
+		label_winrate1 = new JLabel();
 		label_winrate1.setFont(new Font("黑体", Font.PLAIN, 40));
-		label_winrate1.setBounds(300, 200, 100, 40);
+		label_winrate1.setBounds(270, 200, 100, 40);
 		panelOfPredict.add(label_winrate1);
 		
-		label_winrate2 = new JLabel("2");
+		label_winrate2 = new JLabel();
 		label_winrate2.setFont(new Font("黑体", Font.PLAIN, 40));
 		label_winrate2.setBounds(600, 200, 100, 40);
 		panelOfPredict.add(label_winrate2);
+		
+		label_nohome = new JLabel("客场");
+		label_nohome.setFont(new Font("黑体", Font.PLAIN, 40));
+		label_nohome.setBounds(200, 10, 100, 40);
+		panelOfPredict.add(label_nohome);
+		
+		label_home = new JLabel("主场");
+		label_home.setFont(new Font("黑体", Font.PLAIN, 40));
+		label_home.setBounds(650, 10, 100, 40);
+		panelOfPredict.add(label_home);
 		 
-
+		label_red1 = new JLabel();
+		label_red1.setFont(new Font("黑体", Font.PLAIN, 40));
+		label_red1.setBounds(340, 260, 150, 30);
+		panelOfPredict.add(label_red1);
+		 
+		label_blue2 = new JLabel();
+		label_blue2.setFont(new Font("黑体", Font.PLAIN, 40));
+		label_blue2.setBounds(340, 260, 300, 30);
+		panelOfPredict.add(label_blue2);
+		
+		ImageIcon picture = ImageHandle.loadTeam("blue");
+		label_blue2.setIcon(picture);
+		picture= ImageHandle.loadTeam("red");
+		label_red1.setIcon(picture);
 //combobox=============================================================
 		
 		combox1 = new JComboBox();
@@ -324,15 +398,17 @@ public class TeamAnalysePanel extends JPanel {
 		combox1.addItemListener(new TeamItemListener('l'));
 		
 		combox2 = new JComboBox();
-		combox2.setBounds(680, 50, 100, 25);
+		combox2.setBounds(770, 50, 100, 25);
 		panelOfPredict.add(combox2);
 		combox2.addItem("选择球队");
 		combox2.addItemListener(new TeamItemListener('r'));
 		
-		calculate();//计算好回归需要的系数
+		
 	}
 
 	public void update(String abb) {
+		TeamWithPlayersVO tpvo = blservice.getTeamAnalysis(abb);
+		TeamVO tvo = tpvo.getTeam();
 		teamName_1 = abb;
 		this.abbreviation = abb;
 		ImageIcon picture = ImageHandle.loadTeam(abb);
@@ -344,7 +420,8 @@ public class TeamAnalysePanel extends JPanel {
 			pie = null;
 		}
 		pie = createDemoPanel();
-		pie.setBounds(350, 60, 500, 410);
+		pie.setBounds(350, 0, 500, 410);
+
 		pie.setVisible(true);		
 		pie.updateUI();
 		
@@ -360,6 +437,32 @@ public class TeamAnalysePanel extends JPanel {
 		panelOfAnalyse.add(box);
 		panelOfAnalyse.repaint();
 		
+		Vector rowDatas_1 = new Vector();
+		Vector rowData_1 = new Vector();	
+		int appearance = tvo.getAppearance();
+		rowData_1.add(String.format("%.1f", (double)tvo.getScore()/appearance));
+		rowData_1.add(String.format("%.1f", tvo.getHitRate()*100)+"%");
+		rowData_1.add(String.format("%.1f", tvo.getThirdHitRate()*100)+"%");
+		rowData_1.add(String.format("%.1f", tvo.getFreeHitRate()*100)+"%");
+		rowData_1.add(String.format("%.1f", (double)tvo.getOffensiveRebound()/appearance));
+		rowData_1.add(String.format("%.1f", (double)tvo.getDefensiveRebound()/appearance));
+		rowData_1.add(String.format("%.1f", (double)tvo.getTotalRebound()/appearance));
+		rowData_1.add(String.format("%.1f", (double)tvo.getAssist()/appearance));
+		rowData_1.add(String.format("%.1f", (double)tvo.getSteal()/appearance));
+		rowData_1.add(String.format("%.1f", (double)tvo.getBlock()/appearance));
+		rowData_1.add(String.format("%.1f", (double)tvo.getMiss()/appearance));
+		rowData_1.add(String.format("%.1f", (double)tvo.getFoul()/appearance));
+		rowDatas_1.add(rowData_1);
+		model_1.setDataVector(rowDatas_1, columnName_1);		
+		model_1.setColumnCount(table_1.getColumnCount());
+		model_1.setRowCount(rowDatas_1.size());
+		table_1.setModel(model_1);
+		//int[] width_1={50,60,5,3,3,3,3,3,3,3,3,3,3,3};
+		//table_1.setColumnModel(getColumn(table_1, width_1));
+		table_1.updateUI();
+		
+		calculate();//计算好回归需要的系数
+		
 	}
 	
 	public void update2(String abb1, String abb2) {
@@ -374,7 +477,20 @@ public class TeamAnalysePanel extends JPanel {
 				Image.SCALE_DEFAULT));
 		label_pk2.setIcon(picture);
 		
+		if(barchart1!=null) {
+			barchart1.setVisible(false);
+			barchart1 = null;
+		}
+		
 		if(abb1!="NBA"&&abb2!="NBA"){
+			String[] teams = {abb1,abb2};
+			barchart1 = createPanel_3(teams);
+			barchart1.setBounds(0, 300, 690, 280);
+			barchart1.setVisible(true);		
+			barchart1.updateUI();
+			panelOfPredict.add(barchart1);
+			panelOfPredict.repaint();
+			
 			double[][] x1 = blservice.getVariables(abb1, abb2);
 			double score1=0,score2=0;
 			
@@ -393,8 +509,8 @@ public class TeamAnalysePanel extends JPanel {
 			}
 			differential+=co2[0];
 			int[] s = blservice.adjustPredictResult(score1, score2, differential);
-			label_score1.setText(Double.toString(score1));
-			label_score2.setText(Double.toString(score2));
+			label_score1.setText(Integer.toString(s[0]));
+			label_score2.setText(Integer.toString(s[1]));
 			
 			double[][] datas2 = blservice.getDataForStrengthRegression(2000);
 			double[][] vdata = new double[datas2.length][2];//计算方差,参数
@@ -417,6 +533,34 @@ public class TeamAnalysePanel extends JPanel {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			Process proc;
+			try {
+				proc = Runtime.getRuntime().exec("python norm.py");
+				
+				StreamGobbler errorGobbler = new StreamGobbler(proc.getErrorStream(), "Error");  
+				StreamGobbler outputGobbler = new StreamGobbler(proc.getInputStream(), "Output");  
+				errorGobbler.start();  
+				outputGobbler.start(); 
+				proc.waitFor(); 
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}  
+			
+			try {
+				BufferedReader reader = new BufferedReader(new FileReader(Opendoc("winrate.txt")));
+				String line = reader.readLine();
+				double winrate = Double.parseDouble(line);
+				label_winrate1.setText(String.format("%.1f", 100-winrate*100)+"%");
+				label_winrate2.setText(String.format("%.1f", winrate*100)+"%");
+				label_red1.setSize(300-(int)(300*winrate),30);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 			
 		}
 	}
@@ -433,6 +577,7 @@ public class TeamAnalysePanel extends JPanel {
 		}
 		
 	}
+	
 	
 	public void calculate() {
 		double[][] datas1 = blservice.getDataForRegression(2000);
@@ -523,7 +668,6 @@ public class TeamAnalysePanel extends JPanel {
 		File fx = Opendoc(filenamex);
 		File fy = Opendoc(filenamey);
 		int scale = datas.length;
-		//double[][] datas = blservice.getDataForRegression(scale);
 		int len = datas[0].length;
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(fx));
@@ -744,6 +888,7 @@ public class TeamAnalysePanel extends JPanel {
 					if(teamSelected.equals("选择球队")) {
 						
 					} else {
+
 						//TeamWithPlayersVO teamvo = blservice.getTeamAnalysis();
 						teamName_1 = HotRankingPanel.translate(teamSelected);
 						ImageIcon picture = ImageHandle.loadTeam(HotRankingPanel.translate(teamSelected));
@@ -780,6 +925,84 @@ public class TeamAnalysePanel extends JPanel {
 			}
 		}
 
+	}
+	
+	private static JFreeChart createChart_3(CategoryDataset dataset){//用数据集创建一个图表
+		JFreeChart chart = ChartFactory.createBarChart3D( 
+				"球队赛季数据对比1", // 图表标题
+				"球员", // 目录轴的显示标签
+				"数值", // 数值轴的显示标签
+				dataset, // 数据集
+				PlotOrientation.VERTICAL, // 图表方向：水平、垂直
+				true,  // 是否显示图例(对于简单的柱状图必须是 false)
+				false, // 是否生成工具
+				false  // 是否生成 URL 链接
+				); 
+		//中文乱码
+		CategoryPlot categoryplot = (CategoryPlot) chart.getPlot();
+		NumberAxis numberaxis = (NumberAxis) categoryplot.getRangeAxis();  
+		CategoryAxis domainAxis = categoryplot.getDomainAxis();
+		
+		TextTitle textTitle = chart.getTitle();
+		textTitle.setFont(new Font("黑体", Font.PLAIN, 20));
+		textTitle.setPaint(Color.white);
+		domainAxis.setTickLabelFont(new Font("sans-serif", Font.PLAIN, 11));  
+		domainAxis.setLabelFont(new Font("宋体", Font.PLAIN, 15));  
+		domainAxis.setLabelPaint(Color.white);
+		domainAxis.setTickLabelPaint(Color.white);
+		numberaxis.setTickLabelFont(new Font("sans-serif", Font.PLAIN, 15));  
+		numberaxis.setLabelFont(new Font("黑体", Font.PLAIN, 15));
+		numberaxis.setLabelPaint(Color.white);
+		numberaxis.setTickLabelPaint(Color.white);
+		chart.getLegend().setItemFont(new Font("宋体", Font.PLAIN, 15));
+
+		BarRenderer renderer = (BarRenderer)categoryplot.getRenderer();
+		renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator());
+		renderer.setBaseItemLabelsVisible(true);
+		chart.setBackgroundPaint(new Color(0.0F, 0.0F, 0.0F, 0.0F));
+		return chart;
+	}
+
+	private  CategoryDataset createDataset_3(String[] teams){//创建柱状图数据集
+
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset(); 
+		TeamWithPlayersVO vo1 = blservice.getTeamAnalysis(teams[0]);
+		TeamWithPlayersVO vo2 = blservice.getTeamAnalysis(teams[1]);
+		
+		TeamVO team1 = vo1.getTeam();
+		TeamVO team2 = vo2.getTeam();
+		double[] scores = {handle((double)team1.getScore()/team1.getAppearance()), 
+				handle((double)team2.getScore()/team2.getAppearance())};
+		double[] assists = {handle((double)team1.getAssist()/team1.getAppearance()), 
+				handle((double)team2.getAssist()/team2.getAppearance())};
+		double[] rebounds = {handle((double)team1.getTotalRebound()/team1.getAppearance()), 
+				handle((double)team2.getTotalRebound()/team2.getAppearance())};
+		
+		dataset.addValue(scores[0], teams[0], "得分");
+		dataset.addValue(scores[1], teams[1], "得分");
+		
+		dataset.addValue(assists[0], teams[0], "助攻");
+		dataset.addValue(assists[1], teams[1], "助攻");
+		
+		dataset.addValue(rebounds[0], teams[0], "篮板");
+		dataset.addValue(rebounds[1], teams[1], "篮板");
+	
+		return dataset; 
+	}
+
+	private JPanel createPanel_3(String[] players){
+		JFreeChart chart =createChart_3(createDataset_3(players));
+		return new ChartPanel(chart); //将chart对象放入Panel面板中去，ChartPanel类已继承Jpanel
+	}
+	
+	public static double handle(double a) {
+		double result = a/1.0;
+		Double r = new Double(result);
+		if(result!=0&&!r.isNaN()&&!r.isInfinite()) {
+			BigDecimal bg = new BigDecimal(result);
+			result = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+		}
+		return result;
 	}
 	public final Comparator<PlayerVO> compareEfficientDesc = new Comparator<PlayerVO>() {  
 		  

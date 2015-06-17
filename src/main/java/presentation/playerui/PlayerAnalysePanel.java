@@ -299,7 +299,7 @@ public class PlayerAnalysePanel extends JPanel {
 	{
 		JFreeChart jfreechart = createChart_1(createDataset_1());
 		ChartPanel chartpanel = new ChartPanel(jfreechart);
-		chartpanel.setMouseWheelEnabled(true);
+		chartpanel.setMouseWheelEnabled(false);
 		return chartpanel;
 	}
 	private XYDataset createDataset_2()

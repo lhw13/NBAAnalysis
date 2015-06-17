@@ -402,6 +402,8 @@ public class TeamAnalysePanel extends JPanel {
 				}
 			}
 			double var = blservice.getVariance(vdata, vdata.length);
+			double[] check = blservice.varifyByCentralMoment(vdata, vdata.length);
+			System.out.println(check[0]+":"+check[1]);
 			File fx = Opendoc("forWinRate.txt");
 			
 			try {

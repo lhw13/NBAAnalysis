@@ -19,9 +19,10 @@ import server.po.TeamInMatchesPO;
 import server.po.TeamPO;
 
 public class DatabaseController implements Runnable {
+	static int startY=2012;
 	private static HashMap<String, DataClass> wholeData = new HashMap<>(50);
 	static {
-		for (int y = 1985; y < 2015; y++) {
+		for (int y = startY; y < 2015; y++) {
 			String y1 = (y + "").substring(2, 4);
 			String y2 = ((y + 1) + "").substring(2, 4);
 			String season = y1 + "-" + y2;
@@ -654,7 +655,7 @@ public class DatabaseController implements Runnable {
 		Connection conn = DriverManager.getConnection("jdbc:sqlite:"
 				+ Path.path);
 		Statement stat = conn.createStatement();
-		for (int y = 1985; y < 2015; y++) {
+		for (int y = startY; y < 2015; y++) {
 			String y1 = (y + "").substring(2, 4);
 			String y2 = ((y + 1) + "").substring(2, 4);
 			String season = y1 + "-" + y2;
@@ -697,7 +698,7 @@ public class DatabaseController implements Runnable {
 	}
 
 	public void run() {
-		for (int y = 2014; y > 1984; y--) {
+		for (int y = 2014; y > startY-1; y--) {
 			if (y % 3 == n) {
 				String y1 = (y + "").substring(2, 4);
 				String y2 = ((y + 1) + "").substring(2, 4);

@@ -22,7 +22,7 @@ public class DatabaseController implements Runnable {
 	static int startY=2012;
 	private static HashMap<String, DataClass> wholeData = new HashMap<>(50);
 	static {
-		for (int y = startY; y < 2015; y++) {
+		for (int y = startY; y < 2016; y++) {
 			String y1 = (y + "").substring(2, 4);
 			String y2 = ((y + 1) + "").substring(2, 4);
 			String season = y1 + "-" + y2;
@@ -31,66 +31,69 @@ public class DatabaseController implements Runnable {
 	}
 	static Statement stat = null;
 	static String[][] list = new String[4145][2];
-	private static String season = "14-15";
+	private static String season = "15-16";
 	int n;
 
 	public static void main(String[] args) throws Exception {
-		// Class.forName("org.sqlite.JDBC");
-		// Connection conn = DriverManager
-		// .getConnection("jdbc:sqlite:"+Path.path);
-		// stat = conn.createStatement();
+//		 Class.forName("org.sqlite.JDBC");
+//		 Connection conn = DriverManager
+//		 .getConnection("jdbc:sqlite:"+Path.path);
+//		 stat = conn.createStatement();
 		//
 		//
 		// writeMatch(Ant.analyseteaminfo("http://www.nba.com/games/20140502/TORBKN/gameinfo.html"));
 		// DataTransformation.MatchPOToText(getMatchPOListBySeason("13-14").get(0),"E:\\dataText\\");
 		// System.out.println(getMatchPOListBySeason("13-14").size());
 
-		// File f = new
-		// File("C:\\Users\\wjc\\Desktop\\CSEIII NBA Tool\\liveData");
-		// File[] matchesFile = f.listFiles();
-		// for (File i : matchesFile) {
-		// MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
-		// .dataReader(i));
-		// if(newMatchPO!=null){
-		// writeMatch(newMatchPO);
-		// }
-		// }
-		// for(int y=2012;y<2015;y++){
-		// String y1=(y+"").substring(2, 4);
-		// String y2=((y+1)+"").substring(2, 4);
-		// String season=y1+"-"+y2;
-		// System.out.println(season);
-		// ArrayList<MatchPO> list1=new ArrayList<MatchPO>(2000);
-		// File f = new File("E:\\dataBasketball\\"+season+"regular");
-		// File[] matchesFile = f.listFiles();
-		// for (File i : matchesFile) {
-		// MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
-		// .dataReader(i));
-		// if(newMatchPO!=null){
-		// newMatchPO.setType("regular");
-		// list1.add(newMatchPO);
-		// }
-		// }
-		// for(MatchPO mp:list1){
-		// writeMatch(mp);
-		// }
-		// ArrayList<MatchPO> list2=new ArrayList<MatchPO>(200);
-		// File f1 = new File("E:\\dataBasketball\\"+season+"playOff");
-		// File[] matchesFile1 = f1.listFiles();
-		// for (File i : matchesFile1) {
-		// MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
-		// .dataReader(i));
-		// if(newMatchPO!=null){
-		// newMatchPO.setType("playOff");
-		// list2.add(newMatchPO);
-		//
-		// }
-		// }
-		// for(MatchPO mp:list2){
-		// writeMatch(mp);
-		// }
-		// }
-
+//		 File f = new
+//		 File("C:\\Users\\wjc\\Desktop\\CSEIII NBA Tool\\liveData");
+//		 File[] matchesFile = f.listFiles();
+//		 for (File i : matchesFile) {
+//		 MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
+//		 .dataReader(i));
+//		 if(newMatchPO!=null){
+//		 writeMatch(newMatchPO);
+//		 }
+//		 }
+//		 for(int y=2015;y<2016;y++){
+//		 String y1=(y+"").substring(2, 4);
+//		 String y2=((y+1)+"").substring(2, 4);
+//		 String season=y1+"-"+y2;
+//		 System.out.println(season);
+//		 ArrayList<MatchPO> list1=new ArrayList<MatchPO>(2000);
+//		 File f = new File("D:\\dataBasketball\\"+season+"regular");
+//		 File[] matchesFile = f.listFiles();
+//		 System.out.println(matchesFile.length);
+//		 for (File i : matchesFile) {
+//		 MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
+//		 .dataReader(i));
+//		 if(newMatchPO!=null){
+//		 newMatchPO.setType("regular");
+//		 list1.add(newMatchPO);
+//		 }
+//		 }
+//		 for(MatchPO mp:list1){
+//		 writeMatch(mp);
+//		 }
+//		 
+//		 ArrayList<MatchPO> list2=new ArrayList<MatchPO>(200);
+//		 File f1 = new File("D:\\dataBasketball\\"+season+"playOff");
+//		 File[] matchesFile1 = f1.listFiles();
+//		 System.out.println(matchesFile1.length);
+//		 for (File i : matchesFile1) {
+//		 MatchPO newMatchPO=MatchesDataAnalyse.MatchPOMade(DataReader
+//		 .dataReader(i));
+//		 if(newMatchPO!=null){
+//		 newMatchPO.setType("playOff");
+//		 list2.add(newMatchPO);
+//		
+//		 }
+//		 }
+//		 for(MatchPO mp:list2){
+//		 writeMatch(mp);
+//		 }
+//		 }
+//		 conn.close();
 		// createTableOfPlayer();
 		// File f = new File("C:\\Users\\wjc\\Desktop\\info");
 		// File[] PlayersFile = f.listFiles();
@@ -655,7 +658,7 @@ public class DatabaseController implements Runnable {
 		Connection conn = DriverManager.getConnection("jdbc:sqlite:"
 				+ Path.path);
 		Statement stat = conn.createStatement();
-		for (int y = startY; y < 2015; y++) {
+		for (int y = startY; y < 2016; y++) {
 			String y1 = (y + "").substring(2, 4);
 			String y2 = ((y + 1) + "").substring(2, 4);
 			String season = y1 + "-" + y2;
@@ -698,7 +701,7 @@ public class DatabaseController implements Runnable {
 	}
 
 	public void run() {
-		for (int y = 2014; y > startY-1; y--) {
+		for (int y = 2015; y > startY-1; y--) {
 			if (y % 3 == n) {
 				String y1 = (y + "").substring(2, 4);
 				String y2 = ((y + 1) + "").substring(2, 4);

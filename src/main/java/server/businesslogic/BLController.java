@@ -608,7 +608,7 @@ public final class BLController implements BLService {
 		else
 			return true;
 			//matches = data.getNewMatch();
-		if(matches.size()==0)
+		if(matches.size()==0) 
 		{
 			return true;
 		}

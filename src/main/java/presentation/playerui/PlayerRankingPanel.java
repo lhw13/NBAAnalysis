@@ -370,10 +370,11 @@ public class PlayerRankingPanel extends JPanel {
 		choose_season = new JComboBox<String>();
 		choose_season.setBounds(700, 100, 150, 30);
 		choose_season.addItem("选择赛季");
+		choose_season.addItem("15-16");
 		choose_season.addItem("14-15");
 		choose_season.addItem("13-14");
 		choose_season.addItem("12-13");
-		choose_season.addItem("11-12");
+		/*choose_season.addItem("11-12");
 		choose_season.addItem("10-11");
 		choose_season.addItem("09-10");
 		choose_season.addItem("08-09");
@@ -399,7 +400,7 @@ public class PlayerRankingPanel extends JPanel {
 		choose_season.addItem("88-89");
 		choose_season.addItem("87-88");
 		choose_season.addItem("86-87");
-		choose_season.addItem("85-86");
+		choose_season.addItem("85-86");*/
 		choose_season.setSelectedItem(MainFrame.season);
 		panel.add(choose_season);
 		

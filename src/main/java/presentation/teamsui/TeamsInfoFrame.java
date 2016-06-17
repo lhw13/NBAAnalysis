@@ -238,10 +238,11 @@ public class TeamsInfoFrame extends JPanel{
 		comboBox_1 = new JComboBox<String>();
 		comboBox_1.setBounds(500, 475, 150, 30);
 		comboBox_1.addItem("选择赛季");
+		comboBox_1.addItem("15-16");
 		comboBox_1.addItem("14-15");
 		comboBox_1.addItem("13-14");
 		comboBox_1.addItem("12-13");
-		comboBox_1.addItem("11-12");
+		/*comboBox_1.addItem("11-12");
 		comboBox_1.addItem("10-11");
 		comboBox_1.addItem("09-10");
 		comboBox_1.addItem("08-09");
@@ -267,7 +268,7 @@ public class TeamsInfoFrame extends JPanel{
 		comboBox_1.addItem("88-89");
 		comboBox_1.addItem("87-88");
 		comboBox_1.addItem("86-87");
-		comboBox_1.addItem("85-86");
+		comboBox_1.addItem("85-86");*/
 		comboBox_1.setSelectedItem("选择赛季");
 		
 		final String teamName = twpvo.getTeam().getAbbreviation();

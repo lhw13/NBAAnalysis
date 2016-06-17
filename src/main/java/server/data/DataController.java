@@ -72,7 +72,7 @@ public final class DataController implements DataService {
 				matchPOList = dc.getList();
 			} else {
 				matchPOList = DatabaseController.getMatchPOListBySeason();
-			}
+			} 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

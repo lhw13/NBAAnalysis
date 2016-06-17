@@ -81,6 +81,7 @@ public class MatchSelectionPanel extends JPanel {
 		comboBox = new JComboBox<String>();
 		comboBox.setBounds(250, 50, 100, 30);
 		comboBox.addItem("选择赛季");
+		comboBox.addItem("15-16");
 		comboBox.addItem("14-15");
 		comboBox.addItem("13-14");
 		comboBox.addItem("12-13");

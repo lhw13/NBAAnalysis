@@ -14,10 +14,12 @@ import java.util.Timer;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -55,7 +57,7 @@ public class MatchSelectionPanel extends JPanel {
 	
 	private static ArrayList<MatchPO> mpoList;
 	
-	private static BLController compute;
+	private static BLController compute; 
 	
 	public MatchSelectionPanel() {
 		this.setBounds(0, 100, 1000, 600);
@@ -70,7 +72,7 @@ public class MatchSelectionPanel extends JPanel {
 		panelOfBottom.setPreferredSize(new Dimension(1000, 500));
 		panelOfBottom.setLayout(null);
 		
-		String[] names1 = new String[]{"赛季", "日期", "主队", "比分", "客队", "主队最高分", "客队最高分", "详情"};
+		String[] names1 = new String[]{"赛季", "日期", "主队", "比分", "客队", "主队最高得分球员", "得分", "客队最高得分球员", "得分"};
 		columnName1 = new Vector();
 		for(int i=0;i<names1.length;i++) {
 			columnName1.add(names1[i]);
@@ -82,7 +84,7 @@ public class MatchSelectionPanel extends JPanel {
 		comboBox.addItem("14-15");
 		comboBox.addItem("13-14");
 		comboBox.addItem("12-13");
-		comboBox.addItem("11-12");
+	/*	comboBox.addItem("11-12");
 		comboBox.addItem("10-11");
 		comboBox.addItem("09-10");
 		comboBox.addItem("08-09");
@@ -108,7 +110,7 @@ public class MatchSelectionPanel extends JPanel {
 		comboBox.addItem("88-89");
 		comboBox.addItem("87-88");
 		comboBox.addItem("86-87");
-		comboBox.addItem("85-86");
+		comboBox.addItem("85-86");*/
 		comboBox.setSelectedItem(MainFrame.season);
 		panelOfBottom.add(comboBox);
 		
@@ -191,6 +193,10 @@ public class MatchSelectionPanel extends JPanel {
 		table.setModel(model_1);
 		table.addMouseListener(listener);
 		table.setShowGrid(false);
+		
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(JLabel.CENTER);
+		table.setDefaultRenderer(Object.class, tcr);
 		
 		scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(100, 100, 800, 400);
@@ -305,10 +311,10 @@ public class MatchSelectionPanel extends JPanel {
 			rowData1.add(selectedMatchs.get(i).getFinalScore().getTeam1()+"-"+
 					selectedMatchs.get(i).getFinalScore().getTeam2());
 			rowData1.add(PlayerSelectionPanel.translate(selectedMatchs.get(i).getTeam2().getAbbreviation()));
-			rowData1.add(selectedMatchs.get(i).getTeam1().getHighestScore().getName()+" "+
-					selectedMatchs.get(i).getTeam1().getHighestScore().getScore());
-			rowData1.add(selectedMatchs.get(i).getTeam2().getHighestScore().getName()+" "+
-					selectedMatchs.get(i).getTeam2().getHighestScore().getScore());
+			rowData1.add(selectedMatchs.get(i).getTeam1().getHighestScore().getNameWithoutNum());
+			rowData1.add(selectedMatchs.get(i).getTeam1().getHighestScore().getScore());
+			rowData1.add(selectedMatchs.get(i).getTeam2().getHighestScore().getNameWithoutNum());
+			rowData1.add(selectedMatchs.get(i).getTeam2().getHighestScore().getScore());
 			rowData1.add("详情");
 			rowDatas1.add(rowData1);
 		}
@@ -316,7 +322,7 @@ public class MatchSelectionPanel extends JPanel {
 		model_1.setDataVector(rowDatas1, columnName1);
 		model_1.setColumnCount(table.getColumnCount());
 		model_1.setRowCount(rowDatas1.size());
-		int[] width={50,50,50,60,50,150,150,50};
+		int[] width={50,50,50,60,50,150,50,150,50};
 		table.setColumnModel(getColumn(table, width));
 		table.setModel(model_1);
 		table.updateUI();
@@ -359,7 +365,7 @@ public class MatchSelectionPanel extends JPanel {
 		}
 		for(int i=0;i<mpo.getTeam1().getPlayers().size();i++){
 			Vector rowData1 = new Vector();
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getName());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getNameWithoutNum()); 
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPosition()+"");
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPlayTime()/60+" min");
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getHit()+"/"+
@@ -387,7 +393,7 @@ public class MatchSelectionPanel extends JPanel {
 		Vector rowDatas2 = new Vector();
 		for(int i=0;i<mpo.getTeam2().getPlayers().size();i++){
 			Vector rowData2 = new Vector();
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getName());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getNameWithoutNum());
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPosition()+"");
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPlayTime()/60+" min");
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getHit()+"/"+
@@ -459,39 +465,39 @@ public class MatchSelectionPanel extends JPanel {
 				" 负"+loseMatchNum);
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
-		rowData4.add(mpo.getTeam1().getHighestScore().getName()+" "+
+		rowData4.add(mpo.getTeam1().getHighestScore().getNameWithoutNum()+" "+
 		               mpo.getTeam1().getHighestScore().getScore());
 		rowData4.add("得分");
-		rowData4.add(mpo.getTeam2().getHighestScore().getName()+" "+
+		rowData4.add(mpo.getTeam2().getHighestScore().getNameWithoutNum()+" "+
 	               mpo.getTeam2().getHighestScore().getScore());
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
-		rowData4.add(mpo.getTeam1().getHighestRebound().getName()+" "+
+		rowData4.add(mpo.getTeam1().getHighestRebound().getNameWithoutNum()+" "+
                 mpo.getTeam1().getHighestRebound().getTotalRebound());
 	    rowData4.add("篮板");
-	    rowData4.add(mpo.getTeam2().getHighestRebound().getName()+" "+
+	    rowData4.add(mpo.getTeam2().getHighestRebound().getNameWithoutNum()+" "+
                        mpo.getTeam2().getHighestRebound().getTotalRebound());
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
-		rowData4.add(mpo.getTeam1().getHighestAssist().getName()+" "+
+		rowData4.add(mpo.getTeam1().getHighestAssist().getNameWithoutNum()+" "+
                        mpo.getTeam1().getHighestAssist().getAssist());
         rowData4.add("助攻");
-        rowData4.add(mpo.getTeam2().getHighestAssist().getName()+" "+
+        rowData4.add(mpo.getTeam2().getHighestAssist().getNameWithoutNum()+" "+
                        mpo.getTeam2().getHighestAssist().getAssist());
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
-		rowData4.add(mpo.getTeam1().getHighestSteal().getName()+" "+
+		rowData4.add(mpo.getTeam1().getHighestSteal().getNameWithoutNum()+" "+
                        mpo.getTeam1().getHighestSteal().getSteal());
         rowData4.add("抢断");
-        rowData4.add(mpo.getTeam2().getHighestSteal().getName()+" "+
+        rowData4.add(mpo.getTeam2().getHighestSteal().getNameWithoutNum()+" "+
                        mpo.getTeam2().getHighestSteal().getSteal());
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
-		rowData4.add(mpo.getTeam1().getHighestBlock().getName()+" "+
+		rowData4.add(mpo.getTeam1().getHighestBlock().getNameWithoutNum()+" "+
                        mpo.getTeam1().getHighestBlock().getBlock());
         rowData4.add("盖帽");
-        rowData4.add(mpo.getTeam1().getHighestBlock().getName()+" "+
-                       mpo.getTeam1().getHighestBlock().getBlock());
+        rowData4.add(mpo.getTeam1().getHighestBlock().getNameWithoutNum()+" "+
+                       mpo.getTeam1().getHighestBlock().getBlock()); 
 		rowDatas4.add(rowData4);
 		
 		model4.setDataVector(rowDatas4, columnName4);		
@@ -569,7 +575,7 @@ public class MatchSelectionPanel extends JPanel {
 		}
 		for(int i=0;i<mpo.getTeam1().getPlayers().size();i++){
 			Vector rowData1 = new Vector();
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getName());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getNameWithoutNum());
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPosition()+"");
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPlayTime()/60+" min");
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getHit()+"/"+
@@ -597,7 +603,7 @@ public class MatchSelectionPanel extends JPanel {
 		Vector rowDatas2 = new Vector();
 		for(int i=0;i<mpo.getTeam2().getPlayers().size();i++){
 			Vector rowData2 = new Vector();
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getName());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getNameWithoutNum());
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPosition()+"");
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPlayTime()/60+" min");
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getHit()+"/"+
@@ -669,38 +675,38 @@ public class MatchSelectionPanel extends JPanel {
 				" 负"+loseMatchNum);
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
-		rowData4.add(mpo.getTeam1().getHighestScore().getName()+" "+
+		rowData4.add(mpo.getTeam1().getHighestScore().getNameWithoutNum()+" "+
 		               mpo.getTeam1().getHighestScore().getScore());
 		rowData4.add("得分");
-		rowData4.add(mpo.getTeam2().getHighestScore().getName()+" "+
+		rowData4.add(mpo.getTeam2().getHighestScore().getNameWithoutNum()+" "+
 	               mpo.getTeam2().getHighestScore().getScore());
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
-		rowData4.add(mpo.getTeam1().getHighestRebound().getName()+" "+
+		rowData4.add(mpo.getTeam1().getHighestRebound().getNameWithoutNum()+" "+
                 mpo.getTeam1().getHighestRebound().getTotalRebound());
 	    rowData4.add("篮板");
-	    rowData4.add(mpo.getTeam2().getHighestRebound().getName()+" "+
+	    rowData4.add(mpo.getTeam2().getHighestRebound().getNameWithoutNum()+" "+
                        mpo.getTeam2().getHighestRebound().getTotalRebound());
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
-		rowData4.add(mpo.getTeam1().getHighestAssist().getName()+" "+
+		rowData4.add(mpo.getTeam1().getHighestAssist().getNameWithoutNum()+" "+
                        mpo.getTeam1().getHighestAssist().getAssist());
         rowData4.add("助攻");
-        rowData4.add(mpo.getTeam2().getHighestAssist().getName()+" "+
+        rowData4.add(mpo.getTeam2().getHighestAssist().getNameWithoutNum()+" "+
                        mpo.getTeam2().getHighestAssist().getAssist());
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
-		rowData4.add(mpo.getTeam1().getHighestSteal().getName()+" "+
+		rowData4.add(mpo.getTeam1().getHighestSteal().getNameWithoutNum()+" "+
                        mpo.getTeam1().getHighestSteal().getSteal());
         rowData4.add("抢断");
-        rowData4.add(mpo.getTeam2().getHighestSteal().getName()+" "+
+        rowData4.add(mpo.getTeam2().getHighestSteal().getNameWithoutNum()+" "+
                        mpo.getTeam2().getHighestSteal().getSteal());
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
-		rowData4.add(mpo.getTeam1().getHighestBlock().getName()+" "+
+		rowData4.add(mpo.getTeam1().getHighestBlock().getNameWithoutNum()+" "+
                        mpo.getTeam1().getHighestBlock().getBlock());
         rowData4.add("盖帽");
-        rowData4.add(mpo.getTeam1().getHighestBlock().getName()+" "+
+        rowData4.add(mpo.getTeam1().getHighestBlock().getNameWithoutNum()+" "+
                        mpo.getTeam1().getHighestBlock().getBlock());
 		rowDatas4.add(rowData4);
 		

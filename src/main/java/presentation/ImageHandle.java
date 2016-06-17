@@ -11,7 +11,7 @@ public class ImageHandle {
 		name=name.replaceAll("\\d", "");
 		ImageIcon PLAYER = new ImageIcon("conf/nba/players/portrait/" + name
 				+ ".png");
-		return PLAYER;
+		return PLAYER; 
 	}
 
 	public static ImageIcon loadPlayerAct(String name) {

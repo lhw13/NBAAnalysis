@@ -1,0 +1,2253 @@
+<td colspan="4" style="text-align:center"><b>第1节开始</b></td>
+<td width="70">12:00</td>
+<td width="70">骑士</td>
+<td>
+                    莫兹戈夫和德雷蒙德-格林跳球，特里斯坦-汤普森得到篮球                </td>
+<td class="center" width="139">0-0</td>
+<td width="70">11:36</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯10英尺外跳投不中                </td>
+<td class="center" width="139">0-0</td>
+<td width="70">11:35</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森抢到前场篮板                </td>
+<td class="center" width="139">0-0</td>
+<td width="70">11:34</td>
+<td width="70">骑士</td>
+<td>
+                    骑士24秒违例了                </td>
+<td class="center" width="139">0-0</td>
+<td width="70">11:18</td>
+<td width="70">勇士</td>
+<td>
+                    库里控球失误，被戴拉维多瓦断下                </td>
+<td class="center" width="139">0-0</td>
+<td width="70">11:14</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯传球失误，球出界                </td>
+<td class="center" width="139">0-0</td>
+<td width="70">11:03</td>
+<td width="70">勇士</td>
+<td>
+                    克莱-汤普森25英尺外三分跳投不中                </td>
+<td class="center" width="139">0-0</td>
+<td width="70">11:02</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯拿到后场篮板                </td>
+<td class="center" width="139">0-0</td>
+<td width="70">10:45</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯26英尺外三分跳投不中                </td>
+<td class="center" width="139">0-0</td>
+<td width="70">10:44</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森抢到前场篮板                </td>
+<td class="center" width="139">0-0</td>
+<td width="70">10:30</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森犯规 (哈里森-巴恩斯造成了犯规)                </td>
+<td class="center" width="139">0-0</td>
+<td width="70">10:30</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森失误 (带球撞人)                </td>
+<td class="center" width="139">0-0</td>
+<td width="70">10:12</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林传球失误，被莫兹戈夫断下                </td>
+<td class="center" width="139">0-0</td>
+<td width="70">9:56</td>
+<td width="70">骑士</td>
+<td>
+                    戴拉维多瓦28英尺外三分跳投不中                </td>
+<td class="center" width="139">0-0</td>
+<td width="70">9:54</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉拿到后场篮板                </td>
+<td class="center" width="139">0-0</td>
+<td width="70">9:44</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林25英尺外三分跳投不中                </td>
+<td class="center" width="139">0-0</td>
+<td width="70">9:43</td>
+<td width="70">骑士</td>
+<td>
+                    香珀特拿到后场篮板                </td>
+<td class="center" width="139">0-0</td>
+<td width="70">9:22</td>
+<td width="70">骑士</td>
+<td>
+                    莫兹戈夫传球失误，被库里断下                </td>
+<td class="center" width="139">0-0</td>
+<td width="70">9:16</td>
+<td width="70">勇士</td>
+<td>
+<b>克莱-汤普森接到库里的助攻，带球上篮得分</b> </td>
+<td class="center" width="139">2-0</td>
+<td width="70">8:50</td>
+<td width="70">骑士</td>
+<td>
+                    莫兹戈夫20英尺外跳投不中                </td>
+<td class="center" width="139">2-0</td>
+<td width="70">8:50</td>
+<td width="70">骑士</td>
+<td>
+                    骑士抢到前场篮板                </td>
+<td class="center" width="139">2-0</td>
+<td width="70">8:50</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯犯规 (莫兹戈夫造成了犯规)                </td>
+<td class="center" width="139">2-0</td>
+<td width="70">8:39</td>
+<td width="70">骑士</td>
+<td>
+<b>戴拉维多瓦10英尺外跳投命中</b> </td>
+<td class="center" width="139">2-2</td>
+<td width="70">8:22</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉26英尺外三分跳投不中                </td>
+<td class="center" width="139">2-2</td>
+<td width="70">8:21</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森拿到后场篮板                </td>
+<td class="center" width="139">2-2</td>
+<td width="70">8:13</td>
+<td width="70">骑士</td>
+<td>
+                    香珀特23英尺外三分跳投不中                </td>
+<td class="center" width="139">2-2</td>
+<td width="70">8:12</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉拿到后场篮板                </td>
+<td class="center" width="139">2-2</td>
+<td width="70">8:07</td>
+<td width="70">勇士</td>
+<td>
+<b>库里接到伊格达拉的助攻，带球上篮得分</b> </td>
+<td class="center" width="139">4-2</td>
+<td width="70">7:46</td>
+<td width="70">骑士</td>
+<td>
+                    戴拉维多瓦传球失误，被伊格达拉断下                </td>
+<td class="center" width="139">4-2</td>
+<td width="70">7:41</td>
+<td width="70">勇士</td>
+<td>
+<b>德雷蒙德-格林接到伊格达拉的助攻，暴扣得分</b> </td>
+<td class="center" width="139">6-2</td>
+<td width="70">7:20</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯19英尺外后撤步跳投不中                </td>
+<td class="center" width="139">6-2</td>
+<td width="70">7:19</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉拿到后场篮板                </td>
+<td class="center" width="139">6-2</td>
+<td width="70">7:09</td>
+<td width="70">勇士</td>
+<td>
+<b>德雷蒙德-格林接到克莱-汤普森的助攻，暴扣得分</b> </td>
+<td class="center" width="139">8-2</td>
+<td colspan="4" style="text-align:center"><b>骑士请求暂停</b></td>
+<td width="70">7:09</td>
+<td width="70">骑士</td>
+<td>
+                    骑士换人，JR-史密斯换下了莫兹戈夫                </td>
+<td class="center" width="139">8-2</td>
+<td width="70">6:51</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森8英尺外跳投不中                </td>
+<td class="center" width="139">8-2</td>
+<td width="70">6:50</td>
+<td width="70">勇士</td>
+<td>
+                    库里拿到后场篮板                </td>
+<td class="center" width="139">8-2</td>
+<td width="70">6:36</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯6英尺外勾手不中                </td>
+<td class="center" width="139">8-2</td>
+<td width="70">6:35</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯拿到后场篮板                </td>
+<td class="center" width="139">8-2</td>
+<td width="70">6:22</td>
+<td width="70">骑士</td>
+<td>
+<b>JR-史密斯接到詹姆斯的助攻，26英尺外跳投三分入网</b> </td>
+<td class="center" width="139">8-5</td>
+<td width="70">6:00</td>
+<td width="70">勇士</td>
+<td>
+<b>德雷蒙德-格林接到哈里森-巴恩斯的助攻，带球上篮得分</b> </td>
+<td class="center" width="139">10-5</td>
+<td width="70">5:47</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯带球上篮得分</b> </td>
+<td class="center" width="139">10-7</td>
+<td width="70">5:35</td>
+<td width="70">勇士</td>
+<td>
+                    克莱-汤普森上篮，被JR-史密斯盖掉                </td>
+<td class="center" width="139">10-7</td>
+<td width="70">5:34</td>
+<td width="70">勇士</td>
+<td>
+                    勇士抢到前场篮板                </td>
+<td class="center" width="139">10-7</td>
+<td width="70">5:34</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，利文斯顿换下了哈里森-巴恩斯                </td>
+<td class="center" width="139">10-7</td>
+<td width="70">5:29</td>
+<td width="70">勇士</td>
+<td>
+                    克莱-汤普森跳投，被JR-史密斯盖掉                </td>
+<td class="center" width="139">10-7</td>
+<td width="70">5:28</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森拿到后场篮板                </td>
+<td class="center" width="139">10-7</td>
+<td width="70">5:24</td>
+<td width="70">骑士</td>
+<td>
+                    香珀特跳投不中                </td>
+<td class="center" width="139">10-7</td>
+<td width="70">5:23</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉拿到后场篮板                </td>
+<td class="center" width="139">10-7</td>
+<td width="70">5:15</td>
+<td width="70">勇士</td>
+<td>
+<b>德雷蒙德-格林接到克莱-汤普森的助攻，28英尺外跳投三分入网</b> </td>
+<td class="center" width="139">13-7</td>
+<td width="70">4:57</td>
+<td width="70">骑士</td>
+<td>
+<b>JR-史密斯接到詹姆斯的助攻，26英尺外后仰跳投三分入网</b> </td>
+<td class="center" width="139">13-10</td>
+<td width="70">4:46</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯一级恶意犯规 (德雷蒙德-格林造成了犯规)                </td>
+<td class="center" width="139">13-10</td>
+<td width="70">4:46</td>
+<td width="70">勇士</td>
+<td>
+                    恶意犯规罚球，德雷蒙德-格林罚球不中 (两罚第一罚)                </td>
+<td class="center" width="139">13-10</td>
+<td width="70">4:46</td>
+<td width="70">勇士</td>
+<td>
+                    勇士抢到前场篮板                </td>
+<td class="center" width="139">13-10</td>
+<td width="70">4:46</td>
+<td width="70">勇士</td>
+<td>
+<b>恶意犯规罚球，德雷蒙德-格林罚球命中 (两罚第二罚)</b> </td>
+<td class="center" width="139">14-10</td>
+<td width="70">4:36</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林26英尺外三分跳投不中                </td>
+<td class="center" width="139">14-10</td>
+<td width="70">4:35</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯拿到后场篮板                </td>
+<td class="center" width="139">14-10</td>
+<td width="70">4:26</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林防守3秒违例                </td>
+<td class="center" width="139">14-10</td>
+<td width="70">4:26</td>
+<td width="70">骑士</td>
+<td>
+<b>技术犯规罚球，詹姆斯罚球命中</b> </td>
+<td class="center" width="139">14-11</td>
+<td width="70">4:16</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯27英尺外三分跳投不中                </td>
+<td class="center" width="139">14-11</td>
+<td width="70">4:15</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉拿到后场篮板                </td>
+<td class="center" width="139">14-11</td>
+<td width="70">4:02</td>
+<td width="70">勇士</td>
+<td>
+<b>利文斯顿接到德雷蒙德-格林的助攻，暴扣得分</b> </td>
+<td class="center" width="139">16-11</td>
+<td width="70">3:47</td>
+<td width="70">骑士</td>
+<td>
+                    戴拉维多瓦23英尺外三分跳投不中                </td>
+<td class="center" width="139">16-11</td>
+<td width="70">3:46</td>
+<td width="70">勇士</td>
+<td>
+                    克莱-汤普森拿到后场篮板                </td>
+<td class="center" width="139">16-11</td>
+<td width="70">3:40</td>
+<td width="70">骑士</td>
+<td>
+                    香珀特个人犯规 (德雷蒙德-格林造成了犯规)                </td>
+<td class="center" width="139">16-11</td>
+<td width="70">3:40</td>
+<td width="70">骑士</td>
+<td>
+                    骑士换人，詹姆斯-琼斯换下了特里斯坦-汤普森                </td>
+<td class="center" width="139">16-11</td>
+<td width="70">3:30</td>
+<td width="70">勇士</td>
+<td>
+                    克莱-汤普森18英尺外跳投不中                </td>
+<td class="center" width="139">16-11</td>
+<td width="70">3:29</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯拿到后场篮板                </td>
+<td class="center" width="139">16-11</td>
+<td width="70">3:24</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯带球上篮得分</b> </td>
+<td class="center" width="139">16-13</td>
+<td width="70">3:24</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉在对方投篮时犯规 (詹姆斯造成了犯规)                </td>
+<td class="center" width="139">16-13</td>
+<td width="70">3:24</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯加罚命中</b> </td>
+<td class="center" width="139">16-14</td>
+<td width="70">3:15</td>
+<td width="70">勇士</td>
+<td>
+                    克莱-汤普森进攻犯规 (詹姆斯-琼斯造成了犯规)                </td>
+<td class="center" width="139">16-14</td>
+<td width="70">3:15</td>
+<td width="70">勇士</td>
+<td>
+                    克莱-汤普森失误 (带球撞人)                </td>
+<td class="center" width="139">16-14</td>
+<td width="70">3:15</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，巴博萨换下了克莱-汤普森                </td>
+<td class="center" width="139">16-14</td>
+<td width="70">2:54</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯助攻香珀特，26英尺外急停跳投三分入网</b> </td>
+<td class="center" width="139">16-17</td>
+<td colspan="4" style="text-align:center"><b>勇士请求暂停</b></td>
+<td width="70">2:35</td>
+<td width="70">勇士</td>
+<td>
+<b>库里接到利文斯顿的助攻，带球上篮得分</b> </td>
+<td class="center" width="139">18-17</td>
+<td width="70">2:15</td>
+<td width="70">骑士</td>
+<td>
+<b>香珀特助攻詹姆斯上篮得分</b> </td>
+<td class="center" width="139">18-19</td>
+<td width="70">2:06</td>
+<td width="70">勇士</td>
+<td>
+<b>库里26英尺外急停跳投三分入网</b> </td>
+<td class="center" width="139">21-19</td>
+<td width="70">1:52</td>
+<td width="70">勇士</td>
+<td>
+                    巴博萨个人犯规 (詹姆斯造成了犯规)                </td>
+<td class="center" width="139">21-19</td>
+<td width="70">1:52</td>
+<td width="70">骑士</td>
+<td>
+                    骑士换人，迈克-米勒换下了戴拉维多瓦                </td>
+<td class="center" width="139">21-19</td>
+<td width="70">1:38</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯6英尺外勾手不中                </td>
+<td class="center" width="139">21-19</td>
+<td width="70">1:36</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林拿到后场篮板                </td>
+<td class="center" width="139">21-19</td>
+<td width="70">1:30</td>
+<td width="70">勇士</td>
+<td>
+                    巴博萨走步                </td>
+<td class="center" width="139">21-19</td>
+<td width="70">1:30</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，哈里森-巴恩斯换下了伊格达拉                </td>
+<td class="center" width="139">21-19</td>
+<td width="70">1:18</td>
+<td width="70">骑士</td>
+<td>
+<b>JR-史密斯接到詹姆斯的助攻，16英尺外后仰跳投命中</b> </td>
+<td class="center" width="139">21-21</td>
+<td width="70">1:05</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林跳投不中                </td>
+<td class="center" width="139">21-21</td>
+<td width="70">1:04</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯抢到前场篮板                </td>
+<td class="center" width="139">21-21</td>
+<td width="70">1:04</td>
+<td width="70">骑士</td>
+<td>
+                    迈克-米勒在对方投篮时犯规 (哈里森-巴恩斯造成了犯规)                </td>
+<td class="center" width="139">21-21</td>
+<td width="70">1:04</td>
+<td width="70">勇士</td>
+<td>
+<b>哈里森-巴恩斯罚球命中 (两罚第一罚)</b> </td>
+<td class="center" width="139">22-21</td>
+<td width="70">1:04</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯罚球不中 (两罚第二罚)                </td>
+<td class="center" width="139">22-21</td>
+<td width="70">1:02</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯拿到后场篮板                </td>
+<td class="center" width="139">22-21</td>
+<td width="70">42.9"</td>
+<td width="70">骑士</td>
+<td>
+                    香珀特上篮不中                </td>
+<td class="center" width="139">22-21</td>
+<td width="70">41.6"</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林拿到后场篮板                </td>
+<td class="center" width="139">22-21</td>
+<td width="70">34.7"</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林失误 (带球撞人)                </td>
+<td class="center" width="139">22-21</td>
+<td width="70">34.7"</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林犯规 (詹姆斯-琼斯造成了犯规)                </td>
+<td class="center" width="139">22-21</td>
+<td width="70">26.4"</td>
+<td width="70">勇士</td>
+<td>
+                    库里个人犯规 (香珀特造成了犯规)                </td>
+<td class="center" width="139">22-21</td>
+<td width="70">26.4"</td>
+<td width="70">骑士</td>
+<td>
+                    香珀特罚球不中 (两罚第一罚)                </td>
+<td class="center" width="139">22-21</td>
+<td width="70">26.4"</td>
+<td width="70">骑士</td>
+<td>
+                    骑士抢到前场篮板                </td>
+<td class="center" width="139">22-21</td>
+<td width="70">26.4"</td>
+<td width="70">骑士</td>
+<td>
+                    骑士换人，特里斯坦-汤普森换下了詹姆斯                </td>
+<td class="center" width="139">22-21</td>
+<td width="70">26.4"</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，克莱-汤普森换下了巴博萨                </td>
+<td class="center" width="139">22-21</td>
+<td width="70">26.4"</td>
+<td width="70">骑士</td>
+<td>
+<b>香珀特罚球命中 (两罚第二罚)</b> </td>
+<td class="center" width="139">22-22</td>
+<td width="70">5"</td>
+<td width="70">勇士</td>
+<td>
+                    库里上篮不中                </td>
+<td class="center" width="139">22-22</td>
+<td width="70">3.6"</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯拿到后场篮板                </td>
+<td class="center" width="139">22-22</td>
+<td width="70">0.5"</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯58英尺外三分急停跳投不中                </td>
+<td class="center" width="139">22-22</td>
+<td width="70">0"</td>
+<td width="70">骑士</td>
+<td>
+                    骑士抢到前场篮板                </td>
+<td class="center" width="139">22-22</td>
+<td colspan="4" style="text-align:center"><b>第1节结束</b></td>
+<td colspan="4" style="text-align:center"><b>第2节开始</b></td>
+<td width="70">11:49</td>
+<td width="70">勇士</td>
+<td>
+                    克莱-汤普森上篮不中                </td>
+<td class="center" width="139">22-22</td>
+<td width="70">11:48</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森拿到后场篮板                </td>
+<td class="center" width="139">22-22</td>
+<td width="70">11:28</td>
+<td width="70">勇士</td>
+<td>
+                    巴博萨个人犯规 (迈克-米勒造成了犯规)                </td>
+<td class="center" width="139">22-22</td>
+<td width="70">11:19</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯26英尺外转身跳投不中                </td>
+<td class="center" width="139">22-22</td>
+<td width="70">11:18</td>
+<td width="70">勇士</td>
+<td>
+                    利文斯顿拿到后场篮板                </td>
+<td class="center" width="139">22-22</td>
+<td width="70">11:05</td>
+<td width="70">勇士</td>
+<td>
+                    利文斯顿带球上篮不中                </td>
+<td class="center" width="139">22-22</td>
+<td width="70">11:04</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯拿到后场篮板                </td>
+<td class="center" width="139">22-22</td>
+<td width="70">10:51</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯上篮不中                </td>
+<td class="center" width="139">22-22</td>
+<td width="70">10:50</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯抢到前场篮板                </td>
+<td class="center" width="139">22-22</td>
+<td width="70">10:50</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯上篮得分</b> </td>
+<td class="center" width="139">22-24</td>
+<td width="70">10:50</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯在对方投篮时犯规 (詹姆斯造成了犯规)                </td>
+<td class="center" width="139">22-24</td>
+<td width="70">10:50</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，伊格达拉换下了哈里森-巴恩斯                </td>
+<td class="center" width="139">22-24</td>
+<td width="70">10:50</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯加罚命中</b> </td>
+<td class="center" width="139">22-25</td>
+<td width="70">10:32</td>
+<td width="70">勇士</td>
+<td>
+                    大卫-李传球失误，被詹姆斯-琼斯断下                </td>
+<td class="center" width="139">22-25</td>
+<td width="70">10:28</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯传球失误，被伊格达拉断下                </td>
+<td class="center" width="139">22-25</td>
+<td width="70">10:22</td>
+<td width="70">勇士</td>
+<td>
+<b>克莱-汤普森接到伊格达拉的助攻后，运球突破大力灌篮得分</b> </td>
+<td class="center" width="139">24-25</td>
+<td width="70">10:00</td>
+<td width="70">骑士</td>
+<td>
+<b>JR-史密斯接到詹姆斯的助攻，26英尺外后仰跳投三分入网</b> </td>
+<td class="center" width="139">24-28</td>
+<td width="70">9:39</td>
+<td width="70">勇士</td>
+<td>
+<b>伊格达拉助攻巴博萨，12英尺外急停跳投命中</b> </td>
+<td class="center" width="139">26-28</td>
+<td width="70">9:26</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯助攻JR-史密斯，26英尺外急停跳投三分入网</b> </td>
+<td class="center" width="139">26-31</td>
+<td width="70">9:09</td>
+<td width="70">勇士</td>
+<td>
+<b>克莱-汤普森接到伊格达拉的助攻，18英尺外跳投命中</b> </td>
+<td class="center" width="139">28-31</td>
+<td width="70">8:44</td>
+<td width="70">勇士</td>
+<td>
+                    巴博萨个人犯规 (特里斯坦-汤普森造成了犯规)                </td>
+<td class="center" width="139">28-31</td>
+<td colspan="4" style="text-align:center"><b>官方暂停时间</b></td>
+<td width="70">8:44</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，库里换下了巴博萨                </td>
+<td class="center" width="139">28-31</td>
+<td width="70">8:44</td>
+<td width="70">骑士</td>
+<td>
+                    骑士换人，戴拉维多瓦换下了迈克-米勒                </td>
+<td class="center" width="139">28-31</td>
+<td width="70">8:44</td>
+<td width="70">骑士</td>
+<td>
+<b>特里斯坦-汤普森罚球命中 (两罚第一罚)</b> </td>
+<td class="center" width="139">28-32</td>
+<td width="70">8:44</td>
+<td width="70">骑士</td>
+<td>
+<b>特里斯坦-汤普森罚球命中 (两罚第二罚)</b> </td>
+<td class="center" width="139">28-33</td>
+<td width="70">8:27</td>
+<td width="70">勇士</td>
+<td>
+<b>大卫-李接到伊格达拉的助攻，暴扣得分</b> </td>
+<td class="center" width="139">30-33</td>
+<td width="70">8:06</td>
+<td width="70">骑士</td>
+<td>
+                    骑士换人，香珀特换下了詹姆斯-琼斯                </td>
+<td class="center" width="139">30-33</td>
+<td width="70">7:56</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯18英尺外后仰跳投命中</b> </td>
+<td class="center" width="139">30-35</td>
+<td width="70">7:45</td>
+<td width="70">勇士</td>
+<td>
+                    大卫-李跳投不中                </td>
+<td class="center" width="139">30-35</td>
+<td width="70">7:44</td>
+<td width="70">勇士</td>
+<td>
+                    库里抢到前场篮板                </td>
+<td class="center" width="139">30-35</td>
+<td width="70">7:31</td>
+<td width="70">勇士</td>
+<td>
+                    大卫-李带球上篮不中                </td>
+<td class="center" width="139">30-35</td>
+<td width="70">7:30</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯拿到后场篮板                </td>
+<td class="center" width="139">30-35</td>
+<td width="70">7:10</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯12英尺外后仰跳投命中</b> </td>
+<td class="center" width="139">30-37</td>
+<td width="70">6:58</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯个人犯规 (大卫-李造成了犯规)                </td>
+<td class="center" width="139">30-37</td>
+<td width="70">6:58</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，德雷蒙德-格林换下了大卫-李                </td>
+<td class="center" width="139">30-37</td>
+<td width="70">6:53</td>
+<td width="70">勇士</td>
+<td>
+<b>利文斯顿助攻库里，26英尺外急停跳投三分入网</b> </td>
+<td class="center" width="139">33-37</td>
+<td width="70">6:24</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森跳投不中                </td>
+<td class="center" width="139">33-37</td>
+<td width="70">6:23</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯抢到前场篮板                </td>
+<td class="center" width="139">33-37</td>
+<td width="70">6:08</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯带球上篮得分</b> </td>
+<td class="center" width="139">33-39</td>
+<td width="70">5:58</td>
+<td width="70">勇士</td>
+<td>
+<b>库里后撤步跳投27英尺外三分入网</b> </td>
+<td class="center" width="139">36-39</td>
+<td width="70">5:55</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林和戴拉维多瓦被吹双方犯规                </td>
+<td class="center" width="139">36-39</td>
+<td width="70">5:55</td>
+<td width="70">骑士</td>
+<td>
+                    戴拉维多瓦和德雷蒙德-格林被吹双方犯规                </td>
+<td class="center" width="139">36-39</td>
+<td colspan="4" style="text-align:center"><b>勇士请求暂停</b></td>
+<td width="70">5:55</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，巴博萨换下了利文斯顿                </td>
+<td class="center" width="139">36-39</td>
+<td colspan="4" style="text-align:center"><b>骑士请求暂停</b></td>
+<td width="70">5:32</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯6英尺外跳投不中                </td>
+<td class="center" width="139">36-39</td>
+<td width="70">5:31</td>
+<td width="70">勇士</td>
+<td>
+                    巴博萨拿到后场篮板                </td>
+<td class="center" width="139">36-39</td>
+<td width="70">5:15</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉19英尺外跳投不中                </td>
+<td class="center" width="139">36-39</td>
+<td width="70">5:14</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯拿到后场篮板                </td>
+<td class="center" width="139">36-39</td>
+<td width="70">4:55</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯28英尺外三分跳投不中                </td>
+<td class="center" width="139">36-39</td>
+<td width="70">4:54</td>
+<td width="70">骑士</td>
+<td>
+                    香珀特抢到前场篮板                </td>
+<td class="center" width="139">36-39</td>
+<td width="70">4:35</td>
+<td width="70">骑士</td>
+<td>
+<b>香珀特接到詹姆斯的助攻，23英尺外跳投三分入网</b> </td>
+<td class="center" width="139">36-42</td>
+<td width="70">4:20</td>
+<td width="70">勇士</td>
+<td>
+<b>德雷蒙德-格林助攻巴博萨，25英尺外急停跳投三分入网</b> </td>
+<td class="center" width="139">39-42</td>
+<td width="70">4:04</td>
+<td width="70">骑士</td>
+<td>
+                    戴拉维多瓦上篮不中                </td>
+<td class="center" width="139">39-42</td>
+<td width="70">4:03</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林拿到后场篮板                </td>
+<td class="center" width="139">39-42</td>
+<td width="70">3:59</td>
+<td width="70">勇士</td>
+<td>
+                    巴博萨控球失误，被特里斯坦-汤普森断下                </td>
+<td class="center" width="139">39-42</td>
+<td width="70">3:55</td>
+<td width="70">骑士</td>
+<td>
+                    香珀特27英尺外三分跳投不中                </td>
+<td class="center" width="139">39-42</td>
+<td width="70">3:54</td>
+<td width="70">勇士</td>
+<td>
+                    巴博萨拿到后场篮板                </td>
+<td class="center" width="139">39-42</td>
+<td width="70">3:50</td>
+<td width="70">骑士</td>
+<td>
+                    香珀特个人犯规 (巴博萨造成了犯规)                </td>
+<td class="center" width="139">39-42</td>
+<td width="70">3:50</td>
+<td width="70">勇士</td>
+<td>
+<b>巴博萨罚球命中 (两罚第一罚)</b> </td>
+<td class="center" width="139">40-42</td>
+<td width="70">3:50</td>
+<td width="70">骑士</td>
+<td>
+                    骑士换人，詹姆斯-琼斯换下了香珀特                </td>
+<td class="center" width="139">40-42</td>
+<td width="70">3:50</td>
+<td width="70">勇士</td>
+<td>
+<b>巴博萨罚球命中 (两罚第二罚)</b> </td>
+<td class="center" width="139">41-42</td>
+<td width="70">3:37</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯26英尺外三分跳投不中                </td>
+<td class="center" width="139">41-42</td>
+<td width="70">3:36</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林拿到后场篮板                </td>
+<td class="center" width="139">41-42</td>
+<td width="70">3:32</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯在对方投篮时犯规 (伊格达拉造成了犯规)                </td>
+<td class="center" width="139">41-42</td>
+<td width="70">3:32</td>
+<td width="70">勇士</td>
+<td>
+<b>伊格达拉罚球命中 (两罚第一罚)</b> </td>
+<td class="center" width="139">42-42</td>
+<td width="70">3:32</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉罚球不中 (两罚第二罚)                </td>
+<td class="center" width="139">42-42</td>
+<td width="70">3:29</td>
+<td width="70">勇士</td>
+<td>
+                    库里抢到前场篮板                </td>
+<td class="center" width="139">42-42</td>
+<td width="70">3:28</td>
+<td width="70">勇士</td>
+<td>
+<b>库里上篮得分</b> </td>
+<td class="center" width="139">44-42</td>
+<td width="70">3:15</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林个人犯规 (詹姆斯造成了犯规)                </td>
+<td class="center" width="139">44-42</td>
+<td width="70">3:15</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯罚球命中 (两罚第一罚)</b> </td>
+<td class="center" width="139">44-43</td>
+<td width="70">3:15</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，大卫-李换下了德雷蒙德-格林                </td>
+<td class="center" width="139">44-43</td>
+<td width="70">3:15</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯罚球不中 (两罚第二罚)                </td>
+<td class="center" width="139">44-43</td>
+<td width="70">3:14</td>
+<td width="70">勇士</td>
+<td>
+                    克莱-汤普森拿到后场篮板                </td>
+<td class="center" width="139">44-43</td>
+<td width="70">3:00</td>
+<td width="70">勇士</td>
+<td>
+                    库里传球失误，被JR-史密斯断下                </td>
+<td class="center" width="139">44-43</td>
+<td width="70">2:50</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯26英尺外三分跳投不中                </td>
+<td class="center" width="139">44-43</td>
+<td width="70">2:50</td>
+<td width="70">勇士</td>
+<td>
+                    勇士拿到后场篮板                </td>
+<td class="center" width="139">44-43</td>
+<td width="70">2:41</td>
+<td width="70">勇士</td>
+<td>
+                    库里控球失误，被戴拉维多瓦断下                </td>
+<td class="center" width="139">44-43</td>
+<td width="70">2:37</td>
+<td width="70">勇士</td>
+<td>
+                    大卫-李个人犯规 (特里斯坦-汤普森造成了犯规)                </td>
+<td class="center" width="139">44-43</td>
+<td width="70">2:37</td>
+<td width="70">骑士</td>
+<td>
+<b>特里斯坦-汤普森罚球命中 (两罚第一罚)</b> </td>
+<td class="center" width="139">44-44</td>
+<td width="70">2:37</td>
+<td width="70">骑士</td>
+<td>
+<b>特里斯坦-汤普森罚球命中 (两罚第二罚)</b> </td>
+<td class="center" width="139">44-45</td>
+<td colspan="4" style="text-align:center"><b>勇士请求20秒短暂停</b></td>
+<td width="70">2:17</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯-琼斯在对方投篮时犯规 (伊格达拉造成了犯规)                </td>
+<td class="center" width="139">44-45</td>
+<td width="70">2:17</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉罚球不中 (两罚第一罚)                </td>
+<td class="center" width="139">44-45</td>
+<td width="70">2:17</td>
+<td width="70">勇士</td>
+<td>
+                    勇士抢到前场篮板                </td>
+<td class="center" width="139">44-45</td>
+<td width="70">2:17</td>
+<td width="70">骑士</td>
+<td>
+                    骑士换人，迈克-米勒换下了JR-史密斯                </td>
+<td class="center" width="139">44-45</td>
+<td width="70">2:17</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉罚球不中 (两罚第二罚)                </td>
+<td class="center" width="139">44-45</td>
+<td width="70">2:15</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯拿到后场篮板                </td>
+<td class="center" width="139">44-45</td>
+<td width="70">1:54</td>
+<td width="70">骑士</td>
+<td>
+                    戴拉维多瓦12英尺外抛投不中                </td>
+<td class="center" width="139">44-45</td>
+<td width="70">1:53</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉拿到后场篮板                </td>
+<td class="center" width="139">44-45</td>
+<td width="70">1:49</td>
+<td width="70">勇士</td>
+<td>
+<b>伊格达拉带球上篮得分</b> </td>
+<td class="center" width="139">46-45</td>
+<td width="70">1:22</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯10英尺外打板入网</b> </td>
+<td class="center" width="139">46-47</td>
+<td width="70">56"</td>
+<td width="70">勇士</td>
+<td>
+<b>巴博萨接到伊格达拉的助攻，17英尺外跳投命中</b> </td>
+<td class="center" width="139">48-47</td>
+<td width="70">33"</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯助攻迈克-米勒，25英尺外急停跳投三分入网</b> </td>
+<td class="center" width="139">48-50</td>
+<td width="70">24.9"</td>
+<td width="70">勇士</td>
+<td>
+                    库里27英尺外三分急停跳投不中                </td>
+<td class="center" width="139">48-50</td>
+<td width="70">22.9"</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯-琼斯拿到后场篮板                </td>
+<td class="center" width="139">48-50</td>
+<td width="70">16"</td>
+<td width="70">骑士</td>
+<td>
+                    骑士失误，8秒违例                </td>
+<td class="center" width="139">48-50</td>
+<td width="70">16"</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，哈里森-巴恩斯换下了大卫-李                </td>
+<td class="center" width="139">48-50</td>
+<td width="70">4.7"</td>
+<td width="70">勇士</td>
+<td>
+                    库里10英尺外抛投不中                </td>
+<td class="center" width="139">48-50</td>
+<td width="70">3.7"</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯抢到前场篮板                </td>
+<td class="center" width="139">48-50</td>
+<td width="70">3.2"</td>
+<td width="70">勇士</td>
+<td>
+<b>哈里森-巴恩斯补扣得分</b> </td>
+<td class="center" width="139">50-50</td>
+<td width="70">3.2"</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯在对方投篮时犯规 (哈里森-巴恩斯造成了犯规)                </td>
+<td class="center" width="139">50-50</td>
+<td width="70">3.2"</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，利文斯顿换下了巴博萨                </td>
+<td class="center" width="139">50-50</td>
+<td colspan="4" style="text-align:center"><b>骑士请求20秒短暂停</b></td>
+<td width="70">3.2"</td>
+<td width="70">骑士</td>
+<td>
+                    骑士换人，JR-史密斯换下了戴拉维多瓦                </td>
+<td class="center" width="139">50-50</td>
+<td width="70">3.2"</td>
+<td width="70">勇士</td>
+<td>
+<b>哈里森-巴恩斯加罚命中</b> </td>
+<td class="center" width="139">51-50</td>
+<td width="70">0.7"</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯38英尺外三分跳投不中                </td>
+<td class="center" width="139">51-50</td>
+<td width="70">0"</td>
+<td width="70">骑士</td>
+<td>
+                    骑士抢到前场篮板                </td>
+<td class="center" width="139">51-50</td>
+<td colspan="4" style="text-align:center"><b>第2节结束</b></td>
+<td colspan="4" style="text-align:center"><b>第3节开始</b></td>
+<td width="70">11:47</td>
+<td width="70">勇士</td>
+<td>
+<b>库里18英尺外急停跳投命中</b> </td>
+<td class="center" width="139">53-50</td>
+<td width="70">11:24</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯15英尺外转身后仰打板跳投不中                </td>
+<td class="center" width="139">53-50</td>
+<td width="70">11:23</td>
+<td width="70">骑士</td>
+<td>
+                    骑士抢到前场篮板                </td>
+<td class="center" width="139">53-50</td>
+<td width="70">11:20</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯23英尺外三分跳投不中                </td>
+<td class="center" width="139">53-50</td>
+<td width="70">11:19</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉拿到后场篮板                </td>
+<td class="center" width="139">53-50</td>
+<td width="70">11:08</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林6英尺外抛投不中                </td>
+<td class="center" width="139">53-50</td>
+<td width="70">11:07</td>
+<td width="70">勇士</td>
+<td>
+                    勇士抢到前场篮板                </td>
+<td class="center" width="139">53-50</td>
+<td width="70">11:07</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林走步                </td>
+<td class="center" width="139">53-50</td>
+<td width="70">10:55</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯助攻特里斯坦-汤普森上篮得分</b> </td>
+<td class="center" width="139">53-52</td>
+<td width="70">10:43</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯在对方投篮时犯规 (德雷蒙德-格林造成了犯规)                </td>
+<td class="center" width="139">53-52</td>
+<td width="70">10:43</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林罚球不中 (两罚第一罚)                </td>
+<td class="center" width="139">53-52</td>
+<td width="70">10:43</td>
+<td width="70">勇士</td>
+<td>
+                    勇士抢到前场篮板                </td>
+<td class="center" width="139">53-52</td>
+<td width="70">10:43</td>
+<td width="70">勇士</td>
+<td>
+<b>德雷蒙德-格林罚球命中 (两罚第二罚)</b> </td>
+<td class="center" width="139">54-52</td>
+<td width="70">10:23</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森6英尺外跳投不中                </td>
+<td class="center" width="139">54-52</td>
+<td width="70">10:22</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林拿到后场篮板                </td>
+<td class="center" width="139">54-52</td>
+<td width="70">10:15</td>
+<td width="70">勇士</td>
+<td>
+                    库里突破反手上篮不中                </td>
+<td class="center" width="139">54-52</td>
+<td width="70">10:14</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯拿到后场篮板                </td>
+<td class="center" width="139">54-52</td>
+<td width="70">10:04</td>
+<td width="70">骑士</td>
+<td>
+<b>戴拉维多瓦26英尺外急停跳投三分入网</b> </td>
+<td class="center" width="139">54-55</td>
+<td width="70">9:47</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯带球突破挑篮不中                </td>
+<td class="center" width="139">54-55</td>
+<td width="70">9:45</td>
+<td width="70">勇士</td>
+<td>
+                    勇士抢到前场篮板                </td>
+<td class="center" width="139">54-55</td>
+<td width="70">9:43</td>
+<td width="70">勇士</td>
+<td>
+<b>伊格达拉接到库里的助攻，暴扣得分</b> </td>
+<td class="center" width="139">56-55</td>
+<td width="70">9:18</td>
+<td width="70">勇士</td>
+<td>
+                    克莱-汤普森在对方投篮时犯规 (詹姆斯造成了犯规)                </td>
+<td class="center" width="139">56-55</td>
+<td width="70">9:18</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯罚球命中 (两罚第一罚)</b> </td>
+<td class="center" width="139">56-56</td>
+<td width="70">9:18</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯罚球命中 (两罚第二罚)</b> </td>
+<td class="center" width="139">56-57</td>
+<td width="70">9:04</td>
+<td width="70">骑士</td>
+<td>
+                    戴拉维多瓦个人犯规 (德雷蒙德-格林造成了犯规)                </td>
+<td class="center" width="139">56-57</td>
+<td width="70">8:56</td>
+<td width="70">勇士</td>
+<td>
+                    克莱-汤普森13英尺外跳投不中                </td>
+<td class="center" width="139">56-57</td>
+<td width="70">8:56</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯拿到后场篮板                </td>
+<td class="center" width="139">56-57</td>
+<td width="70">8:49</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯26英尺外三分跳投不中                </td>
+<td class="center" width="139">56-57</td>
+<td width="70">8:48</td>
+<td width="70">骑士</td>
+<td>
+                    香珀特抢到前场篮板                </td>
+<td class="center" width="139">56-57</td>
+<td width="70">8:39</td>
+<td width="70">骑士</td>
+<td>
+                    戴拉维多瓦走步                </td>
+<td class="center" width="139">56-57</td>
+<td width="70">8:33</td>
+<td width="70">勇士</td>
+<td>
+                    库里跳投，被特里斯坦-汤普森盖掉                </td>
+<td class="center" width="139">56-57</td>
+<td width="70">8:31</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯拿到后场篮板                </td>
+<td class="center" width="139">56-57</td>
+<td width="70">8:20</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯传球失误，被伊格达拉断下                </td>
+<td class="center" width="139">56-57</td>
+<td width="70">8:20</td>
+<td width="70">骑士</td>
+<td>
+                    戴拉维多瓦犯规 (伊格达拉造成了犯规)                </td>
+<td class="center" width="139">56-57</td>
+<td width="70">8:00</td>
+<td width="70">勇士</td>
+<td>
+<b>库里助攻哈里森-巴恩斯，18英尺外急停跳投命中</b> </td>
+<td class="center" width="139">58-57</td>
+<td width="70">7:38</td>
+<td width="70">骑士</td>
+<td>
+<b>特里斯坦-汤普森转身勾手命中</b> </td>
+<td class="center" width="139">58-59</td>
+<td width="70">7:28</td>
+<td width="70">勇士</td>
+<td>
+                    库里23英尺外三分跳投不中                </td>
+<td class="center" width="139">58-59</td>
+<td width="70">7:27</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯拿到后场篮板                </td>
+<td class="center" width="139">58-59</td>
+<td width="70">7:19</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯6英尺外跳投不中                </td>
+<td class="center" width="139">58-59</td>
+<td width="70">7:17</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯拿到后场篮板                </td>
+<td class="center" width="139">58-59</td>
+<td width="70">7:13</td>
+<td width="70">勇士</td>
+<td>
+                    克莱-汤普森25英尺外三分跳投不中                </td>
+<td class="center" width="139">58-59</td>
+<td width="70">7:12</td>
+<td width="70">勇士</td>
+<td>
+                    勇士抢到前场篮板                </td>
+<td class="center" width="139">58-59</td>
+<td width="70">7:12</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森个人犯规 (德雷蒙德-格林造成了犯规)                </td>
+<td class="center" width="139">58-59</td>
+<td colspan="4" style="text-align:center"><b>勇士请求暂停</b></td>
+<td width="70">7:12</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯踢球违例                </td>
+<td class="center" width="139">58-59</td>
+<td width="70">6:55</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯9英尺外跳投不中                </td>
+<td class="center" width="139">58-59</td>
+<td width="70">6:54</td>
+<td width="70">骑士</td>
+<td>
+                    香珀特拿到后场篮板                </td>
+<td class="center" width="139">58-59</td>
+<td width="70">6:37</td>
+<td width="70">骑士</td>
+<td>
+                    戴拉维多瓦27英尺外三分跳投不中                </td>
+<td class="center" width="139">58-59</td>
+<td width="70">6:36</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森抢到前场篮板                </td>
+<td class="center" width="139">58-59</td>
+<td width="70">6:35</td>
+<td width="70">骑士</td>
+<td>
+<b>特里斯坦-汤普森上篮得分</b> </td>
+<td class="center" width="139">58-61</td>
+<td width="70">6:12</td>
+<td width="70">勇士</td>
+<td>
+                    库里传球失误，被戴拉维多瓦断下                </td>
+<td class="center" width="139">58-61</td>
+<td width="70">5:55</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森跳投不中                </td>
+<td class="center" width="139">58-61</td>
+<td width="70">5:54</td>
+<td width="70">勇士</td>
+<td>
+                    勇士拿到后场篮板                </td>
+<td class="center" width="139">58-61</td>
+<td width="70">5:54</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森犯规 (德雷蒙德-格林造成了犯规)                </td>
+<td class="center" width="139">58-61</td>
+<td width="70">5:54</td>
+<td width="70">勇士</td>
+<td>
+<b>德雷蒙德-格林罚球命中 (两罚第一罚)</b> </td>
+<td class="center" width="139">59-61</td>
+<td width="70">5:54</td>
+<td width="70">骑士</td>
+<td>
+                    骑士换人，詹姆斯-琼斯换下了戴拉维多瓦                </td>
+<td class="center" width="139">59-61</td>
+<td width="70">5:54</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，利文斯顿换下了哈里森-巴恩斯                </td>
+<td class="center" width="139">59-61</td>
+<td width="70">5:54</td>
+<td width="70">勇士</td>
+<td>
+<b>德雷蒙德-格林罚球命中 (两罚第二罚)</b> </td>
+<td class="center" width="139">60-61</td>
+<td width="70">5:34</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯6英尺外跳投不中                </td>
+<td class="center" width="139">60-61</td>
+<td width="70">5:33</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林拿到后场篮板                </td>
+<td class="center" width="139">60-61</td>
+<td width="70">5:26</td>
+<td width="70">勇士</td>
+<td>
+                    克莱-汤普森上篮不中                </td>
+<td class="center" width="139">60-61</td>
+<td width="70">5:25</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉抢到前场篮板                </td>
+<td class="center" width="139">60-61</td>
+<td width="70">5:25</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉投篮不中                </td>
+<td class="center" width="139">60-61</td>
+<td width="70">5:24</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森拿到后场篮板                </td>
+<td class="center" width="139">60-61</td>
+<td width="70">5:10</td>
+<td width="70">骑士</td>
+<td>
+<b>JR-史密斯助攻特里斯坦-汤普森，特里斯坦-汤普森空中接力上篮得分</b> </td>
+<td class="center" width="139">60-63</td>
+<td width="70">4:56</td>
+<td width="70">勇士</td>
+<td>
+<b>德雷蒙德-格林助攻克莱-汤普森反手上篮得分</b> </td>
+<td class="center" width="139">62-63</td>
+<td width="70">4:56</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯-琼斯在对方投篮时犯规 (克莱-汤普森造成了犯规)                </td>
+<td class="center" width="139">62-63</td>
+<td width="70">4:56</td>
+<td width="70">勇士</td>
+<td>
+<b>克莱-汤普森加罚命中</b> </td>
+<td class="center" width="139">63-63</td>
+<td width="70">4:46</td>
+<td width="70">勇士</td>
+<td>
+                    克莱-汤普森个人犯规 (JR-史密斯造成了犯规)                </td>
+<td class="center" width="139">63-63</td>
+<td width="70">4:46</td>
+<td width="70">骑士</td>
+<td>
+                    骑士换人，戴拉维多瓦换下了香珀特                </td>
+<td class="center" width="139">63-63</td>
+<td width="70">4:33</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯27英尺外三分急停跳投不中                </td>
+<td class="center" width="139">63-63</td>
+<td width="70">4:33</td>
+<td width="70">勇士</td>
+<td>
+                    勇士拿到后场篮板                </td>
+<td class="center" width="139">63-63</td>
+<td width="70">4:23</td>
+<td width="70">勇士</td>
+<td>
+                    利文斯顿失误，运球出界                </td>
+<td class="center" width="139">63-63</td>
+<td width="70">4:07</td>
+<td width="70">勇士</td>
+<td>
+                    克莱-汤普森个人犯规 (詹姆斯-琼斯造成了犯规)                </td>
+<td class="center" width="139">63-63</td>
+<td width="70">3:56</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯33英尺外三分跳投不中                </td>
+<td class="center" width="139">63-63</td>
+<td width="70">3:55</td>
+<td width="70">骑士</td>
+<td>
+                    骑士抢到前场篮板                </td>
+<td class="center" width="139">63-63</td>
+<td width="70">3:55</td>
+<td width="70">骑士</td>
+<td>
+                    骑士24秒违例了                </td>
+<td class="center" width="139">63-63</td>
+<td width="70">3:55</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，巴博萨换下了克莱-汤普森                </td>
+<td class="center" width="139">63-63</td>
+<td width="70">3:41</td>
+<td width="70">勇士</td>
+<td>
+                    库里27英尺外三分急停跳投不中                </td>
+<td class="center" width="139">63-63</td>
+<td width="70">3:40</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森拿到后场篮板                </td>
+<td class="center" width="139">63-63</td>
+<td width="70">3:20</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯跳投命中</b> </td>
+<td class="center" width="139">63-65</td>
+<td width="70">3:11</td>
+<td width="70">勇士</td>
+<td>
+<b>德雷蒙德-格林助攻库里，28英尺外急停跳投三分入网</b> </td>
+<td class="center" width="139">66-65</td>
+<td colspan="4" style="text-align:center"><b>骑士请求暂停</b></td>
+<td width="70">2:42</td>
+<td width="70">骑士</td>
+<td>
+                    骑士24秒违例了                </td>
+<td class="center" width="139">66-65</td>
+<td width="70">2:25</td>
+<td width="70">勇士</td>
+<td>
+<b>库里助攻伊格达拉，26英尺外急停跳投三分入网</b> </td>
+<td class="center" width="139">69-65</td>
+<td width="70">2:08</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯-琼斯26英尺外三分跳投不中                </td>
+<td class="center" width="139">69-65</td>
+<td width="70">2:06</td>
+<td width="70">勇士</td>
+<td>
+                    利文斯顿拿到后场篮板                </td>
+<td class="center" width="139">69-65</td>
+<td width="70">1:56</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉18英尺外急停跳投不中                </td>
+<td class="center" width="139">69-65</td>
+<td width="70">1:55</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯拿到后场篮板                </td>
+<td class="center" width="139">69-65</td>
+<td width="70">1:48</td>
+<td width="70">勇士</td>
+<td>
+                    利文斯顿个人犯规 (詹姆斯-琼斯造成了犯规)                </td>
+<td class="center" width="139">69-65</td>
+<td width="70">1:48</td>
+<td width="70">骑士</td>
+<td>
+                    骑士换人，香珀特换下了詹姆斯                </td>
+<td class="center" width="139">69-65</td>
+<td width="70">1:48</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，哈里森-巴恩斯换下了伊格达拉                </td>
+<td class="center" width="139">69-65</td>
+<td width="70">1:35</td>
+<td width="70">勇士</td>
+<td>
+                    利文斯顿在对方投篮时犯规 (特里斯坦-汤普森造成了犯规)                </td>
+<td class="center" width="139">69-65</td>
+<td width="70">1:35</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森罚球不中 (两罚第一罚)                </td>
+<td class="center" width="139">69-65</td>
+<td width="70">1:35</td>
+<td width="70">骑士</td>
+<td>
+                    骑士抢到前场篮板                </td>
+<td class="center" width="139">69-65</td>
+<td width="70">1:35</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，大卫-李换下了德雷蒙德-格林                </td>
+<td class="center" width="139">69-65</td>
+<td width="70">1:35</td>
+<td width="70">骑士</td>
+<td>
+<b>特里斯坦-汤普森罚球命中 (两罚第二罚)</b> </td>
+<td class="center" width="139">69-66</td>
+<td width="70">1:21</td>
+<td width="70">勇士</td>
+<td>
+<b>巴博萨接到大卫-李的助攻，带球突破后挑篮命中</b> </td>
+<td class="center" width="139">71-66</td>
+<td width="70">57.9"</td>
+<td width="70">骑士</td>
+<td>
+                    戴拉维多瓦18英尺外跳投不中                </td>
+<td class="center" width="139">71-66</td>
+<td width="70">57.1"</td>
+<td width="70">骑士</td>
+<td>
+                    骑士抢到前场篮板                </td>
+<td class="center" width="139">71-66</td>
+<td width="70">57.1"</td>
+<td width="70">勇士</td>
+<td>
+                    大卫-李个人犯规 (特里斯坦-汤普森造成了犯规)                </td>
+<td class="center" width="139">71-66</td>
+<td width="70">57.1"</td>
+<td width="70">骑士</td>
+<td>
+<b>特里斯坦-汤普森罚球命中 (两罚第一罚)</b> </td>
+<td class="center" width="139">71-67</td>
+<td width="70">57.1"</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森罚球不中 (两罚第二罚)                </td>
+<td class="center" width="139">71-67</td>
+<td width="70">55.9"</td>
+<td width="70">勇士</td>
+<td>
+                    大卫-李拿到后场篮板                </td>
+<td class="center" width="139">71-67</td>
+<td width="70">37.9"</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯8英尺外跳投，被特里斯坦-汤普森盖掉                </td>
+<td class="center" width="139">71-67</td>
+<td width="70">37"</td>
+<td width="70">勇士</td>
+<td>
+                    勇士抢到前场篮板                </td>
+<td class="center" width="139">71-67</td>
+<td width="70">37"</td>
+<td width="70">骑士</td>
+<td>
+                    骑士换人，莫兹戈夫换下了特里斯坦-汤普森                </td>
+<td class="center" width="139">71-67</td>
+<td width="70">35.2"</td>
+<td width="70">骑士</td>
+<td>
+                    莫兹戈夫在对方投篮时犯规 (巴博萨造成了犯规)                </td>
+<td class="center" width="139">71-67</td>
+<td width="70">35.2"</td>
+<td width="70">勇士</td>
+<td>
+<b>巴博萨罚球命中 (两罚第一罚)</b> </td>
+<td class="center" width="139">72-67</td>
+<td width="70">35.2"</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，埃泽利换下了大卫-李                </td>
+<td class="center" width="139">72-67</td>
+<td width="70">35.2"</td>
+<td width="70">勇士</td>
+<td>
+<b>巴博萨罚球命中 (两罚第二罚)</b> </td>
+<td class="center" width="139">73-67</td>
+<td width="70">18.9"</td>
+<td width="70">骑士</td>
+<td>
+                    香珀特25英尺外三分跳投不中                </td>
+<td class="center" width="139">73-67</td>
+<td width="70">17.9"</td>
+<td width="70">勇士</td>
+<td>
+                    库里拿到后场篮板                </td>
+<td class="center" width="139">73-67</td>
+<td width="70">2.5"</td>
+<td width="70">勇士</td>
+<td>
+                    库里29英尺外三分跳投不中                </td>
+<td class="center" width="139">73-67</td>
+<td width="70">0.1"</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯抢到前场篮板                </td>
+<td class="center" width="139">73-67</td>
+<td colspan="4" style="text-align:center"><b>第3节结束</b></td>
+<td colspan="4" style="text-align:center"><b>第4节开始</b></td>
+<td width="70">11:48</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯10英尺外跳投命中</b> </td>
+<td class="center" width="139">73-69</td>
+<td width="70">11:28</td>
+<td width="70">勇士</td>
+<td>
+                    利文斯顿控球失误，被香珀特断下                </td>
+<td class="center" width="139">73-69</td>
+<td width="70">11:21</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯7英尺外跳投不中                </td>
+<td class="center" width="139">73-69</td>
+<td width="70">11:20</td>
+<td width="70">骑士</td>
+<td>
+                    骑士抢到前场篮板                </td>
+<td class="center" width="139">73-69</td>
+<td width="70">11:20</td>
+<td width="70">勇士</td>
+<td>
+                    埃泽利犯规 (莫兹戈夫造成了犯规)                </td>
+<td class="center" width="139">73-69</td>
+<td width="70">11:01</td>
+<td width="70">骑士</td>
+<td>
+                    莫兹戈夫控球失误，被哈里森-巴恩斯断下                </td>
+<td class="center" width="139">73-69</td>
+<td width="70">10:50</td>
+<td width="70">勇士</td>
+<td>
+                    巴博萨行进间挑篮不中                </td>
+<td class="center" width="139">73-69</td>
+<td width="70">10:49</td>
+<td width="70">勇士</td>
+<td>
+                    勇士抢到前场篮板                </td>
+<td class="center" width="139">73-69</td>
+<td width="70">10:49</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，克莱-汤普森换下了巴博萨                </td>
+<td class="center" width="139">73-69</td>
+<td width="70">10:42</td>
+<td width="70">勇士</td>
+<td>
+<b>哈里森-巴恩斯接到利文斯顿的助攻，暴扣得分</b> </td>
+<td class="center" width="139">75-69</td>
+<td width="70">10:42</td>
+<td width="70">骑士</td>
+<td>
+                    莫兹戈夫在对方投篮时犯规 (哈里森-巴恩斯造成了犯规)                </td>
+<td class="center" width="139">75-69</td>
+<td width="70">10:42</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯加罚不中                </td>
+<td class="center" width="139">75-69</td>
+<td width="70">10:41</td>
+<td width="70">骑士</td>
+<td>
+                    骑士拿到后场篮板                </td>
+<td class="center" width="139">75-69</td>
+<td width="70">10:41</td>
+<td width="70">勇士</td>
+<td>
+                    埃泽利犯规 (莫兹戈夫造成了犯规)                </td>
+<td class="center" width="139">75-69</td>
+<td width="70">10:24</td>
+<td width="70">骑士</td>
+<td>
+<b>戴拉维多瓦助攻詹姆斯，26英尺外急停跳投三分入网</b> </td>
+<td class="center" width="139">75-72</td>
+<td width="70">10:15</td>
+<td width="70">骑士</td>
+<td>
+                    香珀特个人犯规 (克莱-汤普森造成了犯规)                </td>
+<td class="center" width="139">75-72</td>
+<td width="70">10:01</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯个人犯规 (哈里森-巴恩斯造成了犯规)                </td>
+<td class="center" width="139">75-72</td>
+<td width="70">9:52</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯进攻犯规 (香珀特造成了犯规)                </td>
+<td class="center" width="139">75-72</td>
+<td width="70">9:52</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯失误 (带球撞人)                </td>
+<td class="center" width="139">75-72</td>
+<td width="70">9:35</td>
+<td width="70">骑士</td>
+<td>
+<b>香珀特接到詹姆斯的助攻，23英尺外跳投三分入网</b> </td>
+<td class="center" width="139">75-75</td>
+<td width="70">9:25</td>
+<td width="70">勇士</td>
+<td>
+                    利文斯顿12英尺外跳投不中                </td>
+<td class="center" width="139">75-75</td>
+<td width="70">9:23</td>
+<td width="70">勇士</td>
+<td>
+                    埃泽利抢到前场篮板                </td>
+<td class="center" width="139">75-75</td>
+<td colspan="4" style="text-align:center"><b>勇士请求暂停</b></td>
+<td width="70">9:23</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，德雷蒙德-格林换下了埃泽利                </td>
+<td class="center" width="139">75-75</td>
+<td width="70">9:23</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，库里换下了利文斯顿                </td>
+<td class="center" width="139">75-75</td>
+<td width="70">9:15</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林跳投不中                </td>
+<td class="center" width="139">75-75</td>
+<td width="70">9:14</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯拿到后场篮板                </td>
+<td class="center" width="139">75-75</td>
+<td width="70">8:54</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯15英尺外后仰跳投不中                </td>
+<td class="center" width="139">75-75</td>
+<td width="70">8:53</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯拿到后场篮板                </td>
+<td class="center" width="139">75-75</td>
+<td width="70">8:45</td>
+<td width="70">勇士</td>
+<td>
+<b>库里20英尺外急停跳投命中</b> </td>
+<td class="center" width="139">77-75</td>
+<td width="70">8:19</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯10英尺外抛投命中</b> </td>
+<td class="center" width="139">77-77</td>
+<td width="70">8:09</td>
+<td width="70">骑士</td>
+<td>
+                    迈克-米勒在对方投篮时犯规 (德雷蒙德-格林造成了犯规)                </td>
+<td class="center" width="139">77-77</td>
+<td width="70">8:09</td>
+<td width="70">勇士</td>
+<td>
+<b>德雷蒙德-格林罚球命中 (两罚第一罚)</b> </td>
+<td class="center" width="139">78-77</td>
+<td width="70">8:09</td>
+<td width="70">骑士</td>
+<td>
+                    骑士换人，特里斯坦-汤普森换下了莫兹戈夫                </td>
+<td class="center" width="139">78-77</td>
+<td width="70">8:09</td>
+<td width="70">勇士</td>
+<td>
+<b>德雷蒙德-格林罚球命中 (两罚第二罚)</b> </td>
+<td class="center" width="139">79-77</td>
+<td width="70">7:47</td>
+<td width="70">骑士</td>
+<td>
+<b>香珀特助攻詹姆斯，34英尺外急停跳投三分入网</b> </td>
+<td class="center" width="139">79-80</td>
+<td width="70">7:33</td>
+<td width="70">勇士</td>
+<td>
+<b>库里后撤步跳投26英尺外三分入网</b> </td>
+<td class="center" width="139">82-80</td>
+<td width="70">7:14</td>
+<td width="70">勇士</td>
+<td>
+                    库里个人犯规 (詹姆斯造成了犯规)                </td>
+<td class="center" width="139">82-80</td>
+<td width="70">7:02</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯跳投不中                </td>
+<td class="center" width="139">82-80</td>
+<td width="70">7:01</td>
+<td width="70">勇士</td>
+<td>
+                    克莱-汤普森拿到后场篮板                </td>
+<td class="center" width="139">82-80</td>
+<td width="70">6:49</td>
+<td width="70">勇士</td>
+<td>
+<b>克莱-汤普森接到德雷蒙德-格林的助攻，29英尺外跳投三分入网</b> </td>
+<td class="center" width="139">85-80</td>
+<td colspan="4" style="text-align:center"><b>骑士请求暂停</b></td>
+<td width="70">6:47</td>
+<td width="70">骑士</td>
+<td>
+                    骑士换人，JR-史密斯换下了迈克-米勒                </td>
+<td class="center" width="139">85-80</td>
+<td width="70">6:25</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯26英尺外三分后撤步跳投不中                </td>
+<td class="center" width="139">85-80</td>
+<td width="70">6:24</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯拿到后场篮板                </td>
+<td class="center" width="139">85-80</td>
+<td width="70">6:08</td>
+<td width="70">勇士</td>
+<td>
+                    库里传球失误，被特里斯坦-汤普森断下                </td>
+<td class="center" width="139">85-80</td>
+<td width="70">5:45</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯转身后仰跳投，9英尺外打板入网</b> </td>
+<td class="center" width="139">85-82</td>
+<td width="70">5:32</td>
+<td width="70">勇士</td>
+<td>
+                    库里27英尺外三分后撤步跳投不中                </td>
+<td class="center" width="139">85-82</td>
+<td width="70">5:30</td>
+<td width="70">勇士</td>
+<td>
+                    勇士抢到前场篮板                </td>
+<td class="center" width="139">85-82</td>
+<td width="70">5:27</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉23英尺外三分急停跳投不中                </td>
+<td class="center" width="139">85-82</td>
+<td width="70">5:26</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯拿到后场篮板                </td>
+<td class="center" width="139">85-82</td>
+<td width="70">5:10</td>
+<td width="70">骑士</td>
+<td>
+<b>特里斯坦-汤普森接到詹姆斯的助攻，勾手命中</b> </td>
+<td class="center" width="139">85-84</td>
+<td width="70">4:52</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯在对方投篮时犯规 (德雷蒙德-格林造成了犯规)                </td>
+<td class="center" width="139">85-84</td>
+<td width="70">4:52</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林罚球不中 (两罚第一罚)                </td>
+<td class="center" width="139">85-84</td>
+<td width="70">4:52</td>
+<td width="70">勇士</td>
+<td>
+                    勇士抢到前场篮板                </td>
+<td class="center" width="139">85-84</td>
+<td width="70">4:52</td>
+<td width="70">勇士</td>
+<td>
+<b>德雷蒙德-格林罚球命中 (两罚第二罚)</b> </td>
+<td class="center" width="139">86-84</td>
+<td width="70">4:34</td>
+<td width="70">勇士</td>
+<td>
+                    克莱-汤普森个人犯规 (詹姆斯造成了犯规)                </td>
+<td class="center" width="139">86-84</td>
+<td width="70">4:24</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯8英尺外跳投不中                </td>
+<td class="center" width="139">86-84</td>
+<td width="70">4:23</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林拿到后场篮板                </td>
+<td class="center" width="139">86-84</td>
+<td width="70">4:13</td>
+<td width="70">勇士</td>
+<td>
+<b>德雷蒙德-格林助攻伊格达拉，24英尺外急停跳投三分入网</b> </td>
+<td class="center" width="139">89-84</td>
+<td width="70">3:53</td>
+<td width="70">骑士</td>
+<td>
+                    香珀特传球失误，被库里断下                </td>
+<td class="center" width="139">89-84</td>
+<td width="70">3:46</td>
+<td width="70">勇士</td>
+<td>
+                    克莱-汤普森24英尺外三分跳投不中                </td>
+<td class="center" width="139">89-84</td>
+<td width="70">3:45</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯抢到前场篮板                </td>
+<td class="center" width="139">89-84</td>
+<td width="70">3:45</td>
+<td width="70">勇士</td>
+<td>
+<b>哈里森-巴恩斯助攻伊格达拉上篮得分</b> </td>
+<td class="center" width="139">91-84</td>
+<td width="70">3:45</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森在对方投篮时犯规 (伊格达拉造成了犯规)                </td>
+<td class="center" width="139">91-84</td>
+<td width="70">3:45</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉加罚不中                </td>
+<td class="center" width="139">91-84</td>
+<td width="70">3:44</td>
+<td width="70">勇士</td>
+<td>
+                    库里抢到前场篮板                </td>
+<td class="center" width="139">91-84</td>
+<td width="70">3:31</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉26英尺外三分跳投不中                </td>
+<td class="center" width="139">91-84</td>
+<td width="70">3:30</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯抢到前场篮板                </td>
+<td class="center" width="139">91-84</td>
+<td width="70">3:26</td>
+<td width="70">勇士</td>
+<td>
+                    库里26英尺外三分跳投不中                </td>
+<td class="center" width="139">91-84</td>
+<td width="70">3:25</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯拿到后场篮板                </td>
+<td class="center" width="139">91-84</td>
+<td width="70">3:22</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林在对方投篮时犯规 (特里斯坦-汤普森造成了犯规)                </td>
+<td class="center" width="139">91-84</td>
+<td width="70">3:22</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森罚球不中 (两罚第一罚)                </td>
+<td class="center" width="139">91-84</td>
+<td width="70">3:22</td>
+<td width="70">骑士</td>
+<td>
+                    骑士抢到前场篮板                </td>
+<td class="center" width="139">91-84</td>
+<td width="70">3:22</td>
+<td width="70">骑士</td>
+<td>
+<b>特里斯坦-汤普森罚球命中 (两罚第二罚)</b> </td>
+<td class="center" width="139">91-85</td>
+<td width="70">3:10</td>
+<td width="70">勇士</td>
+<td>
+<b>库里带球上篮得分</b> </td>
+<td class="center" width="139">93-85</td>
+<td width="70">3:03</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉在对方投篮时犯规 (詹姆斯造成了犯规)                </td>
+<td class="center" width="139">93-85</td>
+<td width="70">3:03</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯罚球命中 (两罚第一罚)</b> </td>
+<td class="center" width="139">93-86</td>
+<td width="70">3:03</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯罚球不中 (两罚第二罚)                </td>
+<td class="center" width="139">93-86</td>
+<td width="70">2:59</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林拿到后场篮板                </td>
+<td class="center" width="139">93-86</td>
+<td width="70">2:44</td>
+<td width="70">勇士</td>
+<td>
+<b>库里27英尺外急停跳投三分入网</b> </td>
+<td class="center" width="139">96-86</td>
+<td colspan="4" style="text-align:center"><b>骑士请求暂停</b></td>
+<td width="70">2:43</td>
+<td width="70">骑士</td>
+<td>
+                    骑士换人，詹姆斯-琼斯换下了特里斯坦-汤普森                </td>
+<td class="center" width="139">96-86</td>
+<td width="70">2:32</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯7英尺外跳投不中                </td>
+<td class="center" width="139">96-86</td>
+<td width="70">2:31</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯拿到后场篮板                </td>
+<td class="center" width="139">96-86</td>
+<td width="70">2:31</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯-琼斯犯规 (伊格达拉造成了犯规)                </td>
+<td class="center" width="139">96-86</td>
+<td width="70">2:31</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉罚球不中 (两罚第一罚)                </td>
+<td class="center" width="139">96-86</td>
+<td width="70">2:31</td>
+<td width="70">勇士</td>
+<td>
+                    勇士抢到前场篮板                </td>
+<td class="center" width="139">96-86</td>
+<td width="70">2:31</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉罚球不中 (两罚第二罚)                </td>
+<td class="center" width="139">96-86</td>
+<td width="70">2:29</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯拿到后场篮板                </td>
+<td class="center" width="139">96-86</td>
+<td width="70">2:20</td>
+<td width="70">骑士</td>
+<td>
+<b>詹姆斯接到JR-史密斯的助攻，26英尺外后仰跳投三分入网</b> </td>
+<td class="center" width="139">96-89</td>
+<td width="70">2:16</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯-琼斯个人犯规 (伊格达拉造成了犯规)                </td>
+<td class="center" width="139">96-89</td>
+<td width="70">2:16</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉罚球不中 (两罚第一罚)                </td>
+<td class="center" width="139">96-89</td>
+<td width="70">2:16</td>
+<td width="70">勇士</td>
+<td>
+                    勇士抢到前场篮板                </td>
+<td class="center" width="139">96-89</td>
+<td width="70">2:16</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉罚球不中 (两罚第二罚)                </td>
+<td class="center" width="139">96-89</td>
+<td width="70">2:14</td>
+<td width="70">勇士</td>
+<td>
+                    哈里森-巴恩斯抢到前场篮板                </td>
+<td class="center" width="139">96-89</td>
+<td width="70">2:14</td>
+<td width="70">骑士</td>
+<td>
+                    戴拉维多瓦个人犯规 (伊格达拉造成了犯规)                </td>
+<td class="center" width="139">96-89</td>
+<td width="70">2:14</td>
+<td width="70">勇士</td>
+<td>
+                    伊格达拉罚球不中 (两罚第一罚)                </td>
+<td class="center" width="139">96-89</td>
+<td width="70">2:14</td>
+<td width="70">勇士</td>
+<td>
+                    勇士抢到前场篮板                </td>
+<td class="center" width="139">96-89</td>
+<td width="70">2:14</td>
+<td width="70">骑士</td>
+<td>
+                    骑士换人，特里斯坦-汤普森换下了詹姆斯-琼斯                </td>
+<td class="center" width="139">96-89</td>
+<td width="70">2:14</td>
+<td width="70">勇士</td>
+<td>
+<b>伊格达拉罚球命中 (两罚第二罚)</b> </td>
+<td class="center" width="139">97-89</td>
+<td width="70">2:05</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯跳投不中                </td>
+<td class="center" width="139">97-89</td>
+<td width="70">2:04</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林拿到后场篮板                </td>
+<td class="center" width="139">97-89</td>
+<td colspan="4" style="text-align:center"><b>勇士请求暂停</b></td>
+<td width="70">2:02</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，利文斯顿换下了伊格达拉                </td>
+<td class="center" width="139">97-89</td>
+<td colspan="4" style="text-align:center"><b>勇士请求20秒短暂停</b></td>
+<td width="70">1:58</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，伊格达拉换下了利文斯顿                </td>
+<td class="center" width="139">97-89</td>
+<td width="70">1:45</td>
+<td width="70">勇士</td>
+<td>
+                    德雷蒙德-格林传球失误，被詹姆斯断下                </td>
+<td class="center" width="139">97-89</td>
+<td width="70">1:39</td>
+<td width="70">骑士</td>
+<td>
+                    戴拉维多瓦24英尺外三分跳投不中                </td>
+<td class="center" width="139">97-89</td>
+<td width="70">1:38</td>
+<td width="70">勇士</td>
+<td>
+                    库里拿到后场篮板                </td>
+<td class="center" width="139">97-89</td>
+<td width="70">1:22</td>
+<td width="70">勇士</td>
+<td>
+<b>库里29英尺外后仰跳投三分入网</b> </td>
+<td class="center" width="139">100-89</td>
+<td width="70">1:13</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯26英尺外三分跳投不中                </td>
+<td class="center" width="139">100-89</td>
+<td width="70">1:11</td>
+<td width="70">骑士</td>
+<td>
+                    香珀特抢到前场篮板                </td>
+<td class="center" width="139">100-89</td>
+<td width="70">1:11</td>
+<td width="70">骑士</td>
+<td>
+                    香珀特补篮，被德雷蒙德-格林盖掉                </td>
+<td class="center" width="139">100-89</td>
+<td width="70">1:09</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森抢到前场篮板                </td>
+<td class="center" width="139">100-89</td>
+<td width="70">1:08</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森跳投，被哈里森-巴恩斯盖掉                </td>
+<td class="center" width="139">100-89</td>
+<td width="70">1:04</td>
+<td width="70">骑士</td>
+<td>
+                    特里斯坦-汤普森抢到前场篮板                </td>
+<td class="center" width="139">100-89</td>
+<td width="70">1:03</td>
+<td width="70">骑士</td>
+<td>
+                    JR-史密斯25英尺外三分跳投不中                </td>
+<td class="center" width="139">100-89</td>
+<td width="70">59.9"</td>
+<td width="70">勇士</td>
+<td>
+                    库里拿到后场篮板                </td>
+<td class="center" width="139">100-89</td>
+<td width="70">59.8"</td>
+<td width="70">骑士</td>
+<td>
+                    詹姆斯个人犯规 (库里造成了犯规)                </td>
+<td class="center" width="139">100-89</td>
+<td width="70">59.8"</td>
+<td width="70">勇士</td>
+<td>
+<b>库里罚球命中 (两罚第一罚)</b> </td>
+<td class="center" width="139">101-89</td>
+<td width="70">59.8"</td>
+<td width="70">骑士</td>
+<td>
+                    骑士换人，迈克-米勒换下了詹姆斯                </td>
+<td class="center" width="139">101-89</td>
+<td width="70">59.8"</td>
+<td width="70">勇士</td>
+<td>
+                    勇士换人，利文斯顿换下了伊格达拉                </td>
+<td class="center" width="139">101-89</td>
+<td width="70">59.8"</td>
+<td width="70">勇士</td>
+<td>
+<b>库里罚球命中 (两罚第二罚)</b> </td>
+<td class="center" width="139">102-89</td>
+<td width="70">48.9"</td>
+<td width="70">骑士</td>
+<td>
+                    迈克-米勒传球失误，被哈里森-巴恩斯断下                </td>
+<td class="center" width="139">102-89</td>
+<td width="70">36.1"</td>
+<td width="70">骑士</td>
+<td>
+                    香珀特个人犯规 (库里造成了犯规)                </td>
+<td class="center" width="139">102-89</td>
+<td width="70">36.1"</td>
+<td width="70">勇士</td>
+<td>
+<b>库里罚球命中 (两罚第一罚)</b> </td>
+<td class="center" width="139">103-89</td>
+<td width="70">36.1"</td>
+<td width="70">勇士</td>
+<td>
+<b>库里罚球命中 (两罚第二罚)</b> </td>
+<td class="center" width="139">104-89</td>
+<td width="70">26.8"</td>
+<td width="70">骑士</td>
+<td>
+<b>特里斯坦-汤普森接到戴拉维多瓦的助攻，暴扣得分</b> </td>
+<td class="center" width="139">104-91</td>
+<td width="70">2.4"</td>
+<td width="70">勇士</td>
+<td>
+                    勇士24秒违例了                </td>
+<td class="center" width="139">104-91</td>
+<td colspan="4" style="text-align:center"><b>第4节结束</b></td>
+<td colspan="4" style="text-align:center"><b>比赛结束</b></td>

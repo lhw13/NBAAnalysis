@@ -13,6 +13,7 @@ import javax.swing.JTable;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -60,7 +61,7 @@ public class HotRankingPanel extends JPanel {
 		private static final long serialVersionUID = 1L;
 
 		public Class<?> getColumnClass(int columnIndex) {
-			return getValueAt(0, columnIndex).getClass();
+			return getValueAt(0, columnIndex).getClass(); 
 		}
 	};
 	DefaultTableModel model_2 = new DefaultTableModel(){
@@ -209,6 +210,11 @@ public class HotRankingPanel extends JPanel {
 		table_1.setBounds(545, 100, 385, 216);
 		table_1.addMouseListener(new tableListener1());
 		table_1.setShowGrid(false);
+		
+		DefaultTableCellRenderer tcr_1 = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr_1.setHorizontalAlignment(JLabel.CENTER);
+		table_1.setDefaultRenderer(Object.class, tcr_1);
+		
 		panelOfBottom.add(table_1);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
@@ -218,6 +224,11 @@ public class HotRankingPanel extends JPanel {
 		table_2 = new JTable(model_2);
 		table_2.addMouseListener(new tableListener2());
 		table_2.setShowGrid(false);
+		
+		DefaultTableCellRenderer tcr_2 = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr_2.setHorizontalAlignment(JLabel.CENTER);
+		table_2.setDefaultRenderer(Object.class, tcr_2);
+		
 		scrollPane_2.setViewportView(table_2);
 		
 		scrollPane_3 = new JScrollPane();
@@ -227,6 +238,11 @@ public class HotRankingPanel extends JPanel {
 		table_3 = new JTable(model_3);
 		table_3.addMouseListener(new tableListener3());
 		table_3.setShowGrid(false);
+		
+		DefaultTableCellRenderer tcr_3 = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr_3.setHorizontalAlignment(JLabel.CENTER);
+		table_3.setDefaultRenderer(Object.class, tcr_3);
+		
 		scrollPane_3.setViewportView(table_3);
 		
 		JLabel lblNewLabel_2 = new JLabel("今日比赛");
@@ -290,7 +306,7 @@ public class HotRankingPanel extends JPanel {
 					picture.setImage(picture.getImage().getScaledInstance(50, 40,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
-					rowData1.add(playerTemp.getName());
+					rowData1.add(playerTemp.getNameWithoutNum());
 					rowData1.add(playerTemp.getScore());			
 					rowDatas1.add(rowData1);
 				}
@@ -305,7 +321,7 @@ public class HotRankingPanel extends JPanel {
 					picture.setImage(picture.getImage().getScaledInstance(50, 40,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
-					rowData1.add(playerTemp.getName());
+					rowData1.add(playerTemp.getNameWithoutNum());
 					rowData1.add(playerTemp.getTotalRebound());					
 					rowDatas1.add(rowData1);
 				}
@@ -321,7 +337,7 @@ public class HotRankingPanel extends JPanel {
 					picture.setImage(picture.getImage().getScaledInstance(50, 40,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
-					rowData1.add(playerTemp.getName());
+					rowData1.add(playerTemp.getNameWithoutNum());
 					rowData1.add(playerTemp.getAssist());									
 					rowDatas1.add(rowData1);
 				}
@@ -337,7 +353,7 @@ public class HotRankingPanel extends JPanel {
 					picture.setImage(picture.getImage().getScaledInstance(50, 40,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
-					rowData1.add(playerTemp.getName());
+					rowData1.add(playerTemp.getNameWithoutNum());
 					rowData1.add(playerTemp.getSteal());									
 					rowDatas1.add(rowData1);
 				}
@@ -353,7 +369,7 @@ public class HotRankingPanel extends JPanel {
 					picture.setImage(picture.getImage().getScaledInstance(50, 40,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
-					rowData1.add(playerTemp.getName());
+					rowData1.add(playerTemp.getNameWithoutNum());
 					rowData1.add(playerTemp.getBlock());									
 					rowDatas1.add(rowData1);
 				}
@@ -375,7 +391,7 @@ public class HotRankingPanel extends JPanel {
 					picture.setImage(picture.getImage().getScaledInstance(50, 40,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
-					rowData1.add(playerTemp.getName());
+					rowData1.add(playerTemp.getNameWithoutNum());
 					rowData1.add(handleDecimal((double)playerTemp.getScore()
 							/playerTemp.getAppearance()));
 					rowDatas1.add(rowData1);
@@ -391,7 +407,7 @@ public class HotRankingPanel extends JPanel {
 					picture.setImage(picture.getImage().getScaledInstance(50, 40,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
-					rowData1.add(playerTemp.getName());
+					rowData1.add(playerTemp.getNameWithoutNum());
 					rowData1.add(handleDecimal((double)playerTemp.getTotalRebound()
 							/playerTemp.getAppearance()));
 
@@ -409,7 +425,7 @@ public class HotRankingPanel extends JPanel {
 					picture.setImage(picture.getImage().getScaledInstance(50, 40,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
-					rowData1.add(playerTemp.getName());
+					rowData1.add(playerTemp.getNameWithoutNum());
 					rowData1.add(handleDecimal((double)playerTemp.getAssist()
 							/playerTemp.getAppearance()));	
 					
@@ -427,7 +443,7 @@ public class HotRankingPanel extends JPanel {
 					picture.setImage(picture.getImage().getScaledInstance(50, 40,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
-					rowData1.add(playerTemp.getName());
+					rowData1.add(playerTemp.getNameWithoutNum());
 					rowData1.add(handleDecimal((double)playerTemp.getSteal()
 							/playerTemp.getAppearance()));	
 					
@@ -445,7 +461,7 @@ public class HotRankingPanel extends JPanel {
 					picture.setImage(picture.getImage().getScaledInstance(50, 40,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
-					rowData1.add(playerTemp.getName());
+					rowData1.add(playerTemp.getNameWithoutNum());
 					rowData1.add(handleDecimal((double)playerTemp.getBlock()/playerTemp.getAppearance()));									
 					rowDatas1.add(rowData1);
 				}
@@ -466,7 +482,7 @@ public class HotRankingPanel extends JPanel {
 					picture.setImage(picture.getImage().getScaledInstance(50, 40,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
-					rowData1.add(playerTemp.getName());
+					rowData1.add(playerTemp.getNameWithoutNum());
 					rowData1.add(handleDecimal((double)playerTemp.getScore()
 							/playerTemp.getAppearance()));		
 					rowData1.add(" "+handleDecimal(playerTemp.getScorePromotion())+" 提升率");
@@ -483,7 +499,7 @@ public class HotRankingPanel extends JPanel {
 					picture.setImage(picture.getImage().getScaledInstance(50, 40,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
-					rowData1.add(playerTemp.getName());
+					rowData1.add(playerTemp.getNameWithoutNum());
 					rowData1.add(handleDecimal((double)playerTemp.getTotalRebound()
 							/playerTemp.getAppearance()));	
 					rowData1.add(" "+handleDecimal(playerTemp.getReboundPromotion())+" 提升率");						
@@ -502,7 +518,7 @@ public class HotRankingPanel extends JPanel {
 					picture.setImage(picture.getImage().getScaledInstance(50, 40,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
-					rowData1.add(playerTemp.getName());
+					rowData1.add(playerTemp.getNameWithoutNum());
 					rowData1.add(handleDecimal((double)playerTemp.getTotalRebound()
 							/playerTemp.getAppearance()));	
 					rowData1.add(" "+handleDecimal(playerTemp.getAssistPromotion())+" 提升率");						

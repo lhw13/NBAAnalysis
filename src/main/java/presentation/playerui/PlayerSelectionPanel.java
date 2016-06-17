@@ -31,7 +31,7 @@ import vo.TeamWithPlayersVO;
 
 public class PlayerSelectionPanel extends JPanel {
 
-	BLService blservice = BLController.getInstance();
+	BLService blservice = BLController.getInstance(); 
 	ArrayList<TeamWithPlayersVO> teamWithPlayer = blservice
 			.getTeamsWithPlayers();
 	DefaultTableModel modelOf1 = new DefaultTableModel(
@@ -53,7 +53,7 @@ public class PlayerSelectionPanel extends JPanel {
 			"", "" });
 	DefaultTableModel modelOf5 = new DefaultTableModel(new Object[][] {
 			{ null, null, null }, { null, null, null }, { null, null, null },
-			{ null, null, null }, { null, null, null }, }, new String[] { "雄鹿",
+			{ null, null, null }, { null, null, null }, }, new String[] { "雄鹿", 
 			"", "" });
 	DefaultTableModel modelOf6 = new DefaultTableModel(new Object[][] {
 			{ null, null, null }, { null, null, null }, { null, null, null },
@@ -422,40 +422,40 @@ public class PlayerSelectionPanel extends JPanel {
 		panelOfBottom.add(tableOf30);
 		
 		ChangeMouseListen changeListener = new ChangeMouseListen();
-		labelOf1 = new JLabel("主界面");
-		labelOf1.setBounds(259, 2, 43, 19);
-		labelOf1.addMouseListener(changeListener);
-		panelOfBottom.add(labelOf1);
-		
-		labelOf2 = new JLabel("球队");
-		labelOf2.setBounds(312, 2, 43, 19);
-		labelOf2.addMouseListener(changeListener);
-		panelOfBottom.add(labelOf2);
-		
-		labelOf3 = new JLabel("球员");
-		labelOf3.setBounds(362, 2, 43, 19);
-		labelOf3.addMouseListener(changeListener);
-		panelOfBottom.add(labelOf3);
-		
-		labelOf4 = new JLabel("球队排名");
-		labelOf4.setBounds(416, 2, 76, 19);
-		labelOf4.addMouseListener(changeListener);
-		panelOfBottom.add(labelOf4);
-		
-		labelOf5 = new JLabel("球员排名");
-		labelOf5.setBounds(250, 4, 43, 19);
-		labelOf5.addMouseListener(changeListener);
-		panelOfBottom.add(labelOf3);
-		
-		labelOf6 = new JLabel("热点");
-		labelOf6.setBounds(494, 2, 43, 19);
-		labelOf6.addMouseListener(changeListener);
-		panelOfBottom.add(labelOf6);
-		
-		labelOf7 = new JLabel("比赛");
-		labelOf7.setBounds(550, 2, 43, 19);
-		labelOf7.addMouseListener(changeListener);
-		panelOfBottom.add(labelOf7);
+//		labelOf1 = new JLabel("主界面");
+//		labelOf1.setBounds(259, 2, 43, 19);
+//		labelOf1.addMouseListener(changeListener);
+//		panelOfBottom.add(labelOf1);
+//		
+//		labelOf2 = new JLabel("球队");
+//		labelOf2.setBounds(312, 2, 43, 19);
+//		labelOf2.addMouseListener(changeListener);
+//		panelOfBottom.add(labelOf2);
+//		
+//		labelOf3 = new JLabel("球员");
+//		labelOf3.setBounds(362, 2, 43, 19);
+//		labelOf3.addMouseListener(changeListener);
+//		panelOfBottom.add(labelOf3);
+//		
+//		labelOf4 = new JLabel("球队排名");
+//		labelOf4.setBounds(416, 2, 76, 19);
+//		labelOf4.addMouseListener(changeListener);
+//		panelOfBottom.add(labelOf4);
+//		
+//		labelOf5 = new JLabel("球员排名");
+//		labelOf5.setBounds(250, 4, 43, 19);
+//		labelOf5.addMouseListener(changeListener);
+//		panelOfBottom.add(labelOf3);
+//		
+//		labelOf6 = new JLabel("热点");
+//		labelOf6.setBounds(494, 2, 43, 19);
+//		labelOf6.addMouseListener(changeListener);
+//		panelOfBottom.add(labelOf6);
+//		
+//		labelOf7 = new JLabel("比赛");
+//		labelOf7.setBounds(550, 2, 43, 19);
+//		labelOf7.addMouseListener(changeListener);
+//		panelOfBottom.add(labelOf7);
 		
 
 		if (teamWithPlayer != null && teamWithPlayer.size() != 0) {
@@ -905,19 +905,19 @@ public class PlayerSelectionPanel extends JPanel {
 		ArrayList<PlayerVO> players = vo.getPlayers();
 		for (int i = 0; i < 3&&i<players.size(); i++) {
 			
-			rowData1.add(players.get(i).getName());
+			rowData1.add(players.get(i).getNameWithoutNum());
 		}
 		for (int i = 3; i < 6&&i<players.size(); i++) {
-			rowData2.add(players.get(i).getName());
+			rowData2.add(players.get(i).getNameWithoutNum());
 		}
 		for (int i = 6; i < 9&&i<players.size(); i++) {
-			rowData3.add(players.get(i).getName());
+			rowData3.add(players.get(i).getNameWithoutNum());
 		}
 		for (int i = 9; i < 12&&i<players.size(); i++) {
-			rowData4.add(players.get(i).getName());
+			rowData4.add(players.get(i).getNameWithoutNum());
 		}
 		for (int i = 12; i < players.size(); i++) {// 动态修改为球员list size数量
-			rowData5.add(players.get(i).getName());
+			rowData5.add(players.get(i).getNameWithoutNum());
 		}
 		rowDatas.add(rowData1);
 		rowDatas.add(rowData2);

@@ -443,7 +443,7 @@ public final class BLController implements BLService {
 	
 	//public ArrayList<Player> getDailyPlayer()
 	//{
-		
+		 
 	//}
 
 	// transform image of player or team
@@ -484,6 +484,9 @@ public final class BLController implements BLService {
 	}
 
 	public PlayerVO getPlayerAnalysis(String name) {// 暂时认为名字唯一确定一名球员
+		if(name.charAt(name.length()-1)>'9' || name.charAt(name.length()-1)<'0'){
+			name = name + "01";
+		}
 		analyse();
 		Player player = playersHash.get(name);
 		if (player == null)

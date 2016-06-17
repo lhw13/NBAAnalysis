@@ -7,7 +7,7 @@ import java.util.Comparator;
 import server.businesslogic.Player;
 
 public final  class TeamInMatchesPO {
-	public TeamInMatchesPO() {
+	public TeamInMatchesPO() { 
 	}
 
 	public TeamInMatchesPO(String abbreviation,

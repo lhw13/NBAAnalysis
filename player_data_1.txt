@@ -1,0 +1,389 @@
+<tbody>
+<tr class="title bg_a">
+<td class="left" width="150"><b>首发</b></td>
+<td width="23"></td>
+<td>时间</td>
+<td>投篮</td>
+<td>3分</td>
+<td>罚球</td>
+<td>前场</td>
+<td>后场</td>
+<td>篮板</td>
+<td>助攻</td>
+<td>犯规</td>
+<td>抢断</td>
+<td>失误</td>
+<td>封盖</td>
+<td>得分</td>
+<td>+/-</td>
+</tr>
+<tr>
+<td class="tdw-1 left">
+<a href="http://g.hupu.com/nba/players/stephencurry-3311.html" target="_blank">
+                            斯蒂芬-库里</a>
+</td>
+<td>G</td>
+<td>42</td>
+<td>13-23</td>
+<td>7-13</td>
+<td>4-4</td>
+<td>3</td>
+<td>4</td>
+<td>7            </td>
+<td>4            </td>
+<td>2</td>
+<td>2</td>
+<td>5</td>
+<td>0</td>
+<td><span class="high">37</span> </td>
+<td><span class="high">+24</span> </td>
+</tr>
+<tr>
+<td class="tdw-1 left">
+<a href="http://g.hupu.com/nba/players/andreiguodala-642.html" target="_blank">
+                            安德烈-伊格达拉</a>
+</td>
+<td>G/F</td>
+<td>42</td>
+<td>5-11</td>
+<td>2-5</td>
+<td>2-11</td>
+<td>1</td>
+<td>7</td>
+<td>8            </td>
+<td><span class="high">7</span> </td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>14            </td>
+<td>+16            </td>
+</tr>
+<tr>
+<td class="tdw-1 left">
+<a href="http://g.hupu.com/nba/players/klaythompson-3564.html" target="_blank">
+                            克莱-汤普森</a>
+</td>
+<td>G/F</td>
+<td>40</td>
+<td>5-14</td>
+<td>1-4</td>
+<td>1-1</td>
+<td>0</td>
+<td>3</td>
+<td>3            </td>
+<td>2            </td>
+<td>5</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>12            </td>
+<td>+11            </td>
+</tr>
+<tr>
+<td class="tdw-1 left">
+<a href="http://g.hupu.com/nba/players/draymondgreen-3672.html" target="_blank">
+                            德雷蒙德-格林</a>
+</td>
+<td>F</td>
+<td>36</td>
+<td>4-9</td>
+<td>1-3</td>
+<td>7-10</td>
+<td>0</td>
+<td>9</td>
+<td>9            </td>
+<td>6            </td>
+<td>4</td>
+<td>0</td>
+<td>4</td>
+<td>1</td>
+<td>16            </td>
+<td>+23            </td>
+</tr>
+<tr>
+<td class="tdw-1 left">
+<a href="http://g.hupu.com/nba/players/harrisonbarnes-3644.html" target="_blank">
+                            哈里森-巴恩斯</a>
+</td>
+<td>F</td>
+<td>29</td>
+<td>3-7</td>
+<td>0-0</td>
+<td>2-4</td>
+<td>6</td>
+<td>4</td>
+<td><span class="high">10</span> </td>
+<td>2            </td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>8            </td>
+<td>+8            </td>
+</tr>
+<tr class="title bg_a">
+<td class="left" width="150"><b>替补</b></td>
+<td width="23"></td>
+<td>时间</td>
+<td>投篮</td>
+<td>3分</td>
+<td>罚球</td>
+<td>前场</td>
+<td>后场</td>
+<td>篮板</td>
+<td>助攻</td>
+<td>犯规</td>
+<td>抢断</td>
+<td>失误</td>
+<td>封盖</td>
+<td>得分</td>
+<td>+/-</td>
+</tr>
+<tr>
+<td class="tdw-1 left">
+<a href="http://g.hupu.com/nba/players/shaunlivingston-623.html" target="_blank">
+                            肖恩-利文斯顿</a>
+</td>
+<td>G</td>
+<td>21</td>
+<td>1-3</td>
+<td>0-0</td>
+<td>0-0</td>
+<td>0</td>
+<td>2</td>
+<td>2            </td>
+<td>3            </td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>2            </td>
+<td>-5            </td>
+</tr>
+<tr>
+<td class="tdw-1 left">
+<a href="http://g.hupu.com/nba/players/leandrobarbosa-183.html" target="_blank">
+                            莱昂德罗-巴博萨</a>
+</td>
+<td>G</td>
+<td>17</td>
+<td>4-5</td>
+<td>1-1</td>
+<td>4-4</td>
+<td>0</td>
+<td>2</td>
+<td>2            </td>
+<td>0            </td>
+<td>3</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>13            </td>
+<td>+1            </td>
+</tr>
+<tr>
+<td class="tdw-1 left">
+<a href="http://g.hupu.com/nba/players/davidlee-1032.html" target="_blank">
+                            大卫-李</a>
+</td>
+<td>F/C</td>
+<td>9</td>
+<td>1-3</td>
+<td>0-0</td>
+<td>0-0</td>
+<td>0</td>
+<td>1</td>
+<td>1            </td>
+<td>1            </td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>2            </td>
+<td>-7            </td>
+</tr>
+<tr>
+<td class="tdw-1 left">
+<a href="http://g.hupu.com/nba/players/festusezeli-3667.html" target="_blank">
+                            费斯图斯-埃泽利</a>
+</td>
+<td>C</td>
+<td>3</td>
+<td>0-0</td>
+<td>0-0</td>
+<td>0-0</td>
+<td>1</td>
+<td>0</td>
+<td>1            </td>
+<td>0            </td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0            </td>
+<td>-6            </td>
+</tr>
+<tr>
+<td class="tdw-1 left">
+<a href="http://g.hupu.com/nba/players/jamesmichaelmcadoo-4987.html" target="_blank">
+                            詹姆斯-迈克尔-麦卡杜</a>
+</td>
+<td>PF</td>
+<td>0</td>
+<td>0-0</td>
+<td>0-0</td>
+<td>0-0</td>
+<td>0</td>
+<td>0</td>
+<td>0            </td>
+<td>0            </td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0            </td>
+<td>0            </td>
+</tr>
+<tr>
+<td class="tdw-1 left">
+<a href="http://g.hupu.com/nba/players/ognjenkuzmic-4872.html" target="_blank">
+                            奥格年-库兹米奇</a>
+</td>
+<td>C</td>
+<td>0</td>
+<td>0-0</td>
+<td>0-0</td>
+<td>0-0</td>
+<td>0</td>
+<td>0</td>
+<td>0            </td>
+<td>0            </td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0            </td>
+<td>0            </td>
+</tr>
+<tr>
+<td class="tdw-1 left">
+<a href="http://g.hupu.com/nba/players/brandonrush-3031.html" target="_blank">
+                            布兰登-拉什</a>
+</td>
+<td>SG</td>
+<td>0</td>
+<td>0-0</td>
+<td>0-0</td>
+<td>0-0</td>
+<td>0</td>
+<td>0</td>
+<td>0            </td>
+<td>0            </td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0            </td>
+<td>0            </td>
+</tr>
+<tr>
+<td class="tdw-1 left">
+<a href="http://g.hupu.com/nba/players/andrewbogut-1031.html" target="_blank">
+                            安德鲁-博古特</a>
+</td>
+<td>C</td>
+<td>0</td>
+<td>0-0</td>
+<td>0-0</td>
+<td>0-0</td>
+<td>0</td>
+<td>0</td>
+<td>0            </td>
+<td>0            </td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0            </td>
+<td>0            </td>
+</tr>
+<tr>
+<td class="tdw-1 left">
+<a href="http://g.hupu.com/nba/players/marreesespeights-3050.html" target="_blank">
+                            马利斯-斯贝茨</a>
+</td>
+<td>F/C</td>
+<td>0</td>
+<td>0-0</td>
+<td>0-0</td>
+<td>0-0</td>
+<td>0</td>
+<td>0</td>
+<td>0            </td>
+<td>0            </td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0            </td>
+<td>0            </td>
+</tr>
+<tr>
+<td class="tdw-1 left">
+<a href="http://g.hupu.com/nba/players/justinholiday-3741.html" target="_blank">
+                            贾斯汀-霍勒迪</a>
+</td>
+<td>G/F</td>
+<td>0</td>
+<td>0-0</td>
+<td>0-0</td>
+<td>0-0</td>
+<td>0</td>
+<td>0</td>
+<td>0            </td>
+<td>0            </td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0            </td>
+<td>0            </td>
+</tr>
+<tr class="title bg_a">
+<td class="left" width="150">统计</td>
+<td> </td>
+<td></td>
+<td>36-75</td>
+<td>12-26</td>
+<td>20-34</td>
+<td>11</td>
+<td>32</td>
+<td>43</td>
+<td>25</td>
+<td>25</td>
+<td>7</td>
+<td>16</td>
+<td>2</td>
+<td>104</td>
+<td> </td>
+</tr>
+<tr class="title bg_a">
+<td class="left" width="150">命中率</td>
+<td> </td>
+<td> </td>
+<td>48.0%</td>
+<td>46.2%</td>
+<td>58.8%</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>

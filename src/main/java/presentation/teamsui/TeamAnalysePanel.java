@@ -97,11 +97,11 @@ public class TeamAnalysePanel extends JPanel {
 	public static JScrollPane scrollPane;
 	public JScrollPane scrollPane_1;
 	
-	JTable table_1;
+	//JTable table_1;
 	
 	DefaultTableModel model_1 = new DefaultTableModel();
 	
-	Vector columnName_1 = new Vector();
+	Vector columnName_1 = new Vector(); 
 	
 	JButton button;
 	
@@ -149,7 +149,7 @@ public class TeamAnalysePanel extends JPanel {
 		}	
 //panel===========================================================
 		panelOfBottom.setLayout(null);
-		panelOfBottom.setPreferredSize(new Dimension(1000, 1300));
+		panelOfBottom.setPreferredSize(new Dimension(1000, 700));
 		
 		panelOfAnalyse.setLayout(null);
 		panelOfAnalyse.setBounds(0, 50, 1000, 1200);
@@ -161,8 +161,8 @@ public class TeamAnalysePanel extends JPanel {
 		panelOfBottom.add(panelOfPredict);
 		panelOfPredict.setVisible(false);
 		
-		panelOfAnalyse.add(scrollPane_1);
-		scrollPane_1.setBounds(100,430, 600,60);
+		//panelOfAnalyse.add(scrollPane_1);
+		//scrollPane_1.setBounds(100,430, 600,60);
 		
 	//button===========================================================
 		
@@ -184,9 +184,9 @@ public class TeamAnalysePanel extends JPanel {
 		panelOfBottom.add(button);
 
 	//table======================================================
-		table_1 = new JTable(model_1);
-		table_1.setShowGrid(false);
-		scrollPane_1.setViewportView(table_1);
+//		table_1 = new JTable(model_1);
+//		table_1.setShowGrid(false);
+//		scrollPane_1.setViewportView(table_1);
 		
 	//label========================================================
 
@@ -198,6 +198,7 @@ public class TeamAnalysePanel extends JPanel {
 		label_analyse = new JLabel("球队分析");
 		label_analyse.setFont(new Font("宋体", Font.PLAIN, 14));
 		label_analyse.setBounds(216, 27, 67, 20);
+		
 		panelOfBottom.add(label_analyse);
 		label_analyse.addMouseListener(new Listener1());
 		
@@ -205,6 +206,7 @@ public class TeamAnalysePanel extends JPanel {
 		label_predict.setFont(new Font("宋体", Font.PLAIN, 14));
 		label_predict.setBounds(293, 27, 67, 20);
 		label_predict.addMouseListener(new Listener1());
+		label_predict.setForeground(Color.GRAY);
 		panelOfBottom.add(label_predict);
 		
 		label_pk1  = new JLabel("p1");
@@ -308,38 +310,38 @@ public class TeamAnalysePanel extends JPanel {
 			box.setVisible(false);
 			box = null;
 		}
-		box = createDemoPanel_1();
-		box.setBounds(50, 600, 900, 400);
-		box.setVisible(true);		
-		box.updateUI();
+//		box = createDemoPanel_1();
+//		box.setBounds(50, 600, 900, 400);
+//		box.setVisible(true);		
+//		box.updateUI();
 		panelOfAnalyse.add(pie);
-		panelOfAnalyse.add(box);
+		//panelOfAnalyse.add(box);
 		panelOfAnalyse.repaint();
 		
-		Vector rowDatas_1 = new Vector();
-		Vector rowData_1 = new Vector();	
-		int appearance = tvo.getAppearance();
-		rowData_1.add(String.format("%.1f", (double)tvo.getScore()/appearance));
-		rowData_1.add(String.format("%.1f", tvo.getHitRate()*100)+"%");
-		rowData_1.add(String.format("%.1f", tvo.getThirdHitRate()*100)+"%");
-		rowData_1.add(String.format("%.1f", tvo.getFreeHitRate()*100)+"%");
-		rowData_1.add(String.format("%.1f", (double)tvo.getOffensiveRebound()/appearance));
-		rowData_1.add(String.format("%.1f", (double)tvo.getDefensiveRebound()/appearance));
-		rowData_1.add(String.format("%.1f", (double)tvo.getTotalRebound()/appearance));
-		rowData_1.add(String.format("%.1f", (double)tvo.getAssist()/appearance));
-		rowData_1.add(String.format("%.1f", (double)tvo.getSteal()/appearance));
-		rowData_1.add(String.format("%.1f", (double)tvo.getBlock()/appearance));
-		rowData_1.add(String.format("%.1f", (double)tvo.getMiss()/appearance));
-		rowData_1.add(String.format("%.1f", (double)tvo.getFoul()/appearance));
-		rowDatas_1.add(rowData_1);
-		model_1.setDataVector(rowDatas_1, columnName_1);		
-		model_1.setColumnCount(table_1.getColumnCount());
-		model_1.setRowCount(rowDatas_1.size());
-		table_1.setModel(model_1);
-		//int[] width_1={50,60,5,3,3,3,3,3,3,3,3,3,3,3};
-		//table_1.setColumnModel(getColumn(table_1, width_1));
-		table_1.updateUI();
-		
+//		Vector rowDatas_1 = new Vector();
+//		Vector rowData_1 = new Vector();	
+//		int appearance = tvo.getAppearance();
+//		rowData_1.add(String.format("%.1f", (double)tvo.getScore()/appearance));
+//		rowData_1.add(String.format("%.1f", tvo.getHitRate()*100)+"%");
+//		rowData_1.add(String.format("%.1f", tvo.getThirdHitRate()*100)+"%");
+//		rowData_1.add(String.format("%.1f", tvo.getFreeHitRate()*100)+"%");
+//		rowData_1.add(String.format("%.1f", (double)tvo.getOffensiveRebound()/appearance));
+//		rowData_1.add(String.format("%.1f", (double)tvo.getDefensiveRebound()/appearance));
+//		rowData_1.add(String.format("%.1f", (double)tvo.getTotalRebound()/appearance));
+//		rowData_1.add(String.format("%.1f", (double)tvo.getAssist()/appearance));
+//		rowData_1.add(String.format("%.1f", (double)tvo.getSteal()/appearance));
+//		rowData_1.add(String.format("%.1f", (double)tvo.getBlock()/appearance));
+//		rowData_1.add(String.format("%.1f", (double)tvo.getMiss()/appearance));
+//		rowData_1.add(String.format("%.1f", (double)tvo.getFoul()/appearance));
+//		rowDatas_1.add(rowData_1);
+//		model_1.setDataVector(rowDatas_1, columnName_1);		
+//		model_1.setColumnCount(table_1.getColumnCount());
+//		model_1.setRowCount(rowDatas_1.size());
+//		table_1.setModel(model_1);
+//		//int[] width_1={50,60,5,3,3,3,3,3,3,3,3,3,3,3};
+//		//table_1.setColumnModel(getColumn(table_1, width_1));
+//		table_1.updateUI();
+//		
 		calculate();//计算好回归需要的系数
 		
 	}
@@ -364,7 +366,8 @@ public class TeamAnalysePanel extends JPanel {
 		if(abb1!="NBA"&&abb2!="NBA"){
 			String[] teams = {abb1,abb2};
 			barchart1 = createPanel_3(teams);
-			barchart1.setBounds(0, 300, 690, 280);
+			
+			barchart1.setBounds(140, 300, 690, 280);
 			barchart1.setVisible(true);		
 			barchart1.updateUI();
 			panelOfPredict.add(barchart1);
@@ -456,7 +459,7 @@ public class TeamAnalysePanel extends JPanel {
 			combox1.addItem(PlayerSelectionPanel.translate(temp.getAbbreviation()));
 			combox2.addItem(PlayerSelectionPanel.translate(temp.getAbbreviation()));
 		}
-		
+		combox1.setSelectedItem(PlayerSelectionPanel.translate(this.abbreviation));
 	}
 	
 	
@@ -653,69 +656,69 @@ public class TeamAnalysePanel extends JPanel {
 		return new ChartPanel(jfreechart);
 	}
 	
-	private  BoxAndWhiskerCategoryDataset createDataset_1()
-	{
-		TeamWithPlayersVO team = blservice.getTeamAnalysis(abbreviation);
-		ArrayList<PlayerVO> players = team.getPlayers();
-		Collections.sort(players, compareEfficientDesc);
-		DefaultBoxAndWhiskerCategoryDataset defaultboxandwhiskercategorydataset = new DefaultBoxAndWhiskerCategoryDataset();
-		
-		for (int j = 0; j<10&&j< players.size(); j++)
-		{
-			PlayerVO playerTemp = players.get(j);
-			java.util.List list = createValueList_1(playerTemp.getName());
-			defaultboxandwhiskercategorydataset.add(list, "得分 " , players.get(j).getName().split(" ")[0] );
-		}
-		return defaultboxandwhiskercategorydataset;
-	}
+//	private  BoxAndWhiskerCategoryDataset createDataset_1()
+//	{
+//		TeamWithPlayersVO team = blservice.getTeamAnalysis(abbreviation);
+//		ArrayList<PlayerVO> players = team.getPlayers();
+//		Collections.sort(players, compareEfficientDesc);
+//		DefaultBoxAndWhiskerCategoryDataset defaultboxandwhiskercategorydataset = new DefaultBoxAndWhiskerCategoryDataset();
+//		
+//		for (int j = 0; j<10&&j< players.size(); j++)
+//		{
+//			PlayerVO playerTemp = players.get(j);
+//			java.util.List list = createValueList_1(playerTemp.getName());
+//			defaultboxandwhiskercategorydataset.add(list, "得分 " , players.get(j).getName().split(" ")[0] );
+//		}
+//		return defaultboxandwhiskercategorydataset;
+//	}
 
-	private java.util.List createValueList_1(String pname)
-	{
-		ArrayList arraylist = new ArrayList();
-		PlayerVO vo = blservice.getPlayerAnalysis(pname);
-		ArrayList<MatchPO> matches = vo.getMatches();
-		
-		for(int i=0;i<matches.size();i++){
-			MatchPO matchTemp = matches.get(i);
-			TeamInMatchesPO team = null;
-			if(matchTemp.getTeam1().getAbbreviation().equals
-					(vo.getTeamAbbreviation())){
-				team = matchTemp.getTeam1();
-			} else {
-				team = matchTemp.getTeam2();
-			}
-			ArrayList<PlayerInMatchesPO> playersInMatch = team.getPlayers();
-			PlayerInMatchesPO playerTemp = null; 
-			for(int j=0;j<playersInMatch.size();j++) {
-				playerTemp = playersInMatch.get(j);
-				if(playerTemp.getName().equals(vo.getName())) break; 
-			}
-			
-			arraylist.add(playerTemp.getScore());
-			
-		}
+//	private java.util.List createValueList_1(String pname)
+//	{
+//		ArrayList arraylist = new ArrayList();
+//		PlayerVO vo = blservice.getPlayerAnalysis(pname);
+//		ArrayList<MatchPO> matches = vo.getMatches();
+//		
+//		for(int i=0;i<matches.size();i++){
+//			MatchPO matchTemp = matches.get(i);
+//			TeamInMatchesPO team = null;
+//			if(matchTemp.getTeam1().getAbbreviation().equals
+//					(vo.getTeamAbbreviation())){
+//				team = matchTemp.getTeam1();
+//			} else {
+//				team = matchTemp.getTeam2();
+//			}
+//			ArrayList<PlayerInMatchesPO> playersInMatch = team.getPlayers();
+//			PlayerInMatchesPO playerTemp = null; 
+//			for(int j=0;j<playersInMatch.size();j++) {
+//				playerTemp = playersInMatch.get(j);
+//				if(playerTemp.getName().equals(vo.getName())) break; 
+//			}
+//			
+//			arraylist.add(playerTemp.getScore());
+//			
+//		}
+//
+//		return arraylist;
+//	}
 
-		return arraylist;
-	}
+//	private static JFreeChart createChart_1(BoxAndWhiskerCategoryDataset boxandwhiskercategorydataset)
+//	{
+//		JFreeChart jfreechart = ChartFactory.createBoxAndWhiskerChart("各个球员得分箱线图", "Category", "Value", boxandwhiskercategorydataset, true);
+//		CategoryPlot categoryplot = (CategoryPlot)jfreechart.getPlot();
+//		categoryplot.setDomainGridlinesVisible(true);
+//		categoryplot.setRangePannable(true);
+//		NumberAxis numberaxis = (NumberAxis)categoryplot.getRangeAxis();
+//		numberaxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+//		return jfreechart;
+//	}
 
-	private static JFreeChart createChart_1(BoxAndWhiskerCategoryDataset boxandwhiskercategorydataset)
-	{
-		JFreeChart jfreechart = ChartFactory.createBoxAndWhiskerChart("各个球员得分箱线图", "Category", "Value", boxandwhiskercategorydataset, true);
-		CategoryPlot categoryplot = (CategoryPlot)jfreechart.getPlot();
-		categoryplot.setDomainGridlinesVisible(true);
-		categoryplot.setRangePannable(true);
-		NumberAxis numberaxis = (NumberAxis)categoryplot.getRangeAxis();
-		numberaxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-		return jfreechart;
-	}
-
-	public JPanel createDemoPanel_1()
-	{
-		JFreeChart jfreechart = createChart_1(createDataset_1());
-		ChartPanel chartpanel = new ChartPanel(jfreechart);
-		chartpanel.setMouseWheelEnabled(false);
-		return chartpanel;
-	}
+//	public JPanel createDemoPanel_1()
+//	{
+//		JFreeChart jfreechart = createChart_1(createDataset_1());
+//		ChartPanel chartpanel = new ChartPanel(jfreechart);
+//		chartpanel.setMouseWheelEnabled(false);
+//		return chartpanel;
+//	}
 	public class Listener1 extends MouseAdapter{
 
 		@Override

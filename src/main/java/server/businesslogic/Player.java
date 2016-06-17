@@ -28,7 +28,7 @@ public  final class Player implements Cloneable{
 		return p;
 	}
 
-	boolean active = false;//whether the player is in this season
+	boolean active = false;//whether the player is in this season 
 	boolean added = false;
 	boolean newData = true;
 	TeamPO team;
@@ -828,6 +828,12 @@ public  final class Player implements Cloneable{
 		public boolean isActive() {
 			return active;
 		}
-	
+		public String getNameWithoutNum(){
+			int i;
+			if(player.getName().length()<=0)
+				return player.getName();
+			for(i=player.getName().length()-1;player.getName().charAt(i)>='0' && player.getName().charAt(i)<='9' && i>0;i--);
+			return player.getName().substring(0, i+1);
+		}
 	
 }

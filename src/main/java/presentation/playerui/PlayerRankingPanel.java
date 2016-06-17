@@ -68,7 +68,7 @@ public class PlayerRankingPanel extends JPanel {
 	private static JLabel crownOfSteal;
 	private static JLabel crownOfBlock;
 
-	public static JCheckBox chckbxNewCheckBox;
+	public static JCheckBox chckbxNewCheckBox; 
 	public static JCheckBox chckbxNewCheckBox_1;
 	public static JCheckBox chckbxNewCheckBox_2;
 	public static JCheckBox chckbxNewCheckBox_3;
@@ -1725,11 +1725,11 @@ public class PlayerRankingPanel extends JPanel {
 			if (playerList.get(i) != null) {
 				pvo = playerList.get(i).toVO();
 				int appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				if (pvo.getPosition() != null) {
 					s = JudeTheFilter(pvo.getPosition(), pvo.getDivision(),
 							pvo.getZone());
@@ -1801,11 +1801,11 @@ public class PlayerRankingPanel extends JPanel {
 			if (pvoList.get(i) != null) {
 				pvo = pvoList.get(i);
 				int appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getTeamFullName());
 				if (pvo.getPosition() != null) {
 					s = JudeTheFilter(pvo.getPosition(), pvo.getDivision(),

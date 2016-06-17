@@ -69,7 +69,7 @@ public class PlayerAnalysePanel extends JPanel {
 
 	JPanel panelOfBottom = new JPanel();
 	JPanel crosshair =null;
-	JPanel crosshair2 =null;
+	//JPanel crosshair2 =null;
 	JPanel barchart =null;
 	
 	JButton button;
@@ -83,7 +83,7 @@ public class PlayerAnalysePanel extends JPanel {
 	
 	private JTable table;
 	
-	DefaultTableModel model = new DefaultTableModel();
+	DefaultTableModel model = new DefaultTableModel(); 
 	
 	Vector columnName = new Vector();
 	public PlayerAnalysePanel() {
@@ -100,7 +100,7 @@ public class PlayerAnalysePanel extends JPanel {
 		panelOfBottom.add(scrollPane_1);
 		//panel===========================================================
 		panelOfBottom.setLayout(null);
-		panelOfBottom.setPreferredSize(new Dimension(1000, 1200));
+		panelOfBottom.setPreferredSize(new Dimension(1000, 700));
 		//button===========================================================
 		button = new JButton("返回");
 		button.setBounds(30, 21, 111, 26);
@@ -146,10 +146,10 @@ public class PlayerAnalysePanel extends JPanel {
 			crosshair.setVisible(false);
 			crosshair = null;
 		}
-		if(crosshair2!=null) {
-			crosshair2.setVisible(false);
-			crosshair2 = null;
-		}
+//		if(crosshair2!=null) {
+//			crosshair2.setVisible(false);
+//			crosshair2 = null;
+//		}
 		if(barchart!=null) {
 			barchart.setVisible(false);
 			barchart = null;
@@ -161,10 +161,10 @@ public class PlayerAnalysePanel extends JPanel {
 		crosshair.setVisible(true);		
 		crosshair.updateUI();
 		
-		crosshair2 = createDemoPanel_1();
-		crosshair2.setBounds(80, 660, 770, 350);
-		crosshair2.setVisible(true);		
-		crosshair2.updateUI();
+//		crosshair2 = createDemoPanel_1();
+//		crosshair2.setBounds(80, 660, 770, 350);
+//		crosshair2.setVisible(true);		
+//		crosshair2.updateUI();
 		
 		String[] players = {playerName, "联盟平均"};
 		barchart = createPanel_3(players);
@@ -172,7 +172,7 @@ public class PlayerAnalysePanel extends JPanel {
 		barchart.setVisible(true);		
 		barchart.updateUI();
 		panelOfBottom.add(crosshair);
-		panelOfBottom.add(crosshair2);
+		//panelOfBottom.add(crosshair2);
 		panelOfBottom.add(barchart);
 		panelOfBottom.repaint();
 		
@@ -229,7 +229,7 @@ public class PlayerAnalysePanel extends JPanel {
 		return String.format("%.1f", f);
 	}
 
-	private XYDataset createDataset_1()
+	/*private XYDataset createDataset_1()
 	{
 		
 		XYSeries xyseries1 = new XYSeries("篮板");
@@ -301,7 +301,7 @@ public class PlayerAnalysePanel extends JPanel {
 		ChartPanel chartpanel = new ChartPanel(jfreechart);
 		chartpanel.setMouseWheelEnabled(false);
 		return chartpanel;
-	}
+	}*/
 	private XYDataset createDataset_2()
 	{
 		

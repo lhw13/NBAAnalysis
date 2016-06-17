@@ -17,7 +17,7 @@ public  final class PlayerInMatchesPO {
 		this.thirdHit = thirdHit;
 		this.thirdshot = thirdshot;
 		this.freeHit = freeHit;
-		this.freeshot = freeshot;
+		this.freeshot = freeshot; 
 		this.offensiveRebound = offensiveRebound;
 		this.defensiveRebound = defensiveRebound;
 		this.totalRebound = totalRebound;
@@ -202,5 +202,13 @@ public  final class PlayerInMatchesPO {
 
 	public void setSteal(int steal) {
 		this.steal = steal;
+	}
+	
+	public String getNameWithoutNum(){ 
+		int i;
+		if(name.length()<=0)
+			return name;
+		for(i=name.length()-1;name.charAt(i)>='0' && name.charAt(i)<='9' && i>0;i--);
+		return name.substring(0, i+1);
 	}
 }

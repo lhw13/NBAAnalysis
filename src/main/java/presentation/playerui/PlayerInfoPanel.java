@@ -23,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -67,17 +68,52 @@ public class PlayerInfoPanel extends JPanel {
 	private JScrollPane scrollPane_5;
 	private JTable table_4;
 
-	DefaultTableModel model_1 = new DefaultTableModel();
+	DefaultTableModel model_1 = new DefaultTableModel(){ 
+		public boolean isCellEditable(int row, int column)
+        {
+            return false;
+        }
+	};
 
-	DefaultTableModel model_2 = new DefaultTableModel();
+	DefaultTableModel model_2 = new DefaultTableModel(){
+		public boolean isCellEditable(int row, int column)
+        {
+            return false;
+        }
+	};
 
-	DefaultTableModel model_3 = new DefaultTableModel();
+	DefaultTableModel model_3 = new DefaultTableModel(){
+		public boolean isCellEditable(int row, int column)
+        {
+            return false;
+        }
+	};
 
-	DefaultTableModel model_8 = new DefaultTableModel();
+	DefaultTableModel model_8 = new DefaultTableModel(){
+		public boolean isCellEditable(int row, int column)
+        {
+            return false;
+        }
+	};
 	
-	DefaultTableModel model_avgScore = new DefaultTableModel();
-	DefaultTableModel model_avgRebound = new DefaultTableModel();
-	DefaultTableModel model_avgAssist = new DefaultTableModel();
+	DefaultTableModel model_avgScore = new DefaultTableModel() {
+		public boolean isCellEditable(int row, int column)
+        {
+            return false;
+        }
+	};
+	DefaultTableModel model_avgRebound = new DefaultTableModel(){
+		public boolean isCellEditable(int row, int column)
+        {
+            return false;
+        }
+	};
+	DefaultTableModel model_avgAssist = new DefaultTableModel(){
+		public boolean isCellEditable(int row, int column)
+        {
+            return false;
+        }
+	};
 	Vector columnName1 = new Vector();
 	Vector columnName2 = new Vector();
 	Vector columnName3 = new Vector();
@@ -88,7 +124,12 @@ public class PlayerInfoPanel extends JPanel {
 	Vector columnName_avgScore = new Vector();
 	Vector columnName_avgRebound = new Vector();
 	Vector columnName_avgAssist = new Vector();
-	DefaultTableModel model_9 = new DefaultTableModel();
+	DefaultTableModel model_9 = new DefaultTableModel(){
+		public boolean isCellEditable(int row, int column)
+        {
+            return false;
+        }
+	};
 	BLService blservice = BLController.getInstance();
 	PlayerVO vo;
 	public static String playerName;
@@ -140,6 +181,11 @@ public class PlayerInfoPanel extends JPanel {
 				table_1.setCursor(Cursor.getDefaultCursor());
 			}
 	    }  }); 
+		
+		DefaultTableCellRenderer tcr_1 = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr_1.setHorizontalAlignment(JLabel.CENTER);
+		table_1.setDefaultRenderer(Object.class, tcr_1);
+		
 		scrollPane_2.setViewportView(table_1);
 
 		JScrollPane scrollPane_3 = new JScrollPane();
@@ -158,6 +204,11 @@ public class PlayerInfoPanel extends JPanel {
 				table_2.setCursor(Cursor.getDefaultCursor());
 			}
 	    }  }); 
+		
+		DefaultTableCellRenderer tcr_2 = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr_2.setHorizontalAlignment(JLabel.CENTER);
+		table_2.setDefaultRenderer(Object.class, tcr_2);
+		
 		scrollPane_3.setViewportView(table_2);
 
 		button = new JButton("返回");
@@ -220,6 +271,11 @@ public class PlayerInfoPanel extends JPanel {
 
 		table_3 = new JTable(model_3);
 		table_3.setShowGrid(false);
+		
+		DefaultTableCellRenderer tcr_3 = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr_3.setHorizontalAlignment(JLabel.CENTER);
+		table_3.setDefaultRenderer(Object.class, tcr_3);
+		
 		scrollPane_4.setViewportView(table_3);
 		
 		JScrollPane scrollPane_9 = new JScrollPane();
@@ -269,6 +325,11 @@ public class PlayerInfoPanel extends JPanel {
 		table_8.setShowGrid(false);
 		table_8.addMouseListener(new MouseListen());
 		table_8.setRowHeight(20);
+		
+		DefaultTableCellRenderer tcr_8 = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr_8.setHorizontalAlignment(JLabel.CENTER);
+		table_8.setDefaultRenderer(Object.class, tcr_8);
+		
 		scrollPane_9.setViewportView(table_8);
 		
 		JLabel label = new JLabel("最近五场统计");
@@ -334,6 +395,11 @@ public class PlayerInfoPanel extends JPanel {
 				table_9.setCursor(Cursor.getDefaultCursor());
 			}
 	    }  }); 
+		
+		DefaultTableCellRenderer tcr_9 = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr_9.setHorizontalAlignment(JLabel.CENTER);
+		table_9.setDefaultRenderer(Object.class, tcr_9);
+		
 		panelOfBottom.add(table_9);
 		
 		JLabel label_1 = new JLabel("高阶数据查询");
@@ -580,7 +646,7 @@ public class PlayerInfoPanel extends JPanel {
 		Vector rowDatas9 = new Vector();
 		
 			Vector rowData9 = new Vector();			
-			rowData9.add("姓名");rowData9.add(vo.getName());
+			rowData9.add("姓名");rowData9.add(vo.getNameWithoutNum());
 			rowDatas9.add(rowData9);
 			
 			rowData9 = new Vector();	
@@ -642,32 +708,32 @@ public class PlayerInfoPanel extends JPanel {
 				Vector rowData_avgScore = new Vector();
 				if(i-2>=0){	
 					temp = players.get(i-2);
-					rowData_avgScore.add((i+1-2)+"."+temp.getName());
+					rowData_avgScore.add((i+1-2)+"."+temp.getNameWithoutNum());
 					rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
 					rowDatas_avgScore.add(rowData_avgScore);
 				}
 				if(i-1>=0){
 					rowData_avgScore = new Vector();
 					temp = players.get(i-1);
-					rowData_avgScore.add((i+1-1)+"."+temp.getName());
+					rowData_avgScore.add((i+1-1)+"."+temp.getNameWithoutNum());
 					rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
 					rowDatas_avgScore.add(rowData_avgScore);
 				}
 				rowData_avgScore = new Vector();
 				temp = players.get(i);
-				rowData_avgScore.add((i+1)+"."+temp.getName());
+				rowData_avgScore.add((i+1)+"."+temp.getNameWithoutNum());
 				rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
 				rowDatas_avgScore.add(rowData_avgScore);
 				
 				rowData_avgScore = new Vector();
 				temp = players.get(i+1);
-				rowData_avgScore.add((i+2)+"."+temp.getName());
+				rowData_avgScore.add((i+2)+"."+temp.getNameWithoutNum());
 				rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
 				rowDatas_avgScore.add(rowData_avgScore);
 				
 				rowData_avgScore = new Vector();
 				temp = players.get(i+2);
-				rowData_avgScore.add((i+3)+"."+temp.getName());
+				rowData_avgScore.add((i+3)+"."+temp.getNameWithoutNum());
 				rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
 				rowDatas_avgScore.add(rowData_avgScore);
 				
@@ -680,6 +746,7 @@ public class PlayerInfoPanel extends JPanel {
 		model_avgScore.setDataVector(rowDatas_avgScore, columnName_avgScore);		
 		model_avgScore.setColumnCount(table_avgScore.getColumnCount());
 		model_avgScore.setRowCount(rowDatas_avgScore.size());
+		
 		table_avgScore.setModel(model_avgScore);
 		table_avgScore.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 		int[] width_avgScore={150,40};
@@ -696,32 +763,32 @@ public class PlayerInfoPanel extends JPanel {
 				Vector rowData_avgRebound = new Vector();
 				if(i-2>=0){	
 					temp = players.get(i-2);
-					rowData_avgRebound.add((i+1-2)+"."+temp.getName());
+					rowData_avgRebound.add((i+1-2)+"."+temp.getNameWithoutNum());
 					rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
 					rowDatas_avgRebound.add(rowData_avgRebound);
 				}
 				if(i-1>=0){
 					rowData_avgRebound = new Vector();
 					temp = players.get(i-1);
-					rowData_avgRebound.add((i+1-1)+"."+temp.getName());
+					rowData_avgRebound.add((i+1-1)+"."+temp.getNameWithoutNum());
 					rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
 					rowDatas_avgRebound.add(rowData_avgRebound);
 				}
 				rowData_avgRebound = new Vector();
 				temp = players.get(i);
-				rowData_avgRebound.add((i+1)+"."+temp.getName());
+				rowData_avgRebound.add((i+1)+"."+temp.getNameWithoutNum());
 				rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
 				rowDatas_avgRebound.add(rowData_avgRebound);
 				
 				rowData_avgRebound = new Vector();
 				temp = players.get(i+1);
-				rowData_avgRebound.add((i+2)+"."+temp.getName());
+				rowData_avgRebound.add((i+2)+"."+temp.getNameWithoutNum());
 				rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
 				rowDatas_avgRebound.add(rowData_avgRebound);
 				
 				rowData_avgRebound = new Vector();
 				temp = players.get(i+2);
-				rowData_avgRebound.add((i+3)+"."+temp.getName());
+				rowData_avgRebound.add((i+3)+"."+temp.getNameWithoutNum());
 				rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
 				rowDatas_avgRebound.add(rowData_avgRebound);
 				
@@ -749,32 +816,32 @@ public class PlayerInfoPanel extends JPanel {
 				Vector rowData_avgAssist = new Vector();
 				if(i-2>=0){	
 					temp = players.get(i-2);
-					rowData_avgAssist.add((i+1-2)+"."+temp.getName());
+					rowData_avgAssist.add((i+1-2)+"."+temp.getNameWithoutNum());
 					rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
 					rowDatas_avgAssist.add(rowData_avgAssist);
 				}
 				if(i-1>=0){
 					rowData_avgAssist = new Vector();
 					temp = players.get(i-1);
-					rowData_avgAssist.add((i+1-1)+"."+temp.getName());
+					rowData_avgAssist.add((i+1-1)+"."+temp.getNameWithoutNum());
 					rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
 					rowDatas_avgAssist.add(rowData_avgAssist);
 				}
 				rowData_avgAssist = new Vector();
 				temp = players.get(i);
-				rowData_avgAssist.add((i+1)+"."+temp.getName());
+				rowData_avgAssist.add((i+1)+"."+temp.getNameWithoutNum());
 				rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
 				rowDatas_avgAssist.add(rowData_avgAssist);
 				
 				rowData_avgAssist = new Vector();
 				temp = players.get(i+1);
-				rowData_avgAssist.add((i+2)+"."+temp.getName());
+				rowData_avgAssist.add((i+2)+"."+temp.getNameWithoutNum());
 				rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
 				rowDatas_avgAssist.add(rowData_avgAssist);
 				
 				rowData_avgAssist = new Vector();
 				temp = players.get(i+2);
-				rowData_avgAssist.add((i+3)+"."+temp.getName());
+				rowData_avgAssist.add((i+3)+"."+temp.getNameWithoutNum());
 				rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
 				rowDatas_avgAssist.add(rowData_avgAssist);
 				
@@ -942,31 +1009,31 @@ public class PlayerInfoPanel extends JPanel {
 			if(vo.getName().equals(temp.getName())) {
 				Vector rowData_avgScore = new Vector();
 				temp = players.get(i-2);
-				rowData_avgScore.add((i+1-2)+"."+temp.getName());
+				rowData_avgScore.add((i+1-2)+"."+temp.getNameWithoutNum());
 				rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
 				rowDatas_avgScore.add(rowData_avgScore);
 				
 				rowData_avgScore = new Vector();
 				temp = players.get(i-1);
-				rowData_avgScore.add((i+1-1)+"."+temp.getName());
+				rowData_avgScore.add((i+1-1)+"."+temp.getNameWithoutNum());
 				rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
 				rowDatas_avgScore.add(rowData_avgScore);
 				
 				rowData_avgScore = new Vector();
 				temp = players.get(i);
-				rowData_avgScore.add((i+1)+"."+temp.getName());
+				rowData_avgScore.add((i+1)+"."+temp.getNameWithoutNum());
 				rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
 				rowDatas_avgScore.add(rowData_avgScore);
 				
 				rowData_avgScore = new Vector();
 				temp = players.get(i+1);
-				rowData_avgScore.add((i+2)+"."+temp.getName());
+				rowData_avgScore.add((i+2)+"."+temp.getNameWithoutNum());
 				rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
 				rowDatas_avgScore.add(rowData_avgScore);
 				
 				rowData_avgScore = new Vector();
 				temp = players.get(i+2);
-				rowData_avgScore.add((i+3)+"."+temp.getName());
+				rowData_avgScore.add((i+3)+"."+temp.getNameWithoutNum());
 				rowData_avgScore.add(handleDecimal((double)temp.getScore()/temp.getAppearance()));
 				rowDatas_avgScore.add(rowData_avgScore);
 				
@@ -993,32 +1060,32 @@ public class PlayerInfoPanel extends JPanel {
 				Vector rowData_avgRebound = new Vector();
 				if(i-2>=0){	
 					temp = players.get(i-2);
-					rowData_avgRebound.add((i+1-2)+"."+temp.getName());
+					rowData_avgRebound.add((i+1-2)+"."+temp.getNameWithoutNum());
 					rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
 					rowDatas_avgRebound.add(rowData_avgRebound);
 				}
 				if(i-1>=0){
 					rowData_avgRebound = new Vector();
 					temp = players.get(i-1);
-					rowData_avgRebound.add((i+1-1)+"."+temp.getName());
+					rowData_avgRebound.add((i+1-1)+"."+temp.getNameWithoutNum());
 					rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
 					rowDatas_avgRebound.add(rowData_avgRebound);
 				}
 				rowData_avgRebound = new Vector();
 				temp = players.get(i);
-				rowData_avgRebound.add((i+1)+"."+temp.getName());
+				rowData_avgRebound.add((i+1)+"."+temp.getNameWithoutNum());
 				rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
 				rowDatas_avgRebound.add(rowData_avgRebound);
 				
 				rowData_avgRebound = new Vector();
 				temp = players.get(i+1);
-				rowData_avgRebound.add((i+2)+"."+temp.getName());
+				rowData_avgRebound.add((i+2)+"."+temp.getNameWithoutNum());
 				rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
 				rowDatas_avgRebound.add(rowData_avgRebound);
 				
 				rowData_avgRebound = new Vector();
 				temp = players.get(i+2);
-				rowData_avgRebound.add((i+3)+"."+temp.getName());
+				rowData_avgRebound.add((i+3)+"."+temp.getNameWithoutNum());
 				rowData_avgRebound.add(handleDecimal((double)temp.getRebound()/temp.getAppearance()));
 				rowDatas_avgRebound.add(rowData_avgRebound);
 				
@@ -1044,32 +1111,32 @@ public class PlayerInfoPanel extends JPanel {
 				Vector rowData_avgAssist = new Vector();
 				if(i-2>=0){	
 					temp = players.get(i-2);
-					rowData_avgAssist.add((i+1-2)+"."+temp.getName());
+					rowData_avgAssist.add((i+1-2)+"."+temp.getNameWithoutNum());
 					rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
 					rowDatas_avgAssist.add(rowData_avgAssist);
 				}
 				if(i-1>=0){
 					rowData_avgAssist = new Vector();
 					temp = players.get(i-1);
-					rowData_avgAssist.add((i+1-1)+"."+temp.getName());
+					rowData_avgAssist.add((i+1-1)+"."+temp.getNameWithoutNum());
 					rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
 					rowDatas_avgAssist.add(rowData_avgAssist);
 				}
 				rowData_avgAssist = new Vector();
 				temp = players.get(i);
-				rowData_avgAssist.add((i+1)+"."+temp.getName());
+				rowData_avgAssist.add((i+1)+"."+temp.getNameWithoutNum());
 				rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
 				rowDatas_avgAssist.add(rowData_avgAssist);
 				
 				rowData_avgAssist = new Vector();
 				temp = players.get(i+1);
-				rowData_avgAssist.add((i+2)+"."+temp.getName());
+				rowData_avgAssist.add((i+2)+"."+temp.getNameWithoutNum());
 				rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
 				rowDatas_avgAssist.add(rowData_avgAssist);
 				
 				rowData_avgAssist = new Vector();
 				temp = players.get(i+2);
-				rowData_avgAssist.add((i+3)+"."+temp.getName());
+				rowData_avgAssist.add((i+3)+"."+temp.getNameWithoutNum());
 				rowData_avgAssist.add(handleDecimal((double)temp.getAssist()/temp.getAppearance()));
 				rowDatas_avgAssist.add(rowData_avgAssist);
 				

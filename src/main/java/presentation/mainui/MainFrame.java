@@ -204,7 +204,7 @@ public class MainFrame {
 		TeamAnalysePanel.scrollPane.setVisible(false);
 	}
 
-	private class ScheduleTask extends TimerTask {
+	private class ScheduleTask extends TimerTask { 
 		public void run() {
 			if (flag) {
 				if (x1 > -400) {

@@ -23,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import org.jfree.chart.ChartFactory;
@@ -325,6 +326,11 @@ public class PlayerComparePanel extends JPanel {
 		model_c.setRowCount(rowDatas_c.size());
 		table_c.setFont(new Font("微软雅黑", Font.BOLD, 14));
 		table_c.setModel(model_c);
+		
+		DefaultTableCellRenderer tcr_c = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr_c.setHorizontalAlignment(JLabel.CENTER);
+		table_c.setDefaultRenderer(Object.class, tcr_c);
+		
 		table_c.updateUI();
 
 		table_r = new JTable(model_r);
@@ -372,7 +378,7 @@ public class PlayerComparePanel extends JPanel {
 
 		Vector rowDatas_l = new Vector();
 		Vector rowData_l = new Vector();
-		rowData_l.add(vo.getName());
+		rowData_l.add(vo.getNameWithoutNum());
 		rowDatas_l.add(rowData_l);
 
 		rowData_l = new Vector();
@@ -405,6 +411,11 @@ public class PlayerComparePanel extends JPanel {
 		model_l.setRowCount(rowDatas_l.size());
 		table_l.setFont(new Font("微软雅黑", Font.BOLD, 14));
 		table_l.setModel(model_l);
+		
+		DefaultTableCellRenderer tcr_1 = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr_1.setHorizontalAlignment(JLabel.CENTER);
+		table_l.setDefaultRenderer(Object.class, tcr_1);
+		
 		table_l.updateUI();
 	}
 
@@ -429,7 +440,7 @@ public class PlayerComparePanel extends JPanel {
 
 		Vector rowDatas_r = new Vector();
 		Vector rowData_r = new Vector();
-		rowData_r.add(vo.getName());
+		rowData_r.add(vo.getNameWithoutNum());
 		rowDatas_r.add(rowData_r);
 
 		rowData_r = new Vector();
@@ -463,6 +474,11 @@ public class PlayerComparePanel extends JPanel {
 		table_r.setFont(new Font("微软雅黑", Font.BOLD, 14));
 		table_r.setVisible(true);
 		table_r.setModel(model_r);
+		
+		DefaultTableCellRenderer tcr_2 = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr_2.setHorizontalAlignment(JLabel.CENTER);
+		table_r.setDefaultRenderer(Object.class, tcr_2);
+		
 		table_r.updateUI();
 	}
 
@@ -518,7 +534,7 @@ public class PlayerComparePanel extends JPanel {
 						comboBoxOfLPlayer.addItem("选择球员");
 						for(int i=0;i<players.size();i++) {
 							PlayerVO tempvo = players.get(i);
-							comboBoxOfLPlayer.addItem(tempvo.getName());
+							comboBoxOfLPlayer.addItem(tempvo.getNameWithoutNum());
 						}
 					}
 				} else if (c == 'r') {
@@ -557,7 +573,7 @@ public class PlayerComparePanel extends JPanel {
 						comboBoxOfRPlayer.addItem("选择球员");
 						for(int i=0;i<players.size();i++) {
 							PlayerVO tempvo = players.get(i);
-							comboBoxOfRPlayer.addItem(tempvo.getName());
+							comboBoxOfRPlayer.addItem(tempvo.getNameWithoutNum());
 						}
 					}
 				}

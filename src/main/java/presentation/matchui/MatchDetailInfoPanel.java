@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -80,6 +81,11 @@ public class MatchDetailInfoPanel extends JPanel {
 		int[] width={120,30,50,30,30,30,30,30,30,30,30,30,30,30,30};
 		table.setColumnModel(getColumn(table, width));
 		table.setShowGrid(false);
+		
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(JLabel.CENTER);
+		table.setDefaultRenderer(Object.class, tcr);
+		
 		scrollPane_1.setViewportView(table);
 		
 		table.addMouseListener(listener_1);
@@ -104,6 +110,11 @@ public class MatchDetailInfoPanel extends JPanel {
 		int[] width1={120,30,50,30,30,30,30,30,30,30,30,30,30,30,30};
 		table_1.setColumnModel(getColumn(table_1, width1));
 		table_1.setShowGrid(false);
+		
+		DefaultTableCellRenderer tcr_1 = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr_1.setHorizontalAlignment(JLabel.CENTER);
+		table_1.setDefaultRenderer(Object.class, tcr_1);
+		
 		scrollPane_2.setViewportView(table_1);
 		
 		table_1.addMouseListener(listener_1);
@@ -127,6 +138,11 @@ public class MatchDetailInfoPanel extends JPanel {
 		
 		scrollPane_3 = new JScrollPane();
 		scrollPane_3.setBounds(250, 10, 500, 50);
+		
+		DefaultTableCellRenderer tcr_2 = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr_2.setHorizontalAlignment(JLabel.CENTER);
+		table_2.setDefaultRenderer(Object.class, tcr_2);
+		
 		scrollPane_3.setViewportView(table_2);
 		panelOfBottom.add(scrollPane_3);
 		
@@ -137,6 +153,11 @@ public class MatchDetailInfoPanel extends JPanel {
 		table_3.setBounds(250, 70, 500, 300);
 		table_3.setFont(new Font("微软雅黑", Font.BOLD, 13));
 		table_3.setShowGrid(false);
+		
+		DefaultTableCellRenderer tcr_3 = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr_3.setHorizontalAlignment(JLabel.CENTER);
+		table_3.setDefaultRenderer(Object.class, tcr_3);
+		
 		panelOfBottom.add(table_3);
 		
 		btnNewButton = new JButton("返回");

@@ -25,7 +25,7 @@ import server.po.ScorePO;
 import server.po.TeamInMatchesPO;
 
 public class AntBasketball implements Runnable {
-	private static String season = "15-16";
+	private static String season = "14-15";
 	private static int seasonNumber = 30;
 	private static ArrayList<String> oneSeason = null;
 	private static int exChange = 0;
@@ -36,18 +36,17 @@ public class AntBasketball implements Runnable {
 
 	public static void main(String[] args) throws InterruptedException {
 		// getSeasonUrl("http://www.basketball-reference.com/leagues/");
-		 //getOneSeason("http://www.basketball-reference.com/leagues/NBA_2016_games.html");
+		// getOneSeason("http://www.basketball-reference.com/leagues/NBA_2015_games.html");
 		// TODO Auto-generated method stub
 //		String seasonUrl[] = getSeasonUrl("http://www.basketball-reference.com/leagues/");
 //
-//		for (int j = 0; j < 1; j++) {
+//		for (int j = 0; j < seasonNumber; j++) {
 //			th1 = false;
 //			th2 = false;
 //			th3 = false;
-//		//	oneSeason = getOneSeason(seasonUrl[j]);
-//			oneSeason = getOneSeason("http://www.basketball-reference.com/leagues/NBA_2016_games.html");
-//			File f1 = new File("D:\\dataBasketball\\" + season + "regular");
-//			File f2 = new File("D:\\dataBasketball\\" + season + "playOff");
+//			oneSeason = getOneSeason(seasonUrl[j]);
+//			File f1 = new File("E:\\dataBasketball\\" + season + "regular");
+//			File f2 = new File("E:\\dataBasketball\\" + season + "playOff");
 //			if (!f1.exists())
 //				f1.mkdirs();
 //			if (!f2.exists())
@@ -74,16 +73,6 @@ public class AntBasketball implements Runnable {
 //				Thread.sleep(1000);
 //			}
 //		}
-		
-		try {
-			DataTransformation.MatchPOToText(
-					getMatchPO("http://www.basketball-reference.com/boxscores/201603020HOU.html"),"D:\\dataBasketball\\15-16regular");
-		} catch (Exception e) {
-			
-			e.printStackTrace();
-		}
-		
-		
 	}
 
 	public void run() {
@@ -112,8 +101,8 @@ public class AntBasketball implements Runnable {
 
 	private static void work(ArrayList<String> oneSeason, int exChange, int n)
 			throws Exception {
-		String address1 = "D:\\dataBasketball\\" + season + "regular";
-		String address2 = "D:\\dataBasketball\\" + season + "playOff";
+		String address1 = "E:\\dataBasketball\\" + season + "regular";
+		String address2 = "E:\\dataBasketball\\" + season + "playOff";
 		for (int i = 0; i < oneSeason.size(); i++) {
 			if (i % 3 == n) {
 				if (i < exChange) {

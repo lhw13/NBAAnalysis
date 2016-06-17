@@ -196,6 +196,9 @@ public class TeamsInfoFrame extends JPanel{
 		table.updateUI();
 		table.setShowGrid(false);
 		
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(JLabel.CENTER);
+		table.setDefaultRenderer(Object.class, tcr);
 		
 		scrollPane_5.setViewportView(table);
 		
@@ -209,7 +212,7 @@ public class TeamsInfoFrame extends JPanel{
 		scrollPane_search = new JScrollPane();
 		scrollPane_search.setBounds(100, 510, 800, 250);
 		
-		String[] names3 = new String[]{"赛季", "日期", "主队", "比分", "客队", "主队最高分", "客队最高分", "详情"};
+		String[] names3 = new String[]{"赛季", "日期", "主队", "比分", "客队", "主队最高得分球员", "得分", "客队最高得分球员", "得分"};
 		columnName3 = new Vector();
 		for(int i=0;i<names3.length;i++) {
 			columnName3.add(names3[i]);
@@ -222,6 +225,11 @@ public class TeamsInfoFrame extends JPanel{
 		lblNewLabel_1.setBounds(100, 475, 150, 30);
 		
         table_2 = new JTable(model_3);
+        
+        DefaultTableCellRenderer tcr_2 = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr_2.setHorizontalAlignment(JLabel.CENTER);
+		table_2.setDefaultRenderer(Object.class, tcr_2);
+        
 		scrollPane_search.setViewportView(table_2);
 		
 		table_2.addMouseListener(listener_1);
@@ -403,9 +411,9 @@ public class TeamsInfoFrame extends JPanel{
 		table_1.addMouseListener(listener_2);
 		table_1.setShowGrid(false);
 		
-		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
-		tcr.setHorizontalAlignment(JLabel.CENTER);
-		table_1.setDefaultRenderer(Object.class, tcr);
+		DefaultTableCellRenderer tcr_1 = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr_1.setHorizontalAlignment(JLabel.CENTER);
+		table_1.setDefaultRenderer(Object.class, tcr_1);
 		
 		scrollPane_1.setViewportView(table_1);
 		tabbedPane.addTab("球队信息", null, scrollPane_1, null);
@@ -671,11 +679,11 @@ public class TeamsInfoFrame extends JPanel{
 				if(players.get(i)!=null){
 					PlayerVO pvo = players.get(i);
 					appearance = pvo.getAppearance();
-					picture = ImageHandle.loadPlayer(pvo.getName());
+					picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 					picture.setImage(picture.getImage().getScaledInstance(70, 56,
 							Image.SCALE_DEFAULT));
 					rowData1.add(picture);
-					rowData1.add(pvo.getName());
+					rowData1.add(pvo.getNameWithoutNum());
 					rowData1.add(pvo.getAppearance());			
 					rowData1.add(pvo.getPlayTime());
 					rowData1.add(handle((double) pvo.getHit(), appearance));
@@ -701,11 +709,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(handle((double) pvo.getShot(), appearance));
@@ -730,11 +738,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(handle((double) pvo.getThirdHit(), appearance));
@@ -759,11 +767,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(handle((double) pvo.getThirdshot(), appearance));
@@ -788,11 +796,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(handle((double) pvo.getFreeHit(), appearance));
@@ -817,11 +825,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(handle((double) pvo.getFreeshot(), appearance));
@@ -846,11 +854,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(handle((double) pvo.getOffensiveRebound(), appearance));
@@ -875,11 +883,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(handle((double) pvo.getDefensiveRebound(), appearance));
@@ -904,11 +912,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(handle((double) pvo.getTotalRebound(), appearance));
@@ -933,11 +941,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(handle((double) pvo.getAssist(), appearance));
@@ -962,11 +970,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(handle((double) pvo.getSteal(), appearance));
@@ -991,11 +999,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(handle((double) pvo.getBlock(), appearance));
@@ -1020,11 +1028,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(handle((double) pvo.getMiss(), appearance));
@@ -1049,11 +1057,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(handle((double) pvo.getFoul(), appearance));
@@ -1078,11 +1086,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(handle((double) pvo.getScore(), appearance));
@@ -1107,11 +1115,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(handleDecimal(pvo.getHitRate()*100)+"%");
@@ -1136,11 +1144,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(handleDecimal(pvo.getThirdHitRate()*100)+"%");
@@ -1165,11 +1173,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(handleDecimal(pvo.getFreeHitRate()*100)+"%");
@@ -1194,11 +1202,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add("0");
@@ -1223,11 +1231,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add("0");
@@ -1252,11 +1260,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add("0");
@@ -1281,11 +1289,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add("0");
@@ -1310,11 +1318,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(pvo.getOffensiveReboundRate());
@@ -1339,11 +1347,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(pvo.getDefensiveReboundRate());
@@ -1368,11 +1376,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(pvo.getStealRate());
@@ -1397,11 +1405,11 @@ public class TeamsInfoFrame extends JPanel{
 				Vector rowData1 = new Vector();
 				PlayerVO pvo = players.get(i);	
 				appearance = pvo.getAppearance();
-				picture = ImageHandle.loadPlayer(pvo.getName());
+				picture = ImageHandle.loadPlayer(pvo.getNameWithoutNum());
 				picture.setImage(picture.getImage().getScaledInstance(70, 56,
 						Image.SCALE_DEFAULT));
 				rowData1.add(picture);
-				rowData1.add(pvo.getName());
+				rowData1.add(pvo.getNameWithoutNum());
 				rowData1.add(pvo.getAppearance());			
 				rowData1.add(pvo.getPlayTime());
 				rowData1.add(pvo.getAssistRate());
@@ -1489,10 +1497,10 @@ public class TeamsInfoFrame extends JPanel{
 			rowData1.add(selectedMatchs.get(i).getFinalScore().getTeam1()+"-"+
 					selectedMatchs.get(i).getFinalScore().getTeam2());
 			rowData1.add(PlayerSelectionPanel.translate(selectedMatchs.get(i).getTeam2().getAbbreviation()));
-			rowData1.add(selectedMatchs.get(i).getTeam1().getHighestScore().getName()+" "+
-					selectedMatchs.get(i).getTeam1().getHighestScore().getScore());
-			rowData1.add(selectedMatchs.get(i).getTeam2().getHighestScore().getName()+" "+
-					selectedMatchs.get(i).getTeam2().getHighestScore().getScore());
+			rowData1.add(selectedMatchs.get(i).getTeam1().getHighestScore().getNameWithoutNum());
+			rowData1.add(selectedMatchs.get(i).getTeam1().getHighestScore().getScore());
+			rowData1.add(selectedMatchs.get(i).getTeam2().getHighestScore().getNameWithoutNum());
+			rowData1.add(selectedMatchs.get(i).getTeam2().getHighestScore().getScore());
 			rowData1.add("详情");
 			rowDatas1.add(rowData1);
 		}
@@ -1501,7 +1509,7 @@ public class TeamsInfoFrame extends JPanel{
 		model_3.setDataVector(rowDatas1, columnName3);
 		model_3.setColumnCount(table_2.getColumnCount());
 		model_3.setRowCount(rowDatas1.size());
-		int[] width={50,50,50,60,50,150,150,50};
+		int[] width={50,50,50,60,50,150,50,150,50};
 		table_2.setColumnModel(getColumn(table_2, width));
 		table_2.setModel(model_3);
 		table_2.updateUI();
@@ -1537,18 +1545,17 @@ public class TeamsInfoFrame extends JPanel{
 			rowData1.add(selectedMatchs.get(i).getFinalScore().getTeam1()+"-"+
 					selectedMatchs.get(i).getFinalScore().getTeam2());
 			rowData1.add(PlayerSelectionPanel.translate(selectedMatchs.get(i).getTeam2().getAbbreviation()));
-			rowData1.add(selectedMatchs.get(i).getTeam1().getHighestScore().getName()+" "+
-					selectedMatchs.get(i).getTeam1().getHighestScore().getScore());
-			rowData1.add(selectedMatchs.get(i).getTeam2().getHighestScore().getName()+" "+
-					selectedMatchs.get(i).getTeam2().getHighestScore().getScore());
-			rowData1.add("详情");
+			rowData1.add(selectedMatchs.get(i).getTeam1().getHighestScore().getNameWithoutNum());
+			rowData1.add(selectedMatchs.get(i).getTeam1().getHighestScore().getScore());
+			rowData1.add(selectedMatchs.get(i).getTeam2().getHighestScore().getNameWithoutNum());
+			rowData1.add(selectedMatchs.get(i).getTeam2().getHighestScore().getScore());
 			rowDatas1.add(rowData1);
 		}
 		
 		model_3.setDataVector(rowDatas1, columnName3);
 		model_3.setColumnCount(table_2.getColumnCount());
 		model_3.setRowCount(rowDatas1.size());
-		int[] width={50,50,50,60,50,150,150,50};
+		int[] width={50,50,50,60,50,150,50,150,50};
 		table_2.setColumnModel(getColumn(table_2, width));
 		table_2.setModel(model_3);
 		table_2.updateUI();
@@ -1621,7 +1628,7 @@ public class TeamsInfoFrame extends JPanel{
 		}
 		for(int i=0;i<mpo.getTeam1().getPlayers().size();i++){
 			Vector rowData1 = new Vector();
-			rowData1.add(mpo.getTeam1().getPlayers().get(i).getName());
+			rowData1.add(mpo.getTeam1().getPlayers().get(i).getNameWithoutNum());
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPosition()+"");
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getPlayTime()/60+" min");
 			rowData1.add(mpo.getTeam1().getPlayers().get(i).getHit()+"/"+
@@ -1649,7 +1656,7 @@ public class TeamsInfoFrame extends JPanel{
 		Vector rowDatas2 = new Vector();
 		for(int i=0;i<mpo.getTeam2().getPlayers().size();i++){
 			Vector rowData2 = new Vector();
-			rowData2.add(mpo.getTeam2().getPlayers().get(i).getName());
+			rowData2.add(mpo.getTeam2().getPlayers().get(i).getNameWithoutNum());
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPosition()+"");
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getPlayTime()/60+" min");
 			rowData2.add(mpo.getTeam2().getPlayers().get(i).getHit()+"/"+
@@ -1721,38 +1728,38 @@ public class TeamsInfoFrame extends JPanel{
 				" 负"+loseMatchNum);
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
-		rowData4.add(mpo.getTeam1().getHighestScore().getName()+" "+
+		rowData4.add(mpo.getTeam1().getHighestScore().getNameWithoutNum()+" "+
 		               mpo.getTeam1().getHighestScore().getScore());
 		rowData4.add("得分");
-		rowData4.add(mpo.getTeam2().getHighestScore().getName()+" "+
+		rowData4.add(mpo.getTeam2().getHighestScore().getNameWithoutNum()+" "+
 	               mpo.getTeam2().getHighestScore().getScore());
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
-		rowData4.add(mpo.getTeam1().getHighestRebound().getName()+" "+
+		rowData4.add(mpo.getTeam1().getHighestRebound().getNameWithoutNum()+" "+
                 mpo.getTeam1().getHighestRebound().getTotalRebound());
 	    rowData4.add("篮板");
-	    rowData4.add(mpo.getTeam2().getHighestRebound().getName()+" "+
+	    rowData4.add(mpo.getTeam2().getHighestRebound().getNameWithoutNum()+" "+
                        mpo.getTeam2().getHighestRebound().getTotalRebound());
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
-		rowData4.add(mpo.getTeam1().getHighestAssist().getName()+" "+
+		rowData4.add(mpo.getTeam1().getHighestAssist().getNameWithoutNum()+" "+
                        mpo.getTeam1().getHighestAssist().getAssist());
         rowData4.add("助攻");
-        rowData4.add(mpo.getTeam2().getHighestAssist().getName()+" "+
+        rowData4.add(mpo.getTeam2().getHighestAssist().getNameWithoutNum()+" "+
                        mpo.getTeam2().getHighestAssist().getAssist());
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
-		rowData4.add(mpo.getTeam1().getHighestSteal().getName()+" "+
+		rowData4.add(mpo.getTeam1().getHighestSteal().getNameWithoutNum()+" "+
                        mpo.getTeam1().getHighestSteal().getSteal());
         rowData4.add("抢断");
-        rowData4.add(mpo.getTeam2().getHighestSteal().getName()+" "+
+        rowData4.add(mpo.getTeam2().getHighestSteal().getNameWithoutNum()+" "+
                        mpo.getTeam2().getHighestSteal().getSteal());
 		rowDatas4.add(rowData4);
 		rowData4 = new Vector();
-		rowData4.add(mpo.getTeam1().getHighestBlock().getName()+" "+
+		rowData4.add(mpo.getTeam1().getHighestBlock().getNameWithoutNum()+" "+
                        mpo.getTeam1().getHighestBlock().getBlock());
         rowData4.add("盖帽");
-        rowData4.add(mpo.getTeam1().getHighestBlock().getName()+" "+
+        rowData4.add(mpo.getTeam1().getHighestBlock().getNameWithoutNum()+" "+
                        mpo.getTeam1().getHighestBlock().getBlock());
 		rowDatas4.add(rowData4);
 		

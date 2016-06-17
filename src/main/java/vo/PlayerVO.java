@@ -25,9 +25,9 @@ public class PlayerVO {
 		this.teamFullName = teamFullName;
 		this.teamAbbreviation = teamAbbreviation;
 		this.division = division;
-		this.zone = zone;
+		this.zone = zone; 
 		this.name = name;
-		this.number = number;
+		this.number = number; 
 		this.position = position;
 		this.height = height;
 		this.weight = weight;
@@ -277,6 +277,14 @@ public class PlayerVO {
 
 	public String getName() {
 		return name;
+	}
+	
+	public String getNameWithoutNum(){ 
+		int i;
+		if(name.length()<=0)
+			return name;
+		for(i=name.length()-1;name.charAt(i)>='0' && name.charAt(i)<='9' && i>0;i--);
+		return name.substring(0, i+1);
 	}
 
 	public int getNumber() {

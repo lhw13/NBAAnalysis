@@ -1,0 +1,26 @@
+<tbody>
+<tr class="title">
+<td></td>
+<td>一</td>
+<td>二</td>
+<td>三</td>
+<td>四</td>
+<td class="total">总分</td>
+</tr>
+<tr>
+<td>勇士</td>
+<td>22</td>
+<td>29</td>
+<td>22</td>
+<td>31</td>
+<td>104</td>
+</tr>
+<tr>
+<td>骑士</td>
+<td>22</td>
+<td>28</td>
+<td>17</td>
+<td>24</td>
+<td>91</td>
+</tr>
+</tbody>

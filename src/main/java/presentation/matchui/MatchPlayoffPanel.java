@@ -53,7 +53,7 @@ public class MatchPlayoffPanel extends JPanel{
 	
 	private JTable table;
 	
-	DefaultTableModel model = new DefaultTableModel();
+	DefaultTableModel model = new DefaultTableModel(); 
 	
 	Vector columnName = new Vector();
 	
@@ -221,22 +221,26 @@ public class MatchPlayoffPanel extends JPanel{
 			PlayoffVO vo = playoffW.get(i);
 			label_l[j].setText(Integer.toString(vo.getWin1()));
 			label_l[j+1].setText(Integer.toString(vo.getWin2()));
-			ImageIcon icon = new ImageIcon("conf/smallTeam/"+vo.getAbr1()+".png");	
-			
+			ImageIcon icon = new ImageIcon("conf/pictures/"+vo.getAbr1()+".png");	
+			icon.setImage(icon.getImage().getScaledInstance(50, 50,
+					Image.SCALE_DEFAULT));
 			label_l[j].setIcon(icon);
-			icon = new ImageIcon("conf/smallTeam/"+vo.getAbr2()+".png");
-			
+			icon = new ImageIcon("conf/pictures/"+vo.getAbr2()+".png"); 
+			icon.setImage(icon.getImage().getScaledInstance(50, 50,
+					Image.SCALE_DEFAULT));
 			label_l[j+1].setIcon(icon);
 		}
 		for(int i=0,j=0;i<playoffE.size();i++,j+=2) {
 			PlayoffVO vo = playoffE.get(i);
 			label_r[j].setText(Integer.toString(vo.getWin1()));
 			label_r[j+1].setText(Integer.toString(vo.getWin2()));
-			ImageIcon icon = new ImageIcon("conf/smallTeam/"+vo.getAbr1()+".png");	
-			
+			ImageIcon icon = new ImageIcon("conf/pictures/"+vo.getAbr1()+".png");	
+			icon.setImage(icon.getImage().getScaledInstance(50, 50,
+					Image.SCALE_DEFAULT));
 			label_r[j].setIcon(icon);
-			icon = new ImageIcon("conf/smallTeam/"+vo.getAbr2()+".png");
-			
+			icon = new ImageIcon("conf/pictures/"+vo.getAbr2()+".png");
+			icon.setImage(icon.getImage().getScaledInstance(50, 50,
+					Image.SCALE_DEFAULT));
 			label_r[j+1].setIcon(icon);
 		}
 		for(int i=0,j=0;i<playoffFinal.size();i++,j+=2) {
@@ -288,7 +292,7 @@ public class MatchPlayoffPanel extends JPanel{
 			updateTable(vo);
 		}
 		
-		public void mouseExited(MouseEvent e) {
+		public void mouseExited(MouseEvent e) { 
 			
 			
 

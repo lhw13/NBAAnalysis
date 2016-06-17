@@ -108,7 +108,7 @@ public class TeamsInfoFrame extends JPanel{
 				TeamsInfoFrame.scrollPane.setVisible(false);
 			    TeamAnalysePanel.scrollPane.setVisible(true);
 				MainFrame.frame.setTitle("NBA球队分析");
-				MainFrame.tap.update(abb);
+				MainFrame.tap.update(abb); 
 				MainFrame.tap.update2(abb,"NBA");
 				MainFrame.tap.update3();
 				MainFrame.backPanels.add(MainFrame.currentPanel);

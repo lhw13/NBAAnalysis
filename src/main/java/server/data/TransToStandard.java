@@ -2,26 +2,26 @@ package server.data;
 
 import java.util.HashMap;
 
-public class TransToStandard {
+public class TransToStandard { 
 	private static HashMap<String, String> data=new HashMap<>(100);
 	private static HashMap<String, String> data2=new HashMap<>(100);
-	private static String[] seasonList=new String[30];
+	private static String[] seasonList=new String[31];
 	static{
-		for(int y=1985;y<2015;y++){
+		for(int y=1985;y<2016;y++){
 			String y1 = (y + "").substring(2, 4);
 			String y2 = ((y + 1) + "").substring(2, 4);
 			String season = y1 + "-" + y2;
 			seasonList[y-1985]=season;
 		}
-		for(int y=1985;y<2015;y++){
+		for(int y=1985;y<2016;y++){
 			if(y>=2012){
 			data.put(seasonList[y-1985]+"BRK","BKN");
 			}else{
 				data.put(seasonList[y-1985]+"NJN","BKN");	
 			}
 		}
-		for(int y=1985;y<2015;y++){
-			if(y==2014){
+		for(int y=1985;y<2016;y++){
+			if(y>=2014){
 				data.put(seasonList[y-1985]+"CHO","CHA");
 			}
 			else if(y>=2004){
@@ -31,7 +31,7 @@ public class TransToStandard {
 				data.put(seasonList[y-1985]+"CHH","CHA");
 			}
 		}
-		for(int y=1985;y<2015;y++){
+		for(int y=1985;y<2016;y++){
 			if(y>=2001){
 				data.put(seasonList[y-1985]+"MEM","MEM");
 			}
@@ -39,7 +39,7 @@ public class TransToStandard {
 				data.put(seasonList[y-1985]+"VAN","MEM");
 			}
 		}
-		for(int y=1985;y<2015;y++){
+		for(int y=1985;y<2016;y++){
 			if(y>=2013){
 				data.put(seasonList[y-1985]+"NOP","NOP");
 			}
@@ -53,7 +53,7 @@ public class TransToStandard {
 				data.put(seasonList[y-1985]+"NOH","NOP");
 			}
 		}
-		for(int y=1985;y<2015;y++){
+		for(int y=1985;y<2016;y++){
 			if(y>=2008){
 				data.put(seasonList[y-1985]+"OKC","OKC");
 			}
@@ -61,7 +61,7 @@ public class TransToStandard {
 				data.put(seasonList[y-1985]+"SEA","OKC");
 			}
 		}
-		for(int y=1985;y<2015;y++){
+		for(int y=1985;y<2016;y++){
 			if(y>=1997){
 				data.put(seasonList[y-1985]+"WAS","WAS");
 			}
@@ -69,19 +69,19 @@ public class TransToStandard {
 				data.put(seasonList[y-1985]+"WSB","WAS");
 			}
 		}
-		for(int y=1985;y<2015;y++){
+		for(int y=1985;y<2016;y++){
 			data.put(seasonList[y-1985]+"PHO","PHX");
 		}
 		
 		
-		for(int y=1985;y<2015;y++){
+		for(int y=1985;y<2016;y++){
 			if(y>=2012){
 			data.put(seasonList[y-1985]+"BKN","BRK");
 			}else{
 				data.put(seasonList[y-1985]+"BKN","NJN");	
 			}
 		}
-		for(int y=1985;y<2015;y++){
+		for(int y=1985;y<2016;y++){
 			if(y==2014){
 				data.put(seasonList[y-1985]+"CHA","CHO");
 			}
@@ -92,7 +92,7 @@ public class TransToStandard {
 				data.put(seasonList[y-1985]+"CHA","CHH");
 			}
 		}
-		for(int y=1985;y<2015;y++){
+		for(int y=1985;y<2016;y++){
 			if(y>=2001){
 				data.put(seasonList[y-1985]+"MEM","MEM");
 			}
@@ -100,7 +100,7 @@ public class TransToStandard {
 				data.put(seasonList[y-1985]+"MEM","VAN");
 			}
 		}
-		for(int y=1985;y<2015;y++){
+		for(int y=1985;y<2016;y++){
 			if(y>=2013){
 				data.put(seasonList[y-1985]+"NOP","NOP");
 			}
@@ -114,7 +114,7 @@ public class TransToStandard {
 				data.put(seasonList[y-1985]+"NOP","NOH");
 			}
 		}
-		for(int y=1985;y<2015;y++){
+		for(int y=1985;y<2016;y++){
 			if(y>=2008){
 				data.put(seasonList[y-1985]+"OKC","OKC");
 			}
@@ -122,7 +122,7 @@ public class TransToStandard {
 				data.put(seasonList[y-1985]+"OKC","SEA");
 			}
 		}
-		for(int y=1985;y<2015;y++){
+		for(int y=1985;y<2016;y++){
 			if(y>=1997){
 				data.put(seasonList[y-1985]+"WAS","WAS");
 			}
@@ -130,7 +130,7 @@ public class TransToStandard {
 				data.put(seasonList[y-1985]+"WAS","WSB");
 			}
 		}
-		for(int y=1985;y<2015;y++){
+		for(int y=1985;y<2016;y++){
 			data.put(seasonList[y-1985]+"PHX","PHO");
 		}
 	}

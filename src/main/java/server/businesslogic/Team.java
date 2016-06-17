@@ -258,7 +258,7 @@ public  final class Team {
 		}
 		MatchPO mpo = all.get(now-1+d);
 		int contain = mpo.containsTeam(teamPO.getAbbreviation());
-		if(contain<0)
+		if(contain<0) 
 		{
 			//System.out.println("miss");
 			strengthList.set(now, getStrength(n-1,now-1,theta,k,d));

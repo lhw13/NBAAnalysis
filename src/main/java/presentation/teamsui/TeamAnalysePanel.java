@@ -288,7 +288,7 @@ public class TeamAnalysePanel extends JPanel {
 		
 	}
 
-	public void update(String abb) {
+	public void update(String abb) { 
 		TeamWithPlayersVO tpvo = blservice.getTeamAnalysis(abb);
 		TeamVO tvo = tpvo.getTeam();
 		this.abbreviation = abb;

@@ -95,8 +95,8 @@ public final class DataController implements DataService {
 					while (!dc.isOK()) {
 
 					}
-					for (MatchPO mp : dc.getList()) {
-						matchPOList.add(mp);
+					for (MatchPO mp : dc.getList()) { 
+						matchPOList.add(mp); 
 					}
 
 				}

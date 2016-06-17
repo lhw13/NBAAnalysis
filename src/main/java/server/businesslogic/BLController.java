@@ -288,7 +288,7 @@ public final class BLController implements BLService {
 	public double[][] getDataForStrengthRegression(int scale) {
 		data.setSeason("All");
 		analyse();
-		double result[][] = new double [scale][3];
+		double result[][] = new double [scale][3]; 
 		double theta=0.048;
 		//double k=0.024;
 		double k=0.0;

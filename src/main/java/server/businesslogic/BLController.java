@@ -169,7 +169,7 @@ public final class BLController implements BLService {
 		pf = result.get(5);
 		if(!result.get(2).contains(pf.getAbr1()))
 			pf.swap();
-		pf = result.get(6);
+		if(result.size()>=7)pf = result.get(6);
 		if(!result.get(4).contains(pf.getAbr1()))
 			pf.swap();
 	}

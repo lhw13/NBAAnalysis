@@ -8,8 +8,11 @@ import time
 url2 = 'http://g.hupu.com/nba/daily/boxscore_150122.html'
 url1 = 'http://g.hupu.com/nba/daily/playbyplay_150122.html'
 
-url4 = 'http://g.hupu.com/nba/daily/boxscore_150123.html'
-url3 = 'http://g.hupu.com/nba/daily/playbyplay_150123.html'
+# url4 = 'http://g.hupu.com/nba/daily/boxscore_150123.html'
+# url3 = 'http://g.hupu.com/nba/daily/playbyplay_150123.html'
+
+url4 = 'http://g.hupu.com/nba/daily/boxscore_151593.html'
+url3 = 'http://g.hupu.com/nba/daily/playbyplay_151593.html'
 
 # url4 = 'http://g.hupu.com/nba/daily/boxscore_151593.html'
 # url3 = 'http://g.hupu.com/nba/daily/playbyplay_151593.html'

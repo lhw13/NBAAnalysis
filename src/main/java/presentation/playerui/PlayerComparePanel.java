@@ -272,6 +272,7 @@ public class PlayerComparePanel extends JPanel {
 			TeamVO tempvo = teams.get(i);
 			comboBoxOfLTeam.addItem(PlayerSelectionPanel.translate(tempvo.getAbbreviation()));
 			comboBoxOfRTeam.addItem(PlayerSelectionPanel.translate(tempvo.getAbbreviation()));
+			
 		}
 
 //column==============================================================
@@ -493,12 +494,21 @@ public class PlayerComparePanel extends JPanel {
 			TeamVO tempvo = teams.get(i);
 			comboBoxOfLTeam.addItem(PlayerSelectionPanel.translate(tempvo.getAbbreviation()));
 			comboBoxOfRTeam.addItem(PlayerSelectionPanel.translate(tempvo.getAbbreviation()));
+			
 		}
+		comboBoxOfLTeam.setSelectedItem(PlayerSelectionPanel.translate(tname1));
 		
 		comboBoxOfRPlayer.removeAllItems();
 		comboBoxOfRPlayer.addItem("选择球员");
 		comboBoxOfLPlayer.removeAllItems();
+		TeamWithPlayersVO teamvo = blservice.getTeamAnalysis(tname1);
+		ArrayList<PlayerVO> players = teamvo.getPlayers();
 		comboBoxOfLPlayer.addItem("选择球员");
+		for(int i=0;i<players.size();i++) {
+			PlayerVO tempvo = players.get(i);
+			comboBoxOfLPlayer.addItem(tempvo.getNameWithoutNum());
+		}
+		comboBoxOfLPlayer.setSelectedItem(pname1);
 		picture3 = ImageHandle.loadTeam("NBA");
 		picture4 = ImageHandle.loadTeam("");
 

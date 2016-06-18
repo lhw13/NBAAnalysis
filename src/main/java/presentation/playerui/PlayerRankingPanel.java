@@ -158,6 +158,11 @@ public class PlayerRankingPanel extends JPanel {
 		kingOfScore.addMouseListener(new MouseListener(){
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				crownOfScore.setVisible(true);
+				crownOfRebound.setVisible(false);
+				crownOfAssist.setVisible(false);
+				crownOfSteal.setVisible(false);
+				crownOfBlock.setVisible(false);
 				updatePlayerWithCondition("point");
 			}
 			@Override
@@ -170,12 +175,12 @@ public class PlayerRankingPanel extends JPanel {
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				crownOfScore.setVisible(true);
+//				crownOfScore.setVisible(true);
 				kingOfScore.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				crownOfScore.setVisible(false);
+//				crownOfScore.setVisible(false);
 				kingOfScore.setCursor(Cursor.getDefaultCursor());
 			}});
 		
@@ -186,6 +191,11 @@ public class PlayerRankingPanel extends JPanel {
 		kingOfRebound.addMouseListener(new MouseListener(){
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				crownOfScore.setVisible(false);
+				crownOfRebound.setVisible(true);
+				crownOfAssist.setVisible(false);
+				crownOfSteal.setVisible(false);
+				crownOfBlock.setVisible(false);
 				updatePlayerWithCondition("rebound");
 			}
 			@Override
@@ -198,12 +208,12 @@ public class PlayerRankingPanel extends JPanel {
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				crownOfRebound.setVisible(true);
+//				crownOfRebound.setVisible(true);
 				kingOfRebound.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				crownOfRebound.setVisible(false);
+//				crownOfRebound.setVisible(false);
 				kingOfRebound.setCursor(Cursor.getDefaultCursor());
 			}});
 		
@@ -213,6 +223,11 @@ public class PlayerRankingPanel extends JPanel {
 		kingOfAssist.addMouseListener(new MouseListener(){
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				crownOfScore.setVisible(false);
+				crownOfRebound.setVisible(false);
+				crownOfAssist.setVisible(true);
+				crownOfSteal.setVisible(false);
+				crownOfBlock.setVisible(false);
 				updatePlayerWithCondition("assist");
 			}
 			@Override
@@ -225,12 +240,12 @@ public class PlayerRankingPanel extends JPanel {
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				crownOfAssist.setVisible(true);
+//				crownOfAssist.setVisible(true);
 				kingOfAssist.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				crownOfAssist.setVisible(false);
+//				crownOfAssist.setVisible(false);
 				kingOfAssist.setCursor(Cursor.getDefaultCursor());
 			}});
 		
@@ -240,6 +255,11 @@ public class PlayerRankingPanel extends JPanel {
 		kingOfSteal.addMouseListener(new MouseListener(){
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				crownOfScore.setVisible(false);
+				crownOfRebound.setVisible(false);
+				crownOfAssist.setVisible(false);
+				crownOfSteal.setVisible(true);
+				crownOfBlock.setVisible(false);
 				updatePlayerWithCondition("steal");
 			}
 			@Override
@@ -252,12 +272,12 @@ public class PlayerRankingPanel extends JPanel {
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				crownOfSteal.setVisible(true);
+//				crownOfSteal.setVisible(true);
 				kingOfSteal.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				crownOfSteal.setVisible(false);
+//				crownOfSteal.setVisible(false);
 				kingOfSteal.setCursor(Cursor.getDefaultCursor());
 			}});
 		
@@ -268,6 +288,11 @@ public class PlayerRankingPanel extends JPanel {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				crownOfScore.setVisible(false);
+				crownOfRebound.setVisible(false);
+				crownOfAssist.setVisible(false);
+				crownOfSteal.setVisible(false);
+				crownOfBlock.setVisible(true);
 				updatePlayerWithCondition("blockShot");
 			}
 			@Override
@@ -280,41 +305,41 @@ public class PlayerRankingPanel extends JPanel {
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				crownOfBlock.setVisible(true);
+//				crownOfBlock.setVisible(true);
 				kingOfBlock.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				crownOfBlock.setVisible(false);
+//				crownOfBlock.setVisible(false);
 				kingOfBlock.setCursor(Cursor.getDefaultCursor());
 			}});
 		
 		crownOfScore = new JLabel();
-		crownOfScore.setBounds(175, 100, 100, 30);
+		crownOfScore.setBounds(170, 100, 100, 30);
 		panel.add(crownOfScore);
 		crownOfScore.setIcon(new ImageIcon("conf\\pictures\\crown.png"));
 		crownOfScore.setVisible(false);
 		
 		crownOfRebound = new JLabel();
-		crownOfRebound.setBounds(275, 100, 100, 30);
+		crownOfRebound.setBounds(270, 100, 100, 30);
 		panel.add(crownOfRebound);
 		crownOfRebound.setIcon(new ImageIcon("conf\\pictures\\crown.png"));
 		crownOfRebound.setVisible(false);
 		
 		crownOfAssist = new JLabel();
-		crownOfAssist.setBounds(375, 100, 100, 30);
+		crownOfAssist.setBounds(370, 100, 100, 30);
 		panel.add(crownOfAssist);
 		crownOfAssist.setIcon(new ImageIcon("conf\\pictures\\crown.png"));
 		crownOfAssist.setVisible(false);
 		
 		crownOfSteal = new JLabel();
-		crownOfSteal.setBounds(475, 100, 100, 30);
+		crownOfSteal.setBounds(470, 100, 100, 30);
 		panel.add(crownOfSteal);
 		crownOfSteal.setIcon(new ImageIcon("conf\\pictures\\crown.png"));
 		crownOfSteal.setVisible(false);
 		
 		crownOfBlock = new JLabel();
-		crownOfBlock.setBounds(575, 100, 100, 30);
+		crownOfBlock.setBounds(570, 100, 100, 30);
 		panel.add(crownOfBlock);
 		crownOfBlock.setIcon(new ImageIcon("conf\\pictures\\crown.png"));
 		crownOfBlock.setVisible(false);

@@ -82,7 +82,7 @@ public class TransToStandard {
 			}
 		}
 		for(int y=1985;y<2016;y++){
-			if(y==2014){
+			if(y>=2014){
 				data.put(seasonList[y-1985]+"CHA","CHO");
 			}
 			else if(y>=2004){

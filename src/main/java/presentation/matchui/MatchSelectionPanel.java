@@ -72,7 +72,7 @@ public class MatchSelectionPanel extends JPanel {
 		panelOfBottom.setPreferredSize(new Dimension(1000, 500));
 		panelOfBottom.setLayout(null);
 		
-		String[] names1 = new String[]{"赛季", "日期", "主队", "比分", "客队", "主队最高得分球员", "得分", "客队最高得分球员", "得分"};
+		String[] names1 = new String[]{"赛季", "日期", "客队", "比分", "主队", "客队最高得分球员", "得分", "主队最高得分球员", "得分"};
 		columnName1 = new Vector();
 		for(int i=0;i<names1.length;i++) {
 			columnName1.add(names1[i]);
@@ -536,7 +536,7 @@ public class MatchSelectionPanel extends JPanel {
 		int month = Integer.parseInt(strArray[1]);
 		int day = Integer.parseInt(strArray[2]);
 		String season = "";
-		if(1<=month && month<=4){
+		if(1<=month && month<=6){
 			int a=year%10; 
 			int b=(year/10)%10;
 			int c = 10*b+a;

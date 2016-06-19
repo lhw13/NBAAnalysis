@@ -316,8 +316,6 @@ public class MatchLivePanel extends JPanel{
 		team_2.setIcon(ii[1]);
 		team_1_state.setText(LiveThread.team_score.get("team_1_state"));
 		team_2_state.setText(LiveThread.team_score.get("team_2_state"));
-		
-		
 	}
 
 	public static void updateLiveInfo(){

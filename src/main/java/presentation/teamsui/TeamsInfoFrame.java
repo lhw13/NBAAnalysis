@@ -212,7 +212,7 @@ public class TeamsInfoFrame extends JPanel{
 		scrollPane_search = new JScrollPane();
 		scrollPane_search.setBounds(100, 510, 800, 250);
 		
-		String[] names3 = new String[]{"赛季", "日期", "主队", "比分", "客队", "主队最高得分球员", "得分", "客队最高得分球员", "得分"};
+		String[] names3 = new String[]{"赛季", "日期", "客队", "比分", "主队", "客队最高得分球员", "得分", "主队最高得分球员", "得分"};
 		columnName3 = new Vector();
 		for(int i=0;i<names3.length;i++) {
 			columnName3.add(names3[i]);

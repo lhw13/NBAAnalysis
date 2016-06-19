@@ -807,7 +807,7 @@ public class TeamAnalysePanel extends JPanel {
 	
 	private static JFreeChart createChart_3(CategoryDataset dataset){//用数据集创建一个图表
 		JFreeChart chart = ChartFactory.createBarChart3D( 
-				"球队赛季数据对比1", // 图表标题
+				"球队赛季数据对比", // 图表标题
 				"球员", // 目录轴的显示标签
 				"数值", // 数值轴的显示标签
 				dataset, // 数据集

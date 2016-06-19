@@ -279,7 +279,7 @@ public class PlayerInfoPanel extends JPanel {
 		scrollPane_4.setViewportView(table_3);
 		
 		JScrollPane scrollPane_9 = new JScrollPane();
-		scrollPane_9.setBounds(5, 448, 703, 129);
+		scrollPane_9.setBounds(5, 448, 770, 129);
 		panelOfBottom.add(scrollPane_9);
 		String[] cname1 = new String[] {"赛季","球队","出场","首发","时间","投篮","三分",
 				"罚球","前篮板","后篮板","总篮板","助攻","抢断","盖帽","失误","犯规","得分"};

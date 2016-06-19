@@ -903,6 +903,7 @@ public class PlayerSelectionPanel extends JPanel {
 		Vector rowData5 = new Vector();
 		Vector rowDatas = new Vector();
 		ArrayList<PlayerVO> players = vo.getPlayers();
+		
 		for (int i = 0; i < 3&&i<players.size(); i++) {
 			
 			rowData1.add(players.get(i).getNameWithoutNum());

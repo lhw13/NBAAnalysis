@@ -14,9 +14,6 @@ url1 = 'http://g.hupu.com/nba/daily/playbyplay_150122.html'
 url4 = 'http://g.hupu.com/nba/daily/boxscore_151593.html'
 url3 = 'http://g.hupu.com/nba/daily/playbyplay_151593.html'
 
-# url4 = 'http://g.hupu.com/nba/daily/boxscore_151593.html'
-# url3 = 'http://g.hupu.com/nba/daily/playbyplay_151593.html'
-
 my_headers = [
 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.3 Safari/537.36',
 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; SE 2.X MetaSr 1.0; SE 2.X MetaSr 1.0; .NET CLR 2.0.50727; SE 2.X MetaSr 1.0)',
@@ -129,7 +126,7 @@ else:
 	if result_1 == "no partScore":
 		lastMatch()
 	else:
-		get_team(content_2)
+		# get_team(content_2)
 		get_detail(content_2)
 		content_1 = get_content(url3, my_headers)
 		get_each(str(get_Live(content_1)))

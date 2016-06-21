@@ -1,35 +1,33 @@
 package presentation.playerui;
 
-import java.awt.Dimension;
-
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
 import java.awt.Cursor;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
-import blservice.BLService;
 import presentation.mainui.MainFrame;
 import presentation.mainui.Panels;
+import presentation.util.FuzzySearch;
+import presentation.util.MySpecialTextField;
 import server.businesslogic.BLController;
 import vo.PlayerVO;
-import vo.TeamVO;
 import vo.TeamWithPlayersVO;
+import blservice.BLService;
 
-public class PlayerSelectionPanel extends JPanel {
+public class PlayerSelectionPanel extends JPanel implements FuzzySearch {
 
 	BLService blservice = BLController.getInstance(); 
 	ArrayList<TeamWithPlayersVO> teamWithPlayer = blservice
@@ -217,6 +215,7 @@ public class PlayerSelectionPanel extends JPanel {
 	JLabel label29= new JLabel();
 	JLabel label30= new JLabel();
 	
+	
 	JPanel panelOfBottom = new JPanel();
 	private JLabel label;
 	private JLabel label_1;
@@ -242,6 +241,9 @@ public class PlayerSelectionPanel extends JPanel {
 	private JLabel labelOf6;
 	private JLabel labelOf7;
 	private JButton button;
+	
+	private MySpecialTextField playerNameSearchField;
+	private JLabel playerNameSearchLabel;
 	
 	public PlayerSelectionPanel() {
 		this.setBounds(0, 0, 1000, 600);
@@ -422,40 +424,7 @@ public class PlayerSelectionPanel extends JPanel {
 		panelOfBottom.add(tableOf30);
 		
 		ChangeMouseListen changeListener = new ChangeMouseListen();
-//		labelOf1 = new JLabel("主界面");
-//		labelOf1.setBounds(259, 2, 43, 19);
-//		labelOf1.addMouseListener(changeListener);
-//		panelOfBottom.add(labelOf1);
-//		
-//		labelOf2 = new JLabel("球队");
-//		labelOf2.setBounds(312, 2, 43, 19);
-//		labelOf2.addMouseListener(changeListener);
-//		panelOfBottom.add(labelOf2);
-//		
-//		labelOf3 = new JLabel("球员");
-//		labelOf3.setBounds(362, 2, 43, 19);
-//		labelOf3.addMouseListener(changeListener);
-//		panelOfBottom.add(labelOf3);
-//		
-//		labelOf4 = new JLabel("球队排名");
-//		labelOf4.setBounds(416, 2, 76, 19);
-//		labelOf4.addMouseListener(changeListener);
-//		panelOfBottom.add(labelOf4);
-//		
-//		labelOf5 = new JLabel("球员排名");
-//		labelOf5.setBounds(250, 4, 43, 19);
-//		labelOf5.addMouseListener(changeListener);
-//		panelOfBottom.add(labelOf3);
-//		
-//		labelOf6 = new JLabel("热点");
-//		labelOf6.setBounds(494, 2, 43, 19);
-//		labelOf6.addMouseListener(changeListener);
-//		panelOfBottom.add(labelOf6);
-//		
-//		labelOf7 = new JLabel("比赛");
-//		labelOf7.setBounds(550, 2, 43, 19);
-//		labelOf7.addMouseListener(changeListener);
-//		panelOfBottom.add(labelOf7);
+
 		
 
 		if (teamWithPlayer != null && teamWithPlayer.size() != 0) {
@@ -704,6 +673,29 @@ public class PlayerSelectionPanel extends JPanel {
 			}
 		}
 
+		this.playerNameSearchField = new MySpecialTextField(500, 0, 150, 20, this);
+		panelOfBottom.add(playerNameSearchField);
+		
+		this.playerNameSearchLabel = new JLabel("球员搜索");
+		playerNameSearchLabel.setBounds(450, 0, 50, 20);
+		panelOfBottom.add(playerNameSearchLabel);
+		
+		playerNameSearchField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {				
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					String text = playerNameSearchField.getText();
+					if(!text.equals("")) {
+						PlayerSelectionPanel.scrollPane.setVisible(false);
+						MainFrame.pip.update(text);
+						PlayerInfoPanel.scrollPane.setVisible(true);
+						MainFrame.frame.setTitle("NBA球员信息");
+						MainFrame.backPanels.add(MainFrame.currentPanel);
+						MainFrame.currentPanel = Panels.PlayerInfoPanel;
+					}
+				}						
+			}
+		});
 	}
 
 	public void update() {
@@ -1090,4 +1082,55 @@ public class ChangeMouseListen extends MouseAdapter {
 		}
 		
 	}
+
+@Override
+public ArrayList<String> getFuzzyResult(String s) {
+// precision 先默认给1，可以达到王雨城所说的算法。若取数字越高，精确度越高，搜索结果数量也就越少
+	int precision=1;
+		ArrayList<String> result = new ArrayList<String>();
+		ArrayList<PlayerVO> flatlist=blservice.getPlayerAnalysis();
+		ArrayList<Boolean> h = new ArrayList<Boolean>();
+		if (precision > s.length())
+			precision = s.length();
+		for (int i = 0; i < flatlist.size(); i++)
+			// flatlist is changeable
+			h.add(true);
+		for (int i = 0; i < flatlist.size(); i++)
+			for (int j = 0; j <= s.length() - precision; j++)
+				if (!flatlist.get(i).getNameWithoutNum().toLowerCase().contains(s.substring(j, j + precision).toLowerCase()))// the
+																				// elements
+																				// in
+																				// the
+																				// list
+																				// must
+																				// implement
+																				// function:
+																				// boolean
+																				// contents(s)
+					h.set(i, false);
+		for (int i = 0; i < h.size(); i++)
+		{
+			if (h.get(i) == true)
+			{
+				boolean b=true;
+				for (int j = 0; j <= s.length() - precision-1; j++)
+					if (!flatlist.get(i).getNameWithoutNum().toLowerCase().contains(s.substring(j, j + precision+1).toLowerCase()))
+					{
+						b=false;
+						break;
+					}
+				if(!b)
+				    result.add(flatlist.get(i).getNameWithoutNum());// here can also be
+				else
+					result.add(0, flatlist.get(i).getNameWithoutNum());
+			}
+			if(result.size()>10)
+				break;
+		}
+//		ArrayList<String> result2 = new ArrayList<>();
+//		result2.add("curry");
+//		result2.add("johns");
+		return result;
+	
+}
 }

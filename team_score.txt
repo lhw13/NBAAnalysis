@@ -1,24 +1,25 @@
 <div class="team_a">
 					<div class="img">
-						<a target="_blank" href="http://g.hupu.com/nba/teams/cavaliers">
-							<img alt="骑士" src="http://gdc.hupucdn.com/gdc/nba/team/logo/CLE.png?v=20160314" height="95" width="95" /></a>
-					</div>
-					<div class="message">
-						<h2>115</h2>
-						<p><a href="http://g.hupu.com/nba/teams/cavaliers" target='_blank'>骑士</a>
-(3)</p>
-						<div>主队（57胜25负）</div>
-					</div>
-				</div>
-								<div class="team_b">
-					<div class="img">
 						<a target="_blank" href="http://g.hupu.com/nba/teams/warriors">
 							<img alt="勇士" src="http://gdc.hupucdn.com/gdc/nba/team/logo/GSW.png?v=20160314" height="95" width="95" /></a>
 					</div>
 					<div class="message">
-						<h2>101</h2>
+						<h2>89</h2>
 						<p><a href="http://g.hupu.com/nba/teams/warriors" target='_blank'>勇士</a>
-(3)</p>
-						<div>客队（73胜9负）</div>
+															(3)													</p>
+						<div>主队（73胜9负）</div>
 					</div>
 				</div>
+								<div class="team_b">
+					<div class="img">
+						<a target="_blank" href="http://g.hupu.com/nba/teams/cavaliers">
+							<img alt="骑士" src="http://gdc.hupucdn.com/gdc/nba/team/logo/CLE.png?v=20160314" height="95" width="95" /></a>
+					</div>
+					<div class="message">
+						<h2>93</h2>
+						<p><a href="http://g.hupu.com/nba/teams/cavaliers" target='_blank'>骑士</a>
+															(4)													</p>
+						<div>客队（57胜25负）</div>
+					</div>
+				</div>
+			</div>

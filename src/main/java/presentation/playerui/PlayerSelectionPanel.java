@@ -1124,7 +1124,7 @@ public ArrayList<String> getFuzzyResult(String s) {
 				else
 					result.add(0, flatlist.get(i).getNameWithoutNum());
 			}
-			if(result.size()>10)
+			if(result.size()>=10)
 				break;
 		}
 //		ArrayList<String> result2 = new ArrayList<>();

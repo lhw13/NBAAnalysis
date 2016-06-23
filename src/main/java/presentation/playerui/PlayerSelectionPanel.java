@@ -1084,7 +1084,7 @@ public class ChangeMouseListen extends MouseAdapter {
 	}
 
 @Override
-public ArrayList<String> getFuzzyResult(String s) {
+public ArrayList<String> getFuzzyResult2(String s) {
 // precision 先默认给1，可以达到王雨城所说的算法。若取数字越高，精确度越高，搜索结果数量也就越少
 	int precision=1;
 		ArrayList<String> result = new ArrayList<String>();
@@ -1126,6 +1126,42 @@ public ArrayList<String> getFuzzyResult(String s) {
 			}
 			if(result.size()>=10)
 				break;
+		}
+//		ArrayList<String> result2 = new ArrayList<>();
+//		result2.add("curry");
+//		result2.add("johns");
+		return result;
+	
+}
+@Override
+public ArrayList<String> getFuzzyResult(String s) {
+// precision 先默认给1，可以达到王雨城所说的算法。若取数字越高，精确度越高，搜索结果数量也就越少
+	int precision=2;
+		ArrayList<String> result = new ArrayList<String>();
+		ArrayList<PlayerVO> flatlist=blservice.getPlayerAnalysis();
+		ArrayList<Integer> h = new ArrayList<Integer>();
+		if (precision > s.length())
+			precision = s.length();
+		for (int i = 0; i < flatlist.size(); i++)
+			// flatlist is changeable
+			h.add(true);
+		for (int i = 0; i < flatlist.size(); i++)
+			for (int j = 0; j <= s.length() - precision; j++)
+				if (!flatlist.get(i).getNameWithoutNum().toLowerCase().contains(s.substring(j, j + precision).toLowerCase()))// the
+																				// elements
+																				// in
+																				// the
+																				// list
+																				// must
+																				// implement
+																				// function:
+																				// boolean
+																				// contents(s)
+					h.set(i, h.get(i)+10000);
+		Collections.sort(h);
+		for (int i = 0; i < h.size() && i < 10; i++)
+		{
+			result.add(flatlist.get(h.get(i)%10000).getNameWithoutNum());
 		}
 //		ArrayList<String> result2 = new ArrayList<>();
 //		result2.add("curry");

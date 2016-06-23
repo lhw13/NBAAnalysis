@@ -1083,7 +1083,7 @@ public class ChangeMouseListen extends MouseAdapter {
 		
 	}
 
-@Override
+
 public ArrayList<String> getFuzzyResult2(String s) {
 // precision 先默认给1，可以达到王雨城所说的算法。若取数字越高，精确度越高，搜索结果数量也就越少
 	int precision=1;

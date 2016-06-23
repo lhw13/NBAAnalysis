@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -1158,7 +1159,7 @@ public ArrayList<String> getFuzzyResult(String s) {
 																				// boolean
 																				// contents(s)
 					h.set(i, h.get(i)+10000);
-		h.sort();
+		Collections.sort(h);
 		for (int i = 0; i < h.size() && i < 10; i++)
 		{
 			result.add(flatlist.get(h.get(i)%10000).getNameWithoutNum());

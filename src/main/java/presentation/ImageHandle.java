@@ -1,5 +1,7 @@
 package presentation;
 
+import java.awt.MediaTracker;
+
 import javax.swing.ImageIcon;
 
 public class ImageHandle {
@@ -11,6 +13,10 @@ public class ImageHandle {
 		name=name.replaceAll("\\d", "");
 		ImageIcon PLAYER = new ImageIcon("conf/nba/players/portrait/" + name
 				+ ".png");
+		if(PLAYER.getImageLoadStatus() == MediaTracker.ERRORED) {
+			return new ImageIcon("conf/pictures/NBA.png");
+		}
+		
 		return PLAYER; 
 	}
 

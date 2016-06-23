@@ -490,7 +490,7 @@ public class PlayerInfoPanel extends JPanel {
 	public void update(String name) {
 		playerName = name;
 		picture = ImageHandle.loadPlayer(name);
-		pictureOfAct = ImageHandle.loadPlayerAct(name);
+		
 		picture.setImage(picture.getImage().getScaledInstance(230, 185,
 				Image.SCALE_DEFAULT));
 		labelOfPhoto.setIcon(picture);
@@ -667,7 +667,7 @@ public class PlayerInfoPanel extends JPanel {
 			rowDatas9.add(rowData9);
 			
 			rowData9 = new Vector();	
-			rowData9.add("体重");rowData9.add(vo.getWeight());
+			rowData9.add("体重");rowData9.add(vo.getWeight()+"磅");
 			rowDatas9.add(rowData9);
 				
 			rowData9 = new Vector();

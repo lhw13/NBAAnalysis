@@ -1144,7 +1144,7 @@ public ArrayList<String> getFuzzyResult(String s) {
 			precision = s.length();
 		for (int i = 0; i < flatlist.size(); i++)
 			// flatlist is changeable
-			h.add(true);
+			h.add(i);
 		for (int i = 0; i < flatlist.size(); i++)
 			for (int j = 0; j <= s.length() - precision; j++)
 				if (!flatlist.get(i).getNameWithoutNum().toLowerCase().contains(s.substring(j, j + precision).toLowerCase()))// the
@@ -1158,7 +1158,7 @@ public ArrayList<String> getFuzzyResult(String s) {
 																				// boolean
 																				// contents(s)
 					h.set(i, h.get(i)+10000);
-		Collections.sort(h);
+		h.sort();
 		for (int i = 0; i < h.size() && i < 10; i++)
 		{
 			result.add(flatlist.get(h.get(i)%10000).getNameWithoutNum());
